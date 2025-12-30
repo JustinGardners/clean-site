@@ -1,0 +1,249 @@
+<script>
+  $(document).ready(function () {
+    $("#paymentTypeCreditCardMasterCardRadioBtn").prop("checked", false);
+  });
+
+  $(document).ready(function () {
+    $(".postcodeGavLookup > label").html("Find address by postcode");
+    $(".postcodeGavLookup").append(
+      '<span class="postcodeError checkoutShow" style="display: block;"></span>'
+    );
+  });
+
+  $(document).ready(function () {
+    const $checkbox = $("#IsNewsletterSubscribed");
+
+    if ($checkbox.length && !$checkbox.prop("checked")) {
+      $checkbox.prop("checked", true);
+    }
+    $(".newsLetterSubscribed .description").append(
+      ' <a href="/help/policies/privacy-notice" target="_blank" style="text-decoration: underline;">View privacy policy.</a>'
+    );
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var addressBtn = document.getElementById("btnSubmitAddress");
+    StoreFront.basket.deliveryPostcode = "";
+
+    if (addressBtn) {
+      addressBtn.addEventListener("click", function () {
+        var postcodeInput = document.getElementById("DeliveryAddress_PostCode");
+        var postcode = postcodeInput ? postcodeInput.value.trim() : "";
+
+        if (postcode) {
+          StoreFront.basket.deliveryPostcode = postcode;
+        }
+      });
+    }
+  });
+</script>
+<script>
+  const basketItems = (StoreFront?.basket?.items || []).map((item, index) => {
+    const itemDiscount =
+      item.price > item.netPrice ? item.price - item.netPrice : 0;
+    const itemDiscountPercent =
+      item.price > 0 ? ((itemDiscount / item.price) * 100).toFixed(0) : 0;
+
+    const genealogySplit = getFirstGenealogyLine(
+      { genealogy: item.genealogy },
+      StoreFront.basket.facetDetailsById,
+      { format: "split" }
+    );
+
+    const itemCategories = {
+      item_category: item.type || "Unknown",
+      ...Object.fromEntries(
+        Object.entries(genealogySplit).filter(
+          ([key]) => key !== "item_category"
+        )
+      ),
+    };
+
+    return {
+      author: item.contributor,
+      item_brand: item.brand || item.publisher || "",
+      item_id: item.code,
+      index,
+      item_name: item.title,
+      price: item.netPrice,
+      quantity: item.quantity,
+      rrp: item.price,
+      discount: itemDiscount,
+      discount_percent: itemDiscountPercent,
+      on_offer: itemDiscount > 0,
+      ...itemCategories,
+    };
+  });
+
+  const distcountList = Array.from(
+    document.querySelectorAll(".basketDiscountName")
+  ).map((el) => el.textContent.trim().replace(/:$/, ""));
+
+  document.addEventListener("submit", function (e) {
+    const form = e.target;
+
+    let fulfilmentType = "";
+
+    // --- Is a Gift
+    const giftInput = document.getElementById("giftingCheckbox");
+    if (giftInput) {
+      sessionStorage.setItem("StoreFrontBasketGift", giftInput.checked);
+    }
+
+    try {
+      // --- Delivery Address ---
+      if (form.closest("#DeliveryAddress")) {
+        e.preventDefault();
+        sessionStorage.setItem("StoreFrontBasketShippingType", "Home Delivery");
+        form.submit();
+        return;
+      }
+
+      // --- Store Address ---
+      if (form.closest("#storeAddress")) {
+        e.preventDefault();
+        sessionStorage.setItem(
+          "StoreFrontBasketShippingType",
+          "Store Collection"
+        );
+
+        try {
+          const selectedStore = document.querySelector(
+            'input[name="SelectedStoreId"]:checked'
+          );
+          let storeName = "";
+          if (selectedStore) {
+            const storeItem = selectedStore.closest("li.storeResult");
+            if (storeItem) {
+              const nameLabel = storeItem.querySelector(".storeResultName");
+              if (nameLabel) {
+                storeName = nameLabel.childNodes[0].textContent.trim();
+              }
+            }
+            sessionStorage.setItem(
+              "StoreFrontBasketCollectionStoreName",
+              storeName
+            );
+          }
+
+          pushCheckoutEvent("add_shipping_info", {
+            value: getTotalPrice(),
+            coupon: distcountList || [],
+            items: basketItems || [],
+            fulfilment_type: "Store Collection",
+            store_name: storeName || "",
+          });
+        } catch (err) {
+          console.error("Error handling store address form:", err);
+        }
+
+        form.submit();
+        return;
+      }
+
+      // --- Delivery Method ---
+      if (form.closest("#DeliveryMethod")) {
+        e.preventDefault();
+        let submitted = false;
+
+        try {
+          const deliveryType =
+            sessionStorage.getItem("StoreFrontBasketShippingType") || "";
+          const fulfilmentType =
+            document.querySelector('input[name="DeliveryOptionId"]:checked')
+              ?.dataset.title || "";
+
+          pushCheckoutEvent("add_shipping_info", {
+            value: getTotalPrice(),
+            coupon: distcountList || [],
+            items: basketItems || [],
+            shipping_tier: deliveryType,
+            fulfilment_type: fulfilmentType,
+          });
+
+          form.submit();
+          submitted = true;
+        } catch (err) {
+          console.error("Error handling delivery method form:", err);
+        }
+
+        setTimeout(() => {
+          if (!submitted) {
+            console.warn("Fallback forced submission for DeliveryMethod form");
+            form.submit();
+          }
+        }, 1000);
+
+        return;
+      }
+
+      // --- Payment Method ---
+      if (form.closest("#PaymentMethod")) {
+        e.preventDefault();
+        let submitted = false;
+
+        try {
+          const selectedPayment = document.querySelector(
+            'input[name="ProviderType"]:checked'
+          );
+          let paymentType = "";
+
+          if (selectedPayment) {
+            paymentType =
+              selectedPayment.value === "Braintree"
+                ? "Credit / Debit Card"
+                : selectedPayment.value || "";
+          }
+
+          sessionStorage.setItem("StoreFrontBasketPaymentType", paymentType);
+
+          form.submit();
+          submitted = true;
+        } catch (err) {
+          console.error("Error handling payment method form:", err);
+        }
+
+        setTimeout(() => {
+          if (!submitted) {
+            console.warn("Fallback forced submission for PaymentMethod form");
+            form.submit();
+          }
+        }, 1000);
+
+        return;
+      }
+    } catch (err) {
+      console.error("Checkout submit error:", err);
+      form.submit();
+    }
+  });
+
+  document.addEventListener("change", function (e) {
+    const target = e.target;
+
+    if (target.matches('input[name="ProviderType"]') && target.checked) {
+      let paymentType = target.value === "Braintree" ? "Card" : target.value;
+
+      pushCheckoutEvent("add_payment_info", {
+        payment_type: paymentType,
+        value: getTotalPrice(),
+        coupon: distcountList || [],
+        items: basketItems || [],
+      });
+    }
+
+    if (target.matches('input[name="DeliveryOptionId"]') && target.checked) {
+      const deliveryType =
+        sessionStorage.getItem("StoreFrontBasketShippingType") || "";
+      let shipping_tier = target.dataset.title || "";
+
+      pushCheckoutEvent("add_shipping_info", {
+        value: getTotalPrice(),
+        coupon: distcountList || [],
+        items: basketItems || [],
+        shipping_tier,
+        fulfilment_type: deliveryType,
+      });
+    }
+  });
+</script>

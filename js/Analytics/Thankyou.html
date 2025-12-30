@@ -1,0 +1,195 @@
+<script type="text/javascript">
+  var transactionData = StoreFront.events.purchase;
+  var transactionItems = StoreFront.events.purchase.items;
+  var sProtocol = location.protocol == "http:" ? "http" : "https";
+  var awPixel = new Image(0, 0);
+  awPixel.src =
+    sProtocol +
+    "://www.awin1.com/sread.img?tt=ns&tv=2&merchant=3017&amount=" +
+    parseFloat(transactionData.productTotalPriceExVat.toFixed(2)) +
+    "&ch=" +
+    "aw" +
+    "&parts=" +
+    "DEFAULT:" +
+    parseFloat(transactionData.productTotalPriceExVat.toFixed(2)) +
+    "&ref=" +
+    transactionData.customerOrderReference +
+    "&vc=" +
+    transactionData.couponCode +
+    "&cr=" +
+    "GBP" +
+    "&testmode=0";
+</script>
+<script type="text/javascript">
+  /*** Do not change ***/
+  var AWIN = AWIN || {};
+  AWIN.Tracking = AWIN.Tracking || {};
+  AWIN.Tracking.Sale = {};
+  /*** Set your transaction parameters ***/
+  AWIN.Tracking.Sale.amount = parseFloat(transactionData.productTotalPriceExVat.toFixed(2));
+  AWIN.Tracking.Sale.channel = "aw";
+  AWIN.Tracking.Sale.orderRef = transactionData.customerOrderReference;
+  AWIN.Tracking.Sale.parts = "DEFAULT:" + parseFloat(transactionData.productTotalPriceExVat.toFixed(2));
+  AWIN.Tracking.Sale.currency = "GBP";
+  AWIN.Tracking.Sale.voucher = transactionData.couponCode;
+  AWIN.Tracking.Sale.test = "0";
+</script>
+<form style="display: none" name="aw_basket_form">
+  <textarea wrap="physical" id="aw_basket"></textarea>
+</form>
+<script type="text/javascript">
+  var itemList = "";
+  transactionItems.forEach(function (e, i) {
+    itemList +=
+      "AW:P|3017|" +
+      transactionData.customerOrderReference +
+      "|" +
+      e.productCode +
+      "|" +
+      e.title +
+      "|" +
+      e.netPriceExVat +
+      "|" +
+      e.quantity +
+      "|" +
+      e.productCode +
+      "|DEFAULT|" +
+      StoreFront.productTypes[e.productType] +
+      "\n";
+  });
+  $("#aw_basket").val(itemList);
+</script>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    function trackPurchase() {
+      const purchaseEvent = StoreFront.events.purchase;
+      if (!purchaseEvent || !purchaseEvent.items) return;
+
+      const productList = purchaseEvent.items.map((p) => ({
+        product_id: p.productCode,
+        quantity: p.quantity,
+      }));
+
+      const paymentType = sessionStorage.getItem("StoreFrontBasketPaymentType") || "";
+      const trackingCtx = getTrackingContext();
+
+      const hasConsent = typeof exponea !== undefined && exponea && exponea.isInitialized === true;
+      const purchaseId = purchaseEvent.customerOrderReference;
+
+      if (hasConsent) {
+        exponea.track("purchase", {
+          os: navigator.platform || undefined,
+          browser: navigator.userAgent || undefined,
+          device: undefined,
+          location: trackingCtx.location,
+          purchase_status: "success",
+          total_price: purchaseEvent.totalNetValue,
+          currency: "GBP",
+          payment_type: paymentType,
+          source_type: trackingCtx.isAffiliate,
+          language: trackingCtx.language,
+          coupon: purchaseEvent.couponCode || "",
+          product_list: productList,
+        });
+
+        purchaseEvent.items.forEach((item) => {
+          const itemTags = getProductTags(item.productCode);
+          const categories = Genealogy.generate(item.genealogy || [], item.facetDetails || {});
+
+          exponea.track("purchase_item", {
+            purchase_id: purchaseId,
+            purchase_status: "success",
+            purchase_source_name: trackingCtx.domain,
+            purchase_source_type: trackingCtx.isAffiliate,
+            timestamp: new Date().toISOString(),
+
+            product_id: item.productCode,
+            title: item.title,
+            author: item.author || "",
+            brand: item.brand || "",
+            quantity: item.quantity,
+            price: item.netPriceExVat,
+            total_price_without_tax: item.totalNetPrice,
+            total_price: (item.netPriceExVat * item.quantity).toFixed(2),
+
+            categories_ids_all: categories.codes.raw.join("|"),
+            categories_paths_all: categories.descriptions.stepByStep.join("||"),
+
+            discount_value: item.discountValue || 0,
+            discount_percentage: item.discountPercentage || 0,
+            tags: itemTags.join(","),
+          });
+        });
+
+        console.log("Purchase tracked via Exponea:", purchaseId);
+      } else {
+        console.warn("Exponea not available or consent not given — sending minimal anonymized event.");
+
+        if (typeof exponea === undefined) {
+          window.exponea = {
+            start: () => {},
+            identify: () => {},
+            track: (...args) => console.log("🔒 Consentless event:", args),
+            isInitialized: true,
+          };
+        }
+
+        exponea.start({
+          cookies: { expires: 1 },
+          ping: { enabled: false },
+          track: { visits: false },
+        });
+        exponea.identify(purchaseEvent.purchasedBy?.email || null);
+
+        // Send anonymized event
+        exponea.track("purchase", {
+          os: undefined,
+          browser: undefined,
+          device: undefined,
+          location: "https://www.tgjones.com/Checkout/Complete/ThankYou",
+          purchase_status: "success",
+          total_price: purchaseEvent.totalNetValue,
+          currency: "GBP",
+          payment_type: undefined,
+          source_type: undefined,
+          language: undefined,
+          coupon: "",
+          product_list: productList,
+        });
+
+        purchaseEvent.items.forEach((item) => {
+          const itemTags = getProductTags(item.productCode);
+          const categories = Genealogy.generate(item.genealogy || [], item.facetDetails || {});
+
+          exponea.track("purchase_item", {
+            purchase_id: purchaseId,
+            purchase_status: "success",
+            timestamp: new Date().toISOString(),
+
+            product_id: item.productCode,
+            title: item.title,
+            author: item.author || "",
+            brand: item.brand || "",
+            quantity: item.quantity,
+            price: item.netPriceExVat,
+            total_price_without_tax: item.totalNetPrice,
+            total_price: (item.netPriceExVat * item.quantity).toFixed(2),
+
+            categories_ids_all: categories.codes.raw.join("|"),
+            categories_paths_all: categories.descriptions.stepByStep.join("||"),
+
+            discount_value: item.discountValue || 0,
+            discount_percentage: item.discountPercentage || 0,
+            tags: itemTags.join(","),
+          });
+        });
+
+        delete window.exponea;
+        console.log("Exponea removed");
+      }
+    }
+
+    trackPurchase();
+  });
+</script>

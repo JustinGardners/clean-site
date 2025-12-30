@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Product_Page" data-name="Product Page" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #003087;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M13.71,8.2v2.38h2.92l-.24,2.79h-2.67v7.46h-2.79v-7.46h-2.97v-2.79h2.97v-2.99c0-1.88,1.53-3.41,3.41-3.41h2.72v2.79h-2.11c-.68,0-1.23.55-1.23,1.23Z"/>
+</svg>

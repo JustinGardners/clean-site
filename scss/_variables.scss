@@ -1,0 +1,145 @@
+@use "sass:map";
+
+// OVERRIDES
+// 2.25 rem gutter = 18px padding
+// Updated - 1.875 rem = 15px padding
+$grid-gutter-width: 1.5rem;
+@media (min-width: 768px) {
+  // 1.50 rem gutter = 12px padding
+  $grid-gutter-width: 1.5rem;
+}
+
+// Icons
+$iconCheckmark: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgNzA5KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTE4LjQsMy45bC05LjQsOS43LTMuNC0zLjNjLTEtMS0yLjctMS0zLjcsMGgwYy0xLDEuMS0xLDIuNywwLDMuOGw1LjIsNS4xYzEsMSwyLjcsMSwzLjcsMGwxMS40LTExLjZjMS0xLDEtMi43LDAtMy43aDBjLTEtMS0yLjctMS0zLjcsMGgwWiIvPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=');
+$iconCross: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgNzA5KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPGc+CiAgICAgICAgICA8cmVjdCB4PSIxLjMiIHk9IjkiIHdpZHRoPSIyMS4yIiBoZWlnaHQ9IjUuMSIgcng9IjIuNSIgcnk9IjIuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNyAxMi4xKSByb3RhdGUoLTQ2LjIpIi8+CiAgICAgICAgICA8cmVjdCB4PSI5LjUiIHk9IjEiIHdpZHRoPSI1LjEiIGhlaWdodD0iMjEuMiIgcng9IjIuNSIgcnk9IjIuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNyAxMS42KSByb3RhdGUoLTQzLjgpIi8+CiAgICAgICAgPC9nPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=');
+$iconWatch: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><g><g id="Layer_1"><path d="M16.1,9.2c-1-1-2.5-1.7-4.1-1.7s-3,.6-4.1,1.7c-1,1-1.7,2.5-1.7,4.1s.6,3,1.7,4.1c1,1,2.5,1.7,4.1,1.7s3-.6,4.1-1.7c1-1,1.7-2.5,1.7-4.1s-.6-3-1.7-4.1M12,13.3v-5c2.8,0,5,2.3,5,5h-5ZM12.9,5.5c1.6.2,3.1.9,4.3,1.9l.4-.4-.6-.6,1-1,1.9,1.9-1,1-.6-.6-.4.4c1.2,1.4,2,3.2,2,5.2s-.9,4.1-2.3,5.6c-1.4,1.4-3.4,2.3-5.6,2.3s-4.1-.9-5.6-2.3-2.3-3.4-2.3-5.6.9-4.1,2.3-5.6c1.2-1.2,2.8-2,4.7-2.3v-1h-1.4v-2.5h4.5v2.5h-1.4v1Z"/></g></g></svg>');
+$iconNoSearch: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 92.8 91.8"><defs><style>.cls-1{fill:%23003087}</style></defs><g><g id="Layer_1"><path class="cls-1" d="M86.5,84.5c-1.2,1.2-2.9,1.9-4.5,1.9s-3.3-.6-4.5-1.9l-10.2-10.2c-6.4,4.5-14,7-21.9,7-10.1,0-19.7-3.9-26.8-11.1-14.8-14.8-14.8-38.9,0-53.6,7.2-7.2,16.7-11.1,26.8-11.1s19.7,3.9,26.8,11.1c7.2,7.2,11.1,16.7,11.1,26.8,0,8-2.5,15.6-7,21.9l10.2,10.2c2.5,2.5,2.5,6.5,0,9ZM74.8,43.4c0-7.9-3.1-15.3-8.6-20.8-5.6-5.6-13-8.6-20.8-8.6s-15.3,3.1-20.8,8.6c-11.5,11.5-11.5,30.2,0,41.6,5.6,5.6,13,8.6,20.8,8.6,7.9,0,15.3-3.1,20.8-8.6h0c5.6-5.6,8.6-13,8.6-20.8Z"/><g id="Layer_1-2" data-name="Layer_1"><g><rect x="30.5" y="39.9" width="29.5" height="7.1" transform="translate(-17.4 46.1) rotate(-46.2)"/><rect x="42" y="28.7" width="7.1" height="29.5" transform="translate(-17.4 43.6) rotate(-43.8)"/></g></g></g></g></svg>');
+$iconLock: url('data:image/svg+xml,%3Csvg%20id%3D%22Icons%22%20enable-background%3D%22new%200%200%2032%2032%22%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m28%2011v-1c0-1.7-1.3-3-3-3h-22c-1.7%200-3%201.3-3%203v1z%22%2F%3E%3Cpath%20d%3D%22m30%2022.2v-3.2c0-2.8-2.2-5-5-5s-5%202.2-5%205v3.2c-1.2.4-2%201.5-2%202.8v4c0%201.7%201.3%203%203%203h8c1.7%200%203-1.3%203-3v-4c0-1.3-.8-2.4-2-2.8zm-8-3.2c0-1.7%201.3-3%203-3s3%201.3%203%203v3h-6zm4%209c0%20.6-.4%201-1%201s-1-.4-1-1v-2c0-.6.4-1%201-1s1%20.4%201%201z%22%2F%3E%3Cg%3E%3Cpath%20d%3D%22m16%2025c0-1.1.4-2.2%201-3-1.7%200-3-1.3-3-3s1.3-3%203-3c.5%200%201%20.1%201.5.4.6-1.4%201.6-2.6%202.9-3.4h-21.4v10c0%201.7%201.3%203%203%203h13zm-9-3h-2c-.6%200-1-.4-1-1s.4-1%201-1h2c.6%200%201%20.4%201%201s-.4%201-1%201zm3-3h-5c-.6%200-1-.4-1-1s.4-1%201-1h5c.6%200%201%20.4%201%201s-.4%201-1%201z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+$iconArrowChev: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzFjNGFhMCIgY2xhc3M9ImJpIGJpLWNoZXZyb24tcmlnaHQiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNC42NDYgMS42NDZhLjUuNSAwIDAgMSAuNzA4IDBsNiA2YS41LjUgMCAwIDEgMCAuNzA4bC02IDZhLjUuNSAwIDAgMS0uNzA4LS43MDhMMTAuMjkzIDggNC42NDYgMi4zNTRhLjUuNSAwIDAgMSAwLS43MDgiLz4KPC9zdmc+");
+
+// Colours
+$bg-brand: #003087;
+$bg-brand-dark: #002262;
+$brand-subtle: #1c4aa0;
+$bg-accent: #1ba6ad;
+$subtle-header: #d9dfeb;
+$subtle-background: #eceff6;
+$subtle-border: #bcc8de;
+
+$accent-1: #cceff1;
+$accent-2: #00b0b8;
+$accent-3: #0b686d;
+
+// Other
+$border-radius: 10px;
+$left-nav-width: 306px;
+
+$promo-tags: (
+  'sale': ("Sale", #E1006A, #FFEA01),
+  'new': ("New", #5bc500, ""),
+  'onlineoffer': ("Online \\A Offer", #002f87, #ffffff),
+  'onlineprice': ("Online \\A Price", #002f87, #ffffff)
+);
+
+$info-tags: (
+  'exclusive': ("Exclusive", #d2d4db),
+  'signed': ("Signed Copy", #ecc249, ""),
+  'bookclubpick': ("Book Club", #2f7abd, #ffffff),
+  'saleexclusive': ("Online Exclusive", #002f87, #ffffff)
+);
+
+/// Promo tag selectors
+$search-item--promo-tag-selectors:();
+$product--promo-tag-selectors: ();
+$template--promo-tag-selectors: ();
+$product-list--promo-tag-selectors:(); /// Landing page carousel
+
+/// Info tag selectors
+$search-item--info-tag-selectors: ();
+$product--info-tag-selectors: ();
+$template--info-tag-selectors: ();
+$product-list--info-tag-selectors:(); /// Landing page carousel
+
+@each $item in map-keys($promo-tags) {
+  $search-item--promo-tag-selectors: append($search-item--promo-tag-selectors, '.search-item--#{$item}', comma);
+  $product--promo-tag-selectors: append($product--promo-tag-selectors, '.product--#{$item}', comma);
+  $template--promo-tag-selectors: append($template--promo-tag-selectors, '.template--#{$item}', comma);
+  $product-list--promo-tag-selectors: append($product-list--promo-tag-selectors, '.product-item--#{$item}', comma);
+}
+
+@each $item in map-keys($info-tags) {
+  $search-item--info-tag-selectors: append($search-item--info-tag-selectors, '.search-item--#{$item}', comma);
+  $product--info-tag-selectors: append($product--info-tag-selectors, '.product--#{$item}', comma);
+  $template--info-tag-selectors: append($template--info-tag-selectors, '.template--#{$item}', comma);
+  $product-list--info-tag-selectors: append($product-list--info-tag-selectors, '.product-item--#{$item}', comma);
+}
+
+ // Removed font family as changing to new font
+$font-family-sans-serif:      "freight-sans-pro","Arial","sans-serif";
+$font-size-base: 1rem;
+$font-weight-light: 400 !default;
+$font-weight-normal: 500 !default;
+$line-height-base: 1.375;
+
+// Font Sizes
+$h1-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h2-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h3-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h4-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h5-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$p-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$megamenu-font-sizes: (
+  null: 0.875rem,
+  992px: 0.938rem,
+  1200px: 0.938rem,
+);
+$small-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);

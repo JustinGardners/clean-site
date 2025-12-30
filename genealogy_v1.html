@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var storeFront = storeFront || {};
+      storeFront.basket = {
+        items: [
+          {
+            code: "9781949763164",
+            title:
+              "The Watchmaker &#1589;&#1575;&#1606;&#1593; &#1575;&#1604;&#1587;&#1575;&#1593;&#1575;&#1578; : (Arabic Edition) &#1575;&#1604;&#1591;&#1576;&#1593;&#1577; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#",
+            type: "Book",
+            price: 5.51,
+            total: 5.51,
+            quantity: 1,
+          },
+          {
+            code: "9780349437064",
+            title:
+              "Onyx Storm : DISCOVER THE FOLLOW-UP TO THE GLOBAL PHENOMENONS, FOURTH WING AND IRON FLAME!",
+            type: "Book",
+            price: 12.5,
+            total: 12.5,
+            quantity: 1,
+          },
+          {
+            code: "9780241758380",
+            title: "Dogs of the World : An Illustrated Compendium",
+            type: "Book",
+            price: 13.79,
+            total: 13.79,
+            quantity: 1,
+          },
+          {
+            code: "9781407132105",
+            title: "Mockingjay",
+            type: "Book",
+            price: 8.27,
+            total: 8.27,
+            quantity: 1,
+          },
+          {
+            code: "9781529029581",
+            title: "Before the Coffee Gets Cold",
+            type: "Book",
+            price: 8.99,
+            total: 17.98,
+            quantity: 2,
+          },
+          {
+            code: "9781788176187",
+            title:
+              "The Let Them Theory : A Life-Changing Tool That Millions of People Can’t Stop Talking About",
+            type: "Book",
+            price: 17.99,
+            total: 17.99,
+            quantity: 1,
+          },
+          {
+            code: "5013872121594",
+            title: "WHSmith Black Kraft Document Box",
+            type: "Merchandise",
+            price: 5.0,
+            total: 5.0,
+            quantity: 1,
+          },
+          {
+            code: "9780702340574",
+            title: "Sunrise on the Reaping",
+            type: "Book",
+            price: 16.99,
+            total: 33.98,
+            quantity: 2,
+          },
+          {
+            code: "9781398531277",
+            title:
+              "Fearless : The epic conclusion to the trilogy taking the world by storm! Volume 3",
+            type: "Book",
+            price: 8.49,
+            total: 8.49,
+            quantity: 1,
+          },
+          {
+            code: "9781405945424",
+            title: "My Favourite Mistake",
+            type: "Book",
+            price: 7.99,
+            total: 7.99,
+            quantity: 1,
+          },
+          {
+            code: "9781408855652",
+            title: "Harry Potter and the Philosopher's Stone",
+            type: "Book",
+            price: 8.27,
+            total: 16.54,
+            quantity: 2,
+          },
+          {
+            code: "9781647823467",
+            title: "HBR's 10 Must Reads on High Performance",
+            type: "Book",
+            price: 15.63,
+            total: 15.63,
+            quantity: 1,
+          },
+          {
+            code: "9781841462509",
+            title: "KS2 Science Study Book",
+            type: "Book",
+            price: 6.07,
+            total: 6.07,
+            quantity: 1,
+          },
+          {
+            code: "9781847941831",
+            title: "Atomic Habits : Tiny Changes, Remarkable Results",
+            type: "Book",
+            price: 12.99,
+            total: 103.92,
+            quantity: 8,
+          },
+          {
+            code: "9780751565355",
+            title:
+              "Harry Potter and the Cursed Child - Parts One and Two (Special Rehearsal Edition) : The Official Script Book of the Original West End Production",
+            type: "Book",
+            price: 20.24,
+            total: 20.24,
+            quantity: 1,
+          },
+        ],
+      };
+      storeFront.events = storeFront.events || {};
+      storeFront.events.logon = null;
+      storeFront.events.basketChange = null;
+      storeFront.search = storeFront.search || {};
+      storeFront.search.breadcrumbs = storeFront.search.breadcrumbs || null;
+      storeFront.product = storeFront.product || {};
+      storeFront.product.breadcrumbs = storeFront.product.breadcrumbs || null;
+    </script>
+
+    <script
+      class="genealogyTreeJson"
+      data-product-id="10752363"
+      data-ean="9781"
+      type="application/json"
+    >
+      [
+        {
+          "value": 1956,
+          "children": [
+            { "value": 2006, "children": [] },
+            { "value": 2003, "children": [] },
+            { "value": 1998, "children": [] }
+          ]
+        }
+      ]
+    </script>
+
+    <script
+      class="genealogyTreeJson"
+      data-product-id="12372427"
+      data-ean="9782"
+      type="application/json"
+    >
+      [
+        {
+          "value": 1956,
+          "children": [
+            { "value": 1997, "children": [] },
+            { "value": 1998, "children": [] }
+          ]
+        }
+      ]
+    </script>
+
+    <script
+      class="genealogyTreeJson"
+      data-product-id="12493825"
+      data-ean="9783"
+      type="application/json"
+    >
+      [
+        {
+          "value": 1956,
+          "children": [
+            { "value": 2003, "children": [] },
+            { "value": 1998, "children": [] },
+            { "value": 1965, "children": [{ "value": 1968, "children": [] }] },
+            { "value": 1964, "children": [] }
+          ]
+        }
+      ]
+    </script>
+
+    <script
+      class="genealogyTreeJson"
+      data-product-id="15622670"
+      data-ean="9784"
+      type="application/json"
+    >
+      [
+        {
+          "value": 1956,
+          "children": [
+            { "value": 1999, "children": [] },
+            { "value": 1998, "children": [] }
+          ]
+        },
+        {
+          "value": 1488,
+          "children": [
+            {
+              "value": 1515,
+              "children": [
+                {
+                  "value": 1534,
+                  "children": [{ "value": 1535, "children": [] }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    </script>
+
+    <script
+      class="genealogyTreeJson"
+      data-product-id="13335549"
+      data-ean="9785"
+      type="application/json"
+    >
+      [
+        {
+          "value": 1956,
+          "children": [
+            { "value": 2006, "children": [] },
+            { "value": 2003, "children": [] },
+            { "value": 1998, "children": [] }
+          ]
+        }
+      ]
+    </script>
+
+    <script id="productGenealogyTreeFacetDetailsJson" type="application/json">
+      {
+        "1488": {
+          "facetDetailId": 1488,
+          "facetId": 12,
+          "description": "Children's",
+          "valueText": "Y",
+          "isVisible": true
+        },
+        "1515": {
+          "facetDetailId": 1515,
+          "facetId": 12,
+          "description": "Non-fiction",
+          "valueText": "YN",
+          "isVisible": true
+        },
+        "1534": {
+          "facetDetailId": 1534,
+          "facetId": 12,
+          "description": "Practical interests (Children's/YA)",
+          "valueText": "YNP",
+          "isVisible": true
+        },
+        "1535": {
+          "facetDetailId": 1535,
+          "facetId": 12,
+          "description": "Cooking & food (Children's/YA)",
+          "valueText": "YNPC",
+          "isVisible": true
+        },
+        "1956": {
+          "facetDetailId": 1956,
+          "facetId": 12,
+          "description": "Food & Drink",
+          "valueText": "Node1956",
+          "isVisible": true
+        },
+        "1964": {
+          "facetDetailId": 1964,
+          "facetId": 12,
+          "description": "Preserving & freezing",
+          "valueText": "WBW",
+          "isVisible": true
+        },
+        "1965": {
+          "facetDetailId": 1965,
+          "facetId": 12,
+          "description": "Cookery dishes & courses",
+          "valueText": "WBV",
+          "isVisible": true
+        },
+        "1968": {
+          "facetDetailId": 1968,
+          "facetId": 12,
+          "description": "Main courses",
+          "valueText": "WBVM",
+          "isVisible": true
+        },
+        "1997": {
+          "facetDetailId": 1997,
+          "facetId": 12,
+          "description": "Cookery / food & drink etc",
+          "valueText": "WB",
+          "isVisible": true
+        },
+        "1998": {
+          "facetDetailId": 1998,
+          "facetId": 12,
+          "description": "Cooking for/with children",
+          "valueText": "WBQ",
+          "isVisible": true
+        },
+        "1999": {
+          "facetDetailId": 1999,
+          "facetId": 12,
+          "description": "National & regional cuisine",
+          "valueText": "WBN",
+          "isVisible": true
+        },
+        "2003": {
+          "facetDetailId": 2003,
+          "facetId": 12,
+          "description": "Quick & easy cooking",
+          "valueText": "WBF",
+          "isVisible": true
+        },
+        "2006": {
+          "facetDetailId": 2006,
+          "facetId": 12,
+          "description": "General cookery & recipes",
+          "valueText": "WBA",
+          "isVisible": true
+        }
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const facetDetailsElement = document.getElementById(
+          "productGenealogyTreeFacetDetailsJson"
+        );
+        if (!facetDetailsElement) {
+          console.error("Facet details element not found.");
+          return;
+        }
+
+        // Setup Storefront
+        const productProps = [
+          "category_1",
+          "category_2",
+          "category_3",
+          "category_4",
+          "category_5",
+          "category_6",
+          "eanList",
+          "topCategoryPaths",
+          "topCategoryIds",
+          "deepCategoryPaths",
+          "deepCategoryIds",
+        ];
+
+        productProps.forEach((prop) => {
+          storeFront.product[prop] = storeFront.product[prop] || [];
+        });
+
+        // Parse facet details
+        let facetDetailById;
+        try {
+          facetDetailById = JSON.parse(facetDetailsElement.textContent);
+        } catch (error) {
+          console.error("Error parsing facet details JSON:", error);
+        }
+
+        const productEans = new Set();
+
+        // Parse genealogy tree data for each product
+        const genealogyByProductID = {};
+        const genealogyTreeElements =
+          document.querySelectorAll(".genealogyTreeJson");
+        genealogyTreeElements.forEach((element) => {
+          const productId = element.getAttribute("data-product-id");
+          const productEan = element.getAttribute("data-ean");
+          productEans.add(productEan);
+          try {
+            genealogyByProductID[productId] = JSON.parse(element.textContent);
+          } catch (error) {
+            console.error(
+              `Error parsing genealogy JSON for product ${productId}:`,
+              error
+            );
+          }
+        });
+
+        const populateTreeNode = (treeNode) => {
+          const children = treeNode.children.map(populateTreeNode);
+          const facetInfo = facetDetailById[treeNode.value];
+
+          return {
+            FacetId: facetInfo.facetId,
+            FacetDetailId: facetInfo.facetDetailId,
+            description: facetInfo.description,
+            children,
+          };
+        };
+
+        const populatedTrees = {};
+
+        // Process each product tree
+        Object.keys(genealogyByProductID).forEach((productId) => {
+          populatedTrees[productId] =
+            genealogyByProductID[productId].map(populateTreeNode);
+          const codeIndex = {};
+          const leafCategories = [];
+
+          const buildIndex = (root, children) => {
+            children.forEach((child) => {
+              let prefix = parseInt(child.FacetId + "0000", 10);
+              if (root !== false) {
+                prefix += root;
+              }
+
+              const composite = `${prefix}${child.FacetDetailId}`;
+
+              codeIndex[child.FacetDetailId] = [
+                root,
+                child.FacetDetailId,
+                child.description,
+                composite,
+              ];
+              if (child.children.length === 0) {
+                leafCategories.push(child.FacetDetailId);
+              }
+              buildIndex(child.FacetDetailId, child.children);
+            });
+          };
+
+          buildIndex(false, populatedTrees[productId]);
+
+          const getCode = (leaf) =>
+            codeIndex[leaf] ? [...getCode(codeIndex[leaf][0]), leaf] : [leaf];
+
+          const deepCategoryIdSets = new Set();
+          const deepCategoryPathSets = new Set();
+
+          leafCategories.forEach((leaf) => {
+            const codeSequence = getCode(leaf);
+            const codeParts = [];
+            const textParts = [];
+
+            codeSequence.forEach((ancestorDetailId) => {
+              if (ancestorDetailId) {
+                const idx = codeIndex[ancestorDetailId];
+                codeParts.push(idx[3]);
+                textParts.push(idx[2]);
+              } else {
+                const rootNode = populatedTrees[productId][0];
+                const rootFacetId = rootNode.FacetId;
+                switch (rootFacetId) {
+                  case 12:
+                    codeParts.push("01120");
+                    textParts.push("Books");
+                    break;
+                  case 20:
+                    codeParts.push("01121");
+                    textParts.push("DVD");
+                    break;
+                  case 31:
+                    codeParts.push("01126");
+                    textParts.push("Vinyl");
+                    break;
+                  case 40:
+                    codeParts.push("01125");
+                    textParts.push("Gifts & Memorabilia");
+                    break;
+                }
+              }
+            });
+
+            const deepId = codeParts.join("-");
+            const deepPath = textParts.join(" > ");
+            deepCategoryIdSets.add(deepId);
+            deepCategoryPathSets.add(deepPath);
+          });
+
+          storeFront.product.deepCategoryIds.push(
+            ...Array.from(deepCategoryIdSets)
+          );
+          storeFront.product.deepCategoryPaths.push(
+            ...Array.from(deepCategoryPathSets)
+          );
+        });
+
+        const rootCategoryCounts = {};
+
+        Object.keys(populatedTrees).forEach((productId) => {
+          const rootNode = populatedTrees[productId]?.[0];
+
+          if (rootNode) {
+            const id = rootNode.FacetDetailId;
+            const description = rootNode.description;
+
+            if (!rootCategoryCounts[id]) {
+              rootCategoryCounts[id] = {
+                id,
+                description,
+                count: 1,
+              };
+            } else {
+              rootCategoryCounts[id].count += 1;
+            }
+          }
+        });
+
+        const topCategories = Object.values(rootCategoryCounts)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+
+        const childCategoryCounts = {};
+
+        const countChildCategories = (nodes) => {
+          nodes.forEach((node) => {
+            const id = node.FacetDetailId;
+            const desc = node.description;
+
+            if (!childCategoryCounts[id]) {
+              childCategoryCounts[id] = {
+                id: id,
+                description: desc,
+                count: 1,
+              };
+            } else {
+              childCategoryCounts[id].count += 1;
+            }
+            if (node.children.length > 0) {
+              countChildCategories(node.children);
+            }
+          });
+        };
+
+        Object.values(populatedTrees).forEach((tree) => {
+          tree.forEach((rootNode) => {
+            countChildCategories(rootNode.children);
+          });
+        });
+
+        const topNonRootCategories = Object.values(childCategoryCounts)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 5);
+
+        topCategories.map(({ id, description, count }) => {
+          const facetDetail = facetDetailById[id];
+          const facetId = facetDetail.facetId.toString().padStart(2, "0");
+          const facetDetailId = id.toString().padStart(4, "0");
+          const formattedIdCore = `${facetId}0000${facetDetailId}`;
+
+          let rootPrefix = "";
+
+          switch (facetDetail.facetId) {
+            case 12:
+              rootPrefix = "01120"; // Books
+              break;
+            case 20:
+              rootPrefix = "01121"; // DVD
+              break;
+            case 31:
+              rootPrefix = "01126"; // Vinyl
+              break;
+            case 40:
+              rootPrefix = "01125"; // Gifts & Memorabilia
+              break;
+            default:
+              rootPrefix = "00000"; // Fallback
+          }
+
+          const fullFormatedId = `${rootPrefix}-${formattedIdCore}`;
+
+          storeFront.product.topCategoryIds.push(fullFormatedId);
+          storeFront.product.topCategoryPaths.push(description);
+
+          return {
+            id: fullFormatedId,
+            description,
+            count,
+          };
+        });
+
+        topNonRootCategories.map(({ id, description, count }) => {
+          const currentFacet = facetDetailById[id];
+          const facetId = currentFacet.facetId.toString().padStart(2, "0");
+
+          let rootFacetDetailId = null;
+
+          Object.values(populatedTrees).some((treeList) =>
+            treeList.some((rootNode) => {
+              const search = (node) => {
+                if (node.FacetDetailId === id) {
+                  rootFacetDetailId = rootNode.FacetDetailId;
+                  return true;
+                }
+                return node.children?.some(search);
+              };
+              return search(rootNode);
+            })
+          );
+          const rootId = rootFacetDetailId
+            .toString()
+            .padStart(4, "0" || "0000");
+          const currentId = id.toString().padStart(4, "0");
+          const formattedId = `${facetId} > ${facetId}0000${rootId} > ${facetId}${rootId}${currentId}`;
+
+          return {
+            id: formattedId,
+            description,
+            count,
+          };
+        });
+
+        const topPath = storeFront.product.deepCategoryPaths[0] || "";
+        const segments = topPath.split(/\s*>\s*/).map((seg) => seg.trim());
+
+        for (let i = 0; i < 6; i++) {
+          storeFront.product[`category_${i + 1}`] = segments[i] || null;
+        }
+
+        storeFront.product.topCategoryIds =
+          storeFront.product.topCategoryIds.join(" | ");
+        storeFront.product.topCategoryPaths =
+          storeFront.product.topCategoryPaths.join(" | ");
+
+        storeFront.product.deepCategoryIds = storeFront.product.deepCategoryIds
+          .map((path) => {
+            const segments = path.split(">").map((s) => s.trim());
+            return segments[segments.length - 1];
+          })
+          .splice(0, 5)
+          .join(" | ");
+        storeFront.product.deepCategoryPaths =
+          storeFront.product.deepCategoryPaths
+            .map((path) => {
+              const segments = path.split(">").map((s) => s.trim());
+              return segments[segments.length - 1];
+            })
+            .splice(0, 5)
+            .join(" | ");
+
+        const commaSeperatedEans = Array.from(productEans).join(",");
+        storeFront.product.eanList = commaSeperatedEans;
+      });
+    </script>
+  </body>
+</html>

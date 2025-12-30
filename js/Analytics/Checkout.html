@@ -1,0 +1,211 @@
+<script>
+  $(document).ready(function () {
+    $("#paymentTypeCreditCardMasterCardRadioBtn").prop("checked", false);
+  });
+
+  $(document).ready(function () {
+    $(".postcodeGavLookup > label").html("Find address by postcode");
+    $(".postcodeGavLookup").append('<span class="postcodeError checkoutShow" style="display: block;"></span>');
+  });
+
+  $(document).ready(function () {
+    const $checkbox = $("#IsNewsletterSubscribed");
+
+    if ($checkbox.length && !$checkbox.prop("checked")) {
+      $checkbox.prop("checked", true);
+    }
+    $(".newsLetterSubscribed .description").append(
+      ' <a href="/help/policies/privacy-notice" target="_blank" style="text-decoration: underline;">View privacy policy.</a>'
+    );
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var addressBtn = document.getElementById("btnSubmitAddress");
+    StoreFront.basket.deliveryPostcode = "";
+
+    if (addressBtn) {
+      addressBtn.addEventListener("click", function () {
+        var postcodeInput = document.getElementById("DeliveryAddress_PostCode");
+        var postcode = postcodeInput ? postcodeInput.value.trim() : "";
+
+        if (postcode) {
+          StoreFront.basket.deliveryPostcode = postcode;
+        }
+      });
+    }
+  });
+</script>
+<script>
+  // Checkout Steps
+  const pushCheckoutEvent = (eventType, options = {}) => {
+    const { currency = "GBP", value = 0, coupon = "", items = [], shipping_tier, fulfilment_type, payment_type } = options;
+
+    const ecommerceData = { currency, value, coupon, items };
+
+    if (eventType === "add_shipping_info") {
+      ecommerceData.shipping_tier = shipping_tier || "";
+      ecommerceData.fulfilment_type = fulfilment_type || "";
+      sessionStorage.setItem("StoreFrontBasketShippingType", shipping_tier);
+      sessionStorage.setItem("StoreFrontBasketFulfilmentType", fulfilment_type);
+    } else if (eventType === "add_payment_info") {
+      ecommerceData.payment_type = payment_type || "";
+      sessionStorage.setItem("StoreFrontBasketPaymentType", payment_type);
+    }
+
+    window.dataLayer.push({
+      event: eventType,
+      ecommerce: ecommerceData,
+    });
+  };
+
+  const totalPriceEl = document.querySelector(".totalPrice");
+  let totalPrice = 0;
+
+  if (totalPriceEl && totalPriceEl.dataset.totalprice) {
+    totalPrice = parseFloat(totalPriceEl.dataset.totalprice) || 0;
+  }
+
+  const basketItems = StoreFront.basket.items.map((item, index) => {
+    const itemDiscount = item.price > item.netPrice ? item.price - item.netPrice : [];
+    const itemDiscountPercent = item.price > 0 ? ((itemDiscount / item.price) * 100).toFixed(0) : 0;
+
+    return {
+      author: item.contributor,
+      item_brand: item.brand || "",
+      item_category: item.type,
+      item_id: item.code,
+      index,
+      item_name: item.title,
+      price: item.netPrice,
+      quantity: item.quantity,
+      rrp: item.price,
+      discount: itemDiscount,
+      discount_percent: itemDiscountPercent,
+      on_offer: itemDiscount > 0,
+    };
+  });
+
+  const distcountList = Array.from(document.querySelectorAll(".basketDiscountName")).map((el) => el.textContent.trim().replace(/:$/, ""));
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Step 0. Login Checkout
+    if (window.location.pathname.includes("/Account/LogonCheckout")) {
+      pushCheckoutEvent("begin_checkout", {
+        value: value: getTotalPrice(),
+        coupon: distcountList || [],
+        items: basketItems || [],
+      });
+    }
+  });
+
+  // Step 1. Address Submit
+  document.addEventListener(
+    "submit",
+    function (e) {
+      const addressForm = e.target.closest("#storeAddress");
+      if (!addressForm) return;
+
+      const selectRadios = document.querySelector('input[name="DeliverToType"]:checked');
+      let fulfilmentType = "";
+
+      if (selectRadios) {
+        if (selectRadios.value === "DeliveryAddress") {
+          fulfilmentType = "Delivery";
+        } else if (selectRadios.value === "Store") {
+          fulfilmentType = "Store Collection";
+
+          const selectedStore = document.querySelector('input[name="SelectedStoreId"]:checked');
+          if (selectedStore) {
+            const storeItem = selectedStore.closest("li.storeResult");
+            let storeName = "";
+            if (storeItem) {
+              const nameLabel = storeItem.querySelector(".storeResultName");
+              if (nameLabel) {
+                storeName = nameLabel.childNodes[0].textContent.trim();
+              }
+            }
+
+            sessionStorage.setItem("StoreFrontBasketCollectionStoreName", storeName);
+          }
+        }
+      }
+
+      sessionStorage.setItem("StoreFrontBasketShippingType", fulfilmentType);
+    },
+    { once: false }
+  );
+
+  // Step 2. Delivery Submit Button
+  document.addEventListener(
+    "submit",
+    function (e) {
+      const deliveryForm = e.target.closest("#DeliveryMethod");
+      if (!deliveryForm) return;
+
+      const deliveryType = sessionStorage.getItem("StoreFrontBasketShippingType") || "";
+      const fulfilmentType = document.querySelector('input[name="DeliveryOptionId"]:checked')?.dataset.title || "";
+
+      pushCheckoutEvent("add_shipping_info", {
+        value: totalPrice || 0,
+        coupon: distcountList || [],
+        items: basketItems || [],
+        shipping_tier: deliveryType,
+        fulfilment_type: fulfilmentType,
+      });
+    },
+    { once: false }
+  );
+
+  // Step 2a. Is Gift
+  const giftInput = document.getElementById("giftingCheckbox");
+
+  if (giftInput) {
+    document.getElementById("giftingCheckbox").addEventListener("change", function () {
+      sessionStorage.setItem("StoreFrontBasketGift", this.checked);
+    });
+  }
+
+  // Step 3. Payment Method Selection
+  document.addEventListener(
+    "submit",
+    function (e) {
+      const addressForm = e.target.closest("#BillingAddress");
+      if (!addressForm) return;
+
+      const selectRadios = document.querySelector('input[name="ProviderType"]:checked');
+      let paymentType = "";
+
+      if (selectRadios) {
+        if (selectRadios.value === "Braintree") {
+          paymentType = "Credit / Debit Card";
+        } else {
+          paymentType = selectRadios.value || "";
+        }
+      }
+
+      sessionStorage.setItem("StoreFrontBasketPaymentType", paymentType);
+    },
+    { once: false }
+  );
+
+  const paymentRadios = document.querySelectorAll('input[name="ProviderType"]');
+
+  paymentRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.checked) {
+        let paymentType = radio.value;
+
+        if (paymentType === "Braintree") {
+          paymentType = "Card";
+        }
+
+        pushCheckoutEvent("add_payment_info", {
+          payment_type: paymentType,
+          value: totalPrice || 0,
+          coupon: distcountList || [],
+          items: basketItems || [],
+        });
+      }
+    });
+  });
+</script>

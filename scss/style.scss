@@ -1,0 +1,70 @@
+@use "sass:map";
+
+// 1) Import Bootstrap Configuration - Functions
+
+@import "../system/bootstrap/scss/functions";
+
+// 2) Bootstrap Variable Overrides
+@import "variables";
+
+// 3) Import Bootstrap Configuration - Stylesheets
+@import "../system/bootstrap/scss/variables";
+@import "../system/bootstrap/scss/variables-dark";
+
+// 4) Bootstrap Map Overrides
+
+// 5) Import Bootstrap Configuration
+@import "../system/bootstrap/scss/maps";
+@import "../system/bootstrap/scss/mixins";
+@import "../system/bootstrap/scss/utilities";
+
+// 6) Import Bootstrap Layout & components
+@import "../system/bootstrap/scss/root";
+@import "../system/bootstrap/scss/reboot";
+@import "../system/bootstrap/scss/type";
+@import "../system/bootstrap/scss/images";
+@import "../system/bootstrap/scss/containers";
+@import "../system/bootstrap/scss/grid";
+@import "../system/bootstrap/scss/tables";
+@import "../system/bootstrap/scss/forms";
+@import "../system/bootstrap/scss/buttons";
+// @import "../system/bootstrap/scss/transitions";
+@import "../system/bootstrap/scss/dropdown";
+// @import "../system/bootstrap/scss/button-group";
+@import "../system/bootstrap/scss/nav";
+@import "../system/bootstrap/scss/navbar";
+// @import "../system/bootstrap/scss/card";
+// @import "../system/bootstrap/scss/accordion";
+// // @import "../system/bootstrap/scss/breadcrumb";
+// @import "../system/bootstrap/scss/pagination";
+// @import "../system/bootstrap/scss/badge";
+// @import "../system/bootstrap/scss/alert";
+// @import "../system/bootstrap/scss/progress";
+// @import "../system/bootstrap/scss/list-group";
+// @import "../system/bootstrap/scss/close";
+// @import "../system/bootstrap/scss/toasts";
+// @import "../system/bootstrap/scss/modal";
+// @import "../system/bootstrap/scss/tooltip";
+// @import "../system/bootstrap/scss/popover";
+// @import "../system/bootstrap/scss/carousel";
+// @import "../system/bootstrap/scss/spinners";
+// @import "../system/bootstrap/scss/offcanvas";
+// @import "../system/bootstrap/scss/placeholders";
+
+// 7) Import Bootstrap Utilities
+@import "../system/bootstrap/scss/helpers";
+@import "../system/bootstrap/scss/utilities/api";
+
+// 8) TeePee Styling
+
+@import "mixins";
+@import "coreStyle";
+@import "search";
+@import "product";
+@import "glide";
+@import "myAccount";
+@import "basket";
+@import "infoPages";
+@import "checkout";
+@import "templates";
+@import "_product-list-book-size_temp"; // Refactor and incorporate this partial into product.scss

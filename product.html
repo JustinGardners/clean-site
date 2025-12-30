@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project TeePee</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="backgroundClicker"></div>
+    <div class="internetExNote">
+      <div class="container-md">
+        <div class="row">
+          <div class="col-12">
+            <p>
+              <strong>Please note:</strong> In order to keep our website up to date and provide users with the best features, we are no longer able to fully support Internet Explorer. The site is still available to you, however some sections of the site may appear broken. We would encourage you to move to a more modern browser like Firefox, Edge or Chrome in order to experience the site fully.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-2 top-bar">
+      <div class="container-md">
+        <div class="row">
+          <div class="col-12">
+            <a href="#" class="top-bar__text">Free delivery over £25</a>
+            <span class="top-bar__close">X</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="outerWrap">
+      <div id="wrap">
+        <div id="headerWrap">
+          <!-- TeePee Header -->
+          <div id="header">
+            <div class="container-md">
+              <div class="row">
+                <div id="storeLogo" class="header__logoWrap">
+                  <a class="header__logo" href="https://storefronthive.staging.gardners.com/" title="Staging Hive"> Staging Hive </a>
+                </div>
+                <!-- top menu -->
+                <div id="miniBasket">
+                  <!-- basket total -->
+                  <div class="details">
+                    <a href="/basket">
+                      <span class="imageHolder"></span>
+                      <span id="uxSmallBasketQuantity">
+                        <span class="number">0</span>
+                        <span class="text"> items</span>
+                      </span>
+                      <span class="basketText">Basket</span>
+                    </a>
+                    <p></p>
+                    <!--<span id="checkoutLink"><a href="https://storefronthive.staging.gardners.com/Basket">Basket</a></span>-->
+                  </div>
+                  <!-- @ basket total -->
+                </div>
+                <!-- navigation bar -->
+                <div id="storeLocator">
+                  <span class="storeLocator">
+                    <span class="menuIcon locator"></span>
+                    <span class="iconLabel">Stores</span>
+                  </span>
+                </div>
+                <div id="navSupport">
+                  <div id="miniNav">
+                    <div class="smallText">Hello George,</div>
+                    <a class="dropdownToggle loggedIn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="hello">Hello George,</span>
+                      <span class="navMyAccount">
+                        <span class="menuIcon account"></span>
+                        <span class="iconLabel">Account</span>
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu accountNav" aria-labelledby="dropdownMenuLink">
+                      <li id="navMenuHello" class="dropdown-item"> Hello George, </li>
+                      <li id="navMenuAccount" class="dropdown-item">
+                        <a href="https://storefronthive.staging.gardners.com/Account" rel="nofollow">My account</a>
+                      </li>
+                      <li id="navMenuLogoff" class="dropdown-item">
+                        <a href="/Account/Logoff">Log off</a>
+                      </li>
+                      <li class="dropdown-item">
+                        <a href="/Account/OrderHistory">Order History</a>
+                      </li>
+                      <li class="dropdown-item">
+                        <a href="/Account/EbookLibrary">eBook Library</a>
+                      </li>
+                      <li class="dropdown-item">
+                        <a href="/Account/Wishlist">Wishlist</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div id="navButton" class="navbar-light">
+                  <a class="navbarToggle" aria-controls="navMain" aria-label="Toggle navigation">
+                    <div class="aniWrap">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <span class="togglerText">Menu</span>
+                  </a>
+                </div>
+                <div id="searchClicker">
+                  <div class="click">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <span>search</span>
+                  </div>
+                </div>
+                <script>
+                  $("#searchClicker .click").click(function() {
+                    $("body").toggleClass("mobileSearch");
+                    $("#keyword").focus();
+                  });
+                  $("#miniNav .dropdownToggle").click(function() {
+                    $("#navSupport .dropdown-menu.accountNav").toggle();
+                  });
+                </script>
+                <div class="d-md-none blueBarMob">
+                  <div class="d-md-none deliveryMessageNew">
+                    <ul id="deliveryMessageWrapNew">
+                      <li class="vanText One"> Free home delivery in the UK or... </li>
+                      <li class="vanText Three"> ...visit your chosen bookshop to collect! </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- @ navigation bar -->
+                <!-- search bar -->
+                <div id="searchBar" itemscope="" itemtype="https://schema.org/WebSite">
+                  <meta itemprop="url" content="https://storefronthive.staging.gardners.com/" />
+                  <form id="SearchForm" action="/Search/Keyword" method="post" itemprop="potentialAction" itemscope="" itemtype="https://schema.org/SearchAction">
+                    <meta itemprop="target" content="http://storefronthive.staging.gardners.com/Search/Keyword?keyword={keyword}" />
+                    <div id="searchBox">
+                      <div class="productType">
+                        <label for="productType">Select a product type</label>
+                        <select id="productType" name="productType" class="custom-select">
+                          <option value="0" selected="selected"> All Products </option>
+                          <option value="-1" disabled="disabled"> --------------------- </option>
+                          <option value="1">Book</option>
+                          <option value="2">DVD</option>
+                          <option value="3">Blu-ray</option>
+                          <option value="4">CD</option>
+                          <option value="5">eBook</option>
+                          <option value="6">Merchandise</option>
+                          <option value="7">Vinyl</option>
+                          <option value="8">eAudiobook</option>
+                          <option value="9">Customisable Book</option>
+                        </select>
+                      </div>
+                      <label for="keyword">Search for a product</label>
+                      <input id="keyword" class="form-control ui-autocomplete-input" name="keyword" type="text" placeholder="Search" itemprop="query-input" required="" autocomplete="off" />
+                      <input type="submit" value="Search" />
+                    </div>
+                  </form>
+                </div>
+                <!-- @search bar -->
+              </div>
+            </div>
+          </div>
+          <div id="nav" class="">
+            <div class="container-md">
+              <div class="row">
+                <div class="col-12 megaMenuWrapper">
+                  <div id="navMain">
+                    <h2 class="d-md-none menuText">Menu</h2>
+                    <ul class="primary">
+                      <li>
+                        <a href="/books" class="books"> Books </a>
+                        <div class="megaMenu ui-sortable" style="display: none">
+                          <ul class="categoryContainer ui-sortable-handle" style="display: block">
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Genres</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/books/art-and-photography" class=""> Art &amp; Photography </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Books/Biography" class=""> Biography </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/childrens" class=""> Children’s Books </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/comics-and-graphic-novels" class=""> Comics &amp; Graphic Novels </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/craft" class=""> Craft </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Books/Crime-Thrillers-and-Mystery" class=""> Crime &amp; Mystery </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/fiction" class=""> Fiction </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/food-and-drink" class=""> Food &amp; Drink </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Books/health-and-lifestyle" class=""> Health &amp; Lifestyle </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/history-transport" class=""> History &amp; Transport </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/home-and-garden" class=""> Home &amp; Garden </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/humour" class=""> Humour </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/science-fiction-fantasy-horror" class=""> Sci-fi, Fantasy &amp; Horror </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/sport" class=""> Sport </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/thriller-books" class=""> Thriller </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/travel" class=""> Travel &amp; Holidays </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/young-adult" class=""> Young Adult </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Browse</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Books/new-releases" class=""> New Releases </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/bestsellers" class=""> Bestselling Books </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/pre-orders" class=""> Coming Soon </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/adaptations" class=""> Book Adaptations </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Books/Awards" class=""> Book Awards </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="category">
+                                  <h5 class="group-label">Featured</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Books/author-of-the-month" class=""> Author of the Month </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Books/Childrens-book-of-the-month" class=""> Children's Book of the Month </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/Book-of-the-month" class=""> Book of the Month </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="https://www.hive.co.uk/books/rising-writers" class="">Rising Writers</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="category">
+                                  <h5 class="group-label">Popular Universes</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/dept/harry-potter" class=""> Harry Potter </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/star-wars" class=""> Star Wars </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/game-of-thrones" class=""> Game of Thrones </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label"> Offers (Discounts up to) </h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/home-beauty-health" class="">25% off Gardening Books</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/best-of" class="">20% off a History of Inspirational Women</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/fiction" class="">Bestselling Fiction from Female Authors</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/childrens" class="">15% off New Kids Fiction</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/general" class="">25% off Poetry Books</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/new-releases" class="">Key New Releases</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Seasonal Features</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Books/booktok" class="">Recommended on BookTok</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/study-zone" class=""> Study Zone </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/taschen" class="">Taschen</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books" class="viewAll"> View all in Books </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Seasonal Features</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Books/booktok" class="">Recommended on BookTok</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books/study-zone" class=""> Study Zone </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/taschen" class="">Taschen</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/books" class="viewAll"> View all in Books </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      <!-- <li><a href="/eBooks" class="ebooks"> eBooks </a><div class="megaMenu ui-sortable" style="display: none;"><ul class="categoryContainer ui-sortable-handle"><li class="categoryColumn carouselMobile"><ul class="categories"><li class="category"><div id="targetForEbook" class="menuCarousel"
+                                        style="display: block;"></div></li></ul></li><li class="categoryColumn"><ul class="categories"><li class="category"><h5 class="group-label">eBook Genres</h5><ul class="dropdown-group"><li class="group-link"><a
+                                                href="/Search/eBooks/Biography?fq=01124-121111"
+                                                class=""> Biography </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Childrens?fq=01124-121488"
+                                                class=""> Children's </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Crime?fq=01124-121800"
+                                                class=""> Crime,
+                                                Thrillers &amp; Mystery </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Fiction?fq=01124-121934"
+                                                class=""> Fiction </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Food-Drink?fq=01124-121956"
+                                                class=""> Food &amp; Drink </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Health-Lifestyle?fq=01124-122007"
+                                                class=""> Health &amp; Lifestyle </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/History-Transport?fq=01124-122046"
+                                                class=""> History &amp; Transport </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Home-Garden?fq=01124-122211"
+                                                class=""> Home &amp; Garden </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Romance?fq=01124-122879"
+                                                class=""> Romance </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Science-Fiction-Fantasy-Horror?fq=01124-122883"
+                                                class=""> Sci-fi, Fantasy &amp; Horror </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Sport?fq=01124-123505"
+                                                class=""> Sport </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Travel?fq=01124-123596"
+                                                class=""> Travel </a></li></ul></li></ul></li><li class="categoryColumn"><ul class="categories"><li class="category"><h5 class="group-label">Browse</h5><ul class="dropdown-group"><li class="group-link"><a href="/eBooks"
+                                                class="">eBooks</a></li><li class="group-link"><a
+                                                href="/eBooks/new-releases" class=""> eBook
+                                                New Releases </a></li><li class="group-link"><a
+                                                href="/ebooks/bestsellers" class="">
+                                                Bestselling eBooks </a></li><li class="group-link"><a href="/eBooks/pre-orders"
+                                                class=""> eBooks Coming Soon </a></li></ul></li><li class="category"><h5 class="group-label">Featured</h5><ul class="dropdown-group"><li class="group-link"><a
+                                                href="/Search/Keyword?keyword=lonely%20planet&amp;productType=5"
+                                                class=""> Lonely Planet Travel Guides </a></li><li class="group-link"><a
+                                                href="/Search/Keyword?keyword=For%20Dummies&amp;productType=5"
+                                                class=""> For
+                                                Dummies Guides </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Humour/Parodies-spoofs?fq=01124-122257-1222572259"
+                                                class=""> Humorous Parodies </a></li></ul></li></ul></li><li class="categoryColumn"><ul class="categories"><li class="category"><h5 class="offersHeader group-label">Offers</h5><ul class="dropdown-group"><li class="group-link"><a
+                                                href="https://www.hive.co.uk/Search/eBooks/Fiction/Under-%C2%A35?fq=01124-121934-021"
+                                                class=""> Fiction eBooks under £5 </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Comics-and-Graphic-Novels/Under-£5?fq=01124-121612-021"
+                                                class="">Comics Under £5 </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Fiction/Thriller-suspense/Under-£5?fq=01124-121934-1219341951-021&amp;sort=PriceAsc&amp;ipp=24"
+                                                class=""> Thrillers from 99p </a></li><li class="group-link"><a href="/eBooks"
+                                                class="viewAll"> View all in eBooks </a></li></ul></li></ul></li></ul></div></li><li><a href="/eAudiobooks" class="ebooks">eAudiobooks</a><div class="megaMenu ui-sortable" style="display: none;"><ul class="categoryContainer ui-sortable-handle"><li class="categoryColumn carouselMobile"><ul class="categories"><li class="category"><div id="targetForEbook" class="menuCarousel"
+                                        style="display: block;"></div></li></ul></li><li class="categoryColumn"><ul class="categories"><li class="category"><h5 class="group-label">eAudiobook Genres</h5><ul class="dropdown-group"><li class="group-link"><a
+                                                href="/Search/eBooks/Biography?fq=01127-121111"
+                                                class=""> Biography </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Childrens?fq=01127-121488"
+                                                class=""> Children's </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Crime?fq=01127-121800"
+                                                class=""> Crime,
+                                                Thrillers &amp; Mystery </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Fiction?fq=01127-121934"
+                                                class=""> Fiction </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Food-Drink?fq=01127-121956"
+                                                class=""> Food &amp; Drink </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Health-Lifestyle?fq=01127-122007"
+                                                class=""> Health &amp; Lifestyle </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/History-Transport?fq=01127-122046"
+                                                class=""> History &amp; Transport </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Home-Garden?fq=01127-122211"
+                                                class=""> Home &amp; Garden </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Romance?fq=01127-122879"
+                                                class=""> Romance </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Science-Fiction-Fantasy-Horror?fq=01127-122883"
+                                                class=""> Sci-fi, Fantasy &amp; Horror </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Sport?fq=01127-123505"
+                                                class=""> Sport </a></li><li class="group-link"><a
+                                                href="/Search/eBooks/Travel?fq=01127-123596"
+                                                class=""> Travel </a></li></ul></li></ul></li><li class="categoryColumn"><ul class="categories"><li class="category"><h5 class="group-label">Browse</h5><ul class="dropdown-group"><li class="group-link"><a href="/eaudiobooks"
+                                                class="">eAudiobooks</a></li><li class="group-link"><a
+                                                href="/eaudiobooks/new-releases" class="">
+                                                eBook New Releases </a></li><li class="group-link"><a
+                                                href="/eaudiobooks/bestsellers" class="">
+                                                Bestselling eBooks </a></li></ul></li><li class="category"><h5 class="group-label">Featured</h5><ul class="dropdown-group"><li class="group-link"><a
+                                                href="/Search/eAudiobooks/Travel/Travel-writing?fq=01127-123596-1235963602"
+                                                class="">Travel Writing</a></li><li class="group-link"><a
+                                                href="/Search/eAudiobooks/Politics-Philosophy-Religion/Politics-government?fq=01127-122422-1224222423"
+                                                class="">Politics</a></li><li class="group-link"><a
+                                                href="/Search/eAudiobooks/Humour/Parodies-spoofs?fq=01127-122257-1222572259"
+                                                class="">Spoofs &amp; Parodies </a></li></ul></li></ul></li><li class="categoryColumn"><ul class="categories"><li class="category"><h5 class="offersHeader group-label">Offers</h5><ul class="dropdown-group"><li class="group-link"><a href="/offers/best-of"
+                                                class="">Savings on Bestselling Digital
+                                                Audiobooks</a></li><li class="group-link"><a
+                                                href="/Search/eAudiobooks/Fiction/Under-£5?fq=01127-121934-021"
+                                                class="">Fiction eAudiobooks under £5</a></li><li class="group-link"><a
+                                                href="https://www.hive.co.uk/Search/eAudiobooks/Fiction/Thriller-suspense/Under-%C2%A35?fq=01127-121934-1219341951-021&amp;"
+                                                class="">Thrillers under £5</a></li><li class="group-link"><a href="/eAudiobooks"
+                                                class="viewAll">View all in eAudiobooks</a></li></ul></li></ul></li></ul></div></li> -->
+                      <li>
+                        <a href="/DVD" class=""> DVD &amp; Blu-ray </a>
+                        <div class="megaMenu ui-sortable" style="display: none">
+                          <ul class="categoryContainer ui-sortable-handle">
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Genres</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/dvd/action-and-adventure" class=""> Action/Adventure </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/childrens" class=""> Children's </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/comedy" class=""> Comedy </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/documentaries" class=""> Documentaries </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/drama" class=""> Drama </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/family" class=""> Family </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?sort=bestselling&amp;ipp=16&amp;fq=01121-01123-4260-20167" class=""> General </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/horror" class=""> Horror </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/science-fiction" class=""> Science Fiction </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/thriller" class=""> Thriller </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/tv-series" class=""> TV Series </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/war-westerns" class=""> Westerns &amp; War </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Browse</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/DVD/new-releases" class=""> New Release DVDs </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/bestsellers" class=""> Bestselling DVD </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd/blu-ray-bestsellers" class=""> Bestselling Blu-ray </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/DVD/pre-orders" class=""> Coming Soon </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/DVD/In-Stock/Blu-ray?Keyword=complete&amp;fq=01121-4260-01123" class=""> Boxsets </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="category">
+                                  <h5 class="group-label">Browse by Actor</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Search/In-Stock?Keyword=Keanu+Reeves&amp;fq=4260" class=""> Keanu Reeves </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Keyword?keyword=idris%20elba&amp;productType=0" class="">Idris Elba</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Keyword?keyword=Henry%20Cavill" class="">Henry Cavill</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Keyword?keyword=zendaya&amp;productType=0" class="">Zendaya</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Keyword?keyword=Michelle%20Yeoh&amp;productType=0" class="">Michelle Yeoh</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Popular TV Shows</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Search/DVD/In-Stock/Living-World-Universe/Blu-ray?Keyword=planet+earth&amp;fq=01121-4260-20169-01123" class=""> Planet Earth </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Keyword?keyword=the%20crown&amp;productType=0" class="">The Crown</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="https://www.hive.co.uk/Search/Keyword?keyword=The%20Walking%20Dead&amp;productType=0" class="">The Walking Dead</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="https://www.hive.co.uk/Search/DVD/Blu-ray?Keyword=Outlander&amp;fq=01121-01123" class="">Outlander</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="https://www.hive.co.uk/Search/Keyword?keyword=star%20trek" class="">Star Trek</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dvd" class="viewAll"> View all in DVD &amp; Blu-ray </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Offers</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/dvd-A" class="">Great Savings on Family Films</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="/cd-vinyl" class="music"> CD &amp; Vinyl </a>
+                        <div class="megaMenu ui-sortable" style="display: none">
+                          <ul class="categoryContainer ui-sortable-handle">
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Explore CD</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/music/blues" class=""> Blues </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/classical" class=""> Classical </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Music/country" class=""> Country </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Music/dance" class=""> Dance </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Music/easy-listening" class=""> Easy Listening </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/folk" class=""> Folk </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/jazz" class=""> Jazz </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/metal" class=""> Metal </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Music/rnb-soul" class=""> R&amp;B/Soul </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/rap-hiphop" class=""> Rap/Hip Hop </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/rock-pop" class=""> Rock &amp; Pop </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/soundtracks" class=""> Soundtracks </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?ipp=4&amp;fq=-01122" class="seeAll"> See all in CD </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Explore Vinyl</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Blues?fq=01126-31220" class=""> Blues </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Classical?fq=-01126-31222" class=""> Classical </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Country?fq=-01126-31224" class=""> Country </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Dance?fq=-01126-31225" class=""> Dance </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Folk?fq=-01126-31227" class=""> Folk </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Jazz?fq=-01126-31231" class=""> Jazz </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Metal?fq=-01126-31232" class=""> Metal </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/R-B-Soul?fq=-01126-31236" class=""> R&amp;B/Soul </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Vinyl/Rap-Hip-Hop?fq=-01126-31237" class=""> Rap/Hip Hop </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Rock-Pop?fq=-01126-31240" class=""> Rock &amp; Pop </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Vinyl/Soundtracks?fq=-01126-31241" class=""> Soundtracks </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Vinyl/Easy-Listening?fq=-01126-31226" class=""> Easy Listening </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?ipp=4&amp;fq=-01126" class="seeAll"> See all in Vinyl </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Browse</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/music/top-40" class="">Top 40 CDs </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/music/new-releases" class="">New Release CD </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Music/pre-orders" class="">CDs Coming Soon </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/vinyl/bestsellers" class="">Bestselling Vinyl</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/vinyl/new-releases" class="">New Release Vinyl </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/vinyl/pre-orders" class="">Vinyl Coming Soon </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/cd-vinyl" class="viewAll">View all in CD &amp; Vinyl </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Offers</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/vinyl" class="">Great Discounts on Pop Music on Vinyl</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="/gifts" class="gifts"> Gifts </a>
+                        <div class="megaMenu ui-sortable" style="display: none">
+                          <ul class="categoryContainer ui-sortable-handle">
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label"> Gifts &amp; Merchandise </h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Search/In-Stock/Books?Keyword=mug&amp;ipp=24&amp;fq=4260-01120" class="">Mugs </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?GroupCode=xmas21-jigsaws&amp;fq=4260&amp;pg=1&amp;sort=Bestselling&amp;ipp=32" class=""> Puzzles </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Miscellaneous-items?fq=01120-1200003591-1235913595&amp;keyword=socks" class=""> Socks </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/soft-toys" class=""> Soft Toys </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/In-Stock?Keyword=TEA+TOWELS&amp;fq=4260&amp;sort=TitleAsc&amp;ipp=24&amp;pg=1" class="">Tea Towels</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Books/Stationery-Items?Keyword=tote+bag&amp;fq=01120-123591" class=""> Tote Bags </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?/Search/Stationery-Items?Keyword=candle&amp;fq=123591&amp;pg=1&amp;GroupCode=candles&amp;sort=Bestselling" class="">Candles</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/funko" class="">Funko</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/loungefly" class="">Loungefly</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/popsies" class="">Funko Popsies</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?pg=1&amp;GroupCode=wentworth-puzzles" class="">Wentworth Wooden Puzzles</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?pg=1&amp;GroupCode=bookishly-tote-bags" class="">Bookishly New Tote Bags</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?pg=1&amp;GroupCode=wow-harry-potter" class="">WoW Stuff &amp; Harry Potter Wands</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Stationery</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/Search?pg=1&amp;GroupCode=2023Calendars" class=""> Calendars</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search?pg=1&amp;GroupCode=2023Diaries" class=""> Diaries</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?keyword=journal&amp;fq=123591-4260&amp;sort=bestselling&amp;pg=4" class=""> Journals </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?sort=bestselling&amp;fq=123591-1235913592-4260" class=""> Kids Stationery </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?keyword=notebook&amp;fq=123591-4260&amp;sort=bestselling&amp;pg=4" class=""> Notebooks </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/gifts/paperblanks-journals" class="">Paperblanks Journals</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?keyword=pencils&amp;sort=bestselling&amp;fq=-123591" class=""> Pencils </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?keyword=pen+&amp;sort=bestselling&amp;fq=-123591" class=""> Pens </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?keyword=postcard&amp;fq=123591-4260&amp;sort=bestselling&amp;pg=4" class=""> Postcards </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/search?keyword=stationery&amp;sort=bestselling&amp;fq=123591-4260" class=""> Stationery Sets </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="/dept category">
+                                  <h5 class="group-label">Pop Culture</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/dept/harry-potter" class=""> Harry Potter </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/DC" class=""> DC Universe </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/paddington" class=""> Paddington </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/Stationery-Items?Keyword=monopoly&amp;fq=-123591" class=""> Monopoly Games </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/In-Stock/Books?keyword=peter+rabbit&amp;sort=bestselling&amp;ipp=12&amp;fq=01120-4260-1148" class="">Peter Rabbit</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="category">
+                                  <h5 class="group-label">Featured</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/search?sort=bestselling&amp;fq=435893578-4260&amp;ipp=12" class="">For Babies</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/julia-donaldson" class=""> Julia Donaldson </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/dept/unicorn" class=""> Unicorn </a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/Search/In-Stock/Books?Keyword=Running+Press&amp;fq=4260-01120" class="">Mini Kits</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/richardson-puzzles" class="">Richardson Puzzles</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/gifts" class="viewAll"> View all in Gifts </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Offers</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/soft-toys" class="">Up to 25% off Soft Toys</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <a href="/offers" class="offers"> Offers </a>
+                        <div class="megaMenu ui-sortable" style="display: none">
+                          <ul class="categoryContainer ui-sortable-handle">
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label">Books on Offer</h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/home-beauty-health" class="">Up to 25% off Gardening Books</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/best-of" class="">A History of Inspirational Women Savings</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/fiction" class="">Bestselling Fiction from Female Authors</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/childrens" class="">Up to 15% off New Kids Fiction</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/general" class="">Up to 25% off Poetry Books</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/key-releases" class="">Key New Releases</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label"> Gifts on Promotion </h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/soft-toys" class="">Up to 25% off Soft Toys</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="categoryColumn">
+                              <ul class="categories">
+                                <li class="category">
+                                  <h5 class="group-label"> Entertainment on Offer </h5>
+                                  <ul class="dropdown-group">
+                                    <li class="group-link">
+                                      <a href="/offers/dvd-A" class="">Great Savings on Family Films</a>
+                                    </li>
+                                    <li class="group-link">
+                                      <a href="/offers/vinyl" class="">Great Discounts on Pop Music on Vinyl</a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                    <ul class="d-md-none" id="menuExtra">
+                      <li>
+                        <a href="/">Home</a>
+                      </li>
+                      <li>
+                        <a href="/StoreLocator">Bookshop Finder</a>
+                      </li>
+                      <li>
+                        <a href="/Help">Help</a>
+                      </li>
+                      <li>
+                        <a href="/ContactUs">Contact Us</a>
+                      </li>
+                      <li>
+                        <a href="https://www.feefo.com/en-gb/reviews/hive" target="_blank">Reviews</a>
+                      </li>
+                      <li>
+                        <a href="/BlueLight">Blue Light</a>
+                      </li>
+                      <li>
+                        <a href="/StudentDiscount">Young Person Discount</a>
+                      </li>
+                      <li>
+                        <a href="/plus55-discount">Senior Discount</a>
+                      </li>
+                      <li>
+                        <a href="/WhatsHiveallabout">About Hive</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <script>
+                    //Desktop
+                    /*    $(".nav-item").hover(function () {
+                                            var windowWidth = $(window).width();
+                                            if (windowWidth > 768) {
+                                                if ($(this).children(".megaMenu").is(":visible")) {
+                                                    $(this).toggleClass("open");
+                                                }
+                                                else {
+                                                    $(this).addClass("open");
+                                                }
+                                            }
+                                        }, function () {
+                                            var windowWidth = $(window).width();
+                                            if (windowWidth > 768) {
+                                                $(this).removeClass("open");
+                                            }
+                                        });
+                                    */
+                    //Mobile
+                    $("#mobileExtras ul").append($(".newTopBar ul").html());
+                    $(".navbarToggle").click(function() {
+                      var windowWidth = $(window).width();
+                      if (windowWidth <= 768) {
+                        if ($("#nav").is(":visible")) {
+                          $("body").toggleClass("mobileMenuOpen");
+                        } else {
+                          $("body").addClass("mobileMenuOpen");
+                        }
+                      }
+                    });
+                    $("#backgroundClicker").click(function() {
+                      $("body").removeClass();
+                    });
+                    $(document).ready(function() {
+                      $(".closeClicker").click(function() {
+                        $("body").removeClass();
+                      });
+                    });
+                    $("#navClickerClose").click(function() {
+                      $("body").removeClass("mobileMenuOpen");
+                    });
+                    $(".primary > li > a").click(function() {
+                      if ($("body").hasClass("mobileMenuOpen")) {
+                        if ($(this).siblings(".megaMenu").length) {
+                          $(".primary li").removeClass("open");
+                          $(this).parent("li").addClass("open");
+                          return false;
+                        } else {
+                          return true;
+                        }
+                      }
+                    });
+                    $(".primary .group-label").click(function() {
+                      if ($("body").hasClass("mobileMenuOpen")) {
+                        if ($(this).siblings(".dropdown-group").length) {
+                          $(this).parent("li").toggleClass("open");
+                          return false;
+                        } else {
+                          return true;
+                        }
+                      }
+                    });
+                    $(window).resize(function() {
+                      var windowWidth = $(window).width();
+                      if (windowWidth <= 768) {
+                        if ($("body").hasClass("mobileMenuOpen")) {
+                          $("body").removeClass("mobileMenuOpen");
+                        }
+                        $("#navMain .primary li.open").each(function() {
+                          $(this).removeClass("open");
+                        });
+                        $("#navMain .primary .category.open").each(function() {
+                          $(this).removeClass("open");
+                        });
+                      }
+                    });
+                    /*
+                                    //Measure LIs and make hamburger if required
+                                    var menuLength = 0;
+                                    $("#navMain .primary > li").each(function () {
+                                        menuLength += $(this).width();
+                                    });
+                                        
+                                    if ($("#navMain .primary").width() < menuLength) {
+                                        console.log("colapse");
+                                    } else {
+                                        console.log("noColapse");
+                                    }
+                                        (function ($) {
+                                            var $window = $(window);
+                                            $window.resize(function resize() {
+                                                if ($window.width() > 768) {
+                                                    $("body").removeClass();
+                                                    $(".category.open").removeClass('open');
+                                                    $(".nav-item.open").removeClass('open');
+                                                    return true;
+                                                }
+                                            }).trigger('resize');
+                                        })(jQuery);
+                                    */
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav aria-label="breadcrumb" id="breadcrumb" class="breadcrumb"><div class="breadcrumb__wrap"><ul class="breadcrumb__list"><li class="breadcrumb__item breadcrumb__item--first"><a href="https://storefronttp.staging.gardners.com/">Home</a></li><li class="breadcrumb__item"><a href="/Search?fq=01120">Books</a></li><li class="breadcrumb__item"><a href="/Search?fq=01120-1200001488">Children's</a></li><li class="breadcrumb__item"><a href="/Search?fq=01120-1200001488-1214881597">Interactive &amp; activity books &amp; packs</a></li><li class="breadcrumb__item"><a href="/Search?fq=01120-1200001488-1214881597-1215971600">Pop-up &amp; lift-the-flap books</a></li></ul></div></nav>
+        <div id="main">
+          <div class="product-page">
+            <div id="body">
+              <!-- product book -->
+              <div class="product book" itemscope="" itemtype="https://schema.org/Book">
+                <!-- change this class dependent on product category-->
+                <div class="productInfo">
+                  <div class="productInfoWrap">
+                    <div class="imageWrap">
+                      <div class="image">
+                        <div class="jacket jacket-Book">
+                          <img alt="Harry Potter and the Cursed Child - Parts One and Two (Special Rehearsal Edition) : The Official Script Book of the Original West End Production, Hardback Book" class="productImage" data-zoom-image="//hive.dmmserver.com/media/640/97807515/9780751565355.jpg" id="img-19030209" itemprop="image" src="//hive.dmmserver.com/media/640/97807515/9780751565355.jpg" title="Harry Potter and the Cursed Child - Parts One and Two (Special Rehearsal Edition) : The Official Script Book of the Original West End Production, Hardback Book" />
+                        </div>
+                        <span class="availabilityFlash inStock"></span>
+                      </div>
+                      <div class="imageCarousel">
+                        <ul id="productCarousel" class="jcarousel-skin-tango">
+                          <li>
+                          <img alt="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book" title="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book" src="https://hive.dmmserver.com/media/140/97814088/9781408845646.jpg" data-large="https://hive.dmmserver.com/media/640/97814088/9781408845646.jpg" class="active" />
+                        </li>
+                        <li>
+                          <img alt="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 1" title="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 1" src="https://hive.dmmserver.com/media/140/97814088/9781408845646.jpg" data-medium="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/9d5ee848-b32c-488f-b6a3-7f3c65edac97_large.jpg" data-large="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/9d5ee848-b32c-488f-b6a3-7f3c65edac97_large.jpg" />
+                        </li>
+                          <li>
+                            <img alt="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 2" title="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 2" src="https://hive.dmmserver.com/media/140/97814088/9781408845646.jpg" data-medium="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/c273168f-0876-407d-b12f-cd1a5ebd57b8_large.jpg" data-large="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/c273168f-0876-407d-b12f-cd1a5ebd57b8_large.jpg" />
+                          </li>
+                          <li>
+                            <img alt="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 3" title="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 3" src="https://hive.dmmserver.com/media/140/97814088/9781408845646.jpg" data-medium="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/ce399ddd-4f19-4a42-bdf7-9d6e0381e074_large.jpg" data-large="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/ce399ddd-4f19-4a42-bdf7-9d6e0381e074_large.jpg" />
+                        </li>
+                          <li>
+                          <img alt="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 4" title="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 4" src="https://hive.dmmserver.com/media/140/97814088/9781408845646.jpg" data-medium="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/5baa7d2f-6f7f-44af-a51c-3e5050b0637d_large.jpg" data-large="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/5baa7d2f-6f7f-44af-a51c-3e5050b0637d_large.jpg" />
+                        </li>
+                          <li>
+                          <img alt="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 5" title="Harry Potter and the Philosopher’s Stone : Illustrated Edition - Book - 5" src="https://hive.dmmserver.com/media/140/97814088/9781408845646.jpg" data-medium="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/951b8703-f39b-4c8b-8925-ffb30493f5d3_large.jpg" data-large="https://www.hive.co.uk/RichContent/Products/9781408845646/ProductImage/951b8703-f39b-4c8b-8925-ffb30493f5d3_large.jpg" />
+                        </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="titleAuthorContributor titleAuthorContributor--title">
+                      <!-- Code lifted and modified from the dynamic content area, where it has been in place for many years succesfully -->
+                      <h1 itemprop="name" id="tit-98440">Race and Ethnic Oppression in the United States 
+                        <span class="product__title--subTitle">Harry Potter ET LA Chambre DES Secrets Folio Junior Ed</span>
+                        <span>Paperback</span>
+                      </h1>
+                    </div>
+                    <div class="titleAuthorContributor titleAuthorContributor--authorContributor">
+                      <h2 itemprop="author" itemscope="" itemtype=https://schema.org/Person> by <a href="/Search/Search?Author=Tracy%20%20E.%20Ore">
+                          <span itemprop="name">Tracy E. Ore <span>
+                        </a>
+                      </h2>
+                    </div>
+                    <div class="titleAuthorContributor titleAuthorContributor--series">
+                      <!-- Code lifted and modified from the dynamic content area, where it has been in place for many years succesfully -->
+                      <h2 class="series">Part of the  <a href="/Search/Search?Series=Heinemann%20Plays%20S.">Heinemann Plays S.</a> series</h2>
+                    </div>
+                    <div class="alsoBy alsoBySeries">
+                      <div class="headers full">
+                        <h2>
+                          <span class="text"> Titles in similar categories <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                            <a href="/Search/Books/Fiction/Modern-contemporary-fiction-post-c-1945-/Crime/Crime-mystery?fq=01120-1200001934-1219341955-1200001800-1218001801&amp;ipp=1000&amp;pg=1">View all </a>
+                          </span>
+                        </h2>
+                      </div>
+                      <div class="keenWrapper">
+                        <div class="marginTwo keen-slider singleProductWrapper carousel1823" style="display: flex; overflow: hidden" data-keen='{"loop": true, "autoplay":true, "arrows": true, "dots":false, "slidesPerView":1, "breakpoints": {"(min-width: 576px)": {"slidesPerView": 2, "mode": "free-snap"},"(min-width: 768px)": {"slidesPerView": 3, "mode": "free-snap"},"(min-width: 992px)": {"loop": false, "rubberband": false, "slidesPerView": 4, "mode": "free-snap"}}}'> 9780349431994 9780241992401 9781398718982 9781529906103 9781529342505 9781398508422 9781529031430 9781529159905 9781399725095 9780008474416 9781529377477 9781398519770 </div>
+                        <span id="carousel1823-arrow-left" class="arrow arrow--left" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                          <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"></path>
+                        </span>
+                        <span id="carousel1823-arrow-right" class="arrow arrow--right" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                          <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"></path>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="formatWrap">
+                      <p class="format">Paperback</p>
+                      <p class="date">01/10/2018</p>
+                      <p class="barcode">9780073404240</p>
+                    </div>
+                    <div class="availability">
+                      <a href="javascript:void(0)" class="unavailable tooltipstered" data-info="Unavailable">
+                        <p class="availabilityLink unavailable">Unavailable</p>
+                      </a>
+                    </div>
+                    <div id="productTabs">
+                      <ul>
+                        <li id="productTabsInformation">
+                          <span>Information</span>
+                        </li>
+                        <li id="productTabsDescription" style="display: none;">
+                          <span>Description</span>
+                        </li>
+                        <li id="productTabsOther" style="display: none;">
+                          <span>Other Formats</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="product-page-social">
+                      <div class="product-page-social__wrapper">
+                        <a href="" class="product-page-social__link product-page-social__link--fb"></a>
+                        <a href="" class="product-page-social__link product-page-social__link--tw"></a>
+                        <a href="" class="product-page-social__link product-page-social__link--pi"></a>
+                        <a href="" class="product-page-social__link product-page-social__link--in"></a>
+                      </div>
+                    </div>
+                    <div id="TitlesMightLikeFill">
+                      <div class="alsoBy alsoBySeries">
+                        <div class="headers full">
+                          <h2>
+                            <span class="text"> Titles in similar categories <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                              <a href="/Search/Books/Fiction/Modern-contemporary-fiction-post-c-1945-/Crime/Crime-mystery?fq=01120-1200001934-1219341955-1200001800-1218001801&amp;ipp=1000&amp;pg=1">View all </a>
+                            </span>
+                          </h2>
+                        </div>
+                        <div class="keenWrapper">
+                          <div class="marginTwo keen-slider singleProductWrapper carousel1823" style="display: flex; overflow: hidden" data-keen='{"loop": true, "autoplay":true, "arrows": true, "dots":false, "slidesPerView":1, "breakpoints": {"(min-width: 576px)": {"slidesPerView": 2, "mode": "free-snap"},"(min-width: 768px)": {"slidesPerView": 3, "mode": "free-snap"},"(min-width: 992px)": {"loop": false, "rubberband": false, "slidesPerView": 4, "mode": "free-snap"}}}'> 9780349431994 9780241992401 9781398718982 9781529906103 9781529342505 9781398508422 9781529031430 9781529159905 9781399725095 9780008474416 9781529377477 9781398519770 </div>
+                          <span id="carousel1823-arrow-left" class="arrow arrow--left" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"></path>
+                          </span>
+                          <span id="carousel1823-arrow-right" class="arrow arrow--right" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                            <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"></path>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="descriptionWrap">
+                      <h4>Description</h4>
+                      <div class="description" itemprop="description">
+                        <div class="summary">
+                          <p></p>
+                          <p> Based on an original new story by J.K. Rowling, John Tiffany and Jack Thorne, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. </p>
+                          <p> The play will receive its world premiere in London's West End on 30th July 2016. It was always difficult being Harry Potter and it isn't much easier now that he is an overworked employee of the Ministry of Magic, a husband, and father of three school-age children. While Harry grapples with a past that refuses to stay where it belongs, his <span class="read-more">… <a href="#">read more</a>
+                            </span>
+                          </p>
+                        </div>
+                        <div class="details">
+                          <p></p>
+                          <p> Based on an original new story by J.K. Rowling, John Tiffany and Jack Thorne, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. </p>
+                          <p> The play will receive its world premiere in London's West End on 30th July 2016. It was always difficult being Harry Potter and it isn't much easier now that he is an overworked employee of the Ministry of Magic, a husband, and father of three school-age children. While Harry grapples with a past that refuses to stay where it belongs, his youngest son Albus must struggle with the weight of a family legacy he never wanted. </p>
+                          <p> As past and present fuse ominously, both father and son learn the uncomfortable truth: sometimes, darkness comes from unexpected places. </p>
+                          <p></p>
+                          <span class="read-less">
+                            <a href="#">[^]</a>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="descriptionWrapManual">
+                      <div class="kobo-banner__wrapper">
+                        <a href="
+                                        https://www.kobo.com/ebook/fourth-wing-1?UTM_SOURCE=%22whsmith%22" class="kobo-banner__link">
+                          <span class="title">KOBO eBook</span>
+                          <span class="price">From £20.00</span>
+                        </a>
+                      </div>
+                    </div>
+                    <script>
+                      $(document).ready(function() {
+                        if ($(".descriptionWrap").length) {
+                          $("#productTabsDescription").show();
+                        }
+                        if ($(".alternativeFormats").length) {
+                          $("#productTabsOther").show();
+                        }
+                      })
+                      $("#productTabs li").click(function() {
+                        p = $(this).parents(".productInfoWrap");
+                        $(this).siblings("li").each(function() {
+                          p.removeClass($(this).attr("id"));
+                        });
+                        p.addClass($(this).attr("id"));
+                      })
+                    </script>
+                    <div class="productInfoWrapGrid">
+                      <!-- product info -->
+                      <div class="productInfo">
+                        <h4>Information</h4>
+                        <ul>
+                          <li class="availability">
+                            <a href="javascript:void(0)" class="unavailable" data-info="Unavailable">
+                              <p class="availabilityLink unavailable">Unavailable</p>
+                            </a>
+                          </li>
+                          <li class="format">
+                            <span class="label">Format:</span>
+                            <span class="info">Paperback</span>
+                          </li>
+                          <li class="pageCount">
+                            <span class="label">Pages:</span>
+                            <span class="info" itemprop="numberOfPages">416 pages</span>
+                          </li>
+                          <li class="publisher">
+                            <span class="label">Publisher:</span>
+                            <span class="info" itemprop="publisher">McGraw-Hill Education</span>
+                          </li>
+                          <li class="pubDate">
+                            <span class="label">Publication Date:</span>
+                            <span class="info" itemprop="datePublished">01/10/2018</span>
+                          </li>
+                          <li class="EAN">
+                            <span class="label">ISBN:</span>
+                            <span class="info" itemprop="isbn">9780073404240</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="alternativeFormats">
+                      <h4>Other Formats</h4>
+                      <ul class="formatsList">
+                        <li class="collapsed">
+                          <span class="formatIcon"></span>
+                          <span class="formatTitle">Paperback / softback from £13.59</span>
+                          <ul class="formatItemsList" style="display: none">
+                            <li> Paperback / softback | Published 23/08/2018 | £13.59 | <a href="/Product/J-K-Rowling/Harry-Potter-and-the-Philosophers-Stone--Illustrated-Edition/22223985">View now</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li class="collapsed">
+                          <span class="formatIcon"></span>
+                          <span class="formatTitle">Hardback from £200.00</span>
+                          <ul class="formatItemsList" style="display: none">
+                            <li> Hardback | Published 01/03/2016 | £200.00 | <a href="/Product/J-K-Rowling/Harry-Potter-and-the-Philosophers-Stone--Deluxe-Illustrated-Slipcase-Edition/18845568">View now</a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="priceAreaWrap">
+                      <div class="priceArea">
+                        <div class="discountFlash--np">
+                          <span>Save 19 <text>%</text>
+                          </span>
+                        </div>
+                        <div class="price" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+                          <meta itemprop="priceCurrency" content="GBP" />
+                          <p class="rrp">£22.00</p>
+                          <p class="sitePrice" itemprop="price" content="17.79"> £17.79 </p>
+                        </div>
+                        <div class="availability">
+                          <a href="javascript:void(0)" class="inStock" data-info="">
+                            <p class="availabilityLink inStock">
+                              <link itemprop="additionalType" href="http://schema.org/Product" />
+                              <span class="inStock" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                <span>
+                                  <link itemprop="availability" href="http://schema.org/InStock" content="In Stock" /> In Stock
+                                </span>
+                              </span>
+                            </p>
+                          </a>
+                        </div>
+                        <div class="basket">
+                          <a class="button btn inStock buyBook buyButton" data-productid="19030209" href="javascript:void(0)" rel="nofollow">Add to Basket</a>
+                          <div class="productWishlist">
+                            <a href="/Account/Wishlist" class="viewWishlist" data-productcode="9780751565355" data-role="button" data-mini="true">View Your Wishlist</a>
+                          </div>
+                        </div>
+                        <div class="basketFooterText">
+                          <ul class="delivery-wrapper">
+                            <li class="delivery--option">
+                              <img src="https://placehold.co/100" alt="" />
+                              <div class="delivery--info">
+                                <span class="delivery--title">Free Home Delivery</span>
+                                <span class="delivery--desc">Free standard home delivery on orders over £25</span>
+                              </div>
+                            </li>
+                            <li class="delivery--option">
+                              <img src="https://placehold.co/100" alt="" />
+                              <div class="delivery--info">
+                                <span class="delivery--title">Click + Collect</span>
+                                <span class="delivery--desc">Free Click & Collect on orders over £25 or pay just £1.99</span>
+                              </div>
+                            </li>
+                            <li class="delivery--option">
+                              <img src="https://placehold.co/100" alt="" />
+                              <div class="delivery--info">
+                                <span class="delivery--title">Express Delivery</span>
+                                <span class="delivery--desc">Need this fast? Faster delivery options start from £5.99</span>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="richContentWrap">
+                      <div class="richContent">
+                        <p>
+                          <iframe allowfullscreen="" frameborder="0" height="360" src="//www.youtube.com/embed/cK1mAH0vXl8" width="640"></iframe>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="reviewWrap">REVIEWS</div>
+                    <script>
+                      $(document).ready(function() {
+                        var loadReview = function(page, first) {
+                          $.ajax('/Product/GetReviews', {
+                            type: 'GET',
+                            data: {
+                              productCode: '9780073404240',
+                              'page': page
+                            },
+                            beforeSend: function() {
+                              $('.reviewWrapper').css({
+                                opacity: 1.0,
+                                visibility: "visible"
+                              }).animate({
+                                opacity: 0
+                              }, 300);
+                            },
+                            success: function(data) {
+                              var show = true;
+                              if (($.isEmptyObject(data) || data == '')) show = false;
+                              if (show) {
+                                $('.reviewWrap').html(data);
+                                setReadMoreLinks();
+                              }
+                            }
+                          });
+                        }
+                        var setReadMoreLinks = function() {
+                          var review = $('.review .customerReview');
+                          if (review.length > 0) review.expander({
+                            slicePoint: 200,
+                            userCollapseText: '[^]'
+                          });
+                        }
+                        setReadMoreLinks();
+                        //loadReview(1, true);
+                        $(".reviewWrap").on("click", "a", function(e) {
+                          e.preventDefault();
+                          var element = $(this);
+                          if (element.is('.pagerLink')) {
+                            var page = element.data("page");
+                            loadReview(page, false);
+                            setTimeout(function() {
+                              $('html, body').animate({
+                                scrollTop: $('.reviewContent').offset().top - 20
+                              }, 'slow');
+                            }, 100);
+                          } else if (element.is('.toggleReview')) {
+                            var show = element.hasClass('reviewShow');
+                            var mainElement = element.closest('.review');
+                            mainElement.find('.readMore').toggle(!show);
+                            mainElement.find('.readExtra').toggle(show);
+                          }
+                        });
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TeePee Footer -->
+    <footer id="tp-main-footer">
+      <div class="container-md">
+        <div class="row flex-wrap">
+          <div class="col-12 col-md-8 col-lg-6 order-2 tp-footer-links">
+            <ul>
+              <li>
+                <h4>Customer Service</h4>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <h4>About Us</h4>
+              </li>
+              <li>
+                <a href="#">TeePee PLC</a>
+              </li>
+              <li>
+                <a href="#">TeePee Careers</a>
+              </li>
+              <li>
+                <a href="#">Affiliates</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-4 offset-lg-2 order-1 order-md-2 tp-footer-newsletter">
+            <h4>Join our Newsletter</h4>
+            <p> Sign-up and be the first to know about our offers, the best in books, and more. You can always choose to unsubscribe at any time. </p>
+            <div class="emailBox">
+              <input id="newsletter" class="form-control ui-autocomplete-input" name="keyword" type="email" placeholder="Email Address" itemprop="query-input" required="" autocomplete="off" />
+              <input type="submit" value=">" />
+            </div>
+          </div>
+          <div class="col-12 order-2 tp-footer-hr">
+            <div class="tp-footer-social-icons">
+              <a href="#" class="social-icon fb"></a>
+              <a href="#" class="social-icon tw"></a>
+              <a href="#" class="social-icon pi"></a>
+              <a href="#" class="social-icon in"></a>
+              <a href="#" class="social-icon yt"></a>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center flex-wrap">
+          <div class="col-12 col-md-8 col-lg-9 col-xl-8 offset-xl-1 order-3 tp-footer-small">
+            <ul class="siteMap">
+              <li>
+                <a href="#">Terms & Conditions</a>
+              </li>
+              <li>
+                <a href="#">Modern Slavery</a>
+              </li>
+              <li>
+                <a href="#">Cookie Policy</a>
+              </li>
+              <li>
+                <a href="#">Manage Cookies</a>
+              </li>
+              <li>
+                <a href="#">Privacy Notice</a>
+              </li>
+              <li>
+                <a href="#">Weee Policy</a>
+              </li>
+              <li class="acceptedPaymentTypes">Payments accepted:</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-4 col-lg-3 col-xl-2 order-3 tp-footer-small">
+            <ul class="paymentTypes">
+              <li>
+                <a href="#">
+                  <img src="/content/system/images/payment-icons/pay-1.png" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/content/system/images/payment-icons/pay-2.png" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/content/system/images/payment-icons/pay-3.png" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/content/system/images/payment-icons/pay-4.png" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/content/system/images/payment-icons/pay-5.png" alt="" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 order-4 tp-footer-copy">
+            <small>&copy; Copyright 1999 - 2024 TeePee and its suppliers. All rights reserved.</small>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="/content/system/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

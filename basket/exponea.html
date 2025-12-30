@@ -1,0 +1,53 @@
+<section>
+  [$NotNull([@Title_Text],{ [$NotNull([@URL],{
+  [#Header(@Title_Type=sub,@TextAlignment=center,@textTransform=text-normal,@Title_Text=[@Title_Text],@See_More=[@See_More],@URL=[@URL],@ViewMoreText=[@ViewMoreText])]
+  })] [$IsNull([@URL],{
+  [#Header(@Title_Type=sub,@TextAlignment=center,@textTransform=text-normal,@Title_Text=[@Title_Text],@See_More=[@See_More],@URL=[@facetString],@ViewMoreText=[@ViewMoreText])]
+  })] })]
+  <div
+    id="basket-recommendations-carousel"
+    class="template-container tm product-carousel-container-stack"
+  >
+    <!-- Loader -->
+    <div class="product-carousel__loader">
+      <p>Loading...</p>
+    </div>
+
+    <!-- SSR carousel -->
+    <div class="template-row product-carousel__wrap">
+      <div class="col-12">
+        <div
+          aria-disabled
+          id="product-carousel-[$PageWebPartVersionTemplateId]"
+          class="glide product-carousel product-carousel--static"
+          data-glide='{"gap": 24, "type": "carousel", "bound": true, "perView": 5, "breakpoints":{"1200":{"perView":4},"992":{"perView":3},"768":{"perView":2}}}'
+          data-glideRight='{"gap": 25, "bound": true, "type": "carousel", "perView": 4, "breakpoints":{"992":{"perView":3},"768":{"perView":2}}}'
+        >
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides">
+              [$RenderRepeater{[#productlist(@productcode=[$productcode[]],@description=0,@class=glide__slide,@removeKey=,@resultNumber=,@imageResizer=true,@imageHeight=260)]}]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic carousel -->
+    <div class="template-row product-carousel__wrap">
+      <div class="col-12">
+        <div
+          id="product-carousel-recommendations"
+          aria-disabled
+          id="product-carousel-dynamic"
+          class="glide product-carousel product-carousel--dynamic"
+          data-glide='{"gap": 24, "type": "carousel", "bound": true, "perView": 5, "breakpoints":{"1200":{"perView":4},"992":{"perView":3},"768":{"perView":2}}}'
+          data-glideRight='{"gap": 25, "bound": true, "type": "carousel", "perView": 4, "breakpoints":{"992":{"perView":3},"768":{"perView":2}}}'
+        >
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

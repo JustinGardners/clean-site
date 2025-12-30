@@ -1,0 +1,14 @@
+<script>
+var fDW25 = document.getElementById("basketSubTotals");
+var fDV25 = fDW25.getElementsByClassName("totalPrice")[0].innerText.replace("£", "").trim();
+if(parseInt(fDV25) < 30){
+    var nV25 = (30 - fDV25).toFixed(2);
+    var mE25 = fDW25.getElementsByClassName("basketSpendFreeDelivery");
+    if(mE25.length > 0){
+            mE25[0].innerHTML = '<span class="spendMoreToGetFreeDelivery">Spend only <span class="spendMorePrice">£' + nV25 + '</span> more to qualify for <span class="free">free</span> delivery on this order</span>';
+    } else {
+        fDW25.getElementsByClassName("summaryHeader")[0].insertAdjacentHTML('afterend', '<div class="basketSpendFreeDelivery"><span class="spendMoreToGetFreeDelivery">Spend only <span class="spendMorePrice">£' + nV25 + '</span> more to qualify for <span class="free">free</span> delivery on this order</span></div>');
+    }
+};
+</script>
+

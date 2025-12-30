@@ -1,0 +1,120 @@
+<script>
+  $(document).ready(function () {
+    $("#basketCoupons .couponCode label").click(function () {
+      console.log("Clicked");
+      $(this).siblings().addClass("visible").show();
+      $("#CouponCode").text("Promo Code");
+    });
+    //document.querySelector('#basketCoupons .couponCode label').addEventListener('click', function() {
+    //this.closest('.couponCode').addClass('visible').text("Promo Code");
+
+    //});
+  });
+</script>
+<script>
+  const currentBasketRef = storefrontBasket.BasketRef;
+  const sessionKey = "StoreFrontBasketRef";
+  const previousBasketRef = sessionStorage.getItem(sessionKey);
+
+  if (previousBasketRef !== currentBasketRef) {
+    Object.keys(sessionStorage).forEach((key) => {
+      if (key.startsWith("StoreFrontBasketItem_")) {
+        sessionStorage.removeItem(key);
+      }
+    });
+    sessionStorage.setItem(sessionKey, currentBasketRef);
+  }
+
+  function hydrateGenealogy(item) {
+    if (item.type === "Book") {
+      if (Array.isArray(item.genealogy) && item.genealogy.length) {
+        return;
+      }
+    }
+
+    let source = null;
+    switch (item.type) {
+      case "CD":
+      case "Vinyl":
+        source = item.musicGenre;
+        break;
+      case "DVD":
+        source = item.dvdGenre;
+        break;
+      case "Merchandise":
+        source = item.merchandiseCategory;
+        break;
+    }
+
+    if (source && source.facetDetailId) {
+      item.genealogy = [
+        {
+          value: {
+            facetDetailId: source.facetDetailId,
+            facetId: source.facetId,
+            description: source.description,
+          },
+          children: [],
+        },
+      ];
+    }
+  }
+
+  function saveItemToSession(item) {
+    hydrateGenealogy(item);
+    const key = `StoreFrontBasketItem_${item.code}`;
+    sessionStorage.setItem(key, JSON.stringify(item));
+  }
+
+  const items = StoreFront.basket.items || [];
+  items.forEach(saveItemToSession);
+
+  // GA4 - View Cart
+  const totalValue = items.reduce((acc, item) => acc + item.total, 0);
+
+  const viewCartItems = items.map((item, index) => {
+    const itemDiscount =
+      item.price > item.netPrice ? item.price - item.netPrice : 0;
+    const itemDiscountPercent =
+      item.price > 0 ? ((itemDiscount / item.price) * 100).toFixed(0) : 0;
+
+    const itemEl = document.querySelector(`.item-${item.code}`);
+    const inStock = itemEl?.querySelector(".availability a.inStock") !== null;
+
+  let genealogySplit = {};
+  if (StoreFront.basket.length) {
+    genealogySplit = getFirstGenealogyLine(
+      item,
+      StoreFront.basket.facetDetailsById,
+      { format: "split" }
+    );
+  }
+
+    return {
+      author: item.contributor,
+      ...genealogySplit,
+      item_brand: item.brand || item.publisher || "",
+      item_category: item.type,
+      item_id: item.code,
+      index,
+      in_stock: inStock,
+      item_name: item.title,
+      price: item.netPrice,
+      product_card: getProductTags(item.code),
+      quantity: item.quantity,
+      rrp: item.price,
+      discount: itemDiscount,
+      discount_percent: itemDiscountPercent,
+      on_offer: itemDiscount > 0,
+    };
+  });
+
+  window.dataLayer.push({
+    event: "view_cart",
+    ecommerce: {
+      currency: "GBP",
+      value: totalValue,
+      items: viewCartItems,
+    },
+  });
+</script>

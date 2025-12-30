@@ -1,0 +1,68 @@
+.info-page h1 {
+  font-weight: bold;
+  color: #003C1F;
+}
+.info-page__text-section h2 {
+  font-weight: bold;
+  color: #003C1F;
+  font-size: 1.2rem;
+}
+.info-page__text-section h3 {
+  font-weight: bold;
+  color: #003C1F;
+  font-size: 0.8rem;
+}
+.info-page__text-section p {
+  font-size: 12px;
+}
+.info-page__text-section a {
+  color: #1c4aa0;
+  text-decoration: underline;
+}
+.info-page__text-section--button {
+  margin-top: 35px;
+  text-align: center;
+}
+.info-page__text-section--button a {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #36ad52;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.g-accordion {
+  border-bottom: 1px solid #eee;
+}
+.g-accordion__wrap {
+  border-top: 1px solid #eee;
+}
+.g-accordion__title {
+  position: relative;
+  cursor: pointer;
+  padding: 0.75rem 1rem 0.75rem 0;
+  margin: 0;
+}
+.g-accordion__title::after {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-plus%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%204a.5.5%200%200%201%20.5.5v3h3a.5.5%200%200%201%200%201h-3v3a.5.5%200%200%201-1%200v-3h-3a.5.5%200%200%201%200-1h3v-3A.5.5%200%200%201%208%204%22%2F%3E%3C%2Fsvg%3E");
+  background-size: 100%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 9px;
+}
+.g-accordion__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 250ms grid-template-rows ease;
+}
+.g-accordion__content > div {
+  overflow: hidden;
+}
+.g-accordion__content.expanded {
+  grid-template-rows: 1fr;
+}

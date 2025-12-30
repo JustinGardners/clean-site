@@ -1,0 +1,75 @@
+<script>
+  const addProductTags = () => {
+    const includedTag = (productId, tagType) => {
+      const value = isNaN(productId) ? null : Number(productId);
+      if (!tagType in window.StoreFront) return;
+      return window.StoreFront[tagType].includes(value);
+    };
+
+    document
+      .querySelectorAll(".product-item .button.buyButton")
+      .forEach((product) => {
+        const content = product.closest(".product-item");
+        const productId = product.dataset.productCode;
+        const exclusive = includedTag(productId, "tagexclusive");
+        const signed = includedTag(productId, "tagsigned");
+        const bookclub = includedTag(productId, "tagbookclubpick");
+        const newtag = includedTag(productId, "tagnew");
+        if (exclusive) {
+          content.classList.add("product-item--exclusive");
+        }
+        if (signed) {
+          content.classList.add("product-item--signed");
+        }
+        if (bookclub) {
+          content.classList.add("product-item--bookclubpick");
+        }
+        if (newtag) {
+          content.classList.add("product-item--new");
+        }
+      });
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    addProductTags();
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addProductTags = () => {
+      if (!window.StoreFront) return;
+
+      const hasTag = (productId, tagType) => {
+        const id = Number(productId);
+        if (isNaN(id)) return false;
+        const tags = window.StoreFront?.[tagType];
+        return Array.isArray(tags) && tags.includes(id);
+      };
+
+      document
+        .querySelectorAll(".product-item .button.buyButton")
+        .forEach((btn) => {
+          const productItem = btn.closest(".product-item");
+          const template = btn.closest(".template");
+          if (!productItem) return;
+
+          const productId = btn.dataset.productCode;
+
+          Object.keys(window.StoreFront).forEach((tagType) => {
+            if (hasTag(productId, tagType)) {
+              productItem.classList.add(
+                `product-item--${tagType.replace(/^tag/, "")}`
+              );
+              if (template) {
+                template.classList.add(
+                  `template--${tagType.replace(/^tag/, "")}`
+                );
+              }
+            }
+          });
+        });
+    };
+
+    addProductTags();
+  });
+</script>

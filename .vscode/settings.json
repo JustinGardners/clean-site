@@ -1,0 +1,12 @@
+{
+    "scss.lint.unknownAtRules": "ignore",
+    "liveSassCompile.settings.useNewCompiler": true,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/css",
+            "savePathReplacementPairs": null
+        }
+    ]
+}

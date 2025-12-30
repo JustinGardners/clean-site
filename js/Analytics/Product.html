@@ -1,0 +1,75 @@
+<script>
+  window.onload = (event) => {
+    const product = StoreFront.product.raw;
+    const genealogyData = StoreFront.product.genealogy || [];
+
+    // contributors / author names
+    const contributorsRaw =
+      product.authors || product.artists || product.actors || [];
+    const authorNames = Array.isArray(contributorsRaw)
+      ? contributorsRaw.map((b) => b.name).join(", ")
+      : "";
+
+    // brand / publisher
+    const brand =
+      product.publisher ||
+      product.brand ||
+      product.studio ||
+      product.distributorName ||
+      "";
+
+    // base details
+    const itemCategory = product.productTypeDescription || "";
+    const itemId = product.productCode;
+    const itemInStock = product.availability.join(",") || "";
+    const itemName = product.title || "";
+
+    // price handling
+    const itemRrp =
+      product.productTypeDescription === "Book"
+        ? parseFloat(product.price) || 0
+        : parseFloat(product.netPrice) || 0;
+
+    const itemPrice = parseFloat(product.netPrice) || 0;
+    const itemDiscount = Math.max(itemRrp - itemPrice, 0);
+    const itemDiscountPercent =
+      itemRrp > 0 ? Math.round((itemDiscount / itemRrp) * 100) : 0;
+
+    const genealogySplit = getFirstGenealogyLine(
+      { genealogy: genealogyData },
+      StoreFront.basket?.facetDetailsById || {},
+      { format: "split" }
+    );
+
+    console.log("genealogySplit:", genealogySplit);
+
+    // GA4 dataLayer push
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "view_item",
+      ecommerce: {
+        currency: "GBP",
+        items: [
+          {
+            author: authorNames,
+            discount: itemDiscount,
+            discount_percent: itemDiscountPercent,
+            in_stock: itemInStock,
+            index: 0,
+            item_brand: brand,
+            item_id: itemId,
+            item_name: itemName,
+            on_offer: itemDiscount > 0,
+            product_card: product.productCodeClassNames
+              ?.filter(Boolean)
+              .join(", "),
+            price: itemPrice,
+            quantity: 1,
+            rrp: itemRrp,
+            ...genealogySplit,
+          },
+        ],
+      },
+    });
+  };
+</script>
