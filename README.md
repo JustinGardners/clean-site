@@ -1,4 +1,4 @@
-# Teepee
+# Tmg
 
 ## Helpful VSCode Extensions
 ### Git
