@@ -76,10 +76,10 @@ textarea {
 }
 
 @media (pointer: course) and (max-width: 767px) {
-  .iosFix{
-    position: fixed; 
-    bottom: 0; 
-    background-color:#022261;
+  .iosFix {
+    position: fixed;
+    bottom: 0;
+    background-color: #022261;
     width: 100%;
     left: 0;
     height: 10px;
@@ -150,6 +150,52 @@ textarea {
     --mega-menu-width: 1296px;
   }
 }
+
+#storefront_cookie_widget {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $highlight-strong;
+  color: $text-primary;
+  font-size: 0.875em;
+  border-bottom: 1px solid $highlight-strong;
+  z-index: map.get($zindex-list, fixed);
+
+  .storefrontCookieContent {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-inline: auto;
+    padding: 1rem;
+    max-width: var(--container-width, 100%);
+
+    @include breakpt-sm {
+      --container-width: 100%;
+    }
+
+    @include breakpt-md {
+      --container-width: 720px;
+    }
+
+    @include breakpt-lg {
+      --container-width: 960px;
+    }
+
+    @include breakpt-xl {
+      --container-width: 1140px;
+    }
+
+    @include breakpt-xxl {
+      --container-width: 1320px;
+    }
+
+    .button {
+      width: 10rem;
+    }
+  }
+}
+
 .accountNav {
   border-radius: 0;
   border: 0;
@@ -233,43 +279,64 @@ body {
     margin-bottom: 0;
   }
   #header {
-    background: #002f87;
+    background: $surface-100;
+    border-bottom: 1px solid $surface-94;
     > .container-md .row {
       display: grid;
       align-content: center;
       align-items: center;
       grid-template-columns: 1fr repeat(3, auto);
-      grid-template-areas: "logo supp locator bask" "seek seek seek menu";
+      grid-template-areas: "logo logo supp bask" "seek seek seek menu";
       gap: 0.75rem 0;
       padding: 1rem 0;
       @include breakpt-md {
         grid-template-columns: repeat(12, 1fr);
-        grid-template-areas: "logo logo logo seek seek seek seek seek seek supp locator bask";
+        grid-template-areas: "logo logo logo logo logo seek seek seek seek supp bask bask";
       }
       @include breakpt-lg {
         grid-template-columns: repeat(14, 1fr);
-        grid-template-areas: "logo logo seek seek seek seek seek seek seek seek seek supp locator bask";
+        grid-template-areas: "logo logo logo logo seek seek seek seek seek seek seek supp bask bask";
       }
       @include breakpt-xl {
         grid-template-columns: repeat(16, 1fr);
-        grid-template-areas: "logo logo seek seek seek seek seek seek seek seek seek seek seek supp locator bask";
+        grid-template-areas: "logo logo logo logo logo seek seek seek seek seek seek seek seek supp bask bask";
       }
     }
     #storeLogo {
       grid-area: logo;
-      h1,
-      a {
+      // h1,
+      // a {
+      //   display: block;
+      //   margin: 0;
+      //   width: 100%;
+      //   height: 32px;
+      //   background: url("/content/system/images/logo_stacked.svg") 100%
+      //     no-repeat;
+      //   background-position: center;
+      //   text-indent: -9999px;
+      //   white-space: nowrap;
+      //   @include breakpt-md {
+      //     background-position: left center;
+      //   }
+      // }
+      .header__logo {
+        $width-calamp: calc(
+          136px + (302 - 136) *
+            ((100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min)))
+        );
+
+        order: 1;
         display: block;
         margin: 0;
-        width: 100%;
-        height: 32px;
-        background: url("/content/system/images/header-logo.svg") 100% no-repeat;
-        background-position: center;
-        text-indent: -9999px;
+        width: clamp(136px, #{$width-calamp}, 302px);
+        height: auto;
+        aspect-ratio: 302 / 138;
+        background-image: url("/content/system/images/logo_stacked.svg");
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        text-indent: -999px;
         white-space: nowrap;
-        @include breakpt-md {
-          background-position: left center;
-        }
       }
     }
 
@@ -363,6 +430,7 @@ body {
     }
 
     .header__store-locator {
+      display: none;
       grid-area: locator;
       text-align: center;
       &__wrap {
@@ -418,7 +486,7 @@ body {
         max-width: 100%;
       }
       #miniNav {
-        color: #fff;
+        color: magenta;
         text-align: center;
         .smallText,
         .hello {

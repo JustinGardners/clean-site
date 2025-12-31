@@ -1,12 +1,39 @@
 {
-    "scss.lint.unknownAtRules": "ignore",
-    "liveSassCompile.settings.useNewCompiler": true,
-    "liveSassCompile.settings.formats": [
-        {
-            "format": "expanded",
-            "extensionName": ".css",
-            "savePath": "/css",
-            "savePathReplacementPairs": null
-        }
-    ]
+  "scss.lint.unknownAtRules": "ignore",
+  "liveSassCompile.settings.useNewCompiler": true,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/css",
+      "savePathReplacementPairs": null
+    },
+    {
+      "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "/css",
+      "savePathReplacementPairs": null
+    }
+  ],
+  "liveSassCompile.settings.excludeList": ["**/bootstrap/**"],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#001bcf",
+    "activityBar.background": "#001bcf",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#df001d",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#001bcf",
+    "statusBar.background": "#00149c",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#001bcf",
+    "statusBarItem.remoteBackground": "#00149c",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#00149c",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#00149c99",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#00149C"
 }
