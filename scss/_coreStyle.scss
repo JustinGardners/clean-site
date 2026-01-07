@@ -156,7 +156,7 @@ textarea {
 
   .storefrontCookieContent {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1rem;
     margin-inline: auto;
     padding: 1rem;
@@ -168,6 +168,8 @@ textarea {
 
     @include breakpt-md {
       --container-width: 720px;
+      flex-direction: row;
+      bottom: 0;
     }
 
     @include breakpt-lg {
@@ -280,7 +282,6 @@ body {
       flex-flow: row wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
       padding-inline: 1rem;
 
       > * {
@@ -1057,9 +1058,13 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
     padding-top: 40px;
 
     .row {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      display: block;
       padding-inline: 1rem;
+
+      @include media-breakpoint-up(md) {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+      }
 
       h4 {
         padding-bottom: 14px;
@@ -1128,15 +1133,21 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   }
 
   .footer-sub {
-    grid-column: span 5;
-    display: grid;
-    grid-template-columns: subgrid;
-    align-items: center;
-    grid-auto-flow: dense;
-    margin-top: 100px;
+    margin-top: 22px;
     margin-bottom: 50px;
-    padding-top: 20px;
+    padding: 0;
+    padding-top: 32px;
     border-top: 1px solid $surface-94;
+
+    @include media-breakpoint-up(md) {
+      grid-column: span 5;
+      display: grid;
+      grid-template-columns: subgrid;
+      align-items: center;
+      grid-auto-flow: dense;
+      margin-top: 100px;
+      padding-top: 20px;
+    }
 
     .footer-logo {
       grid-column: span 2;
@@ -1149,24 +1160,35 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
     }
 
     .footer-copyright {
+      display: block;
       grid-column: span 3;
       grid-row: 1 / 2;
+      margin-top: 2rem;
       color: $text-secondary;
       font-size: 14px;
       font-family: $text-alt-font-stack;
       font-weight: 500;
-      text-align: right;
+
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+        text-align: right;
+      }
     }
 
     .footer-payment-types {
       grid-column: span 3;
       grid-row: 2 / 3;
       display: flex;
-      justify-content: end;
       align-items: center;
       gap: 12px;
       margin: 0;
+      margin-top: 1rem;
       padding: 0;
+
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+        justify-content: end;
+      }
 
       li {
         list-style: none;
