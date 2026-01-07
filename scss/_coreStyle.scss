@@ -185,7 +185,14 @@ textarea {
     }
 
     .button {
-      width: 10rem;
+      padding: 9px 22px;
+      min-width: 10rem;
+      background: $brand-700;
+      color: #fff;
+      font-size: 14px;
+      font-family: $text-alt-font-stack;
+      line-height: 1;
+      border-radius: 999px;
     }
   }
 }
@@ -278,10 +285,11 @@ body {
     border-bottom: 1px solid $surface-94;
 
     > .container-md .row {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 3fr 5fr auto auto auto;
       align-items: center;
+      justify-content: center;
+      gap: 0 0.5rem;
       padding-inline: 1rem;
 
       > * {
@@ -291,8 +299,7 @@ body {
     }
 
     #storeLogo {
-      flex: 0 1 30%;
-      margin-right: auto;
+      grid-area: 2 / 1 / 3 / 2;
 
       .header__logo {
         $width-clamp: calc(
@@ -302,9 +309,9 @@ body {
 
         order: 1;
         display: block;
-        margin: 0;
+        margin: 24px 0 14px;
         width: clamp(136px, #{$width-clamp}, 302px);
-        height: auto;
+        max-height: 73px;
         aspect-ratio: 302 / 138;
         background-image: url("https://storefronttp.staging.gardners.com/content/system/images/logo_stacked.svg");
         background-position: left center;
@@ -316,9 +323,7 @@ body {
     }
 
     #miniBasket {
-      order: 4;
-      flex: 0 1 15%;
-      max-width: 120px;
+      grid-area: 2 / 5 / 3 / 6;
 
       .details {
         display: block;
@@ -327,7 +332,7 @@ body {
         padding: 0.75rem 1rem;
         background: $surface-94;
         color: $brand-700;
-        border: 2px solid $surface-94;
+        border: 2px solid $surface-100;
         border-radius: 999px;
 
         a {
@@ -395,9 +400,7 @@ body {
     }
 
     #wishlistLink {
-      order: 3;
-      flex: 0 1 10%;
-      max-width: 80px;
+      grid-area: 2 / 4 / 3 / 5;
       color: $brand-700;
 
       a {
@@ -419,9 +422,7 @@ body {
     }
 
     #navSupport {
-      order: 3;
-      flex: 0 1 10%;
-      max-width: 100px;
+      grid-area: 2 / 3 / 3 / 4;
 
       #miniNav {
         color: $brand-700;
@@ -433,9 +434,16 @@ body {
         }
 
         #dropdownMenuLink {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          align-items: center;
           gap: 5px;
+          height: 75px;
 
           &::before {
+            content: "";
+            display: block;
             width: 24px;
             height: 25px;
             background: $brand-700;
@@ -447,15 +455,14 @@ body {
     }
 
     #navButton {
+      grid-area: 2 / 1 / 3 / 2;
       @include media-breakpoint-up(md) {
         display: none;
       }
     }
 
     #searchClicker {
-      @include media-breakpoint-up(md) {
-        display: none;
-      }
+      display: none;
     }
 
     .blueBarMob {
@@ -463,10 +470,9 @@ body {
     }
 
     #searchBar {
-      order: 5;
+      grid-area: 2 / 2 / 3 / 3;
       margin-inline: auto;
       padding: 0;
-      flex: 0 1 30%;
 
       @include media-breakpoint-up(lg) {
         order: 2;
@@ -526,8 +532,7 @@ body {
     }
 
     .navExtraButtons {
-      order: -1;
-      flex: 0 0 100%;
+      grid-area: 1 / 1 / 2 / 6;
 
       ul {
         display: flex;
@@ -1205,126 +1210,6 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
 .discountFlash {
   &--np {
     display: none;
-  }
-}
-
-/* === MOBILE MENU ============================= */
-
-// Mobile Menu Icon Group
-#navButton,
-#navSupport,
-#miniBasket,
-#searchClicker,
-.header__store-locator {
-  text-align: center;
-  background-color: #ecedef;
-  text-transform: capitalize;
-  @include fixed-bottom-mobile();
-  @include fixed-bottom-mobile__col();
-}
-
-// Mobile Menu Icon Group -- Menu Icon
-#navButton {
-  left: 0;
-  border-left: 0;
-  @include media-breakpoint-up(md) {
-    display: none;
-  }
-  .navbarToggle {
-    @include fixed-bottom-mobile__img-wrap();
-  }
-}
-// Mobile Menu Icon Group -- Search Icon
-#searchClicker {
-  left: 50%;
-  display: block !important;
-  @include media-breakpoint-up(md) {
-    display: none !important;
-  }
-  .click {
-    @include fixed-bottom-mobile__img-wrap();
-    &::before {
-      content: "";
-      background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20viewBox%3D%22-5.0%20-10.0%20110.0%20135.0%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22m79.898%2072.102c5.082-6.7109%208.1016-15.062%208.1016-24.102%200-22.059-17.941-40-40-40s-40%2017.941-40%2040%2017.941%2040%2040%2040c8.6914%200%2016.738-2.8008%2023.309-7.5312l9.6094%209.6094c1.1719%201.1719%202.7109%201.7617%204.2383%201.7617%201.5312%200%203.0703-0.58984%204.2383-1.7617%202.3398-2.3398%202.3398-6.1406%200-8.4805zm-31.898%203.8984c-15.441%200-28-12.559-28-28s12.559-28%2028-28%2028%2012.559%2028%2028-12.559%2028-28%2028z%22%2F%3E%3C%2Fsvg%3E);
-      background-position: center 0;
-      background-size: 100%;
-      width: 25px;
-      height: 35px;
-    }
-  }
-}
-.header__store-locator {
-  z-index: 1050;
-  display: block !important;
-  left: 50%;
-  @include media-breakpoint-up(md) {
-    z-index: auto;
-  }
-  .header__store-locator__wrap {
-    @include fixed-bottom-mobile__img-wrap();
-    .header__store-locator__menu-icon {
-      background-position: center;
-      background-size: 82%;
-      background-repeat: no-repeat;
-      width: 18px;
-      height: 35px;
-      content: "";
-      display: block;
-    }
-    .header__store-locator__icon-label {
-      bottom: 85px;
-      left: 0;
-      @include media-breakpoint-up(md) {
-        bottom: auto;
-      }
-    }
-  }
-}
-// Mobile Menu Icon Group -- Account Icon
-#navSupport {
-  left: 25%;
-  #dropdownMenuLink {
-    @include fixed-bottom-mobile__img-wrap();
-    &::before {
-      background: url("/content/system/images/account-icon.svg");
-      background-position: center;
-      background-size: 100%;
-      background-repeat: no-repeat;
-      width: 18px;
-      height: 35px;
-      content: "";
-      display: block;
-    }
-  }
-  .accountNav {
-    bottom: 75px;
-    left: 0;
-    @include media-breakpoint-up(md) {
-      bottom: auto;
-    }
-  }
-}
-// Mobile Menu Icon Group -- Basket Icon
-#miniBasket {
-  left: 75%;
-  .details {
-    > a {
-      @include fixed-bottom-mobile__img-wrap();
-      .imageHolder {
-        width: 23px;
-        height: 35px;
-        background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2025%2018%22%20style%3D%22enable-background%3Anew%200%200%2025%2018%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M28.6%2010.4h-3.9c-.9-4.1-3.4-6.3-7.1-6.4-3.8-.1-6.3%202.1-7.4%206.4H6.4c-1.3%200-1.7.5-1.3%201.7%201%203%202.1%206%203.1%209.1.1.5.6.9%201.2.8h16.2c.5-.1.8-.3%201.1-.7%201.1-3.1%202.2-6.1%203.2-9.2.3-1.2-.1-1.7-1.3-1.7zm-14.2%205.5c-.6%200-1.1-.5-1-1.2%200-.6.5-1.1%201.2-1%20.6%200%201%20.5%201%201.1%200%20.6-.6%201.1-1.2%201.1zm6.1%200c-.6%200-1.1-.5-1-1.2%200-.6.5-1.1%201.2-1%20.6%200%201%20.5%201%201.1-.1.6-.6%201.1-1.2%201.1zm-8.1-5.6c.4-2.8%202.9-4.7%205.7-4.3%202.3.3%204%202.1%204.3%204.3h-10z%22%20style%3D%22fill%3A%23ffffff%22%20transform%3D%22translate(-4.96%20-4)%22%2F%3E%3C%2Fsvg%3E")
-          center/100% no-repeat;
-      }
-    }
-  }
-  #uxSmallBasketQuantity,
-  #uxSmallBasketValue,
-  #uxSmallBasketTotal {
-    display: none;
-    @include media-breakpoint-up(md) {
-      display: block;
-    }
   }
 }
 
