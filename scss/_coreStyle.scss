@@ -316,6 +316,75 @@ body {
       order: 4;
       flex: 0 1 20%;
       max-width: 120px;
+
+      .details {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 0.75rem 1rem;
+        background: $surface-94;
+        color: $brand-700;
+        border: 2px solid $surface-94;
+        border-radius: 999px;
+
+        a {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0;
+          height: auto;
+        }
+
+        p {
+          display: none;
+        }
+
+        .imageHolder {
+          display: block;
+          width: 18px;
+          height: 21px;
+          background: $brand-700;
+          mask: map.get($icon-list, "shoppingBasket") no-repeat 50% 50%;
+          mask-size: cover;
+        }
+
+        #uxSmallBasketQuantity {
+          position: relative;
+          height: 21px;
+
+          .number {
+            position: absolute;
+            top: 50%;
+            left: -14px;
+            transform: translateY(-50%);
+            display: block;
+            width: 20px;
+            height: 20px;
+            aspect-ratio: 1;
+            padding: 0.25rem;
+            background-color: $promo-strong;
+            color: #fff;
+            font-size: 12px;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            text-align: center;
+            line-height: 1;
+            border-radius: 50%;
+          }
+
+          .text {
+            display: none;
+          }
+        }
+
+        #uxSmallBasketTotal {
+          margin-left: auto;
+        }
+
+        .basketText {
+          display: none;
+        }
+      }
     }
 
     .header__store-locator {
