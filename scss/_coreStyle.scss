@@ -157,6 +157,8 @@ textarea {
   .storefrontCookieContent {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     margin-inline: auto;
     padding: 1rem;
@@ -186,12 +188,13 @@ textarea {
 
     .button {
       padding: 9px 22px;
-      min-width: 10rem;
+      min-width: 8rem;
       background: $brand-700;
       color: #fff;
       font-size: 14px;
       font-family: $text-alt-font-stack;
       line-height: 1;
+      border: 0;
       border-radius: 999px;
     }
   }
