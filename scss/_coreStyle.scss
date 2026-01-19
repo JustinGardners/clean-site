@@ -990,11 +990,11 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   display: none;
   @include media-breakpoint-up(md) {
     display: block;
-    background: $subtle-background;
     font-size: 1rem;
+    font-weight: 500;
     margin-bottom: 1rem;
     padding: 0.5rem 0;
-    background: $subtle-background;
+    font-family: $text-alt-font-stack;
     .breadcrumb {
       &__wrap {
         @include container;
@@ -1013,15 +1013,19 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
       //   }
       // }
       &__item,
-      &__item--or {
+      &__item--or
+       {
         list-style: none;
         display: inline-flex;
         align-items: center;
-        color: #1c4aa0;
-        font-weight: 600;
+        color: $bg-brand;
+        font-weight: 500;
         font-size: 1rem;
+        a{
+          color: $bg-brand;
+        }
         &:last-of-type {
-          text-decoration: underline;
+          font-weight: 700;
         }
         &:not(:last-of-type) {
           &::after {
