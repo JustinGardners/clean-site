@@ -274,7 +274,8 @@ $btn-hover: #002262;
 
 @mixin subheaderH() {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 400;
+
 }
 
 @mixin subheaderHlessBold() {
@@ -292,7 +293,7 @@ $btn-hover: #002262;
 }
 
 @mixin smallsubheaderH() {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
