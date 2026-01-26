@@ -939,7 +939,8 @@
     }
 
     .billingContainer {
-      display: none;
+
+      // display: none;
       margin-bottom: 1rem;
       &.billingShow {
         display: block;
@@ -962,7 +963,6 @@
         .custom-control {
           padding: 0;
         }
-        display: none;
         &.voucherToggle {
           display: block;
         }
