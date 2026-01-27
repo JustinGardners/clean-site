@@ -33,7 +33,7 @@
   }
 }
 
-#mainBasket {
+:where(#mainBasket) {
   grid-template-columns: 1.6fr;
   gap: 0 var(--bs-gutter-x);
   display: grid;
@@ -102,12 +102,13 @@
   // }
   @include paragraphH;
   h3 {
-    @include smallsubheaderH;
+    // @include smallsubheaderH;
     text-wrap: pretty;
     color: $bg-brand;
   }
   p {
     margin-bottom: 0.5rem;
+    font-size:1rem;
   }
   #basketTable {
     #basketHeader {
@@ -159,6 +160,7 @@
         }
         .itemStatus {
           grid-area: status;
+          font-size:1rem;
           .availability-description {
             &::before {
               content: " - ";
@@ -172,6 +174,8 @@
           .productPrice {
             font-weight: 600;
             color: $bg-brand;
+            font-family: $headings-font-family;
+            font-size: clamp(18px, 0.5em + 1vw, 22px);                        
             .rrp {
               text-decoration: line-through;
               font-size: 14px;
@@ -233,6 +237,8 @@
           display: none;
           color: $bg-brand;
           font-weight: 600;
+          font-family: $headings-font-family;
+          font-size: clamp(18px, 0.5em + 1vw, 22px);          
           @include media-breakpoint-up(md) {
             display: block;
           }
@@ -399,7 +405,8 @@
       background-color: #eceff6;
       padding: 1.25rem;
       margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      font-family: $headings-font-family;
+      font-size: 1.5rem;
       font-weight: 600;
       color: #002f87;
       border-top: 2px solid #eceff6;
@@ -473,8 +480,7 @@
         display: grid;
         grid-template-columns: 1fr;
         a {
-          border-radius: 0;
-          @include button-variant($btn-background, $white, $btn-background);
+          @include primary-cta('md');
           max-width: 100%;
           display: block;
         }
@@ -944,4 +950,10 @@
   display: grid;
   place-content: center;
   display: none;
+}
+
+.basketSubText {
+  p {
+    font-size:0.875rem;
+  }
 }

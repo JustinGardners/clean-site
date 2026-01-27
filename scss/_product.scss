@@ -46,6 +46,7 @@
         "des soc"
         "alb alb"
         "tml tml";
+        grid-template-rows: auto auto auto auto auto 1fr;
     }
     @include breakpt-lg {
       grid-template-columns: [mainContent] 6fr [sidebar] 3fr;
@@ -83,6 +84,7 @@
       order: 5;
       display: flex;
       flex-direction: column;
+      margin-top: 1.25rem;
       #productPromoBadgePricing {
         display: flex;
         order: 1;
@@ -91,13 +93,28 @@
       .priceArea {
         order: 2;
       }
+      .postageMessage {
+        font-weight: 600;
+        margin-right: 0.5em;     
+        span {
+          margin-right:0.275em;
+        }   
+        // br {
+        //   display: none;
+        // }
+      }      
     }
     .product-page-social {
       grid-area: soc;
       order: 6;
     }
     .descriptionWrap {
-      margin-top: 1rem;
+      margin-top: 2.5rem;
+      p {
+        &:last-of-type {
+          margin-bottom:0;
+        }
+      }
     }
     .descriptionWrap,
     .descriptionTrackListing,
@@ -127,6 +144,9 @@
     .productInfoWrapGrid {
       grid-area: pdi;
       order: 9;
+      @include breakpt-md {
+        grid-row-start: 5;
+      }      
     }
     .productInfo--manual {
       grid-area: pde;
@@ -139,6 +159,59 @@
     .productSocial {
       grid-area: soc;
       order: 12;
+      margin-top:1.5rem;
+      > h4 {
+        @include visually-hidden();
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+        li {
+          background-color: $accent-1;
+          border-radius: 50%;
+        }
+        a {
+          &:before {
+            content: '';
+            display: block;
+            width:calc(36/16 * 1rem);
+            aspect-ratio: 1/1;
+            background:$bg-brand;            
+            border-radius: 50%;
+            mask-size: 80%;
+            mask-repeat: no-repeat;
+            mask-position: center;
+          }
+          font-size: 0;
+          &.facebook-share-button {
+            &:before {
+              mask-image: social-mask('facebook');
+            }
+          }
+          &.tiktok-share-button {
+            &:before {
+              mask-image: social-mask('tiktok');
+            }
+          }
+          &.twitter-share-button {
+            &:before {
+              mask-image: social-mask('twitter');
+            }
+          }
+          &.pintrest-share-button {
+            &:before {
+              mask-image: social-mask('pinterest');
+            }
+          }
+          &.instagram-share-button {
+            &:before {
+              mask-image: social-mask('instagram');
+            }
+          }                              
+        }
+      }      
     }
     .description--manual {
       &::before {
@@ -262,7 +335,7 @@
 
       .jacket {
           padding: 2rem;
-          background-color: #E7EFFA;
+          background-color: $accent-1;
           border-radius: 10px;
         img {
           width: auto;
@@ -330,19 +403,13 @@
       &--title,
       &-authorContributor,
       &--series {
-        text-align: center;
-        @include breakpt-md {
-          text-align: left;
-        }
+        text-align: left;
       }
       &--authorContributor {
-        margin-top: 0.5rem;
+        margin-top: clamp(0.5rem, 0.5em + 1vi, 0.75rem);
       }
       &--authorContributor {
-        text-align: center;
-        @include breakpt-md {
-          text-align: left;
-        }
+        text-align: left;
       }
       &--authorContributor,
       &-authorContributor,
@@ -350,6 +417,7 @@
         h2 {
           font-size: 1rem;
           margin: 0;
+          text-transform: capitalize;
         }
       }
       h2 {
@@ -372,12 +440,13 @@
             display: block;
             margin-top: 0.75rem;
             @include subheaderHlessBold;
-            font-weight: normal;
+            // font-weight: normal;
           }
           .product__title--format {
             margin-top: 0.75rem;
             padding-top: 0.75rem;
             border-top: 1px solid $subtle-border;
+            display: none;
           }
           span {
             display: block;
@@ -445,14 +514,18 @@
     .trackListingWrap {
       h4 {
         color: $bg-brand;
-        font-size: 22px;
+        font-size: clamp(1.125rem, 0.5em + 1vw, 1.875rem);
         font-weight: 700;
-        padding: 0.5rem 0;
+        padding: 1.5rem 0 0;
         margin: 0 0 1rem;
-        border-bottom: 1px solid lightgray;
+        border-top:1px solid $subtle-border;
+        @include breakpt-md {
+          padding: 0;
+          border-top: none;
+        }
       }
       p {
-        line-height: 2.2;
+        line-height: 1.75;
       }
       .read-more,
       .read-less {
@@ -509,32 +582,43 @@
     .productInfoWrapGrid,
     .alternativeFormats,
     .descriptionWrapManual {
-      margin-inline: -0.75rem;
+      // margin-inline: -0.75rem;
       @include breakpt-md {
         margin-inline: unset;
       }
     }
     .productInfoWrapGrid {
+      margin-top: 2rem;
       margin-bottom: 2rem;
       .productInfo {
-        border: #E7EFFA 2px solid;
-        border-radius: 10px;
+        @include breakpt-md {
+          border: #E7EFFA 2px solid;
+          border-radius: 10px;
+        }
         h4 {
-          padding: 0.5rem 1rem;
           margin: 0;
-          font-size: 22px;
+          font-size: clamp(1.125rem, 0.5em + 1vw, 1.875rem);
           font-weight: 700;
           color: $bg-brand;
+          padding: 1.5rem 0 0;
+          border-top: 1px solid $subtle-border;
+          @include breakpt-md {
+            padding: 0.5rem 1rem;
+            border-top: none;
+          }          
         }
         ul {
           padding: 0;
           margin: 0;
+          margin-top:1.5rem;
+          @include breakpt-md {
+            margin-top:0;
+          }          
           li {
             list-style: none;
-            margin-bottom: 1.5rem;
             span {
               display: block;
-              font-size: 1.25rem;
+              font-size: inherit;
               &.label {
                 color: $bg-brand;
                 font-weight: 700;
@@ -552,10 +636,15 @@
                 }
               }
             }
+            + li:not(:nth-of-type(2)) {
+              margin-top: 1.5rem;
+            }            
           }
         }
         > ul {
-          padding: 1rem;
+          @include breakpt-md {
+            padding: 1rem;
+          }
         }
         .availability {
           display: none;
@@ -594,12 +683,10 @@
         }
       }
       .priceArea {
-        border-top: 1px solid $subtle-border;
-        padding-top: 1.25rem;
         margin-top: 0.75rem;
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         @include breakpt-md {
           flex-direction: row;
@@ -615,6 +702,7 @@
         display: flex;
         align-items: flex-end;
         gap: 1rem;
+        margin-top:clamp(1rem, 0.5em + 1vi, 1.5rem);
         p {
           margin: 0;
         }
@@ -632,26 +720,20 @@
         .sitePrice {
           @include mainheaderH;
           color: $bg-brand;
-          line-height: 0.8;
           position: relative;
-          top: -4px;
         }
       }
       .availability {
-        order: 1;
-        margin-bottom: 1rem;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        place-content: center center;
-        gap: 0.5rem;
         @include breakpt-md {
-          margin-bottom: 1rem;
           width: 100%;
         }
         a {
           position: relative;
           pointer-events: none;
-
+          display: grid;
+          grid-template-columns: auto 1fr;
+          place-content: center center;
+          gap: 0.5rem;
           &::before,
           &::after {
             content: "";
@@ -660,18 +742,12 @@
             grid-row: 1 / 2;
           }
           &::before {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            width: 24px;
-            height: 24px;
             background: $subtle-background;
             border-radius: 0.25rem;
             border: 1px solid $subtle-border;
-          }
-          &::after {
-            position: absolute;
+            width: clamp(18px, 0.5em + 1vi, 24px);
+            height: clamp(18px, 0.5em + 1vi, 24px);
+            border-radius: 50%;            
           }
           &.inStock,
           &.preOrder,
@@ -682,15 +758,14 @@
               border-color: $bg-brand;
             }
             &::after {
-              top: 50%;
-              left: 3px;
-              transform: translateY(-50%);
-              width: 18px;
-              height: 18px;
-              margin: auto;
+              width: clamp(18px, 0.5em + 1vi, 24px);
+              height: clamp(18px, 0.5em + 1vi, 24px);
+              margin-inline: auto;
               background: #fff;
               mask: $iconCheckmark;
-              mask-size: cover;
+              mask-size: 70%;
+              mask-repeat: no-repeat;
+              mask-position: center;
             }
           }
           &.unavailable,
@@ -730,21 +805,15 @@
           }
           p {
             margin: 0;
-            &:first-child {
-              padding-left: 34px;
-            }
+            display: flex;
+            align-items: center; 
             span {
-              font-size: 1.25rem;
+              display: contents;
               &.availability-description {
                 &::before {
                   content: " - ";
                   display: inline;
                 }
-              }
-            }
-            @include breakpt-xl {
-              > span {
-                font-size: 1.25rem;
               }
             }
           }
@@ -758,20 +827,10 @@
       .basket {
         order: 3;
         flex: 1 1 100%;
-        margin-top: 1rem;
+        margin-top: clamp(0.5rem, 0.35em + 1vi, 1.5rem);
         width: 100%;
         .buyButton:not(.outOfStock) {
-          display: block;
-          background: $bg-brand;
-          color: #fff;
-          padding: 1.05rem;
-          font-size: 30px;
-          font-weight: 700;
-          border-radius: 0;
-          text-decoration: none;
-          &:hover {
-            background-color: $bg-brand-dark;
-          }
+          @include primary-cta();
         }
         .buyButton.outOfStock {
           position: relative;
@@ -805,14 +864,14 @@
           border-radius: 0;
           text-decoration: none;
         }
-        .productWishlist {
-          display: none;
-        }
       }
       .basketFooterText {
         order: 4;
         flex: 1 1 100%;
         margin-top: 1rem;
+        &:has(.deliveryText:empty) {
+          display: none;
+        }        
 
         .delivery-wrapper {
           --arrowSize: 13px;

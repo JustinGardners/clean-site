@@ -10,6 +10,7 @@ hr.dev {
   interpolate-size: allow-keywords;
   --vw-min: 375;
   --vw-max: 1440;
+  --bs-body-font-size: clamp(0.875rem, 0.5em + 1vi, 1rem);
 }
 
 body {
