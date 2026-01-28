@@ -1,6 +1,46 @@
 /* Template Styles */
 
 /* Generic */
+.col-5wide{
+  flex: 0 0 auto;
+  width: 20%
+}
+
+@include breakpt-sm {
+  .col-sm-5wide{
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+@include breakpt-md {
+  .col-md-5wide{
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+@include breakpt-lg {
+  .col-lg-5wide{
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+@include breakpt-xl {
+  .col-xl-5wide{
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+@include breakpt-xxl {
+  .col-xxl-5wide{
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+
 .template__pricing{
   overflow: hidden;
   line-height: 100%;
