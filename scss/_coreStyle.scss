@@ -307,15 +307,11 @@ body {
       order: 2;
 
       .header__logo {
-        $width-clamp: calc(
-          136px + (302 - 136) *
-            ((100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min)))
-        );
-
         order: 1;
         display: block;
-        margin: 24px 0 14px;
-        width: clamp(136px, #{$width-clamp}, 302px);
+        // margin: 24px 0 14px;
+        margin: clampWithViewPort(0, 24) 0 clampWithViewPort(0, 14);
+        width: clampWithViewPort(136, 302);
         max-height: 73px;
         aspect-ratio: 302 / 138;
         background-image: url("https://storefronttp.staging.gardners.com/content/system/images/logo_stacked.svg");

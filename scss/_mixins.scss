@@ -414,3 +414,11 @@ $btn-hover: #002262;
     background-color: $bg-brand-dark;
   }
 }
+
+@function clampWithViewPort($minVal, $maxVal) {
+  $clampCalc: calc(
+    #{$minVal}px + (#{$maxVal} - #{$minVal}) *
+      ((100vw - (var(--vw-min) * 1px)) / (var(--vw-max) - var(--vw-min)))
+  );
+  @return clamp(#{$minVal}px, #{$clampCalc}, #{$maxVal}px);
+}

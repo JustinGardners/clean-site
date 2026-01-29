@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dateInput = document.querySelector("input[type='date']");
+        const submitButton = document.querySelector("button[type='submit']");
+        const form = document.querySelector("form");
+
+        const today = new Date();
+        const todayFormatted = `${today.getFullYear()}-${today.getMonth() < 10 ? `0${today.getMonth() + 1}` : today.getMonth() + 1}-${today.getDate()}`;
+
+        const minDate = "1920-01-01";
+        const maxDate = "2008-12-31";
+
+        dateInput.min = minDate;
+        // dateInput.max = maxDate;
+
+        console.log(dateInput.value);
+
+        const validateRules = (year, month, dayNumber, day) => {
+          const tooYoung =
+            year > today.getFullYear() - 18 || year == today.getFullYear() - 18;
+          const tooOld = year < 1920;
+            console.log('year', year)
+          if (tooYoung || tooOld) {
+            if (tooYoung) {
+              return `<span class='dateMessageWrap'><p><b>Important</b><br />Please double check your date selection as you have selected a recent date. We can't fulfil any dates after the year of ${today.getFullYear() - 18}. Please double check your date selection to ensure it is correct.</p></span>`;
+            } else if(tooOld) {
+              return `<span class='dateMessageWrap'><p><b>Important</b><br />Please double check your date selection as you have selected a date before 1920. We can't fulfil any dates before 1920. Please double check your date selection to ensure it is correct.</p></span>`;
+            }
+          } else if (year <= 1994 && month == 12 && dayNumber == 26) {
+            return `<span class='dateMessageWrap'><p>Please note: The Telegraph was not published on Boxing Day until 1995. Your book will be created with the nearest available edition before this date, then with the Boxing Day edition after 1995.</p></span>`;
+          } else if (month == 12 && dayNumber == 25) {
+            return `<span class='dateMessageWrap'><p>Please note: neither The Telegraph or The Sunday Telegraph are published on Christmas day. Your book will be created with the nearest available edition.</p></span>`;
+          } else if (month == 2 && dayNumber == 29) {
+            return `<span class='dateMessageWrap'><p>Please note: As your selected date is 29th February, an alternative edition will be provided for none leap years.</p></span>`;
+          } else if (year <= 1961 && day == "Sun") {
+            return `<span class='dateMessageWrap'><p>Please note: The Sunday Telegraph was not published until February 1961, and your commemorative date starts on a Sunday. Your book will be created with an alternative Telegraph cover near to your chosen date. Any subsequent commemorative days that fall on a Sunday before February 1961 will also be replaced with an alternative day.</p></span>`;
+          } else if (year <= 1961 && day != "Sun") {
+            return `<span class='dateMessageWrap'><p>Please note: The Sunday Telegraph was not published until February 1961. Any commemorative days that fall on a Sunday before this date will be replaced with an alternative day.</p></span>`;
+          } else {
+            return null;
+          }
+        };
+
+        const addRemoveMessage = (message, selector) => {
+          if (message) {
+            if (!document.querySelector(selector)) {
+              dateInput.insertAdjacentHTML("afterend", message);
+            }
+          } else {
+            const existingMessage = document.querySelector(selector);
+            if (existingMessage) {
+              existingMessage.remove();
+            }
+          }
+        };
+
+        const validateDate = () => {
+          const value = dateInput.value;
+          console.log("Input value:", value);
+
+          let message = null;
+          if (value && value.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            const year = parseInt(value.split("-")[0]);
+            const month = parseInt(value.split("-")[1]);
+            const dayNumber = parseInt(value.split("-")[2]);
+            const day = new Date(value).toString().split(" ")[0];
+            console.log("Parsed - year:", year, "month:", month, "day:", dayNumber, "dayOfWeek:", day);
+            message = validateRules(year, month, dayNumber, day);
+          } else {
+            console.log("Date format incomplete or invalid");
+          }
+
+          addRemoveMessage(message, ".dateMessageWrap");
+
+          if (value < minDate || value > maxDate) {
+            dateInput.setCustomValidity(
+              `Please enter a date between ${minDate} and ${maxDate}.`,
+            );
+          } else {
+            dateInput.setCustomValidity("");
+          }
+        };
+
+        dateInput.addEventListener("input", validateDate);
+
+        dateInput.addEventListener("invalid", () => {
+          console.log("Invalid event fired.");
+        });
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          validateDate();
+        });
+      });
+    </script>
+
+    <style>
+      :where(input[type="date"]) {
+        border: 2px solid hsla(219, 34%, 80%, 1);
+        border-radius: 10px;
+        text-transform: uppercase;
+        appearance: none;
+        padding: 0.5em 1em;
+        font-size: 1rem;
+        font-family:
+          "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        width: min(250px, 100%);
+        &:user-invalid {
+          border: 2px solid red;
+        }
+      }
+
+      :where(input[type="date"]::-webkit-datetime-edit-year-field) {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="return false;">
+      <input type="date" id="bday" name="birthday" />
+      <button type="submit">Add to basket</button>
+    </form>
+  </body>
+</html>
