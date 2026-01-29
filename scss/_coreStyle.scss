@@ -288,30 +288,53 @@ body {
   #header {
     background: $surface-100;
     border-bottom: 1px solid $surface-94;
+    @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {    
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .container-md {
+      max-width:1320px!important;
+    }
 
     > .container-md .row {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0 0.75rem;
+      --vw-min: 375;
+      display: grid;
+      grid-template-columns: [logo] max-content [search] 1fr [menu] max-content [account] max-content [wishlist] max-content [basket] max-content;
+      grid-auto-flow: column;
+      gap: 0 clampWithViewPort(8, 22);
       padding-inline: 1rem;
-
+      width:100%;
+      margin-inline: auto;
+      padding-inline: 0;
       > * {
         width: auto;
         padding: 0;
       }
     }
 
+    :is(.row > *, #miniNav) {
+      display: flex;
+      justify-content: stretch;
+      align-self: center;
+      a {
+        flex:1 1 auto;
+      }
+    }
+
+    #miniBasket {
+      flex: 1 1 auto;
+    }
+
     #storeLogo {
-      flex: 8 1 0;
-      order: 2;
+      grid-column: logo;
+      margin-inline-end: auto;
 
       .header__logo {
+        --vw-min: 375;
         order: 1;
         display: block;
-        // margin: 24px 0 14px;
         margin: clampWithViewPort(0, 24) 0 clampWithViewPort(0, 14);
-        width: clampWithViewPort(136, 302);
+        width: clampWithViewPort(88, 302);
         max-height: 73px;
         aspect-ratio: 302 / 138;
         background-image: url("https://storefronttp.staging.gardners.com/content/system/images/logo_stacked.svg");
@@ -323,20 +346,23 @@ body {
       }
     }
 
+    :is(#navButton, #miniBasket, #navSupport, #wishlistLink) {
+      flex: 0 1 fit-content;
+    }
+
+    #SearchForm {
+      width: 100%;
+      margin-block-end: 0;
+    }
+
     #miniBasket {
       --icon-width: 18px;
-      flex: 2 1 0;
-      order: 6;
-
-      @include breakpt-md {
-        flex: 3.5 1 0;
-      }
-
+      grid-column: basket;
       .details {
         display: block;
         width: 100%;
         height: auto;
-        padding: 0.75rem 1rem;
+        padding: 1.125em 1.375em 1.125em 1.25em;
         background: $surface-94;
         color: $brand-700;
         border: 2px solid $surface-100;
@@ -348,7 +374,7 @@ body {
           flex-flow: row nowrap;
           justify-content: space-between;
           align-items: center;
-          gap: 0;
+          gap: 0 0.75em;
           height: auto;
         }
 
@@ -415,43 +441,35 @@ body {
       display: none !important;
     }
 
-    #wishlistLink {
-      flex: 2 1 0;
-      order: 5;
-      color: $brand-700;
+    :is(#wishlistLink, #navSupport #dropdownMenuLink) {
+        &::before {
+          content: "";
+          display: block;
+          width: 1.5em;
+          height: 1.5em;
+          background: $brand-700;
+          mask: var(--icon-mask) no-repeat 50% 50%;
+          mask-size: contain;
+        }
+    }
 
+    #wishlistLink {
+      $icon-mask: map.get($icon-list, "wishlist");
+      --icon-mask: #{$icon-mask};
+      grid-column: wishlist;
+      color: $brand-700;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
       a {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 5px;
-        font-size: 8px;
-
-        @include breakpt-lg {
-          font-size: 16px;
-        }
-
-        &::before {
-          content: "";
-          display: block;
-          width: 13px;
-          height: 12px;
-          background: $brand-700;
-          mask: map.get($icon-list, "wishlist") no-repeat 50% 50%;
-          mask-size: cover;
-
-          @include breakpt-lg {
-            margin-top: 3px;
-            width: 24px;
-            height: 22px;
-          }
-        }
       }
     }
 
     #navSupport {
-      flex: 2 1 0;
-      order: 4;
+      grid-column: account;
 
       #miniNav {
         color: $brand-700;
@@ -463,36 +481,17 @@ body {
         }
 
         #dropdownMenuLink {
+          $icon-mask: map.get($icon-list, "account");
+          --icon-mask: #{$icon-mask};
           display: flex;
           flex-flow: column nowrap;
           justify-content: center;
           align-items: center;
           gap: 5px;
           height: 75px;
-
-          &::before {
-            content: "";
-            display: block;
-            width: 12px;
-            height: 12px;
-            background: $brand-700;
-            mask: map.get($icon-list, "account") no-repeat 50% 50%;
-            mask-size: cover;
-
-            @include breakpt-lg {
-              width: 24px;
-              height: 25px;
-            }
-          }
         }
 
         .navMyAccount {
-          font-size: 8px;
-
-          @include breakpt-lg {
-            font-size: 16px;
-          }
-
           span {
             display: none;
           }
@@ -501,7 +500,7 @@ body {
     }
 
     #navButton {
-      order: 3;
+      grid-column: menu;
 
       @include media-breakpoint-up(md) {
         display: none;
@@ -527,22 +526,15 @@ body {
     }
 
     #searchBar {
-      flex: 12 1 0;
-      order: 6;
-
-      @include breakpt-lg {
-        order: 3;
-        margin-right: 2.5rem;
+      grid-column: search;      
+      @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
+        grid-row: 3;
+        grid-column: 1 / -1;
       }
 
       #searchBox {
-        $width-clamp: calc(
-          290px + (416 - 290) *
-            ((100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min)))
-        );
-
         position: relative;
-        width: #{$width-clamp};
+        width: min(416px, 100%);
         margin-inline: auto;
 
         .productType,
@@ -551,13 +543,13 @@ body {
         }
 
         input#keyword {
-          padding: 1rem 2rem;
+          padding: 1em 3em 1em 2em;
           width: 100%;
           background: $surface-94;
           border-color: $surface-94;
           border-radius: 999px;
           color: $text-primary;
-          font-size: 16px;
+          font-size: 1em;
           font-family: $text-alt-font-stack;
           font-weight: 500;
           line-height: 1;
@@ -570,17 +562,19 @@ body {
         input[type="submit"] {
           position: absolute;
           top: 0;
-          left: calc(100% - 60px);
-          right: 8px;
+          right: 1.1em;
           bottom: 0;
           background-color: $surface-94;
           background-color: $brand-700;
           mask: map.get($icon-list, "search") no-repeat 50% 50%;
-          mask-size: 30px;
           white-space: nowrap;
           text-indent: -999px;
           border: 0;
           transition: all 0.125s ease-out;
+          inline-size: 1.375em;
+          block-size: 1.375em;
+          margin-block: auto;
+          mask-size: contain;          
 
           &:hover {
             background-color: $brand-400;
@@ -590,7 +584,8 @@ body {
     }
 
     .navExtraButtons {
-      flex: 0 1 100%;
+      grid-column: 1 / -1;
+      grid-row: 1 / 1;
       display: none;
 
       @include breakpt-lg {
@@ -608,10 +603,10 @@ body {
 
           a {
             display: block;
-            padding: 12px 24px;
+            padding: 0.675em 1.5em;
             background-color: $surface-94;
             color: $brand-700;
-            font-size: 14px;
+            font-size: 0.875em;
             font-family: $text-alt-font-stack;
             font-weight: 500;
             line-height: 150%;
@@ -620,6 +615,10 @@ body {
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             transition: all 0.25s ease;
+            @supports (text-box-trim: trim-both) {
+              text-box-trim: trim-both;
+              padding-block: 0.95em;
+            }
 
             &:hover {
               background-color: $brand-400;
@@ -857,15 +856,10 @@ body.mobileMenuOpen {
             }
             &.open {
               > a {
-                // padding-top: 1rem;
                 &::after {
                   transform: translateY(-50%) rotate(90deg);
-                  // rotate: 90deg;
-                  // top: 11px;
                 }
               }
-              // height: 0;
-              // overflow: hidden;
               .megaMenu {
                 display: block !important;
               }
