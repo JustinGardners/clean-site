@@ -1,31 +1,12 @@
 #basket {
   > h2 {
     position: relative;
-    text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
+    margin-block: 1.5rem;
     color: $bg-brand;
-    font-weight: 600;
+    font-weight: 500;
     position: relative;
     z-index: 1;
-    &::after {
-      left: -1rem;
-      transform: none;
-      height: 100%;
-      width: 99vw;
-      background: $subtle-background;
-      z-index: -1;
-      content: "";
-      position: absolute;
-      top: 0;
-    }
-    @include media-breakpoint-up(md) {
-      &::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
+    font-size: clampWithViewPort(24, 40);
   }
   .alert {
     margin-top: 0.5rem;
@@ -63,7 +44,7 @@
   }
   > form {
     grid-area: main-basket;
-    border: 2px solid $subtle-background;
+    // border: 2px solid $subtle-background;
   }
   // > .basketSpendFreeDelivery {
   //   grid-area: free-delivery;
@@ -101,14 +82,16 @@
 
   // }
   @include paragraphH;
+  font-size:1.25em;
   h3 {
     // @include smallsubheaderH;
     text-wrap: pretty;
+    max-width: 40ch;
+    line-height: 1.5;
     color: $bg-brand;
   }
   p {
     margin-bottom: 0.5rem;
-    font-size:1rem;
   }
   #basketTable {
     #basketHeader {
@@ -118,26 +101,23 @@
     #basketBody {
       .row {
         position: relative;
-        padding: 1.5rem 3rem 1.5rem 1.5rem;
+        padding: 1.5rem;
         margin: 0;
         grid-template-rows: repeat(4, min-content);
         display: grid;
         column-gap: 1rem;
         grid-template-columns: 0.6fr 2.1fr;
-        border-bottom: 2px solid $subtle-background;
+        border: 2px solid $subtle-background;
+        border-radius: calc(10 / 16 * 1rem);
+        font-size: 0.875rem;
+        + .row {
+          margin-top: 0.75rem;
+        }
         &:last-child {
           border-bottom: 0;
         }
         > div {
           padding: 0;
-        }
-        @include media-breakpoint-up(md) {
-          grid-template-columns: 0.4fr 2.1fr 0.4fr 0.4fr;
-          grid-template-areas:
-            "jacket info quantity subtotal"
-            "jacket format quantity subtotal"
-            "jacket status quantity subtotal"
-            "jacket price quantity subtotal";
         }
         grid-template-areas:
           "jacket info blank"
@@ -146,21 +126,53 @@
           "jacket price blank"
           "jacket subtotal blank"
           "jacket quantity blank";
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: clampWithViewPort(90, 138) 2.1fr 0.4fr 0.4fr;
+          grid-template-areas:
+            "jacket info quantity subtotal"
+            "jacket format quantity subtotal"
+            "jacket status quantity subtotal"
+            "jacket price quantity subtotal";
+          aspect-ratio: 966 / 237;
+        }
+
         .itemCover {
-          grid-area: jacket;
+          // grid-area: jacket;
+          // aspect-ratio: 2 / 3;
+          width: clampWithViewPort(90, 138);
+          position: absolute;
+          // width: 132px;
+          height: calc(100% - 2rem);
+          top: 1rem;
+          left: 1rem;
+          a {
+            position: absolute;
+            width: clampWithViewPort(90, 138);
+            height: 100%;
+          }
+          .jacket-Book {
+            height: 100%;
+            display: block;
+          }
           img {
-            max-height: 120px;
+            height: 100%;
+            max-height: 187px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            // object-fit:cover;
           }
         }
         .itemInfo {
           grid-area: info;
+          h3 {
+            font-size: min(1.15em, 1rem);
+          }
         }
         .itemFormat {
           grid-area: format;
         }
         .itemStatus {
           grid-area: status;
-          font-size:1rem;
           .availability-description {
             &::before {
               content: " - ";
@@ -169,13 +181,13 @@
           }
         }
         .itemPrice {
-          margin: 0.5rem 0;
+          // margin: 0.5rem 0;
           grid-area: price;
           .productPrice {
+            font-size: min(1.15em, 1rem);
             font-weight: 600;
             color: $bg-brand;
             font-family: $headings-font-family;
-            font-size: clamp(18px, 0.5em + 1vw, 22px);                        
             .rrp {
               text-decoration: line-through;
               font-size: 14px;
@@ -196,11 +208,11 @@
               "button1";
             input[type="number"] {
               grid-area: inputnum;
-              width: 100%;
-              border: 2px solid #002f87;
-              margin-bottom: 0.25rem;
-              padding: 0.25rem;
-              padding-left: 0.5rem;
+              width: fit-content;
+              // border: 2px solid #002f87;
+              // margin-bottom: 0.25rem;
+              // padding: 0.25rem;
+              // padding-left: 0.5rem;
               &:disabled {
                 display: none;
               }
@@ -217,6 +229,7 @@
               text-decoration: underline;
               @include linkH;
               padding-bottom: 0;
+              padding-inline: 0;
               border-bottom: 0;
             }
             .removeItem {
@@ -229,6 +242,13 @@
               mask: $iconCross;
               mask-size: cover;
               color: $bg-brand;
+              &:before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                border: 1px solid red;
+              }
             }
           }
         }
@@ -238,9 +258,11 @@
           color: $bg-brand;
           font-weight: 600;
           font-family: $headings-font-family;
-          font-size: clamp(18px, 0.5em + 1vw, 22px);          
+          font-size: clamp(18px, 0.5em + 1vw, 22px);
           @include media-breakpoint-up(md) {
             display: block;
+            grid-column: -1;
+            grid-row: 2;
           }
         }
       }
@@ -309,6 +331,12 @@
 }
 #basketSummaryArea {
   grid-area: side-basket;
+  @media (max-width: calc(map.get($grid-breakpoints, "lg") - 1px)) {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding-bottom: 1em;
+  }
   .basketSpendFreeDelivery {
     &::before {
       content: "";
@@ -340,7 +368,8 @@
   #basketSubTotals {
     display: flex;
     flex-direction: column;
-
+    position: sticky;
+    top: 1rem;
     > * {
       order: 1;
     }
@@ -361,11 +390,11 @@
       text-transform: capitalize;
       border-bottom: 2px solid #8b9abf;
 
-      .discountList{
+      .discountList {
         margin: 0;
         padding: 0;
         width: 100%;
-        li{
+        li {
           padding: 0;
           margin: 0 0 5px;
           list-style: none;
@@ -403,13 +432,14 @@
       align-items: center;
       order: 3;
       background-color: #eceff6;
-      padding: 1.25rem;
-      margin-bottom: 0.5rem;
+      padding: 1.5rem;
       font-family: $headings-font-family;
-      font-size: 1.5rem;
+      font-size: 1em;
       font-weight: 600;
       color: #002f87;
-      border-top: 2px solid #eceff6;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      margin-bottom: 0;
       span {
         min-width: 9ex;
         text-align: right;
@@ -426,26 +456,27 @@
         grid-template-rows: 1fr;
         column-gap: 0.5rem;
         background-color: #eceff6;
-        padding: 1rem;
+        padding: 1.5rem;
+        border-radius: 10px;
         label {
           color: #002f87;
           font-weight: 600;
           display: block;
           width: 100%;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.75rem;
           grid-column: 1 / -1;
           left: 0;
           border-radius: 0;
-          text-align: center;
+          font-size: 1rem;
+          font-family: $headings-font-family;
         }
         #CouponCode {
           grid-column: 1 / 2;
-          border-radius: 0;
-          border: 2px solid #002f87;
+          border-radius: 10px;
         }
         .btn {
           @include button-variant($white, $btn-background, $btn-background);
-          font-size: 12px;
+          // font-size: 12px;
           grid-column: 2 / 3;
         }
         &::after {
@@ -460,7 +491,11 @@
       display: flex;
       flex-flow: column;
       gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      padding-bottom: 1.5rem;
+      padding-inline: 1.5rem;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background: #eceff6;
       span {
         a {
           font-size: 22px;
@@ -480,7 +515,7 @@
         display: grid;
         grid-template-columns: 1fr;
         a {
-          @include primary-cta('md');
+          @include primary-cta("sm");
           max-width: 100%;
           display: block;
         }
@@ -954,6 +989,6 @@
 
 .basketSubText {
   p {
-    font-size:0.875rem;
+    font-size: 0.875rem;
   }
 }
