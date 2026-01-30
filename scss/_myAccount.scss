@@ -223,22 +223,22 @@
     color: $bg-brand;
     font-weight: bold;
   }
-  input[type="text"],
-  input[type="password"],
-  select,
-  textarea {
-    display: block;
-    margin: 0.5rem 0;
-    border: 2px solid #bcc8de;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
-    background-clip: padding-box;
-    border-radius: 0;
-  }
+  // input[type="text"],
+  // input[type="password"],
+  // select,
+  // textarea {
+  //   display: block;
+  //   margin: 0.5rem 0;
+  //   border: 2px solid #bcc8de;
+  //   padding: 0.375rem 0.75rem;
+  //   font-size: 1rem;
+  //   font-weight: 400;
+  //   line-height: 1.5;
+  //   color: var(--bs-body-color);
+  //   background-color: var(--bs-body-bg);
+  //   background-clip: padding-box;
+  //   border-radius: 0;
+  // }
 
   .btn,
   button {

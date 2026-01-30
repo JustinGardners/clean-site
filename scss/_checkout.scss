@@ -94,6 +94,7 @@
   }
   .checkoutBreadcrumb {
     display: none;
+    font-family: $headings-font-family;
     @include breakpt-md {
       display: grid;
     }
@@ -110,7 +111,7 @@
         flex: 1;
         min-width: fit-content;
         list-style: none;
-        border-bottom: 2px solid $subtle-border;
+        border-bottom: 6px solid $subtle-border;
         padding: 0.5rem 1rem 0.5rem 0;
         &.previous,
         &.current {
@@ -188,7 +189,8 @@
         border: none;
       }
       .checkout-main-section {
-        border: 3px solid $bg-brand;
+        border: 2px solid $bg-brand;
+        border-radius: 10px;
       }
     }
     &.creditCard {
@@ -221,8 +223,9 @@
     .checkoutWrap,
     #checkoutSidebar {
       position: relative;
-      border: 3px solid $bg-brand;
+      border: 2px solid $bg-brand;
       margin-top: 2rem;
+      border-radius: 10px;
       @include breakpt-lg {
         position: sticky;
         top: 1rem;
@@ -260,10 +263,13 @@
         align-items: center;
         padding: 2rem;
         line-height: 1.2;
+        border-radius: 10px 10px 0 0;
         .basketQty {
           color: $bg-brand;
           font-size: 1.5rem;
           font-weight: bold;
+          font-size: clampWithViewPort(22, 30);
+          font-family: $headings-font-family;
         }
         .totals {
           display: none;
@@ -286,6 +292,16 @@
             grid-template-rows: repeat(3, min-content);
             gap: 0.5rem 1.5rem;
             padding-bottom: 0.5rem;
+            .itemTitleFormat {
+              display: block;
+              margin-top: 0.5rem;
+              font-family: var(--bs-body-font-family);
+              font-size: calc(14/16 * 1rem);
+            }
+            .itemTitleQty {
+              font-size: calc(14/16 * 1rem);
+              font-family: $headings-font-family;
+            }
             &:not(:only-child):not(:last-child) {
               border-bottom: 2px solid $subtle-border;
               margin-bottom: 1rem;
@@ -303,6 +319,11 @@
                 grid-column: 2 / 3;
                 grid-row: 1 / 2;
                 text-wrap: pretty;
+                font-family:$headings-font-family;
+                a {
+                  display: block;
+                  color: $primary;
+                }
               }
               &TitlePrice {
                 display: block;
@@ -310,8 +331,8 @@
                 margin-top: 0.5rem;
               }
               &TitleQty {
-                grid-column: 3 / 4;
-                grid-row: 1 / 2;
+                grid-column: 2 / 2;
+                grid-row: 3 / 3;
                 font-weight: bold;
               }
               &TitleDiscount {
@@ -325,6 +346,10 @@
       .miniBasketFooter {
         background: $subtle-background;
         position: relative;
+        border-radius: 0 0 10px 10px;        
+        font-family: $headings-font-family;
+        color: $primary;
+        font-weight: 600;
         &::before {
           content: "";
           position: absolute;
@@ -340,17 +365,19 @@
           );
         }
         .subTotals {
-          padding: 1rem;
-          border-bottom: 2px solid $subtle-border;
+          padding-inline: 1.5rem;
+          padding-top: 1.5rem;
+          // border-bottom: 2px solid $subtle-border;
           > div:not(:first-child) {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
           }
         }
         .totals {
           color: $bg-brand;
-          font-size: 1.5rem;
+          font-size: clampWithViewPort(22, 30);
           font-weight: bold;
-          padding: 1rem;
+          padding: 1.5rem;
+          padding-bottom:1.5rem;
         }
         .subTotals > div > div,
         .totals {
@@ -377,6 +404,18 @@
         display: none;
       }
     }
+    .deliveryHeader {
+      h4 {
+        border-radius: 10px 10px 0 0w;
+      }
+    }
+    .checkoutSection {
+      .safePlace {
+        select {
+          width: fit-content;
+        }
+      }
+    }
     .checkoutSection,
     .checkoutShow {
       // --formLabelSpace: 125px;
@@ -388,52 +427,35 @@
       h4 {
         background: $subtle-background;
         color: $bg-brand;
-        text-align: center;
         font-weight: bold;
         margin-bottom: 2rem;
-        padding: 2rem 0;
+        padding: 2rem;
+        font-size: clampWithViewPort(22, 30);
       }
       input,
       select {
-        border-radius: 0;
+        // border-radius: 0;
         &:not(.btn):not(.button) {
           border: 2px solid $subtle-border;
-          padding: 0.375rem 0.75rem;
+          padding: 0.72em 0.75em;
         }
       }
       label {
         color: $bg-brand;
         font-weight: bold;
+        font-family: $headings-font-family;
+        align-self: center;
+        .description {
+          color:var(--bs-body-color);
+        }
       }
       .btn,
       .button {
-        display: inline-block;
-        background: $bg-brand;
-        color: #fff;
-        padding: 0.375rem 0.75rem;
-        text-align: center;
-        line-height: 1.5;
-        vertical-align: middle;
-        border: 1px solid $bg-brand;
-        border-radius: 0;
-        cursor: pointer;
-        @include transition(background-color 0.5s ease);
-        &:hover {
-          background-color: $btn-hover;
-          text-decoration: none;
-          color: $white;
+        &.btn-primary {
+          @include primary-button();
         }
         &[class*="NavBack"] {
-          color: unset;
-          background: $subtle-header;
-          border-color: $subtle-header;
-          margin-right: auto;
-          @include transition(background-color 0.5s ease);
-          &:hover {
-            background-color: $btn-hover;
-            text-decoration: none;
-            color: $white;
-          }
+          @include button-outline-variant($primary);
         }
       }
     }
@@ -729,7 +751,6 @@
         display: none;
       }
       .deliveryMethods {
-
         .deliveryOption {
           position: relative;
           display: flex;
@@ -912,34 +933,35 @@
       align-items: flex-start;
       flex-direction: row;
       font-size: 1rem;
+      justify-content: space-between;
 
-      .btn-primary,
-      .storeDeliveryNavContinue,
-      .btnNavigate {
-        width: auto;
-        max-width: auto;
-        font-size: 1.25rem;
-        padding: 0.375rem;
-        @media (min-width: 400px) {
-          font-size: 1.25rem;
-          padding: 0.375rem 0.75rem;
-        }
-      }
-      .btn-primary,
-      .storeDeliveryNavContinue {
-        @include breakpt-lg {
-          padding: 15px 35px;
-        }
-      }
-    }
+      // .btn-primary,
+      // .storeDeliveryNavContinue,
+      // .btnNavigate {
+      //   width: auto;
+      //   max-width: auto;
+      //   font-size: 1.25rem;
+      //   padding: 0.375rem;
+      //   @media (min-width: 400px) {
+      //     font-size: 1.25rem;
+      //     padding: 0.375rem 0.75rem;
+      //   }
+      // }
+    //   .btn-primary,
+    //   .storeDeliveryNavContinue {
+    //     @include breakpt-lg {
+    //       padding: 15px 35px;
+    //     }
+    //   }
+    // }
     .safePlace {
       > .deliverySafePlaceDesc {
         display: none;
       }
     }
+  }
 
     .billingContainer {
-
       // display: none;
       margin-bottom: 1rem;
       &.billingShow {
@@ -1226,7 +1248,7 @@
         width: 100%;
         border: 2px solid #bcc8de;
         padding: 0.375rem 0.75rem;
-        border-radius: 0;
+        // border-radius: 0;
         grid-column: 1 / 3;
         // margin-top: 0.5rem;
         @include breakpt-lg {
@@ -1254,10 +1276,10 @@
           grid-column: 2 / 3;
         }
       }
-      .button {
-        height: 40px;
-        line-height: 30px;
-      }
+      // .button {
+      //   height: 40px;
+      //   line-height: 30px;
+      // }
       // &.searchByContainer, &.enterAddressContainer   {
       //   &.checkoutShow{
       //     display: grid!important;
@@ -1291,6 +1313,8 @@
         }
         a.button {
           grid-column: 2 / 3;
+          white-space: nowrap;
+          @include primary-button();
           @include breakpt-lg {
             grid-column: 3 / 4;
           }
@@ -1498,17 +1522,7 @@
           grid-column: 2 / 3;
           grid-row: 1 / -1;
           a {
-            border: 2px solid $bg-brand;
-            color: $bg-brand;
-            font-weight: bold;
-            padding: 0.375rem 1.5rem;
-            background: #fff;
-            @include transition(background-color 0.5s ease);
-            &:hover {
-              background-color: $btn-hover;
-              text-decoration: none;
-              color: $white;
-            }
+            @include button-outline-variant($primary);
           }
         }
       }
@@ -1537,13 +1551,13 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border: 3px solid $bg-brand;
+        border: 2px solid $bg-brand;
+        border-radius: 10px;
         h4 {
-          background: $subtle-background;
           color: $bg-brand;
-          text-align: center;
           font-weight: bold;
-          padding: 2rem 0;
+          padding: 2rem;
+          font-size: clampWithViewPort(22, 30);
         }
         input,
         select {
@@ -1572,10 +1586,9 @@
             display: block;
             width: 100%;
             margin-top: 1rem;
-            border-radius: 0;
+            max-width:none;
           }
           .forgottenPassword {
-            text-align: center;
             color: $bg-brand;
             margin-top: 1rem;
           }
@@ -1594,9 +1607,39 @@
       }
 
       // ! Need to rework logon box styling
-      .myAccountSection input:not(.btn):not(.button) {
-        grid-row: 2;
-        grid-column: 1 / -1 !important;
+      // .myAccountSection input:not(.btn):not(.button) {
+      //   grid-row: 2;
+      //   grid-column: 1 / -1 !important;
+      // }
+
+      .field-validation-error, .errorText {
+        text-align:right;
+      }
+
+      :is(.myAccountSection .loginFields, .guestRegistration) {
+        --gap: 1em;
+        --label-width: calc(200 / 16 * 1rem);
+        --input-min-width: calc(500 / 16 * 1rem);
+        .form-group {
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: var(--gap);
+          > label {
+            flex: 1 1 var(--label-width);
+            font-family: $headings-font-family;
+          }
+          input {
+            flex: 1 1
+              calc(
+                max(100%, var(--input-min-width)) -
+                  (var(--label-width) + var(--gap))
+              );
+            align-self: flex-start;
+          }
+          .field-validation-error {
+            flex-basis: 100%;
+          }
+        }
       }
 
       .myAccountSection .loginFields .pass .custom-checkbox {
@@ -1691,6 +1734,7 @@
     position: relative;
     display: block;
     min-height: 1.5rem;
+    text-align: right;
     padding-left: 1.5rem;
     &-input {
       position: absolute;
@@ -1744,21 +1788,21 @@
       grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
     }
   }
-  .regForm,
-  .regLogon {
-    #password,
-    #confirmPassword {
-      grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-    }
-    .pass {
-      > label {
-        grid-column: 1 / 4 !important;
-      }
-      input.form-control {
-        grid-column: 1 / 3 !important;
-      }
-    }
-  }
+  // .regForm,
+  // .regLogon {
+  //   #password,
+  //   #confirmPassword {
+  //     grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
+  //   }
+  //   .pass {
+  //     > label {
+  //       grid-column: 1 / 4 !important;
+  //     }
+  //     input.form-control {
+  //       grid-column: 1 / 3 !important;
+  //     }
+  //   }
+  // }
 
   // * Checkout - Thankyou : Show Password
   // * Include in revamp
@@ -1812,34 +1856,34 @@
     }
   }
 
-  #changePassword.form-group,
-  #EmailDetails.form-group,
-  .loginFields .pass.form-group,
-  .regForm #password.form-group,
-  .regForm #confirmPassword.form-group,
-  .regLogon form-group.pass {
-    display: grid !important;
-    grid-column-gap: 1.5rem;
-    grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-    @include breakpt-lg {
-      grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-    }
-    > label {
-      grid-column: 1 / 4;
-      grid-row: 1;
-      @include breakpt-lg {
-        grid-column: 1 / 2;
-      }
-    }
-    input.form-control {
-      grid-column: 1 / 4;
-      grid-row: 2;
-      @include breakpt-lg {
-        grid-column: 2 / 4;
-        grid-row: 1;
-      }
-    }
-  }
+  // #changePassword.form-group,
+  // #EmailDetails.form-group,
+  // .loginFields .pass.form-group,
+  // .regForm #password.form-group,
+  // .regForm #confirmPassword.form-group,
+  // .regLogon form-group.pass {
+  //   display: grid !important;
+  //   grid-column-gap: 1.5rem;
+  //   grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
+  //   @include breakpt-lg {
+  //     grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
+  //   }
+  //   > label {
+  //     grid-column: 1 / 4;
+  //     grid-row: 1;
+  //     @include breakpt-lg {
+  //       grid-column: 1 / 2;
+  //     }
+  //   }
+  //   input.form-control {
+  //     grid-column: 1 / 4;
+  //     grid-row: 2;
+  //     @include breakpt-lg {
+  //       grid-column: 2 / 4;
+  //       grid-row: 1;
+  //     }
+  //   }
+  // }
 
   #changePassword,
   #EmailDetails,
@@ -1924,19 +1968,23 @@
   }
   .custom-select {
     appearance: none;
-    background-image: linear-gradient(45deg, transparent 50%, $bg-brand 50%),
+    background-image:
+      linear-gradient(45deg, transparent 50%, $bg-brand 50%),
       linear-gradient(135deg, $bg-brand 50%, transparent 50%),
       linear-gradient(to right, $subtle-background, $subtle-background);
-    background-position: calc(100% - 18px) calc(0.8em + 2px),
-      calc(100% - 8px) calc(0.8em + 2px), 100% 0;
-    background-size: 10px 10px, 10px 10px, 2.5em 2.5em;
+    background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 8px) calc(1em + 2px), 100% 0;
+    background-size:
+      10px 10px, 10px 10px, 2.5em 3em;
     background-repeat: no-repeat;
     cursor: pointer;
     &:focus {
-      background-image: linear-gradient(45deg, $bg-brand 50%, transparent 50%),
+      background-image:
+        linear-gradient(45deg, $bg-brand 50%, transparent 50%),
         linear-gradient(135deg, transparent 50%, $bg-brand 50%),
         linear-gradient(to right, $subtle-background, $subtle-background);
-      background-position: calc(100% - 7.5px) 0.75em, calc(100% - 17.5px) 0.75em,
+      background-position:
+        calc(100% - 7.5px) 0.75em,
+        calc(100% - 17.5px) 0.75em,
         100% 0;
       border-color: #86b7fe;
       outline: 0;
