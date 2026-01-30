@@ -91,12 +91,10 @@
 
 .title-block {
   &__main {
-    text-align: center;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     &-fw {
       position: relative;
-      text-align: center;
       padding-top: 1rem;
       padding-bottom: 1rem;
       // &::after {
@@ -243,6 +241,75 @@ body {
   &:hover {
     img {
       transform: scale(1.1);
+    }
+  }
+}
+
+/* Circles with jackets on top */
+.top-cat{
+  &__item{
+    a{
+      position: relative;
+    }
+  }
+  &__img{
+    aspect-ratio: 1;
+    margin-bottom: 15px;
+  }
+  span{
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: #E7EFFA;
+    aspect-ratio: 1;
+    width: 100%;
+    border-radius: 50%;
+    top:0;
+    z-index: -1;
+  }
+  h4{
+    font-size: 22px;
+    text-align: center;
+    color: $bg-brand-dark;
+  }
+}
+
+/* Categpry List */
+
+.cat-list{
+  ul{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 22px;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+  }
+  li{
+
+    list-style: none;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    width: 33.33333333%;
+    margin-bottom: .5rem;
+    @media (min-width: 768px) {
+      flex: 0 0 auto;
+      width: 25%;
+    }
+    a{
+      border-bottom: $border-color 1px solid;
+      padding: .5rem;
+      display: flex;
+      justify-content: space-between;
+      &::after{
+        content: ">";
+        color: $border-color;
+      }
     }
   }
 }
