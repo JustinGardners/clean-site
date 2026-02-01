@@ -100,9 +100,10 @@ $btn-hover: #002262;
   padding: 6px 18px;
   text-align: center;
   border: 2px solid $border;
+  border-radius: var(--bs-border-radius, 0);
   // border-radius: 0;
   display: inline-block;
-  max-width: 195px;
+  // max-width: 195px;
   cursor: pointer;
   @include transition(background-color 0.5s ease);
   &:hover {
@@ -413,6 +414,10 @@ $btn-hover: #002262;
   &:hover {
     background-color: $bg-brand-dark;
   }
+}
+
+@mixin primary-button() {
+  @include button-variant($primary, #fff, $primary);  
 }
 
 @function clampWithViewPort($minVal, $maxVal) {

@@ -2118,7 +2118,7 @@ progress {
   background-color: var(--bs-body-bg);
   background-clip: padding-box;
   border: var(--bs-border-width) solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2246,11 +2246,11 @@ textarea.form-control-lg {
 }
 .form-control-color::-moz-color-swatch {
   border: 0 !important;
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
 }
 .form-control-color::-webkit-color-swatch {
   border: 0 !important;
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
 }
 .form-control-color.form-control-sm {
   height: calc(1.375em + 0.5rem + calc(var(--bs-border-width) * 2));
@@ -2277,7 +2277,7 @@ textarea.form-control-lg {
   background-position: right 0.75rem center;
   background-size: 16px 12px;
   border: var(--bs-border-width) solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2624,7 +2624,7 @@ textarea.form-control-lg {
   height: 1.5em;
   content: "";
   background-color: var(--bs-body-bg);
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
 }
 .form-floating > .form-control:focus ~ label::after,
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
@@ -2636,7 +2636,7 @@ textarea.form-control-lg {
   height: 1.5em;
   content: "";
   background-color: var(--bs-body-bg);
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
 }
 .form-floating > .form-control:-webkit-autofill ~ label {
   color: rgba(var(--bs-body-color-rgb), 0.65);
@@ -2694,7 +2694,7 @@ textarea.form-control-lg {
   white-space: nowrap;
   background-color: var(--bs-tertiary-bg);
   border: var(--bs-border-width) solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
+  border-radius: 10px;
 }
 
 .input-group-lg > .form-control,
@@ -2925,7 +2925,7 @@ textarea.form-control-lg {
   z-index: 4;
 }
 
-.btn {
+:is(.btn, .button) {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: ;
@@ -2961,44 +2961,45 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn {
+  :is(.btn, .button) {
     transition: none;
   }
 }
-.btn:hover {
+:is(.btn, .button):hover {
   color: var(--bs-btn-hover-color);
+  text-decoration: none;
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
 }
-.btn-check + .btn:hover {
+.btn-check + :is(.btn, .button):hover {
   color: var(--bs-btn-color);
   background-color: var(--bs-btn-bg);
   border-color: var(--bs-btn-border-color);
 }
-.btn:focus-visible {
+:is(.btn, .button):focus-visible {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:focus-visible + .btn {
+.btn-check:focus-visible + :is(.btn, .button) {
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+.btn-check:checked + :is(.btn, .button), :not(.btn-check) + :is(.btn, .button):active, :is(.btn, .button):first-child:active, :is(.btn, .button).active, :is(.btn, .button).show {
   color: var(--bs-btn-active-color);
   background-color: var(--bs-btn-active-bg);
   border-color: var(--bs-btn-active-border-color);
 }
-.btn-check:checked + .btn:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .btn:first-child:active:focus-visible, .btn.active:focus-visible, .btn.show:focus-visible {
+.btn-check:checked + :is(.btn, .button):focus-visible, :not(.btn-check) + :is(.btn, .button):active:focus-visible, :is(.btn, .button):first-child:active:focus-visible, :is(.btn, .button).active:focus-visible, :is(.btn, .button).show:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked:focus-visible + .btn {
+.btn-check:checked:focus-visible + :is(.btn, .button) {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn:disabled, .btn.disabled, fieldset:disabled .btn {
+:is(.btn, .button):disabled, :is(.btn, .button).disabled, fieldset:disabled :is(.btn, .button) {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
   background-color: var(--bs-btn-disabled-bg);
@@ -10879,8 +10880,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   font-size: 12px;
@@ -10902,8 +10903,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   font-size: 12px;
@@ -11141,8 +11142,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -11190,8 +11191,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -11210,8 +11211,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -11230,8 +11231,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   cursor: auto;
@@ -11485,8 +11486,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   font-size: 1rem;
@@ -11510,8 +11511,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #bcc8de;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: none;
@@ -11546,8 +11547,8 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #dfdfdf;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: 100%;
@@ -12772,8 +12773,8 @@ body.facetShow #leftNav .navSection {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   width: 100%;
@@ -13315,26 +13316,6 @@ body.facetShow #leftNav .navSection {
   color: #003087;
   font-weight: bold;
 }
-.myAccount input[type=text],
-.myAccount input[type=password],
-.myAccount select,
-.myAccount textarea,
-.helpPages input[type=text],
-.helpPages input[type=password],
-.helpPages select,
-.helpPages textarea {
-  display: block;
-  margin: 0.5rem 0;
-  border: 2px solid #bcc8de;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--bs-body-color);
-  background-color: var(--bs-body-bg);
-  background-clip: padding-box;
-  border-radius: 0;
-}
 .myAccount .btn,
 .myAccount button,
 .helpPages .btn,
@@ -13345,8 +13326,8 @@ body.facetShow #leftNav .navSection {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   margin-top: 0.5rem;
@@ -13474,8 +13455,8 @@ body.facetShow #leftNav .navSection {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: 100%;
@@ -13531,8 +13512,8 @@ body.facetShow #leftNav .navSection {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: 100%;
@@ -13576,8 +13557,8 @@ body.facetShow #leftNav .navSection {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   margin: 0 auto;
@@ -14139,8 +14120,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -14305,8 +14286,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   width: 100%;
@@ -14855,8 +14836,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   grid-column: 2/3;
@@ -15115,8 +15096,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: 100%;
@@ -15313,8 +15294,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -15330,8 +15311,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -15464,8 +15445,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   text-transform: capitalize;
@@ -15776,8 +15757,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   width: 100%;
@@ -15811,8 +15792,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -16087,8 +16068,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   margin: 1.5rem;
@@ -16291,8 +16272,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   width: 100%;
@@ -16439,6 +16420,7 @@ div#wishlistEmail .form-control {
 }
 #checkoutHeader .checkoutBreadcrumb {
   display: none;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 @media (min-width: 768px) {
   #checkoutHeader .checkoutBreadcrumb {
@@ -16460,7 +16442,7 @@ div#wishlistEmail .form-control {
   min-width: -moz-fit-content;
   min-width: fit-content;
   list-style: none;
-  border-bottom: 2px solid #bcc8de;
+  border-bottom: 6px solid #bcc8de;
   padding: 0.5rem 1rem 0.5rem 0;
 }
 #checkoutHeader .checkoutBreadcrumb ul li.previous, #checkoutHeader .checkoutBreadcrumb ul li.current {
@@ -16541,7 +16523,8 @@ div#wishlistEmail .form-control {
   border: none;
 }
 #main .checkout.delivery .checkout-main-section, #main .checkout.billing .checkout-main-section {
-  border: 3px solid #003087;
+  border: 2px solid #003087;
+  border-radius: 10px;
 }
 #main .checkout.creditCard > .checkoutWrap {
   position: static;
@@ -16569,8 +16552,9 @@ div#wishlistEmail .form-control {
 #main .checkout .checkoutWrap,
 #main .checkout #checkoutSidebar {
   position: relative;
-  border: 3px solid #003087;
+  border: 2px solid #003087;
   margin-top: 2rem;
+  border-radius: 10px;
 }
 @media (min-width: 992px) {
   #main .checkout .checkoutWrap,
@@ -16613,11 +16597,14 @@ div#wishlistEmail .form-control {
   align-items: center;
   padding: 2rem;
   line-height: 1.2;
+  border-radius: 10px 10px 0 0;
 }
 #main .checkout #basketSummary .miniBasketHeader .basketQty {
   color: #003087;
   font-size: 1.5rem;
   font-weight: bold;
+  font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #main .checkout #basketSummary .miniBasketHeader .totals {
   display: none;
@@ -16638,6 +16625,16 @@ div#wishlistEmail .form-control {
   gap: 0.5rem 1.5rem;
   padding-bottom: 0.5rem;
 }
+#main .checkout #basketSummary .basketItems ul li.basketItem .itemTitleFormat {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--bs-body-font-family);
+  font-size: 0.875rem;
+}
+#main .checkout #basketSummary .basketItems ul li.basketItem .itemTitleQty {
+  font-size: 0.875rem;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
+}
 #main .checkout #basketSummary .basketItems ul li.basketItem:not(:only-child):not(:last-child) {
   border-bottom: 2px solid #bcc8de;
   margin-bottom: 1rem;
@@ -16654,6 +16651,11 @@ div#wishlistEmail .form-control {
   grid-column: 2/3;
   grid-row: 1/2;
   text-wrap: pretty;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
+}
+#main .checkout #basketSummary .basketItems ul li.basketItem .itemTitle a {
+  display: block;
+  color: #000E67;
 }
 #main .checkout #basketSummary .basketItems ul li.basketItem .itemTitlePrice {
   display: block;
@@ -16661,8 +16663,8 @@ div#wishlistEmail .form-control {
   margin-top: 0.5rem;
 }
 #main .checkout #basketSummary .basketItems ul li.basketItem .itemTitleQty {
-  grid-column: 3/4;
-  grid-row: 1/2;
+  grid-column: 2/2;
+  grid-row: 3/3;
   font-weight: bold;
 }
 #main .checkout #basketSummary .basketItems ul li.basketItem .itemTitleDiscount {
@@ -16672,6 +16674,10 @@ div#wishlistEmail .form-control {
 #main .checkout #basketSummary .miniBasketFooter {
   background: #eceff6;
   position: relative;
+  border-radius: 0 0 10px 10px;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
+  color: #000E67;
+  font-weight: 600;
 }
 #main .checkout #basketSummary .miniBasketFooter::before {
   content: "";
@@ -16684,17 +16690,18 @@ div#wishlistEmail .form-control {
   background: linear-gradient(0deg, rgb(255, 255, 255) 10%, rgba(255, 255, 255, 0) 100%);
 }
 #main .checkout #basketSummary .miniBasketFooter .subTotals {
-  padding: 1rem;
-  border-bottom: 2px solid #bcc8de;
+  padding-inline: 1.5rem;
+  padding-top: 1.5rem;
 }
 #main .checkout #basketSummary .miniBasketFooter .subTotals > div:not(:first-child) {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 #main .checkout #basketSummary .miniBasketFooter .totals {
   color: #003087;
-  font-size: 1.5rem;
+  font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
   font-weight: bold;
-  padding: 1rem;
+  padding: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 #main .checkout #basketSummary .miniBasketFooter .subTotals > div > div,
 #main .checkout #basketSummary .miniBasketFooter .totals {
@@ -16716,6 +16723,13 @@ div#wishlistEmail .form-control {
 #main .checkout #basketSummary .miniBasketFooter ~ .basketEdit {
   display: none;
 }
+#main .checkout .deliveryHeader h4, #main .checkout .deliveryHeader .h4 {
+  border-radius: 10px 10px 0 0w;
+}
+#main .checkout .checkoutSection .safePlace select {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 #main .checkout .checkoutSection,
 #main .checkout .checkoutShow {
   margin-bottom: 2rem;
@@ -16725,49 +16739,48 @@ div#wishlistEmail .form-control {
 #main .checkout .checkoutShow .h4 {
   background: #eceff6;
   color: #003087;
-  text-align: center;
   font-weight: bold;
   margin-bottom: 2rem;
-  padding: 2rem 0;
-}
-#main .checkout .checkoutSection input,
-#main .checkout .checkoutSection select,
-#main .checkout .checkoutShow input,
-#main .checkout .checkoutShow select {
-  border-radius: 0;
+  padding: 2rem;
+  font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
 }
 #main .checkout .checkoutSection input:not(.btn):not(.button),
 #main .checkout .checkoutSection select:not(.btn):not(.button),
 #main .checkout .checkoutShow input:not(.btn):not(.button),
 #main .checkout .checkoutShow select:not(.btn):not(.button) {
   border: 2px solid #bcc8de;
-  padding: 0.375rem 0.75rem;
+  padding: 0.72em 0.75em;
 }
 #main .checkout .checkoutSection label,
 #main .checkout .checkoutShow label {
   color: #003087;
   font-weight: bold;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
+  align-self: center;
 }
-#main .checkout .checkoutSection .btn,
-#main .checkout .checkoutSection .button,
-#main .checkout .checkoutShow .btn,
-#main .checkout .checkoutShow .button {
-  display: inline-block;
-  background: #003087;
+#main .checkout .checkoutSection label .description,
+#main .checkout .checkoutShow label .description {
+  color: var(--bs-body-color);
+}
+#main .checkout .checkoutSection .btn.btn-primary,
+#main .checkout .checkoutSection .button.btn-primary,
+#main .checkout .checkoutShow .btn.btn-primary,
+#main .checkout .checkoutShow .button.btn-primary {
+  background-color: #000E67;
   color: #fff;
-  padding: 0.375rem 0.75rem;
+  font-weight: 600;
+  padding: 6px 18px;
   text-align: center;
-  line-height: 1.5;
-  vertical-align: middle;
-  border: 1px solid #003087;
-  border-radius: 0;
+  border: 2px solid #000E67;
+  border-radius: var(--bs-border-radius, 0);
+  display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
-#main .checkout .checkoutSection .btn:hover,
-#main .checkout .checkoutSection .button:hover,
-#main .checkout .checkoutShow .btn:hover,
-#main .checkout .checkoutShow .button:hover {
+#main .checkout .checkoutSection .btn.btn-primary:hover,
+#main .checkout .checkoutSection .button.btn-primary:hover,
+#main .checkout .checkoutShow .btn.btn-primary:hover,
+#main .checkout .checkoutShow .button.btn-primary:hover {
   background-color: #002262;
   text-decoration: none;
   color: #fff;
@@ -16776,19 +16789,20 @@ div#wishlistEmail .form-control {
 #main .checkout .checkoutSection .button[class*=NavBack],
 #main .checkout .checkoutShow .btn[class*=NavBack],
 #main .checkout .checkoutShow .button[class*=NavBack] {
-  color: unset;
-  background: #d9dfeb;
-  border-color: #d9dfeb;
-  margin-right: auto;
-  transition: background-color 0.5s ease;
-}
-#main .checkout .checkoutSection .btn[class*=NavBack]:hover,
-#main .checkout .checkoutSection .button[class*=NavBack]:hover,
-#main .checkout .checkoutShow .btn[class*=NavBack]:hover,
-#main .checkout .checkoutShow .button[class*=NavBack]:hover {
-  background-color: #002262;
-  text-decoration: none;
-  color: #fff;
+  --bs-btn-color: #000E67;
+  --bs-btn-border-color: #000E67;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #000E67;
+  --bs-btn-hover-border-color: #000E67;
+  --bs-btn-focus-shadow-rgb: 0, 14, 103;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #000E67;
+  --bs-btn-active-border-color: #000E67;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000E67;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #000E67;
+  --bs-gradient: none;
 }
 #main .checkout .payNowNavBackContainer {
   margin-right: auto;
@@ -17169,30 +17183,9 @@ div#wishlistEmail .form-control {
   align-items: flex-start;
   flex-direction: row;
   font-size: 1rem;
+  justify-content: space-between;
 }
-#main .checkout .navigationButtons .btn-primary,
-#main .checkout .navigationButtons .storeDeliveryNavContinue,
-#main .checkout .navigationButtons .btnNavigate {
-  width: auto;
-  max-width: auto;
-  font-size: 1.25rem;
-  padding: 0.375rem;
-}
-@media (min-width: 400px) {
-  #main .checkout .navigationButtons .btn-primary,
-  #main .checkout .navigationButtons .storeDeliveryNavContinue,
-  #main .checkout .navigationButtons .btnNavigate {
-    font-size: 1.25rem;
-    padding: 0.375rem 0.75rem;
-  }
-}
-@media (min-width: 992px) {
-  #main .checkout .navigationButtons .btn-primary,
-  #main .checkout .navigationButtons .storeDeliveryNavContinue {
-    padding: 15px 35px;
-  }
-}
-#main .checkout .safePlace > .deliverySafePlaceDesc {
+#main .checkout .navigationButtons .safePlace > .deliverySafePlaceDesc {
   display: none;
 }
 #main .checkout .billingContainer {
@@ -17328,8 +17321,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid transparent;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   border-radius: 0;
@@ -17501,7 +17494,6 @@ div#wishlistEmail .form-control {
   width: 100%;
   border: 2px solid #bcc8de;
   padding: 0.375rem 0.75rem;
-  border-radius: 0;
   grid-column: 1/3;
 }
 @media (min-width: 992px) {
@@ -17572,14 +17564,6 @@ div#wishlistEmail .form-control {
     grid-column: 2/3;
   }
 }
-#main .checkout .form-group .button,
-#main .checkout .custom-control .button,
-#main .checkout .inputFields .title .button,
-#main .checkout .inputFields .firstName .button,
-#main .checkout .inputFields .lastName .button {
-  height: 40px;
-  line-height: 30px;
-}
 #main .checkout .form-group.postcodeLookupContainer,
 #main .checkout .custom-control.postcodeLookupContainer,
 #main .checkout .inputFields .title.postcodeLookupContainer,
@@ -17641,6 +17625,26 @@ div#wishlistEmail .form-control {
 #main .checkout .inputFields .firstName.postcodeLookupContainer a.button,
 #main .checkout .inputFields .lastName.postcodeLookupContainer a.button {
   grid-column: 2/3;
+  white-space: nowrap;
+  background-color: #000E67;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 18px;
+  text-align: center;
+  border: 2px solid #000E67;
+  border-radius: var(--bs-border-radius, 0);
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+#main .checkout .form-group.postcodeLookupContainer a.button:hover,
+#main .checkout .custom-control.postcodeLookupContainer a.button:hover,
+#main .checkout .inputFields .title.postcodeLookupContainer a.button:hover,
+#main .checkout .inputFields .firstName.postcodeLookupContainer a.button:hover,
+#main .checkout .inputFields .lastName.postcodeLookupContainer a.button:hover {
+  background-color: #002262;
+  text-decoration: none;
+  color: #fff;
 }
 @media (min-width: 992px) {
   #main .checkout .form-group.postcodeLookupContainer a.button,
@@ -17835,18 +17839,20 @@ div#wishlistEmail .form-control {
 }
 #main #checkoutSummary > ul > .deliveryAddress .editButton a,
 #main #checkoutSummary > ul > .deliveryMethod .editButton a {
-  border: 2px solid #003087;
-  color: #003087;
-  font-weight: bold;
-  padding: 0.375rem 1.5rem;
-  background: #fff;
-  transition: background-color 0.5s ease;
-}
-#main #checkoutSummary > ul > .deliveryAddress .editButton a:hover,
-#main #checkoutSummary > ul > .deliveryMethod .editButton a:hover {
-  background-color: #002262;
-  text-decoration: none;
-  color: #fff;
+  --bs-btn-color: #000E67;
+  --bs-btn-border-color: #000E67;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #000E67;
+  --bs-btn-hover-border-color: #000E67;
+  --bs-btn-focus-shadow-rgb: 0, 14, 103;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #000E67;
+  --bs-btn-active-border-color: #000E67;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000E67;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #000E67;
+  --bs-gradient: none;
 }
 #main .noVouchersApplied {
   display: none;
@@ -17874,14 +17880,14 @@ div#wishlistEmail .form-control {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 3px solid #003087;
+  border: 2px solid #003087;
+  border-radius: 10px;
 }
 #main #logonCheckout .regLogon .myAccountSection h4, #main #logonCheckout .regLogon .myAccountSection .h4 {
-  background: #eceff6;
   color: #003087;
-  text-align: center;
   font-weight: bold;
-  padding: 2rem 0;
+  padding: 2rem;
+  font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
 }
 #main #logonCheckout .regLogon .myAccountSection input,
 #main #logonCheckout .regLogon .myAccountSection select {
@@ -17910,11 +17916,10 @@ div#wishlistEmail .form-control {
   display: block;
   width: 100%;
   margin-top: 1rem;
-  border-radius: 0;
+  max-width: none;
 }
 #main #logonCheckout .regLogon .myAccountSection .loginSignUpButtons .forgottenPassword,
 #main #logonCheckout .regLogon .myAccountSection .loginGuestButtons .forgottenPassword {
-  text-align: center;
   color: #003087;
   margin-top: 1rem;
 }
@@ -17927,9 +17932,30 @@ div#wishlistEmail .form-control {
   margin-top: calc(24px + 1.5rem);
   margin-bottom: calc(24px + 1rem);
 }
-#main #logonCheckout .regLogon .myAccountSection input:not(.btn):not(.button) {
-  grid-row: 2;
-  grid-column: 1/-1 !important;
+#main #logonCheckout .regLogon .field-validation-error, #main #logonCheckout .regLogon .errorText {
+  text-align: right;
+}
+#main #logonCheckout .regLogon :is(.myAccountSection .loginFields, .guestRegistration) {
+  --gap: 1em;
+  --label-width: calc(200 / 16 * 1rem);
+  --input-min-width: calc(500 / 16 * 1rem);
+}
+#main #logonCheckout .regLogon :is(.myAccountSection .loginFields, .guestRegistration) .form-group {
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: var(--gap);
+       column-gap: var(--gap);
+}
+#main #logonCheckout .regLogon :is(.myAccountSection .loginFields, .guestRegistration) .form-group > label {
+  flex: 1 1 var(--label-width);
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
+}
+#main #logonCheckout .regLogon :is(.myAccountSection .loginFields, .guestRegistration) .form-group input {
+  flex: 1 1 calc(max(100%, var(--input-min-width)) - (var(--label-width) + var(--gap)));
+  align-self: flex-start;
+}
+#main #logonCheckout .regLogon :is(.myAccountSection .loginFields, .guestRegistration) .form-group .field-validation-error {
+  flex-basis: 100%;
 }
 #main #logonCheckout .regLogon .myAccountSection .loginFields .pass .custom-checkbox {
   grid-row: 2;
@@ -18012,6 +18038,7 @@ div#wishlistEmail .form-control {
   position: relative;
   display: block;
   min-height: 1.5rem;
+  text-align: right;
   padding-left: 1.5rem;
 }
 #main .custom-control-input {
@@ -18055,20 +18082,6 @@ div#wishlistEmail .form-control {
 }
 #main .loginFields .pass {
   grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-}
-#main .regForm #password,
-#main .regForm #confirmPassword,
-#main .regLogon #password,
-#main .regLogon #confirmPassword {
-  grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-}
-#main .regForm .pass > label,
-#main .regLogon .pass > label {
-  grid-column: 1/4 !important;
-}
-#main .regForm .pass input.form-control,
-#main .regLogon .pass input.form-control {
-  grid-column: 1/3 !important;
 }
 #main #checkout .form-group.fieldPassword,
 #main #checkout .form-group.fieldConfirmPassword {
@@ -18115,65 +18128,6 @@ div#wishlistEmail .form-control {
 #main #checkout .form-group.fieldConfirmPassword > .custom-control label::before,
 #main #checkout .form-group.fieldConfirmPassword > .custom-control label::after {
   content: none;
-}
-#main #changePassword.form-group,
-#main #EmailDetails.form-group,
-#main .loginFields .pass.form-group,
-#main .regForm #password.form-group,
-#main .regForm #confirmPassword.form-group,
-#main .regLogon form-group.pass {
-  display: grid !important;
-  grid-column-gap: 1.5rem;
-  grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-}
-@media (min-width: 992px) {
-  #main #changePassword.form-group,
-  #main #EmailDetails.form-group,
-  #main .loginFields .pass.form-group,
-  #main .regForm #password.form-group,
-  #main .regForm #confirmPassword.form-group,
-  #main .regLogon form-group.pass {
-    grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-  }
-}
-#main #changePassword.form-group > label,
-#main #EmailDetails.form-group > label,
-#main .loginFields .pass.form-group > label,
-#main .regForm #password.form-group > label,
-#main .regForm #confirmPassword.form-group > label,
-#main .regLogon form-group.pass > label {
-  grid-column: 1/4;
-  grid-row: 1;
-}
-@media (min-width: 992px) {
-  #main #changePassword.form-group > label,
-  #main #EmailDetails.form-group > label,
-  #main .loginFields .pass.form-group > label,
-  #main .regForm #password.form-group > label,
-  #main .regForm #confirmPassword.form-group > label,
-  #main .regLogon form-group.pass > label {
-    grid-column: 1/2;
-  }
-}
-#main #changePassword.form-group input.form-control,
-#main #EmailDetails.form-group input.form-control,
-#main .loginFields .pass.form-group input.form-control,
-#main .regForm #password.form-group input.form-control,
-#main .regForm #confirmPassword.form-group input.form-control,
-#main .regLogon form-group.pass input.form-control {
-  grid-column: 1/4;
-  grid-row: 2;
-}
-@media (min-width: 992px) {
-  #main #changePassword.form-group input.form-control,
-  #main #EmailDetails.form-group input.form-control,
-  #main .loginFields .pass.form-group input.form-control,
-  #main .regForm #password.form-group input.form-control,
-  #main .regForm #confirmPassword.form-group input.form-control,
-  #main .regLogon form-group.pass input.form-control {
-    grid-column: 2/4;
-    grid-row: 1;
-  }
 }
 #main #changePassword .form-group,
 #main #EmailDetails .form-group,
@@ -18319,8 +18273,8 @@ div#wishlistEmail .form-control {
      -moz-appearance: none;
           appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, #003087 50%), linear-gradient(135deg, #003087 50%, transparent 50%), linear-gradient(to right, #eceff6, #eceff6);
-  background-position: calc(100% - 18px) calc(0.8em + 2px), calc(100% - 8px) calc(0.8em + 2px), 100% 0;
-  background-size: 10px 10px, 10px 10px, 2.5em 2.5em;
+  background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 8px) calc(1em + 2px), 100% 0;
+  background-size: 10px 10px, 10px 10px, 2.5em 3em;
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -18746,8 +18700,8 @@ div#wishlistEmail .form-control {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -19299,8 +19253,8 @@ body > .top-bar .top-bar__close svg {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
 }
@@ -19528,8 +19482,8 @@ body > .top-bar .top-bar__close svg {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: none;
@@ -19793,8 +19747,8 @@ body > .top-bar .top-bar__close svg {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   width: 100%;
@@ -20107,8 +20061,8 @@ body > .top-bar .top-bar__close svg {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: none;
@@ -20135,8 +20089,8 @@ a.pb-template__content--btn {
   padding: 6px 18px;
   text-align: center;
   border: 2px solid #002f87;
+  border-radius: var(--bs-border-radius, 0);
   display: inline-block;
-  max-width: 195px;
   cursor: pointer;
   transition: background-color 0.5s ease;
   max-width: none;
