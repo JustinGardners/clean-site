@@ -243,6 +243,7 @@
   .btn,
   button {
     @include button-variant($btn-background, $white, $btn-background);
+    font-family: $headings-font-family;
     margin-top: 0.5rem;
   }
 

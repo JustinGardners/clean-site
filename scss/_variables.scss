@@ -157,6 +157,7 @@ $subtle-border: #bcc8de;
 $accent-1: #e7effa;
 $accent-2: #00b0b8;
 $accent-3: #0b686d;
+$text-secondary: #CAC9CA;
 
 // Other
 $border-radius: 1.5em;
@@ -336,3 +337,8 @@ $small-font-sizes: (
 );
 
 $input-border-radius: 10px;
+$input-btn-border-width:2px;
+$input-btn-font-family: $text-font-stack;
+$btn-font-weight: 700;
+$btn-padding-y: max(0.6em, 0.5rem);
+$btn-padding-x: 1.2em;

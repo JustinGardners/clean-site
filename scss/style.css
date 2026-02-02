@@ -2079,22 +2079,22 @@ progress {
 }
 
 .col-form-label {
-  padding-top: calc(0.375rem + var(--bs-border-width));
-  padding-bottom: calc(0.375rem + var(--bs-border-width));
+  padding-top: calc(0.375rem + 2px);
+  padding-bottom: calc(0.375rem + 2px);
   margin-bottom: 0;
   font-size: inherit;
   line-height: 1.375;
 }
 
 .col-form-label-lg {
-  padding-top: calc(0.5rem + var(--bs-border-width));
-  padding-bottom: calc(0.5rem + var(--bs-border-width));
+  padding-top: calc(0.5rem + 2px);
+  padding-bottom: calc(0.5rem + 2px);
   font-size: 1.25rem;
 }
 
 .col-form-label-sm {
-  padding-top: calc(0.25rem + var(--bs-border-width));
-  padding-bottom: calc(0.25rem + var(--bs-border-width));
+  padding-top: calc(0.25rem + 2px);
+  padding-bottom: calc(0.25rem + 2px);
   font-size: 0.875rem;
 }
 
@@ -2108,6 +2108,7 @@ progress {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.375;
@@ -2117,7 +2118,7 @@ progress {
           appearance: none;
   background-color: var(--bs-body-bg);
   background-clip: padding-box;
-  border: var(--bs-border-width) solid var(--bs-border-color);
+  border: 2px solid var(--bs-border-color);
   border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2170,7 +2171,7 @@ progress {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
-  border-inline-end-width: var(--bs-border-width);
+  border-inline-end-width: 2px;
   border-radius: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2192,7 +2193,7 @@ progress {
   color: var(--bs-body-color);
   background-color: transparent;
   border: solid transparent;
-  border-width: var(--bs-border-width) 0;
+  border-width: 2px 0;
 }
 .form-control-plaintext:focus {
   outline: 0;
@@ -2203,7 +2204,7 @@ progress {
 }
 
 .form-control-sm {
-  min-height: calc(1.375em + 0.5rem + calc(var(--bs-border-width) * 2));
+  min-height: calc(1.375em + 0.5rem + calc(2px * 2));
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: var(--bs-border-radius-sm);
@@ -2215,7 +2216,7 @@ progress {
 }
 
 .form-control-lg {
-  min-height: calc(1.375em + 1rem + calc(var(--bs-border-width) * 2));
+  min-height: calc(1.375em + 1rem + calc(2px * 2));
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   border-radius: var(--bs-border-radius-lg);
@@ -2227,18 +2228,18 @@ progress {
 }
 
 textarea.form-control {
-  min-height: calc(1.375em + 0.75rem + calc(var(--bs-border-width) * 2));
+  min-height: calc(1.375em + 0.75rem + calc(2px * 2));
 }
 textarea.form-control-sm {
-  min-height: calc(1.375em + 0.5rem + calc(var(--bs-border-width) * 2));
+  min-height: calc(1.375em + 0.5rem + calc(2px * 2));
 }
 textarea.form-control-lg {
-  min-height: calc(1.375em + 1rem + calc(var(--bs-border-width) * 2));
+  min-height: calc(1.375em + 1rem + calc(2px * 2));
 }
 
 .form-control-color {
   width: 3rem;
-  height: calc(1.375em + 0.75rem + calc(var(--bs-border-width) * 2));
+  height: calc(1.375em + 0.75rem + calc(2px * 2));
   padding: 0.375rem;
 }
 .form-control-color:not(:disabled):not([readonly]) {
@@ -2253,10 +2254,10 @@ textarea.form-control-lg {
   border-radius: 10px;
 }
 .form-control-color.form-control-sm {
-  height: calc(1.375em + 0.5rem + calc(var(--bs-border-width) * 2));
+  height: calc(1.375em + 0.5rem + calc(2px * 2));
 }
 .form-control-color.form-control-lg {
-  height: calc(1.375em + 1rem + calc(var(--bs-border-width) * 2));
+  height: calc(1.375em + 1rem + calc(2px * 2));
 }
 
 .form-select {
@@ -2264,6 +2265,7 @@ textarea.form-control-lg {
   display: block;
   width: 100%;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.375;
@@ -2276,7 +2278,7 @@ textarea.form-control-lg {
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 16px 12px;
-  border: var(--bs-border-width) solid var(--bs-border-color);
+  border: 2px solid var(--bs-border-color);
   border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2551,8 +2553,8 @@ textarea.form-control-lg {
 .form-floating > .form-control,
 .form-floating > .form-control-plaintext,
 .form-floating > .form-select {
-  height: calc(3.5rem + calc(var(--bs-border-width) * 2));
-  min-height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+  height: calc(3.5rem + calc(2px * 2));
+  min-height: calc(3.5rem + calc(2px * 2));
   line-height: 1.25;
 }
 .form-floating > label {
@@ -2567,7 +2569,7 @@ textarea.form-control-lg {
   text-overflow: ellipsis;
   white-space: nowrap;
   pointer-events: none;
-  border: var(--bs-border-width) solid transparent;
+  border: 2px solid transparent;
   transform-origin: 0 0;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
@@ -2643,7 +2645,7 @@ textarea.form-control-lg {
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 .form-floating > .form-control-plaintext ~ label {
-  border-width: var(--bs-border-width) 0;
+  border-width: 2px 0;
 }
 .form-floating > :disabled ~ label,
 .form-floating > .form-control:disabled ~ label {
@@ -2693,7 +2695,7 @@ textarea.form-control-lg {
   text-align: center;
   white-space: nowrap;
   background-color: var(--bs-tertiary-bg);
-  border: var(--bs-border-width) solid var(--bs-border-color);
+  border: 2px solid var(--bs-border-color);
   border-radius: 10px;
 }
 
@@ -2735,7 +2737,7 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0;
 }
 .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-  margin-left: calc(var(--bs-border-width) * -1);
+  margin-left: calc(2px * -1);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -2925,23 +2927,33 @@ textarea.form-control-lg {
   z-index: 4;
 }
 
+:where(.btn, .button) {
+  --bs-btn-font-family: Arsenal, Open Sans, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+@supports ((width: calc-size(-moz-fit-content, size)) or (width: calc-size(fit-content, size))) {
+  :where(.btn, .button) {
+    width: calc-size(-moz-fit-content, size + 3em);
+    width: calc-size(fit-content, size + 3em);
+  }
+}
+
 :is(.btn, .button) {
-  --bs-btn-padding-x: 0.75rem;
-  --bs-btn-padding-y: 0.375rem;
-  --bs-btn-font-family: ;
+  --bs-btn-padding-x: 1.2em;
+  --bs-btn-padding-y: max(0.6em, 0.5rem);
   --bs-btn-font-size: 1rem;
-  --bs-btn-font-weight: 400;
+  --bs-btn-font-weight: 700;
   --bs-btn-line-height: 1.375;
   --bs-btn-color: var(--bs-body-color);
   --bs-btn-bg: transparent;
-  --bs-btn-border-width: var(--bs-border-width);
+  --bs-btn-border-width: 2px;
   --bs-btn-border-color: transparent;
   --bs-btn-border-radius: var(--bs-border-radius);
   --bs-btn-hover-border-color: transparent;
   --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
   --bs-btn-disabled-opacity: 0.65;
   --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
   font-family: var(--bs-btn-font-family);
   font-size: var(--bs-btn-font-size);
@@ -10707,7 +10719,7 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   grid-column: span 3;
   grid-row: 1/2;
   margin-top: 2rem;
-  color: oklch(59.82% 0 89.88deg);
+  color: #CAC9CA;
   font-size: 14px;
   font-family: "Gothic A1", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
@@ -11180,13 +11192,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   font-size: 12px;
   max-width: 100%;
   width: 100%;
@@ -11203,13 +11218,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   font-size: 12px;
   max-width: 100%;
   width: 100%;
@@ -11442,13 +11460,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #searchResults #top .itemsPerPageForm form .filterClicker span:hover {
   background-color: #002262;
@@ -11491,13 +11512,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #searchResults #bottom .pageNavigation .pagination .pageItem a:hover {
   background-color: #002262;
@@ -11511,13 +11535,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #searchResults #bottom .pageNavigation .pagination .pageItem.disabled:hover {
   background-color: #002262;
@@ -11531,13 +11558,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   cursor: auto;
 }
 #searchResults #bottom .pageNavigation .pagination .pageItem.highLightPage a:hover {
@@ -11786,13 +11816,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   font-size: 1rem;
   max-width: 100%;
 }
@@ -11811,13 +11844,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #eceff6;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #bcc8de;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: none;
   font-size: 1rem;
   cursor: not-allowed;
@@ -11847,13 +11883,16 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   background-color: #dfdfdf;
   color: #333;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #dfdfdf;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: 100%;
   width: 100%;
 }
@@ -13073,13 +13112,16 @@ body.facetShow #leftNav .navSection {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   width: 100%;
   max-width: 100%;
   margin-top: 0.25rem;
@@ -13626,13 +13668,17 @@ body.facetShow #leftNav .navSection {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   margin-top: 0.5rem;
 }
 .myAccount .btn:hover,
@@ -13755,13 +13801,16 @@ body.facetShow #leftNav .navSection {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: 100%;
   width: 100%;
 }
@@ -13812,13 +13861,16 @@ body.facetShow #leftNav .navSection {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: 100%;
   width: 100%;
 }
@@ -13857,13 +13909,16 @@ body.facetShow #leftNav .navSection {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   margin: 0 auto;
 }
 #addressBook #addAddressButton .button:hover {
@@ -14420,13 +14475,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #addressBookEdit .postcodeLookupContainer a.btnLookupPostcode:hover {
   background-color: #002262;
@@ -14586,13 +14644,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   width: 100%;
   display: inline-block;
   margin: 0.5rem 0;
@@ -15136,13 +15197,16 @@ div#wishlistEmail .form-control {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   grid-column: 2/3;
 }
 #basketSummaryArea #basketSubTotals #basketCoupons .couponCode .btn:hover {
@@ -15396,13 +15460,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: 100%;
   width: 100%;
 }
@@ -15594,13 +15661,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 .basketMerge .basketMerge__wrap .basketMerge__inner .basketMerge__buttons .continueShopping:hover {
   background-color: #002262;
@@ -15611,13 +15681,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 .basketMerge .basketMerge__wrap .basketMerge__inner .basketMerge__buttons .basket a:hover {
   background-color: #002262;
@@ -15745,13 +15818,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   text-transform: capitalize;
   text-decoration: none;
 }
@@ -16057,13 +16133,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   width: 100%;
   max-width: 415px;
   margin: 0 auto 3rem auto;
@@ -16092,13 +16171,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #storeLocator .content #usePosBtnContainer button:hover {
   background-color: #002262;
@@ -16368,13 +16450,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   margin: 1.5rem;
   width: 100%;
   display: inline-block;
@@ -16572,13 +16657,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   width: 100%;
   max-width: 400px;
   margin: 0.25rem auto 2rem auto;
@@ -16637,7 +16725,7 @@ div#wishlistEmail .form-control {
 }
 
 .form-group > span {
-  color: #a2a5ab;
+  color: #CAC9CA;
 }
 
 #checkoutHeader {
@@ -17042,7 +17130,7 @@ div#wishlistEmail .form-control {
 }
 #main .checkout .checkoutSection,
 #main .checkout .checkoutShow {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 #main .checkout .checkoutSection h4, #main .checkout .checkoutSection .h4,
 #main .checkout .checkoutShow h4,
@@ -17079,13 +17167,16 @@ div#wishlistEmail .form-control {
   background-color: #000E67;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #000E67;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #main .checkout .checkoutSection .btn.btn-primary:hover,
 #main .checkout .checkoutSection .button.btn-primary:hover,
@@ -17628,13 +17719,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid transparent;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   border-radius: 0;
   cursor: pointer;
 }
@@ -17939,13 +18033,16 @@ div#wishlistEmail .form-control {
   background-color: #000E67;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #000E67;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 #main .checkout .form-group.postcodeLookupContainer a.button:hover,
 #main .checkout .custom-control.postcodeLookupContainer a.button:hover,
@@ -18372,8 +18469,10 @@ div#wishlistEmail .form-control {
   position: relative;
   display: block;
   min-height: 1.5rem;
-  text-align: right;
   padding-left: 1.5rem;
+}
+#main .custom-control.rememberMe {
+  text-align: right;
 }
 #main .custom-control-input {
   position: absolute;
@@ -18405,6 +18504,7 @@ div#wishlistEmail .form-control {
   display: block;
   width: 1rem;
   height: 1rem;
+  border: 2px solid #000E67;
 }
 #main .custom-control-label::before {
   background: #fff;
@@ -18660,10 +18760,10 @@ div#wishlistEmail .form-control {
   margin-top: -2.5ch;
   border-radius: 5rem;
   background-color: #003087;
-  background-size: 80%;
+  background-size: 1em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("/content/system/images/delivery-standard.svg");
+  background-image: url('data:image/svg+xml,<svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 9.21994L6 3.45325" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 16.5533V7.66441C20.9996 7.27472 20.8967 6.89198 20.7017 6.55459C20.5067 6.2172 20.2264 5.93703 19.8889 5.74218L12.1111 1.29772C11.7733 1.10268 11.3901 1 11 1C10.6099 1 10.2267 1.10268 9.88889 1.29772L2.11111 5.74218C1.77363 5.93703 1.49331 6.2172 1.29829 6.55459C1.10327 6.89198 1.0004 7.27472 1 7.66441V16.5533C1.0004 16.943 1.10327 17.3258 1.29829 17.6632C1.49331 18.0005 1.77363 18.2807 2.11111 18.4756L9.88889 22.92C10.2267 23.1151 10.6099 23.2177 11 23.2177C11.3901 23.2177 11.7733 23.1151 12.1111 22.92L19.8889 18.4756C20.2264 18.2807 20.5067 18.0005 20.7017 17.6632C20.8967 17.3258 20.9996 16.943 21 16.5533Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.30029 6.50861L11.0003 12.1197L20.7003 6.50861" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 23.3088V12.1088" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 .deliveryMethodContainer .deliveryOption1 {
   position: relative;
@@ -18678,10 +18778,10 @@ div#wishlistEmail .form-control {
   margin-top: -2.5ch;
   border-radius: 5rem;
   background-color: #003087;
-  background-size: 80%;
+  background-size: 1em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("/content/system/images/delivery-express.svg");
+  background-image: url('data:image/svg+xml,<svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 1H1V14H16V1Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6H20L23 9V14H16V6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 19C6.88071 19 8 17.8807 8 16.5C8 15.1193 6.88071 14 5.5 14C4.11929 14 3 15.1193 3 16.5C3 17.8807 4.11929 19 5.5 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.5 19C19.8807 19 21 17.8807 21 16.5C21 15.1193 19.8807 14 18.5 14C17.1193 14 16 15.1193 16 16.5C16 17.8807 17.1193 19 18.5 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
 .postcodeError {
@@ -19042,13 +19142,16 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 .ZebraDialog_Buttons a:hover {
   background-color: #002262;
@@ -19093,6 +19196,36 @@ div#wishlistEmail .form-control {
     width: 20%;
   }
 }
+.tm {
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .tm {
+    margin-bottom: 3rem;
+  }
+}
+.tm--half {
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .tm--half {
+    margin-bottom: 1.5rem;
+  }
+}
+.tm--double {
+  margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .tm--double {
+    margin-bottom: 5rem;
+  }
+}
+.tm hr {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+}
+
 .template__pricing {
   overflow: hidden;
   line-height: 100%;
@@ -19431,9 +19564,11 @@ body > .top-bar .top-bar__close svg {
 }
 
 .image-with-text {
+  color: #000E67;
+}
+.image-with-text--bg {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-  color: #000E67;
 }
 .image-with-text h3, .image-with-text .h3 {
   font-size: 30px;
@@ -19444,6 +19579,63 @@ body > .top-bar .top-bar__close svg {
   font-size: 22px;
   font-weight: 400;
   font-family: Arsenal;
+}
+.image-with-text__image-wrap img {
+  border-radius: 10px;
+}
+.image-with-text__image-wrap--left {
+  order: 1;
+  margin-bottom: 1rem;
+}
+@media (min-width: 576px) {
+  .image-with-text__image-wrap--left {
+    margin-bottom: 0;
+  }
+}
+.image-with-text__image-wrap--right {
+  order: 3;
+}
+.image-with-text__text-wrap {
+  order: 2;
+  position: relative;
+}
+.image-with-text__text-wrap:has(.buyButton) {
+  padding-bottom: 100px;
+}
+.image-with-text__bottom {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  font-size: 22px;
+  font-family: "Arsenal";
+}
+.image-with-text__bottom > span {
+  display: block;
+  margin-bottom: 1rem;
+}
+.image-with-text__cta {
+  max-width: 50%;
+}
+
+.product-list__content--img {
+  aspect-ratio: 13/20;
+}
+.product-list__content--img > span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.product-list__content--img a {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+}
+.product-list__content--img img {
+  max-height: 290px;
+  max-width: 100%;
+  display: initial;
+  border-radius: 10px;
 }
 
 /* Text Image Block */
@@ -19464,34 +19656,17 @@ body > .top-bar .top-bar__close svg {
   margin-top: var(--bs-gutter-y);
 }
 
-.tm {
-  margin-bottom: 2rem;
+.skewed-jacket__img img {
+  max-width: 90%;
+  transform: rotate(-12.5deg);
 }
-@media (min-width: 768px) {
-  .tm {
-    margin-bottom: 3rem;
-  }
+.skewed-jacket__text {
+  color: #ffffff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
-.tm--half {
-  margin-bottom: 1rem;
-}
-@media (min-width: 768px) {
-  .tm--half {
-    margin-bottom: 1.5rem;
-  }
-}
-.tm--double {
-  margin-bottom: 4rem;
-}
-@media (min-width: 768px) {
-  .tm--double {
-    margin-bottom: 5rem;
-  }
-}
-.tm hr {
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  color: #fff;
+.skewed-jacket__text h3, .skewed-jacket__text .h3 {
+  font-size: 22px;
 }
 
 .text-image-block__header h2, .text-image-block__header .h2 {
@@ -19665,13 +19840,16 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
 }
 .img-banner .single-img__btn:hover {
   background-color: #002262;
@@ -19894,13 +20072,16 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: none;
   min-width: 160px;
 }
@@ -19923,7 +20104,6 @@ body > .top-bar .top-bar__close svg {
   --tag-info-bottom: calc(
     var(--jacket-divider-mt, 0rem) - calc(var(--tag-info-fontSize) / 2)
   );
-  margin-bottom: 0.5rem;
   position: relative;
   --tag-info-fontSize: 14px;
 }
@@ -19946,16 +20126,15 @@ body > .top-bar .top-bar__close svg {
   min-height: 1.8em;
   line-height: 1.6;
 }
-.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a {
+.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img a {
   position: relative;
-  position: static;
 }
-.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a::before, .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a::after {
+.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img a::before, .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img a::after {
   position: absolute;
   top: 0;
   left: 0;
 }
-.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a::before {
+.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img a::before {
   content: var(--tag-promo-text, "Promo label");
   transform: translate(0%, 8%) rotate(-45deg);
   padding: var(--tag-promo-padding, 10px);
@@ -19967,7 +20146,7 @@ body > .top-bar .top-bar__close svg {
   white-space: pre-wrap;
   z-index: 10;
 }
-.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a::after {
+.product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img a::after {
   content: "";
   width: var(--tag-promo-shapeSize, calc(var(--tag-promo-fontSize, 12px) * var(--tag-promo-shapeSize-multiplier, 5)));
   aspect-ratio: 1/1;
@@ -20090,36 +20269,6 @@ body > .top-bar .top-bar__close svg {
     row-gap: 0.75rem;
   }
 }
-.product-list__content--img {
-  width: 100%;
-  max-width: 300px;
-  height: 220px;
-  margin: 0 auto;
-}
-@media (min-width: 1200px) {
-  .product-list__content--img {
-    height: 260px;
-  }
-}
-.product-list__content--img a {
-  display: flex;
-  height: 100%;
-}
-@media (min-width: 768px) {
-  .product-list__content--img {
-    max-width: 300px;
-  }
-}
-.product-list__content--img img {
-  align-self: flex-end;
-  max-height: 220px;
-  max-width: 100%;
-}
-@media (min-width: 1200px) {
-  .product-list__content--img img {
-    max-height: 260px;
-  }
-}
 .product-list__content--title {
   overflow: hidden;
   font-weight: 600;
@@ -20159,13 +20308,16 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   width: 100%;
   max-width: 100%;
 }
@@ -20473,13 +20625,16 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: none;
   width: 33.3333%;
   min-width: 160px;
@@ -20501,13 +20656,16 @@ a.pb-template__content--btn {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: max(0.6em, 0.5rem) 1.2em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: "Arsenal", "Times New Roman", Geneva, Verdana, serif;
   max-width: none;
   width: 33.3333%;
   min-width: 160px;
@@ -21254,69 +21412,4 @@ a.pb-template__content--author {
   cursor: pointer;
   transition: background-color 0.5s ease;
   margin-top: 0.5rem;
-}
-
-@media (min-width: 1200px) {
-  :is(.glide__slide, .template-row) .product-list__content--img img {
-    max-height: unset;
-  }
-}
-@media (min-width: 1200px) {
-  :is(.glide__slide, .template-row) .product-list__content--img {
-    height: unset;
-  }
-}
-:is(.glide__slide, .template-row) .product-list__content--img {
-  --img-max-h: 244px;
-  --min-img-width: 158px;
-  aspect-ratio: 13/20;
-  height: unset;
-  max-height: var(--img-max-h);
-  display: grid;
-}
-@media (min-width: 1200px) {
-  :is(.glide__slide, .template-row) .product-list__content--img {
-    --img-max-h: 303px;
-    --min-img-width: 195px;
-  }
-}
-:is(.glide__slide, .template-row) .product-list__content--img img {
-  max-height: unset;
-  height: 100%;
-  max-width: var(--min-img-width);
-  max-height: var(--img-max-h);
-  margin-inline: auto;
-}
-@supports (width: min(500px, 100%)) {
-  :is(.glide__slide, .template-row) .product-list__content--img img {
-    max-width: min(var(--min-img-width), 100%);
-  }
-}
-
-.template-row .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice):has([data-group=Book]) .product-item--img img,
-.product-item.glide__slide:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice):has([data-group=Book]) .product-item--img img {
-  -o-object-position: top;
-     object-position: top;
-}
-
-.template-row .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:before,
-.template-row .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:after,
-.product-item.glide__slide:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:before,
-.product-item.glide__slide:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:after {
-  left: 50%;
-  translate: calc(var(--min-img-width) / 2 * -1);
-}
-@supports (width: min(500px, 100%)) {
-  .template-row .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:before,
-  .template-row .product-item:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:after,
-  .product-item.glide__slide:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:before,
-  .product-item.glide__slide:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) .product-item--img > a:after {
-    translate: calc(max(var(--min-img-width) / 2, 100%) * -1);
-  }
-}
-
-@media (min-width: 768px) {
-  .product-item.glide__slide:is(.product-item--sale, .product-item--new, .product-item--onlineoffer, .product-item--onlineprice, .template--sale, .template--new, .template--onlineoffer, .template--onlineprice) {
-    --jacket-divider-mt: 0rem;
-  }
 }/*# sourceMappingURL=style.css.map */
