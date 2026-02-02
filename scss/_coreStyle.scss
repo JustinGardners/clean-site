@@ -620,7 +620,7 @@ body {
       grid-column: menu;
 
       @include media-breakpoint-up(md) {
-        display: none;
+        display: none !important;
       }
 
       &::before {
@@ -635,7 +635,7 @@ body {
     }
 
     #searchClicker {
-      display: none;
+      display: none !important;
     }
 
     .blueBarMob {
