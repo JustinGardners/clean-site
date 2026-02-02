@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +15,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Gothic+A1&amp;display=swap"
       rel="stylesheet"
-    />    
+    />
   </head>
   <body>
     <div id="backgroundClicker"></div>
@@ -92,7 +92,7 @@
           $(document).ready(function () {
             $("#paymentTypeCreditCardMasterCardRadioBtn").prop(
               "checked",
-              false
+              false,
             );
           });
         </script>
@@ -182,6 +182,23 @@
                                 aria-describedby="Password-error"
                                 aria-invalid="false"
                               />
+                              <div class="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  id="showPassword"
+                                  class="custom-control-input"
+                                  onclick="
+                                    storeFront.togglePasswordVisibility(
+                                      this,
+                                      'Password',
+                                    )
+                                  "
+                                /><label
+                                  class="custom-control-label"
+                                  for="showPassword"
+                                  >Show Password</label
+                                >
+                              </div>
                               <span
                                 class="field-validation-valid"
                                 data-valmsg-for="Password"
@@ -281,6 +298,26 @@
                                 data-valmsg-replace="true"
                               ></span>
                             </div>
+                            <div class="form-group guest">
+                              <label for="GuestEmail" class="required"
+                                >Enter your email address</label
+                              >
+                              <input
+                                name="GuestEmail"
+                                class="form-control"
+                                data-val="true"
+                                data-val-email="Please enter a valid email address"
+                                data-val-required="Email Address required"
+                                id="GuestEmail"
+                                type="text"
+                                value=""
+                              />
+                              <span
+                                class="field-validation-valid"
+                                data-valmsg-for="GuestEmail"
+                                data-valmsg-replace="true"
+                              ></span>
+                            </div>                            
                             <div class="loginGuestButtons">
                               <button
                                 type="submit"
@@ -1501,7 +1538,7 @@
                               <script type="text/javascript">
                                 $(document).ready(function () {
                                   $(
-                                    "a.phone[data-info!=''][data-info]"
+                                    "a.phone[data-info!=''][data-info]",
                                   ).tooltipster();
 
                                   var addressBook = null;
@@ -1520,7 +1557,7 @@
                                   // only apply changes if we've selected an actual address, not the 'Please select' option
                                   if (
                                     $(
-                                      "#AddressBookSelector_UserDeliveryAddressId"
+                                      "#AddressBookSelector_UserDeliveryAddressId",
                                     ).prop("selectedIndex") != 0
                                   ) {
                                     loadAddress();
@@ -1530,11 +1567,11 @@
 
                                     // hide all post code lookup fields, and show the address fields
                                     $(
-                                      "#deliveryFields .postcodeLookupContainer"
+                                      "#deliveryFields .postcodeLookupContainer",
                                     ).hide();
                                     $("#deliveryFields .postcodeError").hide();
                                     $(
-                                      "#deliveryFields .enterAddressContainer"
+                                      "#deliveryFields .enterAddressContainer",
                                     ).hide();
                                     $("#deliveryFields .addressFields").show();
 
@@ -1545,24 +1582,24 @@
                                     ) {
                                       // yes, so just show the 'search by postcode' container, and default everything else to work for the UK
                                       $(
-                                        "#deliveryFields .searchByContainer"
+                                        "#deliveryFields .searchByContainer",
                                       ).show();
                                       $("#deliveryFields .labelCounty").text(
-                                        "County"
+                                        "County",
                                       );
                                       $("#deliveryFields .labelPostcode").text(
-                                        "Postcode"
+                                        "Postcode",
                                       );
                                       $("#deliveryFields span.ebookWarning")
                                         .text("")
                                         .removeClass("field-validation-error");
                                       $(
-                                        "#deliveryFields span.ebookWarning"
+                                        "#deliveryFields span.ebookWarning",
                                       ).css("display", "none");
                                     } else {
                                       // no, so hide the 'search by postcode' container
                                       $(
-                                        "#deliveryFields .searchByContainer"
+                                        "#deliveryFields .searchByContainer",
                                       ).hide();
 
                                       if (
@@ -1571,23 +1608,23 @@
                                       ) {
                                         // set the labels for US postcode/county
                                         $("#deliveryFields .labelCounty").text(
-                                          "State"
+                                          "State",
                                         );
                                         $(
-                                          "#deliveryFields .labelPostcode"
+                                          "#deliveryFields .labelPostcode",
                                         ).text("Zip code");
                                       } else {
                                         // set the labels for non-US postcode/county
                                         $("#deliveryFields .labelCounty").text(
-                                          "County / Province"
+                                          "County / Province",
                                         );
                                         $(
-                                          "#deliveryFields .labelPostcode"
+                                          "#deliveryFields .labelPostcode",
                                         ).text("Postal code");
                                       }
                                     }
                                   }
-                                }
+                                },
                               );
 
                               // load the selected address from the address book selector into the label fields
@@ -1598,7 +1635,7 @@
 
                                 // grab the value of the address book option selected
                                 var v = $(
-                                  "#AddressBookSelector_UserDeliveryAddressId"
+                                  "#AddressBookSelector_UserDeliveryAddressId",
                                 ).val();
 
                                 // loop through all addresses in address book to find the one we want
@@ -1606,34 +1643,34 @@
                                   if (element.UserAddressId == v) {
                                     // populate the text address description beneath the address selector drop down
                                     $(
-                                      "#deliveryFields #DeliveryAddress_UserTitlePrefixTypeId"
+                                      "#deliveryFields #DeliveryAddress_UserTitlePrefixTypeId",
                                     ).val(element.UserTitlePrefixTypeId);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_FirstName"
+                                      "#deliveryFields #DeliveryAddress_FirstName",
                                     ).val(element.FirstName);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_LastName"
+                                      "#deliveryFields #DeliveryAddress_LastName",
                                     ).val(element.LastName);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_Phone"
+                                      "#deliveryFields #DeliveryAddress_Phone",
                                     ).val(element.Phone);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_AddressLine1"
+                                      "#deliveryFields #DeliveryAddress_AddressLine1",
                                     ).val(element.AddressLine1);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_AddressLine2"
+                                      "#deliveryFields #DeliveryAddress_AddressLine2",
                                     ).val(element.AddressLine2);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_Town"
+                                      "#deliveryFields #DeliveryAddress_Town",
                                     ).val(element.Town);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_County"
+                                      "#deliveryFields #DeliveryAddress_County",
                                     ).val(element.County);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_PostCode"
+                                      "#deliveryFields #DeliveryAddress_PostCode",
                                     ).val(element.PostCode);
                                     $(
-                                      "#deliveryFields #DeliveryAddress_Country"
+                                      "#deliveryFields #DeliveryAddress_Country",
                                     ).val(element.Country);
 
                                     // and show the address fields
@@ -1647,33 +1684,33 @@
                               window.resetFields = function () {
                                 // remove any address fields validation errors
                                 $(
-                                  "#deliveryFields #DeliveryAddress_FirstName"
+                                  "#deliveryFields #DeliveryAddress_FirstName",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_LastName"
+                                  "#deliveryFields #DeliveryAddress_LastName",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_Phone"
+                                  "#deliveryFields #DeliveryAddress_Phone",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_AddressLine1"
+                                  "#deliveryFields #DeliveryAddress_AddressLine1",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_AddressLine2"
+                                  "#deliveryFields #DeliveryAddress_AddressLine2",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_Town"
+                                  "#deliveryFields #DeliveryAddress_Town",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_County"
+                                  "#deliveryFields #DeliveryAddress_County",
                                 ).removeClass("input-validation-error");
                                 $(
-                                  "#deliveryFields #DeliveryAddress_PostCode"
+                                  "#deliveryFields #DeliveryAddress_PostCode",
                                 ).removeClass("input-validation-error");
 
                                 // and any error messages
                                 $(
-                                  "#deliveryAddress .field-validation-error"
+                                  "#deliveryAddress .field-validation-error",
                                 ).empty();
                               };
                             </script>
