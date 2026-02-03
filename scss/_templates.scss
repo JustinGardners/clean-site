@@ -1058,11 +1058,11 @@ body {
     justify-content: center;
     row-gap: 0.5rem;
     padding: 0;
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
+    font-family: $text-font-stack;
     @include media-breakpoint-up(md) {
       width: 100%;
-      text-align: center;
       row-gap: 0.75rem;
     }
     // &--img {
