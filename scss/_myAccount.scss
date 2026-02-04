@@ -218,6 +218,98 @@
     }
   }
 
+  .adminNav {
+    font-family: $text-font-stack;
+    li {
+      display: flex;
+    }
+    ul a {
+      border-block-start: 1px solid #d4dbe5;
+      width:100%;
+      padding-block: 0.5em;
+      color: $primary;
+    }
+    h5 {
+      font-size: 1.375em;
+      color: $primary;
+    }
+  }
+
+  .myAccountWrap {
+    .accountLanding {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      container-type: inline-size;
+    }
+  }
+
+  .account-card {
+    position: relative;
+    > div {
+      // aspect-ratio: 4/2;
+      background: $subtle-background;
+      height: 100%;
+      padding: 2rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      @container (min-width: 500px) {
+        aspect-ratio: 1/1;
+      }
+    }
+  }
+
+  .account-card__icon {
+    aspect-ratio: 1/1;
+    background: white;
+    width: 4rem;
+  }
+
+  .account-card__content {
+    margin-top: 1rem;
+    --bs-heading-color: #{$bg-brand};
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    h3 {
+      font-size: min(clampWithViewPort(22, 30), max(min(3.1cqw, 30px), 22px));
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: $bg-brand;
+        margin-block: 0.5em;
+      }
+    }
+    p {
+      font-size: clamp(14px, 3cqw, 16px);
+    }
+  }
+
+  .account-card--order-history {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    .account-card__content {
+      width: calc(100cqw - 4rem);
+    }
+  }
+
   label {
     margin-top: 0.5rem;
     color: $bg-brand;
@@ -521,9 +613,11 @@
               padding: 0.375rem 0.75rem;
               font-size: 1rem;
               line-height: 1.5;
-              transition: color 0.15s ease-in-out,
+              transition:
+                color 0.15s ease-in-out,
                 background-color 0.15s ease-in-out,
-                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
               color: #fff;
               background-color: #1c4aa0;
               width: 100%;

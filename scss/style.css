@@ -9847,9 +9847,6 @@ body .internetExNote p {
     margin-bottom: 0.75rem;
   }
 }
-#headerWrap #header .container-md, #headerWrap #header :not(.smaller-template-content) .template-container, :not(.smaller-template-content) #headerWrap #header .template-container {
-  max-width: 1320px !important;
-}
 #headerWrap #header > .container-md .row, #headerWrap :not(.smaller-template-content) #header > .template-container .row, :not(.smaller-template-content) #headerWrap #header > .template-container .row {
   --vw-min: 375;
   display: grid;
@@ -10034,7 +10031,7 @@ body .internetExNote p {
 }
 @media (min-width: 768px) {
   #headerWrap #header #navButton {
-    display: none;
+    display: none !important;
   }
 }
 #headerWrap #header #navButton::before {
@@ -10049,7 +10046,7 @@ body .internetExNote p {
           mask-size: cover;
 }
 #headerWrap #header #searchClicker {
-  display: none;
+  display: none !important;
 }
 #headerWrap #header .blueBarMob {
   display: none;
@@ -13655,6 +13652,109 @@ body.facetShow #leftNav .navSection {
 .helpPages .helpWrap .myAccountContents > .myAccountContents {
   display: none;
 }
+.myAccount .adminNav,
+.helpPages .adminNav {
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+.myAccount .adminNav li,
+.helpPages .adminNav li {
+  display: flex;
+}
+.myAccount .adminNav ul a,
+.helpPages .adminNav ul a {
+  border-block-start: 1px solid #d4dbe5;
+  width: 100%;
+  padding-block: 0.5em;
+  color: #000E67;
+}
+.myAccount .adminNav h5, .myAccount .adminNav .h5,
+.helpPages .adminNav h5,
+.helpPages .adminNav .h5 {
+  font-size: 1.375em;
+  color: #000E67;
+}
+.myAccount .myAccountWrap .accountLanding,
+.helpPages .myAccountWrap .accountLanding {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  container-type: inline-size;
+}
+.myAccount .account-card,
+.helpPages .account-card {
+  position: relative;
+}
+.myAccount .account-card > div,
+.helpPages .account-card > div {
+  background: #eceff6;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+@container (min-width: 500px) {
+  .myAccount .account-card > div,
+  .helpPages .account-card > div {
+    aspect-ratio: 1/1;
+  }
+}
+.myAccount .account-card__icon,
+.helpPages .account-card__icon {
+  aspect-ratio: 1/1;
+  background: white;
+  width: 4rem;
+}
+.myAccount .account-card__content,
+.helpPages .account-card__content {
+  margin-top: 1rem;
+  --bs-heading-color: #003087;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+}
+.myAccount .account-card__content a:hover,
+.helpPages .account-card__content a:hover {
+  text-decoration: none;
+}
+.myAccount .account-card__content a:before,
+.helpPages .account-card__content a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.myAccount .account-card__content h3, .myAccount .account-card__content .h3,
+.helpPages .account-card__content h3,
+.helpPages .account-card__content .h3 {
+  font-size: min(clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px), max(min(3.1cqw, 30px), 22px));
+}
+.myAccount .account-card__content h3:after, .myAccount .account-card__content .h3:after,
+.helpPages .account-card__content h3:after,
+.helpPages .account-card__content .h3:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #003087;
+  margin-block: 0.5em;
+}
+.myAccount .account-card__content p,
+.helpPages .account-card__content p {
+  font-size: clamp(14px, 3cqw, 16px);
+}
+.myAccount .account-card--order-history,
+.helpPages .account-card--order-history {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+.myAccount .account-card--order-history .account-card__content,
+.helpPages .account-card--order-history .account-card__content {
+  width: calc(100cqw - 4rem);
+}
 .myAccount label,
 .helpPages label {
   margin-top: 0.5rem;
@@ -14941,7 +15041,7 @@ div#wishlistEmail .form-control {
   padding-inline: 0;
   border-bottom: 0;
 }
-:where(#mainBasket) #basketTable #basketBody .row .itemQuantity .quantityTotal .removeItem {
+:where(#mainBasket) #basketTable #basketBody .row .itemQuantity .quantityTotal .removeItem a {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
@@ -14954,7 +15054,7 @@ div#wishlistEmail .form-control {
           mask-size: cover;
   color: #003087;
 }
-:where(#mainBasket) #basketTable #basketBody .row .itemQuantity .quantityTotal .removeItem:before {
+:where(#mainBasket) #basketTable #basketBody .row .itemQuantity .quantityTotal .removeItem a:before {
   content: "";
   display: block;
   width: 100%;
@@ -20259,13 +20359,13 @@ body > .top-bar .top-bar__close svg {
   justify-content: center;
   row-gap: 0.5rem;
   padding: 0;
-  text-align: center;
+  text-align: left;
   margin-bottom: 2rem;
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 @media (min-width: 768px) {
   .product-list__content {
     width: 100%;
-    text-align: center;
     row-gap: 0.75rem;
   }
 }
