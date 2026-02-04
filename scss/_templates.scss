@@ -210,7 +210,6 @@
 /* === TOPBAR ============================= */
 body {
   > .top-bar {
-    padding: 20px 0;
     background-color: $bg-brand-dark;
     color: #fff;
     font-size: 18px;
@@ -538,9 +537,6 @@ body {
     max-width: 100%;
     display: initial;
     border-radius: 10px;
-    box-shadow:
-      0px 2px 0px 0px #ffffff24 inset,
-      0px 4px 4px 0px #00000040;
 
     //     max-width: var(--min-img-width);
     //     max-height: var(--img-max-h);

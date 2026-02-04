@@ -372,7 +372,6 @@
       </div>
 
       <div class="mm__col mm__col--l2" x-show="showCol2()" x-cloak>
-        <div class="mm__back" @click="goBack()" x-show="mobileLevel > 1">‹ Back</div>
         <div class="mm__head">
           <template x-if="activeL1Group()">
             <a class="mm__headLink" :href="col2Href()" x-text="col2Label()"></a>
@@ -395,7 +394,6 @@
       </div>
 
       <div class="mm__col mm__col--l3">
-        <div class="mm__back" @click="goBack()" x-show="mobileLevel > 1">‹ Back</div>
         <div class="mm__head">
           <template x-if="activeL2Group() && itemsList().length">
             <a class="mm__headLink" :href="col3Href()" x-text="col3Label()"></a>
@@ -518,46 +516,5 @@
         m.style.display = "none";
       });
     }
-  });
-
-  document.addEventListener("alpine:init", () => {
-    Alpine.data("mmNavComponent", function () {
-      return {
-        ...window.mmNavComponent(),
-
-        mobileLevel: 1,
-
-        init() {
-          this.$nextTick(() => {
-            this.updateMobileState();
-          });
-        },
-
-        setL1(idx) {
-          this.activeL1 = idx;
-          this.activeL2 = 0;
-          this.mobileLevel = window.innerWidth < 768 ? 2 : this.mobileLevel;
-          this.updateMobileState();
-        },
-
-        setL2(idx) {
-          this.activeL2 = idx;
-          this.mobileLevel = window.innerWidth < 768 ? 3 : this.mobileLevel;
-          this.updateMobileState();
-        },
-
-        goBack() {
-          if (this.mobileLevel > 1) this.mobileLevel--;
-          this.updateMobileState();
-        },
-
-        updateMobileState() {
-          const root = this.$el;
-          root.classList.toggle("mm--show-l1", this.mobileLevel === 1);
-          root.classList.toggle("mm--show-l2", this.mobileLevel === 2);
-          root.classList.toggle("mm--show-l3", this.mobileLevel === 3);
-        },
-      };
-    });
   });
 })();
