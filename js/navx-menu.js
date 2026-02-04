@@ -1,4 +1,4 @@
-// NAVX MEGA MENU V0.3
+// NAVX MEGA MENU V0.4
 (function () {
   const SELECTORS = {
     trigger: ".mm__trigger",
