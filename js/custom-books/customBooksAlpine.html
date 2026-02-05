@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://storefronttmgae.staging.gardners.com/DynamicContent/Css"
+    />
+    <style>
+      .priceAreaWrap {
+        width: 290px;
+      }
+
+      form#personalisedGifts {
+        background: lightcoral;
+
+        ul {
+          padding: 0;
+
+          &:has(.dateMessage) {
+            
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="priceAreaWrap">
+      <div x-data="personalisedGifts()" class="extraContentContainer">
+        <form id="personalisedGifts" @submit.prevent="" submitForm>
+          <ul>
+            <li>
+              <span
+                >Your recipients name to appear on the front of the book:</span
+              >
+              <input
+                type="text"
+                id="pgName"
+                maxlength="22"
+                name="Name"
+                x-model="name"
+                required
+              />
+            </li>
+            <li>
+              <span>*Date of birth:</span>
+              <input
+                id="pgDateInput"
+                name="Date"
+                type="date"
+                x-model="date"
+                @change="handleDateChange"
+                required
+                min="1920-02-01"
+                max="2008-12-31"
+              />
+            </li>
+          </ul>
+
+          <template x-for="i in 5">
+            <input
+              :id="'pgMessage' + i"
+              :name="'Message' + i"
+              type="hidden"
+              maxlength="30"
+              value="none"
+            />
+          </template>
+
+          <div class="dateMessage" x-html="warningMessage"></div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function personalisedGifts() {
+        return {
+          name: "",
+          date: "",
+          warningMessage: "",
+
+          specialCharsRegex: /^([a-zA-Z0-9_\r\n\t\f\v \s':;.@#!,\-]+)?$/,
+
+          handleDateChange() {
+            if (!this.date) {
+              this.warningMessage = "";
+              return;
+            }
+
+            const d = new Date(this.date);
+            const year = d.getFullYear();
+            const month = d.getMonth() + 1;
+            const day = d.getDate();
+            const weekday = d.toLocaleDateString("en-GB", { weekday: "short" });
+
+            // Boxing Day
+            if (year <= 1994 && month === 12 && day === 26) {
+              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: The Telegraph was not published on Boxing Day until 1995. Your book will be created with the nearest available edition before this date, then with the Boxing Day edition after 1995.</p></span>`;
+            }
+            // Christmas Day
+            else if (month === 12 && day === 25) {
+              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: Neither The Telegraph or The Sunday Telegraph are published on Christmas day. Your book will be created with the nearest available edition before this date.</p></span>`;
+            }
+            // Leap Day
+            else if (month === 2 && day === 29) {
+              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: As your selected date is 29th February, an alternative edition will be provided for non-leap years</p></span>`;
+            }
+            // Sunday Telegraph before 1961
+            else if (year <= 1961 && weekday === "Sun") {
+              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: The Sunday Telegraph was not published until February 1961, and your commemorative date starts on a Sunday. Your book will be created  with an alternative Telegraph cover near to your chosen date.</p></span>`;
+            } else if (year <= 1961) {
+              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: The Sunday Telegraph was not published until February 1961. Any commemorative days that fall on a Sunday before this date will be replaced with an alternative day.</p></span>`;
+            }
+            // Year 2008 Alert
+            else if (year === 2008) {
+              this.warningMessage = `<span class="dateMessageWrap"><p><b>Important</b><br>Please double check your date selection as you have selected a recent date.</p></span>`;
+            } else {
+              this.warningMessage = "";
+            }
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

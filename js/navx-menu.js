@@ -136,8 +136,8 @@
   window.mmNavComponent = function () {
     return {
       data: { mode: "tree", groups: [] },
-      activeL1: 0,
-      activeL2: 0,
+      activeL1: null,
+      activeL2: null,
 
       triggerLabel: "Shop",
       triggerHref: "#",
@@ -160,8 +160,9 @@
           const firstWithL2 = (this.data.groups || []).findIndex(
             (g) => g.l2 && g.l2.length,
           );
-          this.activeL1 = firstWithL2 >= 0 ? firstWithL2 : 0;
-          this.activeL2 = 0;
+          // this.activeL1 = firstWithL2 >= 0 ? firstWithL2 : 0;
+          this.activeL1 = null;
+          this.activeL2 = null;
         }
       },
 
@@ -174,7 +175,7 @@
       // ===== TREE helpers =====
       setL1(idx) {
         this.activeL1 = idx;
-        this.activeL2 = 0;
+        this.activeL2 = null;
       },
       setL2(idx) {
         this.activeL2 = idx;
@@ -190,7 +191,9 @@
       l2List() {
         const l1 = this.activeL1Group();
         if (!l1) return [];
-        if (l1.l2 && l1.l2.length) return l1.l2;
+        if (l1.l2 && l1.l2.length) {
+          return l1.l2.map((g) => ({ ...g, promo: g.promo || !!l1.promo }));
+        }
         if (l1.items && l1.items.length) {
           return [
             {
@@ -198,6 +201,7 @@
               viewAll: l1.viewAll,
               items: l1.items,
               pseudo: true,
+              promo: !!l1.promo,
             },
           ];
         }
@@ -371,7 +375,7 @@
         </ul>
       </div>
 
-      <div class="mm__col mm__col--l2" x-show="showCol2()" x-cloak>
+      <div class="mm__col mm__col--l2" x-show="activeL1 !== null" x-cloak>
         <div class="mm__head">
           <template x-if="activeL1Group()">
             <a class="mm__headLink" :href="col2Href()" x-text="col2Label()"></a>
@@ -472,11 +476,17 @@
   // Mobile Nav Toggle
   document.addEventListener("DOMContentLoaded", function () {
     const btn = document.querySelector("#navButton .navbarToggle");
+    const mobileBtn = document.querySelector("#navClickerX");
     const navMain = document.querySelector("#navMain");
 
-    if (!btn || !navMain) return;
+    if (!btn || !mobileBtn || !navMain) return;
 
     btn.addEventListener("click", function () {
+      navMain.classList.toggle("is-open");
+      document.body.classList.toggle("mobileMenuOpen");
+    });
+
+    mobileBtn.addEventListener("click", function () {
       navMain.classList.toggle("is-open");
       document.body.classList.toggle("mobileMenuOpen");
     });

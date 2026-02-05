@@ -10,6 +10,24 @@
   }
 }
 
+body:has(#navMain.is-open) {
+  overflow: clip;
+}
+
+#nav:has(#navMain.is-open) #navMain {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+
+/*
+ * ul.primary width 50vw
+ * body.mobileMenuOpen :is(.primary>li,.categories .category) - max-height: 90dvh / overflow: auto
+ * fix positioning of level 2 + level 3 elements as level 1 is picked
+*/
+
 .megaMenu {
   position: relative;
   font-family: "Arsenal", sans-serif;
@@ -97,11 +115,6 @@
   margin-bottom: 8px;
 }
 
-.mm__promosTitle {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
 .mm__promosList {
   display: grid;
   gap: 6px;
@@ -144,13 +157,11 @@
   text-align: left;
   cursor: pointer;
 
-  &:hover {
-    border-color: #000e67;
-  }
-
+  &:hover,
   &.is-active {
     background: #4f7ad1;
     color: #fff;
+    border-color: #000e67;
   }
 }
 

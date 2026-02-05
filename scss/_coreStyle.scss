@@ -14,9 +14,11 @@ hr.dev {
 }
 
 body {
+  position: relative;
   padding-bottom: 75px;
-  overflow-x: hidden;
   font-variant-numeric: lining-nums;
+  overflow-x: hidden;
+
   @include breakpt-md {
     padding-bottom: 0px;
   }
@@ -753,7 +755,7 @@ body {
   }
 
   #nav {
-    display: none;
+    // display: none;
     @include media-breakpoint-up(md) {
       background: $bg-brand-dark;
       display: block;
@@ -793,7 +795,7 @@ body {
             &:focus,
             &:hover {
               .megaMenu {
-                display: block !important;
+                // display: block !important;
               }
             }
             > a {
@@ -925,7 +927,7 @@ body.mobileMenuOpen {
       bottom: 0;
       left: 0;
       display: block;
-      background: #fff;
+      // background: #fff;
       padding-bottom: 90px;
 
       z-index: 30;
@@ -1380,6 +1382,27 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
       }
     }
   }
+
+  .footerBlock {
+    &logo {
+      img {
+        max-width: 25%;
+      }
+    }
+
+    &Cards {
+      margin-left: auto;
+
+      ul {
+        display: flex;
+        gap: 1rem;
+
+        li {
+          list-style-type: none;
+        }
+      }
+    }
+  }
 }
 
 // Discount Flash
@@ -1468,5 +1491,5 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
 }
 
 #headerWrap #nav {
-  background: #fff;
+  // background: #fff;
 }
