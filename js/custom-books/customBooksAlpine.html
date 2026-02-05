@@ -19,13 +19,41 @@
       }
 
       form#personalisedGifts {
-        background: lightcoral;
+        padding: 1rem 0.5rem;
 
         ul {
           padding: 0;
+          margin: 0;
 
-          &:has(.dateMessage) {
-            
+          li {
+            list-style-type: none;
+
+            + li {
+              margin-top: 0.5rem;
+            }
+          }
+        }
+
+        span {
+          display: block;
+          padding: 0 0 0.5rem;
+        }
+
+        .dateMessage {
+          &:has(.dateMessageWrap) {
+            padding: 1rem 0;
+          }
+        }
+
+        .dateMessageWrap {
+          padding: 0.5rem;
+          background: #fff3cd;
+          color: #664d03;
+          border: 1px solid #ffecb5;
+          border-radius: 5px;
+
+          p {
+            margin: 0;
           }
         }
       }
@@ -50,7 +78,7 @@
               />
             </li>
             <li>
-              <span>*Date of birth:</span>
+              <span>Date of birth:</span>
               <input
                 id="pgDateInput"
                 name="Date"
@@ -102,21 +130,21 @@
 
             // Boxing Day
             if (year <= 1994 && month === 12 && day === 26) {
-              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: The Telegraph was not published on Boxing Day until 1995. Your book will be created with the nearest available edition before this date, then with the Boxing Day edition after 1995.</p></span>`;
+              this.warningMessage = `<span class="dateMessageWrap"><p><b>Please note:</b> The Telegraph was not published on Boxing Day until 1995. Your book will be created with the nearest available edition before this date, then with the Boxing Day edition after 1995.</p></span>`;
             }
             // Christmas Day
             else if (month === 12 && day === 25) {
-              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: Neither The Telegraph or The Sunday Telegraph are published on Christmas day. Your book will be created with the nearest available edition before this date.</p></span>`;
+              this.warningMessage = `<span class="dateMessageWrap"><p><b>Please note:</b> Neither The Telegraph or The Sunday Telegraph are published on Christmas day. Your book will be created with the nearest available edition before this date.</p></span>`;
             }
             // Leap Day
             else if (month === 2 && day === 29) {
-              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: As your selected date is 29th February, an alternative edition will be provided for non-leap years</p></span>`;
+              this.warningMessage = `<span class="dateMessageWrap"><p><b>Please note:</b> As your selected date is 29th February, an alternative edition will be provided for non-leap years</p></span>`;
             }
             // Sunday Telegraph before 1961
             else if (year <= 1961 && weekday === "Sun") {
-              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: The Sunday Telegraph was not published until February 1961, and your commemorative date starts on a Sunday. Your book will be created  with an alternative Telegraph cover near to your chosen date.</p></span>`;
+              this.warningMessage = `<span class="dateMessageWrap"><p><b>Please note:</b> The Sunday Telegraph was not published until February 1961, and your commemorative date starts on a Sunday. Your book will be created  with an alternative Telegraph cover near to your chosen date.</p></span>`;
             } else if (year <= 1961) {
-              this.warningMessage = `<span class="dateMessageWrap"><p>Please note: The Sunday Telegraph was not published until February 1961. Any commemorative days that fall on a Sunday before this date will be replaced with an alternative day.</p></span>`;
+              this.warningMessage = `<span class="dateMessageWrap"><p><b>Please note:</b> The Sunday Telegraph was not published until February 1961. Any commemorative days that fall on a Sunday before this date will be replaced with an alternative day.</p></span>`;
             }
             // Year 2008 Alert
             else if (year === 2008) {
