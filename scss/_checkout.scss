@@ -26,7 +26,7 @@
       grid-column: 1 / -1;
       grid-row: 3 / 3;
     }
-    .checkout-header__logo {
+    :is(.checkout-header__logo, #storeLogoHeader) {
       grid-column: 1 / 1;
       grid-row: 1 / 1;
     }
@@ -42,7 +42,7 @@
         grid-column: 3 / 3;
         grid-row: 1 / 1;
       }
-      .checkout-header__logo {
+      :is(.checkout-header__logo, #storeLogoHeader) {
         grid-column: 1 / 1;
         grid-row: 2 / 2;        
       }

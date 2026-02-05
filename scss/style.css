@@ -10192,7 +10192,6 @@ body .internetExNote p {
     display: grid;
     place-content: center center;
     text-align: center;
-    background-color: #002262;
   }
   #headerWrap #nav #navMain ul.primary > li:hover {
     background-color: #1c4aa0;
@@ -10202,9 +10201,11 @@ body .internetExNote p {
   }
   #headerWrap #nav #navMain ul.primary > li > a {
     display: block;
-    color: #fff;
     padding: 0.7rem 0.5rem;
+    background: #fff !important;
+    color: #000e67 !important;
     font-size: 1rem;
+    font-family: "Arsenal", sans-serif;
     font-weight: 600;
     text-decoration: none;
   }
@@ -10929,6 +10930,7 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
 }
 
 .mm__col--media {
+  grid-column: 4 !important;
   border-right: 0;
   padding: 0 0.25rem;
 }
@@ -11119,6 +11121,34 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
 
 .mm__items--legacy {
   margin-top: 6px;
+}
+
+.mm-slide-enter {
+  transition: all 0.25s ease;
+}
+
+.mm-slide-enter-start {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.mm-slide-enter-end {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mm-slide-leave {
+  transition: all 0.2s ease;
+}
+
+.mm-slide-leave-start {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mm-slide-leave-end {
+  opacity: 0;
+  transform: translateX(-12px);
 }
 
 /* === SEARCH ============================= */
@@ -16840,7 +16870,7 @@ div#wishlistEmail .form-control {
   grid-column: 1/-1;
   grid-row: 3/3;
 }
-#checkoutHeader > .container-md > .row .checkout-header__logo, :not(.smaller-template-content) #checkoutHeader > .template-container > .row .checkout-header__logo {
+#checkoutHeader > .container-md > .row :is(.checkout-header__logo, #storeLogoHeader), :not(.smaller-template-content) #checkoutHeader > .template-container > .row :is(.checkout-header__logo, #storeLogoHeader) {
   grid-column: 1/1;
   grid-row: 1/1;
 }
@@ -16858,7 +16888,7 @@ div#wishlistEmail .form-control {
     grid-column: 3/3;
     grid-row: 1/1;
   }
-  #checkoutHeader > .container-md > .row .checkout-header__logo, :not(.smaller-template-content) #checkoutHeader > .template-container > .row .checkout-header__logo {
+  #checkoutHeader > .container-md > .row :is(.checkout-header__logo, #storeLogoHeader), :not(.smaller-template-content) #checkoutHeader > .template-container > .row :is(.checkout-header__logo, #storeLogoHeader) {
     grid-column: 1/1;
     grid-row: 2/2;
   }
@@ -19336,7 +19366,7 @@ div#wishlistEmail .form-control {
   font-family: Arsenal;
   font-weight: 400;
   font-style: Regular;
-  color: #000E67;
+  color: #000e67;
 }
 .template__pricing--rrp {
   font-size: 22px;
@@ -19350,11 +19380,11 @@ div#wishlistEmail .form-control {
   border-radius: 40px;
   height: 40px;
   line-height: 36px;
-  border: #00149C 2px solid;
+  border: #00149c 2px solid;
   width: 100%;
   text-align: center;
   display: block;
-  background-color: #000E67;
+  background-color: #000e67;
   font-family: Arsenal;
   font-weight: 700;
   font-style: Bold;
@@ -19364,12 +19394,12 @@ div#wishlistEmail .form-control {
   vertical-align: bottom;
   font-variant-numeric-figure: lining-nums;
   font-variant-numeric-spacing: proportional-nums;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 0;
 }
 .template__pricing .buyButton:hover {
-  background-color: #4F7AD1;
-  border-color: #4F7AD1;
+  background-color: #4f7ad1;
+  border-color: #4f7ad1;
   text-decoration: none;
 }
 
@@ -19465,6 +19495,7 @@ div#wishlistEmail .form-control {
 
 /* === TOPBAR ============================= */
 body > .top-bar {
+  padding: 20px 0;
   background-color: #002262;
   color: #fff;
   font-weight: 600;
@@ -19630,7 +19661,7 @@ body > .top-bar .top-bar__close svg {
   letter-spacing: 0%;
   font-variant-numeric-figure: lining-nums;
   font-variant-numeric-spacing: proportional-nums;
-  color: #000E67;
+  color: #000e67;
 }
 .double_product__text h4, .double_product__text .h4 {
   font-family: Arsenal;
@@ -19642,11 +19673,11 @@ body > .top-bar .top-bar__close svg {
   letter-spacing: 0%;
   font-variant-numeric-figure: lining-nums;
   font-variant-numeric-spacing: proportional-nums;
-  color: #000E67;
+  color: #000e67;
 }
 .double_product__text p {
   font-size: 16px;
-  color: #000E67;
+  color: #000e67;
 }
 .double_product__image-wrap {
   padding: 20px;
@@ -19664,7 +19695,7 @@ body > .top-bar .top-bar__close svg {
 }
 
 .image-with-text {
-  color: #000E67;
+  color: #000e67;
 }
 .image-with-text--bg {
   padding-top: 2.5rem;
@@ -21255,7 +21286,7 @@ a.pb-template__content--author {
   z-index: 2;
 }
 .product-carousel--ten-up .glide__slide:has(a + div) .product__background {
-  background: var(--product-background, #000E67);
+  background: var(--product-background, #000e67);
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -21372,17 +21403,19 @@ a.pb-template__content--author {
 .manualForm .custom-form label {
   display: block;
   margin-top: 0.5rem;
-  color: #000E67;
+  color: #000e67;
   font-weight: bold;
   grid-row-start: 1;
 }
 .manualForm .custom-form .questions {
   display: block;
-  color: #000E67;
+  color: #000e67;
   font-weight: bold;
   margin-bottom: 0.25rem;
 }
-.manualForm .custom-form input[type=text], .manualForm .custom-form input[type=email], .manualForm .custom-form textarea {
+.manualForm .custom-form input[type=text],
+.manualForm .custom-form input[type=email],
+.manualForm .custom-form textarea {
   display: block;
   margin: 0.25rem 0 0.5rem;
   border: 2px solid #bcc8de;
@@ -21463,12 +21496,14 @@ a.pb-template__content--author {
   .manualForm .custom-form .pass .field-validation-error {
     grid-area: 2/2;
   }
-  .manualForm .custom-form label, .manualForm .custom-form .questions {
+  .manualForm .custom-form label,
+  .manualForm .custom-form .questions {
     width: var(--formLabelSpace);
   }
 }
 @media (min-width: 768px) and (min-width: 768px) {
-  .manualForm .custom-form label, .manualForm .custom-form .questions {
+  .manualForm .custom-form label,
+  .manualForm .custom-form .questions {
     width: calc(var(--formLabelSpace) * 1.5);
   }
 }
