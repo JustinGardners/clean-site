@@ -10056,6 +10056,11 @@ body .internetExNote p {
 #headerWrap #header #searchBar {
   grid-column: search;
 }
+@media (min-width: 768px) {
+  #headerWrap #header #searchBar {
+    grid-column: span 2;
+  }
+}
 @media (max-width: 767px) {
   #headerWrap #header #searchBar {
     grid-row: 3;

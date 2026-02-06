@@ -659,6 +659,9 @@ body {
 
     #searchBar {
       grid-column: search;
+      @include media-breakpoint-up(md) {
+        grid-column: span 2;
+      }
       @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
         grid-row: 3;
         grid-column: 1 / -1;
