@@ -221,6 +221,10 @@
         .orderSummaryDetailsLabel {
           color: $bg-brand;
           font-weight: bold;
+          font-family: $text-font-stack;
+          + .orderSummaryDetailsValue {
+            margin-top:0.5rem;
+          }
         }
       }
     }
@@ -373,7 +377,7 @@
           padding-top: 1.5rem;
           // border-bottom: 2px solid $subtle-border;
           > div:not(:first-child) {
-            margin-top: 1rem;
+            margin-top: 1.5rem;
           }
         }
         .totals {
@@ -420,6 +424,10 @@
         }
       }
     }
+    .checkoutSection > h4:first-child {
+      border-radius: 10px 10px 0 0;
+    }
+
     .checkoutSection,
     .checkoutShow {
       // --formLabelSpace: 125px;
@@ -1179,10 +1187,10 @@
             top: 50%;
             left: calc(32px + 1.4rem);
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
+            width: 24px;
+            height: 24px;
             background-position: center center;
-            background-size: 40px;
+            background-size: contain;
             background-repeat: no-repeat;
             z-index: 0;
           }

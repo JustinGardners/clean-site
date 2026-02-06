@@ -6,13 +6,13 @@
     flex-direction: column;
     background: white;
     padding-inline: 1rem;
-    padding-top:1rem;
-    border-top:1px solid $subtle-border;
+    padding-top: 1rem;
+    border-top: 1px solid $subtle-border;
     label[for="accountInfo"] {
       order: 99;
-      z-index:2;
-      padding:1rem 0;
-      margin-top:0;
+      z-index: 2;
+      padding: 1rem 0;
+      margin-top: 0;
       background: white;
       span {
         transform: translateY(-0.5rem);
@@ -23,36 +23,21 @@
         @include visually-hidden();
         &:checked + .adminNav__wrapper {
           display: block;
-          opacity:1;
-          height: calc-size(fit-content, size / 1);
+          opacity: 1;
         }
       }
     }
-
   }
 }
 
 .adminNav__wrapper {
   display: none;
-  height: calc-size(fit-content, size / 100);
-  opacity:0;
-  transition:
-    opacity 0.3s allow-discrete,
-    height 0.7s allow-discrete,
-    display 0.7s allow-discrete;
-    
-}
-
-@starting-style {
-  .adminNav__wrapper {
-    opacity:0!important;
-    height: calc-size(fit-content, size / 100)!important;
-  }
+  opacity: 0;
 }
 
 :is(.competition, .myAccount, .helpPages) {
   .adminNav {
-    border-top:0;
+    border-top: 0;
     label[for="accountInfo"] {
       @include media-breakpoint-up(md) {
         display: none;
@@ -60,7 +45,7 @@
           display: none;
           + .adminNav__wrapper {
             display: block;
-            height: auto ;
+            height: auto;
             opacity: 1;
           }
         }
@@ -72,6 +57,37 @@
   }
 }
 
+@supports (transition-behavior: allow-discrete) and
+  (height: calc-size(fit-content, size / 100)) {
+  :is(.competition, .myAccount, .helpPages) {
+    .adminNav {
+      label[for="accountInfo"] {
+        + input[type="checkbox"] {
+          &:checked + .adminNav__wrapper {
+            height: calc-size(fit-content, size / 1);
+          }
+        }
+      }
+    }
+  }
+
+  .adminNav__wrapper {
+    height: calc-size(fit-content, size / 100);
+    transition:
+      opacity 0.3s allow-discrete,
+      height 0.7s allow-discrete,
+      display 0.7s allow-discrete;
+  }
+
+  @starting-style {
+    .adminNav__wrapper {
+      opacity: 0 !important;
+      height: calc-size(fit-content, size / 100) !important;
+    }
+  }
+}
+
+/////
 
 .competition,
 .myAccount,
@@ -139,6 +155,28 @@
     z-index: 1;
   }
 
+  .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) {
+    background: $subtle-background;
+    padding: 2.2rem;
+    border-radius: 10px;
+    .myAccountSection {
+      margin-bottom:0;
+      border-radius: 0 0 10px 10px;
+    }
+    .register {
+      border:0!important;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+
+  // :is(.myAccountContents:has(.form)) {
+  //   border:1px solid $primary;
+  //   .myAccountMain {
+  //     background: white;
+  //     margin-inline: -2.2rem;
+  //   }    
+  // }
+
   .myAccountWrap,
   .helpWrap {
     order: 1;
@@ -149,32 +187,55 @@
       order: 2;
     }
 
+    :is(.myAccountHeader + *, .myAccountHeader > h2 + *) {
+      margin-top: 1.5rem;
+    }
+
+    :is(.myAccountContents:has(.changeEmailAddress, .form)) {
+      border:1px solid $primary;
+      padding-bottom:0;
+      .myAccountMain {
+        background: white;
+        margin-inline: -2.2rem;
+        border-radius: 0 0 10px 10px;
+        .myAccountContents {
+          border: 1px solid $primary;
+        }
+        .changeDetails {
+          border: 0;
+        }
+      }
+    }
+
     .myAccountHeader,
     .helpHeader {
       h2 {
         @include subheaderH;
         color: $bg-brand;
         border-bottom: 1px solid #929fb6;
-        text-align: center;
-        padding: 1rem;
+        text-align: left;
+        // padding: 2rem 2.2rem 1rem;
+        padding-bottom: 1rem;
+        border-radius: 10px 10px 0 0;
         margin-bottom: 0;
-        background-color: #eceff6;
+        // background-color: #eceff6;
+        font-weight: 600;
       }
       > p,
       .addressText {
-        @include paragraphH;
         color: $bg-brand;
-        text-align: center;
-        padding: 1rem;
+        text-align: left;
+        padding-bottom: 1rem;
+        max-width: 60ch;
         margin-bottom: 1rem;
         background-color: #eceff6;
       }
       .mainDescription {
         p {
-          @include paragraphH;
+          // @include paragraphH;
           color: $bg-brand;
-          text-align: center;
-          padding: 1rem;
+          text-align: left;
+          // padding: 1rem;
           margin-bottom: 1rem;
           background-color: #eceff6;
         }
@@ -244,12 +305,11 @@
     }
     .myAccountMain {
       > p {
-        font-size: 1.25rem;
         color: $bg-brand;
-        text-align: center;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        background-color: #eceff6;
+        text-align: left;
+        // padding: 1rem 1rem 2.2rem 2.2rem;
+        // margin-bottom: 1rem;
+        // background-color: #eceff6;
       }
       .changeEmailAddress {
         h2 {
@@ -272,13 +332,14 @@
       > form,
       > .form,
       .changeDetails {
-        border: 2px solid $subtle-background;
+        // border: 2px solid $subtle-background;
+        border-radius: 0 0 10px 10px;
         padding: 1.5rem 6.25%;
         @include breakpt-md {
           padding: 1.5rem 6.25%;
         }
-        margin-bottom: 1rem;
-        margin-top: -1rem;
+        // margin-bottom: 1rem;
+        // margin-top: -1rem;
         > h2 {
           font-size: 22px;
           color: $bg-brand;

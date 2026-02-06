@@ -418,7 +418,7 @@ body {
     > .container-md .row {
       --vw-min: 375;
       display: grid;
-      grid-template-columns: [logo] max-content [search] 1fr [menu] max-content [account] max-content [wishlist] max-content [basket] max-content;
+      grid-template-columns: [logo] max-content [search] 1fr [menu] calc(65/16 * 1em) [account] calc(65/16 * 1em) [wishlist] calc(65/16 * 1em) [basket] max-content;
       grid-auto-flow: column;
       gap: 0 clampWithViewPort(8, 22);
       padding-inline: 1rem;
@@ -560,7 +560,8 @@ body {
       display: none !important;
     }
 
-    :is(#wishlistLink, #navSupport #dropdownMenuLink) {
+    :is(#wishlistLink, #navSupport #dropdownMenuLink, #navButton .navbarToggle) {
+      display: flex;
       &::before {
         content: "";
         display: block;
@@ -570,12 +571,6 @@ body {
         mask: var(--icon-mask) no-repeat 50% 50%;
         mask-size: contain;
       }
-    }
-
-    #wishlistLink {
-      $icon-mask: map.get($icon-list, "wishlist");
-      --icon-mask: #{$icon-mask};
-      grid-column: wishlist;
       color: $brand-700;
       flex-direction: column;
       align-items: center;
@@ -584,8 +579,29 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
+      }      
     }
+
+    #wishlistLink {
+      $icon-mask: map.get($icon-list, "wishlist");
+      --icon-mask: #{$icon-mask};
+      grid-column: wishlist;
+    }
+
+    #navButton .navbarToggle {
+      $icon-mask: map.get($icon-list, "menu");
+      --icon-mask: #{$icon-mask};      
+    }
+
+      // &::before {
+      //   content: "";
+      //   display: block;
+      //   width: 15px;
+      //   height: 12px;
+      //   background: $brand-700;
+      //   mask: map.get($icon-list, "menu") no-repeat 50% 50%;
+      //   mask-size: cover;
+      // }    
 
     #navSupport {
       grid-column: account;
@@ -624,16 +640,6 @@ body {
       @include media-breakpoint-up(md) {
         display: none !important;
       }
-
-      &::before {
-        content: "";
-        display: block;
-        width: 15px;
-        height: 12px;
-        background: $brand-700;
-        mask: map.get($icon-list, "menu") no-repeat 50% 50%;
-        mask-size: cover;
-      }
     }
 
     #searchClicker {
@@ -642,6 +648,13 @@ body {
 
     .blueBarMob {
       display: none;
+    }
+
+    @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
+      #storeLogo {
+        grid-column: span 2;
+        width: 100%;
+      }
     }
 
     #searchBar {

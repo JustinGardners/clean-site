@@ -220,7 +220,7 @@
       type="text/css"
       href="/DynamicContent/Css?v=a55c1e2f791de8817517aacea462e8b1"
     />
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./scss/style.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -5348,6 +5348,277 @@
                             >
                           </li>
                         </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="myAccountWrap">
+                  <div class="myAccountContents">
+                    <div class="myAccountHeader">
+                      <h2>My Order History</h2>
+                    </div>
+                    <div class="myAccountMain">
+                      <p>You currently do not have any orders.</p>
+                    </div>
+                    <div class="myAccountFooter"></div>
+                  </div>
+                </div>
+                <div class="myAccountWrap">
+                  <div class="myAccountContents">
+                    <div class="myAccountHeader">
+                      <h2>Personal Details</h2>
+                      <div class="mainDescription">
+                        <p>
+                          It is important that you keep your details with us up
+                          to date in case we need to contact you with regards to
+                          your orders.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="myAccountMain">
+                      <div
+                        class="validation-summary-valid"
+                        data-valmsg-summary="true"
+                      >
+                        <ul>
+                          <li style="display: none"></li>
+                        </ul>
+                      </div>
+
+                      <div class="myAccountSection changeDetails">
+                        <form
+                          action="/Account/ChangePersonal"
+                          method="post"
+                          novalidate="novalidate"
+                        >
+                          <input
+                            name="__RequestVerificationToken"
+                            type="hidden"
+                            value="D9KuYybKWkvuztZy6VLVyLtQRb5fmvNHgrSfWpOFPXsuC4CAXgLcs08B783spwg-P_n77jOgzxAnQmuVkvImorjC29Y4GU-laZS9K2jvcRgKyLkS0"
+                          />
+                          <div id="registerDetails">
+                            <div class="form-group email">
+                              <label for="Email">Email</label>
+                              <div class="emailAddress">
+                                justin.small@gardners.com
+                              </div>
+                              <span
+                                class="field-validation-valid"
+                                data-valmsg-for="Email"
+                                data-valmsg-replace="true"
+                              ></span>
+                            </div>
+
+                            <div class="form-group title">
+                              <label for="TitlePrefix" class="required"
+                                >Title</label
+                              >
+                              <select
+                                class="custom-select"
+                                data-val="true"
+                                data-val-number="The field Title must be a number."
+                                data-val-required="Title required"
+                                id="TitlePrefix"
+                                name="TitlePrefix"
+                              >
+                                <option value="5"></option>
+                                <option selected="selected" value="0">
+                                  Mr
+                                </option>
+                                <option value="1">Mrs</option>
+                                <option value="2">Ms</option>
+                                <option value="3">Miss</option>
+                                <option value="4">Doctor</option>
+                                <option value="6">Lord</option>
+                                <option value="7">Lady</option>
+                                <option value="8">Sir</option>
+                                <option value="9">Dame</option>
+                                <option value="10">Mx</option>
+                                <option value="11">Professor</option>
+                                <option value="12">Rev</option>
+                              </select>
+                              <span
+                                class="field-validation-valid"
+                                data-valmsg-for="TitlePrefix"
+                                data-valmsg-replace="true"
+                              ></span>
+                            </div>
+
+                            <div class="form-group firstName">
+                              <label for="FirstName" class="required"
+                                >First Name</label
+                              >
+                              <input
+                                class="form-control"
+                                data-val="true"
+                                data-val-length="Must be under 50 characters"
+                                data-val-length-max="50"
+                                data-val-required="First Name required"
+                                id="FirstName"
+                                name="FirstName"
+                                type="text"
+                                value="Justin"
+                                maxlength="50"
+                              />
+                              <span
+                                class="field-validation-valid"
+                                data-valmsg-for="FirstName"
+                                data-valmsg-replace="true"
+                              ></span>
+                            </div>
+
+                            <div class="form-group lastname">
+                              <label for="LastName" class="required"
+                                >Surname</label
+                              >
+                              <input
+                                class="form-control"
+                                data-val="true"
+                                data-val-length="Must be under 50 characters"
+                                data-val-length-max="50"
+                                data-val-required="Surname required"
+                                id="LastName"
+                                name="LastName"
+                                type="text"
+                                value="Small"
+                                maxlength="50"
+                              />
+                              <span
+                                class="field-validation-valid"
+                                data-valmsg-for="LastName"
+                                data-valmsg-replace="true"
+                              ></span>
+                            </div>
+
+                            <div
+                              id="newsletter"
+                              class="form-group custom-control custom-checkbox newsletter"
+                            >
+                              <input
+                                class="custom-control-input"
+                                data-val="true"
+                                data-val-required="Newsletter Subscription required"
+                                id="IsNewsletterSubscribed"
+                                name="IsNewsletterSubscribed"
+                                type="checkbox"
+                                value="true"
+                              /><input
+                                name="IsNewsletterSubscribed"
+                                type="hidden"
+                                value="false"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="IsNewsletterSubscribed"
+                                >Newsletter Subscription</label
+                              >
+                              <span
+                                class="field-validation-valid"
+                                data-valmsg-for="IsNewsletterSubscribed"
+                                data-valmsg-replace="true"
+                              ></span>
+                            </div>
+
+                            <input
+                              type="submit"
+                              class="btn btn-primary submit"
+                              value="Update"
+                              data-theme="b"
+                            />
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="myAccountSection changeEmailAddress">
+                        <h2>Change Your Email Address</h2>
+                        <div class="register changeEmail">
+                          <div class="form">
+                            <form
+                              action="/Account/ChangeEmail"
+                              autocomplete="off"
+                              method="post"
+                              novalidate="novalidate"
+                            >
+                              <input
+                                name="__RequestVerificationToken"
+                                type="hidden"
+                                value="Urnnp-BlKscXNHUVasvpnFNpQV_ZGCMF3FLTYDjaW0bjsLLCQhKnSzggko0ejVDDOqRqDWn7HU6yipZrymSOxp72FV92UPXhnPRoMsBb0RjJadt-0"
+                              />
+                              <div id="EmailDetails">
+                                <div class="form-group">
+                                  <label
+                                    for="ChangeEmail_Email"
+                                    class="required"
+                                    >Email</label
+                                  >
+                                  <input
+                                    autocomplete="no"
+                                    class="form-control"
+                                    data-val="true"
+                                    data-val-email="Please enter a valid email address"
+                                    data-val-length="Must be under 100 characters"
+                                    data-val-length-max="100"
+                                    data-val-required="Email required"
+                                    id="ChangeEmail_Email"
+                                    name="ChangeEmail.Email"
+                                    type="text"
+                                    value="justin.small@gardners.com"
+                                    maxlength="100"
+                                  />
+                                  <span
+                                    class="field-validation-valid"
+                                    data-valmsg-for="ChangeEmail.Email"
+                                    data-valmsg-replace="true"
+                                  ></span>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="ChangeEmail_Password"
+                                    >Confirm your password</label
+                                  >
+                                  <input
+                                    autocomplete="new-password"
+                                    class="form-control"
+                                    data-val="true"
+                                    data-val-required="Your current password is required to authorise this change"
+                                    id="ChangeEmail_Password"
+                                    name="ChangeEmail.Password"
+                                    type="password"
+                                  />
+                                  <div class="custom-control custom-checkbox">
+                                    <input
+                                      type="checkbox"
+                                      id="showNewPassword"
+                                      class="custom-control-input"
+                                      onclick="
+                                        storeFront.togglePasswordVisibility(
+                                          this,
+                                          'ChangeEmail_Password',
+                                        )
+                                      "
+                                    /><label
+                                      class="custom-control-label"
+                                      for="showNewPassword"
+                                      >Show Password</label
+                                    >
+                                  </div>
+                                  <div
+                                    class="field-validation-valid"
+                                    data-valmsg-for="ChangeEmail.Password"
+                                    data-valmsg-replace="true"
+                                  ></div>
+                                </div>
+
+                                <input
+                                  type="submit"
+                                  class="btn btn-primary submit"
+                                  value="Update"
+                                  data-theme="b"
+                                />
+                              </div>
+                            </form>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
