@@ -349,87 +349,105 @@
     }
 
     // TREE markup with: showCol2() + pseudo L2 fallback
-    /*
-    Click/Hover toggle
-    @mouseenter="setL2(idx)" @click="setL2(idx)"
-    */
+    // Click/Hover toggle = @mouseenter="setL2(idx)" @click="setL2(idx)"
+
     root.innerHTML = `
-      <div class="mm__col mm__col--l1">
-        <div class="mm__head">
-          <a class="mm__headLink" :href="col1Href()" x-text="col1Label()"></a>
-        </div>
-        <ul class="mm__list mm__list--l1">
-          ${(data.groups || [])
-            .map(
-              (g, idx) => `
+    <div class="mm__panels"
+      :class="{
+      'at-l1': activeL1 === null,
+      'at-l2': activeL1 !== null && activeL2 === null,
+      'at-l3': activeL1 !== null && activeL2 !== null
+    }">
+
+    <!-- L1 -->
+    <div class="mm__col mm__col--l1">
+      <div class="mm__head">
+        <a class="mm__headLink" :href="col1Href()" x-text="col1Label()"></a>
+      </div>
+      <ul class="mm__list mm__list--l1">
+        ${(data.groups ?? [])
+          .map(
+            (g, idx) => `
               <li>
-                <button type="button" class="mm__btn ${g.promo ? "mm__l1--promo" : ""}"
-                  :class="{ 'is-active' : activeL1 === ${idx} }" @click="setL1(${idx})">
-                  <span>${g.label}</span>
-                  <span class="mm__chev">&#8250;</span>
+                <button type="button"
+                  class="mm__btn ${g.promo ? "mm__l1--promo" : ""}"
+                  :class="{ 'is-active' : activeL1 === ${idx} }"
+                  @click="setL1(${idx})">
+                    <span>${g.label}</span>
+                    <span class="mm__chev">&#8250;</span>
                 </button>
               </li>
             `,
-            )
-            .join("")}
-        </ul>
+          )
+          .join("")}
+      </ul>
+    </div>
+
+    <!-- L2 (NOTE: no x-show; use class instead) -->
+    <div class="mm__col mm__col--l2" :class="{ 'is-hidden': activeL1 === null }" x-cloak>
+      <div class="mm__head">
+        <!-- Back to L1 -->
+        <button type="button" class="mm__back" @click="setL1(null)" aria-label="Back">
+          ‹ Back
+        </button>
+        <template x-if="activeL1Group()">
+          <a class="mm__headLink" :href="col2Href()" x-text="col2Label()"></a>
+        </template>
       </div>
 
-      <div class="mm__col mm__col--l2" x-show="activeL1 !== null" x-cloak>
-        <div class="mm__head">
-          <template x-if="activeL1Group()">
-            <a class="mm__headLink" :href="col2Href()" x-text="col2Label()"></a>
-          </template>
-        </div>
-
-        <template x-if="l2List().length">
-          <ul class="mm__list mm__list--l2">
-            <template x-for="(g, idx) in l2List()" :key="idx">
-              <li>
-                <button type="button" class="mm__btn"
-                  :class="{ 'is-active': activeL2 === idx, 'mm__l2--promo': g.promo }" @click="setL2(idx)">
+      <template x-if="l2List().length">
+        <ul class="mm__list mm__list--l2">
+          <template x-for="(g, idx) in l2List()" :key="idx">
+            <li>
+              <button type="button" class="mm__btn"
+                :class="{ 'is-active': activeL2 === idx, 'mm__l2--promo': g.promo }"
+                @click="setL2(idx)">
                   <span x-text="g.label"></span>
                   <span class="mm__chev" x-show="g.items.length">&#8250;</span>
-                </button>
-              </li>
+              </button>
+            </li>
+          </template>
+        </ul>
+      </template>
+    </div>
+
+    <!-- L3 -->
+    <div class="mm__col mm__col--l3">
+      <div class="mm__head">
+        <!-- Back to L2 -->
+        <button type="button" class="mm__back" @click="setL2(null)" aria-label="Back">
+          ‹ Back
+        </button>
+        <template x-if="activeL2Group() && itemsList().length">
+          <a class="mm__headLink" :href="col3Href()" x-text="col3Label()"></a>
+        </template>
+      </div>
+
+      <template x-if="activeL2Group() && itemsList().length">
+        <div class="mm__panel">
+          <ul class="mm__items">
+            <template x-for="(i, idx) in itemsList()" :key="idx">
+              <li><a class="mm__link" :href="i.href" x-text="i.label"></a></li>
             </template>
           </ul>
-        </template>
-      </div>
-
-      <div class="mm__col mm__col--l3">
-        <div class="mm__head">
-          <template x-if="activeL2Group() && itemsList().length">
-            <a class="mm__headLink" :href="col3Href()" x-text="col3Label()"></a>
-          </template>
         </div>
+      </template>
+      <template x-if="activeL2Group() && !itemsList().length">
+        <div class="mm__empty">Select an item to see links.</div>
+      </template>
+    </div>
+  </div>
 
-        <template x-if="activeL2Group() && itemsList().length">
-          <div class="mm__panel">
-            <ul class="mm__items">
-              <template x-for="(i, idx) in itemsList()" :key="idx">
-                <li>
-                  <a class="mm__link" :href="i.href" x-text="i.label"></a>
-                </li>
-              </template>
-            </ul>
-          </div>
-        </template>
-
-        <template x-if="activeL2Group() && !itemsList().length">
-          <div class="mm__empty">Select an item to see links.</div>
-        </template>
+  <!-- Keep your media column as-is -->
+  <div class="mm__col mm__col--media">
+    <div class="mm__mediaCard">
+      <button type="button" class="mm__close" @click="close()">X</button>
+      <div class="mm__mediaBody">
+        ${hasMedia ? `<div class="mm__mediaSlot"></div>` : ``}
       </div>
-
-      <div class="mm__col mm__col--media">
-        <div class="mm__mediaCard">
-          <button type="button" class="mm__close" @click="close()">X</button>
-          <div class="mm__mediaBody">
-            ${hasMedia ? `<div class="mm__mediaSlot"></div>` : ``}
-          </div>
-        </div>
-      </div>
-    `;
+    </div>
+  </div>
+`;
 
     megaEl.prepend(root);
 

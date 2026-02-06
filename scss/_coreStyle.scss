@@ -1109,8 +1109,8 @@ body.mobileMenuOpen
 @supports (interpolate-size: allow-keywords) {
   body.mobileMenuOpen :is(.primary > li, .categories .category) {
     transition: height 0.125s ease-in;
-    height: 2.6rem;
-    overflow: clip;
+    // height: 2.6rem;
+    // overflow: clip;
     &.open {
       height: max-content;
       margin-bottom: 2rem;
