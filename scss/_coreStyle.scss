@@ -653,7 +653,7 @@ body {
     @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
       #storeLogo {
         grid-column: span 2;
-        width: 100%;
+        width: min(100%, 220px);
       }
     }
 
