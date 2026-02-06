@@ -773,7 +773,7 @@ body {
   #nav {
     // display: none;
     @include media-breakpoint-up(md) {
-      background: $bg-brand-dark;
+      // background: $bg-brand-dark;
       display: block;
 
       #mobileExtras {
