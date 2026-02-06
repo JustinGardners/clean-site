@@ -10,24 +10,6 @@
   }
 }
 
-body:has(#navMain.is-open) {
-  overflow: clip;
-}
-
-#nav:has(#navMain.is-open) #navMain {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: 999;
-}
-
-
-/*
- * ul.primary width 50vw
- * body.mobileMenuOpen :is(.primary>li,.categories .category) - max-height: 90dvh / overflow: auto
- * fix positioning of level 2 + level 3 elements as level 1 is picked
-*/
-
 .megaMenu {
   position: relative;
   font-family: "Arsenal", sans-serif;
@@ -306,4 +288,38 @@ body:has(#navMain.is-open) {
 .mm-slide-leave-end {
   opacity: 0;
   transform: translateX(-12px);
+}
+
+// MOBILE NAV
+/*
+ * fix positioning of level 2 + level 3 elements as level 1 is picked
+*/
+
+body:has(#navMain.is-open) {
+  overflow: clip;
+}
+
+#nav:has(#navMain.is-open) #navMain {
+  position: fixed;
+  bottom: 0;
+  max-height: 90dvh;
+  width: 60vw;
+  background: magenta;
+  z-index: 999;
+}
+
+ul#mobileExtras {
+}
+
+@media (max-width: calc(768px - 0.2px)) {
+  ul.primary {
+    width: 60vw;
+  }
+
+  body.mobileMenuOpen {
+    &:is(.primary > li, .categories .category) {
+      max-height: 90dvh;
+      overflow: auto;
+    }
+  }
 }
