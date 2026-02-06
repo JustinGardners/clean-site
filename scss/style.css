@@ -10069,7 +10069,7 @@ body .internetExNote p {
 }
 #headerWrap #header #searchBar #searchBox {
   position: relative;
-  width: min(416px, 100%);
+  width: min(454px, 100%);
   margin-inline: auto;
 }
 #headerWrap #header #searchBar #searchBox .productType,
