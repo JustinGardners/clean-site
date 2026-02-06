@@ -94,7 +94,7 @@
       .postageMessage {
         font-weight: 600;
         margin-right: 0.5em;
-        font-size:14px;
+        font-size: 14px;
         span {
           margin-right: 0.275em;
         }
@@ -730,7 +730,7 @@
         @include breakpt-md {
           width: 100%;
         }
-        a {
+        a:not(.tooltipstered) {
           position: relative;
           pointer-events: none;
           display: grid;
@@ -1010,7 +1010,7 @@
 
 .productWishlist a {
   color: $bg-brand;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 @supports not (position-anchor: --product-info) {
