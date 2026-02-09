@@ -162,6 +162,22 @@
       color: $primary;
     }
   }
+  .leftNav {
+    order: 2;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      order: 1;
+      min-width: $left-nav-width;
+      width: auto;
+    }
+  }
+
+  .leftNav {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+  }  
 }
 
 .myAccount,
@@ -180,22 +196,7 @@
   column-gap: calc(var(--bs-gutter-x));
   row-gap: calc(var(--bs-gutter-x));
 
-  .leftNav {
-    order: 2;
-    width: 100%;
 
-    @include media-breakpoint-up(md) {
-      order: 1;
-      min-width: $left-nav-width;
-      width: auto;
-    }
-  }
-
-  .leftNav {
-    position: sticky;
-    bottom: 0;
-    z-index: 1;
-  }
 
 
 
