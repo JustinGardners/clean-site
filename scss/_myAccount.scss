@@ -1,6 +1,6 @@
 @use "sass:color";
 
-:is(.competition, .myAccount, .helpPages) {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) {
   .adminNav {
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
   opacity: 0;
 }
 
-:is(.competition, .myAccount, .helpPages) {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) {
   .adminNav {
     border-top: 0;
     label[for="accountInfo"] {
@@ -59,7 +59,7 @@
 
 @supports (transition-behavior: allow-discrete) and
   (height: calc-size(fit-content, size / 100)) {
-  :is(.competition, .myAccount, .helpPages) {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) {
     .adminNav {
       label[for="accountInfo"] {
         + input[type="checkbox"] {
