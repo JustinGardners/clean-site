@@ -11236,7 +11236,7 @@ body:has(#navMain.is-open) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11262,7 +11262,7 @@ body:has(#navMain.is-open) {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11504,7 +11504,7 @@ body:has(#navMain.is-open) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11556,7 +11556,7 @@ body:has(#navMain.is-open) {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11579,7 +11579,7 @@ body:has(#navMain.is-open) {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11602,7 +11602,7 @@ body:has(#navMain.is-open) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11860,7 +11860,7 @@ body:has(#navMain.is-open) {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -11888,7 +11888,7 @@ body:has(#navMain.is-open) {
   background-color: #eceff6;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #bcc8de;
   border-radius: var(--bs-border-radius, 0);
@@ -11927,7 +11927,7 @@ body:has(#navMain.is-open) {
   background-color: #dfdfdf;
   color: #333;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #dfdfdf;
   border-radius: var(--bs-border-radius, 0);
@@ -12905,7 +12905,7 @@ body.facetShow #leftNav .navSection {
     width: 100%;
   }
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered) {
   position: relative;
   pointer-events: none;
   display: grid;
@@ -12913,13 +12913,13 @@ body.facetShow #leftNav .navSection {
   place-content: center center;
   gap: 0.5rem;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a::before, .product-page .productInfoWrap .priceAreaWrap .availability a::after {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered)::before, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered)::after {
   content: "";
   display: block;
   grid-column: 1/2;
   grid-row: 1/2;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a::before {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered)::before {
   background: #eceff6;
   border-radius: 0.25rem;
   border: 1px solid #bcc8de;
@@ -12927,11 +12927,11 @@ body.facetShow #leftNav .navSection {
   height: clamp(18px, 0.5em + 1vi, 24px);
   border-radius: 50%;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a.inStock::before, .product-page .productInfoWrap .priceAreaWrap .availability a.preOrder::before, .product-page .productInfoWrap .priceAreaWrap .availability a.limitedStock::before, .product-page .productInfoWrap .priceAreaWrap .availability a.StatusGXC::before {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).inStock::before, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).preOrder::before, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).limitedStock::before, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).StatusGXC::before {
   background: #003087;
   border-color: #003087;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a.inStock::after, .product-page .productInfoWrap .priceAreaWrap .availability a.preOrder::after, .product-page .productInfoWrap .priceAreaWrap .availability a.limitedStock::after, .product-page .productInfoWrap .priceAreaWrap .availability a.StatusGXC::after {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).inStock::after, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).preOrder::after, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).limitedStock::after, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).StatusGXC::after {
   width: clamp(18px, 0.5em + 1vi, 24px);
   height: clamp(18px, 0.5em + 1vi, 24px);
   margin-inline: auto;
@@ -12945,11 +12945,11 @@ body.facetShow #leftNav .navSection {
   -webkit-mask-position: center;
           mask-position: center;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a.unavailable::before, .product-page .productInfoWrap .priceAreaWrap .availability a.outOfStock::before, .product-page .productInfoWrap .priceAreaWrap .availability a.outOfLimitedStock::before {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).unavailable::before, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).outOfStock::before, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).outOfLimitedStock::before {
   background: #bcc8de;
   border-color: #bcc8de;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a.unavailable::after, .product-page .productInfoWrap .priceAreaWrap .availability a.outOfStock::after, .product-page .productInfoWrap .priceAreaWrap .availability a.outOfLimitedStock::after {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).unavailable::after, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).outOfStock::after, .product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).outOfLimitedStock::after {
   top: 50%;
   left: 12px;
   transform: translate(-50%, -50%);
@@ -12962,11 +12962,11 @@ body.facetShow #leftNav .navSection {
   -webkit-mask-size: cover;
           mask-size: cover;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a.comingSoon::before {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).comingSoon::before {
   background: #002262;
   border-color: #002262;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a.comingSoon::after {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered).comingSoon::after {
   width: 2ch;
   height: 2ch;
   top: 1px;
@@ -12978,15 +12978,15 @@ body.facetShow #leftNav .navSection {
   -webkit-mask-size: cover;
           mask-size: cover;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a p {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered) p {
   margin: 0;
   display: flex;
   align-items: center;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a p span {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered) p span {
   display: contents;
 }
-.product-page .productInfoWrap .priceAreaWrap .availability a p span.availability-description::before {
+.product-page .productInfoWrap .priceAreaWrap .availability a:not(.tooltipstered) p span.availability-description::before {
   content: " - ";
   display: inline;
 }
@@ -13156,7 +13156,7 @@ body.facetShow #leftNav .navSection {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -13403,6 +13403,24 @@ body.facetShow #leftNav .navSection {
   font-size: 1rem;
 }
 
+:is(.myAccount:not(:is(#logonCheckout, #logonRegister)), .helpPages) .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) {
+  background: #eceff6;
+  padding: 2.2rem;
+  border-radius: 10px;
+}
+:is(.myAccount:not(:is(#logonCheckout, #logonRegister)), .helpPages) .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) .myAccountSection {
+  margin-bottom: 0;
+  border-radius: 0 0 10px 10px;
+}
+:is(.myAccount:not(:is(#logonCheckout, #logonRegister)), .helpPages) .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) .register {
+  border: 0 !important;
+  border-radius: 0 0 10px 10px;
+}
+
+#main #logonRegister :is(.myAccountSection .loginFields, .guestRegistration) .form-group + .form-group {
+  margin-top: 1rem;
+}
+
 .myAccount,
 .helpPages {
   display: flex;
@@ -13442,22 +13460,6 @@ body.facetShow #leftNav .navSection {
   bottom: 0;
   z-index: 1;
 }
-.myAccount .myAccountWrap > .myAccountContents:not(:has(.accountLanding)),
-.helpPages .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) {
-  background: #eceff6;
-  padding: 2.2rem;
-  border-radius: 10px;
-}
-.myAccount .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) .myAccountSection,
-.helpPages .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) .myAccountSection {
-  margin-bottom: 0;
-  border-radius: 0 0 10px 10px;
-}
-.myAccount .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) .register,
-.helpPages .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) .register {
-  border: 0 !important;
-  border-radius: 0 0 10px 10px;
-}
 .myAccount .myAccountWrap,
 .myAccount .helpWrap,
 .helpPages .myAccountWrap,
@@ -13480,31 +13482,31 @@ body.facetShow #leftNav .navSection {
 .helpPages .helpWrap :is(.myAccountHeader + *, .myAccountHeader > h2 + *, .myAccountHeader > .h2 + *) {
   margin-top: 1.5rem;
 }
-.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)),
-.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)),
-.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)),
-.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) {
+.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)),
+.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)),
+.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)),
+.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) {
   border: 1px solid #000E67;
   padding-bottom: 0;
 }
-.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain,
-.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain,
-.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain,
-.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain {
+.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain,
+.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain,
+.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain,
+.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain {
   background: white;
   margin-inline: -2.2rem;
   border-radius: 0 0 10px 10px;
 }
-.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .myAccountContents,
-.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .myAccountContents,
-.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .myAccountContents,
-.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .myAccountContents {
+.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .myAccountContents,
+.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .myAccountContents,
+.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .myAccountContents,
+.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .myAccountContents {
   border: 1px solid #000E67;
 }
-.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .changeDetails,
-.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .changeDetails,
-.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .changeDetails,
-.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form)) .myAccountMain .changeDetails {
+.myAccount .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .changeDetails,
+.myAccount .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .changeDetails,
+.helpPages .myAccountWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .changeDetails,
+.helpPages .helpWrap :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) .myAccountMain .changeDetails {
   border: 0;
 }
 .myAccount .myAccountWrap .myAccountHeader h2, .myAccount .myAccountWrap .myAccountHeader .h2,
@@ -13968,6 +13970,8 @@ body.facetShow #leftNav .navSection {
   margin-top: 0.5rem;
   color: #003087;
   font-weight: bold;
+  text-align: left;
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 .myAccount .btn,
 .myAccount button,
@@ -13976,7 +13980,7 @@ body.facetShow #leftNav .navSection {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -14004,6 +14008,9 @@ body.facetShow #leftNav .navSection {
 }
 
 /* Form Aligmenments */
+.myAccountMain {
+  --formLabelSpace: 200px;
+}
 .myAccountMain .form-group {
   margin-bottom: 0.5rem;
 }
@@ -14022,6 +14029,7 @@ body.facetShow #leftNav .navSection {
   }
   .myAccountMain .form-group label {
     width: var(--formLabelSpace);
+    white-space: nowrap;
   }
   .myAccountMain .form-group .emailAddress {
     margin: 0.5rem 0;
@@ -14056,7 +14064,6 @@ body.facetShow #leftNav .navSection {
     grid-auto-flow: row;
     grid-row-gap: 0rem;
     grid-column-gap: 1.5rem;
-    margin-left: var(--formLabelSpace);
   }
   .myAccountMain .rememberMe label {
     grid-area: 2/2;
@@ -14109,7 +14116,7 @@ body.facetShow #leftNav .navSection {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -14169,7 +14176,7 @@ body.facetShow #leftNav .navSection {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -14217,7 +14224,7 @@ body.facetShow #leftNav .navSection {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -14568,13 +14575,12 @@ body.facetShow #leftNav .navSection {
   }
 }
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .customerReturning h4, #logonRegister .myAccountWrap .myAccountContents .myAccountMain .customerReturning .h4 {
-  background: #eceff6;
-  padding: 1rem 0;
-  font-size: clamp(22px, 1em + 1.35vw, 40px);
-  font-weight: 400;
-  font-family: Arsenal, Times New Roman, Geneva, Verdana, serif;
   color: #003087;
-  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
+  text-align: left;
 }
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .customerReturning .field-validation-valid {
   display: none;
@@ -14590,18 +14596,17 @@ body.facetShow #leftNav .navSection {
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration {
   width: 100%;
   border: 2px solid #003087;
+  background: #eceff6;
 }
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration .benefitsblock {
   display: none;
 }
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration h4, #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration .h4 {
-  background: #eceff6;
-  padding: 1rem 0;
-  font-size: clamp(22px, 1em + 1.35vw, 40px);
-  font-weight: 400;
-  font-family: Arsenal, Times New Roman, Geneva, Verdana, serif;
   color: #003087;
-  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
 }
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration p,
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration .guestRegistration {
@@ -14783,7 +14788,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -14952,7 +14957,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -15074,6 +15079,10 @@ div#wishlistEmail .form-control {
 .template-help table tr td {
   border-bottom: 1px solid #bcc8de;
   padding: 1rem;
+}
+
+#logonRegister .myAccountContents {
+  background: none;
 }
 
 #basket > h2, #basket > .h2 {
@@ -15505,7 +15514,7 @@ div#wishlistEmail .form-control {
   background-color: #fff;
   color: #002f87;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -15768,7 +15777,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -15969,7 +15978,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -15989,7 +15998,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -16007,8 +16016,8 @@ div#wishlistEmail .form-control {
 }
 
 /* ----- @Add To Basket -------------------- */
-/* ----- Add To Basket - eBook -------------------- */
-.storeFrontAlert.buyEbookPopup {
+/* ----- Add To Basket - eBook, customBooks -------------------- */
+.storeFrontAlert.buyEbookPopup, .storeFrontAlert.buyCustomisedBookPopup {
   display: flex;
   flex-direction: column;
   position: fixed !important;
@@ -16017,19 +16026,42 @@ div#wishlistEmail .form-control {
   transform: translate(-50%, -50%) !important;
   margin: 0 !important;
   padding: 2rem;
-  width: 80%;
+  width: 80vw;
   max-width: 500px;
   text-align: center;
   background: #fff;
-  border: 2px solid #fff;
-  box-shadow: 0 0 10px 5px fade(#000, 25);
+  border: 4px solid #002f87;
+  border-radius: 1em;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
 }
-.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container {
+.storeFrontAlert.buyEbookPopup p > div, .storeFrontAlert.buyCustomisedBookPopup p > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.storeFrontAlert.buyEbookPopup a, .storeFrontAlert.buyCustomisedBookPopup a {
+  display: block;
+  padding: 1em 0;
+  margin-inline: auto;
+  width: -moz-max-content;
+  width: max-content;
+  color: #002f87;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.storeFrontAlert.buyEbookPopup .productionMessage, .storeFrontAlert.buyCustomisedBookPopup .productionMessage {
+  display: block;
+  margin-top: 1em;
+  text-align: center;
+}
+.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container, .storeFrontAlert.buyCustomisedBookPopup .storefrontAlert-button-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
-.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container button {
+.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container button, .storeFrontAlert.buyCustomisedBookPopup .storefrontAlert-button-container button {
   display: inline-block;
   border: 2px solid #002f87;
   border-radius: 5px;
@@ -16038,12 +16070,13 @@ div#wishlistEmail .form-control {
   line-height: 1.5;
   margin: 0;
 }
-.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container button.cancel {
+.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container button.cancel, .storeFrontAlert.buyCustomisedBookPopup .storefrontAlert-button-container button.cancel {
   background: #fff;
   color: #002f87;
 }
-.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container button.confirm {
-  margin-left: 1rem;
+.storeFrontAlert.buyEbookPopup .storefrontAlert-button-container button.confirm, .storeFrontAlert.buyCustomisedBookPopup .storefrontAlert-button-container button.confirm {
+  background: #002f87;
+  color: #fff;
 }
 
 /* ----- @Add To Basket - eBook -------------------- */
@@ -16126,7 +16159,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -16441,7 +16474,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -16479,7 +16512,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -16758,7 +16791,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -16965,7 +16998,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -17482,7 +17515,7 @@ div#wishlistEmail .form-control {
   background-color: #000E67;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #000E67;
   border-radius: var(--bs-border-radius, 0);
@@ -18034,7 +18067,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid transparent;
   border-radius: var(--bs-border-radius, 0);
@@ -18348,7 +18381,7 @@ div#wishlistEmail .form-control {
   background-color: #000E67;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #000E67;
   border-radius: var(--bs-border-radius, 0);
@@ -18717,24 +18750,19 @@ div#wishlistEmail .form-control {
 }
 @media (min-width: 992px) {
   #main #logonRegister .myAccountMain {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 1fr;
   }
 }
 #main #logonRegister .myAccountMain .myAccountSection {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border: 3px solid #003087;
+  place-content: center;
+  text-align: center;
+  border: 2px solid #003087;
+  border-radius: 10px;
 }
 #main #logonRegister .myAccountMain .myAccountSection.newRegistration > form {
   padding: 0;
-}
-#main #logonRegister .myAccountMain .myAccountSection h4, #main #logonRegister .myAccountMain .myAccountSection .h4 {
-  background: #eceff6;
-  color: #003087;
-  text-align: center;
-  font-weight: bold;
-  padding: 2rem 0;
 }
 #main #logonRegister .myAccountMain .myAccountSection input,
 #main #logonRegister .myAccountMain .myAccountSection select {
@@ -18763,11 +18791,10 @@ div#wishlistEmail .form-control {
   display: block;
   width: 100%;
   margin-top: 1rem;
-  border-radius: 0;
 }
 #main #logonRegister .myAccountMain .myAccountSection .loginSignUpButtons .forgottenPassword,
 #main #logonRegister .myAccountMain .myAccountSection .loginGuestButtons .forgottenPassword {
-  text-align: center;
+  text-align: left;
   color: #003087;
   margin-top: 1rem;
 }
@@ -18814,8 +18841,8 @@ div#wishlistEmail .form-control {
 #main .custom-control-label::before, #main .custom-control-label::after {
   content: "";
   position: absolute;
-  top: 0.25rem;
-  left: -1.5rem;
+  top: 0.125em;
+  left: -1.5em;
   display: block;
   width: 1rem;
   height: 1rem;
@@ -18841,6 +18868,15 @@ div#wishlistEmail .form-control {
     position-anchor: --password;
     top: calc(anchor(bottom) + 0.5rem);
     left: calc(anchor(left));
+    padding-left: 0;
+  }
+  #main .loginSignUpButtons {
+    margin-top: 1.5rem;
+  }
+  @media (min-width: 992px) {
+    #main .loginSignUpButtons {
+      margin-top: 3.5rem;
+    }
   }
 }
 #main #checkout .form-group.fieldPassword,
@@ -19018,7 +19054,7 @@ div#wishlistEmail .form-control {
 }
 @media (min-width: 992px) {
   #main .form-group.newsLetterSubscribed .custom-checkbox {
-    margin-left: 130px;
+    margin-left: var(--formLabelSpace);
   }
   #main .form-group.newsLetterSubscribed .custom-checkbox label {
     width: auto;
@@ -19457,7 +19493,7 @@ div#wishlistEmail .form-control {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -20158,7 +20194,7 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -20390,7 +20426,7 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -20626,7 +20662,7 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -20943,7 +20979,7 @@ body > .top-bar .top-bar__close svg {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);
@@ -20974,7 +21010,7 @@ a.pb-template__content--btn {
   background-color: #002f87;
   color: #fff;
   font-weight: 600;
-  padding: max(0.6em, 0.5rem) 1.2em;
+  padding: max(0.6em, 0.5rem) 0.5em;
   text-align: center;
   border: 2px solid #002f87;
   border-radius: var(--bs-border-radius, 0);

@@ -1859,7 +1859,7 @@ $("#miniNav .dropdownToggle").click(function(){
             
 
 
-            <main id="main-section">
+<main id="main-section">
                 
 
 
@@ -1881,114 +1881,133 @@ $("#miniNav .dropdownToggle").click(function(){
 
 
 
-<script type="text/javascript">
-var dataLayerTMG = {
-event: 'signIn'
-}
-</script>
-<div class="tm--half"></div>
+<div style="background-color: #eceff6">
+  <div class="template-container  center">
+    <div class="template-row">
+      <div class="col-12">
+        <div class="title-block__main-fw">
+           <h1 class="text-capitalize">  Login or Register  </h1>  
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><div class="col-12 spacer tm">&nbsp;</div>
 <div id="main">
     <div class="container-md">
-        <div class="myAccount" id="logonRegister">
+
+        <div class="myAccount" id="register">
             <div class="leftNav"><script>
-$(document).ready(function() {
-   $("#NewsletterSubscribed label").remove();
-   $("<p class='newsletterText'>Would you like to receive information on other offers, communications and services from Telegraph Media Group Limited and its group companies by email? Visit <a href='https://www.telegraph.co.uk/about-us/privacy-and-cookie-policy/'>https://www.telegraph.co.uk/about-us/privacy-and-cookie-policy/</a> for more information</p>").insertBefore("#NewsletterSubscribed #IsNewsletterSubscribed");
-});
-</script><div class="navSection noMargin">
-<div class="navSectionItem">
-<h4>Password</h4>
-<ul>
-<li><a href="/Account/ForgottenPassword">Can't remember your password?</a></li>
-</ul>
-</div>
-</div><div class="navSection">
-<div class="navSectionItem" id="security">
-<img src="/Content/StoreFront/assets/images/comodo_sa_100x85_transp.png" />
-<p>For your security, card details are fully encrypted and cannot be viewed by us. Please refer to our <a href="/Help/PrivacyPolicy">Privacy Policy</a> for further information.</p>
-</div>
-</div></div>
+$("#orderLookup").attr("id", "basketLogon");
+</script></div>
             <div class="myAccountWrap">
                 <div class="myAccountContents">
                     <div class="myAccountHeader">
-                        <h2>Login or Register</h2>
+                        <h2>Registration<span>Just a few quick details and you'll be signed up</span></h2>
+                        <h2>Benefits of Creating an Account</h2>
+<p style="margin-bottom: 0;">Receive important information about your previous and current orders.</p>
+<p style="margin-bottom: 0;">Save delivery information to make it easier to buy your favourite products.</p>
                     </div>
                     <div class="myAccountMain">
                         
-<div class="myAccountSection customerReturning">
-
-    <h4>Returning Customers</h4>
-
+<div id="checkout" class="regForm">
     <!-- errors -->
-    
-    <div class="field-validation-valid alert" data-valmsg-for="ReturningError" data-valmsg-replace="true"></div>
-    
+    <div class="errorMessages">
+        <div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+    </div>
     <!-- @errors -->
+    <div class="formFields">
+<form action="/Account/LogonRegister" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="_0hdTQzC3mGluPJEgpH3MDyd268rpiD6ireZnl6aH56wXuFKH7Y8sXC9g5hOgQaDYyS0XaHvEDSHWAm6GYYDnd_quKo1"><input data-val="true" data-val-required="IsFromCheckout required" id="IsFromCheckout" name="IsFromCheckout" type="hidden" value="False"><input data-val="true" data-val-required="IsCheckoutComplete required" id="IsCheckoutComplete" name="IsCheckoutComplete" type="hidden" value="False">            <div class="inputFields">
+                <span class="field-validation-valid" data-valmsg-for="EmailRegistered" data-valmsg-replace="true"></span>
 
-<form action="/Account/Logon" method="post"><input name="__RequestVerificationToken" type="hidden" value="3nxSFcpR59fU3MfDGqMAg-sXyaJSbZmiLHHhTlx2XvX12PlNeqCKXw4o1cA22GadrZTWSOJ_5sGLjytNlyY1Y29vloY1" /><input Name="IsFromCheckout" data-val="true" data-val-required="IsFromCheckout required" id="IsFromCheckout" name="IsFromCheckout" type="hidden" value="False" /><input Name="ReturnURL" id="ReturnURL" name="ReturnURL" type="hidden" value="" />        <div class="loginFields">
-            <div class="form-group eAdd">
-                <label for="ReturningEmail">Email Address</label>
-                <input Name="ReturningEmail" class="form-control" data-val="true" data-val-email="Please enter a valid email address" data-val-required="Email Address required" id="ReturningEmail" name="ReturningEmail" type="text" value="" />
-                <span class="field-validation-valid" data-valmsg-for="ReturningEmail" data-valmsg-replace="true"></span>
-            </div>
-            <div class="form-group pass">
-                <label for="Password">Password</label>
-                <input Name="Password" class="form-control" data-val="true" data-val-required="Password required" id="Password" name="Password" type="password" />
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" id="showPassword" class="custom-control-input" onclick="storeFront.togglePasswordVisibility(this,'Password')"><label class="custom-control-label" for="showPassword">Show Password</label>
+                <div class="form-group" id="email">
+                    <label for="RegisterEmail" class="required">Enter your email address</label>
+                    <input class="form-control emailField" data-val="true" data-val-email="Please enter a valid email address" data-val-required="Email Address required" id="RegisterEmail" name="RegisterEmail" placeholder="Alex@example.com" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="RegisterEmail" data-valmsg-replace="true"></span>
                 </div>
-                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-            </div>
-            <div class="custom-control custom-checkbox rememberMe">
-                <input Name="RememberMe" class="custom-control-input" data-val="true" data-val-required="Remember me? required" id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
-                <label class="custom-control-label" for="RememberMe">Remember me?</label>
-            </div>
-        </div>
-        <div class="loginSignUpButtons">
 
-            <button type="submit" class="btnClose btn-primary">Sign In</button>
 
-            <div class="forgottenPassword"><a href="https://storefronttmgae.staging.gardners.com/Account/ForgottenPassword">Forgotten Password?</a></div>
-        </div>
-</form>
+                <div class="form-group" id="confirmEmail">
+                    <label for="ConfirmEmailAddress" class="required">Confirm email address</label>
+                    <input class="form-control emailField" data-val="true" data-val-email="Please enter a valid email address" data-val-equalto="Email addresses do not match" data-val-equalto-other="*.RegisterEmail" data-val-required="Confirm email address required" id="ConfirmEmailAddress" name="ConfirmEmailAddress" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="ConfirmEmailAddress" data-valmsg-replace="true"></span>
+                </div>
+
+
+                <div class="form-group" id="title">
+                    <label for="UserTitlePrefixTypeId" class="required">Title</label>
+                    <select class="custom-select" data-val="true" data-val-number="The field Title must be a number." data-val-required="Title required" id="UserTitlePrefixTypeId" name="UserTitlePrefixTypeId"><option selected="selected" value="5"></option>
+<option value="0">Mr</option>
+<option value="1">Mrs</option>
+<option value="2">Ms</option>
+<option value="3">Miss</option>
+<option value="4">Doctor</option>
+<option value="6">Lord</option>
+<option value="7">Lady</option>
+<option value="8">Sir</option>
+<option value="9">Dame</option>
+<option value="10">Mx</option>
+<option value="11">Professor</option>
+<option value="12">Rev</option>
+</select>
+                    <span class="field-validation-valid" data-valmsg-for="UserTitlePrefixTypeId" data-valmsg-replace="true"></span>
+                </div>
+
+
+                <div class="form-group" id="firstName">
+                    <label for="FirstName" class="required">First Name</label>
+                    <input class="form-control" data-val="true" data-val-length="Must be under 100 characters" data-val-length-max="100" data-val-required="First Name required" id="FirstName" name="FirstName" placeholder="Alex" type="text" value="" maxlength="100">
+                    <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                </div>
+
+
+                <div class="form-group" id="lastName">
+                    <label for="LastName" class="required">Last Name</label>
+                    <input class="form-control" data-val="true" data-val-length="Must be under 100 characters" data-val-length-max="100" data-val-required="Last Name required" id="LastName" name="LastName" placeholder="Smith" type="text" value="" maxlength="100">
+                    <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="form-group" id="password">
+                    <label class="required" for="Password">Choose a Password</label>
+                    <input class="form-control" data-val="true" data-val-regex="Password must be 12 characters minimum, contain both lower and uppercase letters, 1 number and 1 special characters '-!@#$%^&amp;*()+'" data-val-regex-pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()\-+]).{12,}$" data-val-required="Password required" id="Password" name="Password" type="password">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="showPassword" class="custom-control-input" onclick="storeFront.togglePasswordVisibility(this,'Password')"><label class="custom-control-label" for="showPassword">Show Password</label>
+                    </div>
+                    <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
+
+                <div class="form-group" id="confirmPassword">
+                    <label class="required" for="PasswordConfirm">Re-type password</label>
+                    <input class="form-control" data-val="true" data-val-equalto="Please ensure your passwords match" data-val-equalto-other="*.Password" data-val-regex="Password must be 12 characters minimum, contain both lower and uppercase letters, 1 number and 1 special characters '-!@#$%^&amp;*()+'" data-val-regex-pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()\-+]).{12,}$" data-val-required="Confirm Password required" id="PasswordConfirm" name="PasswordConfirm" type="password">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="showConfirmPassword" class="custom-control-input" onclick="storeFront.togglePasswordVisibility(this,'PasswordConfirm')"><label class="custom-control-label" for="showConfirmPassword">Show Password</label>
+                    </div>
+
+                    <span class="field-validation-valid" data-valmsg-for="PasswordConfirm" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="checkboxOptions">
+                <div class="form-group newsLetterSubscribed">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" data-val="true" data-val-required="IsNewsletterSubscribed required" id="IsNewsletterSubscribed" name="IsNewsletterSubscribed" type="checkbox" value="true"><input name="IsNewsletterSubscribed" type="hidden" value="false">
+                        <label class="custom-control-label" for="IsNewsletterSubscribed">Sign-up to our newsletter for
+new and exclusive offers!</label>
+                    </div>
+                </div>
+                                                
+                    
+
+                    <!-- navigation buttons -->
+                    <div class="loginRegistrationSubmit">
+
+                            <button type="submit" class="btn btn-primary">Continue</button>
+                    </div>
+                    <!-- @navigation buttons -->
+
+                </div>
+</form>    </div>
 </div>
 
-
-                        <!-- STOR-2338 GW one of the below MUST BE ENABLED-->
-                            <!-- registration container -->
-<div class="myAccountSection newRegistration">
-
-<form action="/Account/Register" method="post"><input Name="IsFromCheckout" data-val="true" data-val-required="IsFromCheckout required" id="IsFromCheckout" name="IsFromCheckout" type="hidden" value="False" /><input Name="HasBasket" data-val="true" data-val-required="HasBasket required" id="HasBasket" name="HasBasket" type="hidden" value="False" /><input name="__RequestVerificationToken" type="hidden" value="l_eWWK3BrSD4Cwrh7aDa45NvGGfSpmDZA5IX4-J7zXVuJB_V_tOtWHWsAZiT1Jj3bzR-6JKGR_Tomvxtd3HrIywLYss1" /><h4>New Customers</h4>        <div class="guestRegistration">
-            <p class="customerRegistrationText subTitle">
-                
-            </p>
-
-            <div class="loginGuestButtons">
-
-                <button type="submit" class="btnClose btn-primary">Sign Up</button>
-
-            </div>
-        </div>
-</form>
-</div>
-
-                            <!-- @registration container -->
-
-                        <!-- @returning customers container -->
-                        
-
-                        <div id="noCookies" style="display:none;">
-                            <h2>Cookies must be enabled in order to log in</h2>
-                            <h3><a href="/CookiePolicy" class="button">View our Cookie Policy</a></h3>
-                        </div>
-                        <script src='/public/javascript/CookiesEnabled.js?v=639002922320000000' ></script>
-
-                        <script>
-                            if (CookiesEnabled.AreCookiesEnabled() == false) {
-                                document.getElementById("loginForm").style.display = "none";
-                                document.getElementById("noCookies").style.display = "";
-                            }
-                        </script>
 
                     </div>
                 </div>
