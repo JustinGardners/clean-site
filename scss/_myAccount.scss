@@ -1,6 +1,6 @@
 @use "sass:color";
 
-:is(.competition, .myAccount, .helpPages) {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) {
   .adminNav {
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
   opacity: 0;
 }
 
-:is(.competition, .myAccount, .helpPages) {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) {
   .adminNav {
     border-top: 0;
     label[for="accountInfo"] {
@@ -59,7 +59,7 @@
 
 @supports (transition-behavior: allow-discrete) and
   (height: calc-size(fit-content, size / 100)) {
-  :is(.competition, .myAccount, .helpPages) {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) {
     .adminNav {
       label[for="accountInfo"] {
         + input[type="checkbox"] {
@@ -122,6 +122,64 @@
   }
 }
 
+:is(.myAccount:not(:is(#logonCheckout, #logonRegister)), .helpPages) {
+  .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) {
+    background: $subtle-background;
+    padding: 2.2rem;
+    border-radius: 10px;
+    .myAccountSection {
+      margin-bottom:0;
+      border-radius: 0 0 10px 10px;
+    }
+    .register {
+      border:0!important;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}
+
+#main #logonRegister :is(.myAccountSection .loginFields, .guestRegistration) .form-group + .form-group {
+  margin-top: 1rem;
+}
+
+:is(.myAccount, .helpPages, .adminHelpPages) {
+  .adminNav {
+    font-family: $text-font-stack;
+    ul {
+      padding-left: 0;
+    }
+    li {
+      display: flex;
+    }
+    ul a {
+      border-block-start: 1px solid #d4dbe5;
+      width: 100%;
+      padding-block: 0.5em;
+      color: $primary;
+    }
+    h5 {
+      font-size: 1.375em;
+      color: $primary;
+    }
+  }
+  .leftNav {
+    order: 2;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      order: 1;
+      min-width: $left-nav-width;
+      width: auto;
+    }
+  }
+
+  .leftNav {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+  }  
+}
+
 .myAccount,
 .helpPages {
   display: flex;
@@ -138,36 +196,11 @@
   column-gap: calc(var(--bs-gutter-x));
   row-gap: calc(var(--bs-gutter-x));
 
-  .leftNav {
-    order: 2;
-    width: 100%;
 
-    @include media-breakpoint-up(md) {
-      order: 1;
-      min-width: $left-nav-width;
-      width: auto;
-    }
-  }
 
-  .leftNav {
-    position: sticky;
-    bottom: 0;
-    z-index: 1;
-  }
 
-  .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) {
-    background: $subtle-background;
-    padding: 2.2rem;
-    border-radius: 10px;
-    .myAccountSection {
-      margin-bottom:0;
-      border-radius: 0 0 10px 10px;
-    }
-    .register {
-      border:0!important;
-      border-radius: 0 0 10px 10px;
-    }
-  }
+
+
 
   // :is(.myAccountContents:has(.form)) {
   //   border:1px solid $primary;
@@ -191,7 +224,7 @@
       margin-top: 1.5rem;
     }
 
-    :is(.myAccountContents:has(.changeEmailAddress, .form)) {
+    :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) {
       border:1px solid $primary;
       padding-bottom:0;
       .myAccountMain {
@@ -360,22 +393,7 @@
     }
   }
 
-  .adminNav {
-    font-family: $text-font-stack;
-    li {
-      display: flex;
-    }
-    ul a {
-      border-block-start: 1px solid #d4dbe5;
-      width: 100%;
-      padding-block: 0.5em;
-      color: $primary;
-    }
-    h5 {
-      font-size: 1.375em;
-      color: $primary;
-    }
-  }
+
 
   .myAccountWrap {
     .accountLanding {
@@ -493,6 +511,8 @@
     margin-top: 0.5rem;
     color: $bg-brand;
     font-weight: bold;
+    text-align: left;
+    font-family: $text-font-stack;
   }
   // input[type="text"],
   // input[type="password"],
@@ -527,6 +547,7 @@
 /* Form Aligmenments */
 
 .myAccountMain {
+  --formLabelSpace: 200px;
   .form-group {
     margin-bottom: 0.5rem;
     @include breakpt-lg {
@@ -542,8 +563,9 @@
           grid-area: 2 / 2;
         }
       }
-      label {
+      label {        
         width: var(--formLabelSpace);
+        white-space: nowrap;
       }
       .emailAddress {
         margin: 0.5rem 0;
@@ -577,7 +599,7 @@
       grid-auto-flow: row;
       grid-row-gap: 0rem;
       grid-column-gap: 1.5rem;
-      margin-left: var(--formLabelSpace);
+      // margin-left: var(--formLabelSpace);
       label {
         grid-area: 2 / 2;
       }
@@ -1084,11 +1106,12 @@
             }
           }
           h4 {
-            background: $subtle-background;
-            padding: 1rem 0;
-            @include mainheaderH;
             color: $bg-brand;
-            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            font-size: clampWithViewPort(22, 30);
+            text-align: left;
           }
           .field-validation-valid {
             display: none;
@@ -1107,15 +1130,21 @@
         .newRegistration {
           width: 100%;
           border: 2px solid $bg-brand;
+          background: $subtle-background;
           .benefitsblock {
             display: none;
           }
           h4 {
-            background: $subtle-background;
-            padding: 1rem 0;
-            @include mainheaderH;
+            // background: $subtle-background;
+            // padding: 1rem 0;
+            // @include mainheaderH;
+            // color: $bg-brand;
+            // text-align: center;
             color: $bg-brand;
-            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            font-size: clampWithViewPort(22, 30);            
           }
           p,
           .guestRegistration {
@@ -1566,3 +1595,9 @@ div#wishlistEmail {
     }
   }
 }
+
+  #logonRegister {
+    .myAccountContents {
+      background:none;
+    }
+  }
