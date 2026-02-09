@@ -145,6 +145,9 @@
 :is(.myAccount, .helpPages, .adminHelpPages) {
   .adminNav {
     font-family: $text-font-stack;
+    ul {
+      padding-left: 0;
+    }
     li {
       display: flex;
     }
