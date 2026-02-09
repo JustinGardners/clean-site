@@ -142,6 +142,25 @@
   margin-top: 1rem;
 }
 
+:is(.myAccount, .helpPages, .adminHelpPages) {
+  .adminNav {
+    font-family: $text-font-stack;
+    li {
+      display: flex;
+    }
+    ul a {
+      border-block-start: 1px solid #d4dbe5;
+      width: 100%;
+      padding-block: 0.5em;
+      color: $primary;
+    }
+    h5 {
+      font-size: 1.375em;
+      color: $primary;
+    }
+  }
+}
+
 .myAccount,
 .helpPages {
   display: flex;
@@ -370,22 +389,7 @@
     }
   }
 
-  .adminNav {
-    font-family: $text-font-stack;
-    li {
-      display: flex;
-    }
-    ul a {
-      border-block-start: 1px solid #d4dbe5;
-      width: 100%;
-      padding-block: 0.5em;
-      color: $primary;
-    }
-    h5 {
-      font-size: 1.375em;
-      color: $primary;
-    }
-  }
+
 
   .myAccountWrap {
     .accountLanding {
