@@ -9980,14 +9980,18 @@ body .internetExNote p {
 #headerWrap #header .header__store-locator {
   display: none !important;
 }
-#headerWrap #header :is(#wishlistLink, #navSupport #dropdownMenuLink, #navButton .navbarToggle) {
+#headerWrap #header :is(#wishlistLink,
+#navSupport #dropdownMenuLink,
+#navButton .navbarToggle) {
   display: flex;
   color: oklch(33.19% 0.2085 264.2deg);
   flex-direction: column;
   align-items: center;
   gap: 5px;
 }
-#headerWrap #header :is(#wishlistLink, #navSupport #dropdownMenuLink, #navButton .navbarToggle)::before {
+#headerWrap #header :is(#wishlistLink,
+#navSupport #dropdownMenuLink,
+#navButton .navbarToggle)::before {
   content: "";
   display: block;
   width: 1.5em;
@@ -9998,7 +10002,9 @@ body .internetExNote p {
   -webkit-mask-size: contain;
           mask-size: contain;
 }
-#headerWrap #header :is(#wishlistLink, #navSupport #dropdownMenuLink, #navButton .navbarToggle) a {
+#headerWrap #header :is(#wishlistLink,
+#navSupport #dropdownMenuLink,
+#navButton .navbarToggle) a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10469,8 +10475,6 @@ body.mobileMenuOpen #headerWrap #header #searchBar form #searchBox input[type=te
 @supports (interpolate-size: allow-keywords) {
   body.mobileMenuOpen :is(.primary > li, .categories .category) {
     transition: height 0.125s ease-in;
-    height: 2.6rem;
-    overflow: clip;
   }
   body.mobileMenuOpen :is(.primary > li, .categories .category).open {
     height: -moz-max-content;
@@ -10868,31 +10872,22 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
     display: none;
   }
 }
-body:has(#navMain.is-open) {
-  overflow: clip;
-}
-
-#nav:has(#navMain.is-open) #navMain {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: 999;
-}
-
-/*
- * ul.primary width 50vw
- * body.mobileMenuOpen :is(.primary>li,.categories .category) - max-height: 90dvh / overflow: auto
- * fix positioning of level 2 + level 3 elements as level 1 is picked
-*/
 .megaMenu {
   position: relative;
   font-family: "Arsenal", sans-serif;
-  border-top: 11px solid #e7effa !important;
-  box-shadow: 0px 4px 15.8px 0px #4f7ad1;
-  border-radius: 0 0 10px 10px;
   overflow: clip;
 }
 
+@media (min-width: 767px) {
+  .megaMenu {
+    position: relative;
+    font-family: "Arsenal", sans-serif;
+    border-top: 11px solid #e7effa !important;
+    box-shadow: 0px 4px 15.8px 0px #4f7ad1;
+    border-radius: 0 0 10px 10px;
+    overflow: clip;
+  }
+}
 .mm {
   position: relative;
   display: grid;
@@ -11168,6 +11163,167 @@ body:has(#navMain.is-open) {
   transform: translateX(-12px);
 }
 
+body:has(#navMain.is-open) {
+  overflow: clip;
+}
+
+#nav:has(#navMain.is-open) #navMain {
+  position: fixed;
+  bottom: 0;
+  max-height: 90dvh;
+  width: 60vw;
+  background: #fff;
+  z-index: 999;
+}
+#nav:has(#navMain.is-open) #navMain .menuText {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5em !important;
+}
+
+@media (max-width: 767.8px) {
+  ul.primary {
+    width: 60vw;
+  }
+  body.mobileMenuOpen:is(.primary > li, .categories .category) {
+    max-height: 90dvh;
+    overflow: auto;
+  }
+}
+/* --- Mobile sliding panels for Mega Menu --- */
+@media (max-width: 767px) {
+  .megaMenu .mm {
+    display: block;
+    min-height: auto;
+    height: 60dvh;
+  }
+  .megaMenu .mm__panels {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .megaMenu .mm__col--l1,
+  .megaMenu .mm__col--l2,
+  .megaMenu .mm__col--l3 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: #fff;
+    transform: translateX(0);
+    transition: transform 0.25s ease;
+    will-change: transform;
+  }
+  /* default positions off-canvas to the right */
+  .megaMenu .mm__col--l2 {
+    transform: translateX(100%);
+  }
+  .megaMenu .mm__col--l3 {
+    transform: translateX(200%);
+  }
+  /* state: at L1 */
+  .megaMenu .mm__panels.at-l1 .mm__col--l1 {
+    transform: translateX(0%);
+  }
+  .megaMenu .mm__panels.at-l1 .mm__col--l2 {
+    transform: translateX(100%);
+  }
+  .megaMenu .mm__panels.at-l1 .mm__col--l3 {
+    transform: translateX(200%);
+  }
+  /* state: at L2 */
+  .megaMenu .mm__panels.at-l2 .mm__col--l1 {
+    transform: translateX(-100%);
+  }
+  .megaMenu .mm__panels.at-l2 .mm__col--l2 {
+    transform: translateX(0%);
+  }
+  .megaMenu .mm__panels.at-l2 .mm__col--l3 {
+    transform: translateX(100%);
+  }
+  /* state: at L3 */
+  .megaMenu .mm__panels.at-l3 .mm__col--l1 {
+    transform: translateX(-200%);
+  }
+  .megaMenu .mm__panels.at-l3 .mm__col--l2 {
+    transform: translateX(-100%);
+  }
+  .megaMenu .mm__panels.at-l3 .mm__col--l3 {
+    transform: translateX(0%);
+  }
+  /* Back button styling */
+  .megaMenu .mm__head {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .megaMenu .mm__back {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+    background: none;
+    font: inherit;
+    padding: 8px 6px 8px 0;
+    color: #000;
+    font-weight: 600;
+  }
+  .megaMenu .mm__col.is-hidden {
+    display: block !important;
+  }
+  .megaMenu .mm__col--media {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) {
+  .megaMenu .mm {
+    display: grid;
+  }
+  .megaMenu .mm__col.is-hidden {
+    display: none;
+  }
+}
+/* Desktop reset for Mega Menu panels (≥768px) */
+@media (min-width: 768px) {
+  .megaMenu .mm {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    min-height: 360px;
+  }
+  .megaMenu .mm__panels {
+    display: contents !important;
+    position: static !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+  .megaMenu .mm__col--l1,
+  .megaMenu .mm__col--l2,
+  .megaMenu .mm__col--l3 {
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    transform: none !important;
+    transition: none !important;
+    background: transparent !important;
+  }
+  .megaMenu .mm__col.is-hidden {
+    display: none !important;
+  }
+  .megaMenu .mm__back {
+    display: none !important;
+  }
+  .megaMenu .mm__col--media {
+    display: block;
+  }
+}
+@media (min-width: 992px) {
+  .megaMenu .mm {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
 /* === SEARCH ============================= */
 #leftNav,
 #searchResults {
@@ -13283,7 +13439,7 @@ body.facetShow #leftNav .navSection {
   display: none !important;
 }
 
-:is(.competition, .myAccount, .helpPages) .adminNav {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav {
   display: flex;
   flex-direction: column;
   background: white;
@@ -13291,18 +13447,18 @@ body.facetShow #leftNav .navSection {
   padding-top: 1rem;
   border-top: 1px solid #bcc8de;
 }
-:is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] {
   order: 99;
   z-index: 2;
   padding: 1rem 0;
   margin-top: 0;
   background: white;
 }
-:is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] span {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] span {
   transform: translateY(-0.5rem);
   display: block;
 }
-:is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] + input[type=checkbox] {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] + input[type=checkbox] {
   order: 100;
   width: 1px !important;
   height: 1px !important;
@@ -13313,10 +13469,10 @@ body.facetShow #leftNav .navSection {
   white-space: nowrap !important;
   border: 0 !important;
 }
-:is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] + input[type=checkbox]:not(caption) {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] + input[type=checkbox]:not(caption) {
   position: absolute !important;
 }
-:is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] + input[type=checkbox]:checked + .adminNav__wrapper {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] + input[type=checkbox]:checked + .adminNav__wrapper {
   display: block;
   opacity: 1;
 }
@@ -13326,30 +13482,30 @@ body.facetShow #leftNav .navSection {
   opacity: 0;
 }
 
-:is(.competition, .myAccount, .helpPages) .adminNav {
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav {
   border-top: 0;
 }
 @media (min-width: 768px) {
-  :is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] {
     display: none;
   }
-  :is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] + input[type=checkbox] {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] + input[type=checkbox] {
     display: none;
   }
-  :is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] + input[type=checkbox] + .adminNav__wrapper {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] + input[type=checkbox] + .adminNav__wrapper {
     display: block;
     height: auto;
     opacity: 1;
   }
 }
 @media (min-width: 768px) {
-  :is(.competition, .myAccount, .helpPages) .adminNav {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav {
     padding-inline: 0;
   }
 }
 
 @supports (transition-behavior: allow-discrete) and ((height: calc-size(-moz-fit-content, size / 100)) or (height: calc-size(fit-content, size / 100))) {
-  :is(.competition, .myAccount, .helpPages) .adminNav label[for=accountInfo] + input[type=checkbox]:checked + .adminNav__wrapper {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) .adminNav label[for=accountInfo] + input[type=checkbox]:checked + .adminNav__wrapper {
     height: calc-size(-moz-fit-content, size / 1);
     height: calc-size(fit-content, size / 1);
   }
@@ -13421,6 +13577,63 @@ body.facetShow #leftNav .navSection {
   margin-top: 1rem;
 }
 
+:is(.myAccount, .helpPages, .adminHelpPages) .adminNav {
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+:is(.myAccount, .helpPages, .adminHelpPages) .adminNav ul {
+  padding-left: 0;
+}
+:is(.myAccount, .helpPages, .adminHelpPages) .adminNav li {
+  display: flex;
+}
+:is(.myAccount, .helpPages, .adminHelpPages) .adminNav ul a {
+  border-block-start: 1px solid #d4dbe5;
+  width: 100%;
+  padding-block: 0.5em;
+  color: #000E67;
+}
+:is(.myAccount, .helpPages, .adminHelpPages) .adminNav h5, :is(.myAccount, .helpPages, .adminHelpPages) .adminNav .h5 {
+  font-size: 1.375em;
+  color: #000E67;
+}
+:is(.myAccount, .helpPages, .adminHelpPages) .leftNav {
+  order: 2;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  :is(.myAccount, .helpPages, .adminHelpPages) .leftNav {
+    order: 0;
+    min-width: 306px;
+    width: auto;
+  }
+}
+:is(.myAccount, .helpPages, .adminHelpPages) .leftNav {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .adminHelpPages > .row > .col-md-9 {
+    width: min(75%, 100% - 306px);
+  }
+}
+
+.adminHelpPages h3, .adminHelpPages .h3 {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.adminHelpPages .headers + * {
+  margin-top: 1.5rem;
+}
+.adminHelpPages .headers h3, .adminHelpPages .headers .h3 {
+  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #000E67;
+  font-size: clamp(18px, calc(18px + (30 - 18) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px) !important;
+}
+
 .myAccount,
 .helpPages {
   display: flex;
@@ -13440,25 +13653,6 @@ body.facetShow #leftNav .navSection {
   .helpPages {
     flex-flow: row;
   }
-}
-.myAccount .leftNav,
-.helpPages .leftNav {
-  order: 2;
-  width: 100%;
-}
-@media (min-width: 768px) {
-  .myAccount .leftNav,
-  .helpPages .leftNav {
-    order: 1;
-    min-width: 306px;
-    width: auto;
-  }
-}
-.myAccount .leftNav,
-.helpPages .leftNav {
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
 }
 .myAccount .myAccountWrap,
 .myAccount .helpWrap,
@@ -13829,27 +14023,6 @@ body.facetShow #leftNav .navSection {
 .helpPages .myAccountWrap .myAccountContents > .myAccountContents,
 .helpPages .helpWrap .myAccountContents > .myAccountContents {
   display: none;
-}
-.myAccount .adminNav,
-.helpPages .adminNav {
-  font-family: "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
-.myAccount .adminNav li,
-.helpPages .adminNav li {
-  display: flex;
-}
-.myAccount .adminNav ul a,
-.helpPages .adminNav ul a {
-  border-block-start: 1px solid #d4dbe5;
-  width: 100%;
-  padding-block: 0.5em;
-  color: #000E67;
-}
-.myAccount .adminNav h5, .myAccount .adminNav .h5,
-.helpPages .adminNav h5,
-.helpPages .adminNav .h5 {
-  font-size: 1.375em;
-  color: #000E67;
 }
 .myAccount .myAccountWrap .accountLanding,
 .helpPages .myAccountWrap .accountLanding {
