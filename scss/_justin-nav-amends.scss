@@ -1,0 +1,27 @@
+@media (max-width: breakpoint-max(md)) {
+  #nav:has(#navMain.is-open) #navMain {
+    height: 100%;
+    max-height: none;
+  }
+
+  #navMain.is-open {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  body.mobileMenuOpen #headerWrap #nav #navMain ul.primary {
+    flex: 1 1 auto;
+  }
+
+  body.mobileMenuOpen #headerWrap #nav #navMain ul.primary > li {
+    font-size: 1rem;
+    > a {
+      background-color: #fff;
+    }
+  }
+
+  #mobileExtras {
+    list-style-type: none;
+    padding: 0;
+  }
+}

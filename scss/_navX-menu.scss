@@ -299,24 +299,25 @@
 }
 
 // MOBILE NAV
+@media (max-width: breakpoint-max(md)) {
+  body:has(#navMain.is-open) {
+    overflow: clip;
+  }
 
-body:has(#navMain.is-open) {
-  overflow: clip;
-}
+  #nav:has(#navMain.is-open) #navMain {
+    position: fixed;
+    bottom: 0;
+    max-height: 90dvh;
+    width: 60vw;
+    background: #fff;
+    z-index: 999;
 
-#nav:has(#navMain.is-open) #navMain {
-  position: fixed;
-  bottom: 0;
-  max-height: 90dvh;
-  width: 60vw;
-  background: #fff;
-  z-index: 999;
-
-  .menuText {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.5em !important;
+    .menuText {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5em !important;
+    }
   }
 }
 
