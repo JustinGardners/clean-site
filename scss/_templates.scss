@@ -206,6 +206,36 @@
     }
   }
 }
+.seo-block{
+  color: $bg-brand;
+  &__header {
+    h3 {
+      font-family: Arsenal;
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 30px;
+      leading-trim: NONE;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      font-variant-numeric-figure: lining-nums;
+      font-variant-numeric-spacing: proportional-nums;
+      margin-bottom: 1rem;
+
+    }
+  }
+  // &__content {
+  //   font-family: Public Sans;
+  //   font-weight: 500;
+  //   font-style: Medium;
+  //   font-size: 16px;
+  //   leading-trim: NONE;
+  //   line-height: 200%;
+  //   letter-spacing: 0%;
+  //   font-variant-numeric-figure: lining-nums;
+  //   font-variant-numeric-spacing: proportional-nums;
+  // }
+}
 
 /* === TOPBAR ============================= */
 body {
@@ -436,7 +466,7 @@ body {
 }
 
 .image-with-text {
-  color: #000e67;
+  color: $bg-brand;
   &--bg {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
@@ -609,6 +639,8 @@ body {
     }
   }
 }
+
+
 
 .skewed-jacket {
   &__img {
