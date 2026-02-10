@@ -9924,11 +9924,6 @@ body .internetExNote p {
   display: block;
   width: 100%;
   height: auto;
-  padding: 1.125em 1.375em 1.125em 1.25em;
-  background: oklch(94.63% 0.0183 256.72deg);
-  color: oklch(33.19% 0.2085 264.2deg);
-  border: 2px solid oklch(100% 0 89.88deg);
-  border-radius: 999px;
 }
 #headerWrap #header #miniBasket .details a {
   position: relative;
@@ -9938,6 +9933,11 @@ body .internetExNote p {
   align-items: center;
   gap: 0 0.75em;
   height: auto;
+  padding: 1.125em 1.375em 1.125em 1.25em;
+  background: oklch(94.63% 0.0183 256.72deg);
+  color: oklch(33.19% 0.2085 264.2deg);
+  border: 2px solid oklch(100% 0 89.88deg);
+  border-radius: 999px;
 }
 #headerWrap #header #miniBasket .details p {
   display: none;
@@ -9958,7 +9958,7 @@ body .internetExNote p {
 #headerWrap #header #miniBasket .details #uxSmallBasketQuantity .number {
   position: absolute;
   top: 50%;
-  left: calc(var(--icon-width) * 1.3);
+  left: calc(var(--icon-width) * 2.35);
   transform: translate(-50%, -50%);
   display: block;
   width: 20px;
