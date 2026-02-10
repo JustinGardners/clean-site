@@ -1131,7 +1131,7 @@
           h4 {
             color: $bg-brand;
             font-weight: bold;
-            margin-bottom: 2rem;
+            // margin-bottom: 2rem;
             padding: 2rem;
             font-size: clampWithViewPort(22, 30);
             text-align: left;
@@ -1168,6 +1168,7 @@
             margin-bottom: 2rem;
             padding: 2rem;
             font-size: clampWithViewPort(22, 30);            
+            text-align: center;
           }
           p,
           .guestRegistration {

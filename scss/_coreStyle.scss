@@ -324,9 +324,9 @@ textarea {
   border-radius: 0;
   border: 0;
   padding: 0;
-  @include breakpt-md {
-    margin-top: 10px;
-  }
+  // @include breakpt-md {
+  //   margin-top: 10px;
+  // }
   #navMenuHello {
     padding: 0.5rem 0.75rem;
     background-color: $subtle-background;
@@ -419,8 +419,8 @@ body {
       --vw-min: 375;
       display: grid;
       grid-template-columns:
-        [logo] max-content [search] 1fr [menu] calc(65 / 16 * 1em)
-        [account] calc(65 / 16 * 1em) [wishlist] calc(65 / 16 * 1em)
+        [logo] max-content [search] 1fr [menu] 4.4em
+        [account] 4.4em [wishlist] 4.4em
         [basket] max-content;
       grid-auto-flow: column;
       gap: 0 clampWithViewPort(8, 22);
@@ -434,13 +434,36 @@ body {
       }
     }
 
+    @supports (anchor-name: --dropdown-achor-link) and (position-try-fallbacks: flip-inline) {
+      a:has(~ ul.dropdown-menu) {
+        anchor-name: --dropdown-achor-link;
+        ~ .dropdown-menu {
+          position-anchor: --dropdown-achor-link;
+          position-area: bottom span-right;
+          position-try-fallbacks: flip-inline;
+          position: fixed;
+          top: auto;
+          display: block!important;          
+        }
+      }
+    }
+
     :is(.row > *, #miniNav):not(script) {
       display: flex;
       justify-content: stretch;
       align-self: center;
+      position:relative;
       a {
         flex: 1 1 auto;
       }
+    }
+
+    .dropdown-menu {
+      top:100%;
+      margin-top:0;
+      border-radius: 10px;
+      overflow: clip;      
+      box-shadow: 0 0 1px 1px color-mix(in oklab, #bcc8de 95%, black 5%), 0 0 6px 1px color-mix(in oklab, #bcc8de 50%, black 10%);          
     }
 
     #miniBasket {
@@ -563,12 +586,67 @@ body {
       display: none !important;
     }
 
+    // :is(
+    //   #wishlistLink,
+    //   #navSupport #dropdownMenuLink,
+    //   #navButton .navbarToggle
+    // ) {
+    //   display: flex;
+    //   &::before {
+    //     content: "";
+    //     display: block;
+    //     width: 1.5em;
+    //     height: 1.5em;
+    //     background: $brand-700;
+    //     mask: var(--icon-mask) no-repeat 50% 50%;
+    //     mask-size: contain;
+    //   }
+    //   color: $brand-700;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   gap: 5px;
+    //   a {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //   }
+    // }
+
     :is(
       #wishlistLink,
       #navSupport #dropdownMenuLink,
+      #navButton .navbarToggle,
+      #miniNav,
+      #navButton
+    ) {
+      color: $brand-700;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;      
+      > a {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        height: 75px;        
+        padding-inline: calc(4/16 * 1em);
+        border-radius: 10px;
+        &:has(~ .dropdown-menu[style="display: block;"]) {
+          box-shadow: 0 0 1px 1px 
+color-mix(in oklab, #bcc8de 95%, black 5%), 0 3px 6px 1px 
+color-mix(in oklab, #bcc8de 95%, black 5%) inset;
+    background: 
+ color-mix(in oklab, #bcc8de, white 80%);
+        }
+      }
+    }    
+
+    :is(
+      #wishlistLink > a,
+      #navSupport #dropdownMenuLink,
       #navButton .navbarToggle
     ) {
-      display: flex;
       &::before {
         content: "";
         display: block;
@@ -578,16 +656,8 @@ body {
         mask: var(--icon-mask) no-repeat 50% 50%;
         mask-size: contain;
       }
-      color: $brand-700;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
     }
+
 
     #wishlistLink {
       $icon-mask: map.get($icon-list, "wishlist");
@@ -625,12 +695,12 @@ body {
         #dropdownMenuLink {
           $icon-mask: map.get($icon-list, "account");
           --icon-mask: #{$icon-mask};
-          display: flex;
-          flex-flow: column nowrap;
-          justify-content: center;
-          align-items: center;
-          gap: 5px;
-          height: 75px;
+          // display: flex;
+          // flex-flow: column nowrap;
+          // justify-content: center;
+          // align-items: center;
+          // gap: 5px;
+          // height: 75px;
         }
 
         .navMyAccount {

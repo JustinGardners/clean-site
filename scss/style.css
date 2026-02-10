@@ -9762,11 +9762,6 @@ select)[readonly] {
   border: 0;
   padding: 0;
 }
-@media (min-width: 768px) {
-  .accountNav {
-    margin-top: 10px;
-  }
-}
 .accountNav #navMenuHello {
   padding: 0.5rem 0.75rem;
   background-color: #eceff6;
@@ -9851,7 +9846,7 @@ body .internetExNote p {
 #headerWrap #header > .container-md .row, #headerWrap :not(.smaller-template-content) #header > .template-container .row, :not(.smaller-template-content) #headerWrap #header > .template-container .row {
   --vw-min: 375;
   display: grid;
-  grid-template-columns: [logo] max-content [search] 1fr [menu] 4.0625em [account] 4.0625em [wishlist] 4.0625em [basket] max-content;
+  grid-template-columns: [logo] max-content [search] 1fr [menu] 4.4em [account] 4.4em [wishlist] 4.4em [basket] max-content;
   grid-auto-flow: column;
   gap: 0 clamp(8px, calc(8px + (22 - 8) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 22px);
   padding-inline: 1rem;
@@ -9863,13 +9858,34 @@ body .internetExNote p {
   width: auto;
   padding: 0;
 }
+@supports (anchor-name: --dropdown-achor-link) and (position-try-fallbacks: flip-inline) {
+  #headerWrap #header a:has(~ ul.dropdown-menu) {
+    anchor-name: --dropdown-achor-link;
+  }
+  #headerWrap #header a:has(~ ul.dropdown-menu) ~ .dropdown-menu {
+    position-anchor: --dropdown-achor-link;
+    position-area: bottom span-right;
+    position-try-fallbacks: flip-inline;
+    position: fixed;
+    top: auto;
+    display: block !important;
+  }
+}
 #headerWrap #header :is(.row > *, #miniNav):not(script) {
   display: flex;
   justify-content: stretch;
   align-self: center;
+  position: relative;
 }
 #headerWrap #header :is(.row > *, #miniNav):not(script) a {
   flex: 1 1 auto;
+}
+#headerWrap #header .dropdown-menu {
+  top: 100%;
+  margin-top: 0;
+  border-radius: 10px;
+  overflow: clip;
+  box-shadow: 0 0 1px 1px color-mix(in oklab, #bcc8de 95%, black 5%), 0 0 6px 1px color-mix(in oklab, #bcc8de 50%, black 10%);
 }
 #headerWrap #header #miniBasket {
   flex: 1 1 auto;
@@ -9982,14 +9998,37 @@ body .internetExNote p {
 }
 #headerWrap #header :is(#wishlistLink,
 #navSupport #dropdownMenuLink,
-#navButton .navbarToggle) {
-  display: flex;
+#navButton .navbarToggle,
+#miniNav,
+#navButton) {
   color: oklch(33.19% 0.2085 264.2deg);
   flex-direction: column;
   align-items: center;
   gap: 5px;
 }
 #headerWrap #header :is(#wishlistLink,
+#navSupport #dropdownMenuLink,
+#navButton .navbarToggle,
+#miniNav,
+#navButton) > a {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 75px;
+  padding-inline: 0.25em;
+  border-radius: 10px;
+}
+#headerWrap #header :is(#wishlistLink,
+#navSupport #dropdownMenuLink,
+#navButton .navbarToggle,
+#miniNav,
+#navButton) > a:has(~ .dropdown-menu[style="display: block;"]) {
+  box-shadow: 0 0 1px 1px color-mix(in oklab, #bcc8de 95%, black 5%), 0 3px 6px 1px color-mix(in oklab, #bcc8de 95%, black 5%) inset;
+  background: color-mix(in oklab, #bcc8de, white 80%);
+}
+#headerWrap #header :is(#wishlistLink > a,
 #navSupport #dropdownMenuLink,
 #navButton .navbarToggle)::before {
   content: "";
@@ -10001,13 +10040,6 @@ body .internetExNote p {
           mask: var(--icon-mask) no-repeat 50% 50%;
   -webkit-mask-size: contain;
           mask-size: contain;
-}
-#headerWrap #header :is(#wishlistLink,
-#navSupport #dropdownMenuLink,
-#navButton .navbarToggle) a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 #headerWrap #header #wishlistLink {
   --icon-mask: url('data:image/svg+xml,<svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.1494 1.94496C21.5629 1.32835 20.8667 0.839213 20.1003 0.50549C19.334 0.171768 18.5126 0 17.6831 0C16.8535 0 16.0321 0.171768 15.2658 0.50549C14.4994 0.839213 13.8032 1.32835 13.2167 1.94496L11.9997 3.22404L10.7826 1.94496C9.59811 0.700036 7.99152 0.000645287 6.31633 0.0006453C4.64114 0.000645313 3.03455 0.700036 1.85001 1.94496C0.665469 3.18988 1.24812e-08 4.87836 0 6.63895C-1.24812e-08 8.39954 0.665469 10.088 1.85001 11.3329L3.06705 12.612L11.9997 22L20.9323 12.612L22.1494 11.3329C22.7361 10.7166 23.2015 9.98485 23.519 9.17944C23.8366 8.37403 24 7.51076 24 6.63895C24 5.76714 23.8366 4.90387 23.519 4.09846C23.2015 3.29305 22.7361 2.56128 22.1494 1.94496Z" fill="%2300149C"/></svg>');
@@ -10029,12 +10061,6 @@ body .internetExNote p {
 }
 #headerWrap #header #navSupport #miniNav #dropdownMenuLink {
   --icon-mask: url('data:image/svg+xml,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8992 25.001C9.68643 25.0243 7.493 24.5875 5.45805 23.7181C3.42309 22.8488 1.59106 21.5659 0.0781957 19.951C-0.0368043 19.827 -0.00982598 19.744 0.062174 19.622C1.34804 17.5969 3.2964 16.0804 5.57517 15.331C8.01978 14.4199 10.6325 14.0485 13.2342 14.242C15.7516 14.3532 18.2093 15.0448 20.4152 16.263C21.8679 17.0473 23.0858 18.2038 23.9442 19.614C23.9654 19.641 23.981 19.672 23.9902 19.7051C23.9995 19.7381 24.0021 19.7727 23.9979 19.8068C23.9937 19.8409 23.9828 19.8739 23.9659 19.9038C23.949 19.9336 23.9263 19.9599 23.8992 19.981C21.371 22.6926 17.9593 24.4146 14.2762 24.838C13.9512 24.884 13.6232 24.915 13.2952 24.938C12.8582 24.966 12.4192 24.978 11.8992 25.001Z" fill="white"/><path d="M12.0162 12.826C10.7477 12.827 9.50735 12.4518 8.45213 11.7478C7.3969 11.0438 6.57414 10.0427 6.08793 8.87107C5.60172 7.69946 5.4739 6.40997 5.72062 5.16569C5.96734 3.92142 6.5775 2.77826 7.47398 1.88081C8.37045 0.983355 9.51296 0.371914 10.757 0.123835C12.001 -0.124243 13.2906 0.00218594 14.4627 0.487117C15.6349 0.972048 16.6369 1.7937 17.342 2.84816C18.0471 3.90261 18.4237 5.14251 18.4241 6.41101C18.4231 8.11083 17.7479 9.74083 16.5465 10.9434C15.3452 12.1461 13.716 12.8231 12.0162 12.826Z" fill="white"/></svg>');
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  height: 75px;
 }
 #headerWrap #header #navSupport #miniNav .navMyAccount span {
   display: none;
@@ -14750,7 +14776,6 @@ body.facetShow #leftNav .navSection {
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .customerReturning h4, #logonRegister .myAccountWrap .myAccountContents .myAccountMain .customerReturning .h4 {
   color: #003087;
   font-weight: bold;
-  margin-bottom: 2rem;
   padding: 2rem;
   font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
   text-align: left;
@@ -14780,6 +14805,7 @@ body.facetShow #leftNav .navSection {
   margin-bottom: 2rem;
   padding: 2rem;
   font-size: clamp(22px, calc(22px + (30 - 22) * (100vw - var(--vw-min) * 1px) / (var(--vw-max) - var(--vw-min))), 30px);
+  text-align: center;
 }
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration p,
 #logonRegister .myAccountWrap .myAccountContents .myAccountMain .newRegistration .guestRegistration {
@@ -18930,7 +18956,6 @@ div#wishlistEmail .form-control {
   display: flex;
   flex-direction: column;
   place-content: center;
-  text-align: center;
   border: 2px solid #003087;
   border-radius: 10px;
 }
@@ -19041,7 +19066,11 @@ div#wishlistEmail .form-control {
     position-anchor: --password;
     top: calc(anchor(bottom) + 0.5rem);
     left: calc(anchor(left));
-    padding-left: 0;
+  }
+  @media (min-width: 992px) {
+    #main .custom-control.rememberMe {
+      padding-left: 0;
+    }
   }
   #main .loginSignUpButtons {
     margin-top: 1.5rem;
@@ -19887,6 +19916,23 @@ div#wishlistEmail .form-control {
   }
 }
 
+.seo-block {
+  color: #003087;
+}
+.seo-block__header h3, .seo-block__header .h3 {
+  font-family: Arsenal;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 30px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  font-variant-numeric-figure: lining-nums;
+  font-variant-numeric-spacing: proportional-nums;
+  margin-bottom: 1rem;
+}
+
 /* === TOPBAR ============================= */
 body > .top-bar {
   padding: 20px 0;
@@ -20090,7 +20136,7 @@ body > .top-bar .top-bar__close svg {
 }
 
 .image-with-text {
-  color: #000e67;
+  color: #003087;
 }
 .image-with-text--bg {
   padding-top: 2.5rem;
