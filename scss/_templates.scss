@@ -917,8 +917,9 @@ body {
   }
   img {
     aspect-ratio: 95 / 74;
+    object-fit: cover;
     @include media-breakpoint-up(md) {
-      aspect-ratio: 144 / 47;
+      aspect-ratio: 72/23;
     }
   }
 }

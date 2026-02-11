@@ -145,6 +145,12 @@
   padding: 8px;
   margin: 0;
   list-style: none;
+  row-gap: 8px;
+  li {
+    min-height: 35px;
+    display: flex;
+    align-items: stretch;    
+  }
 }
 
 .mm__btn {
@@ -152,20 +158,27 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 4px 8px;
+  padding: 4px 12px;
   background: transparent;
-  border: 4px solid transparent;
+  border: 0;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
+  appearance: none;
 
   &:hover,
   &.is-active {
     background: #4f7ad1;
     color: #fff;
-    border-color: #000e67;
+  }
+  &.is-active {
+    box-shadow: 0 0 0 4px #4f7ad1, 4px 0px 0 0px #4f7ad1 inset, -4px 0px 0 0px #4f7ad1 inset;    
+  }
+  &:hover:not(.is-active) {
+    box-shadow: 0 0 0 4px #000e67, 4px 0px 0 0px #000e67 inset, -4px 0px 0 0px #000e67 inset;
   }
 }
+
 
 .mm__chev {
   opacity: 0.6;
@@ -323,7 +336,7 @@
     width: 60vw;
     background: #fff;
     z-index: 999;
-
+    left:0;
     .menuText {
       display: flex !important;
       justify-content: space-between;
