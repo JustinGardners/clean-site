@@ -875,7 +875,7 @@ body {
         ul.primary {
           display: flex;
           gap: calc(var(--bs-gutter-x) * 0.5);
-          justify-content: center;
+          justify-content: flex-start;
           align-items: stretch;
           > li {
             display: grid;
@@ -953,8 +953,7 @@ body {
     }
     @include media-breakpoint-up(lg) {
       #navMain ul.primary > li > a {
-        padding: 0.7rem 0.75rem;
-        font-size: 1.25rem;
+        padding: 0.7rem 1.2em;
       }
     }
   }
