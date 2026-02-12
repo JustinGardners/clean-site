@@ -3,13 +3,13 @@
 }
 
 @media (max-width: breakpoint-max(md)) {
-  #nav:has(#navMain.is-open) #navMain {
-    height: 100%;
-    max-height: none;
-  }
+  // #nav:has(#navMain.is-open) #navMain {
+  //   height: 100%;
+  //   max-height: none;
+  // }
 
-  #navMain.is-open {
-    display: flex !important;
+  #navMain {
+    display: flex;
     flex-direction: column;
   }
 
@@ -37,7 +37,7 @@
     }
   }
 
-  #mobileExtras {
+  ul#mobileExtras {
     list-style-type: none;
     padding: 0;
     margin-inline: 1rem;

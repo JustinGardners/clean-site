@@ -423,6 +423,9 @@ body {
     padding-bottom: 0.75rem;
     margin-bottom: 0.75rem;
   }
+  @include media-breakpoint-up(md) {
+    z-index: 22;
+  }
   // .container-md {
   //   max-width: 1320px !important;
   // }
@@ -1037,8 +1040,7 @@ body {
         height: 100vh;
         // height: calc(100vh - 75px);
         width: 100vw; /* viewport width */
-        overflow-y: scroll;
-        overflow-x: hidden;
+        overflow: hidden;
         position: fixed;
         top: 0;
         right: 0;
