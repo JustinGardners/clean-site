@@ -429,3 +429,37 @@ $btn-hover: #002262;
   );
   @return clamp(#{$minVal}px, #{$clampCalc}, #{$maxVal}px);
 }
+
+@mixin close-button($color: #000, $bg:transparent, $size: 2rem, $include-border: true) {
+    @if $include-border {
+      border: 1px solid $color;
+    }
+    background-color: $bg;
+    text-indent: -999em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    font-size: 0;
+    width: $size;
+    height: $size;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: calc($size * 0.5);
+      background: $color;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+    }  
+    &:after {
+      rotate: -45deg;
+    }
+    &:before {
+      rotate: 45deg;
+    }
+} 
