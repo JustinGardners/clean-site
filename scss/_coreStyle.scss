@@ -618,7 +618,6 @@ body {
 
     :is(
       #wishlistLink,
-      #navSupport #dropdownMenuLink,
       #navButton .navbarToggle,
       #miniNav,
       #navButton
@@ -636,6 +635,7 @@ body {
         height: 75px;
         padding-inline: calc(4 / 16 * 1em);
         border-radius: 10px;
+        font-size:clampWithViewPort(12, 16);
         &:has(~ .dropdown-menu[style="display: block;"]) {
           box-shadow:
             0 0 1px 1px color-mix(in oklab, #bcc8de 95%, black 5%),
