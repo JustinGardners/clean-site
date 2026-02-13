@@ -10,36 +10,36 @@ $text-alt-font-stack:
 $cursive-font-stack: "Meow Script", cursive !default;
 
 // Brand
-$brand-700: oklch(33.19% 0.2085 264.2 / 1);
-$brand-400: oklch(59.59% 0.1405 262.82 / 1);
+$brand-700: #00159e;
+$brand-400: #517cd2;
 
 // Surfaces (backgrounds / containers)
-$surface-100: oklch(100% 0 89.88 / 1);
-$surface-98: oklch(99.04% 0.0046 256.67 / 1);
-$surface-95: oklch(96.19% 0 89.88 / 1);
-$surface-94: oklch(94.63% 0.0183 256.72 / 1);
+$surface-100: #ffffff;
+$surface-98: #fafcff;
+$surface-95: #f2f2f2;
+$surface-94: #e6eefa;
 
 // Text (neutrals for foreground content)
-$text-primary: oklch(24.48% 0.0063 0.59 / 1);
-$text-secondary: oklch(59.82% 0 89.88 / 1);
-$text-tertiary: oklch(83.68% 0.0019 325.59 / 1);
+$text-primary: #231f20;
+$text-secondary: #80807f;
+$text-tertiary: #cac9ca;
 
 // Accent / Promo
-$accent-strong: oklch(68.68% 0.1227 182.45 / 1);
-$promo-strong: oklch(54.77% 0.1682 20.11 / 1);
+$accent-strong: #00b3a1;
+$promo-strong: #bf3b46;
 
 // Semantic
-$info-strong: oklch(54.1% 0.1934 257.48 / 1);
-$info-surface: oklch(85.17% 0.0577 251.93 / 1);
+$info-strong: #0469dc;
+$info-surface: #b4d2f4;
 
-$success-strong: oklch(76.59% 0.1544 150.04 / 1);
-$success-surface: oklch(85.25% 0.0987 152.25 / 1);
+$success-strong: #5fce7d;
+$success-surface: #9de2af;
 
-$highlight-strong: oklch(83.83% 0.1696 95.53 / 1);
-$highlight-surface: oklch(91.37% 0.1139 98.29 / 1);
+$highlight-strong: #ecc813;
+$highlight-surface: #f6e488;
 
-$warning-strong: oklch(56.15% 0.2068 27.11 / 1);
-$warning-surface: oklch(76.29% 0.1035 19.74 / 1);
+$warning-strong: #d32727;
+$warning-surface: #ed9797;
 
 $colors: (
   brand-700: $brand-700,
@@ -342,3 +342,5 @@ $input-btn-font-family: $text-font-stack;
 $btn-font-weight: 700;
 $btn-padding-y: max(0.6em, 0.5rem);
 $btn-padding-x: 1.2em;
+
+$body-color: $text-primary;

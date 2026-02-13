@@ -282,7 +282,7 @@
         const items = (g.items || [])
           .map(
             (i) =>
-              `<li><a class="mm__link" href="${i.href}">${i.label}</a></li>`,
+              `<li><a class="mm__link mm__btn" href="${i.href}">${i.label}</a></li>`,
           )
           .join("");
 
@@ -451,7 +451,7 @@
         <div class="mm__panel">
           <ul class="mm__items">
             <template x-for="(i, idx) in itemsList()" :key="idx">
-              <li><a class="mm__link" :href="i.href" x-text="i.label"></a></li>
+              <li><a class="mm__link mm__btn" :href="i.href" x-text="i.label"></a></li>
             </template>
           </ul>
         </div>

@@ -779,11 +779,8 @@
               border-color: $subtle-border;
             }
             &::after {
-              top: 50%;
-              left: 12px;
-              transform: translate(-50%, -50%);
-              width: 2ch;
-              height: 2ch;
+              width: 1em;
+              height: 1em;
               margin: auto;
               background: #333;
               mask: $iconCross;
