@@ -1,35 +1,28 @@
-
-
-
-<!DOCTYPE html>
-
-<html lang="en-gb" class="desktop unauthenticated">
-
-<head>
+<html lang="en-gb" class="desktop authenticated"><head>
 
 
 <!-- TMG PubSub Implementation -->
-<script>
+<script async="" src="//rum-static.pingdom.net/prum.min.js"></script><script>
 window.tmg=window.tmg||{};const createNamespace=function(t){try{let s=tmg,i=t.split(".");return"tmg"===i[0]&&(i=i.slice(1)),i.forEach(t=>{void 0===s[t]&&(s[t]={}),s=s[t]}),s}catch(s){console.warn("couldn't create namespace:",t)}};window.tmg.createNamespace=createNamespace;const pubsub=new class{constructor(){this.topics=[],this.publishedTopics=[],this.UID=-1}subscribe({topic:t,func:s,runIfAlreadyPublished:i}){if("function"!=typeof s)return!1;if(i)for(let i=0;i<this.publishedTopics.length;i++)this.publishedTopics[i]===t&&s.call();const c=(this.UID+=1).toString();return this.topics.push({token:c,topic:t,func:s}),c}unsubscribe({topic:t,token:s}){for(let i=0;i<this.topics.length;i++)this.topics[i].token===s&&this.topics[i].topic===t&&this.topics.splice(i,1)}publish({topic:t}){this.publishedTopics.push(t);for(let s=0;s<this.topics.length;s++)this.topics[s].topic===t&&this.topics[s].func.call()}};createNamespace("tmg.pubsub"),window.tmg.pubsub=pubsub;
 </script>
 
 
 <!-- Load Sourcepoint payload -->
-<script src="https://static.telegraph.co.uk/develop/telegraph-advertising/tmg-cmp.min.js"></script>
+<script src="https://static.telegraph.co.uk/develop/telegraph-advertising/tmg-cmp.min.js"></script><script type="text/javascript" src="https://cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js"></script><script type="text/javascript" async="" src="https://static.telegraph.co.uk/develop/telegraph-advertising/tmg-cmpLinks.min.js"></script>
 <!--<script src="https://static.telegraph.co.uk/telegraph-advertising/tmg-cmp.min.js"></script>-->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <meta name="generator" content="StoreFront 2024 - Copyright. All rights reserved." />
+    <meta name="generator" content="StoreFront 2024 - Copyright. All rights reserved.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- 0.0.0.0 - 04/02/2026 -->
 
     <script>
-        var cmsTS = '2026-02-06 15:44:21'
+        var cmsTS = '2026-02-09 12:42:06'
     </script>
 
-    <title>Staging TMG AE Log on</title>
+    <title>Staging TMG AE</title>
 
     
 
@@ -41,11 +34,40 @@ window.tmg=window.tmg||{};const createNamespace=function(t){try{let s=tmg,i=t.sp
         var ROOT = '/';
     </script>
 
-    <link href="https://storefronttmgae.staging.gardners.com/Account/Logon" rel="canonical" />
+    <link href="https://storefronttmgae.staging.gardners.com/Help/Returns" rel="canonical">
+
+    <!--<script src="https://code.jquery.com/jquery-migrate-3.3.2.js" integrity="sha256-BDmtN+79VRrkfamzD16UnAoJP8zMitAz093tvZATdiE=" crossorigin="anonymous"></script>-->
+<script src="/public/javascript/searchSuggestBundle?v=FRwiJJV-XgjgdqTCRyZ528K4Lx9QvFrqGIXvpT245KE1"></script>
+<script src="/CommerceManager/public/javascript/ZebraDialog/zebra_dialog.js?v=639002922300000000"></script>
+
+<script src="/CommerceManager/public/javascript/ZebraTooltip/zebra_tooltips.js?v=639002922300000000"></script>
+
+<link rel="stylesheet" type="text/css" href="/CommerceManager/public/css/ZebraDialog/zebra_dialog.css?v=639002922300000000" media="screen">
+
+<link rel="stylesheet" type="text/css" href="/CommerceManager/public/css/ZebraTooltip/zebra_tooltips.css?v=639002922300000000" media="screen">
+
+<script src="/CommerceManager/public/javascript/AjaxHelpers.js?v=639002922300000000"></script>
+
+<script src="/CommerceManager/Public/Content/javascript/CKEditor447/ckeditor.js?v=639002922300000000"></script><style>.cke{visibility:hidden;}</style>
+
+<script src="/CommerceManager/Public/Content/javascript/jQuery.HoverIntent/jquery.hoverIntent.minified.js?v=639002922300000000"></script>
+
+<link rel="stylesheet" type="text/css" href="/CommerceManager/Public/Content/css/EditFrontend.css?v=639002922300000000" media="screen">
+
+<script src="/CommerceManager/Public/Content/javascript/EditModeFrontEnd.js?v=639017564100000000"></script>
+
+<script>
+    var PAGEURL = 'https%3a%2f%2fstorefronttmgae.staging.gardners.com%2fHelp%2fReturns';
+    var ISEDITMODE =false;
+    var VIEWDATE = '09/02/2026 12:42:06';
+    var CM_CMS_ROOT = '/CommerceManager/CMS/'
+    var ROOT_CONTENT = '/CommerceManager/'
+    var CM_PRODUCT_ROOT = '/CommerceManager/Product/'
+    var CORE_ROOT = '/CommerceManager/'
+</script>
 
 
-
-<link href="/public/css/jquery-ui/jQueryUICss?v=BP3RR1CaADDC515PCubNtSEf3KVaTbl_DZUdsVft22E1" rel="stylesheet"/>
+<link href="/public/css/jquery-ui/jQueryUICss?v=BP3RR1CaADDC515PCubNtSEf3KVaTbl_DZUdsVft22E1" rel="stylesheet">
 <script src="/public/javascript/searchSuggestBundle?v=FRwiJJV-XgjgdqTCRyZ528K4Lx9QvFrqGIXvpT245KE1"></script>
         <script type="text/javascript">
             SearchSuggest.options.url = '/Search/Suggestions';
@@ -56,7 +78,7 @@ window.tmg=window.tmg||{};const createNamespace=function(t){try{let s=tmg,i=t.sp
     <script src="/public/javascript/desktopJs?v=6Nz0lpGbFyDRzEOZaErej8bBXp_-KOI15QxmW88eghU1"></script>
 
 
-    <meta name="google-site-verification" content="R_Jq6GwQeu4ZsUWPscWj5QRS5IKbs3FvPfp2dS7WXaY" />
+    <meta name="google-site-verification" content="R_Jq6GwQeu4ZsUWPscWj5QRS5IKbs3FvPfp2dS7WXaY">
 <link rel="icon" href="/Content/StoreFront/assets/images/Favicon/favicon.ico" type="image/x-icon"> 
 <link rel="shortcut icon" href="/Content/StoreFront/assets/images/Favicon/favicon.ico" type="image/x-icon"> 
 
@@ -76,16 +98,16 @@ var _prum = [['id', '54f7aedbabe53dd010941c3f'],
 
 <!-- Google tag (gtag.js) --> 
 <!--<script async src="https://www.googletagmanager.com/gtag/js?id=AW-439540603"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-439540603'); </script>-->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Gothic+A1&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Gothic+A1&amp;display=swap" rel="stylesheet">
 <!--<link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Gothic+A1&family=Meow+Script&display=swap" rel="stylesheet" />-->
 
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
 
     
-        <link rel='stylesheet' type='text/css' href='../TMG-main/scss/style.css' />
-            <link rel='stylesheet' type='text/css' href='/DynamicContent/CssLess?v=d41d8cd98f00b204e9800998ecf8427e' />
+        <link rel="stylesheet" type="text/css" href="./scss/style.css">
+            <link rel="stylesheet" type="text/css" href="/DynamicContent/CssLess?v=d41d8cd98f00b204e9800998ecf8427e">
 
 
 
@@ -159,7 +181,7 @@ StoreFront.eventListeners.addtobasket = function (event) {
 };
 
 StoreFront.applicationName = "Staging TMG AE";
-StoreFront.basket = null;
+StoreFront.basket = {"facetDetailsById":{"1111":{"facetDetailId":1111,"facetId":12,"description":"Biography","valueText":"B","isVisible":true},"1120":{"facetDetailId":1120,"facetId":12,"description":"Biography: general","valueText":"BG","isVisible":true},"1122":{"facetDetailId":1122,"facetId":12,"description":"Biography: business & industry","valueText":"BGB","isVisible":true},"1123":{"facetDetailId":1123,"facetId":12,"description":"Autobiography: business & industry","valueText":"BGBA","isVisible":true},"1138":{"facetDetailId":1138,"facetId":12,"description":"Business,Finance and Law","valueText":"K,L","isVisible":true},"1384":{"facetDetailId":1384,"facetId":12,"description":"Business & management","valueText":"KJ","isVisible":true},"1392":{"facetDetailId":1392,"facetId":12,"description":"Entrepreneurship","valueText":"KJH","isVisible":true}},"items":[{"code":"9780753510995","title":"Screw It, Let's Do It : Lessons In Life","type":"Book","netPrice":5.9900,"total":5.9900,"quantity":1,"price":5.9900,"contributor":"Sir Richard Branson","publisher":"Ebury Publishing","brand":null,"genealogy":[{"value":1111,"children":[{"value":1120,"children":[{"value":1122,"children":[{"value":1123,"children":[]}]}]}]},{"value":1138,"children":[{"value":1384,"children":[{"value":1392,"children":[]}]}]}],"dvdGenre":null,"merchandiseCategory":null,"musicGenre":null}]};
 StoreFront.eventListenersAdded = StoreFront.eventListenersAdded || {};
 StoreFront.eventListenersAdded.addtobasket = false;
 StoreFront.events = StoreFront.events || {};
@@ -174,7 +196,7 @@ StoreFront.product.breadcrumbs = StoreFront.product.breadcrumbs || null;
 StoreFront.product.genealogy = StoreFront.product.genealogy || null;
 StoreFront.productTypes = {"1":"Book","2":"DVD","3":"Blu-ray","4":"CD","5":"eBook","6":"Merchandise","7":"Vinyl","8":"eAudiobook","9":"Customisable Book"};
 
-</script>
+</script><script charset="utf-8" src="https://cdn.privacy-mgmt.com/unified/4.39.0/gdpr-tcf.fd0289ea28f774a797b7.bundle.js"></script><script charset="utf-8" src="https://cdn.privacy-mgmt.com/unified/4.39.0/ccpa-gpp.d3f006f99fb3b63e8837.bundle.js"></script>
 
 
 <script>
@@ -191,7 +213,7 @@ function t(text) {
 </script>
 
     
-        <script src='/DynamicContent/Js?v=2fc04497746c0efcc65c4ec265261600'></script>
+        <script src="/DynamicContent/Js?v=04239310699ae69b4c41a7a2ee05688e"></script>
 
      
 
@@ -200,7 +222,7 @@ function t(text) {
 
 </head>
 
-<body class="mobileMenuOpen">
+<body>
 
     <!-- Google Tag Manager -->
 <!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -215,12 +237,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 
-
+    
+        <input type="hidden" id="viewDate" name="viewDate" value="09/02/2026 12:42:06">        
+    
+<input id="pageId" name="pageId" type="hidden" value="351">
 
 
     
 <div id="backgroundClicker"></div>
-<div class="top-bar" style="background-color: #002262; color: #ffffff; display: none;">
+<div class="top-bar" style="background-color: rgb(0, 34, 98); color: rgb(255, 255, 255); display: block;">
     <div class="container-md">
       <div class="row">
         <div class="col-12">
@@ -291,11 +316,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="details">
         <a href="/basket">
             <span class="imageHolder"></span>
-            <span id="uxSmallBasketQuantity"><span class="number">0</span><span class="text"> items</span></span>
-            <span id="uxSmallBasketTotal"><span class="number">&#163;0.00</span></span>
+            <span id="uxSmallBasketQuantity"><span class="number">1</span><span class="text"> items</span></span>
+            <span id="uxSmallBasketTotal"><span class="number">£5.99</span></span>
             <span class="basketText">Basket</span>
         </a>
-        </p>
+        <p></p>
         <!--<span id="checkoutLink"><a href="https://storefronttmgae.staging.gardners.com/Basket">Basket</a></span>-->
     </div>
                     <!-- @ basket total -->
@@ -307,17 +332,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-                        <div class="smallText">Click here to login</div>
-                        <a class="dropdownToggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" rel="nofollow">
+                        <div class="smallText">Hello Justin,</div>
+                        <a class="dropdownToggle loggedIn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="hello">Hello Justin,</span>
                             <span class="navMyAccount"><span>My </span>Account</span>
                         </a>
 
                         <ul class="dropdown-menu accountNav" aria-labelledby="dropdownMenuLink">
+                            <li id="navMenuHello" class="dropdown-item">Hello Justin,</li>
                             <li id="navMenuAccount" class="dropdown-item"><a href="https://storefronttmgae.staging.gardners.com/Account" rel="nofollow">My account</a></li>
                             <li id="navMenuLogoff" class="dropdown-item">
-<a href="https://storefronttmgae.staging.gardners.com/Account/Logon">Sign In or Register</a>                            </li>
+<a href="/Account/Logoff">Log off</a>                            </li>
 
-                        </ul>
+<li class="dropdown-item"><a href="/Account/OrderHistory">Order History</a></li>                        </ul>
                     </div>
                 </div>
                 
@@ -370,7 +397,7 @@ $("#miniNav .dropdownToggle").click(function(){
   <option value="9">Customisable Book</option>
 </select></div>
 
-                            <label for="keyword">Search for a product</label><input id="keyword" class="form-control" name="keyword" type="text" placeholder="Search" required /><input type="submit" value="Search" /> 
+                            <label for="keyword">Search for a product</label><input id="keyword" class="form-control ui-autocomplete-input" name="keyword" type="text" placeholder="Search" required="" autocomplete="off"><input type="submit" value="Search"> 
                         </div>
 
                     </form>
@@ -382,19 +409,301 @@ $("#miniNav .dropdownToggle").click(function(){
     </div>
     <div id="nav" class="">
         <div id="navWrap">
-    <div id="navMain" class="is-open">
+    <div id="navMain">
         <div class="menuText"><span>Navigation</span><span id="navClickerX">X</span></div>
            
      <ul class="primary">
   <li>
     <a href="#" class="mm__trigger">Book Genres</a>
-    <div class="megaMenu ui-sortable" style="display: none;">
+    <div class="megaMenu ui-sortable" style="display: none;"><div class="mm" x-data="mmNavComponent()" data-mm-data="{&quot;mode&quot;:&quot;tree&quot;,&quot;groups&quot;:[{&quot;label&quot;:&quot;Promotions&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[],&quot;l2&quot;:[{&quot;label&quot;:&quot;Promotion #1 8194&quot;,&quot;viewAll&quot;:{&quot;href&quot;:&quot;#&quot;,&quot;label&quot;:&quot;Promotion #1 8194&quot;},&quot;items&quot;:[],&quot;promo&quot;:true},{&quot;label&quot;:&quot;Promotion #2&quot;,&quot;viewAll&quot;:{&quot;href&quot;:&quot;#&quot;,&quot;label&quot;:&quot;Promotion #2&quot;},&quot;items&quot;:[],&quot;promo&quot;:true},{&quot;label&quot;:&quot;Promotion #3&quot;,&quot;viewAll&quot;:{&quot;href&quot;:&quot;#&quot;,&quot;label&quot;:&quot;Promotion #3&quot;},&quot;items&quot;:[],&quot;promo&quot;:true}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:95},&quot;promo&quot;:true},{&quot;label&quot;:&quot;Art &amp; Photography&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Art Forms&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Art Treatments &amp; Subjects&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;General Arts&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;History Of Art / Art &amp; Design Styles&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Industrial / Commercial Art &amp; Design&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Photography &amp; Photographs&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Theatre Studies&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Art Forms&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:127}},{&quot;label&quot;:&quot;Art Treatments &amp; Subjects&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:138}},{&quot;label&quot;:&quot;General Arts&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:149}},{&quot;label&quot;:&quot;History Of Art / Art &amp; Design Styles&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:160}},{&quot;label&quot;:&quot;Industrial / Commercial Art &amp; Design&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:171}},{&quot;label&quot;:&quot;Photography &amp; Photographs&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:182}},{&quot;label&quot;:&quot;Theatre Studies&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:193}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:108}},{&quot;label&quot;:&quot;Biography&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:206}},{&quot;label&quot;:&quot;Business, Finance &amp; Law&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Business &amp; Management&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Economics&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Jurisprudence &amp; General Issues&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Laws Of Specific Jurisdictions&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Industry &amp; Industrial Studies&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Finance &amp; Accounting&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;International Law&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Law: Study &amp; Revision Guides&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Business &amp; Management&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:240}},{&quot;label&quot;:&quot;Economics&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:251}},{&quot;label&quot;:&quot;Jurisprudence &amp; General Issues&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:262}},{&quot;label&quot;:&quot;Laws Of Specific Jurisdictions&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:273}},{&quot;label&quot;:&quot;Industry &amp; Industrial Studies&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:284}},{&quot;label&quot;:&quot;Finance &amp; Accounting&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:295}},{&quot;label&quot;:&quot;International Law&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:306}},{&quot;label&quot;:&quot;Law: Study &amp; Revision Guides&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:317}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:219}},{&quot;label&quot;:&quot;Children's &amp; YA&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:330}},{&quot;label&quot;:&quot;Comics &amp; Graphic Novels&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:343}},{&quot;label&quot;:&quot;Computing&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:356}},{&quot;label&quot;:&quot;Crime, Thrillers &amp; Mystery&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:369}},{&quot;label&quot;:&quot;Education&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Art &amp; Design&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Business Studies&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Citizenship &amp; Social Education&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Educational Material&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Elt Background &amp; Reference Material&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Elt: English For Specific Purposes&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Elt: Learning Material &amp; Coursework&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;English Language &amp; Literacy&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;English Literature&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;General Studies / Study Skills General&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Geography&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;History&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Language Teaching &amp; Learning (Other Than Elt)&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Languages Other Than English&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Mathematics &amp; Numeracy&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Music&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Physical Education (Including Dance)&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Religious Studies&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Sciences, General Science&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Society &amp; Social Sciences&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Study &amp; Revision Guides&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Technology&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Art &amp; Design&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:431}},{&quot;label&quot;:&quot;Business Studies&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:442}},{&quot;label&quot;:&quot;Citizenship &amp; Social Education&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:453}},{&quot;label&quot;:&quot;Educational Material&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:464}},{&quot;label&quot;:&quot;Elt Background &amp; Reference Material&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:475}},{&quot;label&quot;:&quot;Elt: English For Specific Purposes&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:486}},{&quot;label&quot;:&quot;Elt: Learning Material &amp; Coursework&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:497}},{&quot;label&quot;:&quot;English Language &amp; Literacy&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:508}},{&quot;label&quot;:&quot;English Literature&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:519}},{&quot;label&quot;:&quot;General Studies / Study Skills General&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:530}},{&quot;label&quot;:&quot;Geography&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:541}},{&quot;label&quot;:&quot;History&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:552}},{&quot;label&quot;:&quot;Language Teaching &amp; Learning (Other Than Elt)&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:563}},{&quot;label&quot;:&quot;Languages Other Than English&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:574}},{&quot;label&quot;:&quot;Mathematics &amp; Numeracy&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:585}},{&quot;label&quot;:&quot;Music&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:596}},{&quot;label&quot;:&quot;Physical Education (Including Dance)&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:607}},{&quot;label&quot;:&quot;Religious Studies&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:618}},{&quot;label&quot;:&quot;Sciences, General Science&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:629}},{&quot;label&quot;:&quot;Society &amp; Social Sciences&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:640}},{&quot;label&quot;:&quot;Study &amp; Revision Guides&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:651}},{&quot;label&quot;:&quot;Technology&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:662}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:382}},{&quot;label&quot;:&quot;Fiction&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Adventure&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Classic (Pre 1945)&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Erotic Fiction&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Fiction Companions&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Fiction-related Items&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Fiction: Special Features&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Historical Fiction&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Modern &amp; Contemporary Fiction (Post c 1945)&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Religious &amp; Spiritual Fiction&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Thriller / Suspense&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Adventure&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:700}},{&quot;label&quot;:&quot;Classic (Pre 1945)&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:711}},{&quot;label&quot;:&quot;Erotic Fiction&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:722}},{&quot;label&quot;:&quot;Fiction Companions&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:733}},{&quot;label&quot;:&quot;Fiction-related Items&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:744}},{&quot;label&quot;:&quot;Fiction: Special Features&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:755}},{&quot;label&quot;:&quot;Historical Fiction&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:766}},{&quot;label&quot;:&quot;Modern &amp; Contemporary Fiction (Post c 1945)&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:777}},{&quot;label&quot;:&quot;Religious &amp; Spiritual Fiction&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:788}},{&quot;label&quot;:&quot;Thriller / Suspense&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:799}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:675}},{&quot;label&quot;:&quot;Food &amp; Drink&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:812}},{&quot;label&quot;:&quot;Health &amp; Lifestyle&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:825}},{&quot;label&quot;:&quot;History &amp; Transport&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Archaeology&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Family History, Tracing Ancestors&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Geographical Discovery &amp; Exploration&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Humanities&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Local History&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Local Interest, Family History &amp; Nostaglia&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Nostalgia: General&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Places in Old Photographs&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Transport: General Interest&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Warfare &amp; Defence&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Archaeology&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:863}},{&quot;label&quot;:&quot;Family History, Tracing Ancestors&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:874}},{&quot;label&quot;:&quot;Geographical Discovery &amp; Exploration&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:885}},{&quot;label&quot;:&quot;Humanities&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:896}},{&quot;label&quot;:&quot;Local History&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:907}},{&quot;label&quot;:&quot;Local Interest, Family History &amp; Nostaglia&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:918}},{&quot;label&quot;:&quot;Nostalgia: General&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:929}},{&quot;label&quot;:&quot;Places in Old Photographs&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:940}},{&quot;label&quot;:&quot;Transport: General Interest&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:951}},{&quot;label&quot;:&quot;Warfare &amp; Defence&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:962}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:838}},{&quot;label&quot;:&quot;Hobbies &amp; Games&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:975}},{&quot;label&quot;:&quot;Home &amp; Garden&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:988}},{&quot;label&quot;:&quot;Humour&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1001}},{&quot;label&quot;:&quot;Mind, Body, Spirit&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1014}},{&quot;label&quot;:&quot;Music, Stage &amp; Screen&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1027}},{&quot;label&quot;:&quot;Natural History &amp; Pets&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1040}},{&quot;label&quot;:&quot;Poetry &amp; Drama&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1053}},{&quot;label&quot;:&quot;Politics, Philosophy &amp; Religion&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Philosophy&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Politics &amp; Goverment&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Religion &amp; Beliefs&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Philosophy&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1077}},{&quot;label&quot;:&quot;Politics &amp; Goverment&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1088}},{&quot;label&quot;:&quot;Religion &amp; Beliefs&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1099}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1066}},{&quot;label&quot;:&quot;Reference&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Language: Reference &amp; General&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Linguistics&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Literature: History &amp; Criticism&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Prose: Non-Fiction&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Psychology&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Social Services &amp; Welfare, Criminology&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Society &amp; Culture: General&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Sociology &amp; Anthropology&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Language: Reference &amp; General&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1133}},{&quot;label&quot;:&quot;Linguistics&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1144}},{&quot;label&quot;:&quot;Literature: History &amp; Criticism&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1155}},{&quot;label&quot;:&quot;Prose: Non-Fiction&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1166}},{&quot;label&quot;:&quot;Psychology&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1177}},{&quot;label&quot;:&quot;Social Services &amp; Welfare, Criminology&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1188}},{&quot;label&quot;:&quot;Society &amp; Culture: General&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1199}},{&quot;label&quot;:&quot;Sociology &amp; Anthropology&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1210}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1112}},{&quot;label&quot;:&quot;Languages &amp; Social Sciences&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1223}},{&quot;label&quot;:&quot;Romance&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1236}},{&quot;label&quot;:&quot;Science Fiction, Fantasy &amp; Horror&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1249}},{&quot;label&quot;:&quot;Scientific, Technical &amp; Medical&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Agriculture &amp; Farming&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Astronomy, Space &amp; Time&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Biochemical Engineering&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Biology, Life Sciences&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Chemistry&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Civil Engineering, Surveying &amp; Building&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Clinical &amp; Internal Medicine&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Complementary Medicine&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Earth Sciences&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Electronics &amp; Communications Engineering&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Energy Technology &amp; Engineering&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Environmental science, Engineering &amp; Technology&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Geography&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Industrial Chemistry &amp; Manufacturing Technologies&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Mathematical Foundations&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Mathematics&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Mechanical Engineering &amp; Materials&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Medical Study &amp; Revision Guides &amp; Reference Materials&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Medicine: General Issues&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Nursing &amp; Ancillary Services&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Other Branches of Medicine&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Other Technologies &amp; Applied Sciences&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Philosophy of Mathematics&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Physics&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Pre-clinical Medicine: Basic Sciences&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Regional &amp; Area Planning&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Science: General Issues&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Scientific, Technical and Medical&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Surgery&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Technology: General Issues&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;The Environment&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Transport Technology &amp; Trades&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Veterinary Medicine&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[{&quot;label&quot;:&quot;Agriculture &amp; Farming&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1333}},{&quot;label&quot;:&quot;Astronomy, Space &amp; Time&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1344}},{&quot;label&quot;:&quot;Biochemical Engineering&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1355}},{&quot;label&quot;:&quot;Biology, Life Sciences&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1366}},{&quot;label&quot;:&quot;Chemistry&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1377}},{&quot;label&quot;:&quot;Civil Engineering, Surveying &amp; Building&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1388}},{&quot;label&quot;:&quot;Clinical &amp; Internal Medicine&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1399}},{&quot;label&quot;:&quot;Complementary Medicine&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1410}},{&quot;label&quot;:&quot;Earth Sciences&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1421}},{&quot;label&quot;:&quot;Electronics &amp; Communications Engineering&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1432}},{&quot;label&quot;:&quot;Energy Technology &amp; Engineering&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1443}},{&quot;label&quot;:&quot;Environmental Science, Engineering &amp; Technology&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1454}},{&quot;label&quot;:&quot;Mathematical Foundations&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1465}},{&quot;label&quot;:&quot;Mathematics&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1476}},{&quot;label&quot;:&quot;Mechanical Engineering &amp; Materials&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1487}},{&quot;label&quot;:&quot;Medical Study &amp; Revision Guides &amp; Reference Material&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1498}},{&quot;label&quot;:&quot;Medicine: General Issues&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1509}},{&quot;label&quot;:&quot;Nursing &amp; Ancillary Services&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1520}},{&quot;label&quot;:&quot;Other Branches of Medicine&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1531}},{&quot;label&quot;:&quot;Other Technologies &amp; Applied Sciences&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1542}},{&quot;label&quot;:&quot;Philosophy of Mathematics&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1553}},{&quot;label&quot;:&quot;Physics&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1564}},{&quot;label&quot;:&quot;Pre-Clinical Medicine: Basic Sciences&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1575}},{&quot;label&quot;:&quot;Regional &amp; Area Planning&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1586}},{&quot;label&quot;:&quot;Science: General Issues&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1597}},{&quot;label&quot;:&quot;Surgery&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1608}},{&quot;label&quot;:&quot;Technology: General Issues&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1619}},{&quot;label&quot;:&quot;The Environment&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1630}},{&quot;label&quot;:&quot;Transport Technology &amp; Trades&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1641}},{&quot;label&quot;:&quot;Veterinary Medicine&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1652}}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1262}},{&quot;label&quot;:&quot;Sport&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1665}},{&quot;label&quot;:&quot;Stationery Items&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1678}},{&quot;label&quot;:&quot;Travel&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1691}}]}" data-mm-trigger-label="Book Genres" data-mm-trigger-href="#">
+    <div class="mm__panels at-l1" :class="{
+      'at-l1': activeL1 === null,
+      'at-l2': activeL1 !== null &amp;&amp; activeL2 === null,
+      'at-l3': activeL1 !== null &amp;&amp; activeL2 !== null
+    }">
+
+    <!-- L1 -->
+    <div class="mm__col mm__col--l1">
+      <div class="mm__head">
+        <a class="mm__headLink" :href="col1Href()" x-text="col1Label()" href="#">Show All Book Genres</a>
+      </div>
+      <ul class="mm__list mm__list--l1">
+        
+              <li>
+                <button type="button" class="mm__btn mm__l1--promo" :class="{ 'is-active' : activeL1 === 0 }" @click="setL1(0)">
+                    <span>Promotions</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 1 }" @click="setL1(1)">
+                    <span>Art &amp; Photography</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 2 }" @click="setL1(2)">
+                    <span>Biography</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 3 }" @click="setL1(3)">
+                    <span>Business, Finance &amp; Law</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 4 }" @click="setL1(4)">
+                    <span>Children's &amp; YA</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 5 }" @click="setL1(5)">
+                    <span>Comics &amp; Graphic Novels</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 6 }" @click="setL1(6)">
+                    <span>Computing</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 7 }" @click="setL1(7)">
+                    <span>Crime, Thrillers &amp; Mystery</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 8 }" @click="setL1(8)">
+                    <span>Education</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 9 }" @click="setL1(9)">
+                    <span>Fiction</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 10 }" @click="setL1(10)">
+                    <span>Food &amp; Drink</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 11 }" @click="setL1(11)">
+                    <span>Health &amp; Lifestyle</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 12 }" @click="setL1(12)">
+                    <span>History &amp; Transport</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 13 }" @click="setL1(13)">
+                    <span>Hobbies &amp; Games</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 14 }" @click="setL1(14)">
+                    <span>Home &amp; Garden</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 15 }" @click="setL1(15)">
+                    <span>Humour</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 16 }" @click="setL1(16)">
+                    <span>Mind, Body, Spirit</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 17 }" @click="setL1(17)">
+                    <span>Music, Stage &amp; Screen</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 18 }" @click="setL1(18)">
+                    <span>Natural History &amp; Pets</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 19 }" @click="setL1(19)">
+                    <span>Poetry &amp; Drama</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 20 }" @click="setL1(20)">
+                    <span>Politics, Philosophy &amp; Religion</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 21 }" @click="setL1(21)">
+                    <span>Reference</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 22 }" @click="setL1(22)">
+                    <span>Languages &amp; Social Sciences</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 23 }" @click="setL1(23)">
+                    <span>Romance</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 24 }" @click="setL1(24)">
+                    <span>Science Fiction, Fantasy &amp; Horror</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 25 }" @click="setL1(25)">
+                    <span>Scientific, Technical &amp; Medical</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 26 }" @click="setL1(26)">
+                    <span>Sport</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 27 }" @click="setL1(27)">
+                    <span>Stationery Items</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 28 }" @click="setL1(28)">
+                    <span>Travel</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+      </ul>
+    </div>
+
+    <!-- L2 (NOTE: no x-show; use class instead) -->
+    <div class="mm__col mm__col--l2 is-hidden" :class="{ 'is-hidden': activeL1 === null }">
+      <div class="mm__head">
+        <!-- Back to L1 -->
+        <button type="button" class="mm__back" @click="setL1(null)" aria-label="Back">
+          ‹ Back
+        </button>
+        <template x-if="activeL1Group()">
+          <a class="mm__headLink" :href="col2Href()" x-text="col2Label()"></a>
+        </template>
+      </div>
+
+      <template x-if="l2List().length">
+        <ul class="mm__list mm__list--l2">
+          <template x-for="(g, idx) in l2List()" :key="idx">
+            <li>
+              <button type="button" class="mm__btn" :class="{ 'is-active': activeL2 === idx, 'mm__l2--promo': g.promo }" @click="setL2(idx)">
+                  <span x-text="g.label"></span>
+                  <span class="mm__chev" x-show="g.items.length">›</span>
+              </button>
+            </li>
+          </template>
+        </ul>
+      </template>
+    </div>
+
+    <!-- L3 -->
+    <div class="mm__col mm__col--l3">
+      <div class="mm__head">
+        <!-- Back to L2 -->
+        <button type="button" class="mm__back" @click="setL2(null)" aria-label="Back">
+          ‹ Back
+        </button>
+        <template x-if="activeL2Group() &amp;&amp; itemsList().length">
+          <a class="mm__headLink" :href="col3Href()" x-text="col3Label()"></a>
+        </template>
+      </div>
+
+      <template x-if="activeL2Group() &amp;&amp; itemsList().length">
+        <div class="mm__panel">
+          <ul class="mm__items">
+            <template x-for="(i, idx) in itemsList()" :key="idx">
+              <li><a class="mm__link" :href="i.href" x-text="i.label"></a></li>
+            </template>
+          </ul>
+        </div>
+      </template>
+      <template x-if="activeL2Group() &amp;&amp; !itemsList().length">
+        <div class="mm__empty">Select an item to see links.</div>
+      </template>
+    </div>
+  </div>
+
+  <!-- Keep your media column as-is -->
+  <div class="mm__col mm__col--media">
+    <div class="mm__mediaCard">
+      <button type="button" class="mm__close" @click="close()">X</button>
+      <div class="mm__mediaBody">
+        <div class="mm__mediaSlot"><a href="#" class="mm__mediaImage"><img src="https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&amp;w=687&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alt Text"></a></div>
+      </div>
+    </div>
+  </div>
+</div>
       <ul class="mm__mediaImage menuItemImage ui-sortable-handle">
         <li>
-          <a href="#" class="mm__mediaImage"><img src="https://images.unsplash.com/photo-1604866830893-c13cafa515d5?q=80&amp;w=687&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alt Text"></a>
+          
         </li>
       </ul>
-      <ul class="categoryContainer ui-sortable-handle">
+      <ul class="categoryContainer ui-sortable-handle" style="display: none !important;">
         <li class="categoryColumn">
           <ul class="categories">
             <li class="mm__l1 category">
@@ -1736,13 +2045,106 @@ $("#miniNav .dropdownToggle").click(function(){
   </li>
   <li>
     <a href="#" class="mm__trigger">Featured in the Telegraph</a>
-    <div class="megaMenu ui-sortable" style="display: none;">
+    <div class="megaMenu ui-sortable" style="display: none;"><div class="mm" x-data="mmNavComponent()" data-mm-data="{&quot;mode&quot;:&quot;tree&quot;,&quot;groups&quot;:[{&quot;label&quot;:&quot;Promotions&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[],&quot;l2&quot;:[{&quot;label&quot;:&quot;Promotion #4&quot;,&quot;viewAll&quot;:{&quot;href&quot;:&quot;#&quot;,&quot;label&quot;:&quot;Promotion #4&quot;},&quot;items&quot;:[],&quot;promo&quot;:true},{&quot;label&quot;:&quot;Promotion #5&quot;,&quot;viewAll&quot;:{&quot;href&quot;:&quot;#&quot;,&quot;label&quot;:&quot;Promotion #5&quot;},&quot;items&quot;:[],&quot;promo&quot;:true},{&quot;label&quot;:&quot;Promotion #6&quot;,&quot;viewAll&quot;:{&quot;href&quot;:&quot;#&quot;,&quot;label&quot;:&quot;Promotion #6&quot;},&quot;items&quot;:[],&quot;promo&quot;:true}],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1712},&quot;promo&quot;:true},{&quot;label&quot;:&quot;Art &amp; Photography&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;Category Link&quot;,&quot;href&quot;:&quot;#&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;},{&quot;label&quot;:&quot;Text&quot;,&quot;href&quot;:&quot;#&quot;}],&quot;l2&quot;:[],&quot;_sourceEl&quot;:{&quot;_x_marker&quot;:1725}}]}" data-mm-trigger-label="Featured in the Telegraph" data-mm-trigger-href="#">
+    <div class="mm__panels at-l1" :class="{
+      'at-l1': activeL1 === null,
+      'at-l2': activeL1 !== null &amp;&amp; activeL2 === null,
+      'at-l3': activeL1 !== null &amp;&amp; activeL2 !== null
+    }">
+
+    <!-- L1 -->
+    <div class="mm__col mm__col--l1">
+      <div class="mm__head">
+        <a class="mm__headLink" :href="col1Href()" x-text="col1Label()" href="#">Show All Featured in the Telegraph</a>
+      </div>
+      <ul class="mm__list mm__list--l1">
+        
+              <li>
+                <button type="button" class="mm__btn mm__l1--promo" :class="{ 'is-active' : activeL1 === 0 }" @click="setL1(0)">
+                    <span>Promotions</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+              <li>
+                <button type="button" class="mm__btn " :class="{ 'is-active' : activeL1 === 1 }" @click="setL1(1)">
+                    <span>Art &amp; Photography</span>
+                    <span class="mm__chev">›</span>
+                </button>
+              </li>
+            
+      </ul>
+    </div>
+
+    <!-- L2 (NOTE: no x-show; use class instead) -->
+    <div class="mm__col mm__col--l2 is-hidden" :class="{ 'is-hidden': activeL1 === null }">
+      <div class="mm__head">
+        <!-- Back to L1 -->
+        <button type="button" class="mm__back" @click="setL1(null)" aria-label="Back">
+          ‹ Back
+        </button>
+        <template x-if="activeL1Group()">
+          <a class="mm__headLink" :href="col2Href()" x-text="col2Label()"></a>
+        </template>
+      </div>
+
+      <template x-if="l2List().length">
+        <ul class="mm__list mm__list--l2">
+          <template x-for="(g, idx) in l2List()" :key="idx">
+            <li>
+              <button type="button" class="mm__btn" :class="{ 'is-active': activeL2 === idx, 'mm__l2--promo': g.promo }" @click="setL2(idx)">
+                  <span x-text="g.label"></span>
+                  <span class="mm__chev" x-show="g.items.length">›</span>
+              </button>
+            </li>
+          </template>
+        </ul>
+      </template>
+    </div>
+
+    <!-- L3 -->
+    <div class="mm__col mm__col--l3">
+      <div class="mm__head">
+        <!-- Back to L2 -->
+        <button type="button" class="mm__back" @click="setL2(null)" aria-label="Back">
+          ‹ Back
+        </button>
+        <template x-if="activeL2Group() &amp;&amp; itemsList().length">
+          <a class="mm__headLink" :href="col3Href()" x-text="col3Label()"></a>
+        </template>
+      </div>
+
+      <template x-if="activeL2Group() &amp;&amp; itemsList().length">
+        <div class="mm__panel">
+          <ul class="mm__items">
+            <template x-for="(i, idx) in itemsList()" :key="idx">
+              <li><a class="mm__link" :href="i.href" x-text="i.label"></a></li>
+            </template>
+          </ul>
+        </div>
+      </template>
+      <template x-if="activeL2Group() &amp;&amp; !itemsList().length">
+        <div class="mm__empty">Select an item to see links.</div>
+      </template>
+    </div>
+  </div>
+
+  <!-- Keep your media column as-is -->
+  <div class="mm__col mm__col--media">
+    <div class="mm__mediaCard">
+      <button type="button" class="mm__close" @click="close()">X</button>
+      <div class="mm__mediaBody">
+        <div class="mm__mediaSlot"><a href="#" class="mm__mediaImage"><img src="https://images.unsplash.com/photo-1760021955059-8ac04e3b6c86?q=80&amp;w=687&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alt Text"></a></div>
+      </div>
+    </div>
+  </div>
+</div>
       <ul class="mm__mediaImage menuItemImage ui-sortable-handle">
         <li>
-          <a href="#" class="mm__mediaImage"><img src="https://images.unsplash.com/photo-1760021955059-8ac04e3b6c86?q=80&amp;w=687&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alt Text"></a>
+          
         </li>
       </ul>
-      <ul class="categoryContainer ui-sortable-handle">
+      <ul class="categoryContainer ui-sortable-handle" style="display: none !important;">
         <li class="categoryColumn">
           <ul class="categories">
             <li class="mm__l1 category">
@@ -1774,8 +2176,30 @@ $("#miniNav .dropdownToggle").click(function(){
   </li>
   <li>
     <a href="#">Custom Items</a>
-    <div class="megaMenu ui-sortable" style="display: none;">
-      <ul class="categoryContainer ui-sortable-handle">
+    <div class="megaMenu ui-sortable" style="display: none;"><div class="mm mm--legacy" x-data="mmNavComponent()" data-mm-data="{&quot;mode&quot;:&quot;legacy&quot;,&quot;legacyGroups&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;viewAll&quot;:{&quot;label&quot;:&quot;View all&quot;,&quot;href&quot;:&quot;/customitems&quot;},&quot;items&quot;:[{&quot;label&quot;:&quot;Birthday books &amp; gifts&quot;,&quot;href&quot;:&quot;/customitems/birthday-gift-items&quot;},{&quot;label&quot;:&quot;Football headlines books&quot;,&quot;href&quot;:&quot;/customitems/footballheadlines&quot;},{&quot;label&quot;:&quot;Themed books&quot;,&quot;href&quot;:&quot;/customitems/themedbooks&quot;},{&quot;label&quot;:&quot;Sports books&quot;,&quot;href&quot;:&quot;/customitems/sports-books&quot;}]}]}" data-mm-trigger-label="Shop" data-mm-trigger-href="#">
+        <div class="mm__col mm__col--l1">
+          <div class="mm__head">
+            <a class="mm__headLink" :href="col1Href()" x-text="col1Label()" href="#">Show All Shop</a>
+          </div>
+          <div class="mm__legacyWrap">
+            
+          <section class="mm__legacyGroup">
+            
+            <div class="mm__legacyViewAll"><a class="mm__link mm__link--viewAll" href="/customitems">View all</a></div>
+            <ul class="mm__items mm__items--legacy"><li><a class="mm__link" href="/customitems/birthday-gift-items">Birthday books &amp; gifts</a></li><li><a class="mm__link" href="/customitems/footballheadlines">Football headlines books</a></li><li><a class="mm__link" href="/customitems/themedbooks">Themed books</a></li><li><a class="mm__link" href="/customitems/sports-books">Sports books</a></li></ul>
+          </section>
+        
+          </div>
+        </div>
+        
+        <div class="mm__col mm__col--media">
+          <div class="mm__mediaCard">
+            <button type="button" class="mm__close" @click="close()">X</button>
+          </div>
+        </div>
+        
+      </div>
+      <ul class="categoryContainer ui-sortable-handle" style="display: none !important;">
         <li class="categoryColumn">
           <ul class="categories">
             <li class="category">
@@ -1795,8 +2219,36 @@ $("#miniNav .dropdownToggle").click(function(){
   </li>
   <li>
     <a href="#">Telegraph Titles</a>
-    <div class="megaMenu ui-sortable" style="display: none;">
-      <ul class="categoryContainer ui-sortable-handle">
+    <div class="megaMenu ui-sortable" style="display: none;"><div class="mm mm--legacy" x-data="mmNavComponent()" data-mm-data="{&quot;mode&quot;:&quot;legacy&quot;,&quot;legacyGroups&quot;:[{&quot;label&quot;:&quot;Telegraph Published&quot;,&quot;viewAll&quot;:null,&quot;items&quot;:[{&quot;label&quot;:&quot;Matt Pritchett Cartoons&quot;,&quot;href&quot;:&quot;/telegraph-titles/cartoons&quot;},{&quot;label&quot;:&quot;Columnists Writers&quot;,&quot;href&quot;:&quot;/telegraph-titles/columnists-writers&quot;},{&quot;label&quot;:&quot;Obituaries&quot;,&quot;href&quot;:&quot;/telegraph-titles/obituaries&quot;},{&quot;label&quot;:&quot;Knowledge Books&quot;,&quot;href&quot;:&quot;/telegraph-titles/knowledge-books&quot;},{&quot;label&quot;:&quot;Letters&quot;,&quot;href&quot;:&quot;/telegraph-titles/letters&quot;}]},{&quot;label&quot;:&quot;Telegraph Puzzles&quot;,&quot;viewAll&quot;:null,&quot;items&quot;:[{&quot;label&quot;:&quot;Codeword Puzzles&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/codewords&quot;},{&quot;label&quot;:&quot;Cryptic Crosswords&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/cryptic-crosswords&quot;},{&quot;label&quot;:&quot;General Knowledge&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/general-knowledge&quot;},{&quot;label&quot;:&quot;Plusword Puzzles&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/pluswords&quot;},{&quot;label&quot;:&quot;Other Brain Teasers&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/other-brain-teasers&quot;},{&quot;label&quot;:&quot;Sudoku Puzzles&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/sudoku&quot;},{&quot;label&quot;:&quot;Quick Crosswords&quot;,&quot;href&quot;:&quot;/telegraph-titles/puzzles/quick-crosswords&quot;}]}]}" data-mm-trigger-label="Shop" data-mm-trigger-href="#">
+        <div class="mm__col mm__col--l1">
+          <div class="mm__head">
+            <a class="mm__headLink" :href="col1Href()" x-text="col1Label()" href="#">Show All Shop</a>
+          </div>
+          <div class="mm__legacyWrap">
+            
+          <section class="mm__legacyGroup">
+            <div class="mm__legacyTitle">Telegraph Published</div>
+            
+            <ul class="mm__items mm__items--legacy"><li><a class="mm__link" href="/telegraph-titles/cartoons">Matt Pritchett Cartoons</a></li><li><a class="mm__link" href="/telegraph-titles/columnists-writers">Columnists Writers</a></li><li><a class="mm__link" href="/telegraph-titles/obituaries">Obituaries</a></li><li><a class="mm__link" href="/telegraph-titles/knowledge-books">Knowledge Books</a></li><li><a class="mm__link" href="/telegraph-titles/letters">Letters</a></li></ul>
+          </section>
+        
+          <section class="mm__legacyGroup">
+            <div class="mm__legacyTitle">Telegraph Puzzles</div>
+            
+            <ul class="mm__items mm__items--legacy"><li><a class="mm__link" href="/telegraph-titles/puzzles/codewords">Codeword Puzzles</a></li><li><a class="mm__link" href="/telegraph-titles/puzzles/cryptic-crosswords">Cryptic Crosswords</a></li><li><a class="mm__link" href="/telegraph-titles/puzzles/general-knowledge">General Knowledge</a></li><li><a class="mm__link" href="/telegraph-titles/puzzles/pluswords">Plusword Puzzles</a></li><li><a class="mm__link" href="/telegraph-titles/puzzles/other-brain-teasers">Other Brain Teasers</a></li><li><a class="mm__link" href="/telegraph-titles/puzzles/sudoku">Sudoku Puzzles</a></li><li><a class="mm__link" href="/telegraph-titles/puzzles/quick-crosswords">Quick Crosswords</a></li></ul>
+          </section>
+        
+          </div>
+        </div>
+        
+        <div class="mm__col mm__col--media">
+          <div class="mm__mediaCard">
+            <button type="button" class="mm__close" @click="close()">X</button>
+          </div>
+        </div>
+        
+      </div>
+      <ul class="categoryContainer ui-sortable-handle" style="display: none !important;">
         <li class="categoryColumn">
           <ul class="categories">
             <li class="category">
@@ -1878,124 +2330,99 @@ $("#miniNav .dropdownToggle").click(function(){
 
 
 
+<div id="Returns">
+    <div id="breadcrumb" class="breadcrumb"><div class="manual"><ul><li><span><a href="/">Home</a></span></li><li><span><a href="/Help">Help</a></span></li><li><span>Returns</span></li></ul></div></div>
 
-
-
-<script type="text/javascript">
-var dataLayerTMG = {
-event: 'signIn'
-}
-</script>
-<div class="tm--half"></div>
-<div id="main">
-    <div class="container-md">
-        <div class="myAccount" id="logonRegister">
-            <div class="leftNav"><script>
-$(document).ready(function() {
-   $("#NewsletterSubscribed label").remove();
-   $("<p class='newsletterText'>Would you like to receive information on other offers, communications and services from Telegraph Media Group Limited and its group companies by email? Visit <a href='https://www.telegraph.co.uk/about-us/privacy-and-cookie-policy/'>https://www.telegraph.co.uk/about-us/privacy-and-cookie-policy/</a> for more information</p>").insertBefore("#NewsletterSubscribed #IsNewsletterSubscribed");
-});
-</script><div class="navSection noMargin">
-<div class="navSectionItem">
-<h4>Password</h4>
-<ul>
-<li><a href="/Account/ForgottenPassword">Can't remember your password?</a></li>
-</ul>
-</div>
-</div><div class="navSection">
-<div class="navSectionItem" id="security">
-<img src="/Content/StoreFront/assets/images/comodo_sa_100x85_transp.png" />
-<p>For your security, card details are fully encrypted and cannot be viewed by us. Please refer to our <a href="/Help/PrivacyPolicy">Privacy Policy</a> for further information.</p>
-</div>
-</div></div>
-            <div class="myAccountWrap">
-                <div class="myAccountContents">
-                    <div class="myAccountHeader">
-                        <h2>Login or Register</h2>
-                    </div>
-                    <div class="myAccountMain">
-                        
-<div class="myAccountSection customerReturning">
-
-    <h4>Returning Customers</h4>
-
-    <!-- errors -->
-    
-    <div class="field-validation-valid alert" data-valmsg-for="ReturningError" data-valmsg-replace="true"></div>
-    
-    <!-- @errors -->
-
-<form action="/Account/Logon" method="post"><input name="__RequestVerificationToken" type="hidden" value="3nxSFcpR59fU3MfDGqMAg-sXyaJSbZmiLHHhTlx2XvX12PlNeqCKXw4o1cA22GadrZTWSOJ_5sGLjytNlyY1Y29vloY1" /><input Name="IsFromCheckout" data-val="true" data-val-required="IsFromCheckout required" id="IsFromCheckout" name="IsFromCheckout" type="hidden" value="False" /><input Name="ReturnURL" id="ReturnURL" name="ReturnURL" type="hidden" value="" />        <div class="loginFields">
-            <div class="form-group eAdd">
-                <label for="ReturningEmail">Email Address</label>
-                <input Name="ReturningEmail" class="form-control" data-val="true" data-val-email="Please enter a valid email address" data-val-required="Email Address required" id="ReturningEmail" name="ReturningEmail" type="text" value="" />
-                <span class="field-validation-valid" data-valmsg-for="ReturningEmail" data-valmsg-replace="true"></span>
-            </div>
-            <div class="form-group pass">
-                <label for="Password">Password</label>
-                <input Name="Password" class="form-control" data-val="true" data-val-required="Password required" id="Password" name="Password" type="password" />
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" id="showPassword" class="custom-control-input" onclick="storeFront.togglePasswordVisibility(this,'Password')"><label class="custom-control-label" for="showPassword">Show Password</label>
-                </div>
-                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-            </div>
-            <div class="custom-control custom-checkbox rememberMe">
-                <input Name="RememberMe" class="custom-control-input" data-val="true" data-val-required="Remember me? required" id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
-                <label class="custom-control-label" for="RememberMe">Remember me?</label>
-            </div>
-        </div>
-        <div class="loginSignUpButtons">
-
-            <button type="submit" class="btnClose btn-primary">Sign In</button>
-
-            <div class="forgottenPassword"><a href="https://storefronttmgae.staging.gardners.com/Account/ForgottenPassword">Forgotten Password?</a></div>
-        </div>
-</form>
-</div>
-
-
-                        <!-- STOR-2338 GW one of the below MUST BE ENABLED-->
-                            <!-- registration container -->
-<div class="myAccountSection newRegistration">
-
-<form action="/Account/Register" method="post"><input Name="IsFromCheckout" data-val="true" data-val-required="IsFromCheckout required" id="IsFromCheckout" name="IsFromCheckout" type="hidden" value="False" /><input Name="HasBasket" data-val="true" data-val-required="HasBasket required" id="HasBasket" name="HasBasket" type="hidden" value="False" /><input name="__RequestVerificationToken" type="hidden" value="l_eWWK3BrSD4Cwrh7aDa45NvGGfSpmDZA5IX4-J7zXVuJB_V_tOtWHWsAZiT1Jj3bzR-6JKGR_Tomvxtd3HrIywLYss1" /><h4>New Customers</h4>        <div class="guestRegistration">
-            <p class="customerRegistrationText subTitle">
-                
-            </p>
-
-            <div class="loginGuestButtons">
-
-                <button type="submit" class="btnClose btn-primary">Sign Up</button>
-
-            </div>
-        </div>
-</form>
-</div>
-
-                            <!-- @registration container -->
-
-                        <!-- @returning customers container -->
-                        
-
-                        <div id="noCookies" style="display:none;">
-                            <h2>Cookies must be enabled in order to log in</h2>
-                            <h3><a href="/CookiePolicy" class="button">View our Cookie Policy</a></h3>
-                        </div>
-                        <script src='/public/javascript/CookiesEnabled.js?v=639002922320000000' ></script>
-
-                        <script>
-                            if (CookiesEnabled.AreCookiesEnabled() == false) {
-                                document.getElementById("loginForm").style.display = "none";
-                                document.getElementById("noCookies").style.display = "";
-                            }
-                        </script>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container-md adminHelpPages">
+   <div class="row">
+      <div class="col-12 col-md-3 leftNav"><div class="navSection">
+  <div class="navSectionItem">
+    <div class="adminNav">
+      <label for="accountInfo"><span>Menu</span></label>
+      <input id="accountInfo" type="checkbox">
+      <div class="adminNav__wrapper"><h5>Account Help</h5>
+      <ul>
+        <li><a href="/Help/FAQ">FAQs</a></li>
+        <li><a href="/Help/ebookshelp">eBooks Help</a></li>
+        <li><a href="/Help/Customised-Books-FAQs">Customised Books Help</a></li>    
+        <li><a href="/Help/ContactUs">Contact Us</a></li>
+        <li><a href="/Help/Delivery">Delivery Information</a></li>
+        <li><a href="/Help/Returns">Returns</a></li>
+      </ul></div>
     </div>
+  </div>
+</div></div>
+      <div class="col-12 col-md-9">
+<div class="headers  twenty no">
+  
+  
+  <h3 style="font-size: 24px;">
+      
+        Returns Policy
+        
+        
+    </h3>
+    
+    
 </div>
+<p>If you can’t find the answer that you are looking for below, please <a href="/Help/ContactUs">contact us</a>, we will be happy to help.</p>
+
+<p>&nbsp;</p>
+
+<h3>For a refund, item(s) need to be returned:</h3>
+
+<ul>
+	<li>In their original condition, and ideally in the original packaging</li>
+	<li>To the correct returns address</li>
+	<li>Within 30 days of the day you received the item(s)</li>
+	<li>With details of your name, address and order number</li>
+	<li>With a reason for returning the item</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h3>Unwanted item</h3>
+
+<p>As part of the EU’s Consumer Rights Directive that became effective on June 13, 2014, you may withdraw your orders within 30 days. These 30 days start counting from the day you receive the item(s) and you have the right to cancel the purchase for any reason. We will refund what you paid but you will need to pay the return postage cost.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h3>Incorrect item</h3>
+
+<p>If we have sent you an incorrect item, please accept our sincerest apologies. Please return the incorrect item to us so that we can send you the correct item. Replacements for incorrect items will be processed (as quickly as possible) only when the incorrect item(s) have been returned to us.</p>
+
+<p>&nbsp;</p>
+
+<h3>Faulty or damaged item</h3>
+
+<p>If your item arrives damaged or faulty, please accept our apologies. Please return the item and include details of your name, address and order number, the reason for return (faulty or damaged) and whether you would like a refund or a replacement to be sent.</p>
+
+<p>We will either refund what you paid for the item plus your original postage cost (you are responsible for the return postage cost), or send you a replacement free of charge. Refunds or replacements for faulty or damaged items will be processed only when the item has been received by us.</p>
+
+<p>&nbsp;</p>
+
+<h3>How you will be refunded</h3>
+
+<p>We will make the refund to the card that was used to pay for the original order.<br>
+We are not able to make cash refunds.</p>
+
+<p>&nbsp;</p>
+
+<h3>Returns Address</h3>
+
+<p>The Telegraph Bookshop<br>
+PO Box&nbsp;48<br>
+Westham<br>
+East Sussex<br>
+BN23 6WB<br>
+England</p>
+
+<p>* Refunds will be processed only when the item(s) have been received by us.</p></div>
+   </div>
+</div>
+</div>
+
+
 
 
 
@@ -2007,9 +2434,7 @@ $(document).ready(function() {
     <div class="newsletterBox">
   <div class="container-md">
     <p class="newsImgText">
-      <a href="https://www.telegraph.co.uk/customer/secure/newsletter/?urlPath=bookshop" target="_blank"
-        >Sign up to our newsletter today! Click here for more details...</a
-      >
+      <a href="https://www.telegraph.co.uk/customer/secure/newsletter/?urlPath=bookshop" target="_blank">Sign up to our newsletter today! Click here for more details...</a>
     </p>
   </div>
 </div>
@@ -2106,14 +2531,14 @@ $(document).ready(function() {
     </div>
     <div class="footer-sub">
       <div class="footer-logo">
-        <img src="/content/media/logos/logo_stacked.svg" alt="" />
+        <img src="/content/media/logos/logo_stacked.svg" alt="">
       </div>
       <span class="footer-copyright">Copyright 2026 Telegraph and its suppliers. All rights reserved.</span>
       <ul class="footer-payment-types">
-        <li><img src="/content/media/icons/payment/maesrt.svg" alt="" /></li>
-        <li><img src="/content/media/icons/payment/mastercard.svg" alt="" /></li>
-        <li><img src="/content/media/icons/payment/paypal.svg" alt="" /></li>
-        <li><img src="/content/media/icons/payment/visa.svg" alt="" /></li>
+        <li><img src="/content/media/icons/payment/maesrt.svg" alt=""></li>
+        <li><img src="/content/media/icons/payment/mastercard.svg" alt=""></li>
+        <li><img src="/content/media/icons/payment/paypal.svg" alt=""></li>
+        <li><img src="/content/media/icons/payment/visa.svg" alt=""></li>
       </ul>
     </div>
   </div>
@@ -2149,8 +2574,9 @@ if($("#deliveryDetails").length ){
 
     
 
-</body>
-
-</html>
 
 
+
+
+
+<iframe name="__tcfapiLocator" style="display: none;"></iframe><iframe name="__uspapiLocator" style="display: none;"></iframe><iframe name="__gppLocator" style="display: none;"></iframe><ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><input type="image" id="editModeIcon" src="/CommerceManager/public/Content/images/EditFrontend/pageediticon.png"> </body></html>

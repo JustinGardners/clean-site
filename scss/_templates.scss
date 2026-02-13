@@ -240,12 +240,12 @@
 /* === TOPBAR ============================= */
 body {
   > .top-bar {
-    padding: 20px 0;
+    padding: 0.5em 0;
     background-color: $bg-brand-dark;
     color: #fff;
     font-family: "Arsenal", sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 0.875rem;
     a {
       padding: 0 21px;
       position: relative;
@@ -261,15 +261,11 @@ body {
       text-align: center;
     }
     .top-bar__close {
-      cursor: pointer;
       position: absolute;
       right: 1rem;
       z-index: 2;
-      padding: 0.5rem;
-      svg {
-        width: 20px;
-        height: 20px;
-      }
+      @include close-button(#fff, $size: 1rem);
+      padding:0;
     }
   }
 }
@@ -917,8 +913,9 @@ body {
   }
   img {
     aspect-ratio: 95 / 74;
+    object-fit: cover;
     @include media-breakpoint-up(md) {
-      aspect-ratio: 144 / 47;
+      aspect-ratio: 72/23;
     }
   }
 }

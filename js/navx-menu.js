@@ -185,32 +185,48 @@
         return (this.data.groups || [])[this.activeL1] || null;
       },
 
-      // Fallbacks:
-      //  - If L1 has real L2 groups → use them
-      //  - If L1 has items but no L2 → create a pseudo L2 that contains those items
-      l2List() {
+      // Convert L1 direct items into individual L2-like entries
+      l1ItemsAsL2List() {
         const l1 = this.activeL1Group();
-        if (!l1) return [];
-        if (l1.l2 && l1.l2.length) {
-          return l1.l2.map((g) => ({ ...g, promo: g.promo || !!l1.promo }));
-        }
-        if (l1.items && l1.items.length) {
-          return [
-            {
-              label: l1.label,
-              viewAll: l1.viewAll,
-              items: l1.items,
-              pseudo: true,
-              promo: !!l1.promo,
-            },
-          ];
-        }
-        return [];
+        if (!l1 || !l1.items || !l1.items.length) return [];
+
+        const l2LabelSet = new Set(
+          (l1.l2 || []).map((g) => (g.label || "").toLowerCase().trim()),
+        );
+
+        return l1.items
+          .filter((item) => !l2LabelSet.has((item.label || "").toLowerCase().trim()))
+          .map((item) => ({
+            label: item.label,
+            viewAll: { label: item.label, href: item.href },
+            items: [],
+            isL1Item: true,
+            promo: !!l1.promo,
+          }));
+      },
+
+      // Get real L2 category groups
+      l2GroupList() {
+        const l1 = this.activeL1Group();
+        if (!l1 || !l1.l2 || !l1.l2.length) return [];
+        
+        return l1.l2.map((g) => ({ ...g, promo: g.promo || !!l1.promo }));
+      },
+
+      // Combined flat list: L1 items + L2 groups, sorted alphabetically
+      l2List() {
+        const l1Items = this.l1ItemsAsL2List();
+        const l2Groups = this.l2GroupList();
+        const combined = [...l1Items, ...l2Groups];
+        
+        return combined.sort((a, b) => 
+          (a.label || "").localeCompare(b.label || "")
+        );
       },
 
       showCol2() {
         const l1 = this.activeL1Group();
-        return !!(l1 && l1.l2 && l1.l2.length);
+        return !!(l1 && (l1.items?.length || l1.l2?.length));
       },
 
       activeL2Group() {
@@ -399,12 +415,17 @@
         <ul class="mm__list mm__list--l2">
           <template x-for="(g, idx) in l2List()" :key="idx">
             <li>
-              <button type="button" class="mm__btn"
-                :class="{ 'is-active': activeL2 === idx, 'mm__l2--promo': g.promo }"
-                @click="setL2(idx)">
-                  <span x-text="g.label"></span>
-                  <span class="mm__chev" x-show="g.items.length">&#8250;</span>
-              </button>
+              <template x-if="g.isL1Item || !g.items?.length">
+                <a class="mm__link mm__btn" :href="g.viewAll?.href" x-text="g.label"></a>
+              </template>
+              <template x-if="!g.isL1Item && g.items?.length">
+                <button type="button" class="mm__btn"
+                  :class="{ 'is-active': activeL2 === idx, 'mm__l2--promo': g.promo }"
+                  @click="setL2(idx)">
+                    <span x-text="g.label"></span>
+                    <span class="mm__chev">&#8250;</span>
+                </button>
+              </template>
             </li>
           </template>
         </ul>
@@ -421,6 +442,9 @@
         <template x-if="activeL2Group() && itemsList().length">
           <a class="mm__headLink" :href="col3Href()" x-text="col3Label()"></a>
         </template>
+        <template x-if="activeL2Group() && activeL2Group().isL1Item">
+          <a class="mm__headLink" :href="activeL2Group().viewAll?.href" x-text="activeL2Group().viewAll?.label"></a>
+        </template>
       </div>
 
       <template x-if="activeL2Group() && itemsList().length">
@@ -432,7 +456,14 @@
           </ul>
         </div>
       </template>
-      <template x-if="activeL2Group() && !itemsList().length">
+      <template x-if="activeL2Group() && !itemsList().length && activeL2Group().isL1Item">
+        <div class="mm__panel">
+          <ul class="mm__items">
+            <li><a class="mm__link" :href="activeL2Group().viewAll?.href" x-text="activeL2Group().viewAll?.label"></a></li>
+          </ul>
+        </div>
+      </template>
+      <template x-if="activeL2Group() && !itemsList().length && !activeL2Group().isL1Item">
         <div class="mm__empty">Select an item to see links.</div>
       </template>
     </div>

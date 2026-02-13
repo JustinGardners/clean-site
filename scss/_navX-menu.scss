@@ -1,12 +1,31 @@
 // NAVX Megamenu
+#headerWrap {
+  position: sticky;
+  top: -35px;
+  
+  @include media-breakpoint-up(lg) {
+    top: -40px;
+    z-index: 11;
+  }  
+}
 
-#navMain.is-open {
-  display: block !important;
+#navWrap {
+  display: flex;
+  justify-content: center;
+  background: var(--bs-body-bg);
+  @include media-breakpoint-up(md) {
+    border-bottom: 1px solid $surface-94;
+  }
+}
+
+#navMain {
+  max-width: calc(var(--mega-menu-width) + 1.5rem);
+  width: 100%;  
 }
 
 @media (max-width: 767px) {
   #navMain {
-    display: none;
+    transform: translateX(-100%);
   }
 }
 
@@ -20,8 +39,8 @@
   .megaMenu {
     position: relative;
     font-family: "Arsenal", sans-serif;
-    border-top: 11px solid #e7effa !important;
-    box-shadow: 0px 4px 15.8px 0px #4f7ad1;
+    border-top: 11px solid #e7effa ;
+    box-shadow: 0px 12px 12px 0px hsl(220 59% 56% / 0.5);
     border-radius: 0 0 10px 10px;
     overflow: clip;
   }
@@ -40,20 +59,14 @@
   }
 
   @media (max-width: 767px) {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr ;
     min-height: auto;
   }
 }
 
 .mm__close {
-  background: rgba(0, 0, 0, 0.06);
-  width: 2.5em;
-  height: 2.5em;
+  @include close-button();
   margin-left: auto;
-  padding: 8px 10px;
-  border: 0;
-  border-radius: 999px;
-  cursor: pointer;
 }
 
 .mm__head {
@@ -80,18 +93,60 @@
   overflow-y: auto;
 
   @media (max-width: 767px) {
-    border-right: none !important;
+    border-right: none ;
     height: auto;
   }
+
+  &::-webkit-scrollbar {
+    width: 10px;           /* Slightly wider than default for better touch targets */
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f8f8f8;   /* Matches their light gray background (#F8F8F8) */
+    border-left: 1px solid #e8e8e8;   /* subtle separation from content */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #999;      /* Medium gray — visible but understated */
+    border-radius: 5px;
+    border: 2px solid #f8f8f8;   /* creates nice padding around thumb */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #666;      /* Darker on hover for better feedback */
+  }
+
+  /* Optional: even more Telegraph-feeling with a hint of red accent on active/very hovered state */
+  &::-webkit-scrollbar-thumb:active {
+    background: #de0000;   /* Their signature red – use sparingly or remove if too bold */
+  }
+
+  /* Firefox support (different syntax) */
+  // * {
+  //   scrollbar-width: thin;           /* or 'auto' if you want default thickness */
+  //   scrollbar-color: #999 #f8f8f8;   /* thumb | track */
+  // }  
+
+  &::-webkit-scrollbar-track {
+    background: $accent-1;
+    // box-shadow: inset 0 0 6px rgba(0,0,0,0.06);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 0;      /* sharp edges – more "print" feel */
+  }
+
 }
 
 .mm__col--media {
-  grid-column: 4 !important;
+  grid-column: 4 ;
   border-right: 0;
   padding: 0 0.25rem;
 
   @media (max-width: 991px) {
-    display: none !important;
+    display: none ;
   }
 }
 
@@ -113,18 +168,24 @@
   list-style: none;
 }
 
-.mm__trigger {
-  background: #fff !important;
-  color: #000e67 !important;
+:where(.mm__trigger, #navMain ul.primary > li > a) {
+  background: #fff ;
+  color: #000e67 ;
   font-family: "Arsenal", sans-serif;
 
   &:hover,
   li:has(.is-open) > & {
-    background: #e7effa !important;
-    color: #000e67 !important;
-    text-decoration: underline !important;
+    text-decoration: underline ;
     text-underline-offset: 25%;
     text-decoration-thickness: 17%;
+  }
+}
+
+.mm__trigger {
+
+  li:has(.is-open) > & {
+    background: #e7effa ;
+    color: #000e67 ;
   }
 }
 
@@ -133,6 +194,12 @@
   padding: 8px;
   margin: 0;
   list-style: none;
+  row-gap: 8px;
+  li {
+    min-height: 35px;
+    display: flex;
+    align-items: stretch;    
+  }
 }
 
 .mm__btn {
@@ -140,23 +207,39 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 4px 8px;
+  padding: 4px 12px;
   background: transparent;
-  border: 4px solid transparent;
+  border: 0;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
+  appearance: none;
 
   &:hover,
   &.is-active {
     background: #4f7ad1;
     color: #fff;
-    border-color: #000e67;
+  }
+  &.is-active {
+    box-shadow: 0 0 0 4px #4f7ad1, 4px 0px 0 0px #4f7ad1 inset, -4px 0px 0 0px #4f7ad1 inset;    
+  }
+  &:hover:not(.is-active) {
+    box-shadow: 0 0 0 4px #000e67, 4px 0px 0 0px #000e67 inset, -4px 0px 0 0px #000e67 inset;
   }
 }
 
+
 .mm__chev {
-  opacity: 0.6;
+  font-size: 1rem;
+  width: 8px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  aspect-ratio: 1 / 1;
+  height: 8px;
+  rotate: -45deg;
+  text-indent: -999em;
+  margin-right: 4px;
+  overflow:clip;
 }
 
 .mm__panel {
@@ -202,7 +285,8 @@
 }
 
 .mm__mediaBody {
-  flex: 1;
+  position:relative;
+  height:100%;
 }
 
 .mm__mediaSlot {
@@ -218,6 +302,8 @@
 }
 
 .mm__mediaSlot img {
+  position:absolute;
+  inset:0;
   display: block;
   width: 100%;
   height: 100%;
@@ -299,30 +385,30 @@
 }
 
 // MOBILE NAV
+@media (max-width: breakpoint-max(md)) {
+  body:has(#navMain.is-open) {
+    overflow: clip;
+  }
 
-body:has(#navMain.is-open) {
-  overflow: clip;
-}
+  #navMain {
+    position: fixed;
+    bottom: 0;
+    height: 100%;
+    width: min(80vw, 400px);
+    background: #fff;
+    z-index: 999;
+    left:0;
+    transition: transform 0.3s ease;
+  }
 
-#nav:has(#navMain.is-open) #navMain {
-  position: fixed;
-  bottom: 0;
-  max-height: 90dvh;
-  width: 60vw;
-  background: #fff;
-  z-index: 999;
-
-  .menuText {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.5em !important;
+  #navMain.is-open {
+    transform: translateX(0);
   }
 }
 
 @media (max-width: calc(768px - 0.2px)) {
   ul.primary {
-    width: 60vw;
+    width: min(80vw, 400px);
   }
 
   body.mobileMenuOpen {
@@ -338,7 +424,7 @@ body:has(#navMain.is-open) {
   .megaMenu .mm {
     display: block;
     min-height: auto;
-    height: 60dvh;
+    height: calc(100dvh - 411px);
   }
 
   .megaMenu .mm__panels {
@@ -405,6 +491,7 @@ body:has(#navMain.is-open) {
   .megaMenu .mm__head {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.25rem;
     padding: 12px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -414,17 +501,17 @@ body:has(#navMain.is-open) {
     border: 0;
     background: none;
     font: inherit;
-    padding: 8px 6px 8px 0;
+    padding: 0px 6px 0px 0;
     color: #000;
     font-weight: 600;
   }
 
   .megaMenu .mm__col.is-hidden {
-    display: block !important;
+    display: block ;
   }
 
   .megaMenu .mm__col--media {
-    display: none !important;
+    display: none ;
   }
 }
 
@@ -440,35 +527,35 @@ body:has(#navMain.is-open) {
 /* Desktop reset for Mega Menu panels (≥768px) */
 @media (min-width: 768px) {
   .megaMenu .mm {
-    display: grid !important;
+    display: grid ;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     min-height: 360px;
   }
 
   .megaMenu .mm__panels {
-    display: contents !important;
-    position: static !important;
-    overflow: visible !important;
-    transform: none !important;
+    display: contents ;
+    position: static ;
+    overflow: visible ;
+    transform: none ;
   }
 
   .megaMenu .mm__col--l1,
   .megaMenu .mm__col--l2,
   .megaMenu .mm__col--l3 {
-    position: static !important;
-    inset: auto !important;
-    width: auto !important;
-    transform: none !important;
-    transition: none !important;
-    background: transparent !important;
+    position: static ;
+    inset: auto ;
+    width: auto ;
+    transform: none ;
+    transition: none ;
+    background: transparent ;
   }
 
   .megaMenu .mm__col.is-hidden {
-    display: none !important;
+    display: none ;
   }
 
   .megaMenu .mm__back {
-    display: none !important;
+    display: none ;
   }
 
   .megaMenu .mm__col--media {

@@ -167,7 +167,7 @@
     width: 100%;
 
     @include media-breakpoint-up(md) {
-      order: 1;
+      order: 0;
       min-width: $left-nav-width;
       width: auto;
     }
@@ -179,6 +179,29 @@
     z-index: 1;
   }  
 }
+
+.adminHelpPages > .row > .col-md-9 {
+  @include media-breakpoint-up(md) {
+    width: min(75%,calc(100% - 306px));
+  }
+}
+
+.adminHelpPages h3 {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.adminHelpPages .headers {
+  + * {
+    margin-top: 1.5rem;
+  }
+  h3 {
+    font-family: $text-font-stack;
+    color: $primary;
+    font-size: clampWithViewPort(18, 30)!important;
+  }
+} 
 
 .myAccount,
 .helpPages {
@@ -1108,7 +1131,7 @@
           h4 {
             color: $bg-brand;
             font-weight: bold;
-            margin-bottom: 2rem;
+            // margin-bottom: 2rem;
             padding: 2rem;
             font-size: clampWithViewPort(22, 30);
             text-align: left;
@@ -1145,6 +1168,7 @@
             margin-bottom: 2rem;
             padding: 2rem;
             font-size: clampWithViewPort(22, 30);            
+            text-align: center;
           }
           p,
           .guestRegistration {
