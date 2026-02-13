@@ -637,6 +637,53 @@ body {
   }
 }
 
+.double_bg_product{
+  height: 100%;
+  position: relative;
+  &__link{
+    &:hover{
+      text-decoration: none!important;
+    }
+  }
+  &__image-wrap{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    img{
+      width: auto;
+      margin: 0 auto;
+      max-width: 100%;
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  &__text{
+      position: relative;
+      z-index: 1;
+      padding: 30% 2rem;
+      padding-left: 0;
+      color: #ffffff;
+      H3{
+        font-family: Arsenal;
+        font-weight: 700;
+        font-size: 30px;
+      }
+      P{
+        font-family: Arsenal;
+        font-weight: 400;
+        font-size: 22px;
+      }
+  }
+  &__bar{
+    height:70%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 15%
+
+  }
+}
+
 .skewed-jacket {
   &__img {
     img {
