@@ -16,7 +16,27 @@
       background: white;
       span {
         transform: translateY(-0.5rem);
-        display: block;
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+        &:before {
+          content: "";
+          display: block;
+          width: 0.675em;
+          aspect-ratio: 1 / 1;
+          align-self: center;
+          transform: rotate(45deg);
+          background: transparent;
+          border-left: 1px solid currentColor;
+          border-top: 1px solid currentColor;      
+          transition: transform 230ms ease-in;    
+        }
+      }
+      &:has(+ input:checked) {
+        span:before {
+          transform: rotate(225deg);
+        }
       }
       + input[type="checkbox"] {
         order: 100;
@@ -181,6 +201,10 @@
     position: sticky;
     bottom: 0;
     z-index: 1;
+    border-top:1px solid $subtle-border;
+    @include media-breakpoint-up(md) {
+      border-top:0;
+    }
   }
 }
 
