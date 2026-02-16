@@ -1295,10 +1295,13 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
     font-size: 1rem;
     font-weight: 500;
     padding: 1.5rem 0;
+
     .breadcrumb {
       &__wrap {
         @include container;
+        margin-block: 0.5rem;
       }
+
       &__list {
         padding: 0;
         margin-bottom: 0;
