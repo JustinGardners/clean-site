@@ -241,14 +241,14 @@
 
       // ===== HEAD links =====
       col1Label() {
-        return `See All In ${this.triggerLabel}`;
+        return `See all in ${this.triggerLabel}`;
       },
       col1Href() {
         return this.triggerHref || "#";
       },
       col2Label() {
         const l1 = this.activeL1Group();
-        return l1 ? `See All In ${l1.label}` : "";
+        return l1 ? `See all in ${l1.label}` : "";
       },
       col2Href() {
         const l1 = this.activeL1Group();
@@ -256,7 +256,7 @@
       },
       col3Label() {
         const l2 = this.activeL2Group();
-        return l2 ? `See All In ${l2.label}` : "";
+        return l2 ? `See all in ${l2.label}` : "";
       },
       col3Href() {
         const l2 = this.activeL2Group();
