@@ -35,7 +35,7 @@
   background: linear-gradient(
     var(--cbackground-deg, 90deg),
     var(--cbackground-left, var(--cbackground, transparent)),
-    var(--cbackground-left, var(--cbackground, transparent))
+    var(--cbackground-right, var(--cbackground, transparent))
   );
   white-space: normal;
   user-select: none;
