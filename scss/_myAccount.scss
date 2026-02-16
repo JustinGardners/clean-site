@@ -566,10 +566,32 @@
 /* Form Aligmenments */
 
 .myAccountMain {
-  --formLabelSpace: 200px;
+  --formLabelSpace: 100%;
   .form-group {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 0.5rem;
+    column-gap: 1rem;
+    &.pass {
+        input[type="password"] {
+          width: calc(100% - 4.2rem);
+          display: inline-flex;
+          + .custom-control {
+            display: inline-flex;
+          }
+        }
+        .custom-control-input {
+          height:100%;
+          width:100%;
+          padding:0;
+          border:0;          
+        }
+        .custom-control-label {
+          margin-top:0;
+        }      
+    }
     @include breakpt-lg {
+      --formLabelSpace: 200px;
       margin-bottom: 0;
       display: grid;
       grid-template-columns: [labels] auto [controls] 1fr;
@@ -577,7 +599,10 @@
       grid-row-gap: 0rem;
       grid-column-gap: 1.5rem;
       &.eAdd,
-      .pass {
+      &.pass {
+        input[type="password"] {
+          width:100%;
+        }        
         .field-validation-error {
           grid-area: 2 / 2;
         }
