@@ -90,7 +90,7 @@
 }
 
 // Buttons
-$btn-background: #002f87;
+$btn-background: $primary;
 $btn-hover: #002262;
 
 @mixin button-variant($background, $font-col, $border) {
