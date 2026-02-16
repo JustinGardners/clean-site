@@ -34,8 +34,8 @@
   flex-shrink: 0;
   background: linear-gradient(
     var(--cbackground-deg, 90deg),
-    var(--cbackground-left, transparent),
-    var(--cbackground-left, transparent)
+    var(--cbackground-left, var(--cbackground, transparent)),
+    var(--cbackground-left, var(--cbackground, transparent))
   );
   white-space: normal;
   user-select: none;
