@@ -415,9 +415,9 @@ body {
 }
 
 #header {
-  z-index:11;
+  z-index: 11;
   position: sticky;
-  top:-40px;  
+  top: -40px;
   background: $surface-100;
   border-bottom: 1px solid $surface-94;
   @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
@@ -651,7 +651,7 @@ body {
       height: 75px;
       padding-inline: calc(4 / 16 * 1em);
       border-radius: 10px;
-      font-size:clampWithViewPort(12, 16);
+      font-size: clampWithViewPort(12, 16);
       &:has(~ .dropdown-menu[style="display: block;"]) {
         box-shadow:
           0 0 1px 1px color-mix(in oklab, #bcc8de 95%, black 5%),
@@ -784,7 +784,7 @@ body {
         font-weight: 500;
         line-height: 1;
         z-index: 11;
-        position:relative;
+        position: relative;
         &::placeholder {
           color: currentColor;
         }
@@ -806,7 +806,7 @@ body {
         block-size: 1.375em;
         margin-block: auto;
         mask-size: contain;
-        z-index:11;
+        z-index: 11;
         &:hover {
           background-color: $brand-400;
         }
@@ -864,11 +864,11 @@ body {
 #nav {
   // display: none;
   @include media-breakpoint-up(md) {
-    --vw-min: 768;    
+    --vw-min: 768;
     display: block;
     position: sticky;
-    top:clampWithViewPort(88, 110);
-    z-index: 12;    
+    top: clampWithViewPort(88, 110);
+    z-index: 12;
     #mobileExtras {
       display: none;
     }
@@ -1009,9 +1009,11 @@ body {
   }
   > .ui-widget {
     padding: 30px 0.5rem 0.5rem;
+    background: linear-gradient(0deg, #e6eefa 90%, transparent);
     font-family: $font-family-sans-serif;
-    z-index: 10;
-    border-radius: 10px;
+    z-index: 30;
+    border-top: none !important;
+    border-radius: 0 0 10px 10px;
     .ui-menu-item {
       .ui-menu-item-wrapper {
         padding: 0.5rem;
@@ -1063,10 +1065,10 @@ body {
             color: $bg-brand;
             font-weight: bold;
             font-size: calc(1.325rem + 0.9vw);
-            display: flex ;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 0.5em ;
+            padding: 0 0.5em;
           }
           ul.primary {
             display: block;
