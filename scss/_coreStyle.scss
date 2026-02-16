@@ -436,7 +436,7 @@ body {
     display: grid;
     grid-template-columns:
       [logo] max-content [search] 1fr [menu] 4.4em
-      [account] 4.4em [wishlist] 4.4em
+      [account] 4.4em
       [basket] max-content;
     grid-auto-flow: column;
     gap: 0 clampWithViewPort(8, 22);
@@ -444,6 +444,12 @@ body {
     width: 100%;
     margin-inline: auto;
     padding-inline: 0;
+    @include breakpt-sm {
+      grid-template-columns:
+        [logo] max-content [search] 1fr [menu] 4.4em
+        [account] 4.4em [wishlist] 4.4em
+        [basket] max-content;
+    }
     > * {
       width: auto;
       padding: 0;
@@ -464,7 +470,7 @@ body {
     }
   }
 
-  :is(.row > *, #miniNav):not(script) {
+  :where(.row > *, #miniNav):not(script) {
     display: flex;
     justify-content: stretch;
     align-self: center;
@@ -681,6 +687,10 @@ body {
     $icon-mask: map.get($icon-list, "wishlist");
     --icon-mask: #{$icon-mask};
     grid-column: wishlist;
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
   }
 
   #navButton .navbarToggle {
