@@ -524,6 +524,9 @@
           -webkit-box-orient: vertical;
           text-overflow: ellipsis;
           overflow: hidden;
+          font-family: $text-font-stack;
+          color: $primary;
+          font-weight: 700;
         }
       }
     }
@@ -539,6 +542,7 @@
       > p {
         margin: 0 !important;
         height: 1.25rem;
+        margin-top: 0.5rem!important;
       }
       > h3 {
         order: 1;
@@ -609,6 +613,7 @@
         color: $bg-brand;
         font-weight: 700;
         font-size: clampWithViewPort(16, 22);
+        font-family: $text-font-stack;
       }
       .search-item__purchase-availability {
         display: none;
