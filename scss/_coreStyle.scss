@@ -312,7 +312,7 @@ textarea {
     .button {
       padding: 9px 22px;
       min-width: 8rem;
-      background: $brand-700;
+      background: $primary;
       color: #fff;
       font-size: 14px;
       font-family: $text-alt-font-stack;
@@ -388,7 +388,7 @@ textarea {
 body {
   .internetExNote {
     display: none;
-    background: $brand-700;
+    background: $primary;
     color: #fff;
     text-align: center;
     p {
@@ -702,7 +702,7 @@ body {
     grid-column: account;
 
     #miniNav {
-      color: $brand-700;
+      color: $primary;
       text-align: center;
 
       .smallText,
@@ -1423,7 +1423,7 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
               left: calc(var(--size) * -1 - 12px);
               width: var(--size);
               height: var(--size);
-              background: $brand-700;
+              background: $primary;
               color: #fff;
               font-size: 24px;
               font-family: $text-font-stack;
