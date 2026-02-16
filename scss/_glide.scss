@@ -32,6 +32,11 @@
   width: 100%;
   height: 100%;
   flex-shrink: 0;
+  background: linear-gradient(
+    var(--cbackground-deg, 90deg),
+    var(--cbackground-left, #eceff6),
+    var(--cbackground-left, #eceff6)
+  );
   white-space: normal;
   user-select: none;
   -webkit-touch-callout: none;
