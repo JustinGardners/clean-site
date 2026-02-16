@@ -417,7 +417,7 @@ body {
 #header {
   z-index: 11;
   position: sticky;
-  top: -48px;
+  top:0;
   background: $surface-100;
   border-bottom: 1px solid $surface-94;
   @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
@@ -425,6 +425,7 @@ body {
     margin-bottom: 0.75rem;
   }
   @include media-breakpoint-up(md) {
+    top: -48px;
     z-index: 22;
   }
   // .container-md {

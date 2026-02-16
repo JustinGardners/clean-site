@@ -2439,8 +2439,14 @@
 }
 .validation-summary-valid {
   color: green;
-  padding-top: 0.5rem;
+  // padding-top: 0.5rem;
   font-size: 1rem;
+  ul {
+    margin:0;
+    &:has(li:not(:empty)) {
+      margin-bottom: 1rem;
+    }
+  }
 }
 .validation-summary-errors {
   color: red;

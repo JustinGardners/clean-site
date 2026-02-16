@@ -469,7 +469,7 @@
           grid-column: 1 / -1;
           left: 0;
           border-radius: 0;
-          font-size: 1rem;
+          font-size: 1em;
           font-family: $headings-font-family;
         }
         #CouponCode {
@@ -480,6 +480,7 @@
           @include button-variant($white, $btn-background, $btn-background);
           // font-size: 12px;
           grid-column: 2 / 3;
+          --bs-btn-font-size: 1em;
         }
         &::after {
           content: "";
