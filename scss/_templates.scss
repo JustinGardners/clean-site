@@ -657,7 +657,7 @@ body {
   background: linear-gradient(
     90deg,
     var(--startCol, #eceff6),
-    var(--endCol, #eceff6)
+    var(--endCol, #eceff6) 150%
   );
   border-radius: 10px;
 
