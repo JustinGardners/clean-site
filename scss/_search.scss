@@ -427,8 +427,8 @@
       padding: 1rem 0 1.5rem;
       margin-bottom: 1.5rem;
       align-items: center;
-
       height: 100%;
+      justify-content: flex-start;
     }
     &__image {
       height: 9rem;
@@ -454,6 +454,7 @@
       text-align: center;
       align-items: start;
       display: flex;
+      flex: 1 1 auto;
       .search-item__title {
         color: $bg-brand;
         margin-bottom: 0;
