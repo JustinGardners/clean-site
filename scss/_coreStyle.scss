@@ -796,7 +796,7 @@ body {
         right: 1.1em;
         bottom: 0;
         background-color: $surface-94;
-        background-color: $brand-700;
+        background-color: $primary;
         mask: map.get($icon-list, "search") no-repeat 50% 50%;
         white-space: nowrap;
         text-indent: -999px;
@@ -808,7 +808,7 @@ body {
         mask-size: contain;
         z-index: 11;
         &:hover {
-          background-color: $brand-400;
+          background-color: $brand-700;
         }
       }
     }
@@ -833,10 +833,9 @@ body {
         list-style-type: none;
 
         a {
-          display: block;
           padding: 0.675em 1.5em;
           background-color: $surface-94;
-          color: $brand-700;
+          color: $primary;
           font-size: 0.875em;
           font-family: $text-alt-font-stack;
           font-weight: 500;
@@ -846,9 +845,21 @@ body {
           border-bottom-left-radius: 10px;
           border-bottom-right-radius: 10px;
           transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;          
           @supports (text-box-trim: trim-both) {
             text-box-trim: trim-both;
             padding-block: 0.95em;
+          }
+          &:before {
+            content: "";
+            display: block;
+            background: currentColor;
+            height: 1.2em;
+            aspect-ratio: 1/1;
+            mask: url("../Content/System/Images/book-open.svg") no-repeat 50%;
+            mask-size: contain;
           }
 
           &:hover {
