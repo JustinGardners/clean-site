@@ -1858,10 +1858,7 @@
     }
 
     .loginSignUpButtons {
-      margin-top: 1.5rem;
-      @include breakpt-lg {
-        margin-top: 3.5rem;
-      }
+      margin-top: 3.5rem;
     }
   }
   // .regForm,
