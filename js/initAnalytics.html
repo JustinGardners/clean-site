@@ -1,0 +1,35 @@
+<script>
+  tmg.pubsub.subscribe({
+    topic: "tmg.cmp.onConsentReady",
+    func: function () {
+      if (tmgCMP.consentState !== 1) return;
+      /*
+       * 1 = Accept All
+       * 2 = Essential
+       * 3 = Reject All
+       * 4 = In-between
+       */
+
+      const gtagScript = document.createElement("script");
+      gtagScript.async = true;
+      gtagScript.src =
+        "https://www.googletagmanager.com/gtag/js?id=AW-439540603";
+      document.head.appendChild(gtagScript);
+
+      // Init dataLayer + config
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-439540603");
+
+      // ---- Load Adobe ----
+      const adobeScript = document.createElement("script");
+      adobeScript.src =
+        "//assets.adobedtm.com/71dcbb11123ce6b2e1ce4d47fd79a130aad3fc95/satelliteLib.js";
+      document.head.appendChild(adobeScript);
+    },
+    runIfAlreadyPublished: true,
+  });
+</script>
