@@ -49,12 +49,14 @@
         border-bottom: 0;
       }
       h5 {
-        @include smallsubheaderH;
+        // @include smallsubheaderH;
         padding: 1rem 0.75rem 1rem 0;
         margin-bottom: 0;
         cursor: pointer;
         position: relative;
         color: var(--bs-primary);
+        font-weight: 700;
+        font-family: $text-font-stack;
       }
       ul {
         margin: 0;
@@ -482,7 +484,7 @@
         }
       }
       .search-item__availability {
-        font-size: 10px;
+        font-size: calc(12/16 * 1em);
         font-weight: 400;
         font-weight: bold;
         display: -webkit-box;
@@ -493,7 +495,6 @@
         overflow: hidden;
         p {
           color: inherit;
-          font-size: calc(12/16 * 1em);
           font-weight: 600;
           // span {
           //   font-size: 1rem;
@@ -627,11 +628,8 @@
         max-width: 100%;
         &:not(.outOfStock) {
           @include button-variant($btn-background, $white, $btn-background);
-          font-size: 1rem;
+          font-size: calc(18/16 * 1em);
           max-width: 100%;
-          @include breakpt-sm {
-            font-size: 1.25rem;
-          }
         }
         &.outOfStock {
           position: relative;
