@@ -75,9 +75,13 @@
                   $white,
                   $btn-background
                 );
-                font-size: 12px;
+                font-size: 1em;
                 max-width: 100%;
                 width: 100%;
+                text-align: left;
+                display: inline-flex;
+                align-items: center;
+                column-gap: 0.5rem;                
                 span {
                   background: #fff;
                 }
@@ -85,14 +89,18 @@
             }
             a {
               @include button-variant($white, $btn-background, $btn-background);
-              font-size: 12px;
+              --bs-border-radius: 0;
+              font-size: 1em;
               max-width: 100%;
               width: 100%;
               position: relative;
+              text-align: left;
+              display: inline-flex;
+              align-items: center;
+              column-gap: 0.5rem;
               span {
                 font-size: 0;
                 display: block;
-                position: absolute;
                 left: 5px;
                 top: 9px;
                 width: 12px;
@@ -174,7 +182,7 @@
         list-style: none;
       }
       li {
-        font-size: 12px;
+        font-size: calc(14/16 * 1em);
       }
     }
   }
@@ -630,6 +638,7 @@
           @include button-variant($btn-background, $white, $btn-background);
           font-size: calc(18/16 * 1em);
           max-width: 100%;
+          margin-top:0.5em;
         }
         &.outOfStock {
           position: relative;
