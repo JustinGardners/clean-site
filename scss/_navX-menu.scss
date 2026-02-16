@@ -2,11 +2,11 @@
 #headerWrap {
   position: sticky;
   top: -35px;
-  
+
   @include media-breakpoint-up(lg) {
     top: -40px;
     z-index: 11;
-  }  
+  }
 }
 
 #navWrap {
@@ -20,7 +20,7 @@
 
 #navMain {
   max-width: calc(var(--mega-menu-width) + 1.5rem);
-  width: 100%;  
+  width: 100%;
 }
 
 @media (max-width: 767px) {
@@ -39,7 +39,7 @@
   .megaMenu {
     position: relative;
     font-family: "Arsenal", sans-serif;
-    border-top: 11px solid #e7effa ;
+    border-top: 11px solid #e7effa;
     box-shadow: 0px 12px 12px 0px hsl(220 59% 56% / 0.5);
     border-radius: 0 0 10px 10px;
     overflow: clip;
@@ -59,7 +59,7 @@
   }
 
   @media (max-width: 767px) {
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
     min-height: auto;
   }
 }
@@ -76,7 +76,7 @@
 
 .mm__headLink {
   display: inline-block;
-  color: currentColor;
+  color: #4f7ad1;
   font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
@@ -93,40 +93,40 @@
   overflow-y: auto;
 
   @media (max-width: 767px) {
-    border-right: none ;
+    border-right: none;
     height: auto;
   }
 
   &::-webkit-scrollbar {
-    width: 10px;           /* Slightly wider than default for better touch targets */
+    width: 10px; /* Slightly wider than default for better touch targets */
     height: 10px;
   }
 
   &::-webkit-scrollbar-track {
-    background: #f8f8f8;   /* Matches their light gray background (#F8F8F8) */
-    border-left: 1px solid #e8e8e8;   /* subtle separation from content */
+    background: #f8f8f8; /* Matches their light gray background (#F8F8F8) */
+    border-left: 1px solid #e8e8e8; /* subtle separation from content */
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #999;      /* Medium gray — visible but understated */
+    background: #999; /* Medium gray — visible but understated */
     border-radius: 5px;
-    border: 2px solid #f8f8f8;   /* creates nice padding around thumb */
+    border: 2px solid #f8f8f8; /* creates nice padding around thumb */
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #666;      /* Darker on hover for better feedback */
+    background: #666; /* Darker on hover for better feedback */
   }
 
   /* Optional: even more Telegraph-feeling with a hint of red accent on active/very hovered state */
   &::-webkit-scrollbar-thumb:active {
-    background: #de0000;   /* Their signature red – use sparingly or remove if too bold */
+    background: #4f7ad1;
   }
 
   /* Firefox support (different syntax) */
   // * {
   //   scrollbar-width: thin;           /* or 'auto' if you want default thickness */
   //   scrollbar-color: #999 #f8f8f8;   /* thumb | track */
-  // }  
+  // }
 
   &::-webkit-scrollbar-track {
     background: $accent-1;
@@ -135,18 +135,17 @@
 
   &::-webkit-scrollbar-thumb {
     background: $primary;
-    border-radius: 0;      /* sharp edges – more "print" feel */
+    border-radius: 0; /* sharp edges – more "print" feel */
   }
-
 }
 
 .mm__col--media {
-  grid-column: 4 ;
+  grid-column: 4;
   border-right: 0;
   padding: 0 0.25rem;
 
   @media (max-width: 991px) {
-    display: none ;
+    display: none;
   }
 }
 
@@ -169,23 +168,22 @@
 }
 
 :where(.mm__trigger, #navMain ul.primary > li > a) {
-  background: #fff ;
-  color: #000e67 ;
+  background: #fff;
+  color: #000e67;
   font-family: "Arsenal", sans-serif;
 
   &:hover,
   li:has(.is-open) > & {
-    text-decoration: underline ;
+    text-decoration: underline;
     text-underline-offset: 25%;
     text-decoration-thickness: 17%;
   }
 }
 
 .mm__trigger {
-
   li:has(.is-open) > & {
-    background: #e7effa ;
-    color: #000e67 ;
+    background: #e7effa;
+    color: #000e67;
   }
 }
 
@@ -198,7 +196,7 @@
   li {
     min-height: 35px;
     display: flex;
-    align-items: stretch;    
+    align-items: stretch;
   }
 }
 
@@ -221,13 +219,18 @@
     color: #fff;
   }
   &.is-active {
-    box-shadow: 0 0 0 4px #4f7ad1, 4px 0px 0 0px #4f7ad1 inset, -4px 0px 0 0px #4f7ad1 inset;    
+    box-shadow:
+      0 0 0 4px #4f7ad1,
+      4px 0px 0 0px #4f7ad1 inset,
+      -4px 0px 0 0px #4f7ad1 inset;
   }
   &:hover:not(.is-active) {
-    box-shadow: 0 0 0 4px #000e67, 4px 0px 0 0px #000e67 inset, -4px 0px 0 0px #000e67 inset;
+    box-shadow:
+      0 0 0 4px #000e67,
+      4px 0px 0 0px #000e67 inset,
+      -4px 0px 0 0px #000e67 inset;
   }
 }
-
 
 .mm__chev {
   font-size: 1rem;
@@ -239,7 +242,7 @@
   rotate: -45deg;
   text-indent: -999em;
   margin-right: 4px;
-  overflow:clip;
+  overflow: clip;
   :is(.mm__btn:hover, .mm__btn.is-active) & {
     border-color: white;
   }
@@ -297,8 +300,8 @@
 }
 
 .mm__mediaBody {
-  position:relative;
-  height:100%;
+  position: relative;
+  height: 100%;
 }
 
 .mm__mediaSlot {
@@ -314,13 +317,13 @@
 }
 
 .mm__mediaSlot img {
-  position:absolute;
-  inset:0;
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: top center;
   border-radius: 12px;
 }
 
@@ -409,7 +412,7 @@
     width: min(80vw, 400px);
     background: #fff;
     z-index: 999;
-    left:0;
+    left: 0;
     transition: transform 0.3s ease;
   }
 
@@ -519,11 +522,11 @@
   }
 
   .megaMenu .mm__col.is-hidden {
-    display: block ;
+    display: block;
   }
 
   .megaMenu .mm__col--media {
-    display: none ;
+    display: none;
   }
 }
 
@@ -539,35 +542,35 @@
 /* Desktop reset for Mega Menu panels (≥768px) */
 @media (min-width: 768px) {
   .megaMenu .mm {
-    display: grid ;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     min-height: 360px;
   }
 
   .megaMenu .mm__panels {
-    display: contents ;
-    position: static ;
-    overflow: visible ;
-    transform: none ;
+    display: contents;
+    position: static;
+    overflow: visible;
+    transform: none;
   }
 
   .megaMenu .mm__col--l1,
   .megaMenu .mm__col--l2,
   .megaMenu .mm__col--l3 {
-    position: static ;
-    inset: auto ;
-    width: auto ;
-    transform: none ;
-    transition: none ;
-    background: transparent ;
+    position: static;
+    inset: auto;
+    width: auto;
+    transform: none;
+    transition: none;
+    background: transparent;
   }
 
   .megaMenu .mm__col.is-hidden {
-    display: none ;
+    display: none;
   }
 
   .megaMenu .mm__back {
-    display: none ;
+    display: none;
   }
 
   .megaMenu .mm__col--media {

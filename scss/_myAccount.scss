@@ -16,7 +16,27 @@
       background: white;
       span {
         transform: translateY(-0.5rem);
-        display: block;
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+        &:before {
+          content: "";
+          display: block;
+          width: 0.675em;
+          aspect-ratio: 1 / 1;
+          align-self: center;
+          transform: rotate(45deg);
+          background: transparent;
+          border-left: 1px solid currentColor;
+          border-top: 1px solid currentColor;      
+          transition: transform 230ms ease-in;    
+        }
+      }
+      &:has(+ input:checked) {
+        span:before {
+          transform: rotate(225deg);
+        }
       }
       + input[type="checkbox"] {
         order: 100;
@@ -128,17 +148,21 @@
     padding: 2.2rem;
     border-radius: 10px;
     .myAccountSection {
-      margin-bottom:0;
+      margin-bottom: 0;
       border-radius: 0 0 10px 10px;
     }
     .register {
-      border:0!important;
+      border: 0 !important;
       border-radius: 0 0 10px 10px;
     }
   }
 }
 
-#main #logonRegister :is(.myAccountSection .loginFields, .guestRegistration) .form-group + .form-group {
+#main
+  #logonRegister
+  :is(.myAccountSection .loginFields, .guestRegistration)
+  .form-group
+  + .form-group {
   margin-top: 1rem;
 }
 
@@ -177,12 +201,16 @@
     position: sticky;
     bottom: 0;
     z-index: 1;
-  }  
+    border-top:1px solid $subtle-border;
+    @include media-breakpoint-up(md) {
+      border-top:0;
+    }
+  }
 }
 
 .adminHelpPages > .row > .col-md-9 {
   @include media-breakpoint-up(md) {
-    width: min(75%,calc(100% - 306px));
+    width: min(75%, calc(100% - 306px));
   }
 }
 
@@ -199,9 +227,9 @@
   h3 {
     font-family: $text-font-stack;
     color: $primary;
-    font-size: clampWithViewPort(18, 30)!important;
+    font-size: clampWithViewPort(18, 30) !important;
   }
-} 
+}
 
 .myAccount,
 .helpPages {
@@ -219,18 +247,12 @@
   column-gap: calc(var(--bs-gutter-x));
   row-gap: calc(var(--bs-gutter-x));
 
-
-
-
-
-
-
   // :is(.myAccountContents:has(.form)) {
   //   border:1px solid $primary;
   //   .myAccountMain {
   //     background: white;
   //     margin-inline: -2.2rem;
-  //   }    
+  //   }
   // }
 
   .myAccountWrap,
@@ -248,8 +270,8 @@
     }
 
     :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) {
-      border:1px solid $primary;
-      padding-bottom:0;
+      border: 1px solid $primary;
+      padding-bottom: 0;
       .myAccountMain {
         background: white;
         margin-inline: -2.2rem;
@@ -416,8 +438,6 @@
     }
   }
 
-
-
   .myAccountWrap {
     .accountLanding {
       display: grid;
@@ -520,13 +540,13 @@
 
   .account-card--change-password {
     .account-card__icon {
-      background-image: url("/Content/media/icons/my-account/password.svg");
+      background-image: url("/Content/media/icons/my-account/passwords.svg");
     }
   }
 
   .account-card--personal-details {
     .account-card__icon {
-      background-image: url("/Content/media/icons/my-account/my-account.svg");
+      background-image: url("/Content/media/icons/my-account/personal-details.svg");
     }
   }
 
@@ -568,11 +588,42 @@
 }
 
 /* Form Aligmenments */
+.my-account-header {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  a {
+    color: $primary;
+  }
+}
 
 .myAccountMain {
-  --formLabelSpace: 200px;
+  --formLabelSpace: 100%;
+  @include breakpt-lg {
+    --formLabelSpace: 200px;
+  }
   .form-group {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 0.5rem;
+    column-gap: 1rem;
+    &.pass {
+      input[type="password"] {
+        width: calc(100% - 4.2rem);
+        display: inline-flex;
+        + .custom-control {
+          display: inline-flex;
+        }
+      }
+      .custom-control-input {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        border: 0;
+      }
+      .custom-control-label {
+        margin-top: 0;
+      }
+    }
     @include breakpt-lg {
       margin-bottom: 0;
       display: grid;
@@ -581,12 +632,15 @@
       grid-row-gap: 0rem;
       grid-column-gap: 1.5rem;
       &.eAdd,
-      .pass {
+      &.pass {
+        input[type="password"] {
+          width: 100%;
+        }
         .field-validation-error {
           grid-area: 2 / 2;
         }
       }
-      label {        
+      label {
         width: var(--formLabelSpace);
         white-space: nowrap;
       }
@@ -1167,7 +1221,7 @@
             font-weight: bold;
             margin-bottom: 2rem;
             padding: 2rem;
-            font-size: clampWithViewPort(22, 30);            
+            font-size: clampWithViewPort(22, 30);
             text-align: center;
           }
           p,
@@ -1620,8 +1674,12 @@ div#wishlistEmail {
   }
 }
 
-  #logonRegister {
-    .myAccountContents {
-      background:none;
-    }
+#logonRegister {
+  .myAccountContents {
+    background: none;
   }
+}
+
+.wishlistEmpty .manualSearchSection {
+  display: none;
+}

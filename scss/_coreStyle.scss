@@ -312,7 +312,7 @@ textarea {
     .button {
       padding: 9px 22px;
       min-width: 8rem;
-      background: $brand-700;
+      background: $primary;
       color: #fff;
       font-size: 14px;
       font-family: $text-alt-font-stack;
@@ -388,7 +388,7 @@ textarea {
 body {
   .internetExNote {
     display: none;
-    background: $brand-700;
+    background: $primary;
     color: #fff;
     text-align: center;
     p {
@@ -415,9 +415,9 @@ body {
 }
 
 #header {
-  z-index:11;
+  z-index: 11;
   position: sticky;
-  top:-40px;  
+  top: -48px;
   background: $surface-100;
   border-bottom: 1px solid $surface-94;
   @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
@@ -537,7 +537,7 @@ body {
         height: auto;
         padding: 1.125em 1.375em 1.125em 1.25em;
         background: $surface-94;
-        color: $brand-700;
+        color: $primary;
         border: 2px solid $surface-100;
         border-radius: 999px;
       }
@@ -550,7 +550,7 @@ body {
         display: block;
         width: var(--icon-width);
         height: 21px;
-        background: $brand-700;
+        background: $primary;
         mask: map.get($icon-list, "shoppingBasket") no-repeat 50% 50%;
         mask-size: cover;
       }
@@ -638,7 +638,7 @@ body {
     #miniNav,
     #navButton
   ) {
-    color: $brand-700;
+    color: $primary;
     flex-direction: column;
     align-items: center;
     gap: 5px;
@@ -651,7 +651,7 @@ body {
       height: 75px;
       padding-inline: calc(4 / 16 * 1em);
       border-radius: 10px;
-      font-size:clampWithViewPort(12, 16);
+      font-size: clampWithViewPort(12, 16);
       &:has(~ .dropdown-menu[style="display: block;"]) {
         box-shadow:
           0 0 1px 1px color-mix(in oklab, #bcc8de 95%, black 5%),
@@ -671,7 +671,7 @@ body {
       display: block;
       width: 1.5em;
       height: 1.5em;
-      background: $brand-700;
+      background: $primary;
       mask: var(--icon-mask) no-repeat 50% 50%;
       mask-size: contain;
     }
@@ -702,7 +702,7 @@ body {
     grid-column: account;
 
     #miniNav {
-      color: $brand-700;
+      color: $primary;
       text-align: center;
 
       .smallText,
@@ -784,7 +784,7 @@ body {
         font-weight: 500;
         line-height: 1;
         z-index: 11;
-        position:relative;
+        position: relative;
         &::placeholder {
           color: currentColor;
         }
@@ -796,7 +796,7 @@ body {
         right: 1.1em;
         bottom: 0;
         background-color: $surface-94;
-        background-color: $brand-700;
+        background-color: $primary;
         mask: map.get($icon-list, "search") no-repeat 50% 50%;
         white-space: nowrap;
         text-indent: -999px;
@@ -806,9 +806,9 @@ body {
         block-size: 1.375em;
         margin-block: auto;
         mask-size: contain;
-        z-index:11;
+        z-index: 11;
         &:hover {
-          background-color: $brand-400;
+          background-color: $brand-700;
         }
       }
     }
@@ -833,10 +833,9 @@ body {
         list-style-type: none;
 
         a {
-          display: block;
           padding: 0.675em 1.5em;
           background-color: $surface-94;
-          color: $brand-700;
+          color: $primary;
           font-size: 0.875em;
           font-family: $text-alt-font-stack;
           font-weight: 500;
@@ -846,9 +845,21 @@ body {
           border-bottom-left-radius: 10px;
           border-bottom-right-radius: 10px;
           transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;          
           @supports (text-box-trim: trim-both) {
             text-box-trim: trim-both;
             padding-block: 0.95em;
+          }
+          &:before {
+            content: "";
+            display: block;
+            background: currentColor;
+            height: 1.2em;
+            aspect-ratio: 1/1;
+            mask: url("../Content/System/Images/book-open.svg") no-repeat 50%;
+            mask-size: contain;
           }
 
           &:hover {
@@ -864,11 +875,11 @@ body {
 #nav {
   // display: none;
   @include media-breakpoint-up(md) {
-    --vw-min: 768;    
+    --vw-min: 768;
     display: block;
     position: sticky;
-    top:clampWithViewPort(88, 110);
-    z-index: 12;    
+    top: clampWithViewPort(88, 110);
+    z-index: 12;
     #mobileExtras {
       display: none;
     }
@@ -1009,9 +1020,11 @@ body {
   }
   > .ui-widget {
     padding: 30px 0.5rem 0.5rem;
+    background: linear-gradient(0deg, #e6eefa 90%, transparent);
     font-family: $font-family-sans-serif;
-    z-index: 10;
-    border-radius: 10px;
+    z-index: 30;
+    border-top: none !important;
+    border-radius: 0 0 10px 10px;
     .ui-menu-item {
       .ui-menu-item-wrapper {
         padding: 0.5rem;
@@ -1063,10 +1076,10 @@ body {
             color: $bg-brand;
             font-weight: bold;
             font-size: calc(1.325rem + 0.9vw);
-            display: flex ;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 0.5em ;
+            padding: 0 0.5em;
           }
           ul.primary {
             display: block;
@@ -1293,10 +1306,13 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
     font-size: 1rem;
     font-weight: 500;
     padding: 1.5rem 0;
+
     .breadcrumb {
       &__wrap {
         @include container;
+        margin-block: 0.5rem;
       }
+
       &__list {
         padding: 0;
         margin-bottom: 0;
@@ -1347,7 +1363,7 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   margin-top: 5rem;
 
   .newsletterBox {
-    background: $brand-700;
+    background: $primary;
     padding: 30px;
     font-size: 16px;
     font-family: $text-font-stack;
@@ -1407,7 +1423,7 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
               left: calc(var(--size) * -1 - 12px);
               width: var(--size);
               height: var(--size);
-              background: $brand-700;
+              background: $primary;
               color: #fff;
               font-size: 24px;
               font-family: $text-font-stack;

@@ -1,4 +1,4 @@
-// NAVX MEGA MENU V0.4
+// NAVX MEGA MENU V0.4.5
 (function () {
   const SELECTORS = {
     trigger: ".mm__trigger",
@@ -195,7 +195,9 @@
         );
 
         return l1.items
-          .filter((item) => !l2LabelSet.has((item.label || "").toLowerCase().trim()))
+          .filter(
+            (item) => !l2LabelSet.has((item.label || "").toLowerCase().trim()),
+          )
           .map((item) => ({
             label: item.label,
             viewAll: { label: item.label, href: item.href },
@@ -209,7 +211,7 @@
       l2GroupList() {
         const l1 = this.activeL1Group();
         if (!l1 || !l1.l2 || !l1.l2.length) return [];
-        
+
         return l1.l2.map((g) => ({ ...g, promo: g.promo || !!l1.promo }));
       },
 
@@ -218,9 +220,9 @@
         const l1Items = this.l1ItemsAsL2List();
         const l2Groups = this.l2GroupList();
         const combined = [...l1Items, ...l2Groups];
-        
-        return combined.sort((a, b) => 
-          (a.label || "").localeCompare(b.label || "")
+
+        return combined.sort((a, b) =>
+          (a.label || "").localeCompare(b.label || ""),
         );
       },
 
@@ -239,14 +241,14 @@
 
       // ===== HEAD links =====
       col1Label() {
-        return `Show All ${this.triggerLabel}`;
+        return `See all in ${this.triggerLabel}`;
       },
       col1Href() {
         return this.triggerHref || "#";
       },
       col2Label() {
         const l1 = this.activeL1Group();
-        return l1 ? `View More ${l1.label}` : "";
+        return l1 ? `See all in ${l1.label}` : "";
       },
       col2Href() {
         const l1 = this.activeL1Group();
@@ -254,7 +256,7 @@
       },
       col3Label() {
         const l2 = this.activeL2Group();
-        return l2 ? `View More ${l2.label}` : "";
+        return l2 ? `See all in ${l2.label}` : "";
       },
       col3Href() {
         const l2 = this.activeL2Group();

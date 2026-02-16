@@ -940,11 +940,14 @@
     > .alsoBy,
     #TitlesMightLikeFill {
       display: block;
-      margin: 2rem 0;
+      margin: 0;
+      + .alsoBy {
+        margin-top:1.5rem;
+      }
     }
-    > .alsoByLike {
-      margin-bottom: -5rem;
-    }
+    // > .alsoByLike {
+    //   margin-bottom: -5rem;
+    // }
   }
 }
 
@@ -1042,7 +1045,10 @@
 
   .product-page:has(.productSocial) {
     .productWishlist {
-      position-anchor: --product-social;
+      position-anchor: --social-links;
     }
+    .alsoBy:nth-child(1 of .alsoBy) {
+      margin-top: 5rem;
+    } 
   }
 }
