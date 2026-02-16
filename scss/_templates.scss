@@ -654,14 +654,23 @@ body {
 .double_bg_product {
   height: 100%;
   position: relative;
+  background: linear-gradient(
+    90deg,
+    var(--startCol, #eceff6),
+    var(--endCol, #eceff6)
+  );
+  border-radius: 10px;
+
   &__link {
     &:hover {
       text-decoration: none !important;
     }
   }
+
   &__image-wrap {
     padding-top: 1rem;
     padding-bottom: 1rem;
+
     img {
       width: auto;
       margin: 0 auto;
@@ -671,23 +680,27 @@ body {
       z-index: 1;
     }
   }
+
   &__text {
     position: relative;
     z-index: 1;
     padding: 30% 2rem;
     padding-left: 0;
     color: #ffffff;
+
     H3 {
       font-family: Arsenal;
       font-weight: 700;
       font-size: 30px;
     }
+
     P {
       font-family: Arsenal;
       font-weight: 400;
       font-size: 22px;
     }
   }
+
   &__bar {
     height: 70%;
     width: 100%;
