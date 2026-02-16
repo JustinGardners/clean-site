@@ -537,7 +537,7 @@ body {
         height: auto;
         padding: 1.125em 1.375em 1.125em 1.25em;
         background: $surface-94;
-        color: $brand-700;
+        color: $primary;
         border: 2px solid $surface-100;
         border-radius: 999px;
       }
@@ -550,7 +550,7 @@ body {
         display: block;
         width: var(--icon-width);
         height: 21px;
-        background: $brand-700;
+        background: $primary;
         mask: map.get($icon-list, "shoppingBasket") no-repeat 50% 50%;
         mask-size: cover;
       }
@@ -638,7 +638,7 @@ body {
     #miniNav,
     #navButton
   ) {
-    color: $brand-700;
+    color: $primary;
     flex-direction: column;
     align-items: center;
     gap: 5px;
@@ -671,7 +671,7 @@ body {
       display: block;
       width: 1.5em;
       height: 1.5em;
-      background: $brand-700;
+      background: $primary;
       mask: var(--icon-mask) no-repeat 50% 50%;
       mask-size: contain;
     }
