@@ -49,12 +49,14 @@
         border-bottom: 0;
       }
       h5 {
-        @include smallsubheaderH;
+        // @include smallsubheaderH;
         padding: 1rem 0.75rem 1rem 0;
         margin-bottom: 0;
         cursor: pointer;
         position: relative;
         color: var(--bs-primary);
+        font-weight: 700;
+        font-family: $text-font-stack;
       }
       ul {
         margin: 0;
@@ -73,9 +75,13 @@
                   $white,
                   $btn-background
                 );
-                font-size: 12px;
+                font-size: 1em;
                 max-width: 100%;
                 width: 100%;
+                text-align: left;
+                display: inline-flex;
+                align-items: center;
+                column-gap: 0.5rem;                
                 span {
                   background: #fff;
                 }
@@ -83,14 +89,18 @@
             }
             a {
               @include button-variant($white, $btn-background, $btn-background);
-              font-size: 12px;
+              --bs-border-radius: 0;
+              font-size: 1em;
               max-width: 100%;
               width: 100%;
               position: relative;
+              text-align: left;
+              display: inline-flex;
+              align-items: center;
+              column-gap: 0.5rem;
               span {
                 font-size: 0;
                 display: block;
-                position: absolute;
                 left: 5px;
                 top: 9px;
                 width: 12px;
@@ -172,7 +182,7 @@
         list-style: none;
       }
       li {
-        font-size: 12px;
+        font-size: calc(14/16 * 1em);
       }
     }
   }
@@ -252,6 +262,7 @@
           background-clip: padding-box;
           border-radius: 0;
           appearance: none;
+          width: min-content;
           background-image: linear-gradient(
               45deg,
               transparent 50%,
@@ -446,12 +457,10 @@
       .search-item__title {
         color: $bg-brand;
         margin-bottom: 0;
-        height: 3rem;
+        height: 3em;
         @include linkH;
-        font-size: 1rem;
-        @include breakpt-lg {
-          font-size: 1.25rem;
-        }
+        font-weight: 600;
+        font-size: clampWithViewPort(18, 30);        
         a {
           display: -webkit-box;
           -webkit-line-clamp: 2;
@@ -478,10 +487,12 @@
         @include searchText;
         a {
           text-decoration: underline;
+          color: $primary;
+          font-weight: 700;
         }
       }
       .search-item__availability {
-        font-size: 10px;
+        font-size: calc(12/16 * 1em);
         font-weight: 400;
         font-weight: bold;
         display: -webkit-box;
@@ -491,12 +502,11 @@
         text-overflow: ellipsis;
         overflow: hidden;
         p {
-          color: #003087;
-          font-size: 1rem;
+          color: inherit;
           font-weight: 600;
-          span {
-            font-size: 1rem;
-          }
+          // span {
+          //   font-size: 1rem;
+          // }
           .availability-description {
             display: none;
           }
@@ -597,8 +607,8 @@
       .search-item__purchase-price {
         order: 2;
         color: $bg-brand;
-        font-weight: 600;
-        font-size: 1.25rem;
+        font-weight: 700;
+        font-size: clampWithViewPort(16, 22);
       }
       .search-item__purchase-availability {
         display: none;
@@ -626,11 +636,9 @@
         max-width: 100%;
         &:not(.outOfStock) {
           @include button-variant($btn-background, $white, $btn-background);
-          font-size: 1rem;
+          font-size: calc(18/16 * 1em);
           max-width: 100%;
-          @include breakpt-sm {
-            font-size: 1.25rem;
-          }
+          margin-top:0.5em;
         }
         &.outOfStock {
           position: relative;
