@@ -18,7 +18,7 @@
 }
 #checkoutHeader {
   background: $subtle-background;
-  padding-bottom:1.5rem;
+  padding-bottom: 1.5rem;
   > .container-md > .row {
     display: grid;
     grid-template-columns: 1fr max-content;
@@ -44,12 +44,12 @@
       }
       :is(.checkout-header__logo, #storeLogoHeader) {
         grid-column: 1 / 1;
-        grid-row: 2 / 2;        
+        grid-row: 2 / 2;
       }
       .checkoutBreadcrumb {
         grid-column: 2 / 4;
         grid-row: 2 / 2;
-        padding-right:0;
+        padding-right: 0;
       }
     }
   }
@@ -223,7 +223,7 @@
           font-weight: bold;
           font-family: $text-font-stack;
           + .orderSummaryDetailsValue {
-            margin-top:0.5rem;
+            margin-top: 0.5rem;
           }
         }
       }
@@ -1644,8 +1644,8 @@
       }
 
       .loginGuestButtons {
-        width:100%;
-        margin-bottom:2.5em;
+        width: 100%;
+        margin-bottom: 2.5em;
       }
 
       :is(.myAccountSection .loginFields, .guestRegistration) {
@@ -1658,7 +1658,7 @@
           column-gap: var(--gap);
           align-self: flex-start;
           align-content: flex-start;
-          width:100%;
+          width: 100%;
           &.guest + .guest {
             flex: 1 1 auto;
           }
@@ -1821,7 +1821,7 @@
         display: block;
         width: 1rem;
         height: 1rem;
-        border:2px solid $primary;
+        border: 2px solid $primary;
       }
       &::before {
         background: #fff;
@@ -1853,17 +1853,16 @@
       top: calc(anchor(bottom) + 0.5rem);
       left: calc(anchor(left));
       @include breakpt-lg {
-        padding-left:0;
+        padding-left: 0;
       }
     }
 
     .loginSignUpButtons {
       margin-top: 1.5rem;
-        @include breakpt-lg {
-          margin-top: 3.5rem;
-        }
+      @include breakpt-lg {
+        margin-top: 3.5rem;
+      }
     }
-
   }
   // .regForm,
   // .regLogon {
@@ -2006,15 +2005,15 @@
         grid-row: 1;
       }
       label {
-        text-indent: -30000px;
+        height: 40px;
+        width: 50px;
+        margin: 0;
         background: url("/Content/System/Images/crossed-eye.svg") center
           no-repeat;
         background-size: 50%;
-        height: 40px;
-        width: 50px;
-        &::before {
-          content: none;
-        }
+        text-indent: -30000px;
+
+        &::before,
         &::after {
           content: none;
         }

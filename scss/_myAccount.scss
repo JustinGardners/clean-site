@@ -128,17 +128,21 @@
     padding: 2.2rem;
     border-radius: 10px;
     .myAccountSection {
-      margin-bottom:0;
+      margin-bottom: 0;
       border-radius: 0 0 10px 10px;
     }
     .register {
-      border:0!important;
+      border: 0 !important;
       border-radius: 0 0 10px 10px;
     }
   }
 }
 
-#main #logonRegister :is(.myAccountSection .loginFields, .guestRegistration) .form-group + .form-group {
+#main
+  #logonRegister
+  :is(.myAccountSection .loginFields, .guestRegistration)
+  .form-group
+  + .form-group {
   margin-top: 1rem;
 }
 
@@ -177,12 +181,12 @@
     position: sticky;
     bottom: 0;
     z-index: 1;
-  }  
+  }
 }
 
 .adminHelpPages > .row > .col-md-9 {
   @include media-breakpoint-up(md) {
-    width: min(75%,calc(100% - 306px));
+    width: min(75%, calc(100% - 306px));
   }
 }
 
@@ -199,9 +203,9 @@
   h3 {
     font-family: $text-font-stack;
     color: $primary;
-    font-size: clampWithViewPort(18, 30)!important;
+    font-size: clampWithViewPort(18, 30) !important;
   }
-} 
+}
 
 .myAccount,
 .helpPages {
@@ -219,18 +223,12 @@
   column-gap: calc(var(--bs-gutter-x));
   row-gap: calc(var(--bs-gutter-x));
 
-
-
-
-
-
-
   // :is(.myAccountContents:has(.form)) {
   //   border:1px solid $primary;
   //   .myAccountMain {
   //     background: white;
   //     margin-inline: -2.2rem;
-  //   }    
+  //   }
   // }
 
   .myAccountWrap,
@@ -248,8 +246,8 @@
     }
 
     :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) {
-      border:1px solid $primary;
-      padding-bottom:0;
+      border: 1px solid $primary;
+      padding-bottom: 0;
       .myAccountMain {
         background: white;
         margin-inline: -2.2rem;
@@ -416,8 +414,6 @@
     }
   }
 
-
-
   .myAccountWrap {
     .accountLanding {
       display: grid;
@@ -520,13 +516,13 @@
 
   .account-card--change-password {
     .account-card__icon {
-      background-image: url("/Content/media/icons/my-account/password.svg");
+      background-image: url("/Content/media/icons/my-account/passwords.svg");
     }
   }
 
   .account-card--personal-details {
     .account-card__icon {
-      background-image: url("/Content/media/icons/my-account/my-account.svg");
+      background-image: url("/Content/media/icons/my-account/personal-details.svg");
     }
   }
 
@@ -586,7 +582,7 @@
           grid-area: 2 / 2;
         }
       }
-      label {        
+      label {
         width: var(--formLabelSpace);
         white-space: nowrap;
       }
@@ -1167,7 +1163,7 @@
             font-weight: bold;
             margin-bottom: 2rem;
             padding: 2rem;
-            font-size: clampWithViewPort(22, 30);            
+            font-size: clampWithViewPort(22, 30);
             text-align: center;
           }
           p,
@@ -1620,8 +1616,8 @@ div#wishlistEmail {
   }
 }
 
-  #logonRegister {
-    .myAccountContents {
-      background:none;
-    }
+#logonRegister {
+  .myAccountContents {
+    background: none;
   }
+}
