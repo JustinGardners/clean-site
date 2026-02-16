@@ -1047,7 +1047,7 @@
     .productWishlist {
       position-anchor: --social-links;
     }
-    .alsoBy:first-of-type {
+    .alsoBy:nth-child(1 of .alsoBy) {
       margin-top: 5rem;
     } 
   }
