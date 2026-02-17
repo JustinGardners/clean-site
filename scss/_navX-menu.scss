@@ -547,20 +547,11 @@
   }
 }
 
-@media (min-width: 768px) {
-  .megaMenu .mm {
-    display: grid;
-  }
-  .megaMenu .mm__col.is-hidden {
-    display: none;
-  }
-}
-
 /* Desktop reset for Mega Menu panels (≥768px) */
 @media (min-width: 768px) {
   .megaMenu .mm {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     min-height: 360px;
   }
 
@@ -591,12 +582,16 @@
   }
 
   .megaMenu .mm__col--media {
-    display: block;
+    display: none;
   }
 }
 
 @media (min-width: 992px) {
   .megaMenu .mm {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .megaMenu .mm__col--media {
+    display: block;
   }
 }
