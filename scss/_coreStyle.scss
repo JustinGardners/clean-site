@@ -938,7 +938,7 @@ body {
     display: none;
   }
   .megaMenu {
-    @include breakpt-lg {
+    @include breakpt-md {
       position: absolute;
       top: 100%;
     }
