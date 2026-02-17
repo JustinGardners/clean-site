@@ -11,6 +11,15 @@ hr.dev {
   --vw-min: 375;
   --vw-max: 1440;
   --bs-body-font-size: clamp(0.875rem, 0.5em + 1vi, 1rem);
+  
+  --header-container-max-width: 1140px;
+  @include breakpt-xxl {
+    --header-container-max-width: 1320px;
+  }
+  --header-container-width: 100%;
+  @supports (font-size:max(400px, 50vw)) {
+    --header-container-width: min(var(--header-container-max-width), 100%);
+  }
 }
 
 body {
@@ -244,26 +253,30 @@ textarea {
   }
 }
 #navMain {
+  --mega-menu-max-width: 1320px;
   --mega-menu-width: 100%;
-  @include breakpt-sm {
-    --mega-menu-width: 100%;
+  @supports (width: min(400px, 100%)) {
+    --mega-menu-width: min(var(--mega-menu-max-width), 100%);
   }
+  // @include breakpt-sm {
+  //   --mega-menu-width: 100%;
+  // }
 
-  @include breakpt-md {
-    --mega-menu-width: 696px;
-  }
+  // @include breakpt-md {
+  //   --mega-menu-width: 696px;
+  // }
 
-  @include breakpt-lg {
-    --mega-menu-width: 936px;
-  }
+  // @include breakpt-lg {
+  //   --mega-menu-width: 936px;
+  // }
 
-  @include breakpt-xl {
-    --mega-menu-width: 1116px;
-  }
+  // @include breakpt-xl {
+  //   --mega-menu-width: 1116px;
+  // }
 
-  @include breakpt-xxl {
-    --mega-menu-width: 1296px;
-  }
+  // @include breakpt-xxl {
+  //   --mega-menu-width: 1296px;
+  // }
 }
 
 #storefront_cookie_widget {
@@ -420,6 +433,7 @@ body {
   top:0;
   background: $surface-100;
   border-bottom: 1px solid $surface-94;
+
   @media (max-width: calc(map.get($grid-breakpoints, "md") - 1px)) {
     padding-bottom: 0.75rem;
     margin-bottom: 0.75rem;
@@ -431,6 +445,17 @@ body {
   // .container-md {
   //   max-width: 1320px !important;
   // }
+
+  > .container-md {
+    @supports not (font-size:min(1rem, 4vw)) {
+      max-width: var(--header-container-max-width);
+      width: 100%;
+    }
+    @supports (font-size:min(1rem, 4vw)) {
+      width: var(--header-container-width);
+      max-width: none;
+    }    
+  }
 
   > .container-md .row {
     --vw-min: 375;
@@ -445,7 +470,7 @@ body {
     width: 100%;
     margin-inline: auto;
     padding-inline: 0;
-    @include breakpt-sm {
+    @include breakpt-md {
       grid-template-columns:
         [logo] max-content [search] 1fr [menu] 4.4em
         [account] 4.4em [wishlist] 4.4em
@@ -476,6 +501,7 @@ body {
     justify-content: stretch;
     align-self: center;
     position: relative;
+    width: 100%;
     a {
       flex: 1 1 auto;
     }
@@ -991,7 +1017,7 @@ body {
       }
       > a {
         display: block;
-        padding: 0.7rem 0.5rem;
+        padding: 0.7rem 1.2em;
         background: #fff;
         color: #000e67;
         font-size: 1rem;
@@ -1000,12 +1026,6 @@ body {
         text-decoration: none;
       }
     }
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  #navMain ul.primary > li > a {
-    padding: 0.7rem 1.2em;
   }
 }
 

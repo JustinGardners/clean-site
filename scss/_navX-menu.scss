@@ -19,8 +19,14 @@
 }
 
 #navMain {
-  max-width: calc(var(--mega-menu-width) + 1.5rem);
-  width: 100%;
+    @supports not (font-size:min(1rem, 4vw)) {
+      max-width: var(--header-container-max-width);
+      width: 100%;
+    }
+    @supports (font-size:min(1rem, 4vw)) {
+      width: var(--header-container-width);
+      max-width: none;
+    }     
 }
 
 @media (max-width: 767px) {
