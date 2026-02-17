@@ -973,13 +973,13 @@
       }
     }
 
-    .billingContainer {
+    .billingContainer, #digitalDelivery{
       // display: none;
       margin-bottom: 1rem;
       &.billingShow {
         display: block;
       }
-      .radioOptions {
+      .radioOptions, .checkboxOptions  {
         padding: 0 var(--wrapperPadding, 0);
         margin-bottom: 1rem;
       }
@@ -2162,7 +2162,7 @@
       display: block;
       width: 100%;
     }
-    .thankyou {
+    .thankyou, .eBooks {
       --wrapperMargin: 6.25%;
       background-color: $subtle-background;
       padding: 2rem;
@@ -2176,7 +2176,9 @@
       @include breakpt-md {
         --wrapperMargin: 12.5%;
       }
-
+      img{
+        width: auto;
+      }
       &.guestRegistration {
         background-color: transparent;
       }
@@ -2192,6 +2194,9 @@
           width: 100%;
           background-color: $subtle-border;
         }
+      }
+      .container{
+        padding: 0;
       }
       #customerOrderRef {
         order: 1;
@@ -2249,6 +2254,10 @@
         }
       }
     }
+    .eBooks{
+
+    }
+    
     #registerToTrackOrderPane {
       --wrapperMargin: 6.25%;
       @include breakpt-md {

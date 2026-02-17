@@ -935,7 +935,7 @@
     p {
       > div {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         gap: 1rem;
       }
@@ -979,6 +979,13 @@
           color: #fff;
         }
       }
+    }
+  }
+}
+.storeFrontAlert {
+  &.buyEbookPopup{
+    a{
+      display: inline;
     }
   }
 }
