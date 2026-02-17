@@ -13,7 +13,7 @@
     flex-direction: column;
   }
 
-  body.mobileMenuOpen #headerWrap #nav #navMain .menuText {
+  #headerWrap #nav #navMain .menuText {
     min-height: 52px;
     > span:first-child {
       display: none;
@@ -24,11 +24,11 @@
     }
   }
   
-  body.mobileMenuOpen #headerWrap #nav #navMain ul.primary {
+  #headerWrap #nav #navMain ul.primary {
     flex: 1 1 auto;
   }
 
-  body.mobileMenuOpen #headerWrap #nav #navMain ul.primary > li {
+  #headerWrap #nav #navMain ul.primary > li {
     font-size: 1rem;
     > a {
       background-color: #fff;
