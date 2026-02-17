@@ -18,13 +18,19 @@
   }
 }
 
-#navMain {
-  max-width: calc(var(--mega-menu-width) + 1.5rem);
-  width: 100%;
+:is(#navMain, #navMain ul.primary .megaMenu) {
+    max-width: var(--header-container-max-width);
+    @supports not (font-size:min(1rem, 4vw)) {
+      width: 100%;
+    }
+    @supports (font-size:min(1rem, 4vw)) {
+      width: var(--header-container-width);
+    }     
 }
 
 @media (max-width: 767px) {
   #navMain {
+    --header-container-max-width: 80vw;
     transform: translateX(-100%);
   }
 }
@@ -181,6 +187,24 @@
 }
 
 .mm__trigger {
+  @media (max-width: map.get($grid-breakpoints, "md")) {
+    #navMain ul.primary > li & {
+      display: flex;
+    }
+    align-items: center;
+    justify-content: space-between;
+    &:after {
+      content: '';
+      @include mm__chev();
+      transform: rotate(90deg);
+      transition: transform 220ms ease-in;
+    }
+    &:has(+ .megaMenu.is-open) {
+      &:after {
+        transform: rotate(-90deg);
+      }
+    }
+  }
   li:has(.is-open) > & {
     background: #e7effa;
     color: #000e67;
@@ -233,16 +257,7 @@
 }
 
 .mm__chev {
-  font-size: 1rem;
-  width: 8px;
-  border-right: 2px solid var(--bs-gray-500);
-  border-bottom: 2px solid var(--bs-gray-500);
-  aspect-ratio: 1 / 1;
-  height: 8px;
-  rotate: -45deg;
-  text-indent: -999em;
-  margin-right: 4px;
-  overflow: clip;
+  @include mm__chev();
   :is(.mm__btn:hover, .mm__btn.is-active) & {
     border-color: white;
   }
@@ -403,6 +418,7 @@
 @media (max-width: breakpoint-max(md)) {
   body:has(#navMain.is-open) {
     overflow: clip;
+    width: calc(100% - 1rem);
   }
 
   #navMain {
@@ -422,9 +438,9 @@
 }
 
 @media (max-width: calc(768px - 0.2px)) {
-  ul.primary {
-    width: min(80vw, 400px);
-  }
+  // ul.primary {
+  //   width: min(80vw, 400px);
+  // }
 
   body.mobileMenuOpen {
     &:is(.primary > li, .categories .category) {
@@ -459,6 +475,7 @@
     transform: translateX(0);
     transition: transform 0.25s ease;
     will-change: transform;
+    border-bottom: 1px solid $subtle-border;
   }
 
   /* default positions off-canvas to the right */
