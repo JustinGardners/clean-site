@@ -22,6 +22,8 @@
   > .container-md > .row {
     display: grid;
     grid-template-columns: 1fr max-content;
+    column-gap: 1em;
+    row-gap: 0.25em;
     .checkoutBreadcrumb {
       grid-column: 1 / -1;
       grid-row: 3 / 3;
@@ -29,6 +31,8 @@
     :is(.checkout-header__logo, #storeLogoHeader) {
       grid-column: 1 / 1;
       grid-row: 1 / 1;
+      max-width:clampWithViewPort(220, 320);
+      margin-top:1em;
     }
     .checkout-header__secure {
       grid-column: 2 / 2;
@@ -36,7 +40,7 @@
       place-self: flex-start;
     }
     @include breakpt-md {
-      grid-template-columns: 220px 1fr max-content;
+      grid-template-columns: clampWithViewPort(220, 320) 1fr max-content;
       row-gap: 0.75em;
       .checkout-header__secure {
         grid-column: 3 / 3;
@@ -45,6 +49,7 @@
       :is(.checkout-header__logo, #storeLogoHeader) {
         grid-column: 1 / 1;
         grid-row: 2 / 2;
+        margin-top:0;
       }
       .checkoutBreadcrumb {
         grid-column: 2 / 4;
