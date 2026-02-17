@@ -389,7 +389,8 @@
       font-weight: 400;
       color: #002f87;
       text-transform: capitalize;
-      border-bottom: 2px solid #8b9abf;
+      border-bottom: 1px solid $subtle-border;
+      order:2;
 
       .discountList {
         margin: 0;
@@ -416,6 +417,7 @@
       order: 1;
       background-color: #eceff6;
       padding: 1.25rem;
+      padding-bottom:0;
       margin-bottom: 0;
       font-size: 0.9rem;
       font-weight: 600;
@@ -425,6 +427,18 @@
         min-width: 9ex;
         text-align: right;
         color: $body-color;
+      }
+    }
+    &:has(.total) {
+      .subtotal {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+    }
+    &:not(:has(.subtotal)) {
+      p.total {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;        
       }
     }
     p.total {
@@ -438,8 +452,7 @@
       font-size: clampWithViewPort(18,30);
       font-weight: 600;
       color: #002f87;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+
       margin-bottom: 0;
       span {
         min-width: 9ex;

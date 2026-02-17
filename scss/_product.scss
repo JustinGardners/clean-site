@@ -689,7 +689,7 @@
       .priceArea {
         margin-top: 0.75rem;
         display: flex;
-        //flex-wrap: wrap;
+        flex-wrap: wrap;
         align-items: flex-start;
         justify-content: space-between;
         @include breakpt-md {
