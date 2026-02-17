@@ -165,9 +165,9 @@
         font-weight: 400;
         color: $bg-brand;
         text-decoration: underline;
-          @include breakpt-lg {
-            padding-left: 20px;
-          }
+        @include breakpt-lg {
+          padding-left: 20px;
+        }
       }
     }
   }
@@ -699,7 +699,6 @@ body {
       @include media-breakpoint-up(md) {
         font-size: 30px;
       }
-
     }
 
     P {
@@ -1215,7 +1214,7 @@ body {
       margin-bottom: 0;
       font-size: 1.25rem;
       line-height: 1.25;
-      // height: 2.1em;
+      height: 3rem;
       text-wrap: pretty;
     }
     &--author {
