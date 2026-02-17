@@ -18,19 +18,19 @@
   }
 }
 
-#navMain {
+:is(#navMain, #navMain ul.primary .megaMenu) {
+    max-width: var(--header-container-max-width);
     @supports not (font-size:min(1rem, 4vw)) {
-      max-width: var(--header-container-max-width);
       width: 100%;
     }
     @supports (font-size:min(1rem, 4vw)) {
       width: var(--header-container-width);
-      max-width: none;
     }     
 }
 
 @media (max-width: 767px) {
   #navMain {
+    --header-container-max-width: 80vw;
     transform: translateX(-100%);
   }
 }
@@ -428,9 +428,9 @@
 }
 
 @media (max-width: calc(768px - 0.2px)) {
-  ul.primary {
-    width: min(80vw, 400px);
-  }
+  // ul.primary {
+  //   width: min(80vw, 400px);
+  // }
 
   body.mobileMenuOpen {
     &:is(.primary > li, .categories .category) {

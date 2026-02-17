@@ -985,7 +985,7 @@ body {
         background: $subtle-background;
       }
 
-      width: calc(var(--mega-menu-width) * 0.25);
+      width: calc(var(--header-container-max-width) * 0.25);
     }
     .category {
       margin-bottom: 1.5rem;
@@ -1642,25 +1642,25 @@ body.mobileMenuOpen #navButton .navbarToggle .aniWrap div:nth-child(3) {
   width: 100%;
   margin-inline: auto;
 
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
+  // @media (min-width: 576px) {
+  //   max-width: 540px;
+  // }
 
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
+  // @media (min-width: 768px) {
+  //   max-width: 720px;
+  // }
 
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
+  // @media (min-width: 992px) {
+  //   max-width: 960px;
+  // }
 
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
+  // @media (min-width: 1200px) {
+  //   max-width: 1140px;
+  // }
 
-  @media (min-width: 1400px) {
-    max-width: 1320px;
-  }
+  // @media (min-width: 1400px) {
+  //   max-width: 1320px;
+  // }
 }
 
 #headerWrap #nav {
