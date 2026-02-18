@@ -331,7 +331,7 @@
   grid-area: side-basket;
   @media (max-width: calc(map.get($grid-breakpoints, "lg") - 1px)) {
     position: sticky;
-    bottom: 0;
+    bottom: -15vh;
     background: #fff;
     padding-bottom: 1em;
   }
@@ -371,9 +371,13 @@
     flex-direction: column;
     position: sticky;
     top: 1rem;
+    margin-top:0.5rem;
     // > * {
     //   order: 1;
     // }
+    @include media-breakpoint-up(lg) {
+      margin-top:0;
+    }
 
     #deliveryCosts {
       display: none;
@@ -507,8 +511,8 @@
       display: flex;
       flex-flow: column;
       gap: 0.5rem;
-      padding-bottom: 1.5rem;
-      padding-inline: 1rem;
+      padding-bottom: 1.125em;
+      padding-inline: 1em;
       border-bottom-right-radius: 10px;
       border-bottom-left-radius: 10px;
       background: #eceff6;

@@ -274,7 +274,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 2rem;
+        padding: clampWithViewPort(22, 30);
         line-height: 1.2;
         border-radius: 10px 10px 0 0;
         .basketQty {
@@ -283,6 +283,21 @@
           font-weight: bold;
           font-size: clampWithViewPort(22, 30);
           font-family: $headings-font-family;
+          flex: 1 1 auto;
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;   
+          .qty {
+            margin-right: 1em;
+            background: #003087;
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            width: 1.5em;
+            display: grid;
+            place-content: center;
+            color: white;
+            font-size: 1rem;            
+          }       
         }
         .totals {
           display: none;
@@ -429,7 +444,7 @@
         }
       }
     }
-    .checkoutSection > h4:first-child {
+    .checkoutSection:nth-of-type(1) > h4 {
       border-radius: 10px 10px 0 0;
     }
 
@@ -445,8 +460,8 @@
         background: $subtle-background;
         color: $bg-brand;
         font-weight: bold;
-        margin-bottom: 2rem;
-        padding: 2rem;
+        margin-bottom: 1em;
+        padding: 1em;
         font-size: clampWithViewPort(22, 30);
       }
       input,
@@ -971,12 +986,17 @@
       //     }
       //   }
       // }
-      .safePlace {
-        > .deliverySafePlaceDesc {
-          display: none;
-        }
-      }
     }
+
+    .deliverySafePlaceDesc {
+      margin-top:0.5rem;
+    }
+
+    .safePlace {
+      > .deliverySafePlaceDesc {
+        display: none;
+      }
+    }    
 
     .billingContainer,
     #digitalDelivery {
@@ -1544,8 +1564,14 @@
         .editButton {
           grid-column: 2 / 3;
           grid-row: 1 / -1;
+          display: grid;
+          place-items: center;
           a {
-            @include button-outline-variant($primary);
+            all: unset;
+            color: $primary;
+            text-decoration: underline;
+            cursor: pointer;
+            // @include button-outline-variant($primary);
           }
         }
       }
@@ -1662,7 +1688,7 @@
       :is(.myAccountSection .loginFields, .guestRegistration) {
         --gap: 1em;
         --label-width: calc(200 / 16 * 1rem);
-        --input-min-width: calc(500 / 16 * 1rem);
+        --input-min-width: calc(400 / 16 * 1rem);
         .form-group {
           // display: flex;
           flex-wrap: wrap;
@@ -2127,7 +2153,7 @@
       background-image: url('data:image/svg+xml,<svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 9.21994L6 3.45325" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 16.5533V7.66441C20.9996 7.27472 20.8967 6.89198 20.7017 6.55459C20.5067 6.2172 20.2264 5.93703 19.8889 5.74218L12.1111 1.29772C11.7733 1.10268 11.3901 1 11 1C10.6099 1 10.2267 1.10268 9.88889 1.29772L2.11111 5.74218C1.77363 5.93703 1.49331 6.2172 1.29829 6.55459C1.10327 6.89198 1.0004 7.27472 1 7.66441V16.5533C1.0004 16.943 1.10327 17.3258 1.29829 17.6632C1.49331 18.0005 1.77363 18.2807 2.11111 18.4756L9.88889 22.92C10.2267 23.1151 10.6099 23.2177 11 23.2177C11.3901 23.2177 11.7733 23.1151 12.1111 22.92L19.8889 18.4756C20.2264 18.2807 20.5067 18.0005 20.7017 17.6632C20.8967 17.3258 20.9996 16.943 21 16.5533Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.30029 6.50861L11.0003 12.1197L20.7003 6.50861" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 23.3088V12.1088" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     }
   }
-  .deliveryOption1 {
+  :is(.deliveryOption1, .deliveryOption2) {
     position: relative;
     &::before {
       content: "";
@@ -2517,5 +2543,13 @@
     a {
       @include button-variant($btn-background, $white, $btn-background);
     }
+  }
+}
+
+.confirmEbookContainer {
+  display: block!important;
+  margin-bottom: 6rem!important;
+  > .custom-control {
+    display: block!important;
   }
 }
