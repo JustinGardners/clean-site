@@ -429,7 +429,7 @@
         }
       }
     }
-    .checkoutSection > h4:first-child {
+    .checkoutSection:nth-of-type(1) > h4 {
       border-radius: 10px 10px 0 0;
     }
 
