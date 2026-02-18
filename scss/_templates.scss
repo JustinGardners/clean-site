@@ -437,10 +437,8 @@ body {
 }
 
 /* Two Wide Products */
-
-// Double Product Card w/ BG
 .product-card-bg__wrapper {
-  @media (min-width: 768px) {
+  @media (min-width: map.get($grid-breakpoints, "md")) {
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
@@ -458,7 +456,7 @@ body {
   border-radius: 10px;
   overflow: clip;
 
-  @media (min-width: 768px) {
+  @media (min-width: map.get($grid-breakpoints, "md")) {
     background: linear-gradient(
       var(--c-grad-deg, 90deg),
       var(--c-col-START, #d2dff4),
@@ -488,11 +486,11 @@ body {
   width: 100%;
   padding: 16px;
 
-  @media (min-width: 576px) and (max-width: calc(992px - 0.2px)) {
+  @media (min-width: map.get($grid-breakpoints, "sm")) and (max-width: calc(map.get($grid-breakpoints, "lg") - 0.2px)) {
     grid-template-columns: 1fr 2fr;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: map.get($grid-breakpoints, "md")) {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin-block: 60px;
@@ -513,7 +511,6 @@ body {
 
 .product-card-bg__image img {
   aspect-ratio: 260/400;
-
   object-fit: fill;
   object-position: center;
   border-radius: 10px;
@@ -526,7 +523,7 @@ body {
     width: auto;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: map.get($grid-breakpoints, "md")) {
     position: absolute;
     top: 50%;
     left: 20px;
@@ -536,7 +533,7 @@ body {
     transition: all 0.3s ease-in-out;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
     left: 40px;
     width: calc(50% - 50px);
   }
@@ -550,26 +547,17 @@ body {
   h3 {
     margin: 0;
     margin-bottom: 10px;
-    font:
-      700 16px/1.25 "Arsenal",
-      system-ui,
-      sans-serif;
+    font: 700 16px/1.25 $text-font-stack;
 
-    @media (min-width: 768px) {
+    @media (min-width: map.get($grid-breakpoints, "md")) {
       margin-bottom: 20px;
-      font:
-        700 30px/1 "Arsenal",
-        system-ui,
-        sans-serif;
+      font: 700 30px/1 $text-font-stack;
     }
   }
 
   p {
     margin: 0;
-    font:
-      400 18px/1.35 "Arsenal",
-      system-ui,
-      sans-serif;
+    font: 400 18px/1.35 $text-font-stack;
   }
 }
 
@@ -582,13 +570,13 @@ body {
 
   h3 {
     font-size: calc(30 / 16 * 1em);
-    font-family: Arsenal;
+    font-family: $text-font-stack;
     font-weight: 700;
   }
   h4 {
     font-size: 22px;
     font-weight: 400;
-    font-family: Arsenal;
+    font-family: $text-font-stack;
   }
   &__image-wrap {
     img {
