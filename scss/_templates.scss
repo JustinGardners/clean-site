@@ -150,8 +150,6 @@
     }
     &--link {
       font-weight: 600;
-      font-size: 30px;
-
       display: block;
       text-align: left;
       @include breakpt-lg {
@@ -175,6 +173,9 @@
     text-align: left;
     padding-top: 1rem;
     padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     h2 {
       color: $bg-brand;
       font-weight: 600;
