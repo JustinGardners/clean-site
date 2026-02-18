@@ -262,7 +262,6 @@ body {
       text-align: center;
     }
     .top-bar__close {
-      position: absolute;
       right: 1rem;
       z-index: 2;
       @include close-button(#fff, $size: 1rem);
