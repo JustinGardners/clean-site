@@ -2519,3 +2519,11 @@
     }
   }
 }
+
+.confirmEbookContainer {
+  display: block!important;
+  margin-bottom: 6rem!important;
+  > .custom-control {
+    display: block!important;
+  }
+}
