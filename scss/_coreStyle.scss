@@ -438,7 +438,7 @@ body {
     padding-bottom: 0.75rem;
     margin-bottom: 0.75rem;
   }
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     top: -48px;
     z-index: 22;
   }

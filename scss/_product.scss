@@ -690,7 +690,7 @@
       .priceArea {
         margin-top: 0.75rem;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: flex-start;
         justify-content: space-between;
         @include breakpt-md {
@@ -829,7 +829,7 @@
       }
       .basket {
         order: 3;
-        flex: 1 1 100%;
+        flex: 1 1 auto;
         margin-top: clamp(0.5rem, 0.35em + 1vi, 1.5rem);
         width: 100%;
         .buyButton{
