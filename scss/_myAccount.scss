@@ -297,8 +297,11 @@
       padding-bottom: 0;
       .myAccountMain {
         background: white;
-        margin-inline: -2.2rem;
+        margin-inline: -1.2rem;
         border-radius: 0 0 10px 10px;
+        @include media-breakpoint-up(md) {
+          margin-inline: -2.2rem;
+        }
         .myAccountContents {
           border: 1px solid $primary;
         }
@@ -1166,8 +1169,19 @@
   .myAccountWrap {
     .myAccountContents {
       .myAccountHeader {
-        h2:first-child {
-          display: none;
+        // h2:first-child {
+        //   display: none;
+        // }
+        h2 {
+          border-bottom: none;
+        }
+        h2 span {
+          font-size: 1rem;
+          color: var(--bs-body-color);
+          display: block;
+          margin-top: 1em;
+          font-weight: 500;
+          font-family: var(--bs-body-font-family);          
         }
       }
       .myAccountMain {
