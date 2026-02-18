@@ -2,7 +2,7 @@
   tmg.pubsub.subscribe({
     topic: "tmg.cmp.onConsentReady",
     func: function () {
-      console.log("tmgCMP consentState =", tmgCMP.consentState);
+      console.log("TMG_CMP_CS:", tmgCMP.consentState);
       if (tmgCMP.consentState !== 1) return;
       /*
        1 = Accept All | 2 = Essential | 3 = Reject All | 4 = In-between
