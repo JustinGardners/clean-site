@@ -31,8 +31,8 @@
     :is(.checkout-header__logo, #storeLogoHeader) {
       grid-column: 1 / 1;
       grid-row: 1 / 1;
-      max-width:clampWithViewPort(220, 320);
-      margin-top:1em;
+      max-width: clampWithViewPort(220, 320);
+      margin-top: 1em;
     }
     .checkout-header__secure {
       grid-column: 2 / 2;
@@ -49,7 +49,7 @@
       :is(.checkout-header__logo, #storeLogoHeader) {
         grid-column: 1 / 1;
         grid-row: 2 / 2;
-        margin-top:0;
+        margin-top: 0;
       }
       .checkoutBreadcrumb {
         grid-column: 2 / 4;
@@ -978,16 +978,18 @@
       }
     }
 
-    .billingContainer, #digitalDelivery{
+    .billingContainer,
+    #digitalDelivery {
       // display: none;
       margin-bottom: 1rem;
       &.billingShow {
         display: block;
       }
-      .radioOptions, .checkboxOptions  {
+      .radioOptions,
+      .checkboxOptions {
         padding: 0 var(--wrapperPadding, 0);
         margin-bottom: 1rem;
-        &#rememberAddress{
+        &#rememberAddress {
           padding: 0;
         }
       }
@@ -1662,7 +1664,7 @@
         --label-width: calc(200 / 16 * 1rem);
         --input-min-width: calc(500 / 16 * 1rem);
         .form-group {
-          display: flex;
+          // display: flex;
           flex-wrap: wrap;
           column-gap: var(--gap);
           align-self: flex-start;
@@ -1694,11 +1696,7 @@
       }
 
       .myAccountSection .loginFields .pass .custom-checkbox {
-        // grid-row: 2;
-        // grid-column: -2 / -1;
-        width: 100%;
         font-size: 0.875em;
-        margin-top: 0.5rem;
       }
     }
   }
@@ -1938,41 +1936,7 @@
     }
   }
 
-  // #changePassword.form-group,
-  // #EmailDetails.form-group,
-  // .loginFields .pass.form-group,
-  // .regForm #password.form-group,
-  // .regForm #confirmPassword.form-group,
-  // .regLogon form-group.pass {
-  //   display: grid !important;
-  //   grid-column-gap: 1.5rem;
-  //   grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-  //   @include breakpt-lg {
-  //     grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-  //   }
-  //   > label {
-  //     grid-column: 1 / 4;
-  //     grid-row: 1;
-  //     @include breakpt-lg {
-  //       grid-column: 1 / 2;
-  //     }
-  //   }
-  //   input.form-control {
-  //     grid-column: 1 / 4;
-  //     grid-row: 2;
-  //     @include breakpt-lg {
-  //       grid-column: 2 / 4;
-  //       grid-row: 1;
-  //     }
-  //   }
-  // }
-
-  #changePassword,
-  #EmailDetails,
-  .loginFields .pass,
-  .regForm #password,
-  .regForm #confirmPassword,
-  #passwordReset {
+  @mixin passwordLayoutDefault() {
     .form-group {
       display: grid !important;
       grid-column-gap: 1.5rem;
@@ -2034,6 +1998,51 @@
       }
     }
   }
+
+  @mixin passwordLayoutBpUp($bp-up: "lg") {
+    @media (min-width: map.get($grid-breakpoints, #{$bp-up})) {
+      .form-group {
+        grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
+
+        > label {
+          grid-column: 1 / 2;
+        }
+        input.form-control {
+          grid-column: 2 / 4;
+          grid-row: 1;
+        }
+      }
+      .custom-checkbox {
+        grid-row: 1;
+      }
+    }
+  }
+
+  #changePassword,
+  #EmailDetails,
+  .loginFields .pass,
+  .regForm #password,
+  .regForm #confirmPassword,
+  #passwordReset {
+    @include passwordLayoutDefault();
+  }
+
+  #changePassword,
+  #EmailDetails,
+  .myAccountMain .loginFields .pass,
+  .myAccountMain .regForm #password,
+  .myAccountMain .regForm #confirmPassword,
+  #passwordReset {
+    @include passwordLayoutBpUp();
+  }
+
+  .myAccountmain .loginFields .pass,
+  .myAccountmain .regForm #password,
+  .myAccountmain .regForm #confirmPassword {
+    @include passwordLayoutBpUp('sm');
+  }  
+
+
   @include breakpt-lg {
     .form-group.newsLetterSubscribed {
       .custom-checkbox {
@@ -2172,7 +2181,8 @@
       display: block;
       width: 100%;
     }
-    .thankyou, .eBooks {
+    .thankyou,
+    .eBooks {
       --wrapperMargin: 6.25%;
       background-color: $subtle-background;
       padding: 2rem;
@@ -2186,7 +2196,7 @@
       @include breakpt-md {
         --wrapperMargin: 12.5%;
       }
-      img{
+      img {
         width: auto;
       }
       &.guestRegistration {
@@ -2205,7 +2215,7 @@
           background-color: $subtle-border;
         }
       }
-      .container{
+      .container {
         padding: 0;
       }
       #customerOrderRef {
@@ -2264,10 +2274,9 @@
         }
       }
     }
-    .eBooks{
-
+    .eBooks {
     }
-    
+
     #registerToTrackOrderPane {
       --wrapperMargin: 6.25%;
       @include breakpt-md {
@@ -2461,7 +2470,7 @@
   // padding-top: 0.5rem;
   font-size: 1rem;
   ul {
-    margin:0;
+    margin: 0;
     &:has(li:not(:empty)) {
       margin-bottom: 1rem;
     }
