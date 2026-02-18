@@ -750,15 +750,17 @@
       .defaultAddressButton,
       form {
         grid-area: buttonBottom;
+        grid-area:1 / -1;
+        margin-top:1.5rem;
         span {
           display: block;
           color: #35b834;
           width: 100%;
-          font-size: 1.25rem;
+          font-size: 1em;
           font-weight: 700;
           border-radius: 0;
           text-decoration: none;
-          text-align: center;
+          text-align: right;
           &::before {
             background: #35b834;
             -webkit-mask: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgNzA5KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTE4LjQsMy45bC05LjQsOS43LTMuNC0zLjNjLTEtMS0yLjctMS0zLjcsMGgwYy0xLDEuMS0xLDIuNywwLDMuOGw1LjIsNS4xYzEsMSwyLjcsMSwzLjcsMGwxMS40LTExLjZjMS0xLDEtMi43LDAtMy43aDBjLTEtMS0yLjctMS0zLjcsMGgwWiIvPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=);
