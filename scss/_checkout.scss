@@ -1662,7 +1662,7 @@
       :is(.myAccountSection .loginFields, .guestRegistration) {
         --gap: 1em;
         --label-width: calc(200 / 16 * 1rem);
-        --input-min-width: calc(500 / 16 * 1rem);
+        --input-min-width: calc(400 / 16 * 1rem);
         .form-group {
           // display: flex;
           flex-wrap: wrap;
