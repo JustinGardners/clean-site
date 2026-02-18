@@ -971,12 +971,17 @@
       //     }
       //   }
       // }
-      .safePlace {
-        > .deliverySafePlaceDesc {
-          display: none;
-        }
-      }
     }
+
+    .deliverySafePlaceDesc {
+      margin-top:0.5rem;
+    }
+
+    .safePlace {
+      > .deliverySafePlaceDesc {
+        display: none;
+      }
+    }    
 
     .billingContainer,
     #digitalDelivery {
