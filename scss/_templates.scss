@@ -298,6 +298,10 @@ body {
 /* Circles with jackets on top */
 .top-cat {
   &__item {
+    margin-bottom: 1rem;
+    @include breakpt-md {
+      margin-bottom: 0;
+    }
     a {
       position: relative;
     }
@@ -328,9 +332,12 @@ body {
     z-index: -1;
   }
   h4 {
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
     color: $bg-brand-dark;
+    @include breakpt-md {
+      font-size: 22px;
+    }
   }
 }
 

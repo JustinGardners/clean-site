@@ -987,6 +987,9 @@
       .radioOptions, .checkboxOptions  {
         padding: 0 var(--wrapperPadding, 0);
         margin-bottom: 1rem;
+        &#rememberAddress{
+          padding: 0;
+        }
       }
     }
     #billingDetails {
@@ -1310,6 +1313,7 @@
 
       &.postcodeLookupContainer {
         grid-template-columns: auto 140px;
+        display: grid;
         &.checkoutShow {
           display: grid !important;
         }
@@ -2045,6 +2049,7 @@
     }
   }
   .custom-select {
+    margin-top: 0.5rem;
     appearance: none;
     background-image:
       linear-gradient(45deg, transparent 50%, $bg-brand 50%),

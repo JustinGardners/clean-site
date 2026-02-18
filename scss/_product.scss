@@ -400,17 +400,6 @@
       }
     }
     .titleAuthorContributor {
-      &--title,
-      &-authorContributor,
-      &--series {
-        text-align: left;
-      }
-      &--authorContributor {
-        margin-top: clamp(0.5rem, 0.5em + 1vi, 0.75rem);
-      }
-      &--authorContributor {
-        text-align: left;
-      }
       &--authorContributor,
       &-authorContributor,
       &--series {
@@ -426,6 +415,18 @@
           margin-top: 0.5rem;
         }
       }
+      &--title,
+      &-authorContributor,
+      &--series {
+        text-align: left;
+      }
+      &--authorContributor {
+        text-align: left;
+        h2{
+          margin-top: clamp(0.5rem, 0.5em + 1vi, 0.75rem);
+        }
+      }
+
       &--title {
         margin-top: 2rem;
         @include breakpt-md {
@@ -689,7 +690,7 @@
       .priceArea {
         margin-top: 0.75rem;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: flex-start;
         justify-content: space-between;
         @include breakpt-md {
@@ -700,6 +701,7 @@
         .btn.unavailable {
           display: none;
         }
+        p{margin: 0;}
       }
       .price {
         order: 2;
@@ -830,6 +832,9 @@
         flex: 1 1 100%;
         margin-top: clamp(0.5rem, 0.35em + 1vi, 1.5rem);
         width: 100%;
+        .buyButton{
+          width: 100%;
+        }
         .buyButton:not(.outOfStock) {
           @include primary-cta();
         }
@@ -955,20 +960,20 @@
   }
 }
 
-.product-page {
-  .book {
-    .productInfoWrap .priceAreaWrap .availability > span.preOrder::before {
-      content: " - Published: ";
-    }
-    // &.product {
-    //   &--signed {
-    //     .image img {
-    //       @include tag--promo("Signed Copy", #ecc249);
-    //     }
-    //   }
-    // }
-  }
-}
+// .product-page {
+//   .book {
+//     .productInfoWrap .priceAreaWrap .availability > span.preOrder::before {
+//       content: " - Published: ";
+//     }
+//     // &.product {
+//     //   &--signed {
+//     //     .image img {
+//     //       @include tag--promo("Signed Copy", #ecc249);
+//     //     }
+//     //   }
+//     // }
+//   }
+// }
 
 // Other Formats
 .alternativeFormats .formatsList {
@@ -1064,6 +1069,8 @@
       margin-bottom: 1.5rem;
       span{
         font-weight: 700;
+        display: block;
+        margin-bottom: .5rem;;
       }
       .error{
         color: #a81919;
