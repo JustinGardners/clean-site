@@ -188,6 +188,7 @@
     font-family: $text-font-stack;
     ul {
       padding-left: 0;
+      margin-bottom:1.5rem;
     }
     li {
       display: flex;
@@ -206,7 +207,9 @@
   .leftNav {
     order: 2;
     width: 100%;
-
+    h5 {
+      font-weight: 700;
+    }
     @include media-breakpoint-up(md) {
       order: 0;
       min-width: $left-nav-width;
@@ -611,6 +614,9 @@
 .my-account-header {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
+  > h1 {
+    font-weight: 700;
+  }
   a {
     color: $primary;
   }
