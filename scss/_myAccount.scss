@@ -505,11 +505,11 @@
         content: "";
         display: block;
         width: 100%;
-        height: 2px;
+        height: 4px;
         background: linear-gradient(
           to right,
-          #{$bg-brand} 50%,
-          color.mix($bg-brand, #fff, 50%) 50%
+          #000E67 50%,
+           #4F7AD1 50%
         );
         background-size: 200% 100%;
         background-position: 100% 0;
