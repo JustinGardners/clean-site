@@ -1549,8 +1549,14 @@
         .editButton {
           grid-column: 2 / 3;
           grid-row: 1 / -1;
+          display: grid;
+          place-items: center;
           a {
-            @include button-outline-variant($primary);
+            all: unset;
+            color: $primary;
+            text-decoration: underline;
+            cursor: pointer;
+            // @include button-outline-variant($primary);
           }
         }
       }
