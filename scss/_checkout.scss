@@ -274,7 +274,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 2rem;
+        padding: clampWithViewPort(22, 30);
         line-height: 1.2;
         border-radius: 10px 10px 0 0;
         .basketQty {
@@ -283,6 +283,21 @@
           font-weight: bold;
           font-size: clampWithViewPort(22, 30);
           font-family: $headings-font-family;
+          flex: 1 1 auto;
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;   
+          .qty {
+            margin-right: 1em;
+            background: #003087;
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            width: 1.5em;
+            display: grid;
+            place-content: center;
+            color: white;
+            font-size: 1rem;            
+          }       
         }
         .totals {
           display: none;
@@ -445,8 +460,8 @@
         background: $subtle-background;
         color: $bg-brand;
         font-weight: bold;
-        margin-bottom: 2rem;
-        padding: 2rem;
+        margin-bottom: 1em;
+        padding: 1em;
         font-size: clampWithViewPort(22, 30);
       }
       input,
