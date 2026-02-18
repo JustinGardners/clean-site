@@ -4,30 +4,25 @@
     func: function () {
       if (tmgCMP.consentState !== 1) return;
       /*
-       * 1 = Accept All
-       * 2 = Essential
-       * 3 = Reject All
-       * 4 = In-between
+       1 = Accept All | 2 = Essential | 3 = Reject All | 4 = In-between
        */
 
-      const gtagScript = document.createElement("script");
-      gtagScript.async = true;
-      gtagScript.src =
-        "https://www.googletagmanager.com/gtag/js?id=AW-439540603";
-      document.head.appendChild(gtagScript);
+      const googleScript = document.createElement("script");
+      googleScript.async = true;
+      googleScript.src = "//www.googletagmanager.com/gtag/js?id=AW-439540603";
+      document.head.appendChild(googleScript);
 
-      // Init dataLayer + config
-      window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer = [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
       gtag("config", "AW-439540603");
 
-      // ---- Load Adobe ----
+      //  Adobe DTM
       const adobeScript = document.createElement("script");
       adobeScript.src =
-        "//assets.adobedtm.com/71dcbb11123ce6b2e1ce4d47fd79a130aad3fc95/satelliteLib.js";
+        "//assets.adobedtm.com/71dcbb11123ce6b2e1ce4d47fd79a130aad3fc95/satelliteLib-16da6c48e1c0674fe4ab529302c31c2140a01ba4.js";
       document.head.appendChild(adobeScript);
     },
     runIfAlreadyPublished: true,
