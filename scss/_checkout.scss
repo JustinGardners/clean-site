@@ -2132,7 +2132,7 @@
       background-image: url('data:image/svg+xml,<svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 9.21994L6 3.45325" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 16.5533V7.66441C20.9996 7.27472 20.8967 6.89198 20.7017 6.55459C20.5067 6.2172 20.2264 5.93703 19.8889 5.74218L12.1111 1.29772C11.7733 1.10268 11.3901 1 11 1C10.6099 1 10.2267 1.10268 9.88889 1.29772L2.11111 5.74218C1.77363 5.93703 1.49331 6.2172 1.29829 6.55459C1.10327 6.89198 1.0004 7.27472 1 7.66441V16.5533C1.0004 16.943 1.10327 17.3258 1.29829 17.6632C1.49331 18.0005 1.77363 18.2807 2.11111 18.4756L9.88889 22.92C10.2267 23.1151 10.6099 23.2177 11 23.2177C11.3901 23.2177 11.7733 23.1151 12.1111 22.92L19.8889 18.4756C20.2264 18.2807 20.5067 18.0005 20.7017 17.6632C20.8967 17.3258 20.9996 16.943 21 16.5533Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.30029 6.50861L11.0003 12.1197L20.7003 6.50861" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 23.3088V12.1088" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     }
   }
-  .deliveryOption1 {
+  :is(.deliveryOption1, .deliveryOption2) {
     position: relative;
     &::before {
       content: "";
