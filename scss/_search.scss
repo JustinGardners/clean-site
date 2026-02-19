@@ -724,6 +724,7 @@ body {
         padding: 1rem;
         min-width: 220px;
         max-width: 320px;
+        padding-top: 63px;
         flex:1 1 auto;
       }
     }
@@ -852,12 +853,12 @@ body {
 }
 .mobileFacetClose {
   @include close-button();
-  position: relative;
   font-size: 1em;
   margin-inline: auto 1rem;
   margin-top: 1rem;
-  position: sticky;
-  top: 1rem;
+  position: fixed;
+  top: 0;
+  left: min(calc(90vw - 2rem), calc(320px - 4rem));
   display: none;
   z-index: 2;
   @include breakpt-lg {
