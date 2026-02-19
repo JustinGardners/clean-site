@@ -233,7 +233,7 @@
 
 .adminHelpPages > .row > .col-md-9 {
   @include media-breakpoint-up(md) {
-    width: min(75%, calc(100% - 306px));
+    width: min(min(75%, 80ch), calc(100% - 306px));
   }
 }
 
@@ -252,6 +252,10 @@
     color: $primary;
     font-size: clampWithViewPort(18, 30) !important;
   }
+}
+
+.adminHelpPages .template-container.tm--half {
+  padding:0;
 }
 
 .myAccount,
@@ -297,7 +301,7 @@
       padding-bottom: 0;
       .myAccountMain {
         background: white;
-        margin-inline: -1.2rem;
+        margin-inline: calc(-1.2rem + 2px);
         border-radius: 0 0 10px 10px;
         @include media-breakpoint-up(md) {
           margin-inline: -2.2rem;
