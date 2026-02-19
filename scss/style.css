@@ -14505,11 +14505,11 @@ body.facetShow .leftNavWrap:before {
   -moz-column-gap: 1rem;
        column-gap: 1rem;
 }
-.myAccountMain .form-group.pass input[type=password] {
+.myAccountMain .form-group.pass > input {
   width: calc(100% - 4.2rem);
   display: inline-flex;
 }
-.myAccountMain .form-group.pass input[type=password] + .custom-control {
+.myAccountMain .form-group.pass > input + .custom-control {
   display: inline-flex;
 }
 .myAccountMain .form-group.pass .custom-control-input {
@@ -14530,7 +14530,7 @@ body.facetShow .leftNavWrap:before {
     grid-row-gap: 0rem;
     grid-column-gap: 1.5rem;
   }
-  .myAccountMain .form-group.eAdd input[type=password], .myAccountMain .form-group.pass input[type=password] {
+  .myAccountMain .form-group.eAdd > input, .myAccountMain .form-group.pass > input {
     width: 100%;
   }
   .myAccountMain .form-group.eAdd .field-validation-error, .myAccountMain .form-group.pass .field-validation-error {
@@ -19387,11 +19387,8 @@ div#wishlistEmail .form-control {
 #main .custom-control-label::after {
   background: no-repeat 50%/50% 50%;
 }
-#main .loginFields .pass input[type=password] {
-  anchor-name: --password;
-}
 @supports (anchor-name: --password) {
-  #main .loginFields .pass input[type=password] {
+  #main .loginFields .pass > input {
     anchor-name: --password;
   }
   #main .custom-control.rememberMe {
