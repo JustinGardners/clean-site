@@ -637,7 +637,7 @@
     margin-bottom: 0.5rem;
     column-gap: 1rem;
     &.pass {
-      input[type="password"] {
+      > input {
         width: calc(100% - 4.2rem);
         display: inline-flex;
         + .custom-control {
@@ -672,7 +672,7 @@
       grid-column-gap: 1.5rem;
       &.eAdd,
       &.pass {
-        input[type="password"] {
+        > input {
           width: 100%;
         }
         .field-validation-error {

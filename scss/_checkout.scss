@@ -1866,17 +1866,15 @@
       }
     }
   }
-  .loginFields {
-    .pass {
-      input[type="password"] {
-        anchor-name: --password;
-      }
-
-      // grid-template-columns: [labels] auto [controls] 1fr [eye] 50px;
-    }
-  }
+  // .loginFields {
+  //   .pass {
+  //     > input {
+  //       anchor-name: --password;
+  //     }
+  //   }
+  // }
   @supports (anchor-name: --password) {
-    .loginFields .pass input[type="password"] {
+    .loginFields .pass > input {
       anchor-name: --password;
     }
 
