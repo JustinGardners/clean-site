@@ -1,0 +1,18 @@
+:root {
+    --bg-color: oklch(50% 0 0deg);
+    background-color: var(--bg-color);
+}
+@media (--lg) {
+    :root {
+        background-color:red;
+    }
+}
+@layer components {
+    :where(.btn) {
+        @layer base {
+            color: var(--#{$prefix}btn-color);
+            background-color: var(--#{$prefix}btn-bg);
+            border-color: var(--#{$prefix}btn-border-color);
+        }
+    }
+}
