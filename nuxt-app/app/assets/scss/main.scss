@@ -10,7 +10,27 @@
     @layer base, states, modifiers;
 }
 
+$prefix: "site-";
+
+
+$lch-colors: (
+    primary: (
+        l: 0.7,
+        c: 0.1,
+        h: 233
+    ),
+    secondary: (
+        l: 0.7,
+        c: 0.1,
+        h: 356
+    )
+);
+
+$primary: color.to-space(oklch(map.get($lch-colors, 'primary', 'l') map.get($lch-colors, 'primary', 'c') map.get($lch-colors, 'primary', 'h')), hsl);
+$secondary: color.to-space(oklch(map.get($lch-colors, 'secondary', 'l') map.get($lch-colors, 'secondary', 'c') map.get($lch-colors, 'secondary', 'h')), hsl);
+
 @import "./variables/media-queries";
+
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
@@ -18,22 +38,19 @@
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
-$prefix: "site-";
-
-$primary-lch: (
-    l: 0.7,
-    c: 0.1,
-    h: 233
-);
-
-$primary: color.to-space(oklch(map.get($primary-lch, 'l') map.get($primary-lch, 'c') map.get($primary-lch, 'h')), hsl);
 
 :root {
-  @each $color, $value in $primary-lch {
-    --#{$prefix}primary-#{$color}: #{$value};
+  @each $key, $value in $lch-colors {
+        $l: map.get($value, l);
+        $c: map.get($value, c);
+        $h: map.get($value, h);
+        --#{$prefix}#{$key}-l: #{$l};
+        --#{$prefix}#{$key}-c: #{$c};
+        --#{$prefix}#{$key}-h: #{$h};
+        --#{$prefix}#{$key}: oklch(var(--#{$prefix}#{$key}-l) var(--#{$prefix}#{$key}-c) var(--#{$prefix}#{$key}-h));
   }
   --#{$prefix}primary-fallback: #{$primary};
-  --#{$prefix}primary: oklch(var(--#{$prefix}primary-l) var(--#{$prefix}primary-c) var(--#{$prefix}primary-h));
+  --#{$prefix}secondary-fallback: #{$secondary};
 }
 
 

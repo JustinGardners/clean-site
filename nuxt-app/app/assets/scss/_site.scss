@@ -7,11 +7,13 @@
         background-color:red;
     }
 }
+
+
 @layer components {
     :where(.btn) {
         @layer base {
             @supports (color:oklch(50% 0 0deg)) and (background-color: color-mix(in lab,#fff, #000 50%)) {
-                --#{$prefix}btn-color: var(--#{$prefix}btn-theme-text);
+                --#{$prefix}btn-color: var(--#{$prefix}btn-theme-text, oklch(from var(--#{$prefix}btn-theme, var(--#{$prefix}primary)) clamp(var(--#{$prefix}btn-lightest-text, 0), (l / var(--#{$prefix}btn-text-threshold, 0.623) - 1) * -infinity, var(--#{$prefix}btn-darkest-text, 1)) 0 h));
                 --#{$prefix}btn-bg: var(--#{$prefix}btn-theme, var(--#{$prefix}primary));
                 --#{$prefix}btn-border-color: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-border-tint,#000) var(--#{$prefix}btn-border-shade-amount, 0%));
                 
@@ -45,6 +47,12 @@
                 @include gradient-bg(var(--#{$prefix}btn-bg));
                 @include box-shadow(var(--#{$prefix}btn-box-shadow));
                 @include transition($btn-transition);
+                &:hover {
+                    color: var(--#{$prefix}btn-hover-color);
+                    text-decoration: if($link-hover-decoration == underline, none, null);
+                    background-color: var(--#{$prefix}btn-hover-bg);
+                    border-color: var(--#{$prefix}btn-hover-border-color);
+                }                
             }
         }
     }
