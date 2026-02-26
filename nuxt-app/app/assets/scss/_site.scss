@@ -1,59 +1,190 @@
-:root {    
-    --bg-color: oklch(50% 0 0deg);
-    background-color: var(--bg-color);    
+:root {
+  --bg-color: oklch(50% 0 0deg);
+  background-color: var(--bg-color);
 }
-@media (--lg) {
-    :root {
-        background-color:red;
-    }
+@media (--md-n-above) {
+  :root {
+    background-color: red;
+  }
 }
-
 
 @layer components {
-    :where(.btn) {
-        @layer base {
-            @supports (color:oklch(50% 0 0deg)) and (background-color: color-mix(in lab,#fff, #000 50%)) {
-                --#{$prefix}btn-color: var(--#{$prefix}btn-theme-text, oklch(from var(--#{$prefix}btn-theme, var(--#{$prefix}primary)) clamp(var(--#{$prefix}btn-lightest-text, 0), (l / var(--#{$prefix}btn-text-threshold, 0.623) - 1) * -infinity, var(--#{$prefix}btn-darkest-text, 1)) 0 h));
-                --#{$prefix}btn-bg: var(--#{$prefix}btn-theme, var(--#{$prefix}primary));
-                --#{$prefix}btn-border-color: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-border-tint,#000) var(--#{$prefix}btn-border-shade-amount, 0%));
-                
-                --#{$prefix}btn-hover-color: var(--#{$prefix}btn-theme-hover-text, var(--#{$prefix}btn-color));
-                --#{$prefix}btn-hover-bg: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-hover-tint,#000) var(--#{$prefix}btn-hover-shade-amount, 10%));
-                --#{$prefix}btn-hover-border-color: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-hover-border-tint, #000) var(--#{$prefix}btn-hover-border-shade-amount, 12%));
-
-                --#{$prefix}btn-active-color: var(--#{$prefix}btn-theme-active-text, var(--#{$prefix}btn-color));
-                --#{$prefix}btn-active-bg: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-active-tint,#000) var(--#{$prefix}btn-active-shade-amount, 12%));
-                --#{$prefix}btn-active-border-color: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-active-border-tint, #000) var(--#{$prefix}btn-active-border-shade-amount, 14%));
-                --#{$prefix}btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-                --#{$prefix}btn-disabled-color: var(--#{$prefix}btn-theme-disabled-text, var(--#{$prefix}btn-color));
-                --#{$prefix}btn-disabled-bg: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-disabled-tint,#fff) var(--#{$prefix}btn-disabled-tint-amount, 0%));
-                --#{$prefix}btn-disabled-border-color: color-mix(in lab, var(--#{$prefix}btn-theme, var(--#{$prefix}primary)), var(--#{$prefix}btn-disabled-border-tint,#fff) var(--#{$prefix}btn-disabled-border-tint-amount, 0%));
-
-                display: inline-block;
-                padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
-                font-family: var(--#{$prefix}btn-font-family);
-                @include font-size(var(--#{$prefix}btn-font-size));
-                font-weight: var(--#{$prefix}btn-font-weight);
-                line-height: var(--#{$prefix}btn-line-height);
-                color: var(--#{$prefix}btn-color);
-                text-align: center;
-                text-decoration: if($link-decoration == none, null, none);
-                white-space: $btn-white-space;
-                vertical-align: middle;
-                cursor: if($enable-button-pointers, pointer, null);
-                user-select: none;
-                border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
-                @include border-radius(var(--#{$prefix}btn-border-radius));
-                @include gradient-bg(var(--#{$prefix}btn-bg));
-                @include box-shadow(var(--#{$prefix}btn-box-shadow));
-                @include transition($btn-transition);
-                &:hover {
-                    color: var(--#{$prefix}btn-hover-color);
-                    text-decoration: if($link-hover-decoration == underline, none, null);
-                    background-color: var(--#{$prefix}btn-hover-bg);
-                    border-color: var(--#{$prefix}btn-hover-border-color);
-                }                
-            }
-        }
+  @layer base {
+    :where(.fluid) {
+      --fluid-min: calc(
+        var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+      );
+      --fluid-max: calc(
+        var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+      );
+      --fluid-preferred: calc(
+        (var(--fluid-max) - var(--fluid-min)) /
+          (var(--font-width-max) - var(--font-width-min))
+      );
+      --fluid-type: clamp(
+        (var(--fluid-min) / 16) * 1rem,
+        ((var(--fluid-min) / 16) * 1rem) -
+          (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+          (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+        (var(--fluid-max) / 16) * 1rem
+      );
+      font-size: var(--fluid-type);
     }
+  }
+
+  /*# sourceMappingURL=fluid-type.css.map */
+
+  @layer base {
+    :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6) {
+      all: unset;
+      margin-top: 0; // 1
+      margin-bottom: $headings-margin-bottom;
+      font-family: $headings-font-family;
+      font-style: $headings-font-style;
+      font-weight: $headings-font-weight;
+      line-height: $headings-line-height;
+      color: var(--#{$prefix}heading-color);
+    }
+
+    :is(h1, .h1) {
+      font-size: var(--#{$prefix}h1-font-size, $h1-font-size);
+    }
+
+    :is(h2, .h2) {
+      font-size: var(--#{$prefix}h2-font-size, $h2-font-size);
+    }
+
+    :is(h3, .h3) {
+      font-size: var(--#{$prefix}h3-font-size, $h3-font-size);
+    }
+
+    :is(h4, .h4) {
+      font-size: var(--#{$prefix}h4-font-size, $h4-font-size);
+    }
+
+    :is(h5, .h5) {
+      font-size: var(--#{$prefix}h5-font-size, $h5-font-size);
+    }
+
+    :is(h6, .h6) {
+      font-size: var(--#{$prefix}h6-font-size, $h6-font-size);
+    }
+  }
+
+  :where(.btn) {
+    @layer base {
+      @supports (color: oklch(50% 0 0deg)) and
+        (background-color: color-mix(in lab, #fff, #000 50%)) {
+        --#{$prefix}btn-color: var(
+          --#{$prefix}btn-theme-text,
+          oklch(
+            from var(--#{$prefix}btn-theme, var(--#{$prefix}primary))
+              clamp(
+                var(--#{$prefix}btn-lightest-text, 0),
+                (l / var(--#{$prefix}btn-text-threshold, 0.623) - 1) * -infinity,
+                var(--#{$prefix}btn-darkest-text, 1)
+              )
+              0 h
+          )
+        );
+        --#{$prefix}btn-bg: var(
+          --#{$prefix}btn-theme,
+          var(--#{$prefix}primary)
+        );
+        --#{$prefix}btn-border-color: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-border-tint, #000)
+            var(--#{$prefix}btn-border-shade-amount, 0%)
+        );
+
+        --#{$prefix}btn-hover-color: var(
+          --#{$prefix}btn-theme-hover-text,
+          var(--#{$prefix}btn-color)
+        );
+        --#{$prefix}btn-hover-bg: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-hover-tint, #000)
+            var(--#{$prefix}btn-hover-shade-amount, 10%)
+        );
+        --#{$prefix}btn-hover-border-color: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-hover-border-tint, #000)
+            var(--#{$prefix}btn-hover-border-shade-amount, 12%)
+        );
+
+        --#{$prefix}btn-active-color: var(
+          --#{$prefix}btn-theme-active-text,
+          var(--#{$prefix}btn-color)
+        );
+        --#{$prefix}btn-active-bg: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-active-tint, #000)
+            var(--#{$prefix}btn-active-shade-amount, 12%)
+        );
+        --#{$prefix}btn-active-border-color: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-active-border-tint, #000)
+            var(--#{$prefix}btn-active-border-shade-amount, 14%)
+        );
+        --#{$prefix}btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --#{$prefix}btn-disabled-color: var(
+          --#{$prefix}btn-theme-disabled-text,
+          var(--#{$prefix}btn-color)
+        );
+        --#{$prefix}btn-disabled-bg: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-disabled-tint, #fff)
+            var(--#{$prefix}btn-disabled-tint-amount, 0%)
+        );
+        --#{$prefix}btn-disabled-border-color: color-mix(
+          in lab,
+          var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
+          var(--#{$prefix}btn-disabled-border-tint, #fff)
+            var(--#{$prefix}btn-disabled-border-tint-amount, 0%)
+        );
+
+        display: inline-block;
+        padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
+        font-family: var(--#{$prefix}btn-font-family);
+        @include font-size(var(--#{$prefix}btn-font-size));
+        font-weight: var(--#{$prefix}btn-font-weight);
+        line-height: var(--#{$prefix}btn-line-height);
+        color: var(--#{$prefix}btn-color);
+        text-align: center;
+        text-decoration: if($link-decoration == none, null, none);
+        white-space: $btn-white-space;
+        vertical-align: middle;
+        cursor: if($enable-button-pointers, pointer, null);
+        user-select: none;
+        border: var(--#{$prefix}btn-border-width) solid
+          var(--#{$prefix}btn-border-color);
+        @include border-radius(var(--#{$prefix}btn-border-radius));
+        @include gradient-bg(var(--#{$prefix}btn-bg));
+        @include box-shadow(var(--#{$prefix}btn-box-shadow));
+        @include transition($btn-transition);
+        &:hover {
+          color: var(--#{$prefix}btn-hover-color);
+          text-decoration: if($link-hover-decoration == underline, none, null);
+          background-color: var(--#{$prefix}btn-hover-bg);
+          border-color: var(--#{$prefix}btn-hover-border-color);
+        }
+      }
+    }
+    @layer modifiers {
+      @each $key, $value in $theme-colors {
+        @if map-has-key($lch-colors, $key) {
+          $lch: map.get($lch-colors, $key);
+          &.btn-#{$key} {
+            --#{$prefix}btn-theme: var(--#{$prefix}#{$key});
+          }
+        }
+      }
+    }
+  }
 }

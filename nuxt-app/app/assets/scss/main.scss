@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use 'sass:map';
+@use 'sass:math';
 
 @layer reset, bs, site; 
 @layer site {
@@ -10,9 +11,7 @@
     @layer base, states, modifiers;
 }
 
-$prefix: "site-";
-
-
+// OKLCH color definitions for theme colors, used to generate CSS variables for each color and its lightness, chroma, and hue components
 $lch-colors: (
     primary: (
         l: 0.7,
@@ -23,13 +22,49 @@ $lch-colors: (
         l: 0.7,
         c: 0.1,
         h: 356
+    ),
+    success: (
+        l: 0.5,
+        c: 0.1981,
+        h: 146.68
+    ),
+    danger: (
+        l: 0.4962,
+        c: 0.1719,
+        h: 19.41
+    ),
+    warning: (
+        l: 0.7237,
+        c: 0.1719,
+        h: 72.92
+    ),
+    info: (
+        l: 0.6,
+        c: 0.1,
+        h: 200
+    ),
+    light: (
+        l: 0.9,
+        c: 0.05,
+        h: 233
+    ),
+    dark: (
+        l: 0.3,
+        c: 0.1,
+        h: 233
     )
 );
+
+/// Override Bootstrap's default breakpoints here
+$prefix: "site-";
 
 $primary: color.to-space(oklch(map.get($lch-colors, 'primary', 'l') map.get($lch-colors, 'primary', 'c') map.get($lch-colors, 'primary', 'h')), hsl);
 $secondary: color.to-space(oklch(map.get($lch-colors, 'secondary', 'l') map.get($lch-colors, 'secondary', 'c') map.get($lch-colors, 'secondary', 'h')), hsl);
 
-@import "./variables/media-queries";
+
+
+
+
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -38,23 +73,40 @@ $secondary: color.to-space(oklch(map.get($lch-colors, 'secondary', 'l') map.get(
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
+$font-size-base-rem:          math.div($font-size-base, 1rem);
+$modular-scale-ratio:         1.25;
+
+$h1-font-size:                $font-size-base-rem * math.pow($modular-scale-ratio, 5) * 1rem;
+$h2-font-size:                $font-size-base-rem * math.pow($modular-scale-ratio, 4) * 1rem;
+$h3-font-size:                $font-size-base-rem * math.pow($modular-scale-ratio, 3) * 1rem;
+$h4-font-size:                $font-size-base-rem * math.pow($modular-scale-ratio, 2) * 1rem;
+$h5-font-size:                $font-size-base-rem * math.pow($modular-scale-ratio, 1) * 1rem;
+
+/// Set map overrides here
+$grid-breakpoints: map.set($grid-breakpoints, 'md', 790px);
+
+@import "./variables/media-queries";
+
 
 :root {
-  @each $key, $value in $lch-colors {
-        $l: map.get($value, l);
-        $c: map.get($value, c);
-        $h: map.get($value, h);
+  @each $key, $value in $theme-colors {
+    @if map-has-key($lch-colors , $key ) {
+        $lch: map.get($lch-colors, $key);
+        $l: map.get($lch, l);
+        $c: map.get($lch, c);
+        $h: map.get($lch, h);
         --#{$prefix}#{$key}-l: #{$l};
         --#{$prefix}#{$key}-c: #{$c};
         --#{$prefix}#{$key}-h: #{$h};
         --#{$prefix}#{$key}: oklch(var(--#{$prefix}#{$key}-l) var(--#{$prefix}#{$key}-c) var(--#{$prefix}#{$key}-h));
+    }
   }
   --#{$prefix}primary-fallback: #{$primary};
   --#{$prefix}secondary-fallback: #{$secondary};
 }
 
 
-
+// @debug map-get($grid-breakpoints , 'md' );
 
 
 @layer bs {
