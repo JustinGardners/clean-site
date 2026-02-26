@@ -1,0 +1,14 @@
+@use "sass:color";
+
+// Converts a static OKLCH color to an sRGB fallback
+@function oklch-fallback($oklch-color) {
+  @return color.to-space($oklch-color, rgb);
+}
+
+// Emits:
+// 1) fallback declaration
+// 2) modern OKLCH declaration
+@mixin color-with-fallback($property, $oklch-static, $oklch-dynamic) {
+  #{$property}: oklch-fallback($oklch-static);
+  #{$property}: #{$oklch-dynamic};
+}
