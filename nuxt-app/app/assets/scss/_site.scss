@@ -9,65 +9,109 @@
 }
 
 @layer components {
-  @layer base {
-    :where(.fluid) {
-      --fluid-min: calc(
-        var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
-      );
-      --fluid-max: calc(
-        var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
-      );
-      --fluid-preferred: calc(
-        (var(--fluid-max) - var(--fluid-min)) /
-          (var(--font-width-max) - var(--font-width-min))
-      );
-      --fluid-type: clamp(
-        (var(--fluid-min) / 16) * 1rem,
-        ((var(--fluid-min) / 16) * 1rem) -
-          (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-          (var(--fluid-preferred) * var(--variable-unit, 100vi)),
-        (var(--fluid-max) / 16) * 1rem
-      );
-      font-size: var(--fluid-type);
+  //   @layer base {
+  //     :where(.fluid) {
+  //       --fluid-min: calc(
+  //         var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+  //       );
+  //       --fluid-max: calc(
+  //         var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+  //       );
+  //       --fluid-preferred: calc(
+  //         (var(--fluid-max) - var(--fluid-min)) /
+  //           (var(--font-width-max) - var(--font-width-min))
+  //       );
+  //       --fluid-type: clamp(
+  //         (var(--fluid-min) / 16) * 1rem,
+  //         ((var(--fluid-min) / 16) * 1rem) -
+  //           (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+  //           (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+  //         (var(--fluid-max) / 16) * 1rem
+  //       );
+  //       font-size: var(--fluid-type);
+  //     }
+  //   }
+
+  @function check-if-type-size($size) {
+    @if not index($type-sizes, $size) {
+      @warn "Invalid font size: #{$size}. Valid sizes are: #{$type-sizes}";
+      @return false;
+    } @else {
+      @return true;
     }
   }
 
-  /*# sourceMappingURL=fluid-type.css.map */
+  @function check-if-heading-size($size) {
+    @if not index($heading-sizes, $size) {
+      @warn "Invalid heading size: #{$size}. Valid sizes are: #{$heading-sizes}";
+      @return false;
+    } @else {
+      @return true;
+    }
+  }
+
+  @mixin heading-size($size) {
+    @if (check-if-heading-size($size)) {
+      $font-size: map.get(map.get($headings, $size), "size");
+      @if (check-if-type-size($font-size)) {
+        $default-font-max-size: site-font-size($font-size, px);
+        font-size: calc(
+          var(--#{$prefix}#{$font-size}-font-size, site-font-size($font-size)) *
+            var(--unit, 1rem)
+        );
+        --font-size-max: var(
+          --#{$prefix}#{$font-size}-font-size-max,
+          #{$default-font-max-size}
+        );
+      }
+      $min-size: map.get(map.get($headings, $size), "min-size");
+      @if (check-if-type-size($min-size)) {
+        $default-font-min-size: site-font-size($min-size, px);
+        --font-size-min: var(
+          --#{$prefix}#{$font-size}-font-size-min,
+          #{$default-font-min-size}
+        );
+      }
+      --font-ratio-min: var(
+        --#{$prefix}#{$font-size}-font-ratio-min,
+        #{$fluid-font-ratio-min}
+      );
+      --font-ratio-max: var(
+        --#{$prefix}#{$font-size}-font-ratio-max,
+        #{$fluid-font-ratio-max}
+      );
+      --font-width-min: var(
+        --#{$prefix}#{$font-size}-font-width-min,
+        #{$fluid-font-width-min}
+      );
+      --font-width-max: var(
+        --#{$prefix}#{$font-size}-font-width-max,
+        #{$fluid-font-width-max}
+      );
+    }
+  }
 
   @layer base {
     :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6) {
-      all: unset;
-      margin-top: 0; // 1
-      margin-bottom: $headings-margin-bottom;
-      font-family: $headings-font-family;
-      font-style: $headings-font-style;
-      font-weight: $headings-font-weight;
-      line-height: $headings-line-height;
-      color: var(--#{$prefix}heading-color);
+      @supports (width: calc(10px * pow(5, 2))) {
+        font-size: unset;
+      }
+      // margin-top: 0; // 1
+      // margin-bottom: $headings-margin-bottom;
+      // font-family: $headings-font-family;
+      // font-style: $headings-font-style;
+      // font-weight: $headings-font-weight;
+      // line-height: $headings-line-height;
+      // color: var(--#{$prefix}heading-color);
     }
 
-    :is(h1, .h1) {
-      font-size: var(--#{$prefix}h1-font-size, $h1-font-size);
-    }
-
-    :is(h2, .h2) {
-      font-size: var(--#{$prefix}h2-font-size, $h2-font-size);
-    }
-
-    :is(h3, .h3) {
-      font-size: var(--#{$prefix}h3-font-size, $h3-font-size);
-    }
-
-    :is(h4, .h4) {
-      font-size: var(--#{$prefix}h4-font-size, $h4-font-size);
-    }
-
-    :is(h5, .h5) {
-      font-size: var(--#{$prefix}h5-font-size, $h5-font-size);
-    }
-
-    :is(h6, .h6) {
-      font-size: var(--#{$prefix}h6-font-size, $h6-font-size);
+    @supports (width: calc(10px * pow(5, 2))) {
+      @each $heading, $value in $headings {
+        $size: map.get($value, "size");
+        :is(#{$heading}, .heading-#{$size}) {
+          @include heading-size($heading);
+        }
+      }
     }
   }
 

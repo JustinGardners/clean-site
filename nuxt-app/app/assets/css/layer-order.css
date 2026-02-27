@@ -1,0 +1,9 @@
+@layer reset, bs, site, tailwind;
+
+@layer site {
+  @layer components;
+}
+
+@layer site.components {
+  @layer base, states, modifiers;
+}

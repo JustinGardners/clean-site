@@ -1,0 +1,44 @@
+@source "../../../../app/**/*.{vue,js,ts,jsx,tsx}";
+@source "../../../../layers/**/*.{vue,js,ts,jsx,tsx}";
+
+@import "tailwindcss/utilities" layer(tailwind);
+
+@utility fluid {
+      --fluid-min: calc(
+        var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+      );
+      --fluid-max: calc(
+        var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+      );
+      --fluid-preferred: calc(
+        (var(--fluid-max) - var(--fluid-min)) /
+          (var(--font-width-max) - var(--font-width-min))
+      );
+      --fluid-type: clamp(
+        (var(--fluid-min) / 16) * 1rem,
+        ((var(--fluid-min) / 16) * 1rem) -
+          (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+          (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+        (var(--fluid-max) / 16) * 1rem
+      );
+      font-size: var(--fluid-type);    
+}
+
+@utility unit-* {
+  --unit: --value([length]);
+  --unit: --value(--unit-*);
+}
+
+
+
+@theme {
+    --unit-px: 1px;
+    --unit-rem: 1rem;
+    --unit-em: 1em;
+    --unit-ch: 1ch;
+    --unit-cqi: 1cqi;
+    --unit-cqw: 1cqw;
+    --unit-vw: 1vw;
+    --unit-vi: 1vi;
+    --color-*: initial;
+}
