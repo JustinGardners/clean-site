@@ -1,6 +1,7 @@
 @use "sass:color";
 @use "sass:map";
 @use "sass:math";
+@use "sass:list";
 
 // OKLCH color definitions for theme colors, used to generate CSS variables for each color and its lightness, chroma, and hue components
 $lch-colors: (
@@ -77,9 +78,9 @@ $h1-font-size: 2.44140625rem;
 $font-size-base-px: math.div($font-size-base, 1rem);
 $text-scale-increment: 1.25;
 
-$type-sizes:
-  "xxs", "xs", "sm", "default", "lg", "xl", "2xl", "display-xxs", "display-xs",
-  "display-sm", "display-md", "display-lg", "display-xl";
+$type-sizes-display: "display-xxs", "display-xs", "display-sm", "display-md", "display-lg", "display-xl";
+$type-sizes-normal: "xxs", "xs", "sm", "default", "lg", "xl", "2xl";
+$type-sizes: list.join($type-sizes-normal , $type-sizes-display);
 $heading-sizes: "h1", "h2", "h3", "h4", "h5", "h6";
 
 $headings: (
@@ -182,12 +183,23 @@ $font-sizes: (
   }
 }
 
+// Bootstrap vars
 $h1-font-size: site-font-size("2xl", rem, true);
 $h2-font-size: site-font-size("xl", rem, true);
 $h3-font-size: site-font-size("lg", rem, true);
 $h4-font-size: site-font-size("default", rem, true);
 $h5-font-size: site-font-size("sm", rem, true);
 $h6-font-size: site-font-size("xs", rem, true);
+
+// Bootstrap vars
+$display-font-sizes: (
+  1: site-font-size("display-xl", rem, true),
+  2: site-font-size("display-lg", rem, true),
+  3: site-font-size("display-md", rem, true),
+  4: site-font-size("display-sm", rem, true),
+  5: site-font-size("display-xs", rem, true),
+  6: site-font-size("display-xxs", rem, true),
+);
 
 
 $fluid-font-width-min: 375;
@@ -214,7 +226,8 @@ $grid-breakpoints: map.set($grid-breakpoints, "md", 790px);
       --#{$prefix}#{$key}-font-size: #{unquote("#{$result}")};
       --#{$prefix}#{$key}-font-size-px: #{unquote("#{$result-px}")};
     }
-  }
+  }   
+
 }
 
 @supports (width: calc(10px * pow(5, 2))) {

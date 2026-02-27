@@ -60,6 +60,13 @@
     <p class="h4">h4. Bootstrap heading</p>
     <p class="h5">h5. Bootstrap heading</p>
     <p class="h6">h6. Bootstrap heading</p>
+
+    <p class="display-1">h1. Bootstrap heading</p>
+    <p class="display-2">h2. Bootstrap heading</p>
+    <p class="display-3">h3. Bootstrap heading</p>
+    <p class="display-4">h4. Bootstrap heading</p>
+    <p class="display-5">h5. Bootstrap heading</p>
+    <p class="display-6">h6. Bootstrap heading</p>    
 </div>
 
 </template>
