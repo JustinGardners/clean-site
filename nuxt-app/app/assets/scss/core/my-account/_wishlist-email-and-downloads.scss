@@ -1,0 +1,167 @@
+div#wishlistEmail {
+  text-align: center;
+  background-color: #1c4aa7;
+  padding: 2rem;
+  margin-top: 1rem;
+  h3 {
+    color: #fff;
+  }
+  h4 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+  .frmShareEmail {
+    display: inline-flex;
+    width: 100%;
+  }
+  .form-control {
+    margin: 0 0.5rem 0 0;
+    padding: 14px;
+  }
+}
+
+#addressBookEdit {
+  .postcodeLookupContainer {
+    #postcodeLookup {
+      float: left;
+      width: calc(100% - 110px);
+    }
+    a.btnLookupPostcode {
+      float: right;
+      bottom: -5px;
+      position: relative;
+      // @include button-variant($btn-background, $white, $btn-background);
+    }
+  }
+
+  .manualAddressContainer {
+    display: block;
+    width: 100%;
+    clear: both;
+    label {
+      display: none;
+    }
+    a {
+      color: #1c4aa7;
+      text-decoration: underline;
+    }
+  }
+}
+
+.outterStretch {
+  .ui-btn {
+    color: #002f87;
+    background-color: #eee;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 1rem;
+  }
+}
+
+#digitalDownload,
+#mainBasketdigitalDownload {
+  > ul {
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #eee;
+  }
+  .header {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #dddddd;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      .itemCover {
+        flex: 0 0 10.66666667%;
+        max-width: 10.66666667%;
+      }
+      .itemHeader {
+        flex: 0 0 52.33333333%;
+        max-width: 52.33333333%;
+        padding-left: 15px;
+        padding-right: 15px;
+        // @include media-breakpoint-up(lg) {
+          padding-top: 1rem;
+      }
+      .orderDate {
+        // @include media-breakpoint-up(lg) {
+          flex: 0 0 18.5%;
+          max-width: 18.5%;
+        flex: 0 0 37%;
+        max-width: 37%;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: center;
+      }
+      .downloadLink {
+        // @include media-breakpoint-up(lg) {
+          flex: 0 0 18.5%;
+          max-width: 18.5%;
+          display: block;
+        flex: 0 0 0%;
+        max-width: 0%;
+        display: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: center;
+      }
+    }
+  }
+  .digitalTitle {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #dddddd;
+      .itemImage {
+        flex: 0 0 10.66666667%;
+        max-width: 10.66666667%;
+      }
+      .itemInfo {
+        flex: 0 0 52.33333333%;
+        max-width: 52.33333333%;
+        padding-left: 15px;
+        padding-right: 15px;
+        // @include media-breakpoint-up(lg) {
+          padding-top: 1rem;
+      }
+      .orderDate {
+        // @include media-breakpoint-up(lg) {
+          flex: 0 0 18.5%;
+          max-width: 18.5%;
+          padding-top: 1rem;
+        flex: 0 0 37%;
+        max-width: 37%;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        text-align: center;
+      }
+      .downloadLink {
+        // @include media-breakpoint-up(lg) {
+          flex: 0 0 18.5%;
+          max-width: 18.5%;
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 1rem;
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+        a {
+          // @include button-variant($btn-background, $white, $btn-background);
+          width: 100%;
+          display: inline-block;
+          margin: 0.5rem 0;
+          // @include media-breakpoint-up(lg) {
+            width: auto;
+            margin: auto;
+        }
+      }
+    }
+  }
+}
+

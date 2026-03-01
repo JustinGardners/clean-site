@@ -1,0 +1,608 @@
+@use "sass:color";
+@use "sass:map";
+
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) {
+  .adminNav {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding-inline: 1rem;
+    // border-top: 1px solid $subtle-border;
+    label[for="accountInfo"] {
+      order: 99;
+      z-index: 2;
+      padding: 1.2rem 0;
+      margin-top: 0;
+      background: white;
+      position: sticky;
+      bottom: 0;
+      &:before {
+        content: "";
+        display: block;
+        height: 1px;
+        top: 0;
+        position: absolute;
+        width: 100vw;
+        // background: $subtle-border;
+        margin-inline: calc(-50vw + 50%);
+      }
+      span {
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+        &:before {
+          content: "";
+          display: block;
+          width: 0.675em;
+          aspect-ratio: 1 / 1;
+          align-self: center;
+          transform: rotate(45deg);
+          background: transparent;
+          border-left: 1px solid currentColor;
+          border-top: 1px solid currentColor;
+          transition: transform 230ms ease-in;
+        }
+      }
+      &:has(+ input:checked) {
+        span:before {
+          transform: rotate(225deg);
+        }
+      }
+      + input[type="checkbox"] {
+        order: 100;
+        // @include visually-hidden();
+        &:checked + .adminNav__wrapper {
+          display: block;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.adminNav__wrapper {
+  display: none;
+  opacity: 0;
+  > h5:first-child {
+    margin-top: 1rem;
+  }
+}
+
+:is(.competition, .myAccount, .helpPages, .adminHelpPages) {
+  .adminNav {
+    border-top: 0;
+    label[for="accountInfo"] {
+      // @include media-breakpoint-up(md) {
+        display: none;
+        + input[type="checkbox"] {
+          display: none;
+          + .adminNav__wrapper {
+            display: block;
+            height: auto;
+            opacity: 1;
+          }
+        }
+    }
+    // @include media-breakpoint-up(md) {
+      padding-inline: 0;
+  }
+}
+
+@supports (transition-behavior: allow-discrete) and
+  (height: calc-size(fit-content, size / 100)) {
+  :is(.competition, .myAccount, .helpPages, .adminHelpPages) {
+    .adminNav {
+      label[for="accountInfo"] {
+        + input[type="checkbox"] {
+          &:checked + .adminNav__wrapper {
+            height: calc-size(fit-content, size / 1);
+          }
+        }
+      }
+    }
+  }
+
+  .adminNav__wrapper {
+    height: calc-size(fit-content, size / 100);
+    transition:
+      opacity 0.3s allow-discrete,
+      height 0.7s allow-discrete,
+      display 0.7s allow-discrete;
+  }
+
+  @starting-style {
+    .adminNav__wrapper {
+      opacity: 0 !important;
+      height: calc-size(fit-content, size / 100) !important;
+    }
+  }
+}
+
+/////
+
+.competition,
+.myAccount,
+.helpPages {
+  .navSection {
+    .dropdownList {
+      h4 {
+        padding: 0.5rem 0;
+        margin: 0;
+        // color: $bg-brand;
+        // @include subheaderH;
+        border-bottom: 1px solid #929fb6;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0 0 1rem 0;
+        list-style: none;
+        li {
+          padding: 0.5rem 0;
+          border-bottom: 1px solid #d4dbe5;
+          &:last-child {
+            border-bottom: 0;
+          }
+          a {
+            // color: $bg-brand;
+            // @include linkH;
+          }
+        }
+      }
+    }
+  }
+}
+
+:is(.myAccount:not(:is(#logonCheckout, #logonRegister)), .helpPages) {
+  .myAccountWrap > .myAccountContents:not(:has(.accountLanding)) {
+    // background: $subtle-background;
+    padding: 1.1rem;
+    border-radius: 10px;
+    // @include media-breakpoint-up(md) {
+      padding: 2.2rem;
+    .myAccountSection {
+      margin-bottom: 0;
+      border-radius: 0 0 10px 10px;
+    }
+    .register {
+      border: 0 !important;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}
+
+#main
+  #logonRegister
+  :is(.myAccountSection .loginFields, .guestRegistration)
+  .form-group
+  + .form-group {
+  margin-top: 1rem;
+}
+
+:is(.myAccount, .helpPages, .adminHelpPages) {
+  .adminNav {
+    // font-family: $text-font-stack;
+    ul {
+      padding-left: 0;
+      margin-bottom:1.5rem;
+    }
+    li {
+      display: flex;
+    }
+    ul a {
+      border-block-start: 1px solid #d4dbe5;
+      width: 100%;
+      padding-block: 0.5em;
+      // color: $primary;
+    }
+    h5 {
+      font-size: 1.375em;
+      // color: $primary;
+    }
+  }
+  .leftNav {
+    order: 2;
+    width: 100%;
+    h5 {
+      font-weight: 700;
+    }
+    // @include media-breakpoint-up(md) {
+      order: 0;
+      // min-width: $left-nav-width;
+      width: auto;
+  }
+
+  .leftNav {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    // border-top: 1px solid $subtle-border;
+    &:has(input[type="checkbox"]:not(:checked)) {
+      border-top: 0;
+    }
+    // @include media-breakpoint-up(md) {
+      border-top: 0;
+  }
+}
+
+.adminHelpPages > .row > .col-md-9 {
+  // @include media-breakpoint-up(md) {
+    width: min(min(75%, 80ch), calc(100% - 306px));
+}
+
+.adminHelpPages :is(h3, h4, h5, h6) {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.adminHelpPages .headers {
+  + * {
+    margin-top: 1.5rem;
+  }
+  h3 {
+    // font-family: $text-font-stack;
+    // color: $primary;
+    font-size: clampWithViewPort(18, 30) !important;
+  }
+}
+
+.adminHelpPages .template-container.tm--half {
+  padding:0;
+}
+
+.myAccount,
+.helpPages {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  flex-flow: row wrap;
+  .introHeading {
+    display: none;
+  }
+  // @include media-breakpoint-up(md) {
+    flex-flow: row;
+  //Removed * 0.5 as that halves the grid. It's 12px on each side, so 24px in total - gw
+  column-gap: calc(var(--bs-gutter-x));
+  row-gap: calc(var(--bs-gutter-x));
+
+  // :is(.myAccountContents:has(.form)) {
+  //   border:1px solid $primary;
+  //   .myAccountMain {
+  //     background: white;
+  //     margin-inline: -2.2rem;
+  //   }
+  // }
+
+  .myAccountWrap,
+  .helpWrap {
+    order: 1;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    // @include media-breakpoint-up(md) {
+      order: 2;
+
+    :is(.myAccountHeader + *, .myAccountHeader > h2 + *) {
+      margin-top: 1.5rem;
+    }
+
+    :is(.myAccountContents:has(.changeEmailAddress, .form, .regForm)) {
+      // border: 1px solid $primary;
+      padding-bottom: 0;
+      .myAccountMain {
+        background: white;
+        margin-inline: calc(-1.2rem + 2px);
+        border-radius: 0 0 10px 10px;
+        // @include media-breakpoint-up(md) {
+          margin-inline: -2.2rem;
+        .myAccountContents {
+          // border: 1px solid $primary;
+        }
+        .changeDetails {
+          border: 0;
+        }
+      }
+    }
+
+    .myAccountHeader,
+    .helpHeader {
+      h2 {
+        // @include subheaderH;
+        // color: $bg-brand;
+        border-bottom: 1px solid #929fb6;
+        text-align: left;
+        // padding: 2rem 2.2rem 1rem;
+        padding-bottom: 1rem;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: 0;
+        // background-color: #eceff6;
+        font-weight: 600;
+      }
+      > p,
+      .addressText {
+        // color: $bg-brand;
+        text-align: left;
+        padding-bottom: 1rem;
+        max-width: 60ch;
+        margin-bottom: 1rem;
+        background-color: #eceff6;
+      }
+      .mainDescription {
+        p {
+          // @include paragraphH;
+          // color: $bg-brand;
+          text-align: left;
+          // padding: 1rem;
+          margin-bottom: 1rem;
+          background-color: #eceff6;
+        }
+      }
+      h2.mainHeading {
+        display: none;
+      }
+      .myAccountOptions {
+        .myAccountIconWrap {
+          background-color: #ebeff5;
+          flex-grow: 1;
+          width: 100%;
+          height: 100%;
+          padding: 1.5rem;
+          .imageIcon {
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center;
+            scale: 1;
+            // @include transition(all 0.35s ease);
+          }
+          &:hover {
+            .imageIcon {
+              scale: 1.1;
+            }
+          }
+          &.orderHistory {
+            .imageIcon {
+              background-image: url("/Content/system/images/my-account-icons/order-history.svg");
+            }
+          }
+          &.address {
+            .imageIcon {
+              background-image: url("/Content/system/images/my-account-icons/address-book.svg");
+            }
+          }
+          &.password {
+            .imageIcon {
+              background-image: url("/Content/system/images/my-account-icons/password.svg");
+            }
+          }
+          &.update {
+            .imageIcon {
+              background-image: url("/Content/system/images/my-account-icons/my-account.svg");
+            }
+          }
+          h3 {
+            // @include subheaderH;
+            // color: $bg-brand;
+            border-bottom: 1px solid #929fb6;
+            padding-bottom: 0.5rem;
+            margin: 0.5rem -1.5rem;
+          }
+          a {
+            display: block;
+            // color: $bg-brand;
+            text-align: center;
+            width: 100%;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    .myAccountMain {
+      > p {
+        // color: $bg-brand;
+        text-align: left;
+        // padding: 1rem 1rem 2.2rem 2.2rem;
+        // margin-bottom: 1rem;
+        // background-color: #eceff6;
+      }
+      .changeEmailAddress {
+        h2 {
+          font-size: 1.25rem !important;
+          font-weight: 700;
+          color: #003087;
+          text-align: center;
+          padding: 1rem;
+          margin-bottom: -0.5rem !important;
+          background-color: #eceff6;
+        }
+        .register {
+          // border: 2px solid $subtle-background;
+          padding: 1.5rem 6.25%;
+          // @include breakpt-md {
+            padding: 1.5rem 6.25%;
+        }
+      }
+      > form,
+      > .form,
+      .changeDetails {
+        // border: 2px solid $subtle-background;
+        border-radius: 0 0 10px 10px;
+        padding: 1.5rem 6.25%;
+        // @include breakpt-md {
+          padding: 1.5rem 6.25%;
+        // margin-bottom: 1rem;
+        // margin-top: -1rem;
+        > h2 {
+          font-size: 22px;
+          // color: $bg-brand;
+        }
+      }
+      .changeEmailAddress {
+        margin-top: 0;
+      }
+      .myAccountSection {
+        margin-bottom: 1rem;
+        .btn {
+          margin-top: 1rem;
+        }
+      }
+    }
+    .myAccountContents > .myAccountContents {
+      display: none;
+    }
+  }
+
+  .myAccountWrap {
+    .accountLanding {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      container-type: inline-size;
+    }
+  }
+
+  .account-card {
+    position: relative;
+    > div {
+      // aspect-ratio: 4/2;
+      // background: $subtle-background;
+      height: 100%;
+      padding: 2rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      @container (min-width: 600px) {
+        aspect-ratio: 1/1;
+      }
+    }
+  }
+
+  .account-card__icon {
+    aspect-ratio: 1/1;
+    width: 4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .account-card__content {
+    margin-top: 1rem;
+    // --bs-heading-color: #{$bg-brand};
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    h3 {
+      font-size: min(clampWithViewPort(22, 30), max(min(3.1cqw, 30px), 22px));
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          #000E67 50%,
+           #4F7AD1 50%
+        );
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        margin-block: 0.5em;
+        transition: background-position 0.3s ease-in;
+      }
+    }
+    a {
+      &:hover {
+        text-decoration: none;
+        h3:after {
+          // opacity: 1;
+          background-position: 0% 0;
+        }
+      }
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    p {
+      font-size: clamp(14px, 3cqw, 16px);
+    }
+  }
+
+  .account-card--order-history {
+    @container (min-width: 600px) {
+      grid-column: 1 / -1;
+    }
+    display: grid;
+    grid-template-columns: subgrid;
+    @container (min-width: 600px) {
+      .account-card__content {
+        width: calc(100cqw - 4rem);
+      }
+    }
+    .account-card__icon {
+      background-image: url("/Content/media/icons/my-account/order-history.svg");
+    }
+  }
+
+  .account-card--address-book {
+    .account-card__icon {
+      background-image: url("/Content/media/icons/my-account/address-book.svg");
+    }
+  }
+
+  .account-card--change-password {
+    .account-card__icon {
+      background-image: url("/Content/media/icons/my-account/passwords.svg");
+    }
+  }
+
+  .account-card--personal-details {
+    .account-card__icon {
+      background-image: url("/Content/media/icons/my-account/personal-details.svg");
+    }
+  }
+
+  label {
+    margin-top: 0.5rem;
+    // color: $bg-brand;
+    font-weight: bold;
+    text-align: left;
+    // font-family: $text-font-stack;
+  }
+  // input[type="text"],
+  // input[type="password"],
+  // select,
+  // textarea {
+  //   display: block;
+  //   margin: 0.5rem 0;
+  //   border: 2px solid #bcc8de;
+  //   padding: 0.375rem 0.75rem;
+  //   font-size: 1rem;
+  //   font-weight: 400;
+  //   line-height: 1.5;
+  //   color: var(--bs-body-color);
+  //   background-color: var(--bs-body-bg);
+  //   background-clip: padding-box;
+  //   border-radius: 0;
+  // }
+
+  .btn,
+  button {
+    // @include button-variant($btn-background, $white, $btn-background);
+    // font-family: $headings-font-family;
+    margin-top: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+

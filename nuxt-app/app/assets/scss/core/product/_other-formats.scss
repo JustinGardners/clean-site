@@ -1,0 +1,42 @@
+// Other Formats
+.alternativeFormats .formatsList {
+  padding: 0;
+  margin: 0;
+  li {
+    &:not(:first-of-type) {
+      margin-top: 0.5rem;
+    }
+  }
+  .formatTitle {
+    // color: $bg-brand;
+    font-weight: bold;
+  }
+}
+.alternativeFormats .formatsList > li {
+  position: relative;
+  display: block;
+  padding: 0.75rem;
+  border: 1px solid #000;
+  background: #fff;
+  list-style: none;
+  cursor: pointer;
+  span.price {
+    color: #e00000;
+  }
+}
+.alternativeFormats .formatsList > li {
+  .formatItemsList {
+    padding: 0;
+    list-style: none;
+    li {
+      margin-bottom: 0.5rem;
+      a {
+        // @include button-variant($btn-background, $white, $btn-background);
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+}
+

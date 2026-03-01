@@ -1,0 +1,167 @@
+// Buttons
+$btn-background: $primary;
+$btn-hover: #002262;
+
+// @mixin button-variant($background, $font-col, $border) {
+  // background-color: $background;
+  // color: $font-col;
+  font-weight: 600;
+  padding: max(0.6em, 0.5rem) 0.5em;
+  text-align: center;
+  // border: 2px solid $border;
+  border-radius: var(--bs-border-radius, 0);
+  // border-radius: 0;
+  display: inline-block;
+  // max-width: 195px;
+  cursor: pointer;
+  // @include transition(background-color 0.5s ease);
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  // font-family: $headings-font-family;
+  &:hover {
+    // background-color: $btn-hover;
+    text-decoration: none;
+    // color: $white;
+  }
+
+/// A mixin which outputs layout rules for info tags
+@mixin tag--info-layout-output() {
+  content: var(--tag-info-text, "Tag label");
+  background-color: var(--tag-info-bgColor, #ccc);
+  color: var(--tag-info-color, #000);
+  font-size: var(--tag-info-fontSize, 12px);
+  font-weight: var(--tag-info-fontWeight, 600);
+  position: absolute;
+  left: 50%;
+  bottom: var(--tag-info-bottom, -5px);
+  transform: translateX(-50%);
+  padding: var(--tag-info-padding, 1px 0.5rem);
+  width: var(--tag-info-width, max-content);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 1.8em;
+  line-height: 1.6;
+}
+
+/// A wrapper mixin to apply tag layout rules
+/// @param {String} $bannerBlockPosition ['before'] - 'before' or 'after'
+// @mixin tag--info-layout($bannerBlockPosition: "before") {
+  position: relative;
+  // @if ($bannerBlockPosition == "before") {
+    &:before {
+      // @include tag--info-layout-output();
+    }
+  // } @else if($bannerBlockPosition == "after") {
+    &:after {
+      // @include tag--info-layout-output();
+    }
+
+/// A mixin to apply info code styles
+/// @param {String} $bannerText - The text content for the promo banner
+/// @param {Color} $bannerBg - The background color of the promo banner
+/// @param {Color} $bannerTextColor - The text color of the promo banner
+/// @example scss
+/// @include tag--promo-style('promo', #ccc, #000);
+/// @output
+/// --tag-promo-text: 'promo';
+/// --tag-promo-bgColor: #ccc;
+/// --tag-promo-color: #000;
+// @mixin tag--info-style($bannerText, $bannerBg, $bannerTextColor: #000) {
+  // --tag-info-text: "#{$bannerText}";
+  // @if ($bannerBg != "") {
+    // --tag-info-bgColor: #{$bannerBg};
+  // @if ($bannerTextColor != "") {
+    // --tag-info-color: #{$bannerTextColor};
+
+/// A mixin to apply layout rules for promotional tags or banners
+@mixin tag--promo-layout() {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &::before {
+    content: var(--tag-promo-text, "Promo label");
+    transform: translate(0%, 8%) rotate(-45deg);
+    padding: var(--tag-promo-padding, 10px);
+    color: var(--tag-promo-color, #fff);
+    font-weight: var(--tag-promo-fontWeight, 600);
+    font-size: var(--tag-promo-fontSize, 12px);
+    line-height: 1;
+    text-align: center;
+    white-space: pre-wrap;
+    z-index: 10;
+  }
+
+  &::after {
+    $tag-promo-shapeSize: calc(
+      var(--tag-promo-fontSize, 12px) * var(--tag-promo-shapeSize-multiplier, 5)
+    );
+    content: "";
+    // width: var(--tag-promo-shapeSize, #{$tag-promo-shapeSize});
+    aspect-ratio: 1/1;
+    background: var(--tag-promo-bgColor, #ccc);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 5;
+  }
+}
+
+/// A mixin to apply promo code styles
+/// @param {String} $bannerText - The text content for the promo banner
+/// @param {Color} $bannerBg - The background color of the promo banner
+/// @param {Color} $bannerTextColor - The text color of the promo banner
+/// @example scss
+/// @include tag--promo-style('promo', #ccc, #000);
+/// @output
+/// --tag-promo-text: 'promo';
+/// --tag-promo-bgColor: #ccc;
+/// --tag-promo-color: #000;
+// @mixin tag--promo-style($bannerText, $bannerBg, $bannerTextColor: #fff) {
+  $has-line-break: str-index($bannerText, "\\A");
+  // --tag-promo-text: "#{$bannerText}";
+  // @if $has-line-break {
+    --tag-promo-shapeSize-multiplier: 6.8;
+  // @if ($bannerBg != "") {
+    // --tag-promo-bgColor: #{$bannerBg};
+  // @if ($bannerTextColor != "") {
+    // --tag-promo-color: #{$bannerTextColor};
+
+/// A mixin to style tags or promotional banners
+/// @param {Map} $map - A map containing styling information for the tag or promo
+/// @param {String} $type ['tag'] - The type pf element to style, either 'tag' or 'promo'
+/// @example scss
+/// @include tag-style-map-output(
+/// (
+///  'exclusive': ("Exclusive", #d2d4db),
+///  'signed': ("Signed Copy", #ecc249, ""),
+///  'bookclubpick': ("Book Club", #2f7abd, #ffffff),
+///  'saleexclusive': ("Online Exclusive", #002f87, #ffffff)
+/// )
+/// )
+/// @output
+/// See mixins tag--info-style / tag--promo-style
+// @mixin tag-style-map-output($map: $info-tags, $type: "tag") {
+  // @if ($map) {
+    // @each $key, $val in $map {
+      $length: length($val);
+      $text: if($length > 0, nth($val, 1), "Tag text");
+      $bgColor: if($length > 1, nth($val, 2), #ccc);
+      $color: if($length > 2, nth($val, 3), "");
+      $position: if($length > 3, nth($val, 4), "before");
+      // $include-layout: if($length > 4, nth($val, 5), false);
+      // &--#{$key} {
+        // @if ($type == "tag") {
+          // @include tag--info-style($text, $bgColor, $color);
+        // } @else if($type == "promo") {
+          // @include tag--promo-style($text, $bgColor, $color);
+        } @else {
+          @warn 'Please provide either "tag" or "promo" type.';
+      }
+  } @else {
+    @warn "No tags map provided";
+

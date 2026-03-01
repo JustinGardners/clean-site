@@ -1,0 +1,292 @@
+/* === ORDER CONFIRMATION PAGE ============================= */
+.complete {
+  > .adminHelpPages {
+    // border: 3px solid $bg-brand;
+    margin: 2rem 0;
+    padding-bottom: 2rem;
+    &::before {
+      content: "Order Confirmed!";
+      // background: $subtle-background;
+      // color: $bg-brand;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      padding: 2rem 0;
+      font-size: calc(1.275rem + 0.3vw);
+      display: block;
+      width: 100%;
+    }
+    .thankyou,
+    .eBooks {
+      --wrapperMargin: 6.25%;
+      // background-color: $subtle-background;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      align-content: normal;
+      margin: 0 var(--wrapperMargin, 0);
+      // @include breakpt-md {
+        --wrapperMargin: 12.5%;
+      img {
+        width: auto;
+      }
+      &.guestRegistration {
+        background-color: transparent;
+      }
+
+      &__text {
+        order: 2;
+        &::before {
+          content: "";
+          display: block;
+          margin-top: 0.25rem;
+          margin-bottom: 1rem;
+          height: 2px;
+          width: 100%;
+          // background-color: $subtle-border;
+        }
+      }
+      .container {
+        padding: 0;
+      }
+      #customerOrderRef {
+        order: 1;
+        position: relative;
+        font-size: 20px;
+        color: #212529;
+        padding-left: 4ch;
+        span {
+          // color: $bg-brand;
+        }
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+        }
+        &::before {
+          width: 3ch;
+          height: 3ch;
+          // background: $subtle-background;
+          border-radius: 0.25rem;
+          // border: 1px solid $subtle-border;
+          // background: $bg-brand;
+          // border-color: $bg-brand;
+          left: 0;
+          top: 50%;
+          margin-top: -1.5ch;
+        }
+        &::after {
+          width: 2ch;
+          height: 2ch;
+          left: 0.5ch;
+          top: 50%;
+          margin-top: -1ch;
+          background: #fff;
+          // mask: $iconCheckmark;
+          mask-size: cover;
+        }
+      }
+      > p {
+        &:last-child {
+          order: 3;
+          margin-bottom: 0;
+        }
+        .button {
+          display: inline-block;
+          // background: $bg-brand;
+          color: #fff;
+          padding: 0.375rem 0.75rem;
+          text-align: center;
+          line-height: 1.5;
+          vertical-align: middle;
+          // border: 1px solid $bg-brand;
+          border-radius: 0;
+          cursor: pointer;
+        }
+      }
+    }
+    .eBooks {
+    }
+
+    #registerToTrackOrderPane {
+      --wrapperMargin: 6.25%;
+      // @include breakpt-md {
+        --wrapperMargin: 12.5%;
+      margin: 2rem var(--wrapperMargin, 0) 0 var(--wrapperMargin, 0);
+      .validation-summary-errors {
+        ul {
+          margin: 0 0 1rem;
+          padding: 0;
+          li {
+            list-style: none;
+            text-align: center;
+            margin-top: -0.5rem;
+          }
+        }
+      }
+
+      .registerTitle {
+        h4 {
+          width: 100%;
+          // color: $bg-brand;
+          // border-bottom: 2px solid $subtle-border;
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+        }
+      }
+      label {
+        color: #013088;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        display: block;
+        width: 100%;
+      }
+      input:not(.btn):not(.button),
+      select:not(.btn):not(.button),
+      input:not(.btn):not(.button),
+      select:not(.btn):not(.button) {
+        // border: 2px solid $subtle-border;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0;
+        margin-bottom: 0.5rem;
+      }
+      select:not(.btn):not(.button) {
+        width: 100%;
+        max-width: 300px;
+      }
+      .loginSubmit {
+        button {
+          margin-top: 1rem;
+          display: inline-block;
+          // background: $bg-brand;
+          color: #fff;
+          padding: 0.375rem 0.75rem;
+          text-align: center;
+          line-height: 1.5;
+          vertical-align: middle;
+          // border: 1px solid $bg-brand;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+  .tp-footer-newsletter {
+    --wrapperMargin: 6.25%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    // background: $subtle-background;
+    margin: 0 var(--wrapperMargin, 0);
+    padding: 2rem;
+    // @include breakpt-md {
+      --wrapperMargin: 12.5%;
+    h4 {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      margin: 0;
+      // color: $bg-brand;
+    }
+    p {
+      margin: 0;
+    }
+    #SubscribesForm {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      .emailAdd {
+        position: relative;
+        margin-top: 1.5rem;
+      }
+    }
+    #newsletter {
+      padding-right: calc(1rem + 26px);
+    }
+    input[type="submit"] {
+      position: absolute;
+      bottom: 50%;
+      right: 0;
+      transform: translate(calc((-26px * 0.5) - 0.25rem), 50%);
+      width: 26px;
+      height: 26px;
+      background: #002f87;
+      color: #fff;
+      border-radius: 50%;
+      border: none;
+    }
+  }
+}
+.postcodeSelectorContainer {
+  .postcodeResults {
+    select {
+      width: 100%;
+    }
+  }
+}
+.voucherCoupons {
+  #appliedGiftCards {
+    .giftCardListingRow {
+      // background-color: $subtle-background;
+      padding: 1.5rem 3.5rem 1.5rem 1.5rem;
+      margin: 1rem 0;
+      position: relative;
+      color: #333;
+      > span {
+        display: block;
+        strong {
+          font-weight: 500;
+        }
+        .giftCard__reserved {
+          // border-top: 2px solid $subtle-border;
+          margin-top: 0.5rem;
+          padding-top: 0.5rem;
+          display: block;
+        }
+        .giftCard__available {
+          display: block;
+        }
+        .btnRemoveGiftCard {
+          display: inline-block;
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          width: 25px;
+          height: 25px;
+          line-height: 1.6rem;
+          text-align: center;
+          font-size: 15px;
+          text-decoration: none;
+          border-radius: 5rem;
+          // background-color: $bg-brand;
+          font-size: 0;
+          cursor: pointer;
+          &::after {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            content: "";
+            background: #fff;
+            // mask: $iconCross;
+            mask-size: 70%;
+            mask-position: center;
+            mask-repeat: no-repeat;
+          }
+          // @include transition(background-color 0.5s ease);
+          &:hover {
+            // background-color: $btn-hover;
+            text-decoration: none;
+            // color: $white;
+          }
+        }
+        span {
+          // color: $bg-brand;
+        }
+      }
+    }
+  }
+}
+

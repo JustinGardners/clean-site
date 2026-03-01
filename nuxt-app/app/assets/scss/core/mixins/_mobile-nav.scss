@@ -1,0 +1,53 @@
+// Mobile Menu Mixins
+
+@mixin fixed-bottom-mobile() {
+  background-color: #022261;
+  position: fixed !important;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+  height: 75px;
+  text-align: center;
+  border-left: #ffffff 2px solid;
+  padding-left: 0px;
+  padding-right: 0px;
+  grid-area: none;
+  color: #fff;
+  font-size: 1rem;
+  &:first-child {
+    border-left: none;
+  }
+  // @include media-breakpoint-up(md) {
+    z-index: auto;
+    left: auto !important;
+    right: auto;
+    bottom: auto;
+    position: relative !important;
+    background-color: transparent;
+    height: auto;
+    max-height: auto;
+    border-left: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@mixin fixed-bottom-mobile__img-wrap() {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  height: 75px;
+}
+
+@mixin fixed-bottom-mobile__col() {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+

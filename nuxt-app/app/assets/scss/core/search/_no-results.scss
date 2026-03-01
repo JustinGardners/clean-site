@@ -1,0 +1,76 @@
+/* === SEARCH: No Results ============================= */
+.search-results {
+  &--no-results {
+    text-align: center;
+    padding: 3rem 0;
+    h2 {
+      // color: $bg-brand;
+      font-size: 2rem;
+      font-weight: bold;
+      &::before {
+        width: 100%;
+        height: 4ch;
+        display: inline-block;
+        content: "";
+        margin: auto;
+        // background-image: $iconNoSearch;
+        background-size: 4ch;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+    .searchTips {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      // background-color: $subtle-background;
+      padding: 1rem;
+      // color: $bg-brand;
+      margin: 2rem;
+      flex-direction: row;
+      max-width: 600px;
+      margin: 2rem auto 2rem;
+      > h6 {
+        width: 100%;
+        // color: $bg-brand;
+        font-size: 1.8rem;
+        font-weight: bold;
+        max-width: 250px;
+      }
+      > ul {
+        width: 100%;
+        margin-bottom: 0;
+        list-style: none;
+        padding: 0;
+        max-width: 420px;
+        text-align: left;
+        li {
+          // border-bottom: 1px solid $subtle-border;
+          position: relative;
+          padding: 0.25rem 0;
+          padding: 0.25rem 0 0.25rem 2.75ch;
+          margin: 0.25rem 0;
+          &:last-child {
+            border-bottom: 0;
+          }
+          &::before {
+            content: "";
+            // background: $bg-brand;
+            // mask: $iconCheckmark;
+            mask-size: cover;
+            width: 2ch;
+            height: 2ch;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -1ch;
+          }
+        }
+      }
+    }
+  }
+}

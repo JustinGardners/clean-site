@@ -1,0 +1,47 @@
+// @function social-mask($brand) {
+  // @if ($brand == "facebook") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396z'/%3E%3C/svg%3E");
+  // } @else if($brand == "tiktok") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M16 8.245V15.5a6.5 6.5 0 1 1-5-6.326v3.163a3.5 3.5 0 1 0 2 3.163V2h3a5 5 0 0 0 5 5v3a7.97 7.97 0 0 1-5-1.755'/%3E%3C/svg%3E");
+  // } @else if($brand == "twitter") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath fill='%23000' d='M453.2 112h70.6L369.6 288.2L551 528H409L297.7 382.6L170.5 528H99.8l164.9-188.5L90.8 112h145.6l100.5 132.9zm-24.8 373.8h39.1L215.1 152h-42z'/%3E%3C/svg%3E");
+  // } @else if($brand == "pinterest") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12.486 4.771c-4.23 0-6.363 3.033-6.363 5.562c0 1.533.581 2.894 1.823 3.401c.205.084.387.004.446-.221l.182-.717c.061-.221.037-.3-.127-.495c-.359-.422-.588-.972-.588-1.747c0-2.25 1.683-4.264 4.384-4.264c2.392 0 3.706 1.463 3.706 3.412c0 2.568-1.137 4.734-2.824 4.734c-.932 0-1.629-.77-1.405-1.715c.268-1.13.786-2.347.786-3.16c0-.729-.392-1.336-1.2-1.336c-.952 0-1.718.984-1.718 2.304c0 .841.286 1.409.286 1.409L8.728 16.79c-.34 1.44-.051 3.206-.025 3.385c.013.104.149.131.21.051c.088-.115 1.223-1.517 1.607-2.915c.111-.396.627-2.445.627-2.445c.311.589 1.213 1.108 2.175 1.108c2.863 0 4.804-2.608 4.804-6.103c-.003-2.64-2.24-5.1-5.64-5.1'/%3E%3C/svg%3E");
+  // } @else if($brand == "instagram") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 16a4 4 0 1 0 0-8a4 4 0 0 0 0 8'/%3E%3Cpath d='M3 16V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m17.5 6.51l.01-.011'/%3E%3C/g%3E%3C/svg%3E");
+  } @else {
+    // @warn "No social mask found for `#{$brand}`.";
+    @return null;
+
+// @mixin primary-cta($size: "lg") {
+  $min: 18px;
+  $max: 30px;
+  // @if $size == "sm" {
+    $min: 14px;
+    $max: 22px;
+  // } @else if $size == "md" {
+    $min: 16px;
+    $max: 26px;
+  // --bs-btn-font-family: #{$headings-font-family};
+  display: block;
+  // background: $bg-brand;
+  color: #fff;
+  padding: 0.5em;
+  // font-size: clamp($min, 0.75em + 1.5vw, $max);
+  font-weight: 700;
+  text-decoration: none;
+  &:hover {
+    // background-color: $bg-brand-dark;
+  }
+
+@mixin primary-button() {
+  // @include button-variant($primary, #fff, $primary);
+}
+
+// @function clampWithViewPort($minVal, $maxVal) {
+  $clampCalc: calc(
+    // #{$minVal}px + (#{$maxVal} - #{$minVal}) *
+      ((100vw - (var(--vw-min) * 1px)) / (var(--vw-max) - var(--vw-min)))
+  );
+  // @return clamp(#{$minVal}px, #{$clampCalc}, #{$maxVal}px);
+

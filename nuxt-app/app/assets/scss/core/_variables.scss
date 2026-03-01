@@ -1,0 +1,346 @@
+@use "sass:map";
+
+// Font stacks
+$text-font-stack:
+  "Arsenal", "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica",
+  "Arial", sans-serif !default;
+$text-alt-font-stack:
+  "Gothic A1", "Open Sans", "Helvetica Neue Light", "Helvetica Neue",
+  "Helvetica", "Arial", sans-serif !default;
+$cursive-font-stack: "Meow Script", cursive !default;
+
+// Brand
+$brand-700: #00159e;
+$brand-400: #517cd2;
+
+// Surfaces (backgrounds / containers)
+$surface-100: #ffffff;
+$surface-98: #fafcff;
+$surface-95: #f2f2f2;
+$surface-94: #e6eefa;
+
+// Text (neutrals for foreground content)
+$text-primary: #231f20;
+$text-secondary: #80807f;
+$text-tertiary: #cac9ca;
+
+// Accent / Promo
+$accent-strong: #00b3a1;
+$promo-strong: #bf3b46;
+
+// Semantic
+$info-strong: #0469dc;
+$info-surface: #b4d2f4;
+
+$success-strong: #5fce7d;
+$success-surface: #9de2af;
+
+$highlight-strong: #ecc813;
+$highlight-surface: #f6e488;
+
+$warning-strong: #d32727;
+$warning-surface: #ed9797;
+
+$colors: (
+  // brand-700: $brand-700,
+  // brand-400: $brand-400,
+
+  // surface-100: $surface-100,
+  // surface-98: $surface-98,
+  // surface-95: $surface-95,
+  // surface-94: $surface-94,
+
+  // text-primary: $text-primary,
+  // text-secondary: $text-secondary,
+  // text-tertiary: $text-tertiary,
+
+  // accent-strong: $accent-strong,
+  // promo-strong: $promo-strong,
+
+  // info-strong: $info-strong,
+  // info-surface: $info-surface,
+
+  // success-strong: $success-strong,
+  // success-surface: $success-surface,
+
+  // highlight-strong: $highlight-strong,
+  // highlight-surface: $highlight-surface,
+
+  // warning-strong: $warning-strong,
+  // warning-surface: $warning-surface,
+);
+
+$radius: 24px;
+$radius-md: 24px;
+$radius-lg: 36px;
+$radius-pill: 999px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+);
+
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+
+$zindex-list: (
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  offcanvas-backdrop: 1040,
+  offcanvas: 1045,
+  modal-backdrop: 1050,
+  modal: 1055,
+  popover: 1070,
+  tooltip: 1080,
+  toast: 1090,
+);
+
+$icon-list: (
+  basket:
+    url('data:image/svg+xml,<svg width="31" height="22" viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.3782 7.68391H23.6982C22.6182 2.76392 19.6182 0.123916 15.1782 0.00391551C10.6182 -0.116084 7.61817 2.52391 6.29817 7.68391H1.73817C0.178168 7.68391 -0.301832 8.28391 0.178168 9.72392C1.37817 13.3239 2.69817 16.9239 3.89817 20.6439C4.01817 21.2439 4.61817 21.7239 5.33817 21.6039H24.7782C25.3782 21.4839 25.7382 21.2439 26.0982 20.7639C27.4182 17.0439 28.7382 13.4439 29.9382 9.72392C30.2982 8.28391 29.8182 7.68391 28.3782 7.68391ZM11.3382 14.2839C10.6182 14.2839 10.0182 13.6839 10.1382 12.8439C10.1382 12.1239 10.7382 11.5239 11.5782 11.6439C12.2982 11.6439 12.7782 12.2439 12.7782 12.9639C12.7782 13.6839 12.0582 14.2839 11.3382 14.2839ZM18.6582 14.2839C17.9382 14.2839 17.3382 13.6839 17.4582 12.8439C17.4582 12.1239 18.0582 11.5239 18.8982 11.6439C19.6182 11.6439 20.0982 12.2439 20.0982 12.9639C19.9782 13.6839 19.3782 14.2839 18.6582 14.2839ZM8.93817 7.56392C9.41817 4.20392 12.4182 1.92392 15.7782 2.40392C18.5382 2.76392 20.5782 4.92392 20.9382 7.56392H8.93817Z" fill="white"/></svg>'),
+  account:
+    url('data:image/svg+xml,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8992 25.001C9.68643 25.0243 7.493 24.5875 5.45805 23.7181C3.42309 22.8488 1.59106 21.5659 0.0781957 19.951C-0.0368043 19.827 -0.00982598 19.744 0.062174 19.622C1.34804 17.5969 3.2964 16.0804 5.57517 15.331C8.01978 14.4199 10.6325 14.0485 13.2342 14.242C15.7516 14.3532 18.2093 15.0448 20.4152 16.263C21.8679 17.0473 23.0858 18.2038 23.9442 19.614C23.9654 19.641 23.981 19.672 23.9902 19.7051C23.9995 19.7381 24.0021 19.7727 23.9979 19.8068C23.9937 19.8409 23.9828 19.8739 23.9659 19.9038C23.949 19.9336 23.9263 19.9599 23.8992 19.981C21.371 22.6926 17.9593 24.4146 14.2762 24.838C13.9512 24.884 13.6232 24.915 13.2952 24.938C12.8582 24.966 12.4192 24.978 11.8992 25.001Z" fill="white"/><path d="M12.0162 12.826C10.7477 12.827 9.50735 12.4518 8.45213 11.7478C7.3969 11.0438 6.57414 10.0427 6.08793 8.87107C5.60172 7.69946 5.4739 6.40997 5.72062 5.16569C5.96734 3.92142 6.5775 2.77826 7.47398 1.88081C8.37045 0.983355 9.51296 0.371914 10.757 0.123835C12.001 -0.124243 13.2906 0.00218594 14.4627 0.487117C15.6349 0.972048 16.6369 1.7937 17.342 2.84816C18.0471 3.90261 18.4237 5.14251 18.4241 6.41101C18.4231 8.11083 17.7479 9.74083 16.5465 10.9434C15.3452 12.1461 13.716 12.8231 12.0162 12.826Z" fill="white"/></svg>'),
+  storePin:
+    url('data:image/svg+xml,<svg width="19" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.19022 0C4.13043 0 0 3.61413 0 8.05435C0 12.4946 6.40217 20.5489 8.57065 23.337C8.88043 23.75 9.60326 23.75 9.91304 23.337C12.0815 20.5489 18.4837 11.7717 18.4837 8.05435C18.4837 4.33696 14.25 0 9.19022 0ZM9.19022 10.6359C7.74457 10.6359 6.50543 9.5 6.50543 7.95109C6.50543 6.40217 7.74457 5.2663 9.19022 5.2663C10.6359 5.2663 11.875 6.40217 11.875 7.95109C11.875 9.5 10.6359 10.6359 9.19022 10.6359Z" fill="white"/></svg>'),
+  arrow:
+    url('data:image/svg+xml,<svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.7576 17.1712L16.311 9.63336H0V7.53779H16.311L8.7576 0H11.6038L20.1894 8.58558L11.6038 17.1712H8.7576Z" fill="white"/></svg>'),
+  search:
+    url('data:image/svg+xml,<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.6087 17.4824C20.9947 15.6521 21.8182 13.3745 21.8182 10.9091C21.8182 4.893 16.9252 0 10.9091 0C4.893 0 0 4.893 0 10.9091C0 16.9252 4.893 21.8182 10.9091 21.8182C13.2795 21.8182 15.474 21.0543 17.2661 19.7642L19.8868 22.385C20.2064 22.7046 20.6262 22.8654 21.0427 22.8654C21.4603 22.8654 21.8801 22.7046 22.1986 22.385C22.8368 21.7468 22.8368 20.7103 22.1986 20.0721L19.6087 17.4824ZM10.9092 18.5456C6.69802 18.5456 3.27284 15.1204 3.27284 10.9092C3.27284 6.69802 6.69802 3.27284 10.9092 3.27284C15.1204 3.27284 18.5456 6.69802 18.5456 10.9092C18.5456 15.1204 15.1204 18.5456 10.9092 18.5456Z" fill="%2300149C"/></svg>'),
+  shoppingBasket:
+    url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'),
+  wishlist:
+    url('data:image/svg+xml,<svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.1494 1.94496C21.5629 1.32835 20.8667 0.839213 20.1003 0.50549C19.334 0.171768 18.5126 0 17.6831 0C16.8535 0 16.0321 0.171768 15.2658 0.50549C14.4994 0.839213 13.8032 1.32835 13.2167 1.94496L11.9997 3.22404L10.7826 1.94496C9.59811 0.700036 7.99152 0.000645287 6.31633 0.0006453C4.64114 0.000645313 3.03455 0.700036 1.85001 1.94496C0.665469 3.18988 1.24812e-08 4.87836 0 6.63895C-1.24812e-08 8.39954 0.665469 10.088 1.85001 11.3329L3.06705 12.612L11.9997 22L20.9323 12.612L22.1494 11.3329C22.7361 10.7166 23.2015 9.98485 23.519 9.17944C23.8366 8.37403 24 7.51076 24 6.63895C24 5.76714 23.8366 4.90387 23.519 4.09846C23.2015 3.29305 22.7361 2.56128 22.1494 1.94496Z" fill="%2300149C"/></svg>'),
+  menu:
+    url('data:image/svg+xml,<svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="15" height="2.90294" rx="1.45147" fill="%23000E67"/><rect y="4.89355" width="15" height="2.90294" rx="1.45147" fill="%23000E67"/><rect y="9.78711" width="15" height="2.90294" rx="1.45147" fill="%23000E67"/></svg>'),
+);
+
+// ! TGJ
+// OVERRIDES
+// 2.25 rem gutter = 18px padding
+// Updated - 1.875 rem = 15px padding
+$grid-gutter-width: 1.5rem;
+@media (min-width: 768px) {
+  // 1.50 rem gutter = 12px padding
+  $grid-gutter-width: 1.5rem;
+}
+
+// Icons
+$iconCheckmark: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgNzA5KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTE4LjQsMy45bC05LjQsOS43LTMuNC0zLjNjLTEtMS0yLjctMS0zLjcsMGgwYy0xLDEuMS0xLDIuNywwLDMuOGw1LjIsNS4xYzEsMSwyLjcsMSwzLjcsMGwxMS40LTExLjZjMS0xLDEtMi43LDAtMy43aDBjLTEtMS0yLjctMS0zLjcsMGgwWiIvPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=");
+$iconCross: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgNzA5KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPGc+CiAgICAgICAgICA8cmVjdCB4PSIxLjMiIHk9IjkiIHdpZHRoPSIyMS4yIiBoZWlnaHQ9IjUuMSIgcng9IjIuNSIgcnk9IjIuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNyAxMi4xKSByb3RhdGUoLTQ2LjIpIi8+CiAgICAgICAgICA8cmVjdCB4PSI5LjUiIHk9IjEiIHdpZHRoPSI1LjEiIGhlaWdodD0iMjEuMiIgcng9IjIuNSIgcnk9IjIuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQuNyAxMS42KSByb3RhdGUoLTQzLjgpIi8+CiAgICAgICAgPC9nPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=");
+$iconWatch: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><g><g id="Layer_1"><path d="M16.1,9.2c-1-1-2.5-1.7-4.1-1.7s-3,.6-4.1,1.7c-1,1-1.7,2.5-1.7,4.1s.6,3,1.7,4.1c1,1,2.5,1.7,4.1,1.7s3-.6,4.1-1.7c1-1,1.7-2.5,1.7-4.1s-.6-3-1.7-4.1M12,13.3v-5c2.8,0,5,2.3,5,5h-5ZM12.9,5.5c1.6.2,3.1.9,4.3,1.9l.4-.4-.6-.6,1-1,1.9,1.9-1,1-.6-.6-.4.4c1.2,1.4,2,3.2,2,5.2s-.9,4.1-2.3,5.6c-1.4,1.4-3.4,2.3-5.6,2.3s-4.1-.9-5.6-2.3-2.3-3.4-2.3-5.6.9-4.1,2.3-5.6c1.2-1.2,2.8-2,4.7-2.3v-1h-1.4v-2.5h4.5v2.5h-1.4v1Z"/></g></g></svg>');
+$iconNoSearch: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 92.8 91.8"><defs><style>.cls-1{fill:%23003087}</style></defs><g><g id="Layer_1"><path class="cls-1" d="M86.5,84.5c-1.2,1.2-2.9,1.9-4.5,1.9s-3.3-.6-4.5-1.9l-10.2-10.2c-6.4,4.5-14,7-21.9,7-10.1,0-19.7-3.9-26.8-11.1-14.8-14.8-14.8-38.9,0-53.6,7.2-7.2,16.7-11.1,26.8-11.1s19.7,3.9,26.8,11.1c7.2,7.2,11.1,16.7,11.1,26.8,0,8-2.5,15.6-7,21.9l10.2,10.2c2.5,2.5,2.5,6.5,0,9ZM74.8,43.4c0-7.9-3.1-15.3-8.6-20.8-5.6-5.6-13-8.6-20.8-8.6s-15.3,3.1-20.8,8.6c-11.5,11.5-11.5,30.2,0,41.6,5.6,5.6,13,8.6,20.8,8.6,7.9,0,15.3-3.1,20.8-8.6h0c5.6-5.6,8.6-13,8.6-20.8Z"/><g id="Layer_1-2" data-name="Layer_1"><g><rect x="30.5" y="39.9" width="29.5" height="7.1" transform="translate(-17.4 46.1) rotate(-46.2)"/><rect x="42" y="28.7" width="7.1" height="29.5" transform="translate(-17.4 43.6) rotate(-43.8)"/></g></g></g></g></svg>');
+$iconLock: url("data:image/svg+xml,%3Csvg%20id%3D%22Icons%22%20enable-background%3D%22new%200%200%2032%2032%22%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m28%2011v-1c0-1.7-1.3-3-3-3h-22c-1.7%200-3%201.3-3%203v1z%22%2F%3E%3Cpath%20d%3D%22m30%2022.2v-3.2c0-2.8-2.2-5-5-5s-5%202.2-5%205v3.2c-1.2.4-2%201.5-2%202.8v4c0%201.7%201.3%203%203%203h8c1.7%200%203-1.3%203-3v-4c0-1.3-.8-2.4-2-2.8zm-8-3.2c0-1.7%201.3-3%203-3s3%201.3%203%203v3h-6zm4%209c0%20.6-.4%201-1%201s-1-.4-1-1v-2c0-.6.4-1%201-1s1%20.4%201%201z%22%2F%3E%3Cg%3E%3Cpath%20d%3D%22m16%2025c0-1.1.4-2.2%201-3-1.7%200-3-1.3-3-3s1.3-3%203-3c.5%200%201%20.1%201.5.4.6-1.4%201.6-2.6%202.9-3.4h-21.4v10c0%201.7%201.3%203%203%203h13zm-9-3h-2c-.6%200-1-.4-1-1s.4-1%201-1h2c.6%200%201%20.4%201%201s-.4%201-1%201zm3-3h-5c-.6%200-1-.4-1-1s.4-1%201-1h5c.6%200%201%20.4%201%201s-.4%201-1%201z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+$iconArrowChev: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzFjNGFhMCIgY2xhc3M9ImJpIGJpLWNoZXZyb24tcmlnaHQiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNC42NDYgMS42NDZhLjUuNSAwIDAgMSAuNzA4IDBsNiA2YS41LjUgMCAwIDEgMCAuNzA4bC02IDZhLjUuNSAwIDAgMS0uNzA4LS43MDhMMTAuMjkzIDggNC42NDYgMi4zNTRhLjUuNSAwIDAgMSAwLS43MDgiLz4KPC9zdmc+");
+
+// Colours
+$bg-brand: #003087;
+$bg-brand-dark: #002262;
+$brand-subtle: #1c4aa0;
+$bg-accent: #1ba6ad;
+$subtle-header: #d9dfeb;
+$subtle-background: #e7effa;
+$subtle-border: #bcc8de;
+
+$accent-1: #e7effa;
+$accent-2: #00b0b8;
+$accent-3: #0b686d;
+$text-secondary: #cac9ca;
+
+// Other
+$border-radius: 1.5em;
+$left-nav-width: 306px;
+
+$promo-tags: (
+  "sale": (
+    "Sale",
+    #e1006a,
+    #ffea01,
+  ),
+  "new": (
+    "New",
+    #5bc500,
+    "",
+  ),
+  "onlineoffer": (
+    "Online \\A Offer",
+    #002f87,
+    #ffffff,
+  ),
+  "onlineprice": (
+    "Online \\A Price",
+    #002f87,
+    #ffffff,
+  ),
+);
+
+$info-tags: (
+  "exclusive": (
+    "Exclusive",
+    #d2d4db,
+  ),
+  "signed": (
+    "Signed Copy",
+    #ecc249,
+    "",
+  ),
+  "bookclubpick": (
+    "Book Club",
+    #2f7abd,
+    #ffffff,
+  ),
+  "saleexclusive": (
+    "Online Exclusive",
+    #002f87,
+    #ffffff,
+  ),
+);
+
+/// Promo tag selectors
+$search-item--promo-tag-selectors: ();
+$product--promo-tag-selectors: ();
+$template--promo-tag-selectors: ();
+$product-list--promo-tag-selectors: (); /// Landing page carousel
+
+/// Info tag selectors
+$search-item--info-tag-selectors: ();
+$product--info-tag-selectors: ();
+$template--info-tag-selectors: ();
+$product-list--info-tag-selectors: (); /// Landing page carousel
+
+@each $item in map-keys($promo-tags) {
+  $search-item--promo-tag-selectors: append(
+    $search-item--promo-tag-selectors,
+    ".search-item--#{$item}",
+    comma
+  );
+  $product--promo-tag-selectors: append(
+    $product--promo-tag-selectors,
+    ".product--#{$item}",
+    comma
+  );
+  $template--promo-tag-selectors: append(
+    $template--promo-tag-selectors,
+    ".template--#{$item}",
+    comma
+  );
+  $product-list--promo-tag-selectors: append(
+    $product-list--promo-tag-selectors,
+    ".product-item--#{$item}",
+    comma
+  );
+}
+
+@each $item in map-keys($info-tags) {
+  $search-item--info-tag-selectors: append(
+    $search-item--info-tag-selectors,
+    ".search-item--#{$item}",
+    comma
+  );
+  $product--info-tag-selectors: append(
+    $product--info-tag-selectors,
+    ".product--#{$item}",
+    comma
+  );
+  $template--info-tag-selectors: append(
+    $template--info-tag-selectors,
+    ".template--#{$item}",
+    comma
+  );
+  $product-list--info-tag-selectors: append(
+    $product-list--info-tag-selectors,
+    ".product-item--#{$item}",
+    comma
+  );
+}
+
+// Removed font family as changing to new font
+$font-family-sans-serif: "Public Sans", "Arial", "sans-serif";
+$font-size-base: 1rem;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$line-height-base: 1.375;
+
+// Font Sizes
+$h1-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h2-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h3-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h4-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$h5-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$p-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+$megamenu-font-sizes: (
+  null: 0.875rem,
+  992px: 0.938rem,
+  1200px: 0.938rem,
+);
+$small-font-sizes: (
+  null: 15px,
+  576px: 16px,
+  768px: 17px,
+  992px: 19px,
+  1200px: 20px,
+  1400px: 21px,
+);
+
+$input-border-radius: 10px;
+$input-btn-border-width: 2px;
+$input-btn-font-family: $text-font-stack;
+$btn-font-weight: 700;
+$btn-padding-y: max(0.6em, 0.5rem);
+$btn-padding-x: 1.2em;
+
+$body-color: $text-primary;

@@ -1,0 +1,31 @@
+/* ----- Product Recommendations carousel -------------------- */
+
+.product-carousel-container-stack {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr;
+}
+
+.product-carousel-container-stack > * {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  max-width: 100%;
+}
+
+.product-carousel[aria-disabled] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.product-carousel__loader {
+  display: grid;
+  place-content: center;
+  display: none;
+}
+
+.basketSubText {
+  p {
+    margin-top:0.5rem;
+    font-size: 0.875em;
+  }
+}

@@ -1,0 +1,210 @@
+/* Logo Carousel */
+.logo-carousel {
+  &__content {
+    margin: 1rem;
+  }
+}
+
+/* Carousel Product */
+.carousel-product-item {
+  &__image {
+    display: grid;
+    place-content: center center;
+    width: 80%;
+    height: 150px;
+    margin-inline: auto;
+    img {
+      display: block;
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      max-height: 150px;
+      -o-object-fit: contain;
+      object-fit: contain;
+    }
+  }
+  &__info {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  &__name {
+    line-height: 1.3;
+  }
+  &__title {
+    font-size: 12px;
+    a {
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+  &__contributor {
+    margin: 0;
+    font-size: 12px;
+  }
+  &__format {
+    font-size: 12px;
+  }
+  &__purchase {
+    text-align: center;
+  }
+  &__purchase-inner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  &__purchase-rrp {
+    order: 2;
+    position: relative;
+    font-size: 11px;
+    line-height: 20px;
+    text-decoration: line-through;
+  }
+  &__purchase-price {
+    order: 1;
+    color: #900;
+    font-weight: bold;
+    line-height: 20px;
+  }
+  &__availability {
+    font-size: 10px;
+    font-weight: 400;
+    font-weight: bold;
+  }
+  .buyButton {
+    background: #05723f;
+    color: #fff;
+    font-size: 12px;
+    order: 3;
+    width: 100%;
+    &:hover {
+      background: #05723f;
+    }
+  }
+}
+.simple-banner {
+  padding: 0 !important;
+  // @include media-breakpoint-up(md) {
+    padding-right: calc(var(--bs-gutter-x) * 0.5) !important;
+    padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+  img {
+    aspect-ratio: 95 / 74;
+    object-fit: cover;
+    // @include media-breakpoint-up(md) {
+      aspect-ratio: 72/23;
+  }
+}
+
+/* Headers */
+
+.left {
+  .col-12 {
+    padding: 0 !important;
+  }
+  .title-block__sub {
+    text-align: left !important;
+    &:after {
+      margin: 0 !important;
+    }
+  }
+}
+
+/* Single Hero */
+.single-hero-product {
+  &__image {
+    margin-bottom: 0.75rem;
+    // @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    img {
+      max-height: 220px;
+      height: 100%;
+      width: 100%;
+      // @include media-breakpoint-up(sm) {
+        max-height: 400px;
+        width: initial;
+      max-width: 100%;
+    }
+  }
+  &__content {
+    text-align: center;
+    // @include media-breakpoint-up(sm) {
+      text-align: left;
+
+    &--title {
+      overflow: hidden;
+      font-weight: bold;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+      // color: $bg-brand;
+      margin-bottom: 0.5rem;
+      font-size: 22px;
+    }
+    &--subtitle {
+      // color: $bg-brand;
+      font-size: 22px;
+      font-weight: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+      margin-bottom: 0.5rem;
+    }
+    &--author {
+      margin-bottom: 0.5rem;
+      a {
+        // color: $bg-brand;
+        font-weight: normal;
+        text-decoration: underline;
+      }
+    }
+    &--desc {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      margin-bottom: 0.5rem;
+      // @include media-breakpoint-up(md) {
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+      // @include media-breakpoint-up(lg) {
+        -webkit-line-clamp: 7;
+        line-clamp: 7;
+    }
+    &--price {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    &--rrp {
+      text-decoration: line-through;
+      margin-right: 0.25rem;
+    }
+    &--current {
+      // color: $bg-brand;
+      font-weight: 600;
+      font-size: 1.375rem;
+    }
+    &--buy-button {
+      a {
+        margin: 0 auto;
+        border-radius: 0;
+        // @include media-breakpoint-up(md) {
+          margin: 0;
+        // @include button-variant($btn-background, $white, $btn-background);
+        max-width: none;
+        min-width: 160px;
+      }
+    }
+  }
+}
+

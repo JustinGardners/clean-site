@@ -1,0 +1,243 @@
+/* === TOPBAR ============================= */
+body {
+  > .top-bar {
+    padding: 0.5em 0;
+    // background-color: $bg-brand-dark;
+    color: #fff;
+    font-family: "Arsenal", sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    a {
+      padding: 0 21px;
+      position: relative;
+      z-index: 1;
+    }
+    .col-12 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .top-bar__text {
+      width: 100%;
+      text-align: center;
+    }
+    .top-bar__close {
+      right: 1rem;
+      z-index: 2;
+      // @include close-button(#fff, $size: 1rem);
+      padding: 0;
+    }
+  }
+}
+
+/* Circle Image Block */
+
+.circle-image {
+  text-align: center;
+  &__img {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    img {
+      transform: scale(1);
+      // @include transition(transform 0.35s ease);
+    }
+  }
+  &__title {
+    // color: $bg-brand;
+    font-weight: 600;
+  }
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* Circles with jackets on top */
+.top-cat {
+  &__item {
+    margin-bottom: 1rem;
+    // @include breakpt-md {
+      margin-bottom: 0;
+    a {
+      position: relative;
+    }
+  }
+
+  &__img-wrap {
+    display: block;
+    margin-bottom: 15px;
+    aspect-ratio: 1;
+  }
+
+  &__img {
+    width: auto;
+    height: 100%;
+    margin-inline: auto;
+    border-radius: 8px;
+  }
+
+  span {
+    content: "";
+    display: block;
+    position: absolute;
+    // background-color: $accent-1;
+    aspect-ratio: 1;
+    width: 100%;
+    border-radius: 50%;
+    top: 0;
+    z-index: -1;
+  }
+  h4 {
+    font-size: 18px;
+    text-align: center;
+    // color: $bg-brand-dark;
+    // @include breakpt-md {
+      font-size: 22px;
+  }
+}
+
+/* Category List */
+
+.cat-list {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+    flex-wrap: wrap;
+    padding: 0;
+    font-size: 22px;
+  }
+
+  li {
+    list-style: none;
+    flex: 1 1 40%;
+
+    @media (min-width: 768px) {
+      flex: 1 1 20%;
+    }
+
+    a {
+      // border-bottom: $accent-1 1px solid;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+
+      &:hover {
+        &::after {
+          color: currentColor;
+        }
+      }
+
+      &::after {
+        content: ">";
+        // color: $accent-1;
+      }
+    }
+  }
+}
+
+/* Three Wide Image */
+
+.three-wide-image {
+  &__wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: clip;
+  }
+
+  &--top {
+    img {
+      order: 1;
+    }
+    .three-wide-image__text {
+      padding: clamp(15px, 3vmin, 30px) clamp(15px, 3vmin, 30px) 0;
+    }
+  }
+  &--bottom {
+    .three-wide-image__text {
+      padding: 0 clamp(15px, 3vmin, 30px) clamp(15px, 3vmin, 30px);
+    }
+  }
+  &:is(h3, p) {
+    font-size: clamp(
+      var(--min-fs),
+      var(--variable-fs, calc(5cqmin + 0.5em)),
+      var(--max-fs)
+    );
+  }
+  h3 {
+    font-family: Arsenal;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    --min-fs: 18px;
+    --max-fs: 30px;
+  }
+  p {
+    font-family: Arsenal;
+    --min-fs: 14px;
+    --max-fs: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+}
+
+/* Two Wide Products */
+.double_product {
+  &__text {
+    h3 {
+      font-family: Arsenal;
+      font-weight: 700;
+      font-style: Bold;
+      font-size: 30px;
+      leading-trim: NONE;
+      line-height: 100%;
+      letter-spacing: 0%;
+      font-variant-numeric-figure: lining-nums;
+      font-variant-numeric-spacing: proportional-nums;
+      color: #000e67;
+    }
+    h4 {
+      font-family: Arsenal;
+      font-weight: 700;
+      font-style: Bold;
+      font-size: calc(22 / 16 * 1em);
+      leading-trim: NONE;
+      line-height: 100%;
+      letter-spacing: 0%;
+      font-variant-numeric-figure: lining-nums;
+      font-variant-numeric-spacing: proportional-nums;
+      color: #000e67;
+      // @include visually-hidden();
+    }
+    p {
+      font-size: 16px;
+      color: #000e67;
+    }
+  }
+  &__image-wrap {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    // background-color: $accent-1;
+    img {
+      max-height: 300px;
+      border-radius: 10px;
+      width: 100%;
+      object-fit: contain;
+      display: inline-block;
+      filter: drop-shadow(0 2px 4px hsl(0 0 0 / 0.35));
+    }
+  }
+}
+

@@ -1,0 +1,485 @@
+@use "sass:map";
+
+/* === MEDIA QUERIES ============================= */
+// -- Media Query - SM Breakpoint (576px)
+@mixin breakpt-sm {
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    @content;
+  }
+}
+
+// -- Media Query - MD Breakpoint (768px)
+@mixin breakpt-md {
+  @media (min-width: map.get($grid-breakpoints, "md")) {
+    @content;
+  }
+}
+
+// -- Media Query - LG Breakpoint (992px)
+@mixin breakpt-lg {
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    @content;
+  }
+}
+
+// -- Media Query - XL Breakpoint (1200px)
+@mixin breakpt-xl {
+  @media (min-width: map.get($grid-breakpoints, "xl")) {
+    @content;
+  }
+}
+
+// -- Media Query - XXL Breakpoint (1400px)
+@mixin breakpt-xxl {
+  @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    @content;
+  }
+}
+
+// -- Media Query - Custom Breakpoint
+@mixin breakpt-c($screen) {
+  @media (min-width: #{$screen}px) {
+    @content;
+  }
+}
+
+// Pseudo Container
+@mixin container {
+  width: 100%;
+  padding-inline: calc(1.5rem * 0.5);
+  margin-inline: auto;
+  @include breakpt-md {
+    max-width: 720px;
+  }
+  @include breakpt-lg {
+    max-width: 960px;
+  }
+  @include breakpt-xl {
+    max-width: 1140px;
+  }
+  @include breakpt-xxl {
+    max-width: 1320px;
+  }
+}
+@mixin row {
+  padding: 0 calc(2.25rem * 0.5);
+  @include breakpt-md {
+    padding: 0 calc(1.5rem * 0.5);
+  }
+}
+
+// Font Sizes
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $fs-fontSize in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-fontSize;
+    } @else {
+      @media (min-width: $fs-breakpoint) {
+        font-size: $fs-fontSize;
+      }
+    }
+  }
+}
+
+// Transitions
+
+@mixin transition($x...) {
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+  transition: $x;
+}
+
+// Buttons
+$btn-background: $primary;
+$btn-hover: #002262;
+
+@mixin button-variant($background, $font-col, $border) {
+  background-color: $background;
+  color: $font-col;
+  font-weight: 600;
+  padding: max(0.6em, 0.5rem) 0.5em;
+  text-align: center;
+  border: 2px solid $border;
+  border-radius: var(--bs-border-radius, 0);
+  // border-radius: 0;
+  display: inline-block;
+  // max-width: 195px;
+  cursor: pointer;
+  @include transition(background-color 0.5s ease);
+  line-height: 1.2;
+  text-box-trim: trim-both;
+  font-family: $headings-font-family;
+  &:hover {
+    background-color: $btn-hover;
+    text-decoration: none;
+    color: $white;
+  }
+}
+
+/// A mixin which outputs layout rules for info tags
+@mixin tag--info-layout-output() {
+  content: var(--tag-info-text, "Tag label");
+  background-color: var(--tag-info-bgColor, #ccc);
+  color: var(--tag-info-color, #000);
+  font-size: var(--tag-info-fontSize, 12px);
+  font-weight: var(--tag-info-fontWeight, 600);
+  position: absolute;
+  left: 50%;
+  bottom: var(--tag-info-bottom, -5px);
+  transform: translateX(-50%);
+  padding: var(--tag-info-padding, 1px 0.5rem);
+  width: var(--tag-info-width, max-content);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 1.8em;
+  line-height: 1.6;
+}
+
+/// A wrapper mixin to apply tag layout rules
+/// @param {String} $bannerBlockPosition ['before'] - 'before' or 'after'
+@mixin tag--info-layout($bannerBlockPosition: "before") {
+  position: relative;
+  @if ($bannerBlockPosition == "before") {
+    &:before {
+      @include tag--info-layout-output();
+    }
+  } @else if($bannerBlockPosition == "after") {
+    &:after {
+      @include tag--info-layout-output();
+    }
+  }
+}
+
+/// A mixin to apply info code styles
+/// @param {String} $bannerText - The text content for the promo banner
+/// @param {Color} $bannerBg - The background color of the promo banner
+/// @param {Color} $bannerTextColor - The text color of the promo banner
+/// @example scss
+/// @include tag--promo-style('promo', #ccc, #000);
+/// @output
+/// --tag-promo-text: 'promo';
+/// --tag-promo-bgColor: #ccc;
+/// --tag-promo-color: #000;
+@mixin tag--info-style($bannerText, $bannerBg, $bannerTextColor: #000) {
+  --tag-info-text: "#{$bannerText}";
+  @if ($bannerBg != "") {
+    --tag-info-bgColor: #{$bannerBg};
+  }
+  @if ($bannerTextColor != "") {
+    --tag-info-color: #{$bannerTextColor};
+  }
+}
+
+/// A mixin to apply layout rules for promotional tags or banners
+@mixin tag--promo-layout() {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &::before {
+    content: var(--tag-promo-text, "Promo label");
+    transform: translate(0%, 8%) rotate(-45deg);
+    padding: var(--tag-promo-padding, 10px);
+    color: var(--tag-promo-color, #fff);
+    font-weight: var(--tag-promo-fontWeight, 600);
+    font-size: var(--tag-promo-fontSize, 12px);
+    line-height: 1;
+    text-align: center;
+    white-space: pre-wrap;
+    z-index: 10;
+  }
+
+  &::after {
+    $tag-promo-shapeSize: calc(
+      var(--tag-promo-fontSize, 12px) * var(--tag-promo-shapeSize-multiplier, 5)
+    );
+    content: "";
+    width: var(--tag-promo-shapeSize, #{$tag-promo-shapeSize});
+    aspect-ratio: 1/1;
+    background: var(--tag-promo-bgColor, #ccc);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 5;
+  }
+}
+
+/// A mixin to apply promo code styles
+/// @param {String} $bannerText - The text content for the promo banner
+/// @param {Color} $bannerBg - The background color of the promo banner
+/// @param {Color} $bannerTextColor - The text color of the promo banner
+/// @example scss
+/// @include tag--promo-style('promo', #ccc, #000);
+/// @output
+/// --tag-promo-text: 'promo';
+/// --tag-promo-bgColor: #ccc;
+/// --tag-promo-color: #000;
+@mixin tag--promo-style($bannerText, $bannerBg, $bannerTextColor: #fff) {
+  $has-line-break: str-index($bannerText, "\\A");
+  --tag-promo-text: "#{$bannerText}";
+  @if $has-line-break {
+    --tag-promo-shapeSize-multiplier: 6.8;
+  }
+  @if ($bannerBg != "") {
+    --tag-promo-bgColor: #{$bannerBg};
+  }
+  @if ($bannerTextColor != "") {
+    --tag-promo-color: #{$bannerTextColor};
+  }
+}
+
+/// A mixin to style tags or promotional banners
+/// @param {Map} $map - A map containing styling information for the tag or promo
+/// @param {String} $type ['tag'] - The type pf element to style, either 'tag' or 'promo'
+/// @example scss
+/// @include tag-style-map-output(
+/// (
+///  'exclusive': ("Exclusive", #d2d4db),
+///  'signed': ("Signed Copy", #ecc249, ""),
+///  'bookclubpick': ("Book Club", #2f7abd, #ffffff),
+///  'saleexclusive': ("Online Exclusive", #002f87, #ffffff)
+/// )
+/// )
+/// @output
+/// See mixins tag--info-style / tag--promo-style
+@mixin tag-style-map-output($map: $info-tags, $type: "tag") {
+  @if ($map) {
+    @each $key, $val in $map {
+      $length: length($val);
+      $text: if($length > 0, nth($val, 1), "Tag text");
+      $bgColor: if($length > 1, nth($val, 2), #ccc);
+      $color: if($length > 2, nth($val, 3), "");
+      $position: if($length > 3, nth($val, 4), "before");
+      // $include-layout: if($length > 4, nth($val, 5), false);
+      &--#{$key} {
+        @if ($type == "tag") {
+          @include tag--info-style($text, $bgColor, $color);
+        } @else if($type == "promo") {
+          @include tag--promo-style($text, $bgColor, $color);
+        } @else {
+          @warn 'Please provide either "tag" or "promo" type.';
+        }
+      }
+    }
+  } @else {
+    @warn "No tags map provided";
+  }
+}
+
+// Header style
+@mixin mainheaderH() {
+  font-size: clamp(22px, 1em + 1.35vw, 40px);
+  font-weight: 400;
+  font-family: #{$headings-font-family};
+}
+
+@mixin subheaderH() {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+@mixin subheaderHlessBold() {
+  font-size: 16px;
+  font-weight: 700;
+}
+@mixin largesubheaderH() {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@mixin largesubheaderLessBoldH() {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@mixin smallsubheaderH() {
+  font-size: clamp(18px, 0.5em + 1.35vw, 22px);
+}
+
+@mixin linkH() {
+  font-size: 1rem;
+}
+
+@mixin paragraphH() {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+@mixin searchText() {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+@mixin searchTextLessBold() {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@mixin searchTextBold() {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+// Mobile Menu Mixins
+
+@mixin fixed-bottom-mobile() {
+  background-color: #022261;
+  position: fixed !important;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+  height: 75px;
+  text-align: center;
+  border-left: #ffffff 2px solid;
+  padding-left: 0px;
+  padding-right: 0px;
+  grid-area: none;
+  color: #fff;
+  font-size: 1rem;
+  &:first-child {
+    border-left: none;
+  }
+  @include media-breakpoint-up(md) {
+    z-index: auto;
+    left: auto !important;
+    right: auto;
+    bottom: auto;
+    position: relative !important;
+    background-color: transparent;
+    height: auto;
+    max-height: auto;
+    border-left: none;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@mixin fixed-bottom-mobile__img-wrap() {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  height: 75px;
+}
+
+@mixin fixed-bottom-mobile__col() {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+@function social-mask($brand) {
+  @if ($brand == "facebook") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396z'/%3E%3C/svg%3E");
+  } @else if($brand == "tiktok") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M16 8.245V15.5a6.5 6.5 0 1 1-5-6.326v3.163a3.5 3.5 0 1 0 2 3.163V2h3a5 5 0 0 0 5 5v3a7.97 7.97 0 0 1-5-1.755'/%3E%3C/svg%3E");
+  } @else if($brand == "twitter") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath fill='%23000' d='M453.2 112h70.6L369.6 288.2L551 528H409L297.7 382.6L170.5 528H99.8l164.9-188.5L90.8 112h145.6l100.5 132.9zm-24.8 373.8h39.1L215.1 152h-42z'/%3E%3C/svg%3E");
+  } @else if($brand == "pinterest") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12.486 4.771c-4.23 0-6.363 3.033-6.363 5.562c0 1.533.581 2.894 1.823 3.401c.205.084.387.004.446-.221l.182-.717c.061-.221.037-.3-.127-.495c-.359-.422-.588-.972-.588-1.747c0-2.25 1.683-4.264 4.384-4.264c2.392 0 3.706 1.463 3.706 3.412c0 2.568-1.137 4.734-2.824 4.734c-.932 0-1.629-.77-1.405-1.715c.268-1.13.786-2.347.786-3.16c0-.729-.392-1.336-1.2-1.336c-.952 0-1.718.984-1.718 2.304c0 .841.286 1.409.286 1.409L8.728 16.79c-.34 1.44-.051 3.206-.025 3.385c.013.104.149.131.21.051c.088-.115 1.223-1.517 1.607-2.915c.111-.396.627-2.445.627-2.445c.311.589 1.213 1.108 2.175 1.108c2.863 0 4.804-2.608 4.804-6.103c-.003-2.64-2.24-5.1-5.64-5.1'/%3E%3C/svg%3E");
+  } @else if($brand == "instagram") {
+    @return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 16a4 4 0 1 0 0-8a4 4 0 0 0 0 8'/%3E%3Cpath d='M3 16V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m17.5 6.51l.01-.011'/%3E%3C/g%3E%3C/svg%3E");
+  } @else {
+    @warn "No social mask found for `#{$brand}`.";
+    @return null;
+  }
+}
+
+@mixin primary-cta($size: "lg") {
+  $min: 18px;
+  $max: 30px;
+  @if $size == "sm" {
+    $min: 14px;
+    $max: 22px;
+  } @else if $size == "md" {
+    $min: 16px;
+    $max: 26px;
+  }
+  --bs-btn-font-family: #{$headings-font-family};
+  display: block;
+  background: $bg-brand;
+  color: #fff;
+  padding: 0.5em;
+  font-size: clamp($min, 0.75em + 1.5vw, $max);
+  font-weight: 700;
+  text-decoration: none;
+  &:hover {
+    background-color: $bg-brand-dark;
+  }
+}
+
+@mixin primary-button() {
+  @include button-variant($primary, #fff, $primary);
+}
+
+@function clampWithViewPort($minVal, $maxVal) {
+  $clampCalc: calc(
+    #{$minVal}px + (#{$maxVal} - #{$minVal}) *
+      ((100vw - (var(--vw-min) * 1px)) / (var(--vw-max) - var(--vw-min)))
+  );
+  @return clamp(#{$minVal}px, #{$clampCalc}, #{$maxVal}px);
+}
+
+@mixin close-button(
+  $color: #000,
+  $bg: transparent,
+  $size: 2rem,
+  $include-border: true
+) {
+  @if $include-border {
+    border: 1px solid $color;
+  }
+  background-color: $bg;
+  text-indent: -999em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  font-size: 0;
+  width: $size;
+  height: $size;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: calc($size * 0.5);
+    background: $color;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+  &:after {
+    rotate: -45deg;
+  }
+  &:before {
+    rotate: 45deg;
+  }
+}
+
+@mixin mm__chev() {
+  font-size: 1rem;
+  width: 8px;
+  border-right: 2px solid var(--bs-gray-500);
+  border-bottom: 2px solid var(--bs-gray-500);
+  aspect-ratio: 1 / 1;
+  height: 8px;
+  rotate: -45deg;
+  text-indent: -999em;
+  margin-right: 4px;
+  overflow: clip;
+}

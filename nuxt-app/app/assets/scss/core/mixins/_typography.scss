@@ -1,0 +1,54 @@
+// Header style
+@mixin mainheaderH() {
+  font-size: clamp(22px, 1em + 1.35vw, 40px);
+  font-weight: 400;
+  // font-family: #{$headings-font-family};
+}
+
+@mixin subheaderH() {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+@mixin subheaderHlessBold() {
+  font-size: 16px;
+  font-weight: 700;
+}
+@mixin largesubheaderH() {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@mixin largesubheaderLessBoldH() {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@mixin smallsubheaderH() {
+  font-size: clamp(18px, 0.5em + 1.35vw, 22px);
+}
+
+@mixin linkH() {
+  font-size: 1rem;
+}
+
+@mixin paragraphH() {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+@mixin searchText() {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+@mixin searchTextLessBold() {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@mixin searchTextBold() {
+  font-size: 1rem;
+  font-weight: 700;
+}
+

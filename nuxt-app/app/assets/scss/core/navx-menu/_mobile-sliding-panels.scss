@@ -1,0 +1,97 @@
+/* --- Mobile sliding panels for Mega Menu --- */
+@media (max-width: 767px) {
+  .megaMenu .mm {
+    display: block;
+    min-height: auto;
+    height: calc(100dvh - 411px);
+  }
+
+  .megaMenu .mm__panels {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .megaMenu .mm__col--l1,
+  .megaMenu .mm__col--l2,
+  .megaMenu .mm__col--l3 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: #fff;
+    transform: translateX(0);
+    transition: transform 0.25s ease;
+    will-change: transform;
+    // border-bottom: 1px solid $subtle-border;
+  }
+
+  /* default positions off-canvas to the right */
+  .megaMenu .mm__col--l2 {
+    transform: translateX(100%);
+  }
+  .megaMenu .mm__col--l3 {
+    transform: translateX(200%);
+  }
+
+  /* state: at L1 */
+  .megaMenu .mm__panels.at-l1 .mm__col--l1 {
+    transform: translateX(0%);
+  }
+  .megaMenu .mm__panels.at-l1 .mm__col--l2 {
+    transform: translateX(100%);
+  }
+  .megaMenu .mm__panels.at-l1 .mm__col--l3 {
+    transform: translateX(200%);
+  }
+
+  /* state: at L2 */
+  .megaMenu .mm__panels.at-l2 .mm__col--l1 {
+    transform: translateX(-100%);
+  }
+  .megaMenu .mm__panels.at-l2 .mm__col--l2 {
+    transform: translateX(0%);
+  }
+  .megaMenu .mm__panels.at-l2 .mm__col--l3 {
+    transform: translateX(100%);
+  }
+
+  /* state: at L3 */
+  .megaMenu .mm__panels.at-l3 .mm__col--l1 {
+    transform: translateX(-200%);
+  }
+  .megaMenu .mm__panels.at-l3 .mm__col--l2 {
+    transform: translateX(-100%);
+  }
+  .megaMenu .mm__panels.at-l3 .mm__col--l3 {
+    transform: translateX(0%);
+  }
+
+  /* Back button styling */
+  .megaMenu .mm__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .megaMenu .mm__back {
+    appearance: none;
+    border: 0;
+    background: none;
+    font: inherit;
+    padding: 0px 6px 0px 0;
+    color: #000;
+    font-weight: 600;
+  }
+
+  .megaMenu .mm__col.is-hidden {
+    display: block;
+  }
+
+  .megaMenu .mm__col--media {
+    display: none;
+  }
+}
+

@@ -1,0 +1,28 @@
+/* === ERROR MESSAGING ============================= */
+
+.alert {
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.errorMessages {
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.input-validation-error {
+  border: 2px solid #a81919 !important;
+}
+
+.field-validation-error,
+.errorText {
+  color: #a81919 !important;
+  margin: 0rem 0 0.75rem;
+  display: block;
+  font-weight: normal;
+  font-size: 12px;
+}
+

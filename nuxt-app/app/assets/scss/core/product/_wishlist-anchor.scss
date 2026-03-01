@@ -1,0 +1,45 @@
+.productWishlist a {
+  // color: $bg-brand;
+  text-decoration: underline;
+}
+
+@supports not (position-anchor: --product-info) {
+  .productWishlist {
+    margin-top: 1.5rem;
+  }
+}
+
+@supports (position-anchor: --product-info) {
+  .product-page {
+    .productInfo {
+      anchor-name: --product-info;
+    }
+    .productSocial {
+      anchor-name: --social-links;
+    }
+    &:has(.productInfo),
+    &:has(.productSocial) {
+      .productWishlist {
+        position: absolute;
+        top: calc(anchor(bottom) + 1rem);
+        left: anchor(left, 0px);
+      }
+    }
+  }
+
+  .product-page:has(.productInfo):not(:has(.productSocial)) {
+    .productWishlist {
+      position-anchor: --product-info;
+    }
+  }
+
+  .product-page:has(.productSocial) {
+    .productWishlist {
+      position-anchor: --social-links;
+    }
+    .alsoBy:nth-child(1 of .alsoBy) {
+      margin-top: 5rem;
+    } 
+  }
+}
+

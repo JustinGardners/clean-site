@@ -1,0 +1,16 @@
+/* === TOPBAR ============================= */
+body {
+  .internetExNote {
+    display: none;
+    // background: $primary;
+    color: #fff;
+    text-align: center;
+    p {
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+      margin-inline: auto;
+      text-wrap: balance;
+    }
+  }
+}
+

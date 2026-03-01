@@ -1,0 +1,27 @@
+/* === SEARCH: Facet Drawer ============================= */
+body {
+  &.facetShow {
+    #leftNav {
+      .leftNavWrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100svh;
+        overflow-x: auto;
+        z-index: 100;
+        background: #fff;
+        padding-bottom: 85px;
+        width: 90vw;
+        max-width: 320px;
+      }
+      .navSection {
+        display: block !important;
+        padding: 1rem;
+        min-width: 220px;
+        max-width: 320px;
+        padding-top: 63px;
+        flex: 1 1 auto;
+      }
+    }
+  }
+}

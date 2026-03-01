@@ -1,4 +1,4 @@
-@layer reset, bs, site, tailwind;
+@layer reset, bs, core, site, tailwind;
 
 @layer site {
   @layer components;

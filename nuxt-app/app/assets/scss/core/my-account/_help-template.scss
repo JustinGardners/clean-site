@@ -1,0 +1,123 @@
+.template-help {
+  // color: $bg-brand;
+  margin-bottom: 0.75rem;
+  &.show {
+    .template-help__header {
+      &:before {
+        rotate: 90deg;
+      }
+    }
+    .template-help--hide {
+      display: block;
+    }
+  }
+  &.hide {
+    .template-help--hide {
+      display: none;
+    }
+  }
+
+  &__question-answer {
+    position: relative;
+    padding-bottom: 0.5rem;
+    &::after {
+      content: "";
+      width: 100%;
+      max-width: 30%;
+      height: 2px;
+      background-color: #bcc8de;
+      display: block;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  &__header {
+    // color: $bg-brand;
+    font-weight: bold;
+    // @include largesubheaderH;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    cursor: pointer;
+    &::before {
+      content: "";
+      background: url("/content/system/images/blue-right-arrow.svg") 100%
+        no-repeat #fff;
+      height: 23px;
+      width: 16px;
+      display: inline-block;
+      margin-right: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+  }
+}
+.template-anchor-links {
+  // background-color: $subtle-background;
+  padding: 0 1rem 1rem;
+  text-align: center;
+  margin-top: -1.5rem;
+  margin-bottom: 1.5rem;
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+      a {
+        // color: $bg-brand;
+        width: 100%;
+        display: block;
+        font-weight: bold;
+        padding: 0.25rem 0;
+        position: relative;
+      }
+    }
+  }
+}
+.template-help-section {
+  &.anchored {
+    h4 {
+      // @include smallsubheaderH;
+      padding-top: 2rem;
+    }
+  }
+  &__body {
+    ul {
+      list-style: disc;
+      padding-left: 1rem;
+    }
+  }
+}
+.template-help {
+  table {
+    margin: 1rem 0;
+    tr {
+      &:first-child {
+        th,
+        td {
+          // background-color: $subtle-background;
+          padding: 1rem;
+          font-weight: bold;
+        }
+      }
+      th,
+      td {
+        // border-bottom: 1px solid $subtle-border;
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+#logonRegister {
+  .myAccountContents {
+    background: none;
+  }
+}
+
+.wishlistEmpty .manualSearchSection {
+  display: none;
+}

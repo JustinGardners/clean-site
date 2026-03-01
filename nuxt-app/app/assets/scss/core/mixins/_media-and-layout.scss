@@ -1,0 +1,74 @@
+/* === MEDIA QUERIES ============================= */
+// -- Media Query - SM Breakpoint (576px)
+@mixin breakpt-sm {
+  // @media (min-width: map.get($grid-breakpoints, "sm")) {
+    @content;
+}
+
+// -- Media Query - MD Breakpoint (768px)
+@mixin breakpt-md {
+  // @media (min-width: map.get($grid-breakpoints, "md")) {
+    @content;
+}
+
+// -- Media Query - LG Breakpoint (992px)
+@mixin breakpt-lg {
+  // @media (min-width: map.get($grid-breakpoints, "lg")) {
+    @content;
+}
+
+// -- Media Query - XL Breakpoint (1200px)
+@mixin breakpt-xl {
+  // @media (min-width: map.get($grid-breakpoints, "xl")) {
+    @content;
+}
+
+// -- Media Query - XXL Breakpoint (1400px)
+@mixin breakpt-xxl {
+  // @media (min-width: map.get($grid-breakpoints, "xxl")) {
+    @content;
+}
+
+// -- Media Query - Custom Breakpoint
+// @mixin breakpt-c($screen) {
+  // @media (min-width: #{$screen}px) {
+    @content;
+
+// Pseudo Container
+@mixin container {
+  width: 100%;
+  padding-inline: calc(1.5rem * 0.5);
+  margin-inline: auto;
+  // @include breakpt-md {
+    max-width: 720px;
+  // @include breakpt-lg {
+    max-width: 960px;
+  // @include breakpt-xl {
+    max-width: 1140px;
+  // @include breakpt-xxl {
+    max-width: 1320px;
+}
+@mixin row {
+  padding: 0 calc(2.25rem * 0.5);
+  // @include breakpt-md {
+    padding: 0 calc(1.5rem * 0.5);
+}
+
+// Font Sizes
+// @mixin font-size($fs-map) {
+  // @each $fs-breakpoint, $fs-fontSize in $fs-map {
+    // @if $fs-breakpoint == null {
+      // font-size: $fs-fontSize;
+    } @else {
+      // @media (min-width: $fs-breakpoint) {
+        // font-size: $fs-fontSize;
+
+// Transitions
+
+// @mixin transition($x...) {
+  // -webkit-transition: $x;
+  // -moz-transition: $x;
+  // -ms-transition: $x;
+  // -o-transition: $x;
+  // transition: $x;
+

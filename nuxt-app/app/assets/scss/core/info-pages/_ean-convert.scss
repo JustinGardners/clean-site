@@ -1,0 +1,58 @@
+#eanConvert {
+  text-align: center;
+  padding-top: 2rem;
+  h2 {
+    // @include mainheaderH;
+    // color: $bg-brand;
+  }
+  h4 {
+    // @include largesubheaderLessBoldH;
+    // color: $bg-brand;
+  }
+  textarea {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    // border: 3px solid $subtle-border;
+  }
+  #buttonSubmit {
+    // @include button-variant($btn-background, $white, $btn-background);
+    width: 100%;
+    max-width: 400px;
+    margin: 0.25rem auto 2rem auto;
+    display: inline-block;
+  }
+  #urlResults {
+    text-align: left;
+    table {
+      width: 100%;
+      th {
+        // background-color: $subtle-background;
+        // border-right: 1px solid $subtle-border;
+        // color: $bg-brand;
+        width: 33.33333333333333%;
+        padding: 0.5rem;
+      }
+      tbody {
+        td {
+          // border-top: 1px solid $subtle-border;
+          // border-right: 1px solid $subtle-border;
+          // color: $bg-brand;
+          width: 33.33333333333333%;
+          padding: 0.5rem;
+          .clickcollect-help {
+            max-width: 140px;
+          }
+        }
+        tr {
+          td,
+          th {
+            &:last-child {
+              // border-right: 0px solid $subtle-border;
+            }
+          }
+        }
+      }
+    }
+  }
+}

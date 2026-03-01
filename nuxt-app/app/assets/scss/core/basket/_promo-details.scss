@@ -1,0 +1,17 @@
+/* ----- Promo Details -------------------- */
+.promoDetails {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+
+  span {
+    display: block;
+    color: #c50303;
+    font-size: 0.8em;
+
+    &::before {
+      content: "* ";
+    }
+  }
+}
+

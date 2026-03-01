@@ -1,0 +1,72 @@
+/* === SEARCH: Facet Controls ============================= */
+// Facet Accordion Toggle
+#refineBy {
+  .refineItem {
+    .facetDetailList {
+      display: none;
+    }
+    h5 {
+      position: relative;
+      cursor: pointer;
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23003087" viewBox="0 0 24 24"%3E%3Cpath d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 1 0 0-2z"/%3E%3C/svg%3E');
+      }
+    }
+    &.visible {
+      .facetDetailList {
+        display: block;
+      }
+      h5 {
+        &::after {
+          background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23003087" viewBox="0 0 24 24"%3E%3Cpath d="M19 11H5a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2z"/%3E%3C/svg%3E');
+        }
+      }
+    }
+  }
+}
+.mobileFacetClose {
+  // @include close-button();
+  font-size: 1em;
+  margin-inline: auto 1rem;
+  margin-top: 1rem;
+  position: fixed;
+  top: 0;
+  left: min(calc(90vw - 2rem), calc(320px - 4rem));
+  display: none;
+  z-index: 2;
+  display: none;
+  .mobileFacetCloseButton {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+body.facetShow {
+  .mobileFacetClose {
+    display: grid;
+    display: none;
+  }
+  .leftNavWrap {
+    &:before {
+      content: "";
+      display: block;
+      height: 63px;
+      width: min(320px, 90vw);
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: none;
+    }
+  }
+}

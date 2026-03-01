@@ -1,0 +1,18 @@
+#PersonalisedGifts{
+  ul{
+    padding: 2rem 0 0;
+    li{
+      margin-bottom: 1.5rem;
+      span{
+        font-weight: 700;
+        display: block;
+        margin-bottom: .5rem;;
+      }
+      .error{
+        color: #a81919;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+

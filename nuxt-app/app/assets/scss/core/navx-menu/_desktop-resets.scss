@@ -1,0 +1,48 @@
+/* Desktop reset for Mega Menu panels (≥768px) */
+@media (min-width: 768px) {
+  .megaMenu .mm {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 360px;
+  }
+
+  .megaMenu .mm__panels {
+    display: contents;
+    position: static;
+    overflow: visible;
+    transform: none;
+  }
+
+  .megaMenu .mm__col--l1,
+  .megaMenu .mm__col--l2,
+  .megaMenu .mm__col--l3 {
+    position: static;
+    inset: auto;
+    width: auto;
+    transform: none;
+    transition: none;
+    background: transparent;
+  }
+
+  .megaMenu .mm__col.is-hidden {
+    display: none;
+  }
+
+  .megaMenu .mm__back {
+    display: none;
+  }
+
+  .megaMenu .mm__col--media {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .megaMenu .mm {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .megaMenu .mm__col--media {
+    display: block;
+  }
+}
