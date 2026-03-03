@@ -1,0 +1,14 @@
+:root {
+  --bg-color: oklch(50% 0 0deg);
+  background-color: var(--bg-color);
+}
+
+@media (--md-n-above) {
+  :root {
+    background-color: red;
+  }
+}
+
+@import "./framework/base/root";
+@import "./framework/base/type";
+@import "./framework/base/buttons";

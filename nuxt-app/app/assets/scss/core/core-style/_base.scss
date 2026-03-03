@@ -6,20 +6,6 @@ hr.dev {
 }
 /* === GLOBAL ============================= */
 
-:root {
-  interpolate-size: allow-keywords;
-  --vw-min: 375;
-  --vw-max: 1440;
-  --bs-body-font-size: clamp(0.875rem, 0.5em + 1vi, 1rem);
-
-  --header-container-max-width: 1140px;
-  // @include breakpt-xxl {
-    --header-container-max-width: 1320px;
-  --header-container-width: 100%;
-  @supports (font-size: max(400px, 50vw)) {
-    --header-container-width: min(var(--header-container-max-width), 100%);
-  }
-}
 
 body {
   position: relative;
@@ -27,7 +13,7 @@ body {
   font-variant-numeric: lining-nums;
   overflow-x: hidden;
 
-  // @include breakpt-md {
+  // @media (--md-n-above) {
     padding-bottom: 0px;
   @media (max-width: breakpoint-max(md)) {
     &.facetShow,
@@ -215,35 +201,35 @@ textarea {
 // }
 .collapse {
   &.collapse-visible-sm {
-    // @include breakpt-sm {
+    // @media (--sm-n-above) {
       display: block;
       height: auto !important;
       visibility: visible;
     // }
   }
   &.collapse-visible-md {
-    // @include breakpt-md {
+    // @media (--md-n-above) {
       display: block;
       height: auto !important;
       visibility: visible;
     // }
   }
   &.collapse-visible-lg {
-    // @include breakpt-lg {
+    // @media (--lg-n-above) {
       display: block;
       height: auto !important;
       visibility: visible;
     // }
   }
   &.collapse-visible-xl {
-    // @include breakpt-xl {
+    // @media (--xl-n-above) {
       display: block;
       height: auto !important;
       visibility: visible;
     // }
   }
   &.collapse-visible-xxl {
-    // @include breakpt-xxl {
+    // @media (--xxl-n-above) {
       display: block;
       height: auto !important;
       visibility: visible;
@@ -256,23 +242,23 @@ textarea {
   @supports (width: min(400px, 100%)) {
     --mega-menu-width: min(var(--mega-menu-max-width), 100%);
   }
-  // @include breakpt-sm {
+  // @media (--sm-n-above) {
   //   --mega-menu-width: 100%;
   // }
 
-  // @include breakpt-md {
+  // @media (--md-n-above) {
   //   --mega-menu-width: 696px;
   // }
 
-  // @include breakpt-lg {
+  // @media (--lg-n-above) {
   //   --mega-menu-width: 936px;
   // }
 
-  // @include breakpt-xl {
+  // @media (--xl-n-above) {
   //   --mega-menu-width: 1116px;
   // }
 
-  // @include breakpt-xxl {
+  // @media (--xxl-n-above) {
   //   --mega-menu-width: 1296px;
   // }
 }
@@ -320,7 +306,7 @@ textarea {
   border-radius: 0;
   border: 0;
   padding: 0;
-  // @include breakpt-md {
+  // @media (--md-n-above) {
   //   margin-top: 10px;
   // }
   #navMenuHello {

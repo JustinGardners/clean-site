@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/layer-order.css',
     '~/assets/css/main.css',
-    './layers/tailwind/assets/css/tailwind.css'
+    '~~/layers/tailwind/assets/css/tailwind.css'
   ],
   vite: {
     plugins: [tailwindcss() as PluginOption],

@@ -1,0 +1,16 @@
+@function site-font-size($size, $unit: rem, $include-unit: false) {
+  $font-level: map.get($font-sizes, $size, "font-level");
+  @if $font-level == null {
+    @warn "Font size `#{$size}` not found in $font-sizes map.";
+    @return null;
+  } @else {
+    $font-size-px: $font-size-base-px *
+      math.pow($text-scale-increment, $font-level);
+      $result: if($unit == px, $font-size-px * 16, $font-size-px * 1);      
+      @if $include-unit {        
+        @return if($unit == px, $result * 1px, $result * 1rem);
+      } @else {
+        @return $result;
+      }
+  }
+}

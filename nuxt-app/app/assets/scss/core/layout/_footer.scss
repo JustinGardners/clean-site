@@ -4,10 +4,10 @@
   margin-top: 5rem;
 
   .newsletterBox {
-    // background: $primary;
+    background: $primary;
     padding: 30px;
     font-size: 16px;
-    // font-family: $text-font-stack;
+    font-family: $text-font-stack;
     font-weight: bold;
     text-align: center;
 
@@ -16,7 +16,7 @@
     }
 
     a {
-      // color: $surface-98 !important;
+      color: $surface-98 !important;
     }
   }
 
@@ -27,17 +27,19 @@
       display: block;
       padding-inline: 1rem;
 
-      // @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(md) {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
+      }
 
       h4 {
         padding-bottom: 14px;
         margin-bottom: 14px;
         font-size: 16px;
-        // font-family: $text-font-stack;
+        font-family: $text-font-stack;
         font-weight: bold;
-        // border-bottom: 1px solid $surface-94;
+        border-bottom: 1px solid $surface-94;
+      }
 
       .footer-list-pos {
         grid-column: span 2;
@@ -62,10 +64,10 @@
               left: calc(var(--size) * -1 - 12px);
               width: var(--size);
               height: var(--size);
-              // background: $primary;
+              background: $primary;
               color: #fff;
               font-size: 24px;
-              // font-family: $text-font-stack;
+              font-family: $text-font-stack;
               text-align: center;
               line-height: var(--size);
               border-radius: 50%;
@@ -80,7 +82,7 @@
         grid-template-columns: subgrid;
         padding: 0;
         font-size: 14px;
-        // font-family: $text-alt-font-stack;
+        font-family: $text-alt-font-stack;
         font-weight: 500;
 
         ul {
@@ -101,9 +103,9 @@
     margin-bottom: 50px;
     padding: 0;
     padding-top: 32px;
-    // border-top: 1px solid $surface-94;
+    border-top: 1px solid $surface-94;
 
-    // @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(md) {
       grid-column: span 5;
       display: grid;
       grid-template-columns: subgrid;
@@ -111,6 +113,7 @@
       grid-auto-flow: dense;
       margin-top: 100px;
       padding-top: 20px;
+    }
 
     .footer-logo {
       grid-column: span 2;
@@ -120,20 +123,22 @@
         max-height: 73px;
         object-position: center left;
       }
+    }
 
     .footer-copyright {
       display: block;
       grid-column: span 3;
       grid-row: 1 / 2;
       margin-top: 2rem;
-      // color: $text-secondary;
+      color: $text-secondary;
       font-size: 14px;
-      // font-family: $text-alt-font-stack;
+      font-family: $text-alt-font-stack;
       font-weight: 500;
 
-      // @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(md) {
         margin-top: 0;
         text-align: right;
+      }
     }
 
     .footer-payment-types {
@@ -146,15 +151,18 @@
       margin-top: 1rem;
       padding: 0;
 
-      // @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(md) {
         margin-top: 0;
         justify-content: end;
+      }
 
       li {
         list-style: none;
+      }
 
       img {
         max-height: 35px;
+      }
     }
   }
 
@@ -178,88 +186,4 @@
       }
     }
   }
-}
-
-// Discount Flash
-.discountFlash {
-  &--np {
-    display: none;
-  }
-}
-
-.no-page {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 100%;
-  column-gap: 1.5rem;
-  &__l-img {
-    display: none;
-    // @include media-breakpoint-up(sm) {
-      display: block;
-  }
-  &__r-img {
-    display: none;
-    // @include media-breakpoint-up(sm) {
-      display: block;
-  }
-  &__title {
-    text-align: center;
-    align-self: center;
-    padding: 1.5rem;
-    // @include media-breakpoint-up(sm) {
-      padding: 1.5rem 0 0 0;
-
-    h1 {
-      display: inline-block;
-      padding: 0 0.5rem 0.75rem 0.5rem;
-      position: relative;
-      // color: $bg-brand;
-      margin-bottom: 2rem;
-      // @include mainheaderH;
-      &::after {
-        content: "";
-        width: 100%;
-        height: 2px;
-        display: block;
-        // background-color: $bg-brand;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-      }
-    p {
-      // @include subheaderHlessBold;
-      // color: $bg-brand;
-  }
-}
-
-#headerWrap #nav #navMain .megaMenu {
-  left: 0;
-  right: 0;
-  width: 100%;
-  margin-inline: auto;
-
-  // @media (min-width: 576px) {
-  //   max-width: 540px;
-  // }
-
-  // @media (min-width: 768px) {
-  //   max-width: 720px;
-  // }
-
-  // @media (min-width: 992px) {
-  //   max-width: 960px;
-  // }
-
-  // @media (min-width: 1200px) {
-  //   max-width: 1140px;
-  // }
-
-  // @media (min-width: 1400px) {
-  //   max-width: 1320px;
-  // }
-}
-
-#headerWrap #nav {
-  // background: #fff;
 }

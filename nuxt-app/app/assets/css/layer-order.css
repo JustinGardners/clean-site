@@ -1,4 +1,15 @@
-@layer reset, bs, core, site, tailwind;
+@layer framework, core, site, tailwind;
+@layer framework {
+  @layer bs, base;
+}
+
+@layer framework.base {
+  @layer components;
+}
+
+@layer framework.base.components {
+  @layer base, states, modifiers;
+}
 
 @layer site {
   @layer components;

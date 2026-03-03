@@ -1,0 +1,51 @@
+  :root {
+    --text-scale-increment: #{$text-scale-increment};
+  
+    @each $key, $value in $type-sizes {
+      $font-level: map.get($font-sizes, $key, "font-level");
+      @if $font-level == null {
+        @warn "Font size `#{$key}` not found in $font-sizes map.";
+      } @else {
+        $result: site-font-size($key, rem, true);
+        $result-px: site-font-size($key, px, false);
+        --#{$prefix}#{$key}-font-size: #{unquote("#{$result}")};
+        --#{$prefix}#{$key}-font-size-px: #{unquote("#{$result-px}")};
+      }
+    }   
+  
+  }
+  
+  @supports (width: calc(10px * pow(5, 2))) {
+    :root {
+      @each $key, $value in $type-sizes {
+        $font-level: map.get($font-sizes, $key, "font-level");
+        @if $font-level != null {
+          --#{$prefix}#{$key}-font-size: calc(
+            #{$font-size-base-px} *
+              pow(var(--text-scale-increment), var(--#{$prefix}#{$key}-font-level, #{$font-level}))
+          );
+        }
+      }
+    }
+  }
+  
+  :root {
+    @each $key, $value in $theme-colors {
+      @if map-has-key($lch-colors, $key) {
+        $lch: map.get($lch-colors, $key);
+        $l: map.get($lch, l);
+        $c: map.get($lch, c);
+        $h: map.get($lch, h);
+        --#{$prefix}#{$key}-l: #{$l};
+        --#{$prefix}#{$key}-c: #{$c};
+        --#{$prefix}#{$key}-h: #{$h};
+        --#{$prefix}#{$key}: oklch(
+          var(--#{$prefix}#{$key}-l)
+            var(--#{$prefix}#{$key}-c)
+            var(--#{$prefix}#{$key}-h)
+        );
+      }
+    }
+    --#{$prefix}primary-fallback: #{$primary};
+    --#{$prefix}secondary-fallback: #{$secondary};
+  }

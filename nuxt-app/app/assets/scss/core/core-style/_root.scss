@@ -1,0 +1,15 @@
+:root {
+  interpolate-size: allow-keywords;
+  --vw-min: 375;
+  --vw-max: 1440;
+  --bs-body-font-size: clamp(0.875rem, 0.5em + 1vi, 1rem);
+
+  --header-container-max-width: 1140px;
+  @media (--xxl-n-above) {
+    --header-container-max-width: 1320px;
+  }
+  --header-container-width: 100%;
+  @supports (font-size: max(400px, 50vw)) {
+    --header-container-width: min(var(--header-container-max-width), 100%);
+  }
+}

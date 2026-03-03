@@ -83,7 +83,6 @@
   //   }
 
   // }
-  @include paragraphH;
   font-size: 1em;
   h3 {
     // @include smallsubheaderH;
@@ -237,7 +236,6 @@
               color: $bg-brand;
               grid-area: button1;
               text-decoration: underline;
-              @include linkH;
               padding-bottom: 0;
               padding-inline: 0;
               border-bottom: 0;
@@ -278,7 +276,6 @@
     padding: 1rem;
     h3 {
       margin: 0;
-      @include largesubheaderH;
     }
   }
   &__wrap {
@@ -319,11 +316,9 @@
         margin-bottom: 1rem;
       }
       h4 {
-        @include smallsubheaderH;
         color: $bg-brand;
       }
       p {
-        @include paragraphH;
         color: $bg-brand;
       }
     }

@@ -1,0 +1,109 @@
+@layer components {
+  @layer base {
+    :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6) {
+      @supports (width: calc(10px * pow(5, 2))) {
+        font-size: unset;
+      }
+    }
+
+    @each $heading, $value in $headings {
+      $size: map.get($value, "size");
+
+      :is(#{$heading}, .heading-#{$size}, .#{$heading}) {
+        // CHECK THIS WORKS BELOW
+        @supports not (width: calc(10px * pow(5, 2))) {
+          @media (min-width: $rfs-breakpoint) {
+            font-size: var(
+              --#{$prefix}#{$size}-font-size,
+              site-font-size($size)
+            );
+          }
+        }
+
+        @supports (width: calc(10px * pow(5, 2))) {
+          @include heading-size($heading);
+        }
+      }
+    }
+
+    @supports (width: calc(10px * pow(5, 2))) {
+      @for $i from list.length($type-sizes-display) + 1 through 2 {
+        $display-index: $i - 1;
+
+        .display-#{$display-index} {
+          $get-ascending-entry: (
+            (list.length($type-sizes-display) + 1) - $display-index
+          );
+          font-size: calc(
+            var(
+                --#{$prefix}#{nth(
+                    $type-sizes-display,
+                    $get-ascending-entry
+                  )}-font-size,
+                site-font-size(
+                  nth($type-sizes-display, $get-ascending-entry),
+                  rem
+                )
+              ) *
+              var(--unit, var(--#{$prefix}body-font-size, #{$font-size-base}))
+          );
+          --font-ratio-min: var(
+            --#{$prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-ratio-min,
+            #{$fluid-font-ratio-min}
+          );
+          --font-ratio-max: var(
+            --#{$prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-ratio-max,
+            #{$fluid-font-ratio-max}
+          );
+          --font-width-min: var(
+            --#{$prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-width-min,
+            #{$fluid-font-width-min}
+          );
+          --font-width-max: var(
+            --#{$prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-width-max,
+            #{$fluid-font-width-max}
+          );
+          $font-size-min-index: if(
+            $get-ascending-entry ==1,
+            $get-ascending-entry,
+            $get-ascending-entry - 1
+          );
+          $font-size-min: site-font-size(
+            nth($type-sizes-display, $font-size-min-index),
+            px
+          );
+          $font-size-max: site-font-size(
+            nth($type-sizes-display, $get-ascending-entry),
+            px
+          );
+          --font-size-min: var(
+            --#{$prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-size-min,
+            #{$font-size-min}
+          );
+          --font-size-max: var(
+            --#{$prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-size-max,
+            #{$font-size-max}
+          );
+        }
+      }
+    }
+  }
+}

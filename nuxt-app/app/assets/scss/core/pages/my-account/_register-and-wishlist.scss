@@ -68,7 +68,7 @@
           form {
             padding: 1.5rem 6.25%;
             padding-top: 0.5rem !important;
-            // @include breakpt-md {
+            // @media (--md-n-above) {
               padding: 1.5rem 6.25%;
           }
           h4 {
@@ -117,7 +117,7 @@
           .guestRegistration {
             text-align: center;
             margin: 1.5rem 6.25%;
-            // @include breakpt-md {
+            // @media (--md-n-above) {
               margin: 1.5rem 6.25%;
           }
           .benefitsblock {

@@ -3,70 +3,10 @@
 @use "sass:math";
 @use "sass:list";
 
-// OKLCH color definitions for theme colors, used to generate CSS variables for each color and its lightness, chroma, and hue components
-$lch-colors: (
-  primary: (
-    l: 0.7,
-    c: 0.1,
-    h: 233,
-  ),
-  secondary: (
-    l: 0.7,
-    c: 0.1,
-    h: 356,
-  ),
-  success: (
-    l: 0.5,
-    c: 0.1981,
-    h: 146.68,
-  ),
-  danger: (
-    l: 0.4962,
-    c: 0.1719,
-    h: 19.41,
-  ),
-  warning: (
-    l: 0.7237,
-    c: 0.1719,
-    h: 72.92,
-  ),
-  info: (
-    l: 0.6,
-    c: 0.1,
-    h: 200,
-  ),
-  light: (
-    l: 0.9,
-    c: 0.05,
-    h: 233,
-  ),
-  dark: (
-    l: 0.3,
-    c: 0.1,
-    h: 233,
-  ),
-);
+// @import "./mixins/utils/strip-unit";
 
-/// Override Bootstrap's default breakpoints here
+/// Override Bootstrap's default prefix here
 $prefix: "site-";
-
-$primary: color.to-space(
-  oklch(
-    map.get($lch-colors, "primary", "l") map.get($lch-colors, "primary", "c")
-      map.get($lch-colors, "primary", "h")
-  ),
-  hsl
-);
-$secondary: color.to-space(
-  oklch(
-    map.get($lch-colors, "secondary", "l")
-      map.get($lch-colors, "secondary", "c")
-      map.get($lch-colors, "secondary", "h")
-  ),
-  hsl
-);
-
-$h1-font-size: 2.44140625rem;
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -75,202 +15,26 @@ $h1-font-size: 2.44140625rem;
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
-$font-size-base-px: math.div($font-size-base, 1rem);
-$text-scale-increment: 1.25;
-
-$type-sizes-display: "display-xxs", "display-xs", "display-sm", "display-md", "display-lg", "display-xl";
-$type-sizes-normal: "xxs", "xs", "sm", "default", "lg", "xl", "2xl";
-$type-sizes: list.join($type-sizes-normal , $type-sizes-display);
-$heading-sizes: "h1", "h2", "h3", "h4", "h5", "h6";
-
-$headings: (
-  "h1": (
-    "size": "2xl",
-    "min-size": "xl",
-    "text-transform": uppercase,
-    "letter-spacing": 0,
-    "line-height": 1.2,
-  ),
-  "h2": (
-    "size": "xl",
-    "min-size": "lg",
-    "text-transform": uppercase,
-    "letter-spacing": 0,
-    "line-height": 1.3,
-  ),
-  "h3": (
-    "size": "lg",
-    "min-size": "default",
-    "text-transform": uppercase,
-    "letter-spacing": 0,
-    "line-height": 1.2,
-  ),
-  "h4": (
-    "size": "default",
-    "min-size": "sm",
-    "text-transform": uppercase,
-    "letter-spacing": 0,
-    "line-height": 1.2,
-  ),
-  "h5": (
-    "size": "sm",
-    "min-size": "xs",
-    "text-transform": uppercase,
-  ),
-  "h6": (
-    "size": "xs",
-    "min-size": "xxs",
-    "text-transform": uppercase,
-  ),
-);
-
-$font-sizes: (
-  "xxs": (
-    "font-level": -2,
-  ),
-  "xs": (
-    "font-level": -1,
-  ),
-  "sm": (
-    "font-level": 0,
-  ),
-  "default": (
-    "font-level": 1,
-  ),
-  "lg": (
-    "font-level": 2,
-  ),
-  "xl": (
-    "font-level": 3,
-  ),
-  "2xl": (
-    "font-level": 4,
-  ),
-  "display-xxs": (
-    "font-level": 5,
-  ),
-  "display-xs": (
-    "font-level": 6,
-  ),
-  "display-sm": (
-    "font-level": 7,
-  ),
-  "display-md": (
-    "font-level": 8,
-  ),
-  "display-lg": (
-    "font-level": 9,
-  ),
-  "display-xl": (
-    "font-level": 10,
-  ),
-);
-
-@function site-font-size($size, $unit: rem, $include-unit: false) {
-  $font-level: map.get($font-sizes, $size, "font-level");
-  @if $font-level == null {
-    @warn "Font size `#{$size}` not found in $font-sizes map.";
-    @return null;
-  } @else {
-    $font-size-px: $font-size-base-px *
-      math.pow($text-scale-increment, $font-level);
-      $result: if($unit == px, $font-size-px * 16, $font-size-px * 1);      
-      @if $include-unit {        
-        @return if($unit == px, $result * 1px, $result * 1rem);
-      } @else {
-        @return $result;
-      }
-  }
-}
-
-// Bootstrap vars
-$h1-font-size: site-font-size("2xl", rem, true);
-$h2-font-size: site-font-size("xl", rem, true);
-$h3-font-size: site-font-size("lg", rem, true);
-$h4-font-size: site-font-size("default", rem, true);
-$h5-font-size: site-font-size("sm", rem, true);
-$h6-font-size: site-font-size("xs", rem, true);
-
-// Bootstrap vars
-$display-font-sizes: (
-  1: site-font-size("display-xl", rem, true),
-  2: site-font-size("display-lg", rem, true),
-  3: site-font-size("display-md", rem, true),
-  4: site-font-size("display-sm", rem, true),
-  5: site-font-size("display-xs", rem, true),
-  6: site-font-size("display-xxs", rem, true),
-);
-
-
-$fluid-font-width-min: 375;
-$fluid-font-width-max: 1440;
-$fluid-font-ratio-min: 1.2;
-$fluid-font-ratio-max: 1.5;
-
-
+@import "./framework/base/functions";
+@import "./framework/base/variables";
+@import "./framework/base/mixins";
+@import "./framework/base/media";
 /// Set map overrides here
-$grid-breakpoints: map.set($grid-breakpoints, "md", 790px);
-
-@import "./variables/media-queries";
-
-:root {
-  --text-scale-increment: #{$text-scale-increment};
-
-  @each $key, $value in $type-sizes {
-    $font-level: map.get($font-sizes, $key, "font-level");
-    @if $font-level == null {
-      @warn "Font size `#{$key}` not found in $font-sizes map.";
-    } @else {
-      $result: site-font-size($key, rem, true);
-      $result-px: site-font-size($key, px, false);
-      --#{$prefix}#{$key}-font-size: #{unquote("#{$result}")};
-      --#{$prefix}#{$key}-font-size-px: #{unquote("#{$result-px}")};
-    }
-  }   
-
-}
-
-@supports (width: calc(10px * pow(5, 2))) {
-  :root {
-    @each $key, $value in $type-sizes {
-      $font-level: map.get($font-sizes, $key, "font-level");
-      @if $font-level != null {
-        --#{$prefix}#{$key}-font-size: calc(
-          #{$font-size-base-px} *
-            pow(var(--text-scale-increment), var(--#{$prefix}#{$key}-font-level, #{$font-level}))
-        );
-      }
-    }
-  }
-}
-
-:root {
-  @each $key, $value in $theme-colors {
-    @if map-has-key($lch-colors, $key) {
-      $lch: map.get($lch-colors, $key);
-      $l: map.get($lch, l);
-      $c: map.get($lch, c);
-      $h: map.get($lch, h);
-      --#{$prefix}#{$key}-l: #{$l};
-      --#{$prefix}#{$key}-c: #{$c};
-      --#{$prefix}#{$key}-h: #{$h};
-      --#{$prefix}#{$key}: oklch(
-        var(--#{$prefix}#{$key}-l)
-          var(--#{$prefix}#{$key}-c)
-          var(--#{$prefix}#{$key}-h)
-      );
-    }
-  }
-  --#{$prefix}primary-fallback: #{$primary};
-  --#{$prefix}secondary-fallback: #{$secondary};
-}
+// $grid-breakpoints: map.set($grid-breakpoints, "md", 790px);
 
 // @debug map-get($grid-breakpoints , 'md' );
 
-@layer bs {
+@import "./core/variables";
+
+
+@layer framework.bs {
   @import "./bootstrap";
 }
 
-@layer site {
-  @import "./site";
+@layer framework.base {
+  @import "./base";
+}
+
+@layer core {
+  @import "./core/style";
 }

@@ -142,7 +142,7 @@
       order: 1;
       margin-bottom: 1rem;
 
-      // @include breakpt-sm {
+      // @media (--sm-n-above) {
         margin-bottom: 0;
     }
 

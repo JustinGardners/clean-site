@@ -1,4 +1,4 @@
-import sass from 'sass'
+import * as sass from 'sass'
 import { transform } from 'lightningcss'
 import { writeFileSync, mkdirSync } from 'fs'
 import { dirname, resolve } from 'path'
@@ -9,14 +9,35 @@ const outputFile = './app/assets/css/main.css'
 try {
   // Step 1: Compile SCSS to CSS
   console.log('📦 Compiling SCSS to CSS...')
-  const result = sass.renderSync({
-    file: inputFile,
-    includePaths: [
+  const result = sass.compile(inputFile, {
+    loadPaths: [
       resolve('./node_modules'),
       resolve('./app/assets/scss')
-    ]
+    ],
+    quietDeps: true,
+    silenceDeprecations: [
+      'color-functions',
+      'import',
+      'slash-div',
+      'global-builtin',
+      'if-function'
+    ],
+    logger: {
+      debug(message, options) {
+        const location = options?.span
+          ? `${options.span.url?.pathname ?? 'scss'}:${options.span.start.line + 1}`
+          : 'scss'
+        console.log(`🐞 Sass @debug ${location}: ${message}`)
+      },
+      warn(message, options) {
+        const location = options?.span
+          ? `${options.span.url?.pathname ?? 'scss'}:${options.span.start.line + 1}`
+          : 'scss'
+        console.warn(`⚠️ Sass @warn ${location}: ${message}`)
+      }
+    }
   })
-  const compiledCSS = result.css.toString()
+  const compiledCSS = result.css
   console.log('✅ SCSS compiled successfully')
 
   // Step 2: Process CSS through Lightning CSS

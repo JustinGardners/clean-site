@@ -1,0 +1,19 @@
+@layer components {
+  :where(.btn) {
+    @layer base {
+      @include button-rules();
+    }
+
+    @layer modifiers {
+      @each $key, $value in $theme-colors {
+        @if map-has-key($lch-colors, $key) {
+          $lch: map.get($lch-colors, $key);
+
+          &.btn-#{$key} {
+            --#{$prefix}btn-theme: var(--#{$prefix}#{$key});
+          }
+        }
+      }
+    }
+  }
+}

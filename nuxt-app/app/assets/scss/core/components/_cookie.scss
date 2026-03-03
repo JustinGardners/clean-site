@@ -1,0 +1,56 @@
+#storefront_cookie_widget {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $highlight-strong;
+  color: $text-font-stack;
+  font-size: 0.875em;
+  border-bottom: 1px solid $highlight-strong;
+  z-index: map.get($zindex-list, fixed);
+
+  .storefrontCookieContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-inline: auto;
+    padding: 1rem;
+    max-width: var(--container-width, 100%);
+
+    @media (--sm-n-above) {
+      --container-width: 100%;
+    }
+
+    @media (--md-n-above) {
+      --container-width: 720px;
+      flex-direction: row;
+      bottom: 0;
+    }
+
+    @media (--lg-n-above) {
+      --container-width: 960px;
+    }
+
+    @media (--xl-n-above) {
+      --container-width: 1140px;
+    }
+
+    @media (--xxl-n-above) {
+      --container-width: 1320px;
+    }
+
+    .button {
+      padding: 9px 22px;
+      min-width: 8rem;
+      background: $primary;
+      color: #fff;
+      font-size: 14px;
+      font-family: $text-alt-font-stack;
+      line-height: 1;
+      border: 0;
+      border-radius: 999px;
+    }
+  }
+}

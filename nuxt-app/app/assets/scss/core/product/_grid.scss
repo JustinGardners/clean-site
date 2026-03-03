@@ -10,7 +10,7 @@
     > div {
       padding-inline: var(--image-wrap-gutter-x, 0);
     }
-    // @include breakpt-md {
+    // @media (--md-n-above) {
       margin-top: 0;
       grid-template-columns: 1fr;
       column-gap: 2rem;
@@ -46,7 +46,7 @@
         "alb alb"
         "tml tml";
       grid-template-rows: auto auto auto auto auto 1fr;
-    // @include breakpt-lg {
+    // @media (--lg-n-above) {
       grid-template-columns: [mainContent] 6fr [sidebar] 3fr;
       column-gap: 7%;
     .imageWrap {
@@ -139,7 +139,7 @@
     .productInfoWrapGrid {
       grid-area: pdi;
       order: 9;
-      // @include breakpt-md {
+      // @media (--md-n-above) {
         grid-row-start: 5;
     }
     .productInfo--manual {

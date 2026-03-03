@@ -58,7 +58,7 @@ body {
 .top-cat {
   &__item {
     margin-bottom: 1rem;
-    // @include breakpt-md {
+    // @media (--md-n-above) {
       margin-bottom: 0;
     a {
       position: relative;
@@ -93,7 +93,7 @@ body {
     font-size: 18px;
     text-align: center;
     // color: $bg-brand-dark;
-    // @include breakpt-md {
+    // @media (--md-n-above) {
       font-size: 22px;
   }
 }

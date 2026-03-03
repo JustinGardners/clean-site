@@ -423,7 +423,7 @@
         .register {
           // border: 2px solid $subtle-background;
           padding: 1.5rem 6.25%;
-          // @include breakpt-md {
+          // @media (--md-n-above) {
             padding: 1.5rem 6.25%;
         }
       }
@@ -433,7 +433,7 @@
         // border: 2px solid $subtle-background;
         border-radius: 0 0 10px 10px;
         padding: 1.5rem 6.25%;
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           padding: 1.5rem 6.25%;
         // margin-bottom: 1rem;
         // margin-top: -1rem;

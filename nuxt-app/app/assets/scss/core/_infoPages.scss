@@ -179,7 +179,6 @@
     margin-bottom: 5px;
   }
   &__shopinfo {
-    @include paragraphH;
     color: $bg-brand;
     line-height: 1.3125rem;
     padding-bottom: 30px;
@@ -208,7 +207,6 @@
   &__subtext {
     p {
       color: $bg-brand;
-      @include paragraphH;
       padding-right: 20px;
       line-height: 1.1875rem;
       margin: 0;
@@ -336,7 +334,7 @@
       #searchText {
         padding-right: 10rem;
 
-        @include breakpt-lg {
+        @media (--lg-n-above) {
           padding-right: 0.75rem;
         }
       }
@@ -372,7 +370,7 @@
         padding-right: 2rem;
       }
 
-      @include breakpt-lg {
+      @media (--lg-n-above) {
         display: none;
       }
 
@@ -426,12 +424,10 @@
       width: 100%;
       height: 100%;
       h3 {
-        @include subheaderH;
         color: $bg-brand;
         margin: 1.5rem 0;
       }
       #frmStoreLocatorRadius {
-        @include smallsubheaderH;
         color: $bg-brand;
         margin-top: -0.75rem;
         margin-bottom: 1.5rem;
@@ -791,7 +787,6 @@
   }
   &__opening {
     h6 {
-      @include subheaderH;
       color: $bg-brand;
       margin-bottom: 1rem;
       padding-bottom: 1rem;
@@ -801,7 +796,7 @@
   &__hours-list {
     .whs-hours-list, .tgj-hours-list {
       padding: 0 6.25%;
-      @include breakpt-md {
+      @media (--md-n-above) {
         padding: 0 1.5rem;
       }
       li {
@@ -819,7 +814,6 @@
   &__map {
   }
   &__subheader {
-    @include subheaderH;
     color: $bg-brand;
     background-color: $subtle-background;
     padding: 1rem 1.5rem;
@@ -875,11 +869,9 @@
   text-align: center;
   padding-top: 2rem;
   h2 {
-    @include mainheaderH;
     color: $bg-brand;
   }
   h4 {
-    @include largesubheaderLessBoldH;
     color: $bg-brand;
   }
   textarea {

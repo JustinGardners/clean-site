@@ -130,7 +130,7 @@
     .billingAddress {
       // border: 2px solid $subtle-background;
       padding: 1.5rem 6.25%;
-      // @include breakpt-md {
+      // @media (--md-n-above) {
         padding: 1.5rem 6.25%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;

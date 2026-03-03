@@ -1,122 +1,11 @@
 @use "sass:map";
 
-/* === MEDIA QUERIES ============================= */
-// -- Media Query - SM Breakpoint (576px)
-@mixin breakpt-sm {
-  @media (min-width: map.get($grid-breakpoints, "sm")) {
-    @content;
-  }
-}
-
-// -- Media Query - MD Breakpoint (768px)
-@mixin breakpt-md {
-  @media (min-width: map.get($grid-breakpoints, "md")) {
-    @content;
-  }
-}
-
-// -- Media Query - LG Breakpoint (992px)
-@mixin breakpt-lg {
-  @media (min-width: map.get($grid-breakpoints, "lg")) {
-    @content;
-  }
-}
-
-// -- Media Query - XL Breakpoint (1200px)
-@mixin breakpt-xl {
-  @media (min-width: map.get($grid-breakpoints, "xl")) {
-    @content;
-  }
-}
-
-// -- Media Query - XXL Breakpoint (1400px)
-@mixin breakpt-xxl {
-  @media (min-width: map.get($grid-breakpoints, "xxl")) {
-    @content;
-  }
-}
-
-// -- Media Query - Custom Breakpoint
-@mixin breakpt-c($screen) {
-  @media (min-width: #{$screen}px) {
-    @content;
-  }
-}
-
-// Pseudo Container
-@mixin container {
-  width: 100%;
-  padding-inline: calc(1.5rem * 0.5);
-  margin-inline: auto;
-  @include breakpt-md {
-    max-width: 720px;
-  }
-  @include breakpt-lg {
-    max-width: 960px;
-  }
-  @include breakpt-xl {
-    max-width: 1140px;
-  }
-  @include breakpt-xxl {
-    max-width: 1320px;
-  }
-}
-@mixin row {
-  padding: 0 calc(2.25rem * 0.5);
-  @include breakpt-md {
-    padding: 0 calc(1.5rem * 0.5);
-  }
-}
-
-// Font Sizes
-@mixin font-size($fs-map) {
-  @each $fs-breakpoint, $fs-fontSize in $fs-map {
-    @if $fs-breakpoint == null {
-      font-size: $fs-fontSize;
-    } @else {
-      @media (min-width: $fs-breakpoint) {
-        font-size: $fs-fontSize;
-      }
-    }
-  }
-}
-
 // Transitions
-
-@mixin transition($x...) {
-  -webkit-transition: $x;
-  -moz-transition: $x;
-  -ms-transition: $x;
-  -o-transition: $x;
-  transition: $x;
-}
 
 // Buttons
 $btn-background: $primary;
 $btn-hover: #002262;
 
-@mixin button-variant($background, $font-col, $border) {
-  background-color: $background;
-  color: $font-col;
-  font-weight: 600;
-  padding: max(0.6em, 0.5rem) 0.5em;
-  text-align: center;
-  border: 2px solid $border;
-  border-radius: var(--bs-border-radius, 0);
-  // border-radius: 0;
-  display: inline-block;
-  // max-width: 195px;
-  cursor: pointer;
-  @include transition(background-color 0.5s ease);
-  line-height: 1.2;
-  text-box-trim: trim-both;
-  font-family: $headings-font-family;
-  &:hover {
-    background-color: $btn-hover;
-    text-decoration: none;
-    color: $white;
-  }
-}
 
 /// A mixin which outputs layout rules for info tags
 @mixin tag--info-layout-output() {
@@ -270,60 +159,6 @@ $btn-hover: #002262;
   } @else {
     @warn "No tags map provided";
   }
-}
-
-// Header style
-@mixin mainheaderH() {
-  font-size: clamp(22px, 1em + 1.35vw, 40px);
-  font-weight: 400;
-  font-family: #{$headings-font-family};
-}
-
-@mixin subheaderH() {
-  font-size: 22px;
-  font-weight: 400;
-}
-
-@mixin subheaderHlessBold() {
-  font-size: 16px;
-  font-weight: 700;
-}
-@mixin largesubheaderH() {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-@mixin largesubheaderLessBoldH() {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-@mixin smallsubheaderH() {
-  font-size: clamp(18px, 0.5em + 1.35vw, 22px);
-}
-
-@mixin linkH() {
-  font-size: 1rem;
-}
-
-@mixin paragraphH() {
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-
-@mixin searchText() {
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-@mixin searchTextLessBold() {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-@mixin searchTextBold() {
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 // Mobile Menu Mixins

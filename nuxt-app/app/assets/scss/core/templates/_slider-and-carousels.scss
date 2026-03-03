@@ -80,7 +80,7 @@
   width: 100%;
   // background: $subtle-background;
   .glide__arrows {
-    // @include breakpt-md {
+    // @media (--md-n-above) {
       width: 100%;
       margin-inline: auto;
       max-width: 720px;
@@ -95,7 +95,7 @@
       .glide__arrow--right {
         right: calc((100vw - 812px) / 2) !important;
       }
-    // @include breakpt-lg {
+    // @media (--lg-n-above) {
       max-width: 960px;
       margin-left: -480px;
       .glide__arrow--left {
@@ -104,7 +104,7 @@
       .glide__arrow--right {
         right: calc((100vw - 1032px) / 2) !important;
       }
-    // @include breakpt-xl {
+    // @media (--xl-n-above) {
       max-width: 1140px;
       margin-left: -570px;
       .glide__arrow--left {
@@ -113,7 +113,7 @@
       .glide__arrow--right {
         right: calc((100vw - 1232px) / 2) !important;
       }
-    // @include breakpt-xxl {
+    // @media (--xxl-n-above) {
       max-width: 1320px;
       margin-left: -660px;
       .glide__arrow--left {

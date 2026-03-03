@@ -10,7 +10,7 @@
     > div {
       padding-inline: var(--image-wrap-gutter-x, 0);
     }
-    @include breakpt-md {
+    @media (--md-n-above) {
       margin-top: 0;
       grid-template-columns: 1fr;
       column-gap: 2rem;
@@ -47,7 +47,7 @@
         "tml tml";
       grid-template-rows: auto auto auto auto auto 1fr;
     }
-    @include breakpt-lg {
+    @media (--lg-n-above) {
       grid-template-columns: [mainContent] 6fr [sidebar] 3fr;
       column-gap: 7%;
     }
@@ -143,7 +143,7 @@
     .productInfoWrapGrid {
       grid-area: pdi;
       order: 9;
-      @include breakpt-md {
+      @media (--md-n-above) {
         grid-row-start: 5;
       }
     }
@@ -346,11 +346,11 @@
           max-width: 100%;
           object-fit: fill;
           filter: drop-shadow(0 0 8px rgba(1, 48, 136, 0.6));
-          @include breakpt-md {
+          @media (--md-n-above) {
             max-height: 640px;
           }
         }
-        @include breakpt-md {
+        @media (--md-n-above) {
           &::after {
             width: 100%;
             height: 3px;
@@ -429,18 +429,16 @@
 
       &--title {
         margin-top: 2rem;
-        @include breakpt-md {
+        @media (--md-n-above) {
           margin-top: unset;
         }
         h1 {
           color: $bg-brand;
-          @include mainheaderH;
           font-weight: normal;
           margin-bottom: 0;
           .product__title--subTitle {
             display: block;
             margin-top: 0.75rem;
-            @include subheaderHlessBold;
             // font-weight: normal;
           }
           .product__title--format {
@@ -448,7 +446,7 @@
             padding-top: 0.75rem;
             border-top: 1px solid $subtle-border;
             display: none;
-            @include breakpt-md {
+            @media (--md-n-above) {
               border-top: 0;
             }
           }
@@ -464,7 +462,6 @@
       }
       a {
         color: $bg-brand;
-        @include linkH;
         text-decoration: underline;
       }
     }
@@ -523,7 +520,7 @@
         padding: 1.5rem 0 0;
         margin: 0 0 1rem;
         border-top: 1px solid $subtle-border;
-        @include breakpt-md {
+        @media (--md-n-above) {
           padding: 0;
           border-top: none;
         }
@@ -576,7 +573,7 @@
     }
     .richContentWrap {
       margin-top: 2rem;
-      @include breakpt-md {
+      @media (--md-n-above) {
         margin-top: unset;
       }
       iframe {
@@ -587,7 +584,7 @@
     .alternativeFormats,
     .descriptionWrapManual {
       // margin-inline: -0.75rem;
-      @include breakpt-md {
+      @media (--md-n-above) {
         margin-inline: unset;
       }
     }
@@ -595,7 +592,7 @@
       margin-top: 2rem;
       margin-bottom: 2rem;
       .productInfo {
-        @include breakpt-md {
+        @media (--md-n-above) {
           border: #e7effa 2px solid;
           border-radius: 10px;
         }
@@ -606,7 +603,7 @@
           color: $bg-brand;
           padding: 1.5rem 0 0;
           border-top: 1px solid $subtle-border;
-          @include breakpt-md {
+          @media (--md-n-above) {
             padding: 0.5rem 1rem;
             border-top: none;
           }
@@ -615,7 +612,7 @@
           padding: 0;
           margin: 0;
           margin-top: 1.5rem;
-          @include breakpt-md {
+          @media (--md-n-above) {
             margin-top: 0;
           }
           li {
@@ -646,7 +643,7 @@
           }
         }
         > ul {
-          @include breakpt-md {
+          @media (--md-n-above) {
             padding: 1rem;
           }
         }
@@ -693,7 +690,7 @@
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: space-between;
-        @include breakpt-md {
+        @media (--md-n-above) {
           flex-direction: row;
         }
 
@@ -724,13 +721,12 @@
           // text-decoration: line-through;
         }
         .sitePrice {
-          @include mainheaderH;
           color: $bg-brand;
           position: relative;
         }
       }
       .availability {
-        @include breakpt-md {
+        @media (--md-n-above) {
           width: 100%;
         }
         a:not(.tooltipstered) {
@@ -889,7 +885,7 @@
           margin-bottom: calc(var(--arrowSize) * 1.5);
           background: var(--backgroundCol);
           color: $bg-brand;
-          @include breakpt-md {
+          @media (--md-n-above) {
             display: block;
           }
           &::after {

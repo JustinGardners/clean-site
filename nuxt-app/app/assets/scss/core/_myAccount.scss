@@ -132,7 +132,6 @@
         padding: 0.5rem 0;
         margin: 0;
         color: $bg-brand;
-        @include subheaderH;
         border-bottom: 1px solid #929fb6;
       }
 
@@ -148,7 +147,6 @@
           }
           a {
             color: $bg-brand;
-            @include linkH;
           }
         }
       }
@@ -318,7 +316,6 @@
     .myAccountHeader,
     .helpHeader {
       h2 {
-        @include subheaderH;
         color: $bg-brand;
         border-bottom: 1px solid #929fb6;
         text-align: left;
@@ -393,7 +390,6 @@
             }
           }
           h3 {
-            @include subheaderH;
             color: $bg-brand;
             border-bottom: 1px solid #929fb6;
             padding-bottom: 0.5rem;
@@ -432,7 +428,7 @@
         .register {
           border: 2px solid $subtle-background;
           padding: 1.5rem 6.25%;
-          @include breakpt-md {
+          @media (--md-n-above) {
             padding: 1.5rem 6.25%;
           }
         }
@@ -443,7 +439,7 @@
         // border: 2px solid $subtle-background;
         border-radius: 0 0 10px 10px;
         padding: 1.5rem 6.25%;
-        @include breakpt-md {
+        @media (--md-n-above) {
           padding: 1.5rem 6.25%;
         }
         // margin-bottom: 1rem;
@@ -751,7 +747,7 @@
     .billingAddress {
       border: 2px solid $subtle-background;
       padding: 1.5rem 6.25%;
-      @include breakpt-md {
+      @media (--md-n-above) {
         padding: 1.5rem 6.25%;
       }
       display: grid;
@@ -1236,7 +1232,7 @@
           form {
             padding: 1.5rem 6.25%;
             padding-top: 0.5rem !important;
-            @include breakpt-md {
+            @media (--md-n-above) {
               padding: 1.5rem 6.25%;
             }
           }
@@ -1286,7 +1282,7 @@
           .guestRegistration {
             text-align: center;
             margin: 1.5rem 6.25%;
-            @include breakpt-md {
+            @media (--md-n-above) {
               margin: 1.5rem 6.25%;
             }
           }
@@ -1654,7 +1650,6 @@ div#wishlistEmail {
   &__header {
     color: $bg-brand;
     font-weight: bold;
-    @include largesubheaderH;
     padding-bottom: 1rem;
     margin-bottom: 0.5rem;
     position: relative;
@@ -1700,7 +1695,6 @@ div#wishlistEmail {
 .template-help-section {
   &.anchored {
     h4 {
-      @include smallsubheaderH;
       padding-top: 2rem;
     }
   }

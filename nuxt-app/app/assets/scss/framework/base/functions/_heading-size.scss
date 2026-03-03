@@ -1,0 +1,40 @@
+  @mixin heading-size($size) {
+    @if (check-if-heading-size($size)) {
+      $font-size: map.get(map.get($headings, $size), "size");
+      @if (check-if-type-size($font-size)) {
+        $default-font-max-size: site-font-size($font-size, px);
+        font-size: calc(
+          var(--#{$prefix}#{$font-size}-font-size, site-font-size($font-size)) *
+            var(--unit, var(--#{$prefix}body-font-size, #{$font-size-base}))
+        );
+        --font-size-max: var(
+          --#{$prefix}#{$font-size}-font-size-max,
+          #{$default-font-max-size}
+        );
+      }
+      $min-size: map.get(map.get($headings, $size), "min-size");
+      @if (check-if-type-size($min-size)) {
+        $default-font-min-size: site-font-size($min-size, px);
+        --font-size-min: var(
+          --#{$prefix}#{$font-size}-font-size-min,
+          #{$default-font-min-size}
+        );
+      }
+      --font-ratio-min: var(
+        --#{$prefix}#{$font-size}-font-ratio-min,
+        #{$fluid-font-ratio-min}
+      );
+      --font-ratio-max: var(
+        --#{$prefix}#{$font-size}-font-ratio-max,
+        #{$fluid-font-ratio-max}
+      );
+      --font-width-min: var(
+        --#{$prefix}#{$font-size}-font-width-min,
+        #{$fluid-font-width-min}
+      );
+      --font-width-max: var(
+        --#{$prefix}#{$font-size}-font-width-max,
+        #{$fluid-font-width-max}
+      );
+    }
+  }

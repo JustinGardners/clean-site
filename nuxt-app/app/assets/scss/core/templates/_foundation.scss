@@ -6,30 +6,30 @@
   width: 20%;
 }
 
-// @include breakpt-sm {
+// @media (--sm-n-above) {
   .col-sm-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 
-// @include breakpt-md {
+// @media (--md-n-above) {
   .col-md-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 
-// @include breakpt-lg {
+// @media (--lg-n-above) {
   .col-lg-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 
-// @include breakpt-xl {
+// @media (--xl-n-above) {
   .col-xl-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
-// @include breakpt-xxl {
+// @media (--xxl-n-above) {
   .col-xxl-5wide {
     flex: 0 0 auto;
     width: 20%;
@@ -145,7 +145,7 @@
       font-weight: 600;
       display: block;
       text-align: left;
-      // @include breakpt-lg {
+      // @media (--lg-n-above) {
         display: inline-block;
         text-align: left;
       a {
@@ -155,7 +155,7 @@
         font-weight: 400;
         // color: $bg-brand;
         text-decoration: underline;
-        // @include breakpt-lg {
+        // @media (--lg-n-above) {
           padding-left: 20px;
       }
     }
@@ -173,7 +173,7 @@
       margin-bottom: 0;
       display: inline-block;
       font-size: calc(1.275rem + 0.3vw);
-      // @include breakpt-lg {
+      // @media (--lg-n-above) {
         font-size: 1.75rem;
     }
     &--link {
@@ -181,7 +181,7 @@
       font-size: 1.25rem;
       display: block;
       text-align: left;
-      // @include breakpt-lg {
+      // @media (--lg-n-above) {
         display: inline-block;
         text-align: left;
       a {
@@ -189,7 +189,7 @@
         border-left: 0;
         padding-left: 0;
         font-weight: 400;
-        // @include breakpt-lg {
+        // @media (--lg-n-above) {
           // border-left: 1px solid $bg-brand;
           margin-left: 20px;
           padding-left: 20px;

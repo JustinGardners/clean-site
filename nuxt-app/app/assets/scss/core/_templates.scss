@@ -8,34 +8,34 @@
   width: 20%;
 }
 
-@include breakpt-sm {
+@media (--sm-n-above) {
   .col-sm-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 }
 
-@include breakpt-md {
+@media (--md-n-above) {
   .col-md-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 }
 
-@include breakpt-lg {
+@media (--lg-n-above) {
   .col-lg-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 }
 
-@include breakpt-xl {
+@media (--xl-n-above) {
   .col-xl-5wide {
     flex: 0 0 auto;
     width: 20%;
   }
 }
-@include breakpt-xxl {
+@media (--xxl-n-above) {
   .col-xxl-5wide {
     flex: 0 0 auto;
     width: 20%;
@@ -155,7 +155,7 @@
       font-weight: 600;
       display: block;
       text-align: left;
-      @include breakpt-lg {
+      @media (--lg-n-above) {
         display: inline-block;
         text-align: left;
       }
@@ -166,7 +166,7 @@
         font-weight: 400;
         color: $bg-brand;
         text-decoration: underline;
-        @include breakpt-lg {
+        @media (--lg-n-above) {
           padding-left: 20px;
         }
       }
@@ -185,7 +185,7 @@
       margin-bottom: 0;
       display: inline-block;
       font-size: calc(1.275rem + 0.3vw);
-      @include breakpt-lg {
+      @media (--lg-n-above) {
         font-size: 1.75rem;
       }
     }
@@ -194,7 +194,7 @@
       font-size: 1.25rem;
       display: block;
       text-align: left;
-      @include breakpt-lg {
+      @media (--lg-n-above) {
         display: inline-block;
         text-align: left;
       }
@@ -203,7 +203,7 @@
         border-left: 0;
         padding-left: 0;
         font-weight: 400;
-        @include breakpt-lg {
+        @media (--lg-n-above) {
           border-left: 1px solid $bg-brand;
           margin-left: 20px;
           padding-left: 20px;
@@ -302,7 +302,7 @@ body {
 .top-cat {
   &__item {
     margin-bottom: 1rem;
-    @include breakpt-md {
+    @media (--md-n-above) {
       margin-bottom: 0;
     }
     a {
@@ -338,7 +338,7 @@ body {
     font-size: 18px;
     text-align: center;
     color: $bg-brand-dark;
-    @include breakpt-md {
+    @media (--md-n-above) {
       font-size: 22px;
     }
   }
@@ -638,7 +638,7 @@ body {
       order: 1;
       margin-bottom: 1rem;
 
-      @include breakpt-sm {
+      @media (--sm-n-above) {
         margin-bottom: 0;
       }
     }
@@ -2057,7 +2057,7 @@ a.pb-template__content--author {
   width: 100%;
   background: $subtle-background;
   .glide__arrows {
-    @include breakpt-md {
+    @media (--md-n-above) {
       width: 100%;
       margin-inline: auto;
       max-width: 720px;
@@ -2073,7 +2073,7 @@ a.pb-template__content--author {
         right: calc((100vw - 812px) / 2) !important;
       }
     }
-    @include breakpt-lg {
+    @media (--lg-n-above) {
       max-width: 960px;
       margin-left: -480px;
       .glide__arrow--left {
@@ -2083,7 +2083,7 @@ a.pb-template__content--author {
         right: calc((100vw - 1032px) / 2) !important;
       }
     }
-    @include breakpt-xl {
+    @media (--xl-n-above) {
       max-width: 1140px;
       margin-left: -570px;
       .glide__arrow--left {
@@ -2093,7 +2093,7 @@ a.pb-template__content--author {
         right: calc((100vw - 1232px) / 2) !important;
       }
     }
-    @include breakpt-xxl {
+    @media (--xxl-n-above) {
       max-width: 1320px;
       margin-left: -660px;
       .glide__arrow--left {
@@ -2213,14 +2213,14 @@ a.pb-template__content--author {
       color: #ffffff;
       font-weight: 700;
       padding: 30px 30px 0 40px;
-      @include breakpt-xl {
+      @media (--xl-n-above) {
         padding: 30px 30px 0 60px;
       }
     }
     ul {
       margin: 0;
       padding: 20px 30px 20px 40px;
-      @include breakpt-xl {
+      @media (--xl-n-above) {
         padding: 20px 30px 20px 60px;
       }
       li {
@@ -2373,7 +2373,7 @@ a.pb-template__content--author {
       grid-auto-flow: row;
       grid-row-gap: 0rem;
       grid-column-gap: 1.5rem;
-      @include breakpt-md {
+      @media (--md-n-above) {
         grid-template-columns: [labels] auto [controls] 1fr;
       }
       label {
@@ -2384,7 +2384,7 @@ a.pb-template__content--author {
         grid-column: controls;
       }
     }
-    @include breakpt-md {
+    @media (--md-n-above) {
       display: grid;
       grid-template-columns: [labels] auto [controls] 1fr;
       grid-auto-flow: row;
@@ -2399,7 +2399,7 @@ a.pb-template__content--author {
       label,
       .questions {
         width: var(--formLabelSpace);
-        @include breakpt-md {
+        @media (--md-n-above) {
           width: calc(var(--formLabelSpace) * 1.5);
         }
       }
@@ -2426,7 +2426,7 @@ a.pb-template__content--author {
     }
   }
   #formSubmitButton {
-    @include breakpt-md {
+    @media (--md-n-above) {
       margin-left: calc((var(--formLabelSpace) * 1.5) + 1.5rem);
     }
     input[type="submit"] {

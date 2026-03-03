@@ -1,0 +1,17 @@
+  @function check-if-type-size($size) {
+    @if not index($type-sizes, $size) {
+      @warn "Invalid font size: #{$size}. Valid sizes are: #{$type-sizes}";
+      @return false;
+    } @else {
+      @return true;
+    }
+  }
+
+  @function check-if-heading-size($size) {
+    @if not index($heading-sizes, $size) {
+      @warn "Invalid heading size: #{$size}. Valid sizes are: #{$heading-sizes}";
+      @return false;
+    } @else {
+      @return true;
+    }
+  }

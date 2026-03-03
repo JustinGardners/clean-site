@@ -1,5 +1,8 @@
+$sm: map-get($grid-breakpoints , 'sm' );
 $md: map-get($grid-breakpoints , 'md' );
 $lg: map-get($grid-breakpoints , 'lg' );
+$xl: map-get($grid-breakpoints , 'xl' );
+$xxl: map-get($grid-breakpoints , 'xxl' );
 
 @custom-media --lg (width >= 992px);
 
@@ -39,12 +42,12 @@ $lg: map-get($grid-breakpoints , 'lg' );
 @custom-media --xs-n-below    (width < 360px);
 @custom-media --xs-phone      (--xs-only) and (--portrait);
 
-@custom-media --sm-only       (360px <= width < 480px);
-@custom-media --sm-n-above    (width >= 480px);
-@custom-media --sm-n-below    (width < 480px);
+@custom-media --sm-only       (360px <= width < #{$sm});
+@custom-media --sm-n-above    (width >= #{$sm});
+@custom-media --sm-n-below    (width < #{$sm});
 @custom-media --sm-phone      (--sm-only) and (--portrait);
 
-@custom-media --md-only       (480px <= width < #{$md});
+@custom-media --md-only       (#{$sm} <= width < #{$md});
 @custom-media --md-n-above    (width >= #{$md});
 @custom-media --md-n-below    (width < #{$md});
 @custom-media --md-phone      (--md-only) and (--portrait);
@@ -54,10 +57,10 @@ $lg: map-get($grid-breakpoints , 'lg' );
 @custom-media --lg-n-below    (width < #{$lg});
 @custom-media --lg-phone      (--lg-only) and (--portrait);
 
-@custom-media --xl-only       (#{$lg} <= width < 1440px);
-@custom-media --xl-n-above    (width >= 1440px);
-@custom-media --xl-n-below    (width < 1440px);
+@custom-media --xl-only       (#{$lg} <= width < #{$xl});
+@custom-media --xl-n-above    (width >= #{$xl});
+@custom-media --xl-n-below    (width < #{$xl});
 
-@custom-media --xxl-only      (1440px <= width < 1920px);
-@custom-media --xxl-n-above   (width >= 1920px);
-@custom-media --xxl-n-below   (width < 1920px);
+@custom-media --xxl-only      (#{$xl} <= width < #{$xxl});
+@custom-media --xxl-n-above   (width >= #{$xxl});
+@custom-media --xxl-n-below   (width < #{$xxl});

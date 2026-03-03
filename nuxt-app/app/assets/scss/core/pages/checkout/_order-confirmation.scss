@@ -28,7 +28,7 @@
       align-items: stretch;
       align-content: normal;
       margin: 0 var(--wrapperMargin, 0);
-      // @include breakpt-md {
+      // @media (--md-n-above) {
         --wrapperMargin: 12.5%;
       img {
         width: auto;
@@ -113,7 +113,7 @@
 
     #registerToTrackOrderPane {
       --wrapperMargin: 6.25%;
-      // @include breakpt-md {
+      // @media (--md-n-above) {
         --wrapperMargin: 12.5%;
       margin: 2rem var(--wrapperMargin, 0) 0 var(--wrapperMargin, 0);
       .validation-summary-errors {
@@ -182,7 +182,7 @@
     // background: $subtle-background;
     margin: 0 var(--wrapperMargin, 0);
     padding: 2rem;
-    // @include breakpt-md {
+    // @media (--md-n-above) {
       --wrapperMargin: 12.5%;
     h4 {
       grid-column: 1 / 3;

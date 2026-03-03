@@ -11,6 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.7.1",
     "bootstrap": "5.3.3",
     "nuxt": "^4.3.1",
     "vue": "^3.5.28",

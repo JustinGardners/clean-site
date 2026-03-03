@@ -39,18 +39,18 @@
   width: 100%;
   padding-inline: calc(1.5rem * 0.5);
   margin-inline: auto;
-  // @include breakpt-md {
+  // @media (--md-n-above) {
     max-width: 720px;
-  // @include breakpt-lg {
+  // @media (--lg-n-above) {
     max-width: 960px;
-  // @include breakpt-xl {
+  // @media (--xl-n-above) {
     max-width: 1140px;
-  // @include breakpt-xxl {
+  // @media (--xxl-n-above) {
     max-width: 1320px;
 }
 @mixin row {
   padding: 0 calc(2.25rem * 0.5);
-  // @include breakpt-md {
+  // @media (--md-n-above) {
     padding: 0 calc(1.5rem * 0.5);
 }
 

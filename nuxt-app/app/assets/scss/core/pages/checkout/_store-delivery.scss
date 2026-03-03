@@ -65,7 +65,7 @@
 }
 .additionalTandCs {
   --wrapperMargin: 6.25%;
-  // @include breakpt-xl {
+  // @media (--xl-n-above) {
     --wrapperMargin: 12.5%;
   margin: 0 var(--wrapperMargin, 0) 0 var(--wrapperMargin, 0);
 }

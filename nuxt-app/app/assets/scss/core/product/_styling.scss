@@ -19,10 +19,10 @@
           max-width: 100%;
           object-fit: fill;
           filter: drop-shadow(0 0 8px rgba(1, 48, 136, 0.6));
-          // @include breakpt-md {
+          // @media (--md-n-above) {
             max-height: 640px;
         }
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           &::after {
             width: 100%;
             height: 3px;
@@ -98,25 +98,21 @@
 
       &--title {
         margin-top: 2rem;
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           margin-top: unset;
         h1 {
-          // color: $bg-brand;
-          // @include mainheaderH;
           font-weight: normal;
           margin-bottom: 0;
           .product__title--subTitle {
             display: block;
             margin-top: 0.75rem;
-            // @include subheaderHlessBold;
-            // font-weight: normal;
           }
           .product__title--format {
             margin-top: 0.75rem;
             padding-top: 0.75rem;
             // border-top: 1px solid $subtle-border;
             display: none;
-            // @include breakpt-md {
+            // @media (--md-n-above) {
               border-top: 0;
           }
           span {
@@ -190,7 +186,7 @@
         padding: 1.5rem 0 0;
         margin: 0 0 1rem;
         // border-top: 1px solid $subtle-border;
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           padding: 0;
           border-top: none;
       }
@@ -239,7 +235,7 @@
     }
     .richContentWrap {
       margin-top: 2rem;
-      // @include breakpt-md {
+      // @media (--md-n-above) {
         margin-top: unset;
       iframe {
         max-width: 100%;
@@ -248,14 +244,14 @@
     .alternativeFormats,
     .descriptionWrapManual {
       // margin-inline: -0.75rem;
-      // @include breakpt-md {
+      // @media (--md-n-above) {
         margin-inline: unset;
     }
     .productInfoWrapGrid {
       margin-top: 2rem;
       margin-bottom: 2rem;
       .productInfo {
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           border: #e7effa 2px solid;
           border-radius: 10px;
         h4 {
@@ -265,7 +261,7 @@
           // color: $bg-brand;
           padding: 1.5rem 0 0;
           // border-top: 1px solid $subtle-border;
-          // @include breakpt-md {
+          // @media (--md-n-above) {
             padding: 0.5rem 1rem;
             border-top: none;
         }
@@ -273,7 +269,7 @@
           padding: 0;
           margin: 0;
           margin-top: 1.5rem;
-          // @include breakpt-md {
+          // @media (--md-n-above) {
             margin-top: 0;
           li {
             list-style: none;
@@ -302,7 +298,7 @@
             }
         }
         > ul {
-          // @include breakpt-md {
+          // @media (--md-n-above) {
             padding: 1rem;
         }
         .availability {
@@ -348,7 +344,7 @@
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: space-between;
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           flex-direction: row;
 
         flex-direction: column;
@@ -382,7 +378,7 @@
         }
       }
       .availability {
-        // @include breakpt-md {
+        // @media (--md-n-above) {
           width: 100%;
         a:not(.tooltipstered) {
           position: relative;
@@ -536,7 +532,7 @@
           margin-bottom: calc(var(--arrowSize) * 1.5);
           background: var(--backgroundCol);
           // color: $bg-brand;
-          // @include breakpt-md {
+          // @media (--md-n-above) {
             display: block;
           &::after {
             content: "";
