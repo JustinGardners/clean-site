@@ -1,4 +1,5 @@
 <template>
+  <h2 class="tw:flex">Tailwind test</h2>
     <section>
         <div class="container-md tm">
             <div class="row justify-content-md-center">
