@@ -164,6 +164,8 @@ $font-sizes: (
   ),
 );
 
+$site-bs-utilities: ()!default;
+
 // @function site-font-size($size, $unit: rem, $include-unit: false) {
 //   $font-level: map.get($font-sizes, $size, "font-level");
 //   @if $font-level == null {
@@ -182,6 +184,7 @@ $font-sizes: (
 // }
 
 // Bootstrap vars
+////////////////////////////////////////////////////////////////////////////
 $h1-font-size: site-font-size("2xl", rem, true);
 $h2-font-size: site-font-size("xl", rem, true);
 $h3-font-size: site-font-size("lg", rem, true);
@@ -190,6 +193,7 @@ $h5-font-size: site-font-size("sm", rem, true);
 $h6-font-size: site-font-size("xs", rem, true);
 
 // Bootstrap vars
+////////////////////////////////////////////////////////////////////////////
 $display-font-sizes: (
   1: site-font-size("display-xl", rem, true),
   2: site-font-size("display-lg", rem, true),
@@ -204,3 +208,7 @@ $fluid-font-width-min: 375;
 $fluid-font-width-max: 1440;
 $fluid-font-ratio-min: 1.2;
 $fluid-font-ratio-max: 1.5;
+
+// $utilities: map-remove($utilities, "width");
+$utilities: $site-bs-utilities;
+

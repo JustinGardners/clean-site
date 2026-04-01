@@ -3,6 +3,7 @@
 @source "../../../../app/**/*.{vue,js,ts,jsx,tsx}";
 @source "../../../../layers/**/*.{vue,js,ts,jsx,tsx}";
 
+@import "tailwindcss/theme" layer(tailwind);
 @import "tailwindcss/utilities" layer(tailwind);
 
 @utility fluid {
@@ -31,6 +32,66 @@
   --unit: --value(--unit-*);
 }
 
+@layer site.components.modifiers {
+
+  .flow > * + * {
+    margin-top: var(--flow-space, 1.5em);
+  }
+
+  /* Unprefixed aliases for custom utilities when Tailwind prefix is enabled. */
+  .fluid {
+    --fluid-min: calc(
+      var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+    );
+    --fluid-max: calc(
+      var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+    );
+    --fluid-preferred: calc(
+      (var(--fluid-max) - var(--fluid-min)) /
+        (var(--font-width-max) - var(--font-width-min))
+    );
+    --fluid-type: clamp(
+      (var(--fluid-min) / 16) * 1rem,
+      ((var(--fluid-min) / 16) * 1rem) -
+        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--fluid-max) / 16) * 1rem
+    );
+    font-size: var(--fluid-type);
+  }
+
+  .unit-px {
+    --unit: var(--tw-unit-px);
+  }
+
+  .unit-rem {
+    --unit: var(--tw-unit-rem);
+  }
+
+  .unit-em {
+    --unit: var(--tw-unit-em);
+  }
+
+  .unit-ch {
+    --unit: var(--tw-unit-ch);
+  }
+
+  .unit-cqi {
+    --unit: var(--tw-unit-cqi);
+  }
+
+  .unit-cqw {
+    --unit: var(--tw-unit-cqw);
+  }
+
+  .unit-vw {
+    --unit: var(--tw-unit-vw);
+  }
+
+  .unit-vi {
+    --unit: var(--tw-unit-vi);
+  }
+}
 
 
 @theme {
@@ -43,4 +104,22 @@
     --unit-vw: 1vw;
     --unit-vi: 1vi;
     --color-*: initial;
+    --color-primary: var(--site-primary);
+    --text-xxs: var(--site-xxs-font-size);
+    --text-xs: var(--site-xs-font-size);
+    --text-sm: var(--site-sm-font-size);
+    --text-default: var(--site-default-font-size);
+    --text-lg: var(--site-lg-font-size);
+    --text-xl: var(--site-xl-font-size);
+    --text-2xl: var(--site-2xl-font-size);
+    --text-display-xxs: var(--site-display-xxs-font-size);
+    --text-display-xs: var(--site-display-xs-font-size);
+    --text-display-sm: var(--site-display-sm-font-size);
+    --text-display-md: var(--site-display-md-font-size);
+    --text-display-lg: var(--site-display-lg-font-size);
+    --text-display-xl: var(--site-display-xl-font-size);
 }
+
+
+/* $type-sizes-display: "display-xxs", "display-xs", "display-sm", "display-md", "display-lg", "display-xl";
+$type-sizes-normal: "xxs", "xs", "sm", "default", "lg", "xl", "2xl"; */

@@ -8,6 +8,7 @@
 /// Override Bootstrap's default prefix here
 $prefix: "site-";
 
+
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
@@ -15,6 +16,8 @@ $prefix: "site-";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
+
+/// Framework base imports
 @import "./framework/base/functions";
 @import "./framework/base/variables";
 @import "./framework/base/mixins";
