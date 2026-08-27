@@ -4,11 +4,15 @@
 }
 
 @layer framework.base {
-  @layer components;
+  @layer reset, root, components;  
 }
 
 @layer framework.base.components {
   @layer base, states, modifiers;
+}
+
+@layer core {
+  @layer legacy, revised;
 }
 
 @layer site {

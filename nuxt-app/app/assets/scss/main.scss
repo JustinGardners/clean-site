@@ -31,11 +31,11 @@ $prefix: "site-";
 
 
 @layer framework.bs {
-  @import "./bootstrap";
+  @import "./framework/bootstrap";
 }
 
 @layer framework.base {
-  @import "./base";
+  @import "./framework/base";
 }
 
 @layer core {

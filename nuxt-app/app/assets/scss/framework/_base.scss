@@ -9,6 +9,8 @@
   }
 }
 
-@import "./framework/base/root";
-@import "./framework/base/type";
-@import "./framework/base/buttons";
+
+@import "./base/reset";
+@import "./base/root";
+@import "./base/type";
+@import "./base/buttons";

@@ -1,4 +1,10 @@
 @mixin button-default-props() {
+  --#{$prefix}btn-padding-x: #{$btn-padding-x};
+  --#{$prefix}btn-padding-y: #{$btn-padding-y};
+  --#{$prefix}btn-font-family: #{$btn-font-family};
+}
+
+@mixin button-color-props() {
   --#{$prefix}btn-color: var(
     --#{$prefix}btn-theme-text,
     oklch(
@@ -120,10 +126,11 @@
 }
 
 @mixin button-rules() {
+    @include button-default-props();
+    @include button-default-rules();  
   @supports (color: oklch(50% 0 0deg)) and
     (background-color: color-mix(in lab, #fff, #000 50%)) {
-        @include button-default-props();
-        @include button-default-rules();
+        @include button-color-props();
         @include button-hover-rules();
         @include button-focus-rules();
     }

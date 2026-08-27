@@ -1,15 +1,15 @@
 @use "sass:map";
 
 @import "./core-style/root";
-// @import "./core-style/bg-clicker";
-// @import "./core-style/forms";
-@import "./components/cookie";
-// @import "./core-style/errors";
-// @import "./core-style/topbar";
+@import "./layout/topbar";
 @import "./layout/header";
-@import "./components/breadcrumb";
 @import "./layout/nav";
 @import "./layout/footer";
+@import "./components/bg-clicker";
+@import "./components/forms";
+@import "./components/cookie";
+@import "./components/errors";
+@import "./components/breadcrumb";
 
 /* === DEV ============================= */
 hr.dev {

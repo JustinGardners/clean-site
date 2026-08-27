@@ -5,7 +5,15 @@ import type { PluginOption } from 'vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  extends: ['./layers/tailwind'],
+  extends: [
+    './layers/tailwind',
+    [
+      'github:JustinGardners/newGardners/layers/base',
+      {
+        auth: process.env.GIGET_AUTH
+      }
+    ]
+  ],
   css: [
     '~/assets/css/layer-order.css',
     '~/assets/css/main.css',
@@ -26,5 +34,5 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
 })

@@ -1,6 +1,7 @@
+@layer root {
   :root {
     --text-scale-increment: #{$text-scale-increment};
-  
+
     @each $key, $value in $type-sizes {
       $font-level: map.get($font-sizes, $key, "font-level");
       @if $font-level == null {
@@ -11,10 +12,9 @@
         --#{$prefix}#{$key}-font-size: #{unquote("#{$result}")};
         --#{$prefix}#{$key}-font-size-px: #{unquote("#{$result-px}")};
       }
-    }   
-  
+    }
   }
-  
+
   @supports (width: calc(10px * pow(5, 2))) {
     :root {
       @each $key, $value in $type-sizes {
@@ -22,13 +22,16 @@
         @if $font-level != null {
           --#{$prefix}#{$key}-font-size: calc(
             #{$font-size-base-px} *
-              pow(var(--text-scale-increment), var(--#{$prefix}#{$key}-font-level, #{$font-level}))
+              pow(
+                var(--text-scale-increment),
+                var(--#{$prefix}#{$key}-font-level, #{$font-level})
+              )
           );
         }
       }
     }
   }
-  
+
   :root {
     @each $key, $value in $theme-colors {
       @if map-has-key($lch-colors, $key) {
@@ -49,3 +52,4 @@
     --#{$prefix}primary-fallback: #{$primary};
     --#{$prefix}secondary-fallback: #{$secondary};
   }
+}
