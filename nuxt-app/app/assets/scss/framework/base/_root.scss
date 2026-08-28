@@ -1,4 +1,25 @@
 @layer root {
+ 
+  /// Small Style Base Config Props
+  :root {
+    /// $prefix in output-props doesn't work here as values don't get the prefix applied
+    @include output-props(pick-keys($_small-style-base-config-variables, $config-pick-keys)...);
+  }
+
+  :root {
+    // TODO: Update small-style to change space-increment to a custom prop
+    @include output-props(exclude-keys($_small-style-base-spacing-variables, register-spacing)...);
+  }
+
+  :root {
+    @include output-props(pick-keys($_small-style-base-layout-variables, $layout-pick-keys)...);    
+  }
+
+  :root {
+    @include output-props(pick-keys($_small-style-base-wrapper-variables, $wrapper-pick-keys)...);
+  }  
+
+  /// Vanilla Framework Base Props
   :root {
     --text-scale-increment: #{$text-scale-increment};
 

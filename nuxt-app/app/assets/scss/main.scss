@@ -2,8 +2,10 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:list";
-
 // @import "./mixins/utils/strip-unit";
+// @use "small-style/scss/theme" as *;
+@import "small-style/scss/base/mixins";
+@import "small-style/scss/base/functions";
 
 /// Override Bootstrap's default prefix here
 $prefix: "site-";
@@ -40,4 +42,10 @@ $prefix: "site-";
 
 @layer core {
   @import "./core/style";
+}
+
+@layer utilities {
+  .absolute {
+    position: absolute;
+  }
 }

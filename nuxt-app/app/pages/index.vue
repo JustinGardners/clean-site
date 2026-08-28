@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import SingleImage from '~/components/cards/SingleImage.vue';
+
+</script>
+
 <template>
   <h2 class="tw:flex">Tailwind test</h2>
     <section>
@@ -391,16 +396,23 @@
         <p class="display-6">h6. Bootstrap heading</p>
     </div>
 
-    <Card>
-        <template #header>
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        </template>
-        <template #body>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </template>
-    </Card>
+    <div class="flow tw:pt-4xl">
+      <section class="flow wrapper">
+        <h3 class="heading-2xl">SingleImage Component</h3>
+        <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
+          <template v-for="i in 6" :key="i">
+            <SingleImage />
+          </template>
+        </div>
+      </section>
+      <section class="flow wrapper">
+        <h3 class="heading-2xl">ImageWithInfo Component</h3>
+        <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
+          <template v-for="i in 6" :key="i">
+            <CardsImageWithInfo />
+          </template>
+        </div>
+      </section>    
+    </div>
 
 </template>

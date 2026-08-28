@@ -321,7 +321,8 @@
   }
 
   @supports (interpolate-size: allow-keywords) {
-    body.mobileMenuOpen :is(.primary > li, .categories .category) {
+    body.mobileMenuOpen > .primary > li,
+    body.mobileMenuOpen .categories .category {
       transition: height 0.125s ease-in;
       // height: 2.6rem;
       // overflow: clip;

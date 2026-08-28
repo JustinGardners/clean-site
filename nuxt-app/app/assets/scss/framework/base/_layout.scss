@@ -1,0 +1,8 @@
+@use "small-style/scss/base/rules/components/layout" as *;
+
+@layer components {
+  @layer base {
+    @include all-layout-styles();
+  }
+}
+

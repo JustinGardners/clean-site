@@ -258,20 +258,16 @@
   }
 }
 
-:is(
-  #wishlistLink > a,
-  #navSupport #dropdownMenuLink,
-  #navButton .navbarToggle
-) {
-  &::before {
-    content: "";
-    display: block;
-    width: 1.5em;
-    height: 1.5em;
-    background: $primary;
-    mask: var(--icon-mask) no-repeat 50% 50%;
-    mask-size: contain;
-  }
+#wishlistLink > a::before,
+#navSupport #dropdownMenuLink::before,
+#navButton .navbarToggle::before {
+  content: "";
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background: $primary;
+  mask: var(--icon-mask) no-repeat 50% 50%;
+  mask-size: contain;
 }
 
 #wishlistLink {

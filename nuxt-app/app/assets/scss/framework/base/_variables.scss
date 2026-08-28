@@ -1,3 +1,24 @@
+@use 'sass:color';
+@use "sass:map";
+@use 'sass:math';
+@use 'sass:list';
+@use "sass:meta";
+@use "small-style/scss/base/variables/config" as config;
+@use "small-style/scss/base/variables/props/spacing" as spacing;
+@use "small-style/scss/base/variables/props/layout" as layout;
+@use "small-style/scss/base/variables/props/wrapper" as wrapper;
+
+$config-pick-keys: 'unit-min' 'unit-fluid' 'unit-max' 'radius' 'flow-space' 'text-frame-ratio' 'text-frame-y' 'space-increment';
+$layout-pick-keys: 'layout-column-min' 'layout-gap' 'layout-grid-min' 'layout-grid-gap' 'layout-grid-template-columns' 'column-count' 'breakpoint' 'column-size' 'flex-grid-min' 'flex-grid-gap';
+$wrapper-pick-keys: 'root-max-wrapper-width' 'max-wrapper-width' 'wrapper-padding' 'wrapper-padding-min' 'wrapper-inline' 'wrapper-width' 'grid-wrapper-columns';
+
+// Small Style framework base variables
+$_small-style-base-config-variables: meta.module-variables("config")!default;
+$_small-style-base-spacing-variables: meta.module-variables("spacing")!default;
+$_small-style-base-layout-variables: meta.module-variables("layout")!default;
+$_small-style-base-wrapper-variables: meta.module-variables("wrapper")!default;
+
+// Framework base variables
 $lch-colors: (
   primary: (
     l: 0.7,

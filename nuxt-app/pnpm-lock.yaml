@@ -29,6 +29,12 @@ importers:
       nuxt:
         specifier: ^4.4.2
         version: 4.4.2(@babel/core@7.29.0)(@babel/plugin-syntax-jsx@7.28.6(@babel/core@7.29.0))(@parcel/watcher@2.5.6)(@vue/compiler-sfc@3.5.32)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.5(jiti@2.6.1))(ioredis@5.9.3)(lightningcss@1.31.1)(magicast@0.5.2)(optionator@0.9.4)(rollup-plugin-visualizer@6.0.5(rollup@4.59.0))(rollup@4.59.0)(sass@1.97.3)(terser@5.46.0)(typescript@6.0.2)(vite@7.3.1(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)(yaml@2.8.2))(yaml@2.8.2)
+      open-props-scss:
+        specifier: ^0.8.0
+        version: 0.8.0
+      small-style:
+        specifier: git+https://github.com/jslinky/small-style.git#v1.1.2
+        version: https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -3510,6 +3516,9 @@ packages:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
 
+  open-props-scss@0.8.0:
+    resolution: {integrity: sha512-+y3nOEd+CEkpeMPADoaL11PYVH9OM4D7OLB6qKm65sOkpLMdtts2CQ457glRwpYi3A3jtfujBLrMErNSeaDQDA==}
+
   open@10.2.0:
     resolution: {integrity: sha512-YgBpdJHPyQ2UE5x+hlSXcnejzAvD0b22U2OuAP+8OnlJT+PjWPxtgmGqKKc+RgTM63U9gN0YzrYc71R2WT/hTA==}
     engines: {node: '>=18'}
@@ -4067,6 +4076,10 @@ packages:
   slash@5.1.0:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
+
+  small-style@https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474:
+    resolution: {tarball: https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474}
+    version: 1.1.2
 
   smob@1.6.1:
     resolution: {integrity: sha512-KAkBqZl3c2GvNgNhcoyJae1aKldDW0LO279wF9bk1PnluRTETKBq0WyzRXxEhoQLk56yHaOY4JCBEKDuJIET5g==}
@@ -8322,6 +8335,8 @@ snapshots:
     dependencies:
       mimic-fn: 4.0.0
 
+  open-props-scss@0.8.0: {}
+
   open@10.2.0:
     dependencies:
       default-browser: 5.5.0
@@ -8925,6 +8940,10 @@ snapshots:
   sisteransi@1.0.5: {}
 
   slash@5.1.0: {}
+
+  small-style@https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474:
+    dependencies:
+      open-props-scss: 0.8.0
 
   smob@1.6.1: {}
 

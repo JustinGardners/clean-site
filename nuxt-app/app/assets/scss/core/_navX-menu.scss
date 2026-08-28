@@ -445,7 +445,8 @@
   // }
 
   body.mobileMenuOpen {
-    &:is(.primary > li, .categories .category) {
+    > .primary > li,
+    .categories .category {
       max-height: 90dvh;
       overflow: auto;
     }

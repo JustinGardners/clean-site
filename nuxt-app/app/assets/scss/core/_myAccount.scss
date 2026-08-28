@@ -290,7 +290,8 @@
       order: 2;
     }
 
-    :is(.myAccountHeader + *, .myAccountHeader > h2 + *) {
+    .myAccountHeader + *,
+    .myAccountHeader > h2 + * {
       margin-top: 1.5rem;
     }
 

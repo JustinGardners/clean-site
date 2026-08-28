@@ -1,0 +1,7 @@
+@use "small-style/scss/base/rules/components/card" as card;
+
+@layer components {
+  @layer base {
+    @include card.all-card-styles();
+  }
+}
