@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: [
     './layers/tailwind',
+    './layers/alpine',
     [
       'github:JustinGardners/newGardners/layers/base',
       {

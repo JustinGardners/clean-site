@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "build-css": "node build-css.js",
-    "build": "npm run build-css && nuxt build",
-    "dev": "npm run build-css && nuxt dev",
+    "build-js": "node layers/alpine/build.mjs",
+    "build": "npm run build-css && npm run build-js && nuxt build",
+    "dev": "npm run build-css && npm run build-js && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -15,6 +16,7 @@
     "@nuxt/eslint": "1.4.1",
     "@nuxt/fonts": "0.11.4",
     "@nuxt/icon": "1.15.0",
+    "alpinejs": "^3.15.1",
     "bootstrap": "5.3.3",
     "clsx": "^2.1.1",
     "nuxt": "^4.4.2",
@@ -26,6 +28,8 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",
+    "@types/alpinejs": "^3.13.11",
+    "esbuild": "^0.25.0",
     "lightningcss": "^1.31.1",
     "sass": "^1.97.3",
     "sass-loader": "^16.0.7",

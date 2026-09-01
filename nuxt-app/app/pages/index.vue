@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import SingleImage from '~/components/cards/SingleImage.vue';
+
+useHead({
+  script: [{ src: '/js/alpine.bundle.js', defer: true }]
+})
 
 </script>
 
 <template>
+<h2 class="tw:flex">AlpineJS test</h2>
+<div x-data="counter">
+  <p x-text="count"></p>
+  <button x-on:click="count++">Increment</button>
+</div>
+
   <h2 class="tw:flex">Tailwind test</h2>
     <section>
         <div class="container-md tm">
@@ -401,7 +410,7 @@ import SingleImage from '~/components/cards/SingleImage.vue';
         <h3 class="heading-2xl">SingleImage Component</h3>
         <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
           <template v-for="i in 6" :key="i">
-            <SingleImage />
+            <CardsSingleImage />
           </template>
         </div>
       </section>
