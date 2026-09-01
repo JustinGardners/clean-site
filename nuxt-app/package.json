@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build-css": "node build-css.js",
+    "build-css": "node layers/scss/build-css.mjs",
     "build-js": "node layers/alpine/build.mjs",
     "build": "npm run build-css && npm run build-js && nuxt build",
     "dev": "npm run build-css && npm run build-js && nuxt dev",

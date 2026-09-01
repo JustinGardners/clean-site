@@ -2,17 +2,19 @@ import * as sass from 'sass'
 import { transform } from 'lightningcss'
 import { writeFileSync, mkdirSync } from 'fs'
 import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-const inputFile = './app/assets/scss/main.scss'
-const outputFile = './app/assets/css/main.css'
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const inputFile = resolve(__dirname, 'assets/scss/main.scss')
+const outputFile = resolve(__dirname, 'assets/css/main.css')
 
 try {
   // Step 1: Compile SCSS to CSS
   console.log('📦 Compiling SCSS to CSS...')
   const result = sass.compile(inputFile, {
     loadPaths: [
-      resolve('./node_modules'),
-      resolve('./app/assets/scss')
+      resolve(__dirname, '../../node_modules'),
+      resolve(__dirname, 'assets/scss')
     ],
     quietDeps: true,
     silenceDeprecations: [

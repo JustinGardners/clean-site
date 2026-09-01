@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   extends: [
     './layers/tailwind',
     './layers/alpine',
+    './layers/scss',
     [
       'github:JustinGardners/newGardners/layers/base',
       {
@@ -16,8 +17,8 @@ export default defineNuxtConfig({
     ]
   ],
   css: [
-    '~/assets/css/layer-order.css',
-    '~/assets/css/main.css',
+    '~~/layers/scss/assets/css/layer-order.css',
+    '~~/layers/scss/assets/css/main.css',
     '~~/layers/tailwind/assets/css/tailwind.css'
   ],
   vite: {
