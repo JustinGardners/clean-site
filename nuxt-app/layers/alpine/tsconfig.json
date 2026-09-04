@@ -8,5 +8,6 @@
     "skipLibCheck": true,
     "types": ["alpinejs"]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/*.d.ts"],
+  "files": ["src/glide.d.ts"]
 }

@@ -7,6 +7,7 @@
 @use "small-style/scss/base/variables/props/spacing" as spacing;
 @use "small-style/scss/base/variables/props/layout" as layout;
 @use "small-style/scss/base/variables/props/wrapper" as wrapper;
+@use "small-style/scss/base/mixins" as mixins;
 
 $config-pick-keys: 'unit-min' 'unit-fluid' 'unit-max' 'radius' 'flow-space' 'text-frame-ratio' 'text-frame-y' 'space-increment';
 $layout-pick-keys: 'layout-column-min' 'layout-gap' 'layout-grid-min' 'layout-grid-gap' 'layout-grid-template-columns' 'column-count' 'breakpoint' 'column-size' 'flex-grid-min' 'flex-grid-gap';
@@ -29,6 +30,11 @@ $lch-colors: (
     l: 0.7,
     c: 0.1,
     h: 356,
+  ),
+  tertiary: (
+    l: 0.7,
+    c: 0.1,
+    h: 100,
   ),
   success: (
     l: 0.5,
@@ -62,7 +68,128 @@ $lch-colors: (
   ),
 );
 
-
+$register-lch: (
+    'primary-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "primary", "l")
+    ),
+    'primary-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "primary", "c")
+    ),    
+    'primary-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "primary", "h")
+    ),   
+    'secondary-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "secondary", "l")
+    ),
+    'secondary-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "secondary", "c")
+    ),
+    'secondary-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "secondary", "h")
+    ),
+    'tertiary-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "tertiary", "l")
+    ),
+    'tertiary-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "tertiary", "c")
+    ),
+    'tertiary-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "tertiary", "h")
+    ),
+    'dark-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "dark", "l")
+    ),
+    'dark-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "dark", "c")
+    ),
+    'dark-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "dark", "h")
+    ),
+    'light-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "light", "l")
+    ),
+    'light-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "light", "c")
+    ),
+    'light-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "light", "h")
+    ),
+    'success-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "success", "l")
+    ),
+    'success-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "success", "c")
+    ),
+    'success-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "success", "h")
+    ),
+    'danger-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "danger", "l")
+    ),
+    'danger-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "danger", "c")
+    ),
+    'danger-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "danger", "h")
+    ),
+    'warning-l': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "warning", "l")
+    ),
+    'warning-c': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "warning", "c")
+    ),
+    'warning-h': (
+        'syntax': '<number>',
+        'inherits': true,
+        'initial-value': mixins.map-deep-get($lch-colors, "warning", "h")
+    ),
+);
 
 $primary: color.to-space(
   oklch(

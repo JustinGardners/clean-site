@@ -10,7 +10,7 @@
           $lch: map.get($lch-colors, $key);
 
           &.btn-#{$key} {
-            --#{$prefix}btn-theme: var(--#{$prefix}#{$key});
+            --#{$base-prefix}btn-theme: var(--#{$base-prefix}#{$key});
           }
         }
       }

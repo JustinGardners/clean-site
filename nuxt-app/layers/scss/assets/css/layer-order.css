@@ -1,6 +1,6 @@
 @layer framework, core, site, tailwind;
 @layer framework {
-  @layer bs, base;
+  @layer modules, bs, base;
 }
 
 @layer framework.base {

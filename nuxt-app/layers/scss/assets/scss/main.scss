@@ -7,8 +7,10 @@
 @import "small-style/scss/base/mixins";
 @import "small-style/scss/base/functions";
 
-/// Override Bootstrap's default prefix here
-$prefix: "site-";
+
+$prefix: "bs-"; /// Override Bootstrap's default prefix here
+$base-prefix: "base-";
+$site-prefix: "site-"!default;
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -30,6 +32,10 @@ $prefix: "site-";
 
 @import "./core/variables";
 
+@layer framework.modules {
+  @import "@glidejs/glide/src/assets/sass/glide.core";
+  @import "@glidejs/glide/src/assets/sass/glide.theme";
+}
 
 @layer framework.bs {
   @import "./framework/bootstrap";

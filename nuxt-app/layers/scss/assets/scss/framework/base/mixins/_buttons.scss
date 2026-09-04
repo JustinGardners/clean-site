@@ -6,74 +6,74 @@
 
 @mixin button-color-props() {
   --#{$prefix}btn-color: var(
-    --#{$prefix}btn-theme-text,
+    --#{$base-prefix}btn-theme-text,
     oklch(
-      from var(--#{$prefix}btn-theme, var(--#{$prefix}primary))
+      from var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary))
         clamp(
-          var(--#{$prefix}btn-lightest-text, 0),
-          (l / var(--#{$prefix}btn-text-threshold, 0.623) - 1) * -infinity,
-          var(--#{$prefix}btn-darkest-text, 1)
+          var(--#{$base-prefix}btn-lightest-text, 0),
+          (l / var(--#{$base-prefix}btn-text-threshold, 0.623) - 1) * -infinity,
+          var(--#{$base-prefix}btn-darkest-text, 1)
         )
         0 h
     )
   );
-  --#{$prefix}btn-bg: var(--#{$prefix}btn-theme, var(--#{$prefix}primary));
+  --#{$prefix}btn-bg: var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary));
   --#{$prefix}btn-border-color: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-border-tint, #000)
-      var(--#{$prefix}btn-border-shade-amount, 0%)
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-border-tint, #000)
+      var(--#{$base-prefix}btn-border-shade-amount, 0%)
   );
 
   --#{$prefix}btn-hover-color: var(
-    --#{$prefix}btn-theme-hover-text,
+    --#{$base-prefix}btn-theme-hover-text,
     var(--#{$prefix}btn-color)
   );
   --#{$prefix}btn-hover-bg: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-hover-tint, #000)
-      var(--#{$prefix}btn-hover-shade-amount, 10%)
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-hover-tint, #000)
+      var(--#{$base-prefix}btn-hover-shade-amount, 10%)
   );
   --#{$prefix}btn-hover-border-color: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-hover-border-tint, #000)
-      var(--#{$prefix}btn-hover-border-shade-amount, 12%)
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-hover-border-tint, #000)
+      var(--#{$base-prefix}btn-hover-border-shade-amount, 12%)
   );
 
   --#{$prefix}btn-active-color: var(
-    --#{$prefix}btn-theme-active-text,
-    var(--#{$prefix}btn-color)
+    --#{$base-prefix}btn-theme-active-text,
+    var(--#{$base-prefix}btn-color)
   );
   --#{$prefix}btn-active-bg: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-active-tint, #000)
-      var(--#{$prefix}btn-active-shade-amount, 12%)
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-active-tint, #000)
+      var(--#{$base-prefix}btn-active-shade-amount, 12%)
   );
   --#{$prefix}btn-active-border-color: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-active-border-tint, #000)
-      var(--#{$prefix}btn-active-border-shade-amount, 14%)
-  );
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-active-border-tint, #000)
+      var(--#{$base-prefix}btn-active-border-shade-amount, 14%)
+  ); // double check last var
   --#{$prefix}btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --#{$prefix}btn-disabled-color: var(
-    --#{$prefix}btn-theme-disabled-text,
-    var(--#{$prefix}btn-color)
+    --#{$base-prefix}btn-theme-disabled-text,
+    var(--#{$base-prefix}btn-color)
   );
   --#{$prefix}btn-disabled-bg: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-disabled-tint, #fff)
-      var(--#{$prefix}btn-disabled-tint-amount, 0%)
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-disabled-tint, #fff)
+      var(--#{$base-prefix}btn-disabled-tint-amount, 0%)
   );
   --#{$prefix}btn-disabled-border-color: color-mix(
     in lab,
-    var(--#{$prefix}btn-theme, var(--#{$prefix}primary)),
-    var(--#{$prefix}btn-disabled-border-tint, #fff)
-      var(--#{$prefix}btn-disabled-border-tint-amount, 0%)
+    var(--#{$prefix}btn-theme, var(--#{$base-prefix}primary)),
+    var(--#{$base-prefix}btn-disabled-border-tint, #fff)
+      var(--#{$base-prefix}btn-disabled-border-tint-amount, 0%)
   );
 }
 

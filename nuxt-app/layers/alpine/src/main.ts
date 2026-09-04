@@ -1,4 +1,5 @@
 import Alpine from 'alpinejs'
+import { autoMountGlides } from './glide'
 
 import './components/counter'
 
@@ -6,3 +7,4 @@ import './components/counter'
 window.Alpine = Alpine
 
 Alpine.start()
+autoMountGlides()

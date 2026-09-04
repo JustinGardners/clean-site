@@ -74,7 +74,7 @@ useHead({
     </div>
   </div>
   
-<div class="template-container tm">
+<!-- <div class="template-container tm">
    <div class="template-row product-carousel__wrap">
       <div class="col-12">
         <div class="glide product-carousel glide--swipeable hideArrows glide--ltr glide--carousel" data-glide="{&quot;gap&quot;: 24, &quot;type&quot;: &quot;carousel&quot;, &quot;bound&quot;: true, &quot;perView&quot;: 6, &quot;breakpoints&quot;:{&quot;992&quot;:{&quot;perView&quot;:3},&quot;768&quot;:{&quot;perView&quot;:2}}}">
@@ -333,7 +333,7 @@ useHead({
         <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="&lt;"></button><button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;"></button></div></div>
       </div>
    </div>
-</div>
+</div> -->
 </section>    
 
     <h1>Hello world</h1>
@@ -410,7 +410,7 @@ useHead({
         <h3 class="heading-2xl">SingleImage Component</h3>
         <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
           <template v-for="i in 6" :key="i">
-            <CardsSingleImage />
+            <CardsSingleImage :link="'/'" title="Test Title" shadow="lg" :bordered="true" />
           </template>
         </div>
       </section>
@@ -418,10 +418,27 @@ useHead({
         <h3 class="heading-2xl">ImageWithInfo Component</h3>
         <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
           <template v-for="i in 6" :key="i">
-            <CardsImageWithInfo />
+            <CardsImageWithInfo link="/" title="Test Title" author="Justin" :ctas="{
+              label: 'Click me'
+            }">
+              <template #author="{ author }"> 
+                Author Slot Content {{ author }}
+              </template>
+              <template #format="{ format }">
+                Format Slot Content {{ format }}
+              </template>
+            </CardsImageWithInfo>
           </template>
         </div>
       </section>    
+
+        <Glide data-glide='{"perView":3}'>
+          <template v-for="i in 6" :key="i">
+            <GlideSlide><CardsImageWithInfo /></GlideSlide>
+          </template>
+        </Glide>
+
+
     </div>
 
 </template>
