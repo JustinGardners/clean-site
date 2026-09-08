@@ -2,6 +2,27 @@
 
 @layer components {
   @layer base {
-    @include card.all-card-styles();
+    @include card.all-card-styles(); // is this including un-needed base layer?
+
+    :where(.card) {
+      --card-body-padding-inline: max(
+        var(--space-cq-lg),
+        var(--card-body-padding-inline-min, calc(var(--space-cq-base) * 2))
+      );
+      --card-body-padding-block: max(
+        var(--space-cq-lg),
+        var(--card-body-padding-block-min, calc(var(--space-cq-base) * 2))
+      );
+    }
+
+    :where(.card-body__content-slot) {
+      display: flex;
+    }
+
+    :where(.card-body__content, .card-body__content-slot) {
+      > * {
+        flex: 1 1 stretch;
+      }
+    }
   }
 }

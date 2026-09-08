@@ -36,8 +36,8 @@ importers:
         specifier: ^0.8.0
         version: 0.8.0
       small-style:
-        specifier: git+https://github.com/jslinky/small-style.git#v1.1.2
-        version: https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474
+        specifier: git+https://github.com/jslinky/small-style.git#v1.1.3
+        version: https://codeload.github.com/jslinky/small-style/tar.gz/9a6446b7e48da8df40c79def7de01dba4e431125
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -4098,9 +4098,9 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
-  small-style@https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474:
-    resolution: {tarball: https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474}
-    version: 1.1.2
+  small-style@https://codeload.github.com/jslinky/small-style/tar.gz/9a6446b7e48da8df40c79def7de01dba4e431125:
+    resolution: {tarball: https://codeload.github.com/jslinky/small-style/tar.gz/9a6446b7e48da8df40c79def7de01dba4e431125}
+    version: 1.1.3
 
   smob@1.6.1:
     resolution: {integrity: sha512-KAkBqZl3c2GvNgNhcoyJae1aKldDW0LO279wF9bk1PnluRTETKBq0WyzRXxEhoQLk56yHaOY4JCBEKDuJIET5g==}
@@ -8974,7 +8974,7 @@ snapshots:
 
   slash@5.1.0: {}
 
-  small-style@https://codeload.github.com/jslinky/small-style/tar.gz/3c68415eb623df0614fbfb2f50477a4965734474:
+  small-style@https://codeload.github.com/jslinky/small-style/tar.gz/9a6446b7e48da8df40c79def7de01dba4e431125:
     dependencies:
       open-props-scss: 0.8.0
 

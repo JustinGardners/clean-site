@@ -8,25 +8,30 @@
 
 @source inline("{@md:,@lg:,@xl:,@2xl:,@3xl:,@4xl:,@5xl:,@6xl:,}{relative,absolute,fixed,sticky}");
 
+@utility card-picture-aspect-* {
+  --card-picture-aspect: --value(--aspect-*);
+  /* aspect-ratio: var(--card-picture-aspect); */
+}
+
 @utility fluid {
-      --fluid-min: calc(
-        var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
-      );
-      --fluid-max: calc(
-        var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
-      );
-      --fluid-preferred: calc(
-        (var(--fluid-max) - var(--fluid-min)) /
-          (var(--font-width-max) - var(--font-width-min))
-      );
-      --fluid-type: clamp(
-        (var(--fluid-min) / 16) * 1rem,
-        ((var(--fluid-min) / 16) * 1rem) -
-          (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-          (var(--fluid-preferred) * var(--variable-unit, 100vi)),
-        (var(--fluid-max) / 16) * 1rem
-      );
-      font-size: var(--fluid-type);    
+  --fluid-min: calc(
+    var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+  );
+  --fluid-max: calc(
+    var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+  );
+  --fluid-preferred: calc(
+    (var(--fluid-max) - var(--fluid-min)) /
+      (var(--font-width-max) - var(--font-width-min))
+  );
+  --fluid-type: clamp(
+    (var(--fluid-min) / 16) * 1rem,
+    ((var(--fluid-min) / 16) * 1rem) -
+      (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+      (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+    (var(--fluid-max) / 16) * 1rem
+  );
+  font-size: var(--fluid-type);
 }
 
 @utility unit-* {
@@ -35,7 +40,6 @@
 }
 
 @layer site.components.modifiers {
-
   .flow > * + * {
     margin-top: var(--flow-space, 1.5em);
   }
@@ -95,47 +99,147 @@
   }
 }
 
-
 @theme {
-    --unit-px: 1px;
-    --unit-rem: 1rem;
-    --unit-em: 1em;
-    --unit-ch: 1ch;
-    --unit-cqi: 1cqi;
-    --unit-cqw: 1cqw;
-    --unit-vw: 1vw;
-    --unit-vi: 1vi;
-    --color-*: initial;
-    --color-primary: var(--base-primary);
-    --text-xxs: var(--base-xxs-font-size);
-    --text-xs: var(--base-xs-font-size);
-    --text-sm: var(--base-sm-font-size);
-    --text-default: var(--base-default-font-size);
-    --text-lg: var(--base-lg-font-size);
-    --text-xl: var(--base-xl-font-size);
-    --text-2xl: var(--base-2xl-font-size);
-    --text-display-xxs: var(--base-display-xxs-font-size);
-    --text-display-xs: var(--base-display-xs-font-size);
-    --text-display-sm: var(--base-display-sm-font-size);
-    --text-display-md: var(--base-display-md-font-size);
-    --text-display-lg: var(--base-display-lg-font-size);
-    --text-display-xl: var(--base-display-xl-font-size);
-    
-    --spacing-3xs: var(--space-3xs);
-    --spacing-2xs: var(--space-2xs);
-    --spacing-xs: var(--space-xs);
-    --spacing-sm: var(--space-sm);
-    --spacing-md: var(--space-md);
-    --spacing-lg: var(--space-lg);
-    --spacing-xl: var(--space-xl);
-    --spacing-2xl: var(--space-2xl);
-    --spacing-3xl: var(--space-3xl);
-    --spacing-4xl: var(--space-4xl);
-    --spacing-5xl: var(--space-5xl);
-    --spacing-6xl: var(--space-6xl);
-    /* do section-gap / spacing */
-}
+  --aspect-square: 1 / 1;
+  --aspect-video: 16 / 9;
+  --unit-px: 1px;
+  --unit-rem: 1rem;
+  --unit-em: 1em;
+  --unit-ch: 1ch;
+  --unit-cqi: 1cqi;
+  --unit-cqw: 1cqw;
+  --unit-vw: 1vw;
+  --unit-vi: 1vi;
+  --color-*: initial;
+  --color-primary: var(--base-primary);
+  --color-secondary: var(--base-secondary);
+  --color-success: var(--base-success);
+  --color-danger: var(--base-danger);
+  --color-warning: var(--base-warning);
+  --color-info: var(--base-info);
+  --color-light: var(--base-light);
+  --color-dark: var(--base-dark);
+  --color-primary-0: var(--base-primary-0);
+  --color-primary-1: var(--base-primary-1);
+  --color-primary-2: var(--base-primary-2);
+  --color-primary-3: var(--base-primary-3);
+  --color-primary-4: var(--base-primary-4);
+  --color-primary-5: var(--base-primary-5);
+  --color-primary-6: var(--base-primary-6);
+  --color-primary-7: var(--base-primary-7);
+  --color-primary-8: var(--base-primary-8);
+  --color-primary-9: var(--base-primary-9);
+  --color-primary-10: var(--base-primary-10);
+  --color-primary-11: var(--base-primary-11);
+  --color-secondary-0: var(--base-secondary-0);
+  --color-secondary-1: var(--base-secondary-1);
+  --color-secondary-2: var(--base-secondary-2);
+  --color-secondary-3: var(--base-secondary-3);
+  --color-secondary-4: var(--base-secondary-4);
+  --color-secondary-5: var(--base-secondary-5);
+  --color-secondary-6: var(--base-secondary-6);
+  --color-secondary-7: var(--base-secondary-7);
+  --color-secondary-8: var(--base-secondary-8);
+  --color-secondary-9: var(--base-secondary-9);
+  --color-secondary-10: var(--base-secondary-10);
+  --color-secondary-11: var(--base-secondary-11);
+  --color-tertiary-0: var(--base-tertiary-0);
+  --color-tertiary-1: var(--base-tertiary-1);
+  --color-tertiary-2: var(--base-tertiary-2);
+  --color-tertiary-3: var(--base-tertiary-3);
+  --color-tertiary-4: var(--base-tertiary-4);
+  --color-tertiary-5: var(--base-tertiary-5);
+  --color-tertiary-6: var(--base-tertiary-6);
+  --color-tertiary-7: var(--base-tertiary-7);
+  --color-tertiary-8: var(--base-tertiary-8);
+  --color-tertiary-9: var(--base-tertiary-9);
+  --color-tertiary-10: var(--base-tertiary-10);
+  --color-tertiary-11: var(--base-tertiary-11);
+  --color-primary-contrast: var(--base-primary-contrast);
+  --color-secondary-contrast: var(--base-secondary-contrast);
+  --color-tertiary-contrast: var(--base-tertiary-contrast);
+  --color-warning-contrast: var(--base-warning-contrast);
+  --color-danger-contrast: var(--base-danger-contrast);
+  --color-info-contrast: var(--base-info-contrast);
+  --color-light-contrast: var(--base-light-contrast);
+  --color-dark-contrast: var(--base-dark-contrast);
+  --color-primary-0-contrast: var(--base-primary-contrast-0);
+  --color-primary-1-contrast: var(--base-primary-contrast-1);
+  --color-primary-2-contrast: var(--base-primary-contrast-2);
+  --color-primary-3-contrast: var(--base-primary-contrast-3);
+  --color-primary-4-contrast: var(--base-primary-contrast-4);
+  --color-primary-5-contrast: var(--base-primary-contrast-5);
+  --color-primary-6-contrast: var(--base-primary-contrast-6);
+  --color-primary-7-contrast: var(--base-primary-contrast-7);
+  --color-primary-8-contrast: var(--base-primary-contrast-8);
+  --color-primary-9-contrast: var(--base-primary-contrast-9);
+  --color-primary-10-contrast: var(--base-primary-contrast-10);
+  --color-primary-11-contrast: var(--base-primary-contrast-11);
+  --color-secondary-0-contrast: var(--base-secondary-contrast-0);
+  --color-secondary-1-contrast: var(--base-secondary-contrast-1);
+  --color-secondary-2-contrast: var(--base-secondary-contrast-2);
+  --color-secondary-3-contrast: var(--base-secondary-contrast-3);
+  --color-secondary-4-contrast: var(--base-secondary-contrast-4);
+  --color-secondary-5-contrast: var(--base-secondary-contrast-5);
+  --color-secondary-6-contrast: var(--base-secondary-contrast-6);
+  --color-secondary-7-contrast: var(--base-secondary-contrast-7);
+  --color-secondary-8-contrast: var(--base-secondary-contrast-8);
+  --color-secondary-9-contrast: var(--base-secondary-contrast-9);
+  --color-secondary-10-contrast: var(--base-secondary-contrast-10);
+  --color-secondary-11-contrast: var(--base-secondary-contrast-11);
+  --color-tertiary-0-contrast: var(--base-tertiary-contrast-0);
+  --color-tertiary-1-contrast: var(--base-tertiary-contrast-1);
+  --color-tertiary-2-contrast: var(--base-tertiary-contrast-2);
+  --color-tertiary-3-contrast: var(--base-tertiary-contrast-3);
+  --color-tertiary-4-contrast: var(--base-tertiary-contrast-4);
+  --color-tertiary-5-contrast: var(--base-tertiary-contrast-5);
+  --color-tertiary-6-contrast: var(--base-tertiary-contrast-6);
+  --color-tertiary-7-contrast: var(--base-tertiary-contrast-7);
+  --color-tertiary-8-contrast: var(--base-tertiary-contrast-8);
+  --color-tertiary-9-contrast: var(--base-tertiary-contrast-9);
+  --color-tertiary-10-contrast: var(--base-tertiary-contrast-10);
+  --color-tertiary-11-contrast: var(--base-tertiary-contrast-11);
+  --text-xxs: var(--base-xxs-font-size);
+  --text-xs: var(--base-xs-font-size);
+  --text-sm: var(--base-sm-font-size);
+  --text-default: var(--base-default-font-size);
+  --text-lg: var(--base-lg-font-size);
+  --text-xl: var(--base-xl-font-size);
+  --text-2xl: var(--base-2xl-font-size);
+  --text-display-xxs: var(--base-display-xxs-font-size);
+  --text-display-xs: var(--base-display-xs-font-size);
+  --text-display-sm: var(--base-display-sm-font-size);
+  --text-display-md: var(--base-display-md-font-size);
+  --text-display-lg: var(--base-display-lg-font-size);
+  --text-display-xl: var(--base-display-xl-font-size);
 
+  --spacing-3xs: var(--space-3xs);
+  --spacing-2xs: var(--space-2xs);
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+  --spacing-2xl: var(--space-2xl);
+  --spacing-3xl: var(--space-3xl);
+  --spacing-4xl: var(--space-4xl);
+  --spacing-5xl: var(--space-5xl);
+  --spacing-6xl: var(--space-6xl);
+  --spacing-cq-3xs: var(--space-cq-3xs);
+  --spacing-cq-2xs: var(--space-cq-2xs);
+  --spacing-cq-xs: var(--space-cq-xs);
+  --spacing-cq-sm: var(--space-cq-sm);
+  --spacing-cq-md: var(--space-cq-md);
+  --spacing-cq-lg: var(--space-cq-lg);
+  --spacing-cq-xl: var(--space-cq-xl);
+  --spacing-cq-2xl: var(--space-cq-2xl);
+  --spacing-cq-3xl: var(--space-cq-3xl);
+  --spacing-cq-4xl: var(--space-cq-4xl);
+  --spacing-cq-5xl: var(--space-cq-5xl);
+  --spacing-cq-6xl: var(--space-cq-6xl);
+
+  /* do section-gap / spacing */
+}
 
 /* $type-sizes-display: "display-xxs", "display-xs", "display-sm", "display-md", "display-lg", "display-xl";
 $type-sizes-normal: "xxs", "xs", "sm", "default", "lg", "xl", "2xl"; */

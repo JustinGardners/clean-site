@@ -207,17 +207,21 @@ $secondary: color.to-space(
   hsl
 );
 
+$generate-lightness-range-from: 'primary' 'secondary' 'tertiary' !default;
+$generate-lightness-range-count: 12 !default;
+
 $colors: (
   white: $white,
   black: $black,
   gray: $gray-600,
   gray-dark: $gray-800,
-);
+); /// IS Bootstrap Variables??
 
 $font-size-root-px: 16;
 $font-size-body-px: 16;
 
-$theme-colors-rgb: ();
+
+$theme-colors-rgb: (); /// IS Bootstrap Variables??
 
 $font-size-base-px: math.div($font-size-root-px, $font-size-body-px);
 $font-size-base: $font-size-base-px * 1rem;
@@ -359,4 +363,15 @@ $fluid-font-ratio-max: 1.5;
 
 // $utilities: map-remove($utilities, "width");
 $utilities: $site-bs-utilities;
+
+$tertiary: color.to-space(
+  oklch(
+    map.get($lch-colors, "tertiary", "l")
+      map.get($lch-colors, "tertiary", "c")
+      map.get($lch-colors, "tertiary", "h")
+  ),
+  hsl
+);
+
+$theme-colors: map.set($theme-colors, "tertiary", $tertiary);
 

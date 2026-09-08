@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ImageWithInfoProps, ImageWithInfoClassMap, ImageWithInfoResolvedClasses } from '~/types'
-import { itemWithInfoClasses } from '~/types/tokens'
+import type { ImageWithInfoProps } from '~/types'
+import useProductImage from '~/composables/useProductImage'
 
 const props = withDefaults(defineProps<ImageWithInfoProps>(), {
     picture: () => ({
@@ -8,37 +8,27 @@ const props = withDefaults(defineProps<ImageWithInfoProps>(), {
         alt: 'Placeholder image'
     }),
     ctaCover: () => false,
+    config: () => ({
+        showAllSlots: false
+    })
 });
 
-const { css } = useCard(props);
+const { computedClasses, singleCta, roundedImage } = useProductImage(props)
 
-const computedClasses = computed<ImageWithInfoResolvedClasses>(() => (
-    componentClassMerge(css.value, itemWithInfoClasses) as ImageWithInfoResolvedClasses
-));
-
-const cardClasses = computed<ImageWithInfoClassMap>(() => (
-    componentClassMerge(
-        itemWithInfoClasses,
-        (props.classes ?? {}) as Partial<typeof itemWithInfoClasses>
-    ) as ImageWithInfoClassMap
-));
-
-const singleCta = computed(() => (
-    Array.isArray(props.ctas) ? undefined : props.ctas
-));
+const slots = useSlots()
 
 </script>
 
 <template>
-    <Card :title="props.title" :tagline="props.tagline" :picture="props.picture"
-        :config="{ showAllSlots: false }" :classes="cardClasses" :shadow="props.shadow">
+    <Card :title="props.title" :subtitle="props.subtitle" :tagline="props.tagline" :picture="props.picture"
+        :config="props.config" :classes="computedClasses" :shadow="props.shadow">
         <template #picture>
             <slot name="picture" :picture="props.picture">
                 <component :is="() => {
                     const pictureElement = h('img', {
                         src: props.picture?.src,
                         alt: props.picture?.alt,
-                        class: computedClasses.picture
+                        class: [computedClasses.picture, (roundedImage !== '' ? roundedImage + ' ' + 'tw:overflow-clip' : '')]
                     })
                     const pictureContent = pictureElement ?? undefined
                     return props.link ? h('a', { href: props.link, title: props.title, class: computedClasses.picture + ' ' + 'tw:w-full' }, pictureContent) : pictureContent                    
@@ -57,8 +47,13 @@ const singleCta = computed(() => (
                     <Heading :as="'h3'" :class="computedClasses.title" v-if="props.title">{{ props.title }}</Heading>
                 </template>
             </slot>
+            <slot name="subtitle" :subtitle="props.subtitle">
+                <span class="tw:text-base" :class="computedClasses.subtitle" v-if="props.subtitle">
+                    {{ props.subtitle }}
+                </span>
+            </slot>            
         </template>
-        <template #content>
+        <template #content v-if="props.author || props.format || props.price || slots.content">
             <slot name="author" :author="props.author">
                 <p :class="computedClasses.author" v-if="props.author">{{ props.author }}</p>
             </slot>
@@ -78,10 +73,10 @@ const singleCta = computed(() => (
         <template #ctas :ctas="props.ctas">
             <slot name="ctas" :ctas="props.ctas" v-if="props.ctas">
                 <template v-if="props.ctas && Array.isArray(props.ctas) && props.ctas.length > 0" :class="computedClasses.ctas">
-                    <Button v-for="(cta, index) in props.ctas" :key="index" :label="cta.label" :href="cta.href" :color="cta.color" :inverted="cta.inverted" :type="cta.type ?? 'solid'" :size="cta.size" :modifier="cta.modifier" :classes="cta.classes" />
+                    <Button v-for="(cta, index) in props.ctas" :key="index" :label="cta.label" :href="cta.href" :color="cta.color ?? 'primary'" :inverted="cta.inverted" :type="cta.type ?? 'solid'" :size="cta.size" :modifier="cta.modifier" :classes="cta.classes" />
                 </template>
                 <template v-else-if="singleCta">
-                    <Button :label="singleCta.label" :href="singleCta.href" :color="singleCta.color" :inverted="singleCta.inverted" :type="singleCta.type ?? 'solid'" :size="singleCta.size" :modifier="singleCta.modifier" :classes="{ base: [singleCta.classes, {'tw:before:hidden': props.ctaCover}]}" />
+                    <Button :label="singleCta.label" :href="singleCta.href" :color="singleCta.color ?? 'primary'" :inverted="singleCta.inverted" :type="singleCta.type ?? 'solid'" :size="singleCta.size" :modifier="singleCta.modifier" :classes="{ base: [singleCta.classes?.base, {'tw:before:hidden': props.ctaCover}]}" />
                 </template>
             </slot>
         </template>

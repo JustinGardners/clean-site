@@ -2,16 +2,21 @@ import type { CardProps, CardClasses } from '#layers/base/app/types'
 import type { ClassValue } from "clsx";
 import { itemWithInfoClasses } from '~/types/tokens'
 
-export type SingleImagePropsClasses = {
+export type ImagePropsClasses = {
+    card?: ClassValue;
     picture?: ClassValue;
     link?: ClassValue;
+    body?: ClassValue;
+    caption?: ClassValue;
+    title?: ClassValue;
 }
 
-export type SingleImageProps = Pick<CardProps, 'picture' | 'shadow'> & {
+export type CardImageProps = Pick<CardProps, 'picture' | 'shadow'> & {
     link?: string;
     title?: string;
-    classes?: SingleImagePropsClasses;
+    classes?: ImagePropsClasses;
     bordered?: boolean;
+    roundedImage?: 'none' | 'sm' | 'md' | 'lg' | 'full' | 'default';
 };
 
 export type ImageWithInfoPropsNewClasses = (typeof itemWithInfoClasses)
@@ -22,7 +27,8 @@ export type ImageWithInfoPropsClasses = Partial<CardClasses> & ImageWithInfoProp
 export type ImageWithInfoClassMap = Partial<Record<keyof ImageWithInfoPropsClasses, ClassValue>>
 export type ImageWithInfoResolvedClasses = Partial<Record<keyof ImageWithInfoPropsClasses, string>>
 
-export type ImageWithInfoProps = Pick<CardProps, 'title' | 'tagline' | 'picture' | 'config' | 'ctas' | 'shadow'> & {
+export type ImageWithInfoProps = Pick<CardProps, 'tagline' | 'subtitle' | 'config' | 'ctas' | 'shadow'> & CardImageProps & {
+    title: string;
     link?: string;
     author?: string;
     format?: string;

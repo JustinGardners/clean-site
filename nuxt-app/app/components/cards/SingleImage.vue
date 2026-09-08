@@ -1,21 +1,23 @@
 <script setup lang="ts">
-import type { SingleImageProps } from '~/types'
+import { cloneVNode } from 'vue'
+import type { CardImageProps } from '~/types'
+import useProductImage from '~/composables/useProductImage'
+import { singleImageDefaults } from '../../utils/singleImageDefaults'
 
-const props = withDefaults(defineProps<SingleImageProps>(), {
-    picture: () => ({
-        src: 'http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&height=240&padding=false',
-        alt: 'Placeholder image'
-    })
-});
+const props = withDefaults(defineProps<CardImageProps>(), singleImageDefaults)
 
-const { css, renderPicture } = useCard(props);
+const { css, renderPicture, roundedImage } = useProductImage(props)
 
 </script>
 
 <template>
     <component :is="() => {
         const pictureElement = renderPicture()
-        const pictureContent = pictureElement ?? undefined
+        const pictureContent = pictureElement
+            ? cloneVNode(pictureElement, {
+                class: roundedImage !== '' ? roundedImage + ' ' + 'tw:overflow-clip' : ''
+            })
+            : undefined
         return h('article', {
             class: css.card,
             'data-card-bordered': props.bordered ?? false,
@@ -24,5 +26,4 @@ const { css, renderPicture } = useCard(props);
             props.link ? h('a', { href: props.link, title: props.title }, pictureContent) : pictureContent
         )
     }" />
-
 </template>
