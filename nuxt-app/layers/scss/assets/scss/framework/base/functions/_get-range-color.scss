@@ -1,0 +1,4 @@
+// oklch(var(--#{$base-prefix}#{$color}-l-#{$i - 1}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$i - 1}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$i - 1}, var(--#{$base-prefix}#{$color}-h)));
+@function get-range-color($color, $range, $useTailwindClass: false, $twPrefix: 'tw') {
+  @return if($useTailwindClass, var(--#{$twPrefix}-color-#{$color}-#{$range}), oklch(var(--#{$base-prefix}#{$color}-l-#{$range}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$range}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$range}, var(--#{$base-prefix}#{$color}-h))));
+}
