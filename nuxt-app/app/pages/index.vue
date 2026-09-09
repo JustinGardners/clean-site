@@ -59,10 +59,10 @@ const colorTertiaryRangeClasses = [
 </script>
 
 <template>
-  <section class="wrapper">
+  <section class="wrapper tw:bg-primary-0">
     <h2 class="tw:flex">AlpineJS test</h2>
     <div x-data="counter">
-      <p x-text="count" class="tw:text-display-lg tw:aspect-square tw:min-size-[1em] tw:bg-primary tw:rounded-full tw:grid tw:place-content-center tw:p-xl tw:max-w-fit tw:aspect-square"></p>
+      <p x-text="count" class="tw:text-display-lg tw:aspect-square tw:min-size-[1em] tw:bg-primary tw:text-primary-contrast tw:rounded-full tw:grid tw:place-content-center tw:p-xl tw:max-w-fit tw:aspect-square"></p>
       <button x-on:click="count++">Increment</button>
     </div>
   </section>

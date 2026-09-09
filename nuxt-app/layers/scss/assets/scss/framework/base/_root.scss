@@ -1,9 +1,10 @@
 @layer root {
- 
+
   /// Small Style Base Config Props
   :root {
     /// $prefix in output-props doesn't work here as values don't get the prefix applied
     @include output-props(pick-keys($_small-style-base-config-variables, $config-pick-keys)...);
+    --font-size-base: #{$font-size-base};
   }
 
   :root {
@@ -21,33 +22,33 @@
     --space-cq-3xl: calc(var(--space-cq-2xl) * 1.38);
     --space-cq-4xl: calc(var(--space-cq-3xl) * 1.38);
     --space-cq-5xl: calc(var(--space-cq-4xl) * 1.38);
-    --space-cq-6xl: calc(var(--space-cq-5xl) * 1.38);    
+    --space-cq-6xl: calc(var(--space-cq-5xl) * 1.38);
 
     @supports (--css: calc(16 * pow(var(--space-increment), 1))) {
-        --space-cq-3xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -3));
-        --space-cq-2xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -2));
-        --space-cq-xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -1));
-        --space-cq-sm: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 0));
-        --space-cq-md: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 1));
-        --space-cq-lg: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 2));
-        --space-cq-xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 3));
-        --space-cq-2xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 4));
-        --space-cq-3xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 5));
-        --space-cq-4xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 6));
-        --space-cq-5xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 7));
-        --space-cq-6xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 8));
-    }    
+      --space-cq-3xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -3));
+      --space-cq-2xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -2));
+      --space-cq-xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -1));
+      --space-cq-sm: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 0));
+      --space-cq-md: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 1));
+      --space-cq-lg: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 2));
+      --space-cq-xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 3));
+      --space-cq-2xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 4));
+      --space-cq-3xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 5));
+      --space-cq-4xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 6));
+      --space-cq-5xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 7));
+      --space-cq-6xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 8));
+    }
   }
 
   :root {
-    @include output-props(pick-keys($_small-style-base-layout-variables, $layout-pick-keys)...);    
+    @include output-props(pick-keys($_small-style-base-layout-variables, $layout-pick-keys)...);
     --layout-column-min: #{map.get($_small-style-base-config-variables, "layout-column-min")};
     --layout-gap: #{map.get($_small-style-base-config-variables, "layout-gap")};
   }
 
   :root {
     @include output-props(pick-keys($_small-style-base-wrapper-variables, $wrapper-pick-keys)...);
-  }  
+  }
 
   /// Vanilla Framework Base Props
   :root {
@@ -71,20 +72,13 @@
       @each $key, $value in $type-sizes {
         $font-level: map.get($font-sizes, $key, "font-level");
         @if $font-level != null {
-          // --#{$base-prefix}#{$key}-font-size: calc(
-          //   #{$font-size-base-px} *
-          //     pow(
-          //       var(--text-scale-increment),
-          //       var(--#{$base-prefix}#{$key}-font-level, #{$font-level})
-          //     )
-          // );
           --#{$base-prefix}#{$key}-font-size: calc(
-            (#{$font-size-base-px} * var(--unit, 1rem)) *
+            #{$font-size-base-px} *
               pow(
                 var(--text-scale-increment),
                 var(--#{$base-prefix}#{$key}-font-level, #{$font-level})
               )
-          );          
+          );         
         }
       }
     }
@@ -109,16 +103,16 @@
 //     }
 //     --#{$base-prefix}primary-fallback: #{$primary};
 //     --#{$base-prefix}secondary-fallback: #{$secondary};
-//   }
-// }
+  //   }
+  // }
 
-@each $key, $value in $register-lch {
-  $name: $key;
-  $syntax: map-get($value , 'syntax');
-  $inherits: map-get($value , 'inherits');
-  $initial-value: map-get($value , 'initial-value');
-  @include register-prop($site-prefix + $name, $syntax, $inherits, $initial-value);
-}
+  @each $key, $value in $register-lch {
+    $name: $key;
+    $syntax: map-get($value , 'syntax');
+    $inherits: map-get($value , 'inherits');
+    $initial-value: map-get($value , 'initial-value');
+    @include register-prop($site-prefix + $name, $syntax, $inherits, $initial-value);
+  }
 
   :root {
     @each $key, $value in $theme-colors {
@@ -135,6 +129,7 @@
             var(--#{$base-prefix}#{$key}-c)
             var(--#{$base-prefix}#{$key}-h)
         );
+        --#{$base-prefix}#{$key}-contrast: oklch(from var(--color,var(--#{$base-prefix}#{$key})) clamp(var(--#{$base-prefix}#{$key}-contrast-lightest-text,var(--contrast-lightest-text,0)), (l / var(--contrast-threshold,.623) - 1) * -infinity, var(--#{$base-prefix}#{$key}-contrast-darkest-text,var(--contrast-darkest-text,1))) 0 h);
       }
     }
     --#{$base-prefix}primary-fallback: #{$primary};
@@ -149,23 +144,24 @@
 
   :root {
     @for $i from 1 through length($lightness-range-map) {
-      --#{$base-prefix}#{$color}-#{$i - 1}: oklch(var(--#{$base-prefix}#{$color}-l-#{$i - 1}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$i - 1}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$i - 1}, var(--#{$base-prefix}#{$color}-h)));
+      // moved this to tailwind - will need to combine tailwind and SCSS utimately - create a new function to get these values
+      // --#{$base-prefix}#{$color}-#{$i - 1}: oklch(var(--#{$base-prefix}#{$color}-l-#{$i - 1}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$i - 1}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$i - 1}, var(--#{$base-prefix}#{$color}-h)));
       --#{$base-prefix}#{$color}-l-#{$i - 1}: var(--#{$site-prefix}#{$color}-l-#{$i - 1});
     }
   }
 
-  @for $i from 1 through length($lightness-range-map) {    
+  @for $i from 1 through length($lightness-range-map) {
     @include register-prop($site-prefix + $color + "-l-" + ($i - 1), '<number>', true, nth($lightness-range-map, $i));
-  }      
+  }
 }
 
 :root {
   @each $color in $generate-lightness-range-from {
     $lightness: map-deep-get($lch-colors, $color, "l");
     $chroma: map-deep-get($lch-colors, $color, "c");
-    $hue: map-deep-get($lch-colors, $color, "h");    
+    $hue: map-deep-get($lch-colors, $color, "h");
     @for $i from 1 through $generate-lightness-range-count {
-      --#{$base-prefix}#{$color}-contrast-#{$i - 1}: oklch(from var(--color, var(--#{$base-prefix}#{$color}-#{$i - 1})) clamp(var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
-    }    
+      --#{$base-prefix}#{$color}-contrast-#{$i - 1}: oklch(from var(--color, var(--#{$base-prefix}#{$color}-#{$i - 1}, var(--tw-color-#{$color}-#{$i - 1}))) clamp(var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+    }
   }
 }
