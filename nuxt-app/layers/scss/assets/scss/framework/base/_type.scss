@@ -24,19 +24,48 @@
           @include heading-size($heading);
         }
       }
+
+      @include register-prop(
+        $site-prefix + $size + "-font-size-min",
+        "<number>",
+        true,
+        site-font-size(map.get($value, "min-size"), px)
+      );
+
+      @include register-prop(
+        $site-prefix + $size + "-font-size-max",
+        "<number>",
+        true,
+        site-font-size(map.get($value, "size"), px)
+      );
     }
 
     @supports (width: calc(10px * pow(5, 2))) {
       @for $i from list.length($type-sizes-display) + 1 through 2 {
         $display-index: $i - 1;
 
+        $get-ascending-entry: (
+          (list.length($type-sizes-display) + 1) - $display-index
+        );
+
+        $font-size-min-index: if(
+          $get-ascending-entry ==1,
+          $get-ascending-entry,
+          $get-ascending-entry - 1
+        );
+        $font-size-min: site-font-size(
+          nth($type-sizes-display, $font-size-min-index),
+          px
+        );
+        $font-size-max: site-font-size(
+          nth($type-sizes-display, $get-ascending-entry),
+          px
+        );
+
         .display-#{$display-index} {
-          $get-ascending-entry: (
-            (list.length($type-sizes-display) + 1) - $display-index
-          );
           font-size: calc(
             var(
-                --#{$prefix}#{nth(
+                --#{$base-prefix}#{nth(
                     $type-sizes-display,
                     $get-ascending-entry
                   )}-font-size,
@@ -47,62 +76,66 @@
               ) *
               var(--unit, var(--#{$prefix}body-font-size, #{$font-size-base}))
           );
-          --font-ratio-min: var(
-            --#{$prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-ratio-min,
-            #{$fluid-font-ratio-min}
-          );
-          --font-ratio-max: var(
-            --#{$prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-ratio-max,
-            #{$fluid-font-ratio-max}
-          );
-          --font-width-min: var(
-            --#{$prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-width-min,
-            #{$fluid-font-width-min}
-          );
-          --font-width-max: var(
-            --#{$prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-width-max,
-            #{$fluid-font-width-max}
-          );
-          $font-size-min-index: if(
-            $get-ascending-entry ==1,
-            $get-ascending-entry,
-            $get-ascending-entry - 1
-          );
-          $font-size-min: site-font-size(
-            nth($type-sizes-display, $font-size-min-index),
-            px
-          );
-          $font-size-max: site-font-size(
-            nth($type-sizes-display, $get-ascending-entry),
-            px
-          );
+
           --font-size-min: var(
-            --#{$prefix}#{nth(
+            --#{$site-prefix}#{nth(
                 $type-sizes-display,
                 $get-ascending-entry
               )}-font-size-min,
             #{$font-size-min}
           );
           --font-size-max: var(
-            --#{$prefix}#{nth(
+            --#{$site-prefix}#{nth(
                 $type-sizes-display,
                 $get-ascending-entry
               )}-font-size-max,
             #{$font-size-max}
           );
+          --font-ratio-min: var(
+            --#{$base-prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-ratio-min,
+            var(--#{$base-prefix}font-ratio-min, #{$fluid-font-ratio-min})
+          );
+          --font-ratio-max: var(
+            --#{$base-prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-ratio-max,
+            var(--#{$base-prefix}font-ratio-max, #{$fluid-font-ratio-max})
+          );
+          --font-width-min: var(
+            --#{$base-prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-width-min,
+            var(--#{$base-prefix}font-width-min, #{$fluid-font-width-min})
+          );
+          --font-width-max: var(
+            --#{$base-prefix}#{nth(
+                $type-sizes-display,
+                $get-ascending-entry
+              )}-font-width-max,
+            var(--#{$base-prefix}font-width-max, var(--root-max-wrapper-width, #{$fluid-font-width-max}))
+          );
         }
+
+        @include register-prop(
+          $site-prefix + list.nth($type-sizes-display, $get-ascending-entry) +
+            "-font-size-min",
+          "<number>",
+          true,
+          $font-size-min
+        );
+
+        @include register-prop(
+          $site-prefix + list.nth($type-sizes-display, $get-ascending-entry) +
+            "-font-size-max",
+          "<number>",
+          true,
+          $font-size-max
+        );
       }
     }
   }

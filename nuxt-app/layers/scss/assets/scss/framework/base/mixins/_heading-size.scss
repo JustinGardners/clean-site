@@ -8,7 +8,7 @@
             var(--unit, var(--#{$prefix}body-font-size, #{$font-size-base}))
         );
         --font-size-max: var(
-          --#{$base-prefix}#{$font-size}-font-size-max,
+          --#{$site-prefix}#{$font-size}-font-size-max,
           #{$default-font-max-size}
         );
       }
@@ -16,25 +16,26 @@
       @if (check-if-type-size($min-size)) {
         $default-font-min-size: site-font-size($min-size, px);
         --font-size-min: var(
-          --#{$base-prefix}#{$font-size}-font-size-min,
+          --#{$site-prefix}#{$font-size}-font-size-min,
           #{$default-font-min-size}
         );
       }
       --font-ratio-min: var(
         --#{$base-prefix}#{$font-size}-font-ratio-min,
-        #{$fluid-font-ratio-min}
+        var(--#{$base-prefix}font-ratio-min, #{$fluid-font-ratio-min})        
       );
       --font-ratio-max: var(
         --#{$base-prefix}#{$font-size}-font-ratio-max,
-        #{$fluid-font-ratio-max}
+        var(--#{$base-prefix}font-ratio-max, #{$fluid-font-ratio-max})
       );
       --font-width-min: var(
         --#{$base-prefix}#{$font-size}-font-width-min,
-        #{$fluid-font-width-min}
+        var(--#{$base-prefix}font-width-min,
+        #{$fluid-font-width-min})
       );
       --font-width-max: var(
         --#{$base-prefix}#{$font-size}-font-width-max,
-        #{$fluid-font-width-max}
+        var(--#{$base-prefix}font-width-max, var(--root-max-wrapper-width, #{$fluid-font-width-max}))
       );
     }
   }

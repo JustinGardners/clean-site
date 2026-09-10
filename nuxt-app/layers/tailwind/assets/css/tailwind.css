@@ -13,6 +13,21 @@
   /* aspect-ratio: var(--card-picture-aspect); */
 }
 
+/*
+  Usage:
+    tw:bg-mix-primary                                     -> mixes color-primary with transparent at 50%
+    tw:bg-mix-primary tw:[--tw-bg-mix-percentage:30%]      -> 30% of color-primary
+    tw:bg-mix-primary tw:[--tw-bg-mix-with:var(--color-secondary)] -> mix against another color
+*/
+@utility bg-mix-* {
+  --tw-bg-mix-color: --value(--color-*, [color]);
+  background-color: color-mix(
+    in oklab,
+    var(--tw-bg-mix-color) var(--tw-bg-mix-percentage, 50%),
+    var(--tw-bg-mix-with, transparent)
+  );
+}
+
 @utility fluid {
   --fluid-min: calc(
     var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))

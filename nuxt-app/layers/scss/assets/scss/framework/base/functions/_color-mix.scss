@@ -1,0 +1,43 @@
+@function color-mix-value($color-one, $color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @if $color-one == null {
+        @return null;
+    } @else {
+        @return color-mix(in #{$format}, $color-one $color-one-percentage, $color-two $color-two-percentage);
+    }
+}
+
+@function color-mix-value-primary($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-primary), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-secondary($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-secondary), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-tertiary($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-tertiary), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-info($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-info), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-success($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-success), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-warning($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-warning), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-danger($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-danger), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-light($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-light), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}
+
+@function color-mix-value-dark($color-one-percentage: 50%, $color-two: transparent, $color-two-percentage: 50%, $format: oklab) {
+    @return color-mix-value(var(--base-dark), $color-one-percentage, $color-two, $color-two-percentage, $format);
+}

@@ -9,7 +9,7 @@
 @use "small-style/scss/base/variables/props/wrapper" as wrapper;
 @use "small-style/scss/base/mixins" as mixins;
 
-$config-pick-keys: 'unit-min' 'unit-fluid' 'unit-max' 'radius' 'flow-space' 'text-frame-ratio' 'text-frame-y' 'space-increment';
+$config-pick-keys: 'unit-min' 'unit-fluid' 'unit-max' 'radius' 'flow-space' 'text-frame-ratio' 'text-frame-y' 'space-increment' 'root-max-wrapper-width';
 $layout-pick-keys: 'layout-column-min' 'layout-gap' 'layout-grid-min' 'layout-grid-gap' 'layout-grid-template-columns' 'column-count' 'breakpoint' 'column-size' 'flex-grid-min' 'flex-grid-gap';
 $wrapper-pick-keys: 'root-max-wrapper-width' 'max-wrapper-width' 'wrapper-padding' 'wrapper-padding-min' 'wrapper-inline' 'wrapper-width' 'grid-wrapper-columns';
 
@@ -337,12 +337,12 @@ $site-bs-utilities: ()!default;
 
 // Bootstrap vars
 ////////////////////////////////////////////////////////////////////////////
-$h1-font-size: site-font-size("2xl", rem, true);
-$h2-font-size: site-font-size("xl", rem, true);
-$h3-font-size: site-font-size("lg", rem, true);
-$h4-font-size: site-font-size("default", rem, true);
-$h5-font-size: site-font-size("sm", rem, true);
-$h6-font-size: site-font-size("xs", rem, true);
+$h1-font-size: site-font-size(map.get($headings, "h1", "size"), rem, true);
+$h2-font-size: site-font-size(map.get($headings, "h2", "size"), rem, true);
+$h3-font-size: site-font-size(map.get($headings, "h3", "size"), rem, true);
+$h4-font-size: site-font-size(map.get($headings, "h4", "size"), rem, true);
+$h5-font-size: site-font-size(map.get($headings, "h5", "size"), rem, true);
+$h6-font-size: site-font-size(map.get($headings, "h6", "size"), rem, true);
 
 // Bootstrap vars
 ////////////////////////////////////////////////////////////////////////////
@@ -356,10 +356,10 @@ $display-font-sizes: (
 );
 
 
-$fluid-font-width-min: 375;
-$fluid-font-width-max: 1440;
-$fluid-font-ratio-min: 1.2;
-$fluid-font-ratio-max: 1.5;
+$fluid-font-width-min: 375!default;
+$fluid-font-width-max: 1440!default;
+$fluid-font-ratio-min: 1.2!default;
+$fluid-font-ratio-max: 1.5!default;
 
 // $utilities: map-remove($utilities, "width");
 $utilities: $site-bs-utilities;

@@ -515,7 +515,12 @@ const colorTertiaryRangeClasses = [
   </div>
   </section>
 
-  <div class="flow tw:pt-4xl">
+  <section>
+    <div class="test-primary tw:size-4xl"></div>
+
+  </section>
+
+  <div class="flow tw:pt-4xl tw:bg-mix-primary">
     <section class="flow wrapper">
       <h3 class="heading-2xl">SingleImage Component</h3>
       <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
