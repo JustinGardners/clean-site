@@ -74,7 +74,7 @@
                   rem
                 )
               ) *
-              var(--unit, var(--#{$prefix}body-font-size, #{$font-size-base}))
+              var(--unit, var(--font-size-base, #{$font-size-base}))
           );
 
           --font-size-min: var(

@@ -21,31 +21,18 @@
 */
 @utility bg-mix-* {
   --tw-bg-mix-color: --value(--color-*, [color]);
-  background-color: color-mix(
-    in oklab,
-    var(--tw-bg-mix-color) var(--tw-bg-mix-percentage, 50%),
-    var(--tw-bg-mix-with, transparent)
-  );
+  background-color: color-mix(in oklab,
+      var(--tw-bg-mix-color) var(--tw-bg-mix-percentage, 50%),
+      var(--tw-bg-mix-with, transparent));
 }
 
 @utility fluid {
-  --fluid-min: calc(
-    var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
-  );
-  --fluid-max: calc(
-    var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
-  );
-  --fluid-preferred: calc(
-    (var(--fluid-max) - var(--fluid-min)) /
-      (var(--font-width-max) - var(--font-width-min))
-  );
-  --fluid-type: clamp(
-    (var(--fluid-min) / 16) * 1rem,
-    ((var(--fluid-min) / 16) * 1rem) -
-      (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-      (var(--fluid-preferred) * var(--variable-unit, 100vi)),
-    (var(--fluid-max) / 16) * 1rem
-  );
+  --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
+  --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
+  --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
+  --fluid-type: clamp((var(--fluid-min) / 16) * 1rem,
+      ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--fluid-max) / 16) * 1rem);
   font-size: var(--fluid-type);
 }
 
@@ -55,29 +42,18 @@
 }
 
 @layer site.components.modifiers {
-  .flow > * + * {
+  .flow>*+* {
     margin-top: var(--flow-space, 1.5em);
   }
 
   /* Unprefixed aliases for custom utilities when Tailwind prefix is enabled. */
   .fluid {
-    --fluid-min: calc(
-      var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
-    );
-    --fluid-max: calc(
-      var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
-    );
-    --fluid-preferred: calc(
-      (var(--fluid-max) - var(--fluid-min)) /
-        (var(--font-width-max) - var(--font-width-min))
-    );
-    --fluid-type: clamp(
-      (var(--fluid-min) / 16) * 1rem,
-      ((var(--fluid-min) / 16) * 1rem) -
-        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
-      (var(--fluid-max) / 16) * 1rem
-    );
+    --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
+    --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
+    --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
+    --fluid-type: clamp((var(--fluid-min) / 16) * 1rem,
+        ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+        (var(--fluid-max) / 16) * 1rem);
     font-size: var(--fluid-type);
   }
 
@@ -126,42 +102,54 @@
   --unit-vw: 1vw;
   --unit-vi: 1vi;
   --color-*: initial;
-  --color-primary-0: oklch(var(--base-primary-l-0,var(--base-primary-l)) var(--base-primary-c-0,var(--base-primary-c)) var(--base-primary-h-0,var(--base-primary-h)));
-  --color-primary-1: oklch(var(--base-primary-l-1,var(--base-primary-l)) var(--base-primary-c-1,var(--base-primary-c)) var(--base-primary-h-1,var(--base-primary-h)));
-  --color-primary-2: oklch(var(--base-primary-l-2,var(--base-primary-l)) var(--base-primary-c-2,var(--base-primary-c)) var(--base-primary-h-2,var(--base-primary-h)));
-  --color-primary-3: oklch(var(--base-primary-l-3,var(--base-primary-l)) var(--base-primary-c-3,var(--base-primary-c)) var(--base-primary-h-3,var(--base-primary-h)));
-  --color-primary-4: oklch(var(--base-primary-l-4,var(--base-primary-l)) var(--base-primary-c-4,var(--base-primary-c)) var(--base-primary-h-4,var(--base-primary-h)));
-  --color-primary-5: oklch(var(--base-primary-l-5,var(--base-primary-l)) var(--base-primary-c-5,var(--base-primary-c)) var(--base-primary-h-5,var(--base-primary-h)));
-  --color-primary-6: oklch(var(--base-primary-l-6,var(--base-primary-l)) var(--base-primary-c-6,var(--base-primary-c)) var(--base-primary-h-6,var(--base-primary-h)));
-  --color-primary-7: oklch(var(--base-primary-l-7,var(--base-primary-l)) var(--base-primary-c-7,var(--base-primary-c)) var(--base-primary-h-7,var(--base-primary-h)));
-  --color-primary-8: oklch(var(--base-primary-l-8,var(--base-primary-l)) var(--base-primary-c-8,var(--base-primary-c)) var(--base-primary-h-8,var(--base-primary-h)));
-  --color-primary-9: oklch(var(--base-primary-l-9,var(--base-primary-l)) var(--base-primary-c-9,var(--base-primary-c)) var(--base-primary-h-9,var(--base-primary-h)));
-  --color-primary-10: oklch(var(--base-primary-l-10,var(--base-primary-l)) var(--base-primary-c-10,var(--base-primary-c)) var(--base-primary-h-10,var(--base-primary-h)));
-  --color-primary-11: oklch(var(--base-primary-l-11,var(--base-primary-l)) var(--base-primary-c-11,var(--base-primary-c)) var(--base-primary-h-11,var(--base-primary-h)));
-  --color-secondary-0: oklch(var(--base-secondary-l-0,var(--base-secondary-l)) var(--base-secondary-c-0,var(--base-secondary-c)) var(--base-secondary-h-0,var(--base-secondary-h)));
-  --color-secondary-1: oklch(var(--base-secondary-l-1,var(--base-secondary-l)) var(--base-secondary-c-1,var(--base-secondary-c)) var(--base-secondary-h-1,var(--base-secondary-h)));
-  --color-secondary-2: oklch(var(--base-secondary-l-2,var(--base-secondary-l)) var(--base-secondary-c-2,var(--base-secondary-c)) var(--base-secondary-h-2,var(--base-secondary-h)));
-  --color-secondary-3: oklch(var(--base-secondary-l-3,var(--base-secondary-l)) var(--base-secondary-c-3,var(--base-secondary-c)) var(--base-secondary-h-3,var(--base-secondary-h)));
-  --color-secondary-4: oklch(var(--base-secondary-l-4,var(--base-secondary-l)) var(--base-secondary-c-4,var(--base-secondary-c)) var(--base-secondary-h-4,var(--base-secondary-h)));
-  --color-secondary-5: oklch(var(--base-secondary-l-5,var(--base-secondary-l)) var(--base-secondary-c-5,var(--base-secondary-c)) var(--base-secondary-h-5,var(--base-secondary-h)));
-  --color-secondary-6: oklch(var(--base-secondary-l-6,var(--base-secondary-l)) var(--base-secondary-c-6,var(--base-secondary-c)) var(--base-secondary-h-6,var(--base-secondary-h)));
-  --color-secondary-7: oklch(var(--base-secondary-l-7,var(--base-secondary-l)) var(--base-secondary-c-7,var(--base-secondary-c)) var(--base-secondary-h-7,var(--base-secondary-h)));
-  --color-secondary-8: oklch(var(--base-secondary-l-8,var(--base-secondary-l)) var(--base-secondary-c-8,var(--base-secondary-c)) var(--base-secondary-h-8,var(--base-secondary-h)));
-  --color-secondary-9: oklch(var(--base-secondary-l-9,var(--base-secondary-l)) var(--base-secondary-c-9,var(--base-secondary-c)) var(--base-secondary-h-9,var(--base-secondary-h)));
-  --color-secondary-10: oklch(var(--base-secondary-l-10,var(--base-secondary-l)) var(--base-secondary-c-10,var(--base-secondary-c)) var(--base-secondary-h-10,var(--base-secondary-h)));
-  --color-secondary-11: oklch(var(--base-secondary-l-11,var(--base-secondary-l)) var(--base-secondary-c-11,var(--base-secondary-c)) var(--base-secondary-h-11,var(--base-secondary-h)));
-  --color-tertiary-0: oklch(var(--base-tertiary-l-0,var(--base-tertiary-l)) var(--base-tertiary-c-0,var(--base-tertiary-c)) var(--base-tertiary-h-0,var(--base-tertiary-h)));
-  --color-tertiary-1: oklch(var(--base-tertiary-l-1,var(--base-tertiary-l)) var(--base-tertiary-c-1,var(--base-tertiary-c)) var(--base-tertiary-h-1,var(--base-tertiary-h)));
-  --color-tertiary-2: oklch(var(--base-tertiary-l-2,var(--base-tertiary-l)) var(--base-tertiary-c-2,var(--base-tertiary-c)) var(--base-tertiary-h-2,var(--base-tertiary-h)));
-  --color-tertiary-3: oklch(var(--base-tertiary-l-3,var(--base-tertiary-l)) var(--base-tertiary-c-3,var(--base-tertiary-c)) var(--base-tertiary-h-3,var(--base-tertiary-h)));
-  --color-tertiary-4: oklch(var(--base-tertiary-l-4,var(--base-tertiary-l)) var(--base-tertiary-c-4,var(--base-tertiary-c)) var(--base-tertiary-h-4,var(--base-tertiary-h)));
-  --color-tertiary-5: oklch(var(--base-tertiary-l-5,var(--base-tertiary-l)) var(--base-tertiary-c-5,var(--base-tertiary-c)) var(--base-tertiary-h-5,var(--base-tertiary-h)));
-  --color-tertiary-6: oklch(var(--base-tertiary-l-6,var(--base-tertiary-l)) var(--base-tertiary-c-6,var(--base-tertiary-c)) var(--base-tertiary-h-6,var(--base-tertiary-h)));
-  --color-tertiary-7: oklch(var(--base-tertiary-l-7,var(--base-tertiary-l)) var(--base-tertiary-c-7,var(--base-tertiary-c)) var(--base-tertiary-h-7,var(--base-tertiary-h)));
-  --color-tertiary-8: oklch(var(--base-tertiary-l-8,var(--base-tertiary-l)) var(--base-tertiary-c-8,var(--base-tertiary-c)) var(--base-tertiary-h-8,var(--base-tertiary-h)));
-  --color-tertiary-9: oklch(var(--base-tertiary-l-9,var(--base-tertiary-l)) var(--base-tertiary-c-9,var(--base-tertiary-c)) var(--base-tertiary-h-9,var(--base-tertiary-h)));
-  --color-tertiary-10: oklch(var(--base-tertiary-l-10,var(--base-tertiary-l)) var(--base-tertiary-c-10,var(--base-tertiary-c)) var(--base-tertiary-h-10,var(--base-tertiary-h)));
-  --color-tertiary-11: oklch(var(--base-tertiary-l-11,var(--base-tertiary-l)) var(--base-tertiary-c-11,var(--base-tertiary-c)) var(--base-tertiary-h-11,var(--base-tertiary-h)));
+  --color-primary-0: oklch(var(--base-primary-l-0, var(--base-primary-l)) var(--base-primary-c-0, var(--base-primary-c)) var(--base-primary-h-0, var(--base-primary-h)));
+  --color-primary-1: oklch(var(--base-primary-l-1, var(--base-primary-l)) var(--base-primary-c-1, var(--base-primary-c)) var(--base-primary-h-1, var(--base-primary-h)));
+  --color-primary-2: oklch(var(--base-primary-l-2, var(--base-primary-l)) var(--base-primary-c-2, var(--base-primary-c)) var(--base-primary-h-2, var(--base-primary-h)));
+  --color-primary-3: oklch(var(--base-primary-l-3, var(--base-primary-l)) var(--base-primary-c-3, var(--base-primary-c)) var(--base-primary-h-3, var(--base-primary-h)));
+  --color-primary-4: oklch(var(--base-primary-l-4, var(--base-primary-l)) var(--base-primary-c-4, var(--base-primary-c)) var(--base-primary-h-4, var(--base-primary-h)));
+  --color-primary-5: oklch(var(--base-primary-l-5, var(--base-primary-l)) var(--base-primary-c-5, var(--base-primary-c)) var(--base-primary-h-5, var(--base-primary-h)));
+  --color-primary-6: oklch(var(--base-primary-l-6, var(--base-primary-l)) var(--base-primary-c-6, var(--base-primary-c)) var(--base-primary-h-6, var(--base-primary-h)));
+  --color-primary-7: oklch(var(--base-primary-l-7, var(--base-primary-l)) var(--base-primary-c-7, var(--base-primary-c)) var(--base-primary-h-7, var(--base-primary-h)));
+  --color-primary-8: oklch(var(--base-primary-l-8, var(--base-primary-l)) var(--base-primary-c-8, var(--base-primary-c)) var(--base-primary-h-8, var(--base-primary-h)));
+  --color-primary-9: oklch(var(--base-primary-l-9, var(--base-primary-l)) var(--base-primary-c-9, var(--base-primary-c)) var(--base-primary-h-9, var(--base-primary-h)));
+  --color-primary-10: oklch(var(--base-primary-l-10, var(--base-primary-l)) var(--base-primary-c-10, var(--base-primary-c)) var(--base-primary-h-10, var(--base-primary-h)));
+  --color-primary-11: oklch(var(--base-primary-l-11, var(--base-primary-l)) var(--base-primary-c-11, var(--base-primary-c)) var(--base-primary-h-11, var(--base-primary-h)));
+  --color-secondary-0: oklch(var(--base-secondary-l-0, var(--base-secondary-l)) var(--base-secondary-c-0, var(--base-secondary-c)) var(--base-secondary-h-0, var(--base-secondary-h)));
+  --color-secondary-1: oklch(var(--base-secondary-l-1, var(--base-secondary-l)) var(--base-secondary-c-1, var(--base-secondary-c)) var(--base-secondary-h-1, var(--base-secondary-h)));
+  --color-secondary-2: oklch(var(--base-secondary-l-2, var(--base-secondary-l)) var(--base-secondary-c-2, var(--base-secondary-c)) var(--base-secondary-h-2, var(--base-secondary-h)));
+  --color-secondary-3: oklch(var(--base-secondary-l-3, var(--base-secondary-l)) var(--base-secondary-c-3, var(--base-secondary-c)) var(--base-secondary-h-3, var(--base-secondary-h)));
+  --color-secondary-4: oklch(var(--base-secondary-l-4, var(--base-secondary-l)) var(--base-secondary-c-4, var(--base-secondary-c)) var(--base-secondary-h-4, var(--base-secondary-h)));
+  --color-secondary-5: oklch(var(--base-secondary-l-5, var(--base-secondary-l)) var(--base-secondary-c-5, var(--base-secondary-c)) var(--base-secondary-h-5, var(--base-secondary-h)));
+  --color-secondary-6: oklch(var(--base-secondary-l-6, var(--base-secondary-l)) var(--base-secondary-c-6, var(--base-secondary-c)) var(--base-secondary-h-6, var(--base-secondary-h)));
+  --color-secondary-7: oklch(var(--base-secondary-l-7, var(--base-secondary-l)) var(--base-secondary-c-7, var(--base-secondary-c)) var(--base-secondary-h-7, var(--base-secondary-h)));
+  --color-secondary-8: oklch(var(--base-secondary-l-8, var(--base-secondary-l)) var(--base-secondary-c-8, var(--base-secondary-c)) var(--base-secondary-h-8, var(--base-secondary-h)));
+  --color-secondary-9: oklch(var(--base-secondary-l-9, var(--base-secondary-l)) var(--base-secondary-c-9, var(--base-secondary-c)) var(--base-secondary-h-9, var(--base-secondary-h)));
+  --color-secondary-10: oklch(var(--base-secondary-l-10, var(--base-secondary-l)) var(--base-secondary-c-10, var(--base-secondary-c)) var(--base-secondary-h-10, var(--base-secondary-h)));
+  --color-secondary-11: oklch(var(--base-secondary-l-11, var(--base-secondary-l)) var(--base-secondary-c-11, var(--base-secondary-c)) var(--base-secondary-h-11, var(--base-secondary-h)));
+  --color-tertiary-0: oklch(var(--base-tertiary-l-0, var(--base-tertiary-l)) var(--base-tertiary-c-0, var(--base-tertiary-c)) var(--base-tertiary-h-0, var(--base-tertiary-h)));
+  --color-tertiary-1: oklch(var(--base-tertiary-l-1, var(--base-tertiary-l)) var(--base-tertiary-c-1, var(--base-tertiary-c)) var(--base-tertiary-h-1, var(--base-tertiary-h)));
+  --color-tertiary-2: oklch(var(--base-tertiary-l-2, var(--base-tertiary-l)) var(--base-tertiary-c-2, var(--base-tertiary-c)) var(--base-tertiary-h-2, var(--base-tertiary-h)));
+  --color-tertiary-3: oklch(var(--base-tertiary-l-3, var(--base-tertiary-l)) var(--base-tertiary-c-3, var(--base-tertiary-c)) var(--base-tertiary-h-3, var(--base-tertiary-h)));
+  --color-tertiary-4: oklch(var(--base-tertiary-l-4, var(--base-tertiary-l)) var(--base-tertiary-c-4, var(--base-tertiary-c)) var(--base-tertiary-h-4, var(--base-tertiary-h)));
+  --color-tertiary-5: oklch(var(--base-tertiary-l-5, var(--base-tertiary-l)) var(--base-tertiary-c-5, var(--base-tertiary-c)) var(--base-tertiary-h-5, var(--base-tertiary-h)));
+  --color-tertiary-6: oklch(var(--base-tertiary-l-6, var(--base-tertiary-l)) var(--base-tertiary-c-6, var(--base-tertiary-c)) var(--base-tertiary-h-6, var(--base-tertiary-h)));
+  --color-tertiary-7: oklch(var(--base-tertiary-l-7, var(--base-tertiary-l)) var(--base-tertiary-c-7, var(--base-tertiary-c)) var(--base-tertiary-h-7, var(--base-tertiary-h)));
+  --color-tertiary-8: oklch(var(--base-tertiary-l-8, var(--base-tertiary-l)) var(--base-tertiary-c-8, var(--base-tertiary-c)) var(--base-tertiary-h-8, var(--base-tertiary-h)));
+  --color-tertiary-9: oklch(var(--base-tertiary-l-9, var(--base-tertiary-l)) var(--base-tertiary-c-9, var(--base-tertiary-c)) var(--base-tertiary-h-9, var(--base-tertiary-h)));
+  --color-tertiary-10: oklch(var(--base-tertiary-l-10, var(--base-tertiary-l)) var(--base-tertiary-c-10, var(--base-tertiary-c)) var(--base-tertiary-h-10, var(--base-tertiary-h)));
+  --color-tertiary-11: oklch(var(--base-tertiary-l-11, var(--base-tertiary-l)) var(--base-tertiary-c-11, var(--base-tertiary-c)) var(--base-tertiary-h-11, var(--base-tertiary-h)));
+  --color-grey-0: oklch(from var(--tw-color-primary-0) l var(--base-grey-c, 0.05) h);
+  --color-grey-1: oklch(from var(--tw-color-primary-1) l var(--base-grey-c, 0.05) h);
+  --color-grey-2: oklch(from var(--tw-color-primary-2) l var(--base-grey-c, 0.05) h);
+  --color-grey-3: oklch(from var(--tw-color-primary-3) l var(--base-grey-c, 0.05) h);
+  --color-grey-4: oklch(from var(--tw-color-primary-4) l var(--base-grey-c, 0.05) h);
+  --color-grey-5: oklch(from var(--tw-color-primary-5) l var(--base-grey-c, 0.05) h);
+  --color-grey-6: oklch(from var(--tw-color-primary-6) l var(--base-grey-c, 0.05) h);
+  --color-grey-7: oklch(from var(--tw-color-primary-7) l var(--base-grey-c, 0.05) h);
+  --color-grey-8: oklch(from var(--tw-color-primary-8) l var(--base-grey-c, 0.05) h);
+  --color-grey-9: oklch(from var(--tw-color-primary-9) l var(--base-grey-c, 0.05) h);
+  --color-grey-10: oklch(from var(--tw-color-primary-10) l var(--base-grey-c, 0.05) h);
+  --color-grey-11: oklch(from var(--tw-color-primary-11) l var(--base-grey-c, 0.05) h);
   /* do section-gap / spacing */
 }
 
@@ -189,7 +177,7 @@
   --spacing-cq-3xl: var(--space-cq-3xl);
   --spacing-cq-4xl: var(--space-cq-4xl);
   --spacing-cq-5xl: var(--space-cq-5xl);
-  --spacing-cq-6xl: var(--space-cq-6xl);  
+  --spacing-cq-6xl: var(--space-cq-6xl);
 
   --color-primary: var(--base-primary);
   --color-secondary: var(--base-secondary);
@@ -210,56 +198,83 @@
   --color-info-contrast: var(--base-info-contrast);
   --color-light-contrast: var(--base-light-contrast);
   --color-dark-contrast: var(--base-dark-contrast);
-  --color-primary-0-contrast: var(--base-primary-contrast-0);
-  --color-primary-1-contrast: var(--base-primary-contrast-1);
-  --color-primary-2-contrast: var(--base-primary-contrast-2);
-  --color-primary-3-contrast: var(--base-primary-contrast-3);
-  --color-primary-4-contrast: var(--base-primary-contrast-4);
-  --color-primary-5-contrast: var(--base-primary-contrast-5);
-  --color-primary-6-contrast: var(--base-primary-contrast-6);
-  --color-primary-7-contrast: var(--base-primary-contrast-7);
-  --color-primary-8-contrast: var(--base-primary-contrast-8);
-  --color-primary-9-contrast: var(--base-primary-contrast-9);
-  --color-primary-10-contrast: var(--base-primary-contrast-10);
-  --color-primary-11-contrast: var(--base-primary-contrast-11);
-  --color-secondary-0-contrast: var(--base-secondary-contrast-0);
-  --color-secondary-1-contrast: var(--base-secondary-contrast-1);
-  --color-secondary-2-contrast: var(--base-secondary-contrast-2);
-  --color-secondary-3-contrast: var(--base-secondary-contrast-3);
-  --color-secondary-4-contrast: var(--base-secondary-contrast-4);
-  --color-secondary-5-contrast: var(--base-secondary-contrast-5);
-  --color-secondary-6-contrast: var(--base-secondary-contrast-6);
-  --color-secondary-7-contrast: var(--base-secondary-contrast-7);
-  --color-secondary-8-contrast: var(--base-secondary-contrast-8);
-  --color-secondary-9-contrast: var(--base-secondary-contrast-9);
-  --color-secondary-10-contrast: var(--base-secondary-contrast-10);
-  --color-secondary-11-contrast: var(--base-secondary-contrast-11);
-  --color-tertiary-0-contrast: var(--base-tertiary-contrast-0);
-  --color-tertiary-1-contrast: var(--base-tertiary-contrast-1);
-  --color-tertiary-2-contrast: var(--base-tertiary-contrast-2);
-  --color-tertiary-3-contrast: var(--base-tertiary-contrast-3);
-  --color-tertiary-4-contrast: var(--base-tertiary-contrast-4);
-  --color-tertiary-5-contrast: var(--base-tertiary-contrast-5);
-  --color-tertiary-6-contrast: var(--base-tertiary-contrast-6);
-  --color-tertiary-7-contrast: var(--base-tertiary-contrast-7);
-  --color-tertiary-8-contrast: var(--base-tertiary-contrast-8);
-  --color-tertiary-9-contrast: var(--base-tertiary-contrast-9);
-  --color-tertiary-10-contrast: var(--base-tertiary-contrast-10);
-  --color-tertiary-11-contrast: var(--base-tertiary-contrast-11);  
-  --text-xxs: calc(var(--base-xxs-font-size) * var(--unit, 1rem));
-  --text-xs: calc(var(--base-xs-font-size) * var(--unit, 1rem));
-  --text-sm: calc(var(--base-sm-font-size) * var(--unit, 1rem));
-  --text-default: calc(var(--base-default-font-size) * var(--unit, 1rem));
-  --text-lg: calc(var(--base-lg-font-size) * var(--unit, 1rem));
-  --text-xl: calc(var(--base-xl-font-size) * var(--unit, 1rem));
-  --text-2xl: calc(var(--base-2xl-font-size) * var(--unit, 1rem));
-  --text-display-xxs: calc(var(--base-display-xxs-font-size) * var(--unit, 1rem));
-  --text-display-xs: calc(var(--base-display-xs-font-size) * var(--unit, 1rem));
-  --text-display-sm: calc(var(--base-display-sm-font-size) * var(--unit, 1rem));
-  --text-display-md: calc(var(--base-display-md-font-size) * var(--unit, 1rem));
-  --text-display-lg: calc(var(--base-display-lg-font-size) * var(--unit, 1rem));
-  --text-display-xl: calc(var(--base-display-xl-font-size) * var(--unit, 1rem));
-}
+  --color-primary-0-contrast: oklch(from var(--color, var(--base-primary-0, var(--tw-color-primary-0))) clamp(var(--base-primary-contrast-0-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-0-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-1-contrast: oklch(from var(--color, var(--base-primary-1, var(--tw-color-primary-1))) clamp(var(--base-primary-contrast-1-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-1-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-2-contrast: oklch(from var(--color, var(--base-primary-2, var(--tw-color-primary-2))) clamp(var(--base-primary-contrast-2-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-2-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-3-contrast: oklch(from var(--color, var(--base-primary-3, var(--tw-color-primary-3))) clamp(var(--base-primary-contrast-3-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-3-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-4-contrast: oklch(from var(--color, var(--base-primary-4, var(--tw-color-primary-4))) clamp(var(--base-primary-contrast-4-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-4-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-5-contrast: oklch(from var(--color, var(--base-primary-5, var(--tw-color-primary-5))) clamp(var(--base-primary-contrast-5-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-5-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-6-contrast: oklch(from var(--color, var(--base-primary-6, var(--tw-color-primary-6))) clamp(var(--base-primary-contrast-6-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-6-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-7-contrast: oklch(from var(--color, var(--base-primary-7, var(--tw-color-primary-7))) clamp(var(--base-primary-contrast-7-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-7-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-8-contrast: oklch(from var(--color, var(--base-primary-8, var(--tw-color-primary-8))) clamp(var(--base-primary-contrast-8-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-8-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-9-contrast: oklch(from var(--color, var(--base-primary-9, var(--tw-color-primary-9))) clamp(var(--base-primary-contrast-9-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-9-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-10-contrast: oklch(from var(--color, var(--base-primary-10, var(--tw-color-primary-10))) clamp(var(--base-primary-contrast-10-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-10-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-primary-11-contrast: oklch(from var(--color, var(--base-primary-11, var(--tw-color-primary-11))) clamp(var(--base-primary-contrast-11-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-primary-contrast-11-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-0-contrast: oklch(from var(--color, var(--base-secondary-0, var(--tw-color-secondary-0))) clamp(var(--base-secondary-contrast-0-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-0-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-1-contrast: oklch(from var(--color, var(--base-secondary-1, var(--tw-color-secondary-1))) clamp(var(--base-secondary-contrast-1-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-1-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-2-contrast: oklch(from var(--color, var(--base-secondary-2, var(--tw-color-secondary-2))) clamp(var(--base-secondary-contrast-2-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-2-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-3-contrast: oklch(from var(--color, var(--base-secondary-3, var(--tw-color-secondary-3))) clamp(var(--base-secondary-contrast-3-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-3-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-4-contrast: oklch(from var(--color, var(--base-secondary-4, var(--tw-color-secondary-4))) clamp(var(--base-secondary-contrast-4-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-4-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-5-contrast: oklch(from var(--color, var(--base-secondary-5, var(--tw-color-secondary-5))) clamp(var(--base-secondary-contrast-5-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-5-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-6-contrast: oklch(from var(--color, var(--base-secondary-6, var(--tw-color-secondary-6))) clamp(var(--base-secondary-contrast-6-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-6-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-7-contrast: oklch(from var(--color, var(--base-secondary-7, var(--tw-color-secondary-7))) clamp(var(--base-secondary-contrast-7-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-7-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-8-contrast: oklch(from var(--color, var(--base-secondary-8, var(--tw-color-secondary-8))) clamp(var(--base-secondary-contrast-8-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-8-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-9-contrast: oklch(from var(--color, var(--base-secondary-9, var(--tw-color-secondary-9))) clamp(var(--base-secondary-contrast-9-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-9-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-10-contrast: oklch(from var(--color, var(--base-secondary-10, var(--tw-color-secondary-10))) clamp(var(--base-secondary-contrast-10-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-10-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-secondary-11-contrast: oklch(from var(--color, var(--base-secondary-11, var(--tw-color-secondary-11))) clamp(var(--base-secondary-contrast-11-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-secondary-contrast-11-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-0-contrast: oklch(from var(--color, var(--base-tertiary-0, var(--tw-color-tertiary-0))) clamp(var(--base-tertiary-contrast-0-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-0-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-1-contrast: oklch(from var(--color, var(--base-tertiary-1, var(--tw-color-tertiary-1))) clamp(var(--base-tertiary-contrast-1-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-1-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-2-contrast: oklch(from var(--color, var(--base-tertiary-2, var(--tw-color-tertiary-2))) clamp(var(--base-tertiary-contrast-2-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-2-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-3-contrast: oklch(from var(--color, var(--base-tertiary-3, var(--tw-color-tertiary-3))) clamp(var(--base-tertiary-contrast-3-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-3-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-4-contrast: oklch(from var(--color, var(--base-tertiary-4, var(--tw-color-tertiary-4))) clamp(var(--base-tertiary-contrast-4-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-4-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-5-contrast: oklch(from var(--color, var(--base-tertiary-5, var(--tw-color-tertiary-5))) clamp(var(--base-tertiary-contrast-5-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-5-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-6-contrast: oklch(from var(--color, var(--base-tertiary-6, var(--tw-color-tertiary-6))) clamp(var(--base-tertiary-contrast-6-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-6-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-7-contrast: oklch(from var(--color, var(--base-tertiary-7, var(--tw-color-tertiary-7))) clamp(var(--base-tertiary-contrast-7-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-7-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-8-contrast: oklch(from var(--color, var(--base-tertiary-8, var(--tw-color-tertiary-8))) clamp(var(--base-tertiary-contrast-8-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-8-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-9-contrast: oklch(from var(--color, var(--base-tertiary-9, var(--tw-color-tertiary-9))) clamp(var(--base-tertiary-contrast-9-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-9-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-10-contrast: oklch(from var(--color, var(--base-tertiary-10, var(--tw-color-tertiary-10))) clamp(var(--base-tertiary-contrast-10-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-10-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-tertiary-11-contrast: oklch(from var(--color, var(--base-tertiary-11, var(--tw-color-tertiary-11))) clamp(var(--base-tertiary-contrast-11-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--base-tertiary-contrast-11-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
 
-/* $type-sizes-display: "display-xxs", "display-xs", "display-sm", "display-md", "display-lg", "display-xl";
-$type-sizes-normal: "xxs", "xs", "sm", "default", "lg", "xl", "2xl"; */
+  --color-grey-0-contrast: oklch(from var(--color, var(--base-grey-0, var(--tw-color-grey-0))) clamp(var(--base-grey-0-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-0-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-1-contrast: oklch(from var(--color, var(--base-grey-1, var(--tw-color-grey-1))) clamp(var(--base-grey-1-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-1-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-2-contrast: oklch(from var(--color, var(--base-grey-2, var(--tw-color-grey-2))) clamp(var(--base-grey-2-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-2-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-3-contrast: oklch(from var(--color, var(--base-grey-3, var(--tw-color-grey-3))) clamp(var(--base-grey-3-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-3-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-4-contrast: oklch(from var(--color, var(--base-grey-4, var(--tw-color-grey-4))) clamp(var(--base-grey-4-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-4-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-5-contrast: oklch(from var(--color, var(--base-grey-5, var(--tw-color-grey-5))) clamp(var(--base-grey-5-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-5-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-6-contrast: oklch(from var(--color, var(--base-grey-6, var(--tw-color-grey-6))) clamp(var(--base-grey-6-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-6-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-7-contrast: oklch(from var(--color, var(--base-grey-7, var(--tw-color-grey-7))) clamp(var(--base-grey-7-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-7-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-8-contrast: oklch(from var(--color, var(--base-grey-8, var(--tw-color-grey-8))) clamp(var(--base-grey-8-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-8-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-9-contrast: oklch(from var(--color, var(--base-grey-9, var(--tw-color-grey-9))) clamp(var(--base-grey-9-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-9-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-10-contrast: oklch(from var(--color, var(--base-grey-10, var(--tw-color-grey-10))) clamp(var(--base-grey-10-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-10-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+  --color-grey-11-contrast: oklch(from var(--color, var(--base-grey-11, var(--tw-color-grey-11))) clamp(var(--base-grey-11-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-11-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+
+    /* --text-xxs: calc(var(--base-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-xs: calc(var(--base-xs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-sm: calc(var(--base-sm-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-default: calc(var(--base-default-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-lg: calc(var(--base-lg-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-xl: calc(var(--base-xl-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-2xl: calc(var(--base-2xl-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-display-xxs: calc(var(--base-display-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-display-xs: calc(var(--base-display-xs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-display-sm: calc(var(--base-display-sm-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-display-md: calc(var(--base-display-md-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-display-lg: calc(var(--base-display-lg-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+    --text-display-xl: calc(var(--base-display-xl-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem)); */
+
+  /* @supports (width: calc(10px * pow(5, 2))) { */
+    --text-xxs: calc(var(--base-xxs-font-size) * var(--unit, 1rem));
+    --text-xs: calc(var(--base-xs-font-size) * var(--unit, 1rem));
+    --text-sm: calc(var(--base-sm-font-size) * var(--unit, 1rem));
+    --text-default: calc(var(--base-default-font-size) * var(--unit, 1rem));
+    --text-lg: calc(var(--base-lg-font-size) * var(--unit, 1rem));
+    --text-xl: calc(var(--base-xl-font-size) * var(--unit, 1rem));
+    --text-2xl: calc(var(--base-2xl-font-size) * var(--unit, 1rem));
+    --text-display-xxs: calc(var(--base-display-xxs-font-size) * var(--unit, 1rem));
+    --text-display-xs: calc(var(--base-display-xs-font-size) * var(--unit, 1rem));
+    --text-display-sm: calc(var(--base-display-sm-font-size) * var(--unit, 1rem));
+    --text-display-md: calc(var(--base-display-md-font-size) * var(--unit, 1rem));
+    --text-display-lg: calc(var(--base-display-lg-font-size) * var(--unit, 1rem));
+    --text-display-xl: calc(var(--base-display-xl-font-size) * var(--unit, 1rem));
+  /* } */
+} */
