@@ -1,0 +1,52 @@
+@function generate-grey-range-color($prefix, $reference_color-prefix, $reference_color, $class-name, $i, $chroma) {
+  @return oklch(
+    from var(--#{$reference_color-prefix}#{$reference_color}-#{$i}) l
+      var(--#{$prefix}#{$class-name}-c, #{$chroma}) h
+  );
+}
+
+@function generate-grey-range-color-contrast($prefix, $class-name, $i) {
+  @return oklch(
+    from var(--color, var(--#{$prefix}#{$class-name}-#{$i}))
+      clamp(
+        var(
+          --#{$prefix}#{$class-name}-#{$i}-contrast-lightest-text,
+          var(--contrast-lightest-text, 0)
+        ),
+        (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
+        var(
+          --#{$prefix}#{$class-name}-#{$i}-contrast-darkest-text,
+          var(--contrast-darkest-text, 1)
+        )
+      )
+      0 h
+  );
+}
+
+@mixin generate-grey-range-colors(
+  $prefix,
+  $reference_color-prefix,
+  $reference_color: primary,
+  $chroma: 0.05,
+  $class-name: "grey",
+  $steps: 12
+) {
+  @for $i from 0 through ($steps - 1) {
+    // Output the color
+    --#{$prefix}#{$class-name}-#{$i}: #{generate-grey-range-color(
+        $prefix,
+        $reference_color-prefix,
+        $reference_color,
+        $class-name,
+        $i,
+        $chroma
+      )};
+    --#{$prefix}#{$class-name}-#{$i}-contrast: #{generate-grey-range-color-contrast(
+        $prefix,
+        $class-name,
+        $i
+      )};
+
+    //   --#{$prefix}#{$class-name}-#{$i}-contrast-muted: oklch(from var(--color, var(--#{$prefix}#{$class-name}-#{$i})) clamp(var(--#{$prefix}#{$class-name}-#{$i}-contrast-muted-lightest-text, var(--contrast-muted-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--#{$prefix}#{$class-name}-#{$i}-contrast-muted-darkest-text, var(--contrast-muted-darkest-text, 1))) c h);
+  }
+}
