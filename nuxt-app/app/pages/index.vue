@@ -55,6 +55,21 @@ const colorTertiaryRangeClasses = [
   'tw:bg-tertiary-11 tw:text-tertiary-11-contrast'
 ] as const
 
+const colorGreyRangeClasses = [
+  'tw:bg-grey-0 tw:text-grey-0-contrast',
+  'tw:bg-grey-1 tw:text-grey-1-contrast',
+  'tw:bg-grey-2 tw:text-grey-2-contrast',
+  'tw:bg-grey-3 tw:text-grey-3-contrast',
+  'tw:bg-grey-4 tw:text-grey-4-contrast',
+  'tw:bg-grey-5 tw:text-grey-5-contrast',
+  'tw:bg-grey-6 tw:text-grey-6-contrast',
+  'tw:bg-grey-7 tw:text-grey-7-contrast',
+  'tw:bg-grey-8 tw:text-grey-8-contrast',
+  'tw:bg-grey-9 tw:text-grey-9-contrast',
+  'tw:bg-grey-10 tw:text-grey-10-contrast',
+  'tw:bg-grey-11 tw:text-grey-11-contrast'
+] as const
+
 
 </script>
 
@@ -495,6 +510,11 @@ const colorTertiaryRangeClasses = [
           <!-- {{ entry.replace(/^tw:bg-([^ ]+)(?: tw:text-[^ ]+)?$/, '$1') }} -->
         </div>
       </div>
+      <div class="tw:flex tw:gap-sm layout-grid tw:flex-wrap tw:*:flex-auto">
+        <div v-for="entry in colorGreyRangeClasses" :key="entry" class="tw:rounded-full tw:grid tw:place-items-center tw:p-md tw:aspect-square" :class="entry">
+          <!-- {{ entry.replace(/^tw:bg-([^ ]+)(?: tw:text-[^ ]+)?$/, '$1') }} -->
+        </div>
+      </div>      
     </div>
   </section>
   <section class="wrapper">
