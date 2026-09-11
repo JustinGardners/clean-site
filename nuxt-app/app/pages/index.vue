@@ -75,7 +75,7 @@ const colorGreyRangeClasses = [
 
 <template>
   <section class="wrapper tw:bg-primary-0">
-    <h2 class="tw:flex">AlpineJS test</h2>
+    <h2 class="tw:flex tw:text-display-lg">AlpineJS test</h2>
     <div x-data="counter">
       <p x-text="count" class="tw:text-display-lg tw:aspect-square tw:min-size-[1em] tw:bg-primary tw:text-primary-contrast tw:rounded-full tw:grid tw:place-content-center tw:p-xl tw:max-w-fit tw:aspect-square"></p>
       <button x-on:click="count++">Increment</button>
@@ -434,7 +434,7 @@ const colorGreyRangeClasses = [
 
 
 
-
+  <h3>Inverted Buttons</h3>
     <AlpineFor class="tw:flex tw:gap-sm tw:bg-primary tw:p-md"
       :data="{ buttons: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] }"
       items="buttons" item="button" item-key="button">
@@ -443,6 +443,17 @@ const colorGreyRangeClasses = [
           x-text="button.charAt(0).toUpperCase() + button.slice(1)"></button>
       </template>
     </AlpineFor>
+
+  <h3>Outline Buttons</h3>
+    <AlpineFor class="tw:flex tw:gap-sm tw:p-md"
+      :data="{ buttons: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] }"
+      items="buttons" item="button" item-key="button">
+      <template #item>
+        <button v-pre type="button" :class="'btn btn-' + button + ' ' + 'btn-outline'"
+          x-text="button.charAt(0).toUpperCase() + button.slice(1)"></button>
+      </template>
+    </AlpineFor>
+
 
 
     <div>

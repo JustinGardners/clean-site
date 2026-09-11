@@ -14,6 +14,14 @@
           }
         }
       }
+      /// Inverted buttons
+      &.btn-inverted { 
+        @include button-inverted-props();
+      }
+      /// Outline buttons
+      &.btn-outline {
+        @include button-outline-props();
+      }
     }
   }
 }

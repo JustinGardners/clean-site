@@ -1,0 +1,81 @@
+@use "small-style/scss/base/mixins/rules/components/collapse" as collapse;
+
+@layer components {
+    @layer base {
+
+        // Collapse Component
+        .#{$collapse} {
+            @include collapse.base-collapse-rules();
+
+            &:details-content {
+                @include collapse.base-collapse-content-rules();
+            }
+
+            &[open] {
+                .#{$collapse_title} {
+                    @include collapse.base-collapse-title-open-rules();
+                }
+
+                .#{$collapse_icon} {
+                    @include collapse.base-collapse-icon-open-rules();
+                }
+
+                &:details-content {
+                    @include collapse.base-collapse-content-open-rules();
+                }
+            }
+
+            .#{$collapse_title} {
+                @include collapse.base-collapse-title-rules();
+
+                &[open] {
+                    @include collapse.base-collapse-title-open-rules();
+                }
+            }
+
+        }
+
+        // Icon Slot
+        .#{$collapse_icon_slot} {
+            @include collapse.base-icon-slot-rules();
+        }
+
+        // Icon
+        .#{$collapse_icon} {
+            @include collapse.base-icon-rules();
+
+            &.#{$collapse_icon}--arrow {
+                @include collapse.base-collapse-icon-arrow-rules();
+            }
+        }
+    }
+  @layer modifiers {
+    .#{$collapse} {
+      &:is([data-surface], .#{$collapse}--outlined) {
+        .#{$collapse_content} {
+          @include collapse.modify-collapse-content-surface-or-outlined-rules();
+        }
+        .#{$collapse_title} {
+          @include collapse.modify-collapse-title-surface-or-outlined-rules();
+        }
+      }
+
+      &.#{$collapse}--outlined {
+        @include collapse.modify-collapse-outlined-rules();
+      }
+      &[open] {
+        @include collapse.modify-collapse-open-rules($collapse_icon);
+      }
+
+      .#{$collapse_title} {
+        @include collapse.modify-collapse-title-has-icon-rules($collapse_title);
+        @include collapse.modify-collapse-title-is-text-base-rules($collapse_title);
+      }
+
+      @include collapse.modify-collapse-title-marker-end-rules(
+        $collapse_title,
+        $collapse_icon_slot
+      );
+    }
+  }    
+}
