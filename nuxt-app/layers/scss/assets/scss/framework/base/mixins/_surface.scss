@@ -1,0 +1,16 @@
+@use "small-style/scss/base/mixins/gen-color-surface-text" as *;
+
+@mixin surface-props() {
+    $default-surface-color: get-contrast();
+    $default-surface-color-muted: get-contrast-muted();
+    --color: var(--surface-color, #{$default-surface-color});
+    --color-muted: var(--surface-color-muted, #{$default-surface-color-muted});
+    --bg-color: var(--surface-bg-color, var(--color-light, var(--root-bg, #fff)));
+    --field-border-color: color-mix(in oklab, var(--bg-color), var(--field-border-color-tint,#000) calc(var(--surface-depth, 1) * 5%) );    
+}
+
+@mixin surface-default-rules() {
+    @include surface-props();
+    color: var(--color);
+    background-color: var(--bg-color);
+}

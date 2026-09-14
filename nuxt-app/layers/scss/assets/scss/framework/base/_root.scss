@@ -8,6 +8,7 @@
     // --font-size-base: #{$font-size-base};
     --font-size-body-px: #{$font-size-body-px};
     --font-size-base: calc((var(--font-size-body-px) / var(--font-size-root-px, 16)) * 1rem);
+    --text-frame-x: #{$text-frame-x};
   }
 
   :root {

@@ -44,10 +44,13 @@
 
 @mixin button-default-rules() {
 
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
-  @include font-size(var(--#{$prefix}btn-font-size));
+  // @include font-size(var(--#{$prefix}btn-font-size));
+  font-size: var(--#{$prefix}btn-font-size, calc(var(--base-sm-font-size-px) / var(--font-size-root-px,16) * var(--unit,1rem)));
   font-weight: var(--#{$prefix}btn-font-weight);
   line-height: var(--#{$prefix}btn-line-height);
   color: var(--#{$prefix}btn-color);
@@ -104,6 +107,39 @@
   --#{$base-prefix}btn-bg: transparent;
   --#{$base-prefix}btn-border-color: currentColor;
   --#{$base-prefix}btn-theme-hover-text: var(--#{$base-prefix}btn-theme-outline-hover-text, oklch(from var(--#{$base-prefix}btn-theme, var(--base-primary)) clamp(var(--#{$base-prefix}btn-lightest-text, 0), (l / var(--base-btn-text-threshold, .623) - 1) * -infinity, var(--base-btn-darkest-text, 1)) 0 h));
+}
+
+@mixin button-variation-wide() {
+  --#{$base-prefix}btn-padding-x-wide: clamp(var(--text-frame-x), min(10vw, 80cqw), calc(var(--text-frame-x) * 3));
+  --#{$prefix}btn-padding-x: var(--#{$base-prefix}btn-padding-x-wide);
+}
+
+@mixin button-no-vertical-padding() {
+  --#{$prefix}btn-padding-y: 0;
+}
+
+@mixin button-no-horizontal-padding() {
+  --#{$prefix}btn-padding-x: 0;
+}
+
+@mixin button-no-padding() {
+  @include button-no-vertical-padding();
+  @include button-no-horizontal-padding();
+}
+
+@mixin button-variation-square() {
+  @include button-no-padding();
+  aspect-ratio: 1 / 1;
+  min-width: 3em;
+  width: fit-content;
+}
+
+@mixin button-variation-circle() {
+  @include button-no-padding();
+  aspect-ratio: 1 / 1;
+  min-width: 3em;
+  width: fit-content;
+  border-radius: calc(1px * Infinity);
 }
 
 @mixin button-rules() {

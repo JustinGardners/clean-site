@@ -2,6 +2,13 @@
   :where(.btn) {
     @layer base {
       @include button-rules();
+      :where(.button__icon, .button__text) {
+        display: inline-flex;
+        align-items: center
+      }
+      &:has(.button__icon + .button__text), :has(.button__text + .button__icon) {
+        gap: 0.5em;
+      }      
     }
 
     @layer modifiers {
@@ -22,6 +29,18 @@
       &.btn-outline {
         @include button-outline-props();
       }
+      &.btn-wide {
+        @include button-variation-wide();
+      }
+      &.btn-square {
+        @include button-variation-square();
+      }
+      &.btn-circle {
+        @include button-variation-circle();
+      }
+      &.button--block {
+        flex-basis: 100%;;
+      }      
     }
   }
 }

@@ -454,7 +454,17 @@ const colorGreyRangeClasses = [
       </template>
     </AlpineFor>
 
+    <div>
+      <Button type="solid" modifier="wide">Primary</Button>
+    </div>
 
+    <div>
+      <Button type="solid" modifier="square"><Icon name="bx:package" /></Button>
+    </div>
+
+    <div>
+      <Button type="solid" modifier="circle"><Icon name="bx:package" /></Button>
+    </div>    
 
     <div>
       <button type="button" class="btn btn-link">Link</button>

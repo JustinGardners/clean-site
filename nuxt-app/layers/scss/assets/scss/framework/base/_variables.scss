@@ -192,6 +192,7 @@ $register-lch: (
     ),
 );
 
+// Start: Bootstrap 
 $primary: color.to-space(
   oklch(
     map.get($lch-colors, "primary", "l") map.get($lch-colors, "primary", "c")
@@ -208,21 +209,36 @@ $secondary: color.to-space(
   hsl
 );
 
-$generate-lightness-range-from: 'primary' 'secondary' 'tertiary' !default;
-$generate-lightness-range-count: 12 !default;
+$tertiary: color.to-space(
+  oklch(
+    map.get($lch-colors, "tertiary", "l")
+      map.get($lch-colors, "tertiary", "c")
+      map.get($lch-colors, "tertiary", "h")
+  ),
+  hsl
+);
+
+$theme-colors: map.set($theme-colors, "tertiary", $tertiary);
 
 $colors: (
   white: $white,
   black: $black,
   gray: $gray-600,
   gray-dark: $gray-800,
-); /// IS Bootstrap Variables??
+);
+
+// End: Bootstrap
+
+$generate-lightness-range-from: 'primary' 'secondary' 'tertiary' !default;
+$generate-lightness-range-count: 12 !default;
+
+$surface-colors: $theme-colors!default;
 
 $font-size-root-px: 16;
 $font-size-body-px: 16;
 $font-size-base-px: math.div($font-size-root-px, $font-size-body-px);
 
-$theme-colors-rgb: (); /// IS Bootstrap Variables??
+
 
 
 // Shared var by small-style & bootstrap
@@ -234,6 +250,8 @@ $type-sizes-display: "display-xxs", "display-xs", "display-sm", "display-md", "d
 $type-sizes-normal: "xxs", "xs", "sm", "default", "lg", "xl", "2xl";
 $type-sizes: list.join($type-sizes-normal , $type-sizes-display);
 $heading-sizes: "h1", "h2", "h3", "h4", "h5", "h6";
+
+$text-frame-x: calc(var(--text-frame-y) * var(--text-frame-ratio));
 
 $headings: (
   "h1": (
@@ -365,17 +383,10 @@ $fluid-font-width-max: 1440!default;
 $fluid-font-ratio-min: 1.2!default;
 $fluid-font-ratio-max: 1.5!default;
 
+$theme-colors-rgb: (); /// IS Bootstrap Variables??
+
 // $utilities: map-remove($utilities, "width");
 $utilities: $site-bs-utilities;
 
-$tertiary: color.to-space(
-  oklch(
-    map.get($lch-colors, "tertiary", "l")
-      map.get($lch-colors, "tertiary", "c")
-      map.get($lch-colors, "tertiary", "h")
-  ),
-  hsl
-);
 
-$theme-colors: map.set($theme-colors, "tertiary", $tertiary);
 
