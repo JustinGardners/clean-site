@@ -1,6 +1,7 @@
-
-$button-color-variations: ();
-$theme-color-variations: ();
+$button-color-variations: (
+);
+$theme-color-variations: (
+);
 
 @each $color in $theme-colors {
   $key: nth($color, 1);
@@ -9,42 +10,54 @@ $theme-color-variations: ();
 }
 
 @layer components {
-    @layer base {
-      [data-surface] {
-        @include surface-default-rules();
+  @layer base {
+    [data-surface] {
+      @include surface-default-rules();
+      $check: unquote("x: attr(x type(*))");
+
+      @supports (#{$check}) {
+        /* Browser has modern attr() support */
+        --surface-bg-color: attr(data-surface type(<color>));
       }
     }
+  }
+
   @layer modifiers {
-      @for $i from 1 through length($theme-color-variations) {
-        #{nth($theme-color-variations, $i)} {
-          $button-entry: nth($button-color-variations, $i);
-          &:has(.btn:is(#{$button-entry})) {
-            :where(.btn:is(#{$button-entry})) {
-              &:not(.btn-outline) {
-                @include button-inverted-props();
-              }
-              &:is(.btn-outline) {
-                /// This is inverted outline rules - add them in correct place when done
-                --#{$base-prefix}btn-theme-text: oklch(from var(--base-btn-theme,var(--base-primary)) clamp(var(--base-btn-lightest-text,0), (l / var(--base-btn-text-threshold,.623) - 1) * -infinity, var(--base-btn-darkest-text,1)) 0 h);
-                --#{$base-prefix}btn-hover-border-color: currentColor;
-              }
+    @for $i from 1 through length($theme-color-variations) {
+      #{nth($theme-color-variations, $i)} {
+        $button-entry: nth($button-color-variations, $i);
+
+        &:has(.btn:is(#{$button-entry})) {
+          :where(.btn:is(#{$button-entry})) {
+            &:not(.btn-outline) {
+              @include button-inverted-props();
+            }
+
+            &:is(.btn-outline) {
+              /// This is inverted outline rules - add them in correct place when done
+              --#{$base-prefix}btn-theme-text: oklch(from var(--base-btn-theme, var(--base-primary)) clamp(var(--base-btn-lightest-text, 0), (l / var(--base-btn-text-threshold, .623) - 1) * -infinity, var(--base-btn-darkest-text, 1)) 0 h);
+              --#{$base-prefix}btn-hover-border-color: currentColor;
             }
           }
         }
-      }    
+      }
+    }
+
     @each $color in $surface-colors {
       $key: nth($color, 1);
+
       [data-surface="#{$key}"] {
         --surface-bg-color: var(--#{$base-prefix}#{$key});
       }
+
       @each $variation in 'muted', 'strong' {
         [data-surface="#{$key}-#{$variation}"] {
           $bg-muted: var(--surface-#{$key}-bg-color-muted, unquote('color-mix(in oklab, oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h)), var(--root-bg-color, #fff) 90%)'));
           $bg-strong: var(--surface-#{$key}-bg-color-strong, unquote('oklch(from oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h)) 0.2 c h)'));
-          $bg: if($variation == 'muted', $bg-muted, $bg-strong);
+          $bg: if($variation =='muted', $bg-muted, $bg-strong);
           --surface-bg-color: #{$bg};
         }
       }
     }
-  }    
+  }
 }

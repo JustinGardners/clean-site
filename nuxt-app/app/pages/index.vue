@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ImageWithInfo from '~/components/cards/ImageWithInfo.vue'
+
 const colourClasses = {
   primary: 'tw:bg-primary',
   secondary: 'tw:bg-secondary',
@@ -156,267 +158,6 @@ const colorGreyRangeClasses = [
         </div>
       </div>
     </div>
-
-    <!-- <div class="template-container tm">
-   <div class="template-row product-carousel__wrap">
-      <div class="col-12">
-        <div class="glide product-carousel glide--swipeable hideArrows glide--ltr glide--carousel" data-glide="{&quot;gap&quot;: 24, &quot;type&quot;: &quot;carousel&quot;, &quot;bound&quot;: true, &quot;perView&quot;: 6, &quot;breakpoints&quot;:{&quot;992&quot;:{&quot;perView&quot;:3},&quot;768&quot;:{&quot;perView&quot;:2}}}">
-          <div class="glide__track" data-glide-el="track">
-            <div class="glide__slides" style="transition: transform cubic-bezier(0.165, 0.84, 0.44, 1); width: 3960px; transform: translate3d(-1320px, 0px, 0px);"> 
-                <div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472639936.jpg&amp;height=240&amp;padding=false" alt="Anne, Princess Royal - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472639936.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580">Anne, Princess Royal - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Anne, Princess Royal - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472639936" data-ean="9781472639936" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632203.jpg&amp;height=240&amp;padding=false" alt="Arsenal Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472632203.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424">Arsenal Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Arsenal Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472632203" data-ean="9781472632203" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472633729.jpg&amp;height=240&amp;padding=false" alt="The Ashes Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472633729.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185">The Ashes Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="The Ashes Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472633729" data-ean="9781472633729" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472633712.jpg&amp;height=240&amp;padding=false" alt="Aston Villa Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472633712.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184">Aston Villa Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Aston Villa Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472633712" data-ean="9781472633712" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&amp;height=240&amp;padding=false" alt="Chelsea Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425">Chelsea Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Chelsea Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472632210" data-ean="9781472632210" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472639950.jpg&amp;height=240&amp;padding=false" alt="The Cold War - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472639950.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582">The Cold War - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="The Cold War - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472639950" data-ean="9781472639950" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--active" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472639936.jpg&amp;height=240&amp;padding=false" alt="Anne, Princess Royal - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472639936.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580">Anne, Princess Royal - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Anne, Princess Royal - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472639936" data-ean="9781472639936" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div>
-
-<div class="product-item item glide__slide" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632203.jpg&amp;height=240&amp;padding=false" alt="Arsenal Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472632203.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424">Arsenal Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Arsenal Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472632203" data-ean="9781472632203" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div>
-
-<div class="product-item item glide__slide" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472633729.jpg&amp;height=240&amp;padding=false" alt="The Ashes Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472633729.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185">The Ashes Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="The Ashes Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472633729" data-ean="9781472633729" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div>
-
-<div class="product-item item glide__slide" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472633712.jpg&amp;height=240&amp;padding=false" alt="Aston Villa Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472633712.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184">Aston Villa Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Aston Villa Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472633712" data-ean="9781472633712" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div>
-
-<div class="product-item item glide__slide" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&amp;height=240&amp;padding=false" alt="Chelsea Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425">Chelsea Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Chelsea Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472632210" data-ean="9781472632210" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div>
-
-<div class="product-item item glide__slide" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472639950.jpg&amp;height=240&amp;padding=false" alt="The Cold War - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472639950.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582">The Cold War - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="The Cold War - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472639950" data-ean="9781472639950" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div>
-
-
-                
-            <div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472639936.jpg&amp;height=240&amp;padding=false" alt="Anne, Princess Royal - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472639936.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580">Anne, Princess Royal - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Anne, Princess Royal - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472639936" data-ean="9781472639936" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Anne-Princess-Royal---The-Telegraph-Custom-Gift-Book/31552580" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632203.jpg&amp;height=240&amp;padding=false" alt="Arsenal Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472632203.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424">Arsenal Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Arsenal Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472632203" data-ean="9781472632203" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Arsenal-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331424" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472633729.jpg&amp;height=240&amp;padding=false" alt="The Ashes Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472633729.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185">The Ashes Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="The Ashes Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472633729" data-ean="9781472633729" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/The-Ashes-Headlines---The-Telegraph-Custom-Gift-Book/28650185" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472633712.jpg&amp;height=240&amp;padding=false" alt="Aston Villa Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472633712.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184">Aston Villa Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Aston Villa Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472633712" data-ean="9781472633712" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Aston-Villa-Football-Headlines---The-Telegraph-Custom-Gift-Book/28650184" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px; margin-right: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&amp;height=240&amp;padding=false" alt="Chelsea Football Headlines - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472632210.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425">Chelsea Football Headlines - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="Chelsea Football Headlines - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472632210" data-ean="9781472632210" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/Chelsea-Football-Headlines---The-Telegraph-Custom-Gift-Book/27331425" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div><div class="product-item item glide__slide glide__slide--clone" style="width: 196px; margin-left: 12px;">
-  <div class="product-list__content"> <div class="product-item--img product-list__content--img product-list__content--img-240"><span><a href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582"><img src="http://books.telegraph.co.uk/imagecache/getimage?url=//tmg.dmmserver.com/media/640/97814726/9781472639950.jpg&amp;height=240&amp;padding=false" alt="The Cold War - The Telegraph Custom Gift Book" loading="lazy" onerror="this.onerror=null; this.src='http://books.telegraph.co.uk/imagecache/getimage?url=https://tmg.dmmserver.com/media/640/97814726/9781472639950.jpg&amp;height=240&amp;padding=false'"></a></span></div>
-    
-    <p class="product-list__content--title"><a href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582">The Cold War - The Telegraph Custom Gift Book</a></p>
-    
-    
-    <span class="pb-template__content--format">Customisable Book</span>
-    <p class="product-list__content--price"><span class="product-list__content--current">£70.00</span> </p>
-    <div class="product-list__content--buy-button" data-title="The Cold War - The Telegraph Custom Gift Book" data-author="" data-group="Book" data-tags="" data-barcode="9781472639950" data-ean="9781472639950" data-type="Customisable Book" data-price="£70.00" data-rrp="" data-percent="0" data-save="£0.00">
-   
-   <a class="button btn" href="/Product/The-Cold-War---The-Telegraph-Custom-Gift-Book/31552582" rel="nofollow">See product</a>
-    </div>
-  </div>
-</div></div> 
-          </div>
-        <div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="&lt;"></button><button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;"></button></div></div>
-      </div>
-   </div>
-</div> -->
   </section>
 
   <section class="wrapper flow">
@@ -639,5 +380,40 @@ const colorGreyRangeClasses = [
 
     <Button :label="'Click me'" color="secondary" :href="'/'" />
   </div>
+
+  <section class="flow wrapper">
+    <Heading>Critic Picks</Heading>
+    <div class="layout-grid">
+      <ImageWithInfo title="The Genius of Trees" shadow="lg" :bordered="true" :picture="{
+        src: '/a.jpg'
+      }" :config="{
+        surface: '#c3b4ab',
+        directionLayout: {
+          col: {
+            reverseOrder: true
+          } 
+        }
+      }">
+        <template #content>
+          <p>The extraordinary story of the inventive and astonishing ways trees have shaped our natural world.</p>
+        </template>
+      </ImageWithInfo>
+      <ImageWithInfo title="The Genius of Trees" shadow="lg" :bordered="true" :picture="{
+        src: '/b.jpg'
+      }" :config="{
+        surface: '#d1774d',
+        directionLayout: {
+          col: {
+            reverseOrder: true
+          } 
+        }
+      }">
+        <template #content>
+          <p>The extraordinary story of the inventive and astonishing ways trees have shaped our natural world.</p>
+        </template>
+      </ImageWithInfo>
+      <ImageWithInfo title="Test Title" subtitle="Test Subtitle" shadow="lg" :bordered="true" />
+    </div>
+  </section>
 
 </template>

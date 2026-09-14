@@ -53,7 +53,7 @@ const slots = useSlots()
                 </span>
             </slot>            
         </template>
-        <template #content v-if="props.author || props.format || props.price || slots.content">
+        <template #content v-if="props.author || props.format || props.price || slots.content">            
             <slot name="author" :author="props.author">
                 <p :class="computedClasses.author" v-if="props.author">{{ props.author }}</p>
             </slot>
@@ -69,6 +69,7 @@ const slots = useSlots()
                 </div>
             </slot>
             <slot name="availability"></slot>
+            <slot name="content"></slot>
         </template>
         <template #ctas :ctas="props.ctas">
             <slot name="ctas" :ctas="props.ctas" v-if="props.ctas">
