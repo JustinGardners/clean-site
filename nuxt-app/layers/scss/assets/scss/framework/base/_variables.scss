@@ -253,6 +253,8 @@ $heading-sizes: "h1", "h2", "h3", "h4", "h5", "h6";
 
 $text-frame-x: calc(var(--text-frame-y) * var(--text-frame-ratio));
 
+$spacing-section-gap: calc(var(--layout-gap) * 1.75);
+
 $headings: (
   "h1": (
     "size": "2xl",

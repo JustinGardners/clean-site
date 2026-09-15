@@ -2,7 +2,7 @@
 import type { FrameworkSpacing } from '~/types/index'
 export type LayoutGridProps = {
     type?: 'grid' | 'flex',
-    columns?: number,
+    columns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12,
     columnGap?: FrameworkSpacing,
     minColumnWidth?: '5' | '10' | '15' | '20' | '25' | number;
     minColumnWidthUnit?: 'px' | 'ch' | 'rem' | 'em'
@@ -13,7 +13,7 @@ const { type, columns, columnGap, minColumnWidth, minColumnWidthUnit = 'ch' } = 
 const slots = useSlots()
 const attrs = useAttrs()
 
-const classes = computed(() => attrs.class ?? '')
+const classes = computed(() => attrs.class ?? '') // maybe revert back to prop for dynamic resolutions???
 
 const layoutClass = computed(() => {
     if((slots.default?.length || 0) % 2 === 0 && (!type)) {
@@ -25,8 +25,58 @@ const layoutClass = computed(() => {
     }
 })
 
+const noOfColumns = computed(() => {
+    if(columns && layoutClass.value === 'layout-grid') {
+        const noOfCols = (() => {
+            switch (columns) {
+                case 1:
+                    return `tw:column-count-1`
+                    break;
+                case 2:
+                    return `tw:column-count-2`
+                    break;
+                case 3:
+                    return `tw:column-count-3`
+                    break;
+                case 4:
+                    return `tw:column-count-4`
+                    break;
+                case 5:
+                    return `tw:column-count-5`
+                    break;
+                case 6:
+                    return `tw:column-count-6`
+                    break;
+                case 7:
+                    return `tw:column-count-7`
+                    break;
+                case 8:
+                    return `tw:column-count-8`
+                    break;
+                case 9:
+                    return `tw:column-count-9`
+                    break;
+                case 10:
+                    return `tw:column-count-10`
+                    break;
+                case 11:
+                    return `tw:column-count-11`
+                    break;
+                case 12:
+                    return `tw:column-count-12`
+                    break;
+            
+                default:
+                    break;
+            }
+        })()
+        return `layout-grid--column-count ${noOfCols}`
+    }
+    return null
+})
+
 const minWidth = computed(() => {
-    if(columns) {
+    if(minColumnWidth) {
         const minWidth = (() => {
             switch (minColumnWidth) {
                 case '5':
@@ -88,7 +138,7 @@ const columnGapClass = computed(() => {
 </script>
 
 <template>
-<div :style="`--layout-column-unit: ${minWidthUnit ?? '1ch'}`" :class="cn([layoutClass, minWidth, columnGapClass, minColumnWidthClass], classes)">
+<div :style="`--layout-column-unit: ${minWidthUnit ?? '1ch'}`" :class="cn([layoutClass, minWidth, columnGapClass, minColumnWidthClass, noOfColumns], classes)">
     <slot />
 </div>
 </template>

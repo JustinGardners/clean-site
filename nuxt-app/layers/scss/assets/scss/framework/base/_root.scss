@@ -82,6 +82,8 @@
         var(--space-cq-base) * pow(var(--space-increment, 1.25), 8)
       );
     }
+
+    --spacing-section-gap: #{$spacing-section-gap};
   }
 
   :root {

@@ -79,7 +79,9 @@ const colorGreyRangeClasses = [
   <section class="wrapper tw:bg-primary-0">
     <h2 class="tw:flex tw:text-display-lg">AlpineJS test</h2>
     <div x-data="counter">
-      <p x-text="count" class="tw:text-display-lg tw:aspect-square tw:min-size-[1em] tw:bg-primary tw:text-primary-contrast tw:rounded-full tw:grid tw:place-content-center tw:p-xl tw:max-w-fit tw:aspect-square"></p>
+      <p x-text="count"
+        class="tw:text-display-lg tw:aspect-square tw:min-size-[1em] tw:bg-primary tw:text-primary-contrast tw:rounded-full tw:grid tw:place-content-center tw:p-xl tw:max-w-fit tw:aspect-square">
+      </p>
       <button x-on:click="count++">Increment</button>
     </div>
   </section>
@@ -87,18 +89,18 @@ const colorGreyRangeClasses = [
   <section class="wrapper">
     <div class="tw:max-w-screen-lg tw:[--layout-column-min:10ch]">
       <div class="layout-grid">
-            <CardsCircleImageWithInfo :link="'/'" title="New Releases" shadow="lg" :bordered="true" :picture="{
-              src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Newreleases.png&amp;width=348&amp;padding=false'
-            }" />
-            <CardsCircleImageWithInfo :link="'/'" title="Bestsellers" shadow="lg" :bordered="true" :picture="{
-              src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Childrenbooks.png&width=348&padding=false'
-            }" />
-            <CardsCircleImageWithInfo :link="'/'" title="Fiction Books" shadow="lg" :bordered="true" :picture="{
-              src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Fictionbooks.png&width=348&padding=false'
-            }" />
-            <CardsCircleImageWithInfo :link="'/'" title="Non Fiction" shadow="lg" :bordered="true" :picture="{
-              src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Nonfictionbooks.png&width=348&padding=false'
-            }" />                              
+        <CardsCircleImageWithInfo :link="'/'" title="New Releases" shadow="lg" :bordered="true" :picture="{
+          src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Newreleases.png&amp;width=348&amp;padding=false'
+        }" />
+        <CardsCircleImageWithInfo :link="'/'" title="Bestsellers" shadow="lg" :bordered="true" :picture="{
+          src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Childrenbooks.png&width=348&padding=false'
+        }" />
+        <CardsCircleImageWithInfo :link="'/'" title="Fiction Books" shadow="lg" :bordered="true" :picture="{
+          src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Fictionbooks.png&width=348&padding=false'
+        }" />
+        <CardsCircleImageWithInfo :link="'/'" title="Non Fiction" shadow="lg" :bordered="true" :picture="{
+          src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Nonfictionbooks.png&width=348&padding=false'
+        }" />
       </div>
     </div>
     <div class="container-md tm">
@@ -175,7 +177,7 @@ const colorGreyRangeClasses = [
 
 
 
-  <h3>Inverted Buttons</h3>
+    <h3>Inverted Buttons</h3>
     <AlpineFor class="tw:flex tw:gap-sm tw:bg-primary tw:p-md"
       :data="{ buttons: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] }"
       items="buttons" item="button" item-key="button">
@@ -185,7 +187,7 @@ const colorGreyRangeClasses = [
       </template>
     </AlpineFor>
 
-  <h3>Outline Buttons</h3>
+    <h3>Outline Buttons</h3>
     <AlpineFor class="tw:flex tw:gap-sm tw:p-md"
       :data="{ buttons: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] }"
       items="buttons" item="button" item-key="button">
@@ -200,12 +202,16 @@ const colorGreyRangeClasses = [
     </div>
 
     <div>
-      <Button type="solid" modifier="square"><Icon name="bx:package" /></Button>
+      <Button type="solid" modifier="square">
+        <Icon name="bx:package" />
+      </Button>
     </div>
 
     <div>
-      <Button type="solid" modifier="circle"><Icon name="bx:package" /></Button>
-    </div>    
+      <Button type="solid" modifier="circle">
+        <Icon name="bx:package" />
+      </Button>
+    </div>
 
     <div>
       <button type="button" class="btn btn-link">Link</button>
@@ -268,33 +274,35 @@ const colorGreyRangeClasses = [
         </div>
       </div>
       <div class="tw:flex tw:gap-sm layout-grid tw:flex-wrap tw:*:flex-auto">
-        <div v-for="entry in colorTertiaryRangeClasses" :key="entry" class="tw:rounded-full tw:grid tw:place-items-center tw:p-md tw:aspect-square" :class="entry">
+        <div v-for="entry in colorTertiaryRangeClasses" :key="entry"
+          class="tw:rounded-full tw:grid tw:place-items-center tw:p-md tw:aspect-square" :class="entry">
           <!-- {{ entry.replace(/^tw:bg-([^ ]+)(?: tw:text-[^ ]+)?$/, '$1') }} -->
         </div>
       </div>
       <div class="tw:flex tw:gap-sm layout-grid tw:flex-wrap tw:*:flex-auto">
-        <div v-for="entry in colorGreyRangeClasses" :key="entry" class="tw:rounded-full tw:grid tw:place-items-center tw:p-md tw:aspect-square" :class="entry">
+        <div v-for="entry in colorGreyRangeClasses" :key="entry"
+          class="tw:rounded-full tw:grid tw:place-items-center tw:p-md tw:aspect-square" :class="entry">
           <!-- {{ entry.replace(/^tw:bg-([^ ]+)(?: tw:text-[^ ]+)?$/, '$1') }} -->
         </div>
-      </div>      
+      </div>
     </div>
   </section>
   <section class="wrapper">
-  <div class="*:block">
-    <p class="h1 fluid unit-em tw:unit-em">h1. Bootstrap heading</p>
-    <p class="h2 fluid unit-px">h2. Bootstrap heading</p>
-    <p class="h3">h3. Bootstrap heading</p>
-    <p class="h4">h4. Bootstrap heading</p>
-    <p class="h5">h5. Bootstrap heading</p>
-    <p class="h6">h6. Bootstrap heading</p>
+    <div class="*:block">
+      <p class="h1 fluid unit-em tw:unit-em">h1. Bootstrap heading</p>
+      <p class="h2 fluid unit-px">h2. Bootstrap heading</p>
+      <p class="h3">h3. Bootstrap heading</p>
+      <p class="h4">h4. Bootstrap heading</p>
+      <p class="h5">h5. Bootstrap heading</p>
+      <p class="h6">h6. Bootstrap heading</p>
 
-    <p class="display-1">h1. Bootstrap heading</p>
-    <p class="display-2">h2. Bootstrap heading</p>
-    <p class="display-3">h3. Bootstrap heading</p>
-    <p class="display-4">h4. Bootstrap heading</p>
-    <p class="display-5">h5. Bootstrap heading</p>
-    <p class="display-6">h6. Bootstrap heading</p>
-  </div>
+      <p class="display-1">h1. Bootstrap heading</p>
+      <p class="display-2">h2. Bootstrap heading</p>
+      <p class="display-3">h3. Bootstrap heading</p>
+      <p class="display-4">h4. Bootstrap heading</p>
+      <p class="display-5">h5. Bootstrap heading</p>
+      <p class="display-6">h6. Bootstrap heading</p>
+    </div>
   </section>
 
   <section>
@@ -346,43 +354,57 @@ const colorGreyRangeClasses = [
       <h3 class="heading-2xl">CircleImageWithInfo Component</h3>
       <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
         <template v-for="i in 6" :key="i">
-          <CardsCircleImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :bordered="true" />
+          <CardsCircleImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg"
+            :bordered="true" />
         </template>
       </div>
-    </section>    
+    </section>
 
 
     <section class="flow wrapper">
       <h3 class="heading-2xl">ImageWithInfoFixedColumnLayout Component</h3>
       <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
         <template v-for="i in 3" :key="i">
-          <CardsImageWithInfoFixedColumnLayout :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :bordered="true" />
+          <CardsImageWithInfoFixedColumnLayout :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg"
+            :bordered="true" />
         </template>
       </div>
-    </section>  
-    
+    </section>
+
     <section class="flow wrapper">
       <h3 class="heading-2xl">ImageWithInfoFixedRow Layout Component</h3>
       <div class="layout-grid layout-grid--column-count tw:[--layout-column-min:15ch] tw:[--column-count:6]">
         <template v-for="i in 3" :key="i">
-          <CardsImageWithInfoFixedRowLayout :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :bordered="true" />
+          <CardsImageWithInfoFixedRowLayout :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg"
+            :bordered="true" />
         </template>
       </div>
-    </section>      
+    </section>
 
-    <Glide data-glide='{"perView":3}'>
-      <template v-for="i in 6" :key="i">
-        <GlideSlide>
-          <CardsImageWithInfo title="Test Title" />
-        </GlideSlide>
-      </template>
-    </Glide>
+    <Block is="section" paddingY="lg" classes="flow">
+      <Heading size="xl">Critic Picks</Heading>
+      <Glide data-glide='{"perView":4}'>
+        <template v-for="i in 6" :key="i">
+          <GlideSlide>
+            <CardsImageWithInfo title="Test Title" />
+          </GlideSlide>
+        </template>
+      </Glide>
+    </Block>
 
-    <Button :label="'Click me'" color="secondary" :href="'/'" />
+
+    <Block is="section" paddingY="lg" classes="flow">
+      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg">
+        <template #picture>
+          <img src="/a.jpg" alt="Test Picture" />
+          <img src="/b.jpg" alt="Test Picture" />
+        </template>
+      </CardsImageWithInfo>
+    </Block>
   </div>
 
   <section class="flow wrapper">
-    
+
     <div class="layout-grid">
 
     </div>
@@ -391,16 +413,14 @@ const colorGreyRangeClasses = [
   <!-- <BlocksBlock is="section">
     Hi
   </BlocksBlock> -->
-  <Block is="section">
-    <Heading>Critic Picks</Heading>
-    <LayoutGrid columnGap="2xl" class="tw:layout-column-min-10">
+  <Block is="section" paddingY="lg" classes="flow">
+    <Heading size="xl">Critic Picks</Heading>
+    <LayoutGrid columnGap="xl" :columns="2" type="grid">
       <ImageWithInfo title="The Genius of Trees" shadow="lg" :bordered="true" :picture="{
         src: '/a.jpg'
       }" :config="{
         surface: '#c3b4ab'
-      }"
-      :ctaCover="false"
-      :ctas="{
+      }" :ctaCover="false" :ctas="{
         href: '/',
         label: 'Click me'
       }">
@@ -415,7 +435,7 @@ const colorGreyRangeClasses = [
         directionLayout: {
           row: {
             reverseOrder: true
-          } 
+          }
         }
       }">
         <template #content>

@@ -1,4 +1,6 @@
 export const frameworkSpacing = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl'] as const
+export const sectionGapName = 'section-gap' as const
+export const sectionSpacing = ['default', 'lg', 'xl', '2xl', '3xl'] as const
 
 export const itemWithInfoClasses = {
     card: 'product-item',  

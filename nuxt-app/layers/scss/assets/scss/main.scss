@@ -2,6 +2,9 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:list";
+@use "small-style/scss/base/variables/config" with (
+  $button-selectors: '.btn'
+);
 // @import "./mixins/utils/strip-unit";
 // @use "small-style/scss/theme" as *;
 @import "small-style/scss/base/mixins";

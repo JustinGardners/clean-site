@@ -21,6 +21,10 @@
   --layout-column-min: calc(--value(integer) * var(--layout-column-unit, 1ch));
 }
 
+@utility column-count-* {
+  --column-count: --value(integer);
+}
+
 /*
   Usage:
     tw:bg-mix-primary                                     -> mixes color-primary with transparent at 50%
@@ -186,6 +190,13 @@
   --spacing-cq-4xl: var(--space-cq-4xl);
   --spacing-cq-5xl: var(--space-cq-5xl);
   --spacing-cq-6xl: var(--space-cq-6xl);
+  --spacing-layout-gap: var(--layout-gap);
+  --spacing-section-gap: calc(var(--layout-gap) * 1.75);
+  --spacing-section-gap-lg: calc(var(--spacing-section-gap) * var(--space-increment));
+  --spacing-section-gap-xl: calc(var(--spacing-section-gap-lg) * var(--space-increment));
+  --spacing-section-gap-2xl: calc(var(--spacing-section-gap-xl) * var(--space-increment));
+  --spacing-section-gap-3xl: calc(var(--spacing-section-gap-2xl) * var(--space-increment));
+  --spacing-section-gap-4xl: calc(var(--spacing-section-gap-3xl) * var(--space-increment));
 
   --color-primary: var(--base-primary);
   --color-secondary: var(--base-secondary);
@@ -256,7 +267,7 @@
   --color-grey-10-contrast: oklch(from var(--color, var(--base-grey-10, var(--tw-color-grey-10))) clamp(var(--base-grey-10-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-10-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
   --color-grey-11-contrast: oklch(from var(--color, var(--base-grey-11, var(--tw-color-grey-11))) clamp(var(--base-grey-11-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-11-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
 
-    /* --text-xxs: calc(var(--base-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+  /* --text-xxs: calc(var(--base-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
     --text-xs: calc(var(--base-xs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
     --text-sm: calc(var(--base-sm-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
     --text-default: calc(var(--base-default-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
@@ -271,18 +282,18 @@
     --text-display-xl: calc(var(--base-display-xl-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem)); */
 
   /* @supports (width: calc(10px * pow(5, 2))) { */
-    --text-xxs: calc(var(--base-xxs-font-size) * var(--unit, 1rem));
-    --text-xs: calc(var(--base-xs-font-size) * var(--unit, 1rem));
-    --text-sm: calc(var(--base-sm-font-size) * var(--unit, 1rem));
-    --text-default: calc(var(--base-default-font-size) * var(--unit, 1rem));
-    --text-lg: calc(var(--base-lg-font-size) * var(--unit, 1rem));
-    --text-xl: calc(var(--base-xl-font-size) * var(--unit, 1rem));
-    --text-2xl: calc(var(--base-2xl-font-size) * var(--unit, 1rem));
-    --text-display-xxs: calc(var(--base-display-xxs-font-size) * var(--unit, 1rem));
-    --text-display-xs: calc(var(--base-display-xs-font-size) * var(--unit, 1rem));
-    --text-display-sm: calc(var(--base-display-sm-font-size) * var(--unit, 1rem));
-    --text-display-md: calc(var(--base-display-md-font-size) * var(--unit, 1rem));
-    --text-display-lg: calc(var(--base-display-lg-font-size) * var(--unit, 1rem));
-    --text-display-xl: calc(var(--base-display-xl-font-size) * var(--unit, 1rem));
+  --text-xxs: calc(var(--base-xxs-font-size) * var(--unit, 1rem));
+  --text-xs: calc(var(--base-xs-font-size) * var(--unit, 1rem));
+  --text-sm: calc(var(--base-sm-font-size) * var(--unit, 1rem));
+  --text-default: calc(var(--base-default-font-size) * var(--unit, 1rem));
+  --text-lg: calc(var(--base-lg-font-size) * var(--unit, 1rem));
+  --text-xl: calc(var(--base-xl-font-size) * var(--unit, 1rem));
+  --text-2xl: calc(var(--base-2xl-font-size) * var(--unit, 1rem));
+  --text-display-xxs: calc(var(--base-display-xxs-font-size) * var(--unit, 1rem));
+  --text-display-xs: calc(var(--base-display-xs-font-size) * var(--unit, 1rem));
+  --text-display-sm: calc(var(--base-display-sm-font-size) * var(--unit, 1rem));
+  --text-display-md: calc(var(--base-display-md-font-size) * var(--unit, 1rem));
+  --text-display-lg: calc(var(--base-display-lg-font-size) * var(--unit, 1rem));
+  --text-display-xl: calc(var(--base-display-xl-font-size) * var(--unit, 1rem));
   /* } */
-} */
+}

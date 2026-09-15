@@ -1,8 +1,13 @@
 import type { CardProps, CardClasses } from '#layers/base/app/types'
 import type { ClassValue } from "clsx";
-import { itemWithInfoClasses, frameworkSpacing } from '~/types/tokens'
+import { itemWithInfoClasses, frameworkSpacing, sectionSpacing, sectionGapName } from '~/types/tokens'
 
 export type FrameworkSpacing = (typeof frameworkSpacing)[number];
+export type SectionSpacing = (typeof sectionSpacing)[number];
+export type SectionGapName = typeof sectionGapName;
+export type SectionGapClass =
+    | SectionGapName
+    | `${SectionGapName}-${Exclude<SectionSpacing, 'default'>}`;
 
 export type ImagePropsClasses = {
     card?: ClassValue;
