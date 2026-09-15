@@ -1,8 +1,17 @@
+@use "sass:meta";
 @use "small-style/scss/base/rules/components/layout" as *;
+/// remove when block below has been added to small-style
+@use "small-style/scss/base/variables/props/layout" as props;
+
+$layout-props: meta.module-variables(props);
 
 @layer components {
   @layer base {
     @include all-layout-styles();
+    /// below needs to be added to small-style
+    .flex-layout-grid {
+      @include output-props(pick-keys($layout-props, 'flex-grid-min' 'flex-grid-gap')...);
+    }
   }
 }
 

@@ -13,6 +13,14 @@
   /* aspect-ratio: var(--card-picture-aspect); */
 }
 
+@utility layout-gap-* {
+  --layout-gap: --value(--spacing-*);
+}
+
+@utility layout-column-min-* {
+  --layout-column-min: calc(--value(integer) * var(--layout-column-unit, 1ch));
+}
+
 /*
   Usage:
     tw:bg-mix-primary                                     -> mixes color-primary with transparent at 50%

@@ -382,17 +382,27 @@ const colorGreyRangeClasses = [
   </div>
 
   <section class="flow wrapper">
-    <Heading>Critic Picks</Heading>
+    
     <div class="layout-grid">
+
+    </div>
+  </section>
+
+  <!-- <BlocksBlock is="section">
+    Hi
+  </BlocksBlock> -->
+  <Block is="section">
+    <Heading>Critic Picks</Heading>
+    <LayoutGrid columnGap="2xl" class="tw:layout-column-min-10">
       <ImageWithInfo title="The Genius of Trees" shadow="lg" :bordered="true" :picture="{
         src: '/a.jpg'
       }" :config="{
-        surface: '#c3b4ab',
-        directionLayout: {
-          col: {
-            reverseOrder: true
-          } 
-        }
+        surface: '#c3b4ab'
+      }"
+      :ctaCover="false"
+      :ctas="{
+        href: '/',
+        label: 'Click me'
       }">
         <template #content>
           <p>The extraordinary story of the inventive and astonishing ways trees have shaped our natural world.</p>
@@ -403,7 +413,7 @@ const colorGreyRangeClasses = [
       }" :config="{
         surface: '#d1774d',
         directionLayout: {
-          col: {
+          row: {
             reverseOrder: true
           } 
         }
@@ -412,8 +422,16 @@ const colorGreyRangeClasses = [
           <p>The extraordinary story of the inventive and astonishing ways trees have shaped our natural world.</p>
         </template>
       </ImageWithInfo>
-      <ImageWithInfo title="Test Title" subtitle="Test Subtitle" shadow="lg" :bordered="true" />
-    </div>
-  </section>
+      <ImageWithInfo title="The Genius of Trees" shadow="lg" :bordered="true" :picture="{
+        src: '/a.jpg'
+      }" :config="{
+        surface: '#c3b4ab'
+      }">
+        <template #content>
+          <p>The extraordinary story of the inventive and astonishing ways trees have shaped our natural world.</p>
+        </template>
+      </ImageWithInfo>
+    </LayoutGrid>
+  </Block>
 
 </template>

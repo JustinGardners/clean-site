@@ -1,6 +1,8 @@
 import type { CardProps, CardClasses } from '#layers/base/app/types'
 import type { ClassValue } from "clsx";
-import { itemWithInfoClasses } from '~/types/tokens'
+import { itemWithInfoClasses, frameworkSpacing } from '~/types/tokens'
+
+export type FrameworkSpacing = (typeof frameworkSpacing)[number];
 
 export type ImagePropsClasses = {
     card?: ClassValue;

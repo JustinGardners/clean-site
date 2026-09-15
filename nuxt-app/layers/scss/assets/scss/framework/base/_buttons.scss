@@ -2,11 +2,11 @@
   :where(.btn) {
     @layer base {
       @include button-rules();
-      :where(.button__icon, .button__text) {
+      :where(.btn__icon, .btn__text) {
         display: inline-flex;
         align-items: center
       }
-      &:has(.button__icon + .button__text), :has(.button__text + .button__icon) {
+      &:has(.btn__icon + .btn__text), :has(.btn__text + .btn__icon) {
         gap: 0.5em;
       }      
     }
