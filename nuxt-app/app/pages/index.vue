@@ -394,6 +394,7 @@ const colorGreyRangeClasses = [
 
 
     <Block is="section" paddingY="lg" classes="flow">
+    <Heading size="xl">Container Sizing</Heading>
       <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg">
         <template #picture>
           <img src="/a.jpg" alt="Test Picture" />
@@ -401,6 +402,63 @@ const colorGreyRangeClasses = [
         </template>
       </CardsImageWithInfo>
     </Block>
+
+
+    <Block is="section" paddingY="lg" classes="flow">
+    <Heading size="xl">Container Sizing - reverse column</Heading>
+    <LayoutGrid columnGap="xl" :columns="2" type="grid">
+      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
+        directionLayout: {
+          col: {
+            reverseOrder: true
+          }
+        }
+      }">
+        <template #picture>
+          <img src="/a.jpg" alt="Test Picture" />
+          <img src="/botanical-background.png" alt="Test Picture" />
+        </template>
+      </CardsImageWithInfo>
+      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
+        directionLayout: {
+          col: {
+            reverseOrder: true
+          }
+        }
+      }">
+        <template #picture>
+          <img src="/a.jpg" alt="Test Picture" />
+          <img src="/b.jpg" alt="Test Picture" />
+        </template>
+      </CardsImageWithInfo>     
+    </LayoutGrid>
+    </Block>    
+
+
+    <Block is="section" paddingY="lg" classes="flow">
+    <Heading size="xl">Fixed Column Layout</Heading>
+      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
+        fixedLayout: 'col'
+      }">
+        <template #picture>
+          <img src="/a.jpg" alt="Test Picture" />
+          <img src="/b.jpg" alt="Test Picture" />
+        </template>
+      </CardsImageWithInfo>
+    </Block>
+
+    <Block is="section" paddingY="lg" classes="flow">
+    <Heading size="xl">Fixed Overlay Layout</Heading>
+      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
+        fixedLayout: 'overlay'
+      }">
+        <template #picture>
+          <img src="/a.jpg" alt="Test Picture" />
+          <img src="/b.jpg" alt="Test Picture" />
+        </template>
+      </CardsImageWithInfo>
+    </Block>    
+
   </div>
 
   <section class="flow wrapper">

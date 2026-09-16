@@ -1,0 +1,114 @@
+@mixin card-additional-image-row-rules {
+    .card-picture {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        >* {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+        }
+
+        img:first-of-type {
+            z-index: 1;
+        }
+    }
+}
+
+@mixin card-additional-image-column-rules() {
+    overflow: clip;
+
+    /// replace selectors with variables
+    .card-picture {
+        display: contents;
+
+        img {
+            grid-row: 1/1;
+
+            &:first-of-type {
+                z-index: 1;
+            }
+        }
+
+        &:is(:first-child) {
+            img {
+                &:first-of-type {
+                    grid-column: 1 / 1;
+                }
+            }
+
+            // :is(img:first-of-type + img, .card-picture__img--additional) {
+            //     grid-column: 1 / -1;
+            // }            
+        }
+
+        &:is(:last-child) {
+            img {
+                &:first-of-type {
+                    grid-column: 2 / 2;
+                }
+            }
+        }
+
+
+
+        :is(img:first-of-type + img, .card-picture__img--additional) {
+            grid-column: 1 / -1;
+            --card-picture-aspect: none;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &:has(.card-picture:first-child) {
+        .card-body {
+            grid-column: 2/2;
+        }
+    }
+
+    &:has(.card-body:first-child) {
+        .card-body {
+            grid-column: 1/1;
+        }
+    }
+
+    .card-body {
+        z-index: 1;
+        grid-row: 1/1;
+        // grid-column: 2/2;
+    }
+}
+
+@mixin card-additional-image-column-reverse-rules() {
+    .card-picture {
+        &:is(:first-child) {
+            img {
+                &:first-of-type {
+                    grid-column: 2 / 2;
+                }
+            }
+        }
+
+        &:is(:last-child) {
+            img {
+                &:first-of-type {
+                    grid-column: 1 / 1;
+                }
+            }
+        }
+    }
+
+    &:has(.card-picture:first-child) {
+        .card-body {
+            grid-column: 1/1;
+        }
+    }
+
+    &:has(.card-body:first-child) {
+        .card-body {
+            grid-column: 2/2;
+        }
+    }
+}

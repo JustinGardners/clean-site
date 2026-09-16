@@ -4,15 +4,15 @@
   @layer base {
     @include card.all-card-styles(); // is this including un-needed base layer?
 
+    :where(div:has(> .card)) {
+      container-type: inline-size;
+    }
+
     :where(.card) {
-      --card-body-padding-inline: max(
-        var(--space-cq-lg),
-        var(--card-body-padding-inline-min, calc(var(--space-cq-base) * 2))
-      );
-      --card-body-padding-block: max(
-        var(--space-cq-lg),
-        var(--card-body-padding-block-min, calc(var(--space-cq-base) * 2))
-      );
+      --card-body-padding-inline: max(var(--space-cq-lg),
+          var(--card-body-padding-inline-min, calc(var(--space-cq-base) * 2)));
+      --card-body-padding-block: max(var(--space-cq-lg),
+          var(--card-body-padding-block-min, calc(var(--space-cq-base) * 2)));
     }
 
     :where(.card-body__content-slot) {
@@ -20,9 +20,36 @@
     }
 
     :where(.card-body__content, .card-body__content-slot) {
-      > * {
+      >* {
         flex: 1 1 stretch;
       }
     }
+
+    //// wip
+    /// [data-card-column-reverse-order] - do this next
+    :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
+      @include card-additional-image-row-rules();
+    } 
+    :where(.card):is([data-card-layout="col"]):has(.card-picture > img + img, .card-picture--has-additional) {
+      @include card-additional-image-column-rules();
+    }
+    @container (inline-size > 80ch) {
+      :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
+        @include card-additional-image-column-rules();
+      }
+    }
+
+  }
+
+  @layer modifiers {
+    :where(.card):is([data-card-layout="col"]):is([data-card-column-reverse-order="true"]):has(.card-picture > img + img, .card-picture--has-additional) {
+        @include card-additional-image-column-reverse-rules();
+    }
+    @container (inline-size > 80ch) {
+      :where(.card):is([data-card-column-reverse-order="true"]):not([data-card-layout="col"], [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
+        @include card-additional-image-column-reverse-rules();
+      }
+    }
+
   }
 }
