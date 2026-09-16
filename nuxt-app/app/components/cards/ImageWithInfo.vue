@@ -40,17 +40,15 @@ const slots = useSlots()
             <slot name="title" :title="props.title">
                 <template v-if="props.link">
                     <a :href="props.link" :title="props.title">
-                        <Heading :as="'h3'" :class="computedClasses.title" v-if="props.title">{{ props.title }}</Heading>
+                        <Heading v-bind="props.config?.title" :class="computedClasses.title" v-if="props.title">{{ props.title }}</Heading>
                     </a>
                 </template>
                 <template v-else>
-                    <Heading :as="'h3'" :class="computedClasses.title" v-if="props.title">{{ props.title }}</Heading>
+                    <Heading v-bind="props.config?.title" :class="computedClasses.title" v-if="props.title">{{ props.title }}</Heading>
                 </template>
             </slot>
             <slot name="subtitle" :subtitle="props.subtitle">
-                <span class="tw:text-base" :class="computedClasses.subtitle" v-if="props.subtitle">
-                    {{ props.subtitle }}
-                </span>
+                <Heading v-bind="props.config?.subtitle" :class="computedClasses.subtitle" v-if="props.subtitle">{{ props.subtitle }}</Heading>
             </slot>            
         </template>
         <template #content v-if="props.author || props.format || props.price || slots.content">            

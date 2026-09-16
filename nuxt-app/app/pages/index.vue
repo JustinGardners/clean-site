@@ -394,20 +394,207 @@ const colorGreyRangeClasses = [
 
 
     <Block is="section" paddingY="lg" classes="flow">
-    <Heading size="xl">Container Sizing</Heading>
-      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg">
-        <template #picture>
-          <img src="/a.jpg" alt="Test Picture" />
-          <img src="/b.jpg" alt="Test Picture" />
-        </template>
-      </CardsImageWithInfo>
+      <Heading size="xl">Container Sizing</Heading>
+      <LayoutGrid columnGap="xl" :columns="2" type="grid">
+        <CardsImageWithInfo :link="'/'" title="The Genius of Trees"
+          subtitle="How trees mastered the elements and shaped the world" shadow="lg" :classes="{
+            subtitle: 'tw:text-grey-11 tw:flow--1',
+            contentSlot: 'tw:flex-col flow tw:line-clamp-5 tw:@5xl:line-clamp-10 tw:max-w-prose'
+          }" :config="{
+          title: {
+            as: 'h2',
+            size: '2xl'
+          },
+          subtitle: {
+            size: 'default'
+          },
+          surface: '#171b39',
+          directionLayout: {
+            col: {
+              alignItems: 'center'
+            }
+          }
+        }">
+          <template #picture>
+            <img src="/genius-of-trees.png" alt="Test Picture" />
+            <img src="/botanical-background.png" class="tw:blur-md tw:opacity-10" alt="Test Picture" />
+          </template>
+          <template #content>
+            <p>Taking us on an awe-inspiring journey through deep history and across the globe, The Genius of Trees
+              restores trees to their rightful position not as victims of our negligence but as ingenious, stunningly
+              inventive agents in a grand ecological narrative.</p>
+            <p> Some have been using fire as a reproductive tool since prehistoric times. Others have gone to
+              extraordinary lengths to make sure their fruits reach large primates, who can spread their seeds over vast
+              distances, while poisoning smaller and less useful mammals. Some can split solid rock and create fertile
+              ground in barren landscapes, effectively building entire ecosystems from scratch.</p>
+            <p> For the first time, we witness the inventive and astonishing ways trees sculpt and even master their
+              environment and understand the science of how they achieve these feats.</p>
+            <p>From oaks growing in Devon, England, and Amedi in Iraq to the laurel rainforests of the Canary Islands,
+              metasequoias in California to fossil forests preserved from hundreds of millions of years ago, we see how
+              trees not only farm the landscape in which they grow but also manipulate the elements, other species and
+              even humans to achieve their ends. At once transporting and expert, this eye-opening, mind-expanding
+              journey into the inner lives of nature's most powerful plant is a profoundly new and original way of
+              understanding both the miracles trees perform and the glories of our natural world.</p>
+          </template>
+        </CardsImageWithInfo>
+      </LayoutGrid>
     </Block>
 
 
     <Block is="section" paddingY="lg" classes="flow">
-    <Heading size="xl">Container Sizing - reverse column</Heading>
-    <LayoutGrid columnGap="xl" :columns="2" type="grid">
+      <Heading size="xl">Container Sizing - reverse column</Heading>
+      <LayoutGrid columnGap="xl" :columns="2" type="grid">
+        <CardsImageWithInfo :link="'/'" title="The Genius of Trees"
+          subtitle="How trees mastered the elements and shaped the world" shadow="lg" :classes="{
+            subtitle: 'tw:text-grey-4 tw:flow--1',
+            contentSlot: 'tw:flex-col flow tw:line-clamp-5 tw:@5xl:line-clamp-10 tw:max-w-prose'
+          }" :config="{
+          title: {
+            as: 'h2',
+            size: '2xl'
+          },
+          subtitle: {
+            size: 'default'
+          },
+          surface: '#c3b4ab',
+          directionLayout: {
+            col: {
+              reverseOrder: true,
+              alignItems: 'center'
+            }
+          }
+        }">
+          <template #picture>
+            <img src="/genius-of-trees.png" alt="Test Picture" />
+            <img src="/botanical-background.png" class="tw:blur-md" alt="Test Picture" />
+          </template>
+          <template #content>
+            <p>Taking us on an awe-inspiring journey through deep history and across the globe, The Genius of Trees
+              restores trees to their rightful position not as victims of our negligence but as ingenious, stunningly
+              inventive agents in a grand ecological narrative.</p>
+            <p> Some have been using fire as a reproductive tool since prehistoric times. Others have gone to
+              extraordinary lengths to make sure their fruits reach large primates, who can spread their seeds over vast
+              distances, while poisoning smaller and less useful mammals. Some can split solid rock and create fertile
+              ground in barren landscapes, effectively building entire ecosystems from scratch.</p>
+            <p> For the first time, we witness the inventive and astonishing ways trees sculpt and even master their
+              environment and understand the science of how they achieve these feats.</p>
+            <p>From oaks growing in Devon, England, and Amedi in Iraq to the laurel rainforests of the Canary Islands,
+              metasequoias in California to fossil forests preserved from hundreds of millions of years ago, we see how
+              trees not only farm the landscape in which they grow but also manipulate the elements, other species and
+              even humans to achieve their ends. At once transporting and expert, this eye-opening, mind-expanding
+              journey into the inner lives of nature's most powerful plant is a profoundly new and original way of
+              understanding both the miracles trees perform and the glories of our natural world.</p>
+          </template>
+        </CardsImageWithInfo>
+      </LayoutGrid>
+    </Block>
+
+
+    <Block is="section" paddingY="lg" classes="flow">
+      <Heading size="xl">Fixed Column Layout</Heading>
+      <LayoutGrid columnGap="xl" :columns="2" type="grid">
+        <CardsImageWithInfo :link="'/'" title="The Genius of Trees"
+          subtitle="How trees mastered the elements and shaped the world" shadow="lg" :classes="{
+            subtitle: 'tw:text-grey-4 tw:flow--1',
+            contentSlot: 'tw:flex-col flow tw:line-clamp-5 tw:@5xl:line-clamp-10 tw:max-w-prose'
+          }" :config="{
+          fixedLayout: 'col',
+          title: {
+            as: 'h2',
+            size: '2xl'
+          },
+          subtitle: {
+            size: 'default'
+          },
+          surface: '#c3b4ab',
+          directionLayout: {
+            col: {
+              alignItems: 'center',
+              imageSelfAlign: 'end'
+            },            
+          },
+        }">
+          <template #picture>
+            <img src="/genius-of-trees.png" alt="Test Picture" />
+            <img src="/botanical-background.png" class="tw:blur-md" alt="Test Picture" />
+          </template>
+          <template #content>
+            <p>Taking us on an awe-inspiring journey through deep history and across the globe, The Genius of Trees
+              restores trees to their rightful position not as victims of our negligence but as ingenious, stunningly
+              inventive agents in a grand ecological narrative.</p>
+            <p> Some have been using fire as a reproductive tool since prehistoric times. Others have gone to
+              extraordinary lengths to make sure their fruits reach large primates, who can spread their seeds over vast
+              distances, while poisoning smaller and less useful mammals. Some can split solid rock and create fertile
+              ground in barren landscapes, effectively building entire ecosystems from scratch.</p>
+            <p> For the first time, we witness the inventive and astonishing ways trees sculpt and even master their
+              environment and understand the science of how they achieve these feats.</p>
+            <p>From oaks growing in Devon, England, and Amedi in Iraq to the laurel rainforests of the Canary Islands,
+              metasequoias in California to fossil forests preserved from hundreds of millions of years ago, we see how
+              trees not only farm the landscape in which they grow but also manipulate the elements, other species and
+              even humans to achieve their ends. At once transporting and expert, this eye-opening, mind-expanding
+              journey into the inner lives of nature's most powerful plant is a profoundly new and original way of
+              understanding both the miracles trees perform and the glories of our natural world.</p>
+          </template>
+        </CardsImageWithInfo>
+      </LayoutGrid>
+    </Block>
+
+
+    <Block is="section" paddingY="lg" classes="flow">
+      <Heading size="xl">Fixed Row Layout</Heading>
+      <LayoutGrid columnGap="xl" :columns="3" type="grid">
+        <template v-for="index in 3" :key="index">
+        <CardsImageWithInfo :link="'/'" title="The Genius of Trees"
+          subtitle="How trees mastered the elements and shaped the world" shadow="lg" :classes="{
+            subtitle: 'tw:text-grey-4 tw:flow--1',
+            contentSlot: 'tw:flex-col flow tw:line-clamp-5 tw:@5xl:line-clamp-10 tw:max-w-prose'
+          }" :config="{
+          fixedLayout: 'row',
+          title: {
+            as: 'h2',
+            size: '2xl'
+          },
+          subtitle: {
+            size: 'default'
+          },
+          surface: '#c3b4ab',
+          directionLayout: {
+            row: {
+              reverseOrder: index % 2 === 0 ? true : null
+            },            
+          },
+        }">
+          <template #picture>
+            <img src="/genius-of-trees.png" alt="Test Picture" />
+            <img src="/botanical-background.png" class="tw:blur-md" alt="Test Picture" />
+          </template>
+          <template #content>
+            <p>Taking us on an awe-inspiring journey through deep history and across the globe, The Genius of Trees
+              restores trees to their rightful position not as victims of our negligence but as ingenious, stunningly
+              inventive agents in a grand ecological narrative.</p>
+            <p> Some have been using fire as a reproductive tool since prehistoric times. Others have gone to
+              extraordinary lengths to make sure their fruits reach large primates, who can spread their seeds over vast
+              distances, while poisoning smaller and less useful mammals. Some can split solid rock and create fertile
+              ground in barren landscapes, effectively building entire ecosystems from scratch.</p>
+            <p> For the first time, we witness the inventive and astonishing ways trees sculpt and even master their
+              environment and understand the science of how they achieve these feats.</p>
+            <p>From oaks growing in Devon, England, and Amedi in Iraq to the laurel rainforests of the Canary Islands,
+              metasequoias in California to fossil forests preserved from hundreds of millions of years ago, we see how
+              trees not only farm the landscape in which they grow but also manipulate the elements, other species and
+              even humans to achieve their ends. At once transporting and expert, this eye-opening, mind-expanding
+              journey into the inner lives of nature's most powerful plant is a profoundly new and original way of
+              understanding both the miracles trees perform and the glories of our natural world.</p>
+          </template>
+        </CardsImageWithInfo>
+        </template>
+
+      </LayoutGrid>
+    </Block>    
+
+    <Block is="section" paddingY="lg" classes="flow">
+      <Heading size="xl">Fixed Overlay Layout</Heading>
       <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
+        fixedLayout: 'overlay',
         directionLayout: {
           col: {
             reverseOrder: true
@@ -416,48 +603,9 @@ const colorGreyRangeClasses = [
       }">
         <template #picture>
           <img src="/a.jpg" alt="Test Picture" />
-          <img src="/botanical-background.png" alt="Test Picture" />
-        </template>
-      </CardsImageWithInfo>
-      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
-        directionLayout: {
-          col: {
-            reverseOrder: true
-          }
-        }
-      }">
-        <template #picture>
-          <img src="/a.jpg" alt="Test Picture" />
-          <img src="/b.jpg" alt="Test Picture" />
-        </template>
-      </CardsImageWithInfo>     
-    </LayoutGrid>
-    </Block>    
-
-
-    <Block is="section" paddingY="lg" classes="flow">
-    <Heading size="xl">Fixed Column Layout</Heading>
-      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
-        fixedLayout: 'col'
-      }">
-        <template #picture>
-          <img src="/a.jpg" alt="Test Picture" />
-          <img src="/b.jpg" alt="Test Picture" />
         </template>
       </CardsImageWithInfo>
     </Block>
-
-    <Block is="section" paddingY="lg" classes="flow">
-    <Heading size="xl">Fixed Overlay Layout</Heading>
-      <CardsImageWithInfo :link="'/'" title="Test Title" subtitle="Test Subtitle" shadow="lg" :config="{
-        fixedLayout: 'overlay'
-      }">
-        <template #picture>
-          <img src="/a.jpg" alt="Test Picture" />
-          <img src="/b.jpg" alt="Test Picture" />
-        </template>
-      </CardsImageWithInfo>
-    </Block>    
 
   </div>
 
@@ -472,7 +620,7 @@ const colorGreyRangeClasses = [
     Hi
   </BlocksBlock> -->
   <Block is="section" paddingY="lg" classes="flow">
-    <Heading size="xl">Critic Picks</Heading>
+    <Heading size="xl" class="tw:font-size-min-xl">Critic Picks</Heading>
     <LayoutGrid columnGap="xl" :columns="2" type="grid">
       <ImageWithInfo title="The Genius of Trees" shadow="lg" :bordered="true" :picture="{
         src: '/a.jpg'

@@ -25,6 +25,19 @@
   --column-count: --value(integer);
 }
 
+@utility flow--* {
+  --flow-space: --value(--spacing-*);
+  --flow-space: --spacing(--value(integer));
+}
+
+@utility font-size-min-* {
+  --font-size-min: --value(--text-*-px, [length]);
+}
+
+@utility font-size-max-* {
+  --font-size-max: --value(--text-*-px, [length]);
+}
+
 /*
   Usage:
     tw:bg-mix-primary                                     -> mixes color-primary with transparent at 50%
@@ -59,6 +72,8 @@
   }
 
   /* Unprefixed aliases for custom utilities when Tailwind prefix is enabled. */
+  /* TODO - Add fallback values for default sizes - create new variable unit class --variable-unit:min(100cqi, 100vi)  */
+  /* TODO - Create new utilities for font-size-min and font-size-max */
   .fluid {
     --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
     --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
@@ -266,6 +281,20 @@
   --color-grey-9-contrast: oklch(from var(--color, var(--base-grey-9, var(--tw-color-grey-9))) clamp(var(--base-grey-9-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-9-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
   --color-grey-10-contrast: oklch(from var(--color, var(--base-grey-10, var(--tw-color-grey-10))) clamp(var(--base-grey-10-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-10-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
   --color-grey-11-contrast: oklch(from var(--color, var(--base-grey-11, var(--tw-color-grey-11))) clamp(var(--base-grey-11-contrast-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, 0.623) - 1) * -infinity, var(--base-grey-11-contrast-darkest-text, var(--contrast-darkest-text, 1))) 0 h);
+
+  --text-xxs-px: var(--base-xxs-font-size-px);
+  --text-xs-px: var(--base-xs-font-size-px);
+  --text-sm-px: var(--base-sm-font-size-px);
+  --text-default-px: var(--base-default-font-size-px);
+  --text-lg-px: var(--base-lg-font-size-px);
+  --text-xl-px: var(--base-xl-font-size-px);
+  --text-2xl-px: var(--base-2xl-font-size-px);
+  --text-display-xxs-px: var(--base-display-xxs-font-size-px);
+  --text-display-xs-px: var(--base-display-xs-font-size-px);
+  --text-display-sm-px: var(--base-display-sm-font-size-px);
+  --text-display-md-px: var(--base-display-md-font-size-px);
+  --text-display-lg-px: var(--base-display-lg-font-size-px);
+  --text-display-xl-px: var(--base-display-xl-font-size-px);
 
   /* --text-xxs: calc(var(--base-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
     --text-xs: calc(var(--base-xs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
