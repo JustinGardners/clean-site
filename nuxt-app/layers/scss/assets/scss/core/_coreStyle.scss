@@ -43,12 +43,12 @@ body {
   }
 }
 
-:where(img) {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
+// :where(img) {
+//   display: block;
+//   width: 100%;
+//   height: auto;
+//   object-fit: contain;
+// }
 
 .sr-only {
   width: 1px !important;

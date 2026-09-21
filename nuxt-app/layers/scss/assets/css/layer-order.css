@@ -1,4 +1,4 @@
-@layer framework, core, site, tailwind;
+@layer framework, core, site, tailwind, utilities;
 @layer framework {
   @layer modules, bs, base;
 }

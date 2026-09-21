@@ -7,9 +7,10 @@
 @import "tailwindcss/utilities" layer(tailwind);
 
 @source inline("{@md:,@lg:,@xl:,@2xl:,@3xl:,@4xl:,@5xl:,@6xl:,}{relative,absolute,fixed,sticky}");
+@source inline("tw:shadow-{sm,md,lg,xl}");
 
 @utility card-picture-aspect-* {
-  --card-picture-aspect: --value(--aspect-*);
+  --card-picture-aspect: --value(--aspect-*, [ratio]);
   /* aspect-ratio: var(--card-picture-aspect); */
 }
 
@@ -36,6 +37,10 @@
 
 @utility font-size-max-* {
   --font-size-max: --value(--text-*-px, [length]);
+}
+
+@utility card-layout-overlay-aspect-* {
+  --card-layout-overlay-aspect: --value(--aspect-*, [ratio]);
 }
 
 /*

@@ -1,4 +1,16 @@
 @layer root {
+  @property --card-backdrop-color-stop-from-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1;
+  }
+
+  @property --card-backdrop-color-stop-to-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
   /// Small Style Base Config Props
   :root {
     /// $prefix in output-props doesn't work here as values don't get the prefix applied
@@ -7,7 +19,9 @@
     );
     // --font-size-base: #{$font-size-base};
     --font-size-body-px: #{$font-size-body-px};
-    --font-size-base: calc((var(--font-size-body-px) / var(--font-size-root-px, 16)) * 1rem);
+    --font-size-base: calc(
+      (var(--font-size-body-px) / var(--font-size-root-px, 16)) * 1rem
+    );
     --text-frame-x: #{$text-frame-x};
   }
 
@@ -113,10 +127,16 @@
         @warn "Font size `#{$key}` not found in $font-sizes map.";
       } @else {
         // $result: site-font-size($key, rem, true);
-        $result: calc(var(--#{$base-prefix}#{$key}-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+        $result: calc(
+          var(--#{$base-prefix}#{$key}-font-size-px) /
+            var(--font-size-root-px, 16) *
+            var(--unit, 1rem)
+        );
         $result-px: site-font-size($key, px, false);
         --#{$base-prefix}#{$key}-font-size: #{unquote("#{$result}")};
-        --#{$base-prefix}#{$key}-font-size-px: var(--#{$site-prefix}#{$key}-font-size-px);
+        --#{$base-prefix}#{$key}-font-size-px: var(
+          --#{$site-prefix}#{$key}-font-size-px
+        );
       }
     }
   }

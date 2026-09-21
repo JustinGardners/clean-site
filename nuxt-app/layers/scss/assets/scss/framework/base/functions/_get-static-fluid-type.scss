@@ -1,0 +1,7 @@
+@function get-static-fluid-type($fluid-min, $fluid-max, $font-width-min, $variable-unit: 100vi, $fluid-preferred) {
+  @return clamp(
+    ($fluid-min / 16) * 1rem,
+    (($fluid-min / 16) * 1rem) - ((($fluid-preferred * $font-width-min) / 16) * 1rem) + ($fluid-preferred * $variable-unit),
+    ($fluid-max / 16) * 1rem
+  );
+}

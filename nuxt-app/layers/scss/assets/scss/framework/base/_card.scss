@@ -1,5 +1,7 @@
 @use "small-style/scss/base/rules/components/card" as card;
 
+/// UPdate all selectors with variables
+
 @layer components {
   @layer base {
     @include card.all-card-styles(); // is this including un-needed base layer?
@@ -25,31 +27,138 @@
       }
     }
 
+    //move into small-style
+    .card-body__content__ctas--hide {
+      .btn:only-of-type {
+        display: contents;
+
+        .btn__text {
+          @include visually-hidden();
+        }
+      }
+    }
+
+    //move into small-style
+    .card-body__content__ctas--no-cover {
+      .btn:only-of-type {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    //move into small-style
+    :where(.card-picture) {
+      anchor-name: --card-picture;
+    }
+
+    //move into small-style
+    :where(.card-body) {
+      anchor-name: --card-body;
+    }
+
+    :where(.card):is([data-card-layout="row"]) {
+      :is(.card-picture, .card-picture img) {
+        height: 100%;
+      }
+
+      &:not([data-card-row-reverse-order]):has(.card-picture:last-child) {
+        --card-top-row: max-content;
+      }
+    }
+
+    @container (inline-size < 80ch) {
+      :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]) {
+        :is(.card-picture, .card-picture img) {
+          height: 100%;
+        }
+      }
+
+      :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]):is([data-card-row-reverse-order]):has(> .card-picture:first-child),
+      :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]):not([data-card-row-reverse-order]):has(> .card-picture:last-child) {
+        --card-top-row: max-content;
+      }
+
+      :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"], [data-card-row-reverse-order]):has(> .card-picture:first-child) {
+        --card-bottom-row: max-content;
+      }
+    }
+
+    /// conditions
+    /// picture is first child
+    /// not directionLayout row reverse
+    /// not fixedLayout == row
+    /// is less than 80ch
+
+    :where(.card):is([data-card-backdrop][data-card-overlay-backdrop-anchor-to-picture-row]):has(> .card-picture:first-child):not([data-card-row-reverse-order]):is([data-card-layout="row"]) {
+      @include anchor-backdrop-to-picture-row();
+    }
+
+    @container (inline-size < 80ch) {
+      :where(.card):is([data-card-backdrop][data-card-overlay-backdrop-anchor-to-picture-row]):has(> .card-picture:first-child):not([data-card-row-reverse-order]):not([data-card-layout="col"]) {
+        @include anchor-backdrop-to-picture-row();
+      }
+    }
+
+    :where(.card):is([data-card-backdrop][data-card-overlay-backdrop-anchor-to-picture-column][data-card-layout="row"]) {
+      @include anchor-backdrop-to-picture-column();
+    }
+
+    @container (inline-size > 80ch) {
+      :where(.card):is([data-card-backdrop][data-card-overlay-backdrop-anchor-to-picture-column]):not([data-card-layout="row"]) {
+        @include anchor-backdrop-to-picture-column();
+      }
+    }
+
     //// wip
     /// [data-card-column-reverse-order] - do this next
-    :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
+  }
+
+  @layer modifiers {
+
+    :where(.card):is([data-card-layout="overlay"]) {
+      --card-aspect: var(--card-layout-overlay-aspect, 16 / 9);
+      --card-picture-aspect: var(--card-aspect);
+    }
+
+    :where(.card):not([data-card-layout="col"],
+      [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
       @include card-additional-image-row-rules();
-    } 
-    :where(.card):is([data-card-layout="col"]):has(.card-picture > img + img, .card-picture--has-additional) {
+    }
+
+    :where(.card):is([data-card-layout="col"]):has(.card-picture > img + img,
+      .card-picture--has-additional) {
       @include card-additional-image-column-rules();
     }
+
     @container (inline-size > 80ch) {
-      :where(.card):not([data-card-layout="col"], [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
+
+      :where(.card):not([data-card-layout="col"],
+        [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
         @include card-additional-image-column-rules();
       }
     }
 
-  }
-
-  @layer modifiers {
     :where(.card):is([data-card-layout="col"]):is([data-card-column-reverse-order="true"]):has(.card-picture > img + img, .card-picture--has-additional) {
-        @include card-additional-image-column-reverse-rules();
+      @include card-additional-image-column-reverse-rules();
     }
-    @container (inline-size > 80ch) {
-      :where(.card):is([data-card-column-reverse-order="true"]):not([data-card-layout="col"], [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
-        @include card-additional-image-column-reverse-rules();
+
+    :where(.card):is([data-card-layout="row"]):is([data-card-row-reverse-order="true"]):has(.card-picture > img + img, .card-picture--has-additional) {
+      .card-picture:is(:first-child) {
+        img {
+          &:first-of-type {
+            grid-row: 2 / 2;
+          }
+        }
       }
     }
 
+    @container (inline-size > 80ch) {
+
+      :where(.card):is([data-card-column-reverse-order="true"]):not([data-card-layout="col"],
+        [data-card-layout="overlay"]):has(.card-picture > img + img, .card-picture--has-additional) {
+        @include card-additional-image-column-reverse-rules();
+      }
+    }
   }
 }

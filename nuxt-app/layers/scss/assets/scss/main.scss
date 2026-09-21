@@ -53,7 +53,5 @@ $site-prefix: "site-"!default;
 }
 
 @layer utilities {
-  .absolute {
-    position: absolute;
-  }
+  @import "./framework/base/utilities";
 }
