@@ -1,7 +1,5 @@
-@function get-static-fluid-type($fluid-min, $fluid-max, $font-width-min, $variable-unit: 100vi, $fluid-preferred) {
-  @return clamp(
-    ($fluid-min / 16) * 1rem,
-    (($fluid-min / 16) * 1rem) - ((($fluid-preferred * $font-width-min) / 16) * 1rem) + ($fluid-preferred * $variable-unit),
-    ($fluid-max / 16) * 1rem
-  );
-}
+@function fluid-type-font-size($size) {
+    @return clamp((var(--#{$base-prefix}#{$size}-fluid-min) / 16) * 1rem,
+      ((var(--#{$base-prefix}#{$size}-fluid-min) / 16) * 1rem) - (((var(--#{$base-prefix}#{$size}-fluid-preferred) * var(--font-width-min, 375)) / 16) * 1rem) + (var(--#{$base-prefix}#{$size}-fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--#{$base-prefix}#{$size}-fluid-max) / 16) * 1rem);
+} 

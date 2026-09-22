@@ -1,0 +1,93 @@
+
+
+.absolute {
+    position: absolute;
+}
+
+// @each $heading, $value in $headings {
+//     $size: map.get($value, "size");
+
+//     :is(#{$heading}:not([class*="heading-"]), .heading-#{$size}, .#{$heading}:not([class*="heading-"])) {
+//         &.fluid {
+//             font-size: var(--#{$base-prefix}#{$size}-fluid-type);
+//         }
+//     }
+// }
+
+// @each $heading, $value in $headings {
+//     $size: map.get($value, "size");
+//     @include register-prop($site-prefix + $size + "-font-ratio-min",
+//         "<number>",
+//         true,
+//         1.2);
+//     @include register-prop($site-prefix + $size + "-font-ratio-max",
+//         "<number>",
+//         true,
+//         1.5);
+//     @include register-prop($site-prefix + $size + "-font-width-min",
+//         "<number>",
+//         true,
+//         375);
+//     @include register-prop($site-prefix + $size + "-font-width-max",
+//         "<number>",
+//         true,
+//         1440);
+//     @include register-prop($site-prefix + $size + "-variable-unit",
+//         "<length>",
+//         true,
+//         100vi);
+
+//     @include register-prop($base-prefix + $size + "-fluid-type",
+//         "<length>",
+//         true,
+//         site-font-size(map.get($value, "size"), px) + 'px'
+//     );
+
+
+// }
+
+// .wrapper {
+//     container: wrapper / inline-size;
+
+//     // >* {
+//     //     @each $heading, $value in $headings {
+//     //         $size: map.get($value, "size");
+//     //         $fluid-font-size: fluid-type-font-size($size);
+//     //         --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+//     //     }
+//     // }
+// }
+
+// .card[data-fluid-type-relative] {
+//     @each $heading, $value in $headings {
+//         $size: map.get($value, "size");
+//         $fluid-font-size: fluid-type-font-size($size);
+//         --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+//     }
+// }
+
+// :root {
+//     --variable-unit: 100cqi;
+
+//     @each $heading, $value in $headings {
+//         $size: map.get($value, "size");
+
+//         --#{$base-prefix}#{$size}-font-ratio-min: var(--#{$site-prefix}#{$size}-font-ratio-min);
+//         --#{$base-prefix}#{$size}-font-ratio-max: var(--#{$site-prefix}#{$size}-font-ratio-max);
+
+//         --#{$base-prefix}#{$size}-fluid-min: calc(var(--font-size-min, var(--#{$site-prefix}#{$size}-font-size-min)) * pow(var(--font-ratio-min, var(--#{$base-prefix}#{$size}-font-ratio-min)), var(--font-level, 0)));
+//         --#{$base-prefix}#{$size}-fluid-max: calc(var(--font-size-max, var(--#{$site-prefix}#{$size}-font-size-max)) * pow(var(--font-ratio-max, var(--#{$base-prefix}#{$size}-font-ratio-max)), var(--font-level, 0)));
+//         --#{$base-prefix}#{$size}-fluid-preferred: calc((var(--#{$base-prefix}#{$size}-fluid-max) - var(--#{$base-prefix}#{$size}-fluid-min)) / (var(--font-width-max, 1440) - var(--font-width-min, 375)));
+
+//         $fluid-font-size: fluid-type-font-size($size);
+//         --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+//     }
+// }
+
+// :is(.wrapper > *, .card[data-fluid-type-relative]) {
+//     @each $heading, $value in $headings {
+//         $size: map.get($value, "size");
+//         $fluid-font-size: fluid-type-font-size($size);
+//         --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+//     }
+// }

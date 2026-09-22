@@ -8,6 +8,8 @@
 
 @source inline("{@md:,@lg:,@xl:,@2xl:,@3xl:,@4xl:,@5xl:,@6xl:,}{relative,absolute,fixed,sticky}");
 @source inline("tw:shadow-{sm,md,lg,xl}");
+@source inline("tw:[--layout-grid-auto-repeat:auto-fit] tw:[--layout-grid-auto-repeat:auto-fill]");
+@source inline("{@md:,@lg:,@xl:,@2xl:,@3xl:,@4xl:,@5xl:,@6xl:,}{text}-{xs-fluid-type,sm-fluid-type,default-fluid-type,lg-fluid-type,xl-fluid-type,2xl-fluid-type}");
 
 @utility card-picture-aspect-* {
   --card-picture-aspect: --value(--aspect-*, [ratio]);
@@ -56,7 +58,7 @@
       var(--tw-bg-mix-with, transparent));
 }
 
-@utility fluid {
+/* @utility fluid {
   --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
   --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
   --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
@@ -64,7 +66,7 @@
       ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * var(--variable-unit, 100vi)),
       (var(--fluid-max) / 16) * 1rem);
   font-size: var(--fluid-type);
-}
+} */
 
 @utility unit-* {
   --unit: --value([length]);
@@ -79,7 +81,7 @@
   /* Unprefixed aliases for custom utilities when Tailwind prefix is enabled. */
   /* TODO - Add fallback values for default sizes - create new variable unit class --variable-unit:min(100cqi, 100vi)  */
   /* TODO - Create new utilities for font-size-min and font-size-max */
-  .fluid {
+  /* .fluid {
     --fluid-min: calc(var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0)));
     --fluid-max: calc(var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0)));
     --fluid-preferred: calc((var(--fluid-max) - var(--fluid-min)) / (var(--font-width-max) - var(--font-width-min)));
@@ -87,7 +89,7 @@
         ((var(--fluid-min) / 16) * 1rem) - (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) + (var(--fluid-preferred) * var(--variable-unit, 100vi)),
         (var(--fluid-max) / 16) * 1rem);
     font-size: var(--fluid-type);
-  }
+  } */
 
   .unit-px {
     --unit: var(--tw-unit-px);
@@ -300,6 +302,13 @@
   --text-display-md-px: var(--base-display-md-font-size-px);
   --text-display-lg-px: var(--base-display-lg-font-size-px);
   --text-display-xl-px: var(--base-display-xl-font-size-px);
+
+  --text-xs-fluid-type: clamp(var(--base-xs-fluid-min) / 16 * 1rem, var(--base-xs-fluid-min) / 16 * 1rem - var(--base-xs-fluid-preferred) * var(--font-width-min,375) / 16 * 1rem + var(--base-xs-fluid-preferred) * var(--variable-unit,100vi), var(--base-xl-fluid-max) / 16 * 1rem);  
+  --text-sm-fluid-type: clamp(var(--base-sm-fluid-min) / 16 * 1rem, var(--base-sm-fluid-min) / 16 * 1rem - var(--base-sm-fluid-preferred) * var(--font-width-min,375) / 16 * 1rem + var(--base-sm-fluid-preferred) * var(--variable-unit,100vi), var(--base-xl-fluid-max) / 16 * 1rem);  
+  --text-default-fluid-type: var(--base-default-fluid-type);  
+  --text-lg-fluid-type: clamp(var(--base-lg-fluid-min) / 16 * 1rem, var(--base-lg-fluid-min) / 16 * 1rem - var(--base-lg-fluid-preferred) * var(--font-width-min,375) / 16 * 1rem + var(--base-lg-fluid-preferred) * var(--variable-unit,100vi), var(--base-xl-fluid-max) / 16 * 1rem);  
+  --text-xl-fluid-type: clamp(var(--base-xl-fluid-min) / 16 * 1rem, var(--base-xl-fluid-min) / 16 * 1rem - var(--base-xl-fluid-preferred) * var(--font-width-min,375) / 16 * 1rem + var(--base-xl-fluid-preferred) * var(--variable-unit,100vi), var(--base-xl-fluid-max) / 16 * 1rem);  
+  --text-2xl-fluid-type: clamp(var(--base-2xl-fluid-min) / 16 * 1rem, var(--base-2xl-fluid-min) / 16 * 1rem - var(--base-2xl-fluid-preferred) * var(--font-width-min,375) / 16 * 1rem + var(--base-2xl-fluid-preferred) * var(--variable-unit,100vi), var(--base-2xl-fluid-max) / 16 * 1rem);   
 
   /* --text-xxs: calc(var(--base-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
     --text-xs: calc(var(--base-xs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));

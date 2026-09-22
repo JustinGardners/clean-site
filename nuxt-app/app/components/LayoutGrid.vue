@@ -5,10 +5,11 @@ export type LayoutGridProps = {
     columns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12,
     columnGap?: FrameworkSpacing,
     minColumnWidth?: '5' | '10' | '15' | '20' | '25' | number;
-    minColumnWidthUnit?: 'px' | 'ch' | 'rem' | 'em'
+    minColumnWidthUnit?: 'px' | 'ch' | 'rem' | 'em';
+    autoRepeat?: 'fit' | 'fill';
 }
 
-const { type, columns, columnGap, minColumnWidth, minColumnWidthUnit = 'ch' } = defineProps<LayoutGridProps>() 
+const { type, columns, columnGap, minColumnWidth, minColumnWidthUnit = 'ch', autoRepeat } = defineProps<LayoutGridProps>() 
 
 const slots = useSlots()
 const attrs = useAttrs()
@@ -22,6 +23,12 @@ const layoutClass = computed(() => {
         return type === 'flex' ? 'flex-layout-grid' : 'layout-grid'
     } else {
         return 'layout-grid'
+    }
+})
+
+const autoRepeatClass = computed(() => {
+    if(autoRepeat) {
+        return autoRepeat === 'fill' ? `tw:[--layout-grid-auto-repeat:auto-fill]`: ''
     }
 })
 
@@ -138,7 +145,7 @@ const columnGapClass = computed(() => {
 </script>
 
 <template>
-<div :style="`--layout-column-unit: ${minWidthUnit ?? '1ch'}`" :class="cn([layoutClass, minWidth, columnGapClass, minColumnWidthClass, noOfColumns], classes)">
+<div :style="`--layout-column-unit: ${minWidthUnit ?? '1ch'}`" :class="cn([layoutClass, minWidth, columnGapClass, minColumnWidthClass, noOfColumns, autoRepeatClass], classes)">
     <slot />
 </div>
 </template>

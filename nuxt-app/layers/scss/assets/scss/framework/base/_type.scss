@@ -10,6 +10,9 @@
       $size: map.get($value, "size");
 
       :is(#{$heading}:not([class*="heading-"]), .heading-#{$size}, .#{$heading}:not([class*="heading-"])) {
+        &.fluid {
+            font-size: var(--#{$base-prefix}#{$size}-fluid-type);
+        }        
         // CHECK THIS WORKS BELOW
         @supports not (width: calc(10px * pow(5, 2))) {
           @media (min-width: $rfs-breakpoint) {
@@ -77,48 +80,48 @@
               var(--unit, var(--font-size-base, #{$font-size-base}))
           );
 
-          --font-size-min: var(
-            --#{$site-prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-size-min,
-            #{$font-size-min}
-          );
-          --font-size-max: var(
-            --#{$site-prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-size-max,
-            #{$font-size-max}
-          );
-          --font-ratio-min: var(
-            --#{$base-prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-ratio-min,
-            var(--#{$base-prefix}font-ratio-min, #{$fluid-font-ratio-min})
-          );
-          --font-ratio-max: var(
-            --#{$base-prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-ratio-max,
-            var(--#{$base-prefix}font-ratio-max, #{$fluid-font-ratio-max})
-          );
-          --font-width-min: var(
-            --#{$base-prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-width-min,
-            var(--#{$base-prefix}font-width-min, #{$fluid-font-width-min})
-          );
-          --font-width-max: var(
-            --#{$base-prefix}#{nth(
-                $type-sizes-display,
-                $get-ascending-entry
-              )}-font-width-max,
-            var(--#{$base-prefix}font-width-max, var(--root-max-wrapper-width, #{$fluid-font-width-max}))
-          );
+          // --font-size-min: var(
+          //   --#{$site-prefix}#{nth(
+          //       $type-sizes-display,
+          //       $get-ascending-entry
+          //     )}-font-size-min,
+          //   #{$font-size-min}
+          // );
+          // --font-size-max: var(
+          //   --#{$site-prefix}#{nth(
+          //       $type-sizes-display,
+          //       $get-ascending-entry
+          //     )}-font-size-max,
+          //   #{$font-size-max}
+          // );
+          // --font-ratio-min: var(
+          //   --#{$base-prefix}#{nth(
+          //       $type-sizes-display,
+          //       $get-ascending-entry
+          //     )}-font-ratio-min,
+          //   var(--#{$base-prefix}font-ratio-min, #{$fluid-font-ratio-min})
+          // );
+          // --font-ratio-max: var(
+          //   --#{$base-prefix}#{nth(
+          //       $type-sizes-display,
+          //       $get-ascending-entry
+          //     )}-font-ratio-max,
+          //   var(--#{$base-prefix}font-ratio-max, #{$fluid-font-ratio-max})
+          // );
+          // --font-width-min: var(
+          //   --#{$base-prefix}#{nth(
+          //       $type-sizes-display,
+          //       $get-ascending-entry
+          //     )}-font-width-min,
+          //   var(--#{$base-prefix}font-width-min, #{$fluid-font-width-min})
+          // );
+          // --font-width-max: var(
+          //   --#{$base-prefix}#{nth(
+          //       $type-sizes-display,
+          //       $get-ascending-entry
+          //     )}-font-width-max,
+          //   var(--#{$base-prefix}font-width-max, var(--root-max-wrapper-width, #{$fluid-font-width-max}))
+          // );
         }
 
         @include register-prop(
@@ -138,5 +141,14 @@
         );
       }
     }
+
+    :is(.wrapper > *, .card[data-fluid-type-relative]) {
+        @each $heading, $value in $headings {
+            $size: map.get($value, "size");
+            $fluid-font-size: fluid-type-font-size($size);
+            --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+        }
+    }
+    
   }
 }

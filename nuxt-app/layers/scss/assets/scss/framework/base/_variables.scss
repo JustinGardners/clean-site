@@ -258,7 +258,7 @@ $spacing-section-gap: calc(var(--layout-gap) * 1.75);
 $headings: (
   "h1": (
     "size": "2xl",
-    "min-size": "xl",
+    "min-size": "default", //xl
     "text-transform": uppercase,
     "letter-spacing": 0,
     "line-height": 1.2,

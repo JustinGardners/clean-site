@@ -7,11 +7,15 @@ $layout-props: meta.module-variables(props);
 
 @layer components {
   @layer base {
+    .wrapper {
+      container: wrapper / inline-size;
+    }
+
     @include all-layout-styles();
+
     /// below needs to be added to small-style
     .flex-layout-grid {
       @include output-props(pick-keys($layout-props, 'flex-grid-min' 'flex-grid-gap')...);
     }
   }
 }
-

@@ -11,44 +11,60 @@
     initial-value: 0;
   }
 
+  @each $heading, $value in $headings {
+    $size: map.get($value, "size");
+    @include register-prop($site-prefix + $size + "-font-ratio-min",
+      "<number>",
+      true,
+      1.2);
+    @include register-prop($site-prefix + $size + "-font-ratio-max",
+      "<number>",
+      true,
+      1.5);
+    @include register-prop($site-prefix + $size + "-font-width-min",
+      "<number>",
+      true,
+      375);
+    @include register-prop($site-prefix + $size + "-font-width-max",
+      "<number>",
+      true,
+      1440);
+    @include register-prop($site-prefix + $size + "-variable-unit",
+      "<length>",
+      true,
+      100vi);
+
+    @include register-prop($base-prefix + $size + "-fluid-type",
+      "<length>",
+      true,
+      site-font-size(map.get($value, "size"), px) + "px"
+    );
+  }
+
   /// Small Style Base Config Props
   :root {
     /// $prefix in output-props doesn't work here as values don't get the prefix applied
-    @include output-props(
-      pick-keys($_small-style-base-config-variables, $config-pick-keys)...
-    );
+    @include output-props(pick-keys($_small-style-base-config-variables, $config-pick-keys)...);
     // --font-size-base: #{$font-size-base};
     --font-size-body-px: #{$font-size-body-px};
-    --font-size-base: calc(
-      (var(--font-size-body-px) / var(--font-size-root-px, 16)) * 1rem
-    );
+    --font-size-base: calc((var(--font-size-body-px) / var(--font-size-root-px, 16)) * 1rem);
     --text-frame-x: #{$text-frame-x};
   }
 
   :root {
     // TODO: Update small-style to change space-increment to a custom prop
-    @include output-props(
-      exclude-keys($_small-style-base-spacing-variables, register-spacing)...
-    );
-    --space-cq-base: var(
-      --unit,
-      clamp(
-        var(--unit-min, 0.25rem),
-        var(--unit-fluid-cq, 1cqi),
-        var(--unit-max, 1rem)
-      )
-    );
+    @include output-props(exclude-keys($_small-style-base-spacing-variables, register-spacing)...);
+    --space-cq-base: var(--unit,
+        clamp(var(--unit-min, 0.25rem),
+          var(--unit-fluid-cq, 1cqi),
+          var(--unit-max, 1rem)));
     --space-cq-3xs: calc(var(--space-cq-2xs) / 1.38);
     --space-cq-2xs: calc(var(--space-cq-xs) / 1.38);
     --space-cq-xs: calc(var(--space-cq-sm) / 1.38);
-    --space-cq-sm: var(
-      --unit,
-      clamp(
-        var(--unit-min, 0.25rem),
-        var(--unit-fluid-cq, 1cqi),
-        var(--unit-max, 1rem)
-      )
-    );
+    --space-cq-sm: var(--unit,
+        clamp(var(--unit-min, 0.25rem),
+          var(--unit-fluid-cq, 1cqi),
+          var(--unit-max, 1rem)));
     --space-cq-md: calc(var(--space-cq-sm) * 1.38);
     --space-cq-lg: calc(var(--space-cq-md) * 1.38);
     --space-cq-xl: calc(var(--space-cq-lg) * 1.38);
@@ -59,62 +75,59 @@
     --space-cq-6xl: calc(var(--space-cq-5xl) * 1.38);
 
     @supports (--css: calc(16 * pow(var(--space-increment), 1))) {
-      --space-cq-3xs: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), -3)
-      );
-      --space-cq-2xs: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), -2)
-      );
-      --space-cq-xs: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), -1)
-      );
-      --space-cq-sm: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 0)
-      );
-      --space-cq-md: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 1)
-      );
-      --space-cq-lg: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 2)
-      );
-      --space-cq-xl: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 3)
-      );
-      --space-cq-2xl: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 4)
-      );
-      --space-cq-3xl: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 5)
-      );
-      --space-cq-4xl: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 6)
-      );
-      --space-cq-5xl: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 7)
-      );
-      --space-cq-6xl: calc(
-        var(--space-cq-base) * pow(var(--space-increment, 1.25), 8)
-      );
+      --space-cq-3xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -3));
+      --space-cq-2xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -2));
+      --space-cq-xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -1));
+      --space-cq-sm: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 0));
+      --space-cq-md: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 1));
+      --space-cq-lg: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 2));
+      --space-cq-xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 3));
+      --space-cq-2xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 4));
+      --space-cq-3xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 5));
+      --space-cq-4xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 6));
+      --space-cq-5xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 7));
+      --space-cq-6xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 8));
     }
 
     --spacing-section-gap: #{$spacing-section-gap};
   }
 
   :root {
-    @include output-props(
-      pick-keys($_small-style-base-layout-variables, $layout-pick-keys)...
-    );
+    @include output-props(pick-keys($_small-style-base-layout-variables, $layout-pick-keys)...);
     --layout-column-min: #{map.get(
-        $_small-style-base-config-variables,
-        "layout-column-min"
-      )};
-    --layout-gap: #{map.get($_small-style-base-config-variables, "layout-gap")};
+ $_small-style-base-config-variables,
+    "layout-column-min"
+    )
+  }
+
+  ;
+  --layout-gap: #{map.get($_small-style-base-config-variables, "layout-gap")};
   }
 
   :root {
-    @include output-props(
-      pick-keys($_small-style-base-wrapper-variables, $wrapper-pick-keys)...
-    );
+    @include output-props(pick-keys($_small-style-base-wrapper-variables, $wrapper-pick-keys)...);
+  }
+
+  :root {
+    --variable-unit: 100cqi;
+
+    @each $heading, $value in $headings {
+      $size: map.get($value, "size");
+
+      --#{$base-prefix}#{$size}-font-ratio-min: var(--#{$site-prefix}#{$size}-font-ratio-min);
+      --#{$base-prefix}#{$size}-font-ratio-max: var(--#{$site-prefix}#{$size}-font-ratio-max);
+
+      --#{$base-prefix}#{$size}-fluid-min: calc(var(--font-size-min, var(--#{$site-prefix}#{$size}-font-size-min)) * pow(var(--font-ratio-min,
+            var(--#{$base-prefix}#{$size}-font-ratio-min)),
+          var(--font-level, 0)));
+      --#{$base-prefix}#{$size}-fluid-max: calc(var(--font-size-max, var(--#{$site-prefix}#{$size}-font-size-max)) * pow(var(--font-ratio-max,
+            var(--#{$base-prefix}#{$size}-font-ratio-max)),
+          var(--font-level, 0)));
+      --#{$base-prefix}#{$size}-fluid-preferred: calc((var(--#{$base-prefix}#{$size}-fluid-max) - var(--#{$base-prefix}#{$size}-fluid-min)) / (var(--font-width-max, 1440) - var(--font-width-min, 375)));
+
+      $fluid-font-size: fluid-type-font-size($size);
+      --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+    }
   }
 
   /// Vanilla Framework Base Props
@@ -123,84 +136,73 @@
 
     @each $key, $value in $type-sizes {
       $font-level: map.get($font-sizes, $key, "font-level");
-      @if $font-level == null {
+
+      @if $font-level ==null {
         @warn "Font size `#{$key}` not found in $font-sizes map.";
-      } @else {
+      }
+
+      @else {
         // $result: site-font-size($key, rem, true);
-        $result: calc(
-          var(--#{$base-prefix}#{$key}-font-size-px) /
-            var(--font-size-root-px, 16) *
-            var(--unit, 1rem)
-        );
+        $result: calc(var(--#{$base-prefix}#{$key}-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
         $result-px: site-font-size($key, px, false);
         --#{$base-prefix}#{$key}-font-size: #{unquote("#{$result}")};
-        --#{$base-prefix}#{$key}-font-size-px: var(
-          --#{$site-prefix}#{$key}-font-size-px
-        );
+  --#{$base-prefix}#{$key}-font-size-px: var(--#{$site-prefix}#{$key}-font-size-px);
       }
     }
   }
 
   @each $key, $value in $type-sizes {
     $result-px: site-font-size($key, px, false);
-    @include register-prop(
-      $site-prefix + $key + "-font-size-px",
+    @include register-prop($site-prefix + $key + "-font-size-px",
       "<number>",
       true,
-      $result-px
-    );
+      $result-px );
   }
 
   @supports (width: calc(10px * pow(5, 2))) {
     :root {
       @each $key, $value in $type-sizes {
         $font-level: map.get($font-sizes, $key, "font-level");
-        @if $font-level != null {
-          --#{$base-prefix}#{$key}-font-size: calc(
-            #{$font-size-base-px} *
-              pow(
-                var(--text-scale-increment),
-                var(--#{$site-prefix}#{$key}-font-level, #{$font-level})
-              )
-          );
+
+        @if $font-level !=null {
+          --#{$base-prefix}#{$key}-font-size: calc(#{$font-size-base-px} * pow(var(--text-scale-increment),
+              var(--#{$site-prefix}#{$key}-font-level, #{$font-level})));
         }
       }
     }
   }
 
-  //   :root {
-  //     @each $key, $value in $theme-colors {
-  //       @if map-has-key($lch-colors, $key) {
-  //         $lch: map.get($lch-colors, $key);
-  //         $l: map.get($lch, l);
-  //         $c: map.get($lch, c);
-  //         $h: map.get($lch, h);
-  //         --#{$base-prefix}#{$key}-l: #{$l};
-  //         --#{$base-prefix}#{$key}-c: #{$c};
-  //         --#{$base-prefix}#{$key}-h: #{$h};
-  //         --#{$base-prefix}#{$key}: oklch(
-  //           var(--#{$base-prefix}#{$key}-l)
-  //             var(--#{$base-prefix}#{$key}-c)
-  //             var(--#{$base-prefix}#{$key}-h)
-  //         );
-  //       }
-  //     }
-  //     --#{$base-prefix}primary-fallback: #{$primary};
-  //     --#{$base-prefix}secondary-fallback: #{$secondary};
-  //   }
-  // }
+//   :root {
+//     @each $key, $value in $theme-colors {
+//       @if map-has-key($lch-colors, $key) {
+//         $lch: map.get($lch-colors, $key);
+//         $l: map.get($lch, l);
+//         $c: map.get($lch, c);
+//         $h: map.get($lch, h);
+//         --#{$base-prefix}#{$key}-l: #{$l};
+//         --#{$base-prefix}#{$key}-c: #{$c};
+//         --#{$base-prefix}#{$key}-h: #{$h};
+//         --#{$base-prefix}#{$key}: oklch(
+//           var(--#{$base-prefix}#{$key}-l)
+//             var(--#{$base-prefix}#{$key}-c)
+//             var(--#{$base-prefix}#{$key}-h)
+//         );
+//       }
+//     }
+//     --#{$base-prefix}primary-fallback: #{$primary};
+//     --#{$base-prefix}secondary-fallback: #{$secondary};
+//   }
+// }
 
   @each $key, $value in $register-lch {
     $name: $key;
     $syntax: map-get($value, "syntax");
     $inherits: map-get($value, "inherits");
     $initial-value: map-get($value, "initial-value");
-    @include register-prop(
-      $site-prefix + $name,
+    @include register-prop($site-prefix + $name,
       $syntax,
       $inherits,
-      $initial-value
-    );
+      $initial-value );
   }
 
   :root {
@@ -213,92 +215,58 @@
         --#{$base-prefix}#{$key}-l: var(--#{$site-prefix}#{$key}-l, #{$l});
         --#{$base-prefix}#{$key}-c: var(--#{$site-prefix}#{$key}-c, #{$c});
         --#{$base-prefix}#{$key}-h: var(--#{$site-prefix}#{$key}-h, #{$h});
-        --#{$base-prefix}#{$key}: oklch(
-          var(--#{$base-prefix}#{$key}-l)
-            var(--#{$base-prefix}#{$key}-c)
-            var(--#{$base-prefix}#{$key}-h)
-        );
-        --#{$base-prefix}#{$key}-contrast: oklch(
-          from var(--color, var(--#{$base-prefix}#{$key}))
-            clamp(
-              var(
-                --#{$base-prefix}#{$key}-contrast-lightest-text,
-                var(--contrast-lightest-text, 0)
-              ),
-              (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
-              var(
-                --#{$base-prefix}#{$key}-contrast-darkest-text,
-                var(--contrast-darkest-text, 1)
-              )
-            )
-            0
-            h
-        );
+        --#{$base-prefix}#{$key}: oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h));
+        --#{$base-prefix}#{$key}-contrast: oklch(from var(--color, var(--#{$base-prefix}#{$key})) clamp(var(--#{$base-prefix}#{$key}-contrast-lightest-text,
+              var(--contrast-lightest-text, 0)),
+            (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
+            var(--#{$base-prefix}#{$key}-contrast-darkest-text,
+              var(--contrast-darkest-text, 1))) 0 h);
       }
     }
+
     --#{$base-prefix}primary-fallback: #{$primary};
     --#{$base-prefix}secondary-fallback: #{$secondary};
   }
-}
 
-// Register color range props
-@each $color in $generate-lightness-range-from {
-  $lightness: map-deep-get($lch-colors, $color, "l");
-  $lightness-range-map: generate-lightness-step(
-    $lightness,
-    $generate-lightness-range-count,
-    0.95,
-    0.1
-  );
+  // Register color range props
+  @each $color in $generate-lightness-range-from {
+    $lightness: map-deep-get($lch-colors, $color, "l");
+    $lightness-range-map: generate-lightness-step($lightness,
+        $generate-lightness-range-count,
+        0.95,
+        0.1);
 
-  :root {
+    :root {
+      @for $i from 1 through length($lightness-range-map) {
+        // moved this to tailwind - will need to combine tailwind and SCSS utimately - create a new function to get these values
+        // --#{$base-prefix}#{$color}-#{$i - 1}: oklch(var(--#{$base-prefix}#{$color}-l-#{$i - 1}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$i - 1}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$i - 1}, var(--#{$base-prefix}#{$color}-h)));
+        --#{$base-prefix}#{$color}-l-#{$i - 1}: var(--#{$site-prefix}#{$color}-l-#{$i - 1});
+      }
+    }
+
     @for $i from 1 through length($lightness-range-map) {
-      // moved this to tailwind - will need to combine tailwind and SCSS utimately - create a new function to get these values
-      // --#{$base-prefix}#{$color}-#{$i - 1}: oklch(var(--#{$base-prefix}#{$color}-l-#{$i - 1}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$i - 1}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$i - 1}, var(--#{$base-prefix}#{$color}-h)));
-      --#{$base-prefix}#{$color}-l-#{$i - 1}: var(
-        --#{$site-prefix}#{$color}-l-#{$i - 1}
-      );
+      @include register-prop($site-prefix + $color + "-l-" + ($i - 1),
+        "<number>",
+        true,
+        nth($lightness-range-map, $i));
     }
   }
 
-  @for $i from 1 through length($lightness-range-map) {
-    @include register-prop(
-      $site-prefix + $color + "-l-" + ($i - 1),
-      "<number>",
-      true,
-      nth($lightness-range-map, $i)
-    );
-  }
-}
+  :root {
+    @each $color in $generate-lightness-range-from {
+      $lightness: map-deep-get($lch-colors, $color, "l");
+      $chroma: map-deep-get($lch-colors, $color, "c");
+      $hue: map-deep-get($lch-colors, $color, "h");
 
-:root {
-  @each $color in $generate-lightness-range-from {
-    $lightness: map-deep-get($lch-colors, $color, "l");
-    $chroma: map-deep-get($lch-colors, $color, "c");
-    $hue: map-deep-get($lch-colors, $color, "h");
-    @for $i from 1 through $generate-lightness-range-count {
-      --#{$base-prefix}#{$color}-contrast-#{$i - 1}: oklch(
-        from var(
-            --color,
-            var(
-              --#{$base-prefix}#{$color}-#{$i - 1},
-              var(--tw-color-#{$color}-#{$i - 1})
-            )
-          )
-          clamp(
-            var(
-              --#{$base-prefix}#{$color}-contrast-#{$i - 1}-lightest-text,
-              var(--contrast-lightest-text, 0)
-            ),
+      @for $i from 1 through $generate-lightness-range-count {
+        --#{$base-prefix}#{$color}-contrast-#{$i - 1}: oklch(from var(--color,
+            var(--#{$base-prefix}#{$color}-#{$i - 1},
+              var(--tw-color-#{$color}-#{$i - 1}))) clamp(var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-lightest-text,
+              var(--contrast-lightest-text, 0)),
             (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
-            var(
-              --#{$base-prefix}#{$color}-contrast-#{$i - 1}-darkest-text,
-              var(--contrast-darkest-text, 1)
-            )
-          )
-          0
-          h
-      );
+            var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-darkest-text,
+              var(--contrast-darkest-text, 1))) 0 h);
+      }
     }
   }
 }
