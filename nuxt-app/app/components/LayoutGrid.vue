@@ -46,31 +46,31 @@ const noOfColumns = computed(() => {
                     return `tw:column-count-3`
                     break;
                 case 4:
-                    return `tw:column-count-4`
+                    return `tw:@xl:column-count-4`
                     break;
                 case 5:
-                    return `tw:column-count-5`
+                    return `tw:@xl:column-count-5`
                     break;
                 case 6:
-                    return `tw:column-count-6`
+                    return `tw:column-count-3 tw:@2xl:column-count-6`
                     break;
                 case 7:
-                    return `tw:column-count-7`
+                    return `tw:column-count-3 tw:@2xl:column-count-7`
                     break;
                 case 8:
-                    return `tw:column-count-8`
+                    return `tw:column-count-2 tw:@2xl:column-count-4 tw:@4xl:column-count-8`
                     break;
                 case 9:
-                    return `tw:column-count-9`
+                    return `tw:@3xl:column-count-9`
                     break;
                 case 10:
-                    return `tw:column-count-10`
+                    return `tw:@3xl:column-count-10`
                     break;
                 case 11:
-                    return `tw:column-count-11`
+                    return `tw:@3xl:column-count-11`
                     break;
                 case 12:
-                    return `tw:column-count-12`
+                    return `tw:@3xl:column-count-12`
                     break;
             
                 default:

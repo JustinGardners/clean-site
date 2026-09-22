@@ -6,11 +6,14 @@
 @use "small-style/scss/base/variables/config" as config;
 @use "small-style/scss/base/variables/props/spacing" as spacing;
 @use "small-style/scss/base/variables/props/layout" as layout;
-@use "small-style/scss/base/variables/props/wrapper" as wrapper;
+@use "small-style/scss/base/variables/props/wrapper" as wrapper with (
+  $root-max-wrapper-width: 1310
+);
 @use "small-style/scss/base/mixins" as mixins;
 @forward "small-style/scss/base/variables/components/collapse";
 
-$config-pick-keys: 'unit-min' 'unit-fluid' 'unit-max' 'radius' 'flow-space' 'text-frame-ratio' 'text-frame-y' 'space-increment' 'root-max-wrapper-width';
+$config-pick-keys: 'unit-min' 'unit-fluid' 'unit-max' 'radius' 'flow-space' 'text-frame-ratio' 'text-frame-y' 'space-increment' 'root-max-wrapper-width' 'line-height-relative'
+'line-height-fixed' 'font-family-base' 'font-family-heading';
 $layout-pick-keys: 'layout-column-min' 'layout-gap' 'layout-grid-min' 'layout-grid-gap' 'layout-grid-template-columns' 'column-count' 'breakpoint' 'column-size' 'flex-grid-min' 'flex-grid-gap';
 $wrapper-pick-keys: 'root-max-wrapper-width' 'max-wrapper-width' 'wrapper-padding' 'wrapper-padding-min' 'wrapper-inline' 'wrapper-width' 'grid-wrapper-columns';
 

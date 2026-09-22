@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "small-style/scss/base/mixins/rules/base" as *;
+
 @layer root {
   @property --card-backdrop-color-stop-from-opacity {
     syntax: "<number>";
@@ -9,6 +12,12 @@
     syntax: "<number>";
     inherits: true;
     initial-value: 0;
+  }
+
+  @property --site-grey-c {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0.01;
   }
 
   @each $heading, $value in $headings {
@@ -74,6 +83,13 @@
     --space-cq-5xl: calc(var(--space-cq-4xl) * 1.38);
     --space-cq-6xl: calc(var(--space-cq-5xl) * 1.38);
 
+    --space-section-gap: calc(var(--layout-gap) * 1.75);
+    --space-section-gap-lg: calc(var(--space-section-gap) * var(--space-increment));
+    --space-section-gap-xl: calc(var(--space-section-gap-lg) * var(--space-increment));
+    --space-section-gap-2xl: calc(var(--space-section-gap-xl) * var(--space-increment));
+    --space-section-gap-3xl: calc(var(--space-section-gap-2xl) * var(--space-increment));
+    --space-section-gap-4xl: calc(var(--space-section-gap-3xl) * var(--space-increment));    
+
     @supports (--css: calc(16 * pow(var(--space-increment), 1))) {
       --space-cq-3xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -3));
       --space-cq-2xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -2));
@@ -89,7 +105,6 @@
       --space-cq-6xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 8));
     }
 
-    --spacing-section-gap: #{$spacing-section-gap};
   }
 
   :root {
@@ -206,6 +221,9 @@
   }
 
   :root {
+
+    --#{$base-prefix}grey-c: var(--#{$site-prefix}grey-c, 0.01);
+
     @each $key, $value in $theme-colors {
       @if map-has-key($lch-colors, $key) {
         $lch: map.get($lch-colors, $key);
@@ -269,4 +287,33 @@
       }
     }
   }
+
+  :is(html, body) {
+    min-height: 100%;    
+  }
+
+  body {
+      @include html-body-styles();
+      // @include body-styles();
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    color: var(--root-fg, var(--#{$tw-prefix}color-dark, #1d1d1d));
+    background-color: var(--root-bg, var(--#{$tw-prefix}color-grey-11, #fff));    
+    line-height: var(--line-height-base, calc(var(--line-height-relative, 1.4em) + var(--line-height-fixed, 0.375rem)));      
+  }  
+
+  :where(a):not(.btn) {
+      @include anchor-not-button-styles();
+  }  
+
+  :where(p) {
+      @include paragraph-styles();
+  }  
+
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      interpolate-size: allow-keywords;
+    }
+  }
+
 }

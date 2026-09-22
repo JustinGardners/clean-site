@@ -28,10 +28,10 @@ const slots = useSlots()
                     const pictureElement = h('img', {
                         src: props.picture?.src,
                         alt: props.picture?.alt,
-                        class: [computedClasses.picture, (roundedImage !== '' ? roundedImage + ' ' + 'tw:overflow-clip' : '')]
+                        class: [(roundedImage !== '' ? roundedImage + ' ' + 'tw:overflow-clip' : '')]
                     })
                     const pictureContent = pictureElement ?? undefined
-                    return props.link ? h('a', { href: props.link, title: props.title, class: computedClasses.picture + ' ' + 'tw:w-full' }, pictureContent) : pictureContent                    
+                    return props.link ? h('a', { href: props.link, title: props.title, class: 'tw:w-full' }, pictureContent) : pictureContent                    
                 }" />
             </slot>
         </template>
@@ -60,16 +60,16 @@ const slots = useSlots()
             </slot>
             <slot name="price" :price="props.price">
                 <div :class="computedClasses.price" v-if="props.price">
-                    <p :class="computedClasses.priceRrp" v-if="props.price?.rrp">{{ props.price?.rrp?.label }}: {{
+                    <p :class="computedClasses.priceRrp" v-if="props.price?.rrp">{{ props.price?.rrp?.label }} {{
                         props.price?.rrp?.value }}</p>
-                    <p :class="computedClasses.priceSale" v-if="props.price?.sale">{{ props.price?.sale?.label }}: {{
+                    <p :class="computedClasses.priceSale" v-if="props.price?.sale">{{ props.price?.sale?.label }} {{
                         props.price?.sale?.value }}</p>
                 </div>
             </slot>
             <slot name="availability"></slot>
             <slot name="content"></slot>
         </template>
-        <template #ctas :ctas="props.ctas">
+        <template #ctas :ctas="[props.ctas, props.config?.ctaCover]">
             <slot name="ctas" :ctas="props.ctas" v-if="props.ctas">
                 <template v-if="props.ctas && Array.isArray(props.ctas) && props.ctas.length > 0" :class="computedClasses.ctas">
                     <Button v-for="(cta, index) in props.ctas" :key="index" :label="cta.label" :href="cta.href" :color="cta.color ?? 'primary'" :inverted="cta.inverted" :type="cta.type ?? 'solid'" :size="cta.size" :modifier="cta.modifier" :classes="cta.classes" />
