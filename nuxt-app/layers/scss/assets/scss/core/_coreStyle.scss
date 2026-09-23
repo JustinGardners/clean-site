@@ -32,16 +32,16 @@ body {
   }
 }
 
-:where(a) {
-  color: currentColor;
-  text-decoration: none;
-  text-underline-offset: 0.2rem;
-  &:active,
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
-}
+// :where(a) {
+//   color: currentColor;
+//   text-decoration: none;
+//   text-underline-offset: 0.2rem;
+//   &:active,
+//   &:focus,
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }
 
 // :where(img) {
 //   display: block;

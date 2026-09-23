@@ -304,6 +304,7 @@
 
   :where(a):not(.btn) {
       @include anchor-not-button-styles();
+      color: inherit;
   }  
 
   :where(p) {

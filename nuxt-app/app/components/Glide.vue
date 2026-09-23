@@ -29,6 +29,9 @@ const slides = computed(() => {
 <template>
     <ClientOnly>
         <div class="glide">
+            <div class="glide__title" v-if="slots.title">
+                <slot name="title" />
+            </div>            
             <div class="glide__track" data-glide-el="track">
                 <div class="glide__slides">
                     <slot />
@@ -36,8 +39,8 @@ const slides = computed(() => {
             </div>
             <slot name="controls" v-if="controls">
                 <div class="glide__arrows" data-glide-el="controls">
-                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><slot name="arrow-left"><Icon name="akar-icons:chevron-left-small" /></slot></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><slot name="arrow-right"><Icon name="akar-icons:chevron-right-small" /></slot></button>
                 </div>
             </slot>
             <div class="glide__bullets" data-glide-el="controls[nav]" v-if="bullets">

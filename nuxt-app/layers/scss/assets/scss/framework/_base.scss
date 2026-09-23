@@ -1,12 +1,12 @@
-:root {
-  --bg-color: oklch(50% 0 0deg);
-  background-color: var(--bg-color);
-}
+// :root {
+//   --bg-color: oklch(50% 0 0deg);
+//   background-color: var(--bg-color);
+// }
 
 @media (--md-n-above) {
-  :root {
-    background-color: red;
-  }
+  // :root {
+  //   background-color: red;
+  // }
 }
 
 
@@ -14,7 +14,7 @@
 @import "./base/root";
 @import "./base/layout";
 @import "./base/type";
-@import "./base/buttons";
-@import "./base/card";
-@import "./base/collapse";
-@import "./base/surface";
+@import "./base/components/buttons";
+@import "./base/components/card";
+@import "./base/components/collapse";
+@import "./base/components/surface";

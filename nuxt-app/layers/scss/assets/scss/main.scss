@@ -3,7 +3,8 @@
 @use "sass:math";
 @use "sass:list";
 @use "small-style/scss/base/variables/config" with (
-  $button-selectors: '.btn'
+  $button-selectors: '.btn',
+  $line-height-relative: 1.1em
 );
 // @import "./mixins/utils/strip-unit";
 // @use "small-style/scss/theme" as *;
@@ -33,12 +34,15 @@ $tw-prefix: "tw-"!default;
 // $grid-breakpoints: map.set($grid-breakpoints, "md", 790px);
 
 // @debug map-get($grid-breakpoints , 'md' );
+@import "./framework/modules/variables";
 
 @import "./core/variables";
+
 
 @layer framework.modules {
   @import "@glidejs/glide/src/assets/sass/glide.core";
   @import "@glidejs/glide/src/assets/sass/glide.theme";
+  @import "./framework/modules";
 }
 
 @layer framework.bs {

@@ -179,6 +179,7 @@ const populateProductArray = (count: number) => {
         />                
       </LayoutGrid>
   </Block>
+
   <Block class="flow">
     <Heading size="xl">
       Popular Right Now
@@ -204,7 +205,7 @@ const populateProductArray = (count: number) => {
             }"
             :classes="{
               card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
-              caption: 'tw:min-h-[1.5lh] tw:mt-cq-md',
+              caption: 'tw:min-h-[2lh] tw:mt-cq-md',
               picture: 'tw:shadow-lg',
               body: 'tw:contents',
               content: 'tw:contents',
@@ -225,6 +226,7 @@ const populateProductArray = (count: number) => {
         </template>        
       </LayoutGrid>
   </Block> 
+
   <Block class="flow" paddingY="2xl">
     <Heading size="xl">
       Popular Right Now
@@ -314,6 +316,34 @@ const populateProductArray = (count: number) => {
         </template>        
       </LayoutGrid>
   </Block>   
+
+<Block class="flow" paddingY="2xl">
+        <Glide data-glide='{"type":"carousel","perView":8,"gap":0,"breakpoints":{"1024":{"perView":4},"800":{"perView":2}}}' class="tw:mt-0">
+        <template #title>
+          <Heading size="xl">
+            Featured Products
+          </Heading>
+        </template>
+        <template v-for="(product, i) in populateProductArray(8)" :key="i">
+          <GlideSlide>
+            <CardsImageWithInfo
+              :title="product.title || ''"
+              :picture="{
+                src: product.prodImages[0]?.medium
+              }"
+              :classes="{
+                card: 'tw:mx-[calc(var(--layout-gap)/2)]'
+              }"
+              :price="{rrp: {
+                value: product.price.toString()
+              } }"
+            />
+          </GlideSlide>
+        </template>
+      </Glide>  
+  </Block>
+
+
 
 
 </template>

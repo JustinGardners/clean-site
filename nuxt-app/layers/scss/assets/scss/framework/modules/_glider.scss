@@ -1,0 +1,70 @@
+
+
+//   .#{$glide-slider} {}
+
+@mixin glide-button-block-top-inline-end-rules() {
+    .#{$glide} {
+        display:grid;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 
+            "arrows"
+            "track"
+            "bullets";
+        gap: var(--space-md);
+    }
+
+    .#{$glide-track} {
+        grid-area: track;
+    }
+
+    .#{$glide-title} {
+        grid-area: arrows;
+    }    
+    
+    .#{$glide-arrows} {
+        grid-area: arrows;
+        display:flex;
+        justify-content: flex-end;
+        gap: var(--space-2xs);
+    }
+    .#{$glide-arrow} {
+        position:relative;
+        top:0;
+        transform:none;
+    }
+    .#{$glide-arrow-right} {
+        right:0;
+    }
+    .#{$glide-arrow-left} {
+        left:0;
+    }    
+    .#{$glide-bullets} {
+        grid-area: bullets;
+        position:relative;
+        transform:none;
+        left:0;
+        justify-content: center;
+    }
+}
+
+.#{$glide-arrow} {
+    background: var(--glide-arrow-bg, var(--tw-color-grey-10));
+    border: var(--glide-arrow-border, 1px solid var(--tw-color-grey-9));
+    aspect-ratio: 1 / 1;
+    inline-size: 2.5em;
+    display: grid;
+    place-content: center;
+    border-radius: calc(infinity * 1px);    
+}
+
+.#{$glide-bullets} {
+    gap:var(--space-2xs);
+}
+
+.#{$glide-bullet} {
+    background: var(--glide-bullet-bg, var(--tw-color-grey-10));
+    box-shadow: var(--glide-bullet-box-shadow, none);    
+}
+
+
+@include glide-button-block-top-inline-end-rules();
