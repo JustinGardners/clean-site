@@ -4,7 +4,8 @@
 @use "sass:list";
 @use "small-style/scss/base/variables/config" with (
   $button-selectors: '.btn',
-  $line-height-relative: 1.1em
+  $line-height-relative: 1.1em,
+  $field-border-color: var(--tw-color-grey-10)
 );
 // @import "./mixins/utils/strip-unit";
 // @use "small-style/scss/theme" as *;

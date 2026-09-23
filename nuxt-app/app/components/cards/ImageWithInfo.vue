@@ -28,7 +28,7 @@ const slots = useSlots()
                     const pictureElement = h('img', {
                         src: props.picture?.src,
                         alt: props.picture?.alt,
-                        class: [(roundedImage !== '' ? roundedImage + ' ' + 'tw:overflow-clip' : '')]
+                        class: [props.classes?.pictureImage, (roundedImage !== '' ? roundedImage + ' ' + 'tw:overflow-clip' : '')]
                     })
                     const pictureContent = pictureElement ?? undefined
                     return props.link ? h('a', { href: props.link, title: props.title, class: 'tw:w-full' }, pictureContent) : pictureContent                    

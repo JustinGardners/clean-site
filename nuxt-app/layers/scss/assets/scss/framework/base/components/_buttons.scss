@@ -41,6 +41,9 @@
       &.button--block {
         flex-basis: 100%;;
       }      
+      &.btn-sm {
+        --bs-btn-font-size: calc(var(--base-xs-font-size) * var(--unit, 1rem));
+      }
     }
   }
 }

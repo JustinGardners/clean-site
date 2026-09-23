@@ -28,7 +28,9 @@ export type CardImageProps = Pick<CardProps, 'picture' | 'shadow'> & {
 
 export type ImageWithInfoPropsNewClasses = (typeof itemWithInfoClasses)
 
-export type ImageWithInfoPropsNewClassesRecord = Partial<Record<keyof Omit<ImageWithInfoPropsNewClasses, 'class'>, ClassValue>>
+export type ImageWithInfoPropsNewClassesRecord = Partial<Record<keyof Omit<ImageWithInfoPropsNewClasses, 'class'>, ClassValue>> & {
+    pictureImage?: ClassValue;
+}
 
 export type ImageWithInfoPropsClasses = Partial<CardClasses> & ImageWithInfoPropsNewClassesRecord
 export type ImageWithInfoClassMap = Partial<Record<keyof ImageWithInfoPropsClasses, ClassValue>>

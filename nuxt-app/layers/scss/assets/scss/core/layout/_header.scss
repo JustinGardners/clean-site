@@ -39,6 +39,7 @@
 }
 
 #header > .container-md {
+  margin-inline: auto;
   @supports not (font-size: min(1rem, 4vw)) {
     max-width: var(--header-container-max-width);
     width: 100%;
@@ -119,20 +120,14 @@
 }
 
 .header__logo {
-  --vw-min: 375;
-  order: 1;
-  display: block;
-  margin: clampWithViewPort(0, 24) 0 clampWithViewPort(0, 14);
-  width: clampWithViewPort(88, 302);
-  max-height: 73px;
-  aspect-ratio: 302 / 138;
-  background-image: url("../Content/System/Images/logo_stacked.svg");
-  background-position: left center;
-  background-repeat: no-repeat;
+  background-image: url("/assets/sprite/svg/storefront-logo.svg");
   background-size: contain;
-  text-indent: -999px;
-  white-space: nowrap;
-  overflow: clip;
+  background-repeat: no-repeat;
+  width: var(--core-header-logo-width, 150px);
+  aspect-ratio: var(--core-header-logo-aspect-ratio, 300 / 45);
+  > h1 {
+    @include visually-hidden;
+  }
 }
 
 :is(#navButton, #miniBasket, #navSupport, #wishlistLink) {

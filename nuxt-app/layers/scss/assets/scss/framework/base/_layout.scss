@@ -9,6 +9,7 @@ $layout-props: meta.module-variables(props);
   @layer base {
     .wrapper {
       container: wrapper / inline-size;
+      width:100%; //new
     }
 
     @include all-layout-styles();

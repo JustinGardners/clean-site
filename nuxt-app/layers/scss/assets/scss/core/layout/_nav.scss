@@ -8,12 +8,13 @@
 
 #nav {
   // display: none;
-  @include media-breakpoint-up(md) {
+@media (--md-n-above) {
     --vw-min: 768;
     display: block;
     position: sticky;
-    top: clampWithViewPort(88, 110);
+    top: 29px;
     z-index: 12;
+    border-bottom: 1px solid var(--core-nav-item-border-color, var(--field-border-color));
     #mobileExtras {
       display: none;
     }
@@ -23,6 +24,11 @@
       z-index: 1;
     }
   }
+}
+
+#navWrap {
+  width: min(calc(var(--root-max-wrapper-width) * 1px), 100%);
+  margin-inline: auto;
 }
 
 #navMain {
@@ -115,7 +121,7 @@
   ul.primary {
     > li {
       &:hover {
-        background-color: $brand-subtle;
+
       }
       &:active,
       &:focus,
@@ -126,13 +132,9 @@
       }
       > a {
         display: block;
-        padding: 0.7rem 1.2em;
-        background: #fff;
-        color: #000e67;
-        font-size: 1rem;
-        font-family: "Arsenal", sans-serif;
-        font-weight: 600;
-        text-decoration: none;
+        color: var(--core-nav-item-color, var(--base-primary));
+        padding-inline: var(--core-nav-item-padding-inline, calc(var(--text-frame-x)/2));
+        padding-block: var(--core-nav-item-padding-block, calc(var(--text-frame-y)/1));
       }
     }
   }

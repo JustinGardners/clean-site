@@ -6,8 +6,8 @@
                 <div class="row">
 
                     <div id="storeLogo" class="header__logoWrap">
-                        <a class="header__logo" href="/" title="Telegraph bookshop">
-                            <h1>Telegraph bookshop</h1>
+                        <a class="header__logo" href="/" title="Storefront">
+                            <h1>Storefront</h1>
                         </a>
                     </div>
 

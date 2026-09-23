@@ -37,4 +37,10 @@ export default defineNuxtConfig({
       }
     }
   },
+  modules: [
+    '@nuxtjs/svg-sprite',
+  ],   
+  svgSprite: {
+    input: '~/assets/sprite/svg'
+  }
 })

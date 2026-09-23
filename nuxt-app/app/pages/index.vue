@@ -73,146 +73,123 @@ const populateProductArray = (count: number) => {
   </section> -->
 
   <Block paddingY="xl">
-      <LayoutGrid minColumnWidth="15" type="grid" class="tw:[--card-top-row:100cqi]">
-        <CardsCircleImageWithInfo
-          :link="'/'"
-          title="Crime &amp; Thriller"
-          :bordered="true"
-          :picture="{
-            src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Newreleases.png&amp;width=348&amp;padding=false',
-          }"
-          :classes="{
-            body: 'tw:px-0 tw:justify-center'
-          }"
-          :config="{
+    <LayoutGrid minColumnWidth="15" type="grid" class="tw:[--card-top-row:100cqi]">
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Crime &amp; Thriller" :bordered="true" :picture="{
+        src: '/heated-rivialry.png',
+      }" :classes="{
+        body: 'tw:px-0 tw:justify-center',
+        picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        caption: 'tw:*:text-primary'
+      }" :config="{
             showAllSlots: false,
             title: {
               fluid: true,
               size: 'default'
             }
-          }"
-        />
-        <CardsCircleImageWithInfo
-          :link="'/'"
-          title="Mystery &amp; Suspense"
-          :bordered="true"
-          :picture="{
-            src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Childrenbooks.png&width=348&padding=false',
-          }"
-          :classes="{
-            body: 'tw:px-0 tw:justify-center'
-          }"          
-          :config="{
+          }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Mystery &amp; Suspense" :bordered="true" :picture="{
+        src: '/heated-rivialry.png',
+      }" :classes="{
+        body: 'tw:px-0 tw:justify-center',
+        picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        caption: 'tw:*:text-primary'
+      }" :config="{
             showAllSlots: false,
             title: {
-              fluid: true
+              fluid: true,
+              size: 'default'
             }
-          }"          
-        />
-        <CardsCircleImageWithInfo
-          :link="'/'"
-          title="Psychological Thriller"
-          :bordered="true"
-          :picture="{
-            src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Fictionbooks.png&width=348&padding=false',
-          }"
-          :classes="{
-            body: 'tw:px-0 tw:justify-center'
-          }"          
-          :config="{
+          }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Psychological Thriller" :bordered="true" :picture="{
+        src: '/heated-rivialry.png',
+      }" :classes="{
+        body: 'tw:px-0 tw:justify-center',
+        picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        caption: 'tw:*:text-primary'
+      }" :config="{
             showAllSlots: false,
             title: {
-              fluid: true
+              fluid: true,
+              size: 'default'
             }
-          }"
-        />
-        <CardsCircleImageWithInfo
-          :link="'/'"
-          title="Detective Fiction"
-          :bordered="true"
-          :picture="{
-            src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Nonfictionbooks.png&width=348&padding=false',
-          }"
-          :classes="{
-            body: 'tw:px-0 tw:justify-center'
-          }"          
-          :config="{
+          }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Detective Fiction" :bordered="true" :picture="{
+        src: '/heated-rivialry.png',
+      }" :classes="{
+        body: 'tw:px-0 tw:justify-center',
+        picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        caption: 'tw:*:text-primary'
+      }" :config="{
             showAllSlots: false,
             title: {
-              fluid: true
+              fluid: true,
+              size: 'default'
             }
-          }"
-        />
-        <CardsCircleImageWithInfo
-          :link="'/'"
-          title="Legal Thriller"
-          :bordered="true"
-          :picture="{
-            src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Nonfictionbooks.png&width=348&padding=false',
-          }"
-          :classes="{
-            body: 'tw:px-0 tw:justify-center'
-          }"          
-          :config="{
+          }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Legal Thriller" :bordered="true" :picture="{
+        src: '/heated-rivialry.png',
+      }" :classes="{
+        body: 'tw:px-0 tw:justify-center',
+        picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        caption: 'tw:*:text-primary'
+      }" :config="{
             showAllSlots: false,
             title: {
-              fluid: true
+              fluid: true,
+              size: 'default'
             }
-          }"
-        />
-        <CardsCircleImageWithInfo
-          :link="'/'"
-          title="Noir Fiction"
-          :bordered="true"
-          :picture="{
-            src: 'http://books.telegraph.co.uk/imagecache/getimage?url=/Content/Development/Homepagecontent/Nonfictionbooks.png&width=348&padding=false',
-          }"
-          :classes="{
-            body: 'tw:px-0 tw:justify-center'
-          }"          
-          :config="{
+          }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Noir Fiction" :bordered="true" :picture="{
+        src: '/heated-rivialry.png',
+      }" :classes="{
+        body: 'tw:px-0 tw:justify-center',
+        picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        caption: 'tw:*:text-primary'
+      }" :config="{
             showAllSlots: false,
             title: {
-              fluid: true
+              fluid: true,
+              size: 'default'
             }
-          }"
-        />                
-      </LayoutGrid>
+          }" />
+    </LayoutGrid>
   </Block>
 
-  <Block class="flow">
-    <Heading size="xl">
+  <Block class="flow tw:flow--lg">
+    <Heading size="xl" color="primary">
       Popular Right Now
     </Heading>
-    
-      <LayoutGrid minColumnWidth="15" columnCount="6" type="grid">
-        <template v-for="(product, i) in popularRightNowProducts" :key="i">
-          <CardsImageWithInfo
-            link="/"
-            :title="product.title"
-            :picture="{
-              src: product.prodImages[0]?.medium
-            }"
-            :price="{rrp: {
-              value: product.price.toString()
-            } }"
-            :ctas="{
+
+    <LayoutGrid minColumnWidth="15" columnCount="6" type="grid">
+      <template v-for="(product, i) in popularRightNowProducts" :key="i">
+        <CardsImageWithInfo link="/" :title="product.title" :picture="{
+          src: product.prodImages[0]?.medium
+        }" :price="{
+          rrp: {
+            value: product.price.toString()
+          }
+        }" :ctas="{
               label: 'Add to basket',
               href: '/',
               classes: {
                 base: 'btn',
               },
-            }"
-            :classes="{
+            }" :classes="{
               card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
               caption: 'tw:min-h-[2lh] tw:mt-cq-md',
-              picture: 'tw:shadow-lg',
+              pictureImage: 'tw:object-contain tw:object-bottom tw:drop-shadow-lg',
               body: 'tw:contents',
               content: 'tw:contents',
               price: 'heading-lg fluid tw:text-primary',
+              title: 'tw:line-clamp-2',
               ctas: 'tw:flow--cq-lg'
-            }"
-            :config="{
+            }" :config="{
               mergeConfig: true,
               showAllSlots: false,
               ctaCover: false,
@@ -220,89 +197,78 @@ const populateProductArray = (count: number) => {
                 size: 'sm',
                 color: 'primary'
               }
-            }"
-          >
-          </CardsImageWithInfo>
-        </template>        
-      </LayoutGrid>
-  </Block> 
+            }">
+        </CardsImageWithInfo>
+      </template>
+    </LayoutGrid>
+  </Block>
 
-  <Block class="flow" paddingY="2xl">
+  <Block class="flow tw:flow--lg" paddingY="2xl">
     <Heading size="xl">
       Popular Right Now
     </Heading>
-    
-      <LayoutGrid type="grid" minColumnWidth="5" :columns="8">
-        <template v-for="(product, i) in populateProductArray(8)" :key="i">
-          <CardsImageWithInfo
-            link="/"
-            :title="product.title || ''"
-            :picture="{
-              src: product.prodImages[0]?.medium
-            }"
-            :price="{rrp: {
-              value: product.price.toString()
-            } }"
-            :ctas="{
+
+    <LayoutGrid type="grid" minColumnWidth="5" :columns="8">
+      <template v-for="(product, i) in populateProductArray(8)" :key="i">
+        <CardsImageWithInfo link="/" :title="product.title || ''" :picture="{
+          src: product.prodImages[0]?.medium
+        }" :price="{
+          rrp: {
+            value: product.price.toString()
+          }
+        }" :ctas="{
               label: 'Add to basket',
-              href: '/',             
+              href: '/',
               type: 'outline',
               size: 'sm',
               classes: {
                 base: 'btn',
               },
-            }"
-            :classes="{
+            }" :classes="{
               card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
               caption: 'tw:min-h-[2lh] tw:text-default tw:mt-cq-md',
               body: 'tw:contents',
+              pictureImage: 'tw:object-contain tw:object-bottom tw:drop-shadow-lg',
               content: 'tw:contents',
               price: 'tw:text-md'
-            }"
-            :config="{
+            }" :config="{
               mergeConfig: true,
               showAllSlots: false,
               ctaCover: false,
               title: {
                 size: 'sm'
               }
-            }"
-          >
-          </CardsImageWithInfo>
-        </template>        
-      </LayoutGrid>
-  </Block> 
+            }">
+        </CardsImageWithInfo>
+      </template>
+    </LayoutGrid>
+  </Block>
 
-  <Block class="flow" paddingY="2xl">
+  <Block class="flow tw:flow--lg" paddingBottom="2xl">
     <Heading size="xl">
       Popular Right Now
     </Heading>
-    
-      <LayoutGrid type="grid" minColumnWidth="5" :columns="2">
-        <template v-for="(product, i) in populateProductArray(2)" :key="i">
-          <CardsImageWithInfo
-            link="/"
-            :title="product.title || ''"
-            :picture="{
-              src: product.prodImages[0]?.medium
-            }"
-            :price="{rrp: {
-              value: product.price.toString()
-            } }"
-            :ctas="{
+
+    <LayoutGrid type="grid" minColumnWidth="5" :columns="2">
+      <template v-for="(product, i) in populateProductArray(2)" :key="i">
+        <CardsImageWithInfo link="/" :title="product.title || ''" :picture="{
+          src: product.prodImages[0]?.medium
+        }" :price="{
+          rrp: {
+            value: product.price.toString()
+          }
+        }" :ctas="{
               label: 'Add to basket',
-              href: '/',             
+              href: '/',
               type: 'outline',
               size: 'sm',
               classes: {
                 base: 'btn',
               },
-            }"
-            :classes="{
+            }" :classes="{
               card: 'tw:[--card-left-col:max-content]',
               picture: 'tw:*:max-w-[150px] tw:*:m-cq-lg tw:bg-grey-10'
-            }"
-            :config="{
+            }" :config="{
               mergeConfig: true,
               showAllSlots: false,
               ctaCover: false,
@@ -310,37 +276,50 @@ const populateProductArray = (count: number) => {
               title: {
                 size: 'default'
               }
-            }"
-          >
-          </CardsImageWithInfo>
-        </template>        
-      </LayoutGrid>
-  </Block>   
+            }">
+        </CardsImageWithInfo>
+      </template>
+    </LayoutGrid>
+  </Block>
 
-<Block class="flow" paddingY="2xl">
-        <Glide data-glide='{"type":"carousel","perView":8,"gap":0,"breakpoints":{"1024":{"perView":4},"800":{"perView":2}}}' class="tw:mt-0">
-        <template #title>
-          <Heading size="xl">
-            Featured Products
-          </Heading>
-        </template>
-        <template v-for="(product, i) in populateProductArray(8)" :key="i">
-          <GlideSlide>
-            <CardsImageWithInfo
-              :title="product.title || ''"
-              :picture="{
-                src: product.prodImages[0]?.medium
-              }"
-              :classes="{
-                card: 'tw:mx-[calc(var(--layout-gap)/2)]'
-              }"
-              :price="{rrp: {
-                value: product.price.toString()
-              } }"
-            />
-          </GlideSlide>
-        </template>
-      </Glide>  
+  <Block class="flow" paddingY="2xl">
+    <Glide data-glide='{"type":"carousel","perView":8,"gap":0,"breakpoints":{"1024":{"perView":4},"800":{"perView":2}}}'
+      class="tw:mt-0">
+      <template #title>
+        <Heading size="xl">
+          Featured Products
+        </Heading>
+      </template>
+      <template v-for="(product, i) in populateProductArray(8)" :key="i">
+        <GlideSlide>
+          <CardsImageWithInfo :title="product.title || ''" :picture="{
+            src: product.prodImages[0]?.medium
+          }" :classes="{
+            card: 'tw:mx-[calc(var(--layout-gap)/2)] tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
+            caption: 'tw:min-h-[2lh] tw:text-default tw:mt-cq-md',
+            body: 'tw:contents',
+            content: 'tw:contents',
+            price: 'tw:text-md'
+          }" :price="{
+                rrp: {
+                  value: product.price.toString()
+                }
+              }" :ctas="{
+              label: 'Add to basket',
+              href: '/',
+              type: 'outline',
+              size: 'sm',
+              classes: {
+                base: 'btn',
+              },
+            }" :config="{
+                title: {
+                  size: 'sm'
+                }
+              }" />
+        </GlideSlide>
+      </template>
+    </Glide>
   </Block>
 
 
