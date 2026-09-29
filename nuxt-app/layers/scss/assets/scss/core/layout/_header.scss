@@ -347,7 +347,7 @@
 
 #searchBox {
   position: relative;
-  width: min(454px, 100%);
+  // width: min(454px, 100%);
   margin-inline: auto;
 
   .productType,
@@ -358,7 +358,7 @@
   input#keyword {
     padding: 1em 3em 1em 2em;
     width: 100%;
-    background: $surface-94;
+    background: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.0025) c h);
     border-color: $surface-94;
     border-radius: 999px;
     color: $text-primary;

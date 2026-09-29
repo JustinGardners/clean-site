@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<ImageWithInfoProps>(), {
     })
 });
 
-const { computedClasses, singleCta, roundedImage } = useProductImage(props)
+const { computedClasses, singleCta, roundedImage, renderPicture } = useProductImage(props)
 
 const slots = useSlots()
 
@@ -24,7 +24,7 @@ const slots = useSlots()
         :config="props.config" :classes="computedClasses" :shadow="props.shadow">
         <template #picture>
             <slot name="picture" :picture="props.picture">
-                <component :is="() => {
+                <!-- <component :is="() => {
                     const pictureElement = h('img', {
                         src: props.picture?.src,
                         alt: props.picture?.alt,
@@ -32,7 +32,12 @@ const slots = useSlots()
                     })
                     const pictureContent = pictureElement ?? undefined
                     return props.link ? h('a', { href: props.link, title: props.title, class: 'tw:w-full' }, pictureContent) : pictureContent                    
-                }" />
+                }" /> -->
+
+                <component :is="() => {
+                    const pictureContent = renderPicture()
+                    return props.link && pictureContent ? h('a', { href: props.link, title: props.title, class: 'tw:w-full' }, pictureContent) : pictureContent
+                }" />                
             </slot>
         </template>
 

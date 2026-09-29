@@ -2,6 +2,14 @@
   :where(.btn) {
     @layer base {
       @include button-rules();
+      text-box: trim-both cap alphabetic;
+      @media (pointer: coarse)   {
+        .button::after   {
+          content: '';
+          position: absolute;
+          inset: -8px;
+        }
+      }      
       :where(.btn__icon, .btn__text) {
         display: inline-flex;
         align-items: center
@@ -39,11 +47,14 @@
         @include button-variation-circle();
       }
       &.button--block {
-        flex-basis: 100%;;
+        flex-basis: 100%;
       }      
       &.btn-sm {
         --bs-btn-font-size: calc(var(--base-xs-font-size) * var(--unit, 1rem));
       }
+      &.btn-lg {
+        --bs-btn-font-size: calc(var(--base-lg-font-size) * var(--unit, 1rem));
+      }      
     }
   }
 }

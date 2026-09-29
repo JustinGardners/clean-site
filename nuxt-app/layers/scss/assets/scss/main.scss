@@ -5,7 +5,8 @@
 @use "small-style/scss/base/variables/config" with (
   $button-selectors: '.btn',
   $line-height-relative: 1.1em,
-  $field-border-color: var(--tw-color-grey-10)
+  $field-border-color: var(--tw-color-grey-10),
+  $radius: 2rem
 );
 // @import "./mixins/utils/strip-unit";
 // @use "small-style/scss/theme" as *;
@@ -60,4 +61,42 @@ $tw-prefix: "tw-"!default;
 
 @layer utilities {
   @import "./framework/base/utilities";
+}
+
+.book-wave {
+  --book-width: calc((100 / var(--total, 6) * 1%) + (var(--step)*2));
+  --step: min(12cqw, 85px);       /* Horizontal spacing; smaller = more overlap */
+  --amplitude: 28px;  /* Wave height */
+  --phase: 65deg;     /* Wave progression per image */
+
+  display: grid;
+  position: relative;
+  isolation: isolate;
+  min-height: 260px;
+  // padding-block: var(--amplitude);
+  overflow: visible;
+}
+
+.book-wave > img {
+  --angle: calc(var(--i) * var(--phase));
+
+  grid-area: 1 / 1;
+  align-self: center;
+  width: var(--book-width);
+  // height: 190px;
+  object-fit: contain;
+
+  position: relative;
+  z-index: var(--z);
+
+  // transform:
+  //   translateX(calc(var(--i) * var(--step)))
+  //   translateY(calc(sin(var(--angle)) * var(--amplitude)))
+  //   rotate(calc(cos(var(--angle)) * -6deg));
+
+  transform:
+    translateX(calc(var(--i) * var(--step)))
+    translateY(calc(sin(var(--angle)) * var(--amplitude)));  
+
+  filter: drop-shadow(0 8px 6px rgb(0 0 0 / 20%));
 }

@@ -11,3 +11,10 @@ export const itemWithInfoClasses = {
     priceRrp: 'product-item__price__rrp',
     priceSale: 'product-item__price__sale',
 } as const
+
+export const heroClasses = {
+    card: 'hero',
+    picture: 'hero__picture',
+    title: 'hero__title',
+    content: 'hero__content'
+} as const

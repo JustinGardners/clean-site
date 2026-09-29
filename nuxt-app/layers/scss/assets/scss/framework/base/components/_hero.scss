@@ -1,0 +1,16 @@
+@layer components {
+    //// hook up selectors to variables
+    @layer base {
+        :where(.hero) {
+            min-height: var(--#{$base-prefix}hero-min-height, min(100dvh, 450px));
+        }
+        :where(.hero__picture) {
+            height:100%;
+        }
+    }
+    // @layer modifiers {
+    //     :where(.hero__title) {
+    //         @include heading-size("h1");
+    //     }
+    // }
+}

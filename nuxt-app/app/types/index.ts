@@ -1,6 +1,6 @@
 import type { CardProps, CardClasses } from '#layers/base/app/types'
 import type { ClassValue } from "clsx";
-import { itemWithInfoClasses, frameworkSpacing, sectionSpacing, sectionGapName } from '~/types/tokens'
+import { itemWithInfoClasses, frameworkSpacing, sectionSpacing, sectionGapName, heroClasses } from '~/types/tokens'
 
 export type FrameworkSpacing = (typeof frameworkSpacing)[number];
 export type SectionSpacing = (typeof sectionSpacing)[number];
@@ -26,11 +26,12 @@ export type CardImageProps = Pick<CardProps, 'picture' | 'shadow'> & {
     roundedImage?: 'none' | 'sm' | 'md' | 'lg' | 'full' | 'default';
 };
 
-export type ImageWithInfoPropsNewClasses = (typeof itemWithInfoClasses)
+export type HeroProps = Pick<CardProps, 'title' | 'picture' | 'classes' | 'config'>;
 
-export type ImageWithInfoPropsNewClassesRecord = Partial<Record<keyof Omit<ImageWithInfoPropsNewClasses, 'class'>, ClassValue>> & {
-    pictureImage?: ClassValue;
-}
+export type ImageWithInfoPropsNewClasses = (typeof itemWithInfoClasses)
+export type HeroPropsClasses = (typeof heroClasses)
+
+export type ImageWithInfoPropsNewClassesRecord = Partial<Record<keyof Omit<ImageWithInfoPropsNewClasses, 'card' | 'picture'>, ClassValue>>
 
 export type ImageWithInfoPropsClasses = Partial<CardClasses> & ImageWithInfoPropsNewClassesRecord
 export type ImageWithInfoClassMap = Partial<Record<keyof ImageWithInfoPropsClasses, ClassValue>>

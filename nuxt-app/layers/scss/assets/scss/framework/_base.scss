@@ -14,7 +14,23 @@
 @import "./base/root";
 @import "./base/layout";
 @import "./base/type";
+@import "./base/components/hero";
 @import "./base/components/buttons";
 @import "./base/components/card";
 @import "./base/components/collapse";
 @import "./base/components/surface";
+
+.products-counter {
+  
+  .card {
+    counter-reset: product-counter var(--product-index);
+    .card-body__content__caption-title {
+      
+      &::before {
+        content: counter(product-counter);
+        font-size: 2em;
+        align-self: center;
+      }
+    }
+  }
+}

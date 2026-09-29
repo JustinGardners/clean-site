@@ -61,7 +61,7 @@
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
   border: var(--#{$prefix}btn-border-width, 1px) solid var(--#{$prefix}btn-border-color);
-  @include border-radius(var(--#{$prefix}btn-border-radius));
+  @include border-radius(var(--#{$prefix}btn-border-radius, var(--radius)));
   @include gradient-bg(var(--#{$prefix}btn-bg));
   @include box-shadow(var(--#{$prefix}btn-box-shadow));
   @include transition($btn-transition);

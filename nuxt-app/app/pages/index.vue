@@ -6,42 +6,48 @@ const popularRightNowProducts = [{
   price: 22.99,
   prodImages: [{
     medium: '/heated-rivialry.png'
-  }]
+  }],
+  prodUrl: 'Product/Richard-Osman/The-Impossible-Fortune'
 },
 {
   title: "What's For Dinner? Slow Cooker",
   price: 22.99,
   prodImages: [{
     medium: '/birds.png'
-  }]
+  }],
+  prodUrl: 'Product/Richard-Osman/The-Impossible-Fortune'
 },
 {
   title: "Pinch of Nom Slow Cooker",
   price: 22.99,
   prodImages: [{
     medium: '/court-of-thorns.png'
-  }]
+  }],
+  prodUrl: 'Product/Richard-Osman/The-Impossible-Fortune'
 },
 {
   title: "What's For Dinner? Slow Cooker",
   price: 22.99,
   prodImages: [{
     medium: '/releasing-10.png'
-  }]
+  }],
+  prodUrl: 'Product/Richard-Osman/The-Impossible-Fortune'
 },
 {
   title: "What's For Dinner? Slow Cooker",
   price: 22.99,
   prodImages: [{
     medium: '/salads.png'
-  }]
+  }],
+  prodUrl: 'Product/Richard-Osman/The-Impossible-Fortune'
 },
 {
   title: "What's For Dinner? Slow Cooker",
   price: 22.99,
   prodImages: [{
     medium: '/yesteryear.png'
-  }]
+  }],
+  prodUrl: 'Product/Richard-Osman/The-Impossible-Fortune'
 }]
 
 const populateProductArray = (count: number) => {
@@ -58,6 +64,14 @@ const populateProductArray = (count: number) => {
   return products;
 };
 
+const chunkArray = (array: any[], size: number) => {
+  const chunkedArray = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunkedArray.push(array.slice(i, i + size));
+  }
+  return chunkedArray;
+};
+
 </script>
 
 <template>
@@ -71,79 +85,91 @@ const populateProductArray = (count: number) => {
       <button x-on:click="count++">Increment</button>
     </div>
   </section> -->
+  <Hero title="Hero" :config="{
+    backdrop: true
+  }" />
 
   <Block paddingY="xl">
     <LayoutGrid minColumnWidth="15" type="grid" class="tw:[--card-top-row:100cqi]">
-      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Crime &amp; Thriller" :bordered="true" :picture="{
-        src: '/heated-rivialry.png',
-      }" :classes="{
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Crime &amp; Thriller" :bordered="true"
+        :picture="{
+          src: '/heated-rivialry.png',
+          source: [{
+            srcset: '/court-of-thorns.png',
+            type: 'image/png',
+            media: '(max-width: 600px)'
+          }]
+        }" :classes="{
         body: 'tw:px-0 tw:justify-center',
         picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
-        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none tw:drop-shadow-2xl',
         caption: 'tw:*:text-primary'
       }" :config="{
-            showAllSlots: false,
-            title: {
-              fluid: true,
-              size: 'default'
-            }
-          }" />
-      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Mystery &amp; Suspense" :bordered="true" :picture="{
-        src: '/heated-rivialry.png',
-      }" :classes="{
+        showAllSlots: false,
+        title: {
+          fluid: true,
+          size: 'default'
+        }
+      }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Mystery &amp; Suspense" :bordered="true"
+        :picture="{
+          src: '/heated-rivialry.png',
+        }" :classes="{
         body: 'tw:px-0 tw:justify-center',
         picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
-        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none tw:drop-shadow-2xl',
         caption: 'tw:*:text-primary'
       }" :config="{
-            showAllSlots: false,
-            title: {
-              fluid: true,
-              size: 'default'
-            }
-          }" />
-      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Psychological Thriller" :bordered="true" :picture="{
-        src: '/heated-rivialry.png',
-      }" :classes="{
+        showAllSlots: false,
+        title: {
+          fluid: true,
+          size: 'default'
+        }
+      }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Psychological Thriller" :bordered="true"
+        :picture="{
+          src: '/heated-rivialry.png',
+        }" :classes="{
         body: 'tw:px-0 tw:justify-center',
         picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
-        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none tw:drop-shadow-2xl',
         caption: 'tw:*:text-primary'
       }" :config="{
-            showAllSlots: false,
-            title: {
-              fluid: true,
-              size: 'default'
-            }
-          }" />
-      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Detective Fiction" :bordered="true" :picture="{
-        src: '/heated-rivialry.png',
-      }" :classes="{
+        showAllSlots: false,
+        title: {
+          fluid: true,
+          size: 'default'
+        }
+      }" />
+      <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Detective Fiction" :bordered="true"
+        :picture="{
+          src: '/heated-rivialry.png',
+        }" :classes="{
         body: 'tw:px-0 tw:justify-center',
         picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
-        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none tw:drop-shadow-2xl',
         caption: 'tw:*:text-primary'
       }" :config="{
-            showAllSlots: false,
-            title: {
-              fluid: true,
-              size: 'default'
-            }
-          }" />
+        showAllSlots: false,
+        title: {
+          fluid: true,
+          size: 'default'
+        }
+      }" />
       <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Legal Thriller" :bordered="true" :picture="{
         src: '/heated-rivialry.png',
       }" :classes="{
         body: 'tw:px-0 tw:justify-center',
         picture: 'tw:rounded-full tw:overflow-clip tw:bg-grey-10',
-        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
+        pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none tw:drop-shadow-2xl',
         caption: 'tw:*:text-primary'
       }" :config="{
-            showAllSlots: false,
-            title: {
-              fluid: true,
-              size: 'default'
-            }
-          }" />
+        showAllSlots: false,
+        title: {
+          fluid: true,
+          size: 'default'
+        }
+      }" />
       <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Noir Fiction" :bordered="true" :picture="{
         src: '/heated-rivialry.png',
       }" :classes="{
@@ -152,12 +178,12 @@ const populateProductArray = (count: number) => {
         pictureImage: 'tw:object-contain tw:-rotate-22 tw:translate-y-[3rem] tw:translate-x-[1rem] tw:rounded-none',
         caption: 'tw:*:text-primary'
       }" :config="{
-            showAllSlots: false,
-            title: {
-              fluid: true,
-              size: 'default'
-            }
-          }" />
+        showAllSlots: false,
+        title: {
+          fluid: true,
+          size: 'default'
+        }
+      }" />
     </LayoutGrid>
   </Block>
 
@@ -168,19 +194,19 @@ const populateProductArray = (count: number) => {
 
     <LayoutGrid minColumnWidth="15" columnCount="6" type="grid">
       <template v-for="(product, i) in popularRightNowProducts" :key="i">
-        <CardsImageWithInfo link="/" :title="product.title" :picture="{
-          src: product.prodImages[0]?.medium
+        <CardsImageWithInfo :link="product.prodUrl" :title="product.title" :picture="{
+          src: product.prodImages[0]?.medium,
         }" :price="{
           rrp: {
             value: product.price.toString()
           }
         }" :ctas="{
-              label: 'Add to basket',
-              href: '/',
-              classes: {
-                base: 'btn',
-              },
-            }" :classes="{
+          label: 'Add to basket',
+          href: '/',
+          classes: {
+            base: 'btn',
+          },
+        }" :classes="{
               card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
               caption: 'tw:min-h-[2lh] tw:mt-cq-md',
               pictureImage: 'tw:object-contain tw:object-bottom tw:drop-shadow-lg',
@@ -204,6 +230,100 @@ const populateProductArray = (count: number) => {
   </Block>
 
   <Block class="flow tw:flow--lg" paddingY="2xl">
+    <Heading size="xl" color="primary">
+      Top Paid
+    </Heading>
+    <div class="tw:overflow-x-auto">
+      <LayoutGrid minColumnWidth="20" columnCount="5" type="grid"
+        class="products-counter tw:min-w-[calc((var(--root-max-wrapper-width)*1px)-var(--layout-gap))]">
+        <template v-for="(product, i) in chunkArray(populateProductArray(15), 3)" :key="i">
+          <!-- <pre>{{ product }}</pre> -->
+          <div class="tw:flex tw:flex-col tw:gap-md tw:row-rule-solid tw:row-rule-[1px] tw:row-rule-grey-10">
+            <template v-for="(subProduct, j) in product" :key="j">
+              <CardsImageWithInfo :style="{ '--product-index': i * 3 + j + 1 }" :link="subProduct.prodUrl"
+                :title="subProduct.title" :picture="{
+                  src: subProduct.prodImages[0]?.medium,
+                }" :classes="{
+              card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:[--card-left-col:55px] tw:row-span-4 tw:flow--1',
+              caption: 'tw:min-h-[2lh] tw:mt-cq-md',
+              picture: 'tw:self-center',
+              pictureImage: 'tw:object-contain tw:object-bottom tw:drop-shadow-lg',
+              price: 'heading-lg fluid tw:text-primary',
+              title: 'tw:*:line-clamp-2 tw:grid tw:grid-cols-[min-content_1fr] tw:place-items-center',
+              ctas: 'tw:flow--cq-lg'
+            }" :config="{
+                  mergeConfig: true,
+                  showAllSlots: false,
+                  fixedLayout: 'col',
+                  ctaCover: false,
+                  title: {
+                    size: 'sm',
+                    color: 'primary'
+                  }
+                }">
+              </CardsImageWithInfo>
+            </template>
+          </div>
+
+        </template>
+      </LayoutGrid>
+    </div>
+  </Block>
+
+  <Block class="flow tw:flow--lg tw:overflow-clip" paddingTop="xl" data-surface="primary">
+    <!-- <Heading size="xl" color="primary">
+      Books we love
+    </Heading> -->
+    <div>
+      <LayoutGrid minColumnWidth="20" columnCount="5" type="grid" class="tw:[--image-offset-multiplier:5]">
+        <CardsImageWithInfo link="/" title="Books we love" :classes="{
+          card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1 tw:overflow-visible tw:[--card-gap-column:var(--space-xl)]',
+          picture: 'tw:self-center tw:grid tw:*:relative tw:justify-start tw:@container tw:grid-cols-1',
+          pictureImage: 'tw:object-contain tw:object-bottom tw:drop-shadow-lg',
+          price: 'heading-lg fluid tw:text-primary',
+          title: 'tw:*:line-clamp-2',
+          ctas: 'tw:flow--cq-lg'
+        }" :config="{
+                  mergeConfig: true,
+                  showAllSlots: false,
+                  ctaCover: false,
+                  title: {
+                    size: 'xl',
+                    color: 'primary'
+                  },
+                  directionLayout: {
+                    'row': {
+                      reverseOrder: true
+                    }
+                  }
+                }">
+          <!-- <template #picture>
+            <template v-for="(data, i) in popularRightNowProducts" :key="i">
+                     <img
+                      :src="data.prodImages[0]?.medium"
+                      class="tw:ml-[calc((var(--image-offset)*1%)*var(--image-offset-multiplier,1))] tw:z-[var(--image-z-index)] tw:rotate-[calc(var(--rotate)*1deg)] tw:translate-z-[calc(var(--rotate)*1px]"
+                      :style="{ '--rotate': `${popularRightNowProducts.length * i}`, '--image-offset': `${popularRightNowProducts.length * i}`, '--image-z-index': `${popularRightNowProducts.length - i}` }"
+                    />             
+                  </template>
+          </template> -->
+            <template #picture>
+              <div class="book-wave tw:translate-y-[10%]" :style="{'--total': popularRightNowProducts.length}">
+                <img v-for="(data, i) in popularRightNowProducts" :key="i" :src="data.prodImages[0]?.medium"
+                  :alt="data.title" :style="{
+                    '--i': i,
+                    '--z': popularRightNowProducts.length - i
+                  }" />
+              </div>
+            </template>      
+            <template #content>
+              <p>See recommended books from our team.</p>
+            </template>    
+        </CardsImageWithInfo>
+      </LayoutGrid>
+    </div>
+  </Block>
+
+  <Block class="flow tw:flow--lg" paddingY="2xl">
     <Heading size="xl">
       Popular Right Now
     </Heading>
@@ -211,20 +331,21 @@ const populateProductArray = (count: number) => {
     <LayoutGrid type="grid" minColumnWidth="5" :columns="8">
       <template v-for="(product, i) in populateProductArray(8)" :key="i">
         <CardsImageWithInfo link="/" :title="product.title || ''" :picture="{
-          src: product.prodImages[0]?.medium
+          src: product.prodImages[0]?.medium,
+          lazy: true
         }" :price="{
           rrp: {
             value: product.price.toString()
           }
         }" :ctas="{
-              label: 'Add to basket',
-              href: '/',
-              type: 'outline',
-              size: 'sm',
-              classes: {
-                base: 'btn',
-              },
-            }" :classes="{
+          label: 'Add to basket',
+          href: '/',
+          type: 'outline',
+          size: 'sm',
+          classes: {
+            base: 'btn',
+          },
+        }" :classes="{
               card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
               caption: 'tw:min-h-[2lh] tw:text-default tw:mt-cq-md',
               body: 'tw:contents',
@@ -258,14 +379,14 @@ const populateProductArray = (count: number) => {
             value: product.price.toString()
           }
         }" :ctas="{
-              label: 'Add to basket',
-              href: '/',
-              type: 'outline',
-              size: 'sm',
-              classes: {
-                base: 'btn',
-              },
-            }" :classes="{
+          label: 'Add to basket',
+          href: '/',
+          type: 'outline',
+          size: 'sm',
+          classes: {
+            base: 'btn',
+          },
+        }" :classes="{
               card: 'tw:[--card-left-col:max-content]',
               picture: 'tw:*:max-w-[150px] tw:*:m-cq-lg tw:bg-grey-10'
             }" :config="{
@@ -301,22 +422,23 @@ const populateProductArray = (count: number) => {
             content: 'tw:contents',
             price: 'tw:text-md'
           }" :price="{
-                rrp: {
-                  value: product.price.toString()
-                }
-              }" :ctas="{
-              label: 'Add to basket',
-              href: '/',
-              type: 'outline',
-              size: 'sm',
-              classes: {
-                base: 'btn',
+            rrp: {
+              value: product.price.toString()
+            }
+          }" :ctas="{
+                label: 'Add to basket',
+                href: '/',
+                type: 'outline',
+                size: 'sm',
+                classes: {
+                  base: 'btn',
+                },
+              }" :config="{
+              title: {
+                size: 'sm'
               },
-            }" :config="{
-                title: {
-                  size: 'sm'
-                }
-              }" />
+              fixedLayout: 'row'
+            }" />
         </GlideSlide>
       </template>
     </Glide>
