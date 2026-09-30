@@ -15,6 +15,12 @@
   @layer legacy, revised;
 }
 
+@layer core.revised {
+  @layer pages {
+    @layer base, states, modifiers;
+  }
+}
+
 @layer site {
   @layer components;
 }

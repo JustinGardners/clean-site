@@ -1,101 +1,258 @@
 @use "small-style/scss/base/mixins/rules/components/layout" as *;
 /* === PRODUCT ============================= */
 
-/* === PRODUCT GRID ============================= */
-.product-page {
-    container-type: inline-size;
-    @include wrapper-grid();
-
-    >#body {
-        grid-column: 2/2;
-    }
+@mixin product-detail-grid-layout() {
+    grid-template-columns: repeat(auto-fit, minmax(min(calc((var(--root-max-wrapper-width) * 1px) / 12), 100%), 1fr));
+    column-gap: clamp(var(--space-2xl), 6vw, var(--space-4xl));
+    row-gap: var(--layout-gap);
 }
 
-.pd-product {
-    //   display: flex;
-    //   flex-wrap: wrap;
-    display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
-    grid-template-columns: repeat(auto-fit,minmax(min(calc((var(--root-max-wrapper-width) * 1px) / 12),100%),1fr));
-    gap: clamp(var(--space-2xl), 6vw, var(--space-4xl));
-    padding-block: var(--space-xl);
+/// Make this mixin in small-style
+@mixin temp-surface-color-mixin() {
+    $default-surface-color: get-contrast();
+    $default-surface-color-muted: get-contrast-muted();
+    --color: var(--surface-color, #{$default-surface-color});
+    --color-muted: var(--surface-color-muted, #{$default-surface-color-muted});
+    --bg-color: var(--surface-bg-color, var(--color-light, var(--root-bg, #fff)));
+    color: var(--color);
+    --field-border-color: color-mix(in oklab, var(--bg-color), var(--field-border-color-tint,#000) calc(var(--surface-depth, 1) * 5%) );
+    background-color: var(--bg-color);
 }
 
-.pd-product__column--info {
-    //   flex:1 1 auto;
-    // grid-column: span 2;
-    grid-column: span 2;
-    position: sticky;
-    top: 150px; // change for header height variable
-    align-self: start;   
-    @container (inline-size < 623px) {
-        display: contents;
-        > * {
-            grid-column: 1/-1;
+@layer revised.pages {
+    @layer base {
+        .c-breadcrumbs {
+            grid-column:1/5;
+        }
+
+        .product-page {
+            container-type: inline-size;
+            @include wrapper-grid();
+
+            >#body {
+                grid-column: 2/2;
+                display: contents;
+            }
+        }
+
+        :where(.product-page #body > *) {
+            grid-column: 2/2;
+        }
+
+        .pd-product {
+            display: grid;
+            @include product-detail-grid-layout();
+            padding-block: var(--space-md);
+        }
+
+        :where(.pd-product__column) {
+            grid-row: 2/2;
+        }
+
+        .infoWrap {
+            --variable-unit: 50cqi;
+            container-type: inline-size;                   
+        }
+
+        .pd-product__column--info {
+            //   flex:1 1 auto;
+            // grid-column: span 2;
+            grid-column: span 2;
+            position: sticky;
+            top: 150px; // change for header height variable
+            align-self: start;
+
+            @container (inline-size < 623px) {
+                display: contents;
+
+                >* {
+                    grid-column: 1/-1;
+                }
+            }
+        }
+
+        .pd-product__column--image {
+            max-width: 746px;
+            grid-column: span 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            @container (inline-size < 623px) {
+                display: contents;
+
+                >* {
+                    grid-column: 1/-1;
+                }
+            }
+
+            @container (inline-size > 120ch) {
+                grid-column: span 3;
+            }
+
+            :is(.image, .imageWrap, .jacket, img) {
+                height: 100%;
+            }
+
+            .imageWrap {
+                background-color: var(--tw-color-grey-11);
+                padding: var(--space-md);
+                max-height: min(clamp(490px, 430px + 15vi, 700px), 60vh);
+            }
+
+            .jacket {
+                text-align: center;
+            }
+
+            img {
+                width: 100%;
+                max-width: min(500px, 100%);
+                margin-inline: auto;
+                object-fit: contain;
+            }
+        }
+
+        .titleAuthorContributor {
+            --flow-space: var(--space-xs);
+            font-size: calc(var(--base-default-font-size) * var(--unit, 1rem));
+        }
+
+        .product__sitePrice {
+            font-size: calc(var(--base-2xl-font-size) * var(--unit, 1rem));
+            color: var(--base-primary);
+        }
+
+        .descriptionWrap h2 {
+            color: var(--base-primary);
+        }
+
+        .infoWrap__add-btn {
+            padding-inline: 0;
+            width: 100%;
+            max-width: 25ch;
+        }
+
+        :is(.additionalInfoWrap, .otherFormatsWrap) {
+            padding: var(--layout-gap);
+            border: var(--field-border-width, 1px) solid var(--field-border-color);
+            border-radius: var(--field-border-radius, var(--radius));
+
+            dt {
+                color: var(--base-primary);
+                font-weight: 600;
+                font-size: calc(var(--base-md-font-size) * var(--unit, 1rem));
+            }
+
+            dd {
+                --flow-space: var(--space-3xs);
+            }
+        }
+
+        .pd-product__wrapper {
+            display: contents;
         }
     }
-}
 
-.pd-product__column--image {
-    max-width: 746px;
-    grid-column: span 2;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    @container (inline-size < 623px) {
-        display: contents;
-        > * {
-            grid-column: 1/-1;
+    @layer modifiers {
+        @container style(--layout: editorial) {
+            .pd-product {
+                grid-column: 1/-1;
+                padding-block: 0;
+                column-gap:0;
+            }
+
+            .pd-product__wrapper {
+                display: grid;
+                @include product-detail-grid-layout();
+                gap: 0;
+                grid-template-columns: repeat(auto-fill, 8.33%);
+                grid-column: 1/-1;
+                display:contents;
+            }
+
+            .imageWrap {
+                padding-block: var(--space-lg);
+                max-height: min(max(600px,min(550px + 15vi,680px)),max(67vh,680px));
+            }
+
+            :is(.imageWrap, .additionalMetaSections) {
+                grid-column: span 5;
+                padding-inline-start: var(--wrapper-inline);
+                @container (inline-size > 950px) {
+                    grid-column: span 4;
+                }
+                @container (inline-size > 1540px) {
+                    grid-column: span 6;
+                }                
+            }
+
+            .pd-product__column--image img {
+                object-position: left;
+            }
+
+            :where(.infoWrap, .imageWrap) {
+                @include temp-surface-color-mixin();
+                --surface-bg-color: var(--base-dark);
+            }
+
+            .jacket {
+                text-align: left;
+            }
+
+            .pd-product__column {
+                display: contents;
+            }
+
+            .descriptionWrap {
+                grid-column: 8/-1;
+                grid-row: 3/3;
+            }
+
+            .infoWrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                grid-row: 1/1;
+                $size: display-sm;                 
+                $fluid-font-size: fluid-type-font-size($size);
+                --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};
+                h2 {
+                    font-size: var(--base-display-sm-fluid-type);
+                    --flow-space: var(--space-md);
+                }                
+                > * {
+                    max-width: 40ch;
+                }
+            }
+
+            :is(.infoWrap, .descriptionWrap) {
+                grid-column: 6/-1;
+                padding-inline-start: var(--space-cq-3xl);
+                padding-inline-end: calc(var(--wrapper-inline)* 1);                
+                @container (inline-size > 950px) {
+                    grid-column: 5/-1;
+                }
+                @container (inline-size > 1540px) {
+                    grid-column: 7/-1;
+                }
+            }
+
+            .c-breadcrumbs {
+                grid-row: 2/2;
+                grid-column: 1/-1;
+                padding-inline: var(--wrapper-inline);                
+            }
+
+            .additionalMetaSections {
+                // grid-column: 1/8;
+                grid-row: 3/3;
+                width: calc(100% - var(--space-3xl));
+                // padding-inline-start: calc(var(--wrapper-inline)* 1.5);
+                // margin-inline-end: var(--space-3xl);
+            }
         }
-    }    
-    @container (inline-size > 120ch) {
-        grid-column: span 3;
     }
-    :is(.image, .imageWrap, .jacket, img) {
-        height: 100%;
-    }
-    .imageWrap {
-        background-color: var(--tw-color-grey-11);
-        padding: var(--space-md);
-        max-height: min(clamp(490px, 430px + 15vi, 700px), 60vh);
-    }    
-    .jacket {
-        text-align: center;
-    }
-    img {
-        width: 100%;
-        max-width: min(500px, 100%);    
-        margin-inline: auto;
-        object-fit: contain;
-    }
-}
 
 
 
-.product__sitePrice {
-    font-size: calc(var(--base-2xl-font-size) * var(--unit, 1rem));
-    color: var(--base-primary);
-}
-
-.descriptionWrap h2 {
-    color: var(--base-primary);
-}
-
-.infoWrap__add-btn {
-    padding-inline:0;
-    width:100%;
-}
-
-:is(.additionalInfoWrap, .otherFormatsWrap) {
-    padding: var(--layout-gap);
-    border:var(--field-border-width, 1px) solid var(--field-border-color);
-    border-radius: var(--field-border-radius, var(--radius));
-    dt {
-        color: var(--base-primary);
-        font-weight: 600;
-        font-size: calc(var(--base-md-font-size) * var(--unit, 1rem));
-    }
-    dd {
-        --flow-space: var(--space-3xs);
-    }
 }

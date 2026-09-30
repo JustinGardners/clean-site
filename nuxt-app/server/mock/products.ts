@@ -37,7 +37,7 @@ const impossibleFortune = {
       stockUnits: 500,
       isLimitedStock: false,
       starRating: 5,
-      isPreOrder: false,
+      isPreOrder: true,
       isSellable: true,
       isComingSoon: false,
       contributor: "Richard Osman",

@@ -146,7 +146,7 @@
       }
     }
 
-    :is(.wrapper > *, .card[data-fluid-type-relative]) {
+    :is(.wrapper > *, [data-fluid-type-relative]) {
       @each $size, $value in $font-sizes {
         $fluid-font-size: fluid-type-font-size($size);
         --#{$base-prefix}#{$size}-fluid-type: #{$fluid-font-size};

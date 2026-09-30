@@ -14,18 +14,27 @@ const { data, error } = await useFetch("/api/test-products", {
 });
 
 definePageMeta({
-  layout: "pdp",
+  layout: "pdp-alt",
 });
+
+const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {}).reduce<string[]>((acc, [key, value]) => {
+  if (key === "isPreOrder" && value) acc.push("Pre-Order");
+  if (key === "isComingSoon" && value) acc.push("Coming Soon");
+  if (key === "promotionBadge" && value) acc.push("Limited Edition"); // amend this
+  return acc;
+}, []))
 
 </script>
 
 <template>
   <!-- <pre>{{ data[0] }}</pre> -->
   <!-- <pre>{{ data[0].product.breadcrumbs }}</pre> -->
-  <Breadcrumbs v-if="data && data.length > 0" :items="data[0]?.product.breadcrumbs" />
+
   <!-- <h1>Contributor: {{ contributor }}</h1>
     <p>Has productName: {{ productName }}</p> -->
   <article v-if="data && data.length > 0" class="pd-product">
+      <Breadcrumbs v-if="data && data.length > 0" :items="data[0]?.product.breadcrumbs" />
+    <div class="pd-product__wrapper">
     <section class="pd-product__column pd-product__column--image flow">
       <MainImage :title="data[0]?.product.raw.title || ''"
         :image-src="data[0]?.product.raw.prodImages[0]?.large || ''" />
@@ -36,9 +45,18 @@ definePageMeta({
     </section>
     <section class="pd-product__column pd-product__column--info flow">
       <div class="infoWrap flow">
+        <div class="badges tw:flex tw:gap-x-2xs">
+          <div class="badge tw:px-2xs tw:py-3xs tw:inline-flex" data-surface="warning" v-for="label in badges" :key="label">{{ label }}</div>
+        </div>
+        
         <Heading size="2xl" fluid color="primary">{{ data[0]?.product.raw.title }}</Heading>
-        <p class="titleAuthorContributor titleAuthorContributor--authorContributor">by <a href="#">{{
+        <p class="titleAuthorContributor">by <a href="#">{{
           data[0]?.product.raw.contributor }}</a></p>
+        <div class="product__rating">
+          <ul class="tw:grid tw:grid-cols-5 tw:max-w-fit">
+            <li v-for="n in 5" :key="n" :class="{ 'tw:marker:text-primary': n <= (data[0]?.product.raw.starRating || 0) }"></li>
+          </ul>
+        </div>
         <p class="product__title--series">{{ data[0]?.product.raw.series }}</p>
         <p class="product__title--format">{{ data[0]?.product.raw.format }}</p>
         <p v-if="data[0]?.product.raw.series" class="titleAuthorContributor titleAuthorContributor--series">Part of the
@@ -49,6 +67,7 @@ definePageMeta({
 
         <Button size="lg" modifier="wide" class="infoWrap__add-btn">Add to basket</Button>
       </div>
+      <div class="additionalMetaSections flow">
       <div class="additionalInfoWrap flow">
         <Heading size="lg" fluid color="primary">Information</Heading>
         <dl class="flow">
@@ -111,9 +130,13 @@ definePageMeta({
           </template>        
         </div>
 
+      </div>        
       </div>
 
+
     </section>
+    </div>
+
   </article>
 
 
