@@ -86,7 +86,10 @@ const chunkArray = (array: any[], size: number) => {
     </div>
   </section> -->
   <Hero title="Hero" :config="{
-    backdrop: true
+    backdrop: true,
+    title: {
+      size: 'display-lg'
+    }
   }" />
 
   <Block paddingY="xl">

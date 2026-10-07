@@ -1,0 +1,23 @@
+@use "../../framework/base/mixins/buttons" as *;
+
+@layer revised.pages.base {
+    .form-group {
+        // this should extend from small-style ideally
+        display: grid;
+        grid-auto-flow: row;
+        gap: calc(var(--layout-gap)/2);
+        position: relative;
+        label {
+            font-size: calc(var(--base-default-font-size) * var(--unit, var(--font-size-base, 1rem)));
+            color: var(--label-color, var(--color, var(--base-primary)));
+        }
+    }
+
+    .form-group+.form-group {
+        margin-top: var(--space-xs);
+    }
+
+    button[type="submit"] {
+        @include button-rules();
+    }
+}

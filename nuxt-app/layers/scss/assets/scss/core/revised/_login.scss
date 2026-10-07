@@ -1,0 +1,66 @@
+@use "small-style/scss/base/mixins/rules/components/layout" as *;
+@use "small-style/scss/base/mixins/rules/components/flow" as *;
+
+@layer revised.pages {
+    @layer base {
+        .myAccountHeader {
+            h2 {
+                font-size: calc(var(--base-display-sm-font-size,2.35261) * var(--unit,var(--font-size-base,1rem)));
+                padding-block: var(--space-sm) var(--space-md);
+            }
+        }
+        main#main-section:has(.myAccountMain) {
+            @include wrapper;
+            @include flex-layout-grid;
+        }
+        .myAccountMain {
+            @include flex-layout-grid;
+        }
+        .myAccountSection {
+            --field-border-width: 4px;
+            position: relative;
+            border: var(--field-border-width, 1px) solid var(--field-border-color);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            h4 {
+                font-size: calc(var(--base-display-xxs-font-size) * var(--unit,var(--font-size-base,1rem)));
+            }
+        }
+        .customerReturning {
+            --flex-grid-min: 70ch;
+        }
+        .newRegistration {
+            place-content: center;
+            form > *:not(input) + * {
+                @include flow();
+            }      
+            .loginGuestButtons button:before {
+                content: '';
+                display:block;
+                position: absolute;
+                inset:0;
+            }      
+        }
+        .loginGuestButtons {
+            display: flex;
+            justify-content: center;
+        }
+        .myAccountMain .form-group.pass > input[name="Password"] + .custom-control {
+            position: absolute;
+            top:0;
+            right:0;
+        }
+
+        .loginSignUpButtons {
+            margin-top: var(--space-md);
+            button {
+                width:100%;
+            }
+        }
+
+        .forgottenPassword {
+            margin-top: var(--space-md);
+        }
+
+    }
+}

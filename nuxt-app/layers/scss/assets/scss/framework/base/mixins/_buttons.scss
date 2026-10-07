@@ -1,5 +1,5 @@
 @mixin button-default-props() {
-  --#{$prefix}btn-padding-x: #{$btn-padding-x};
+  --#{$prefix}btn-padding-x: var(--text-frame-x, #{$btn-padding-x});
   --#{$prefix}btn-padding-y: #{$btn-padding-y};
   --#{$prefix}btn-font-family: #{$btn-font-family};
 }

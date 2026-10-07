@@ -10096,7 +10096,7 @@ body .internetExNote p {
   background: currentColor;
   height: 1.2em;
   aspect-ratio: 1/1;
-  mask: url("../Content/System/Images/book-open.svg") no-repeat 50%;
+  /* mask: url("../Content/System/Images/book-open.svg") no-repeat 50%; */
   mask-size: contain;
 }
 #header .navExtraButtons ul li a:hover {
