@@ -1,0 +1,6 @@
+:root {
+  /// $prefix in output-props doesn't work here as values don't get the prefix applied
+  @include output-props(pick-keys($_small-style-base-config-variables, $config-pick-keys)...);
+  // --font-size-base: #{$font-size-base};
+  --text-frame-x: #{$text-frame-x};
+}

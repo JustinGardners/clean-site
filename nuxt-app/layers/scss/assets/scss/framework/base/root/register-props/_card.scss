@@ -1,0 +1,11 @@
+  @property --card-backdrop-color-stop-from-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1;
+  }
+
+  @property --card-backdrop-color-stop-to-opacity {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }

@@ -10,7 +10,7 @@
       container-type: inline-size;
     }
 
-    :where(.card) {
+    :where(.card) {      
       --card-body-padding-inline: max(var(--space-cq-lg),
           var(--card-body-padding-inline-min, calc(var(--space-cq-base) * 2)));
       --card-body-padding-block: max(var(--space-cq-lg),

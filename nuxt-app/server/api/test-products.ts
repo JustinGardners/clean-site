@@ -13,30 +13,20 @@ export default defineEventHandler((event) => {
     productName,
   })
 
-  if (!contributor) {
-    return []
-  }
-
-  if(productName) {
-    return products.filter((product) => {
-      const actualContributor = product?.product?.raw?.contributor
-      const actualProductName = product?.product?.raw?.title
-
-      return (
-        typeof actualContributor === "string" &&
-        actualContributor.toLowerCase().includes(contributor.toLowerCase()) &&
-        typeof actualProductName === "string" &&
-        actualProductName.toLowerCase().includes(productName.toLowerCase())
-      )
-    })
-  }
-
   return products.filter((product) => {
     const actualContributor = product?.product?.raw?.contributor
-    return (
+    const actualProductName = product?.product?.raw?.title
+
+    const matchesContributor = !contributor || (
       typeof actualContributor === "string" &&
       actualContributor.toLowerCase().includes(contributor.toLowerCase())
     )
+    const matchesProductName = !productName || (
+      typeof actualProductName === "string" &&
+      actualProductName.toLowerCase().includes(productName.toLowerCase())
+    )
+
+    return matchesContributor && matchesProductName
   })
 })
 

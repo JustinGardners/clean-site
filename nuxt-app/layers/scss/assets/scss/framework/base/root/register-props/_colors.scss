@@ -1,0 +1,37 @@
+  @property --site-grey-c {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0.01;
+  }
+
+  @property --contrast-muted-lightest-text {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0.4;
+  }
+
+  @each $key, $value in $register-lch {
+  $name: $key;
+  $syntax: map-get($value, "syntax");
+  $inherits: map-get($value, "inherits");
+  $initial-value: map-get($value, "initial-value");
+  @include register-prop($site-prefix + $name,
+    $syntax,
+    $inherits,
+    $initial-value );
+}
+
+@each $color in $generate-lightness-range-from {
+  $lightness: map-deep-get($lch-colors, $color, "l");
+  $lightness-range-map: generate-lightness-step($lightness,
+      $generate-lightness-range-count,
+      0.95,
+      0.1);
+
+  @for $i from 1 through length($lightness-range-map) {
+    @include register-prop($site-prefix + $color + "-l-" + ($i - 1),
+      "<number>",
+      true,
+      nth($lightness-range-map, $i));
+  }
+}

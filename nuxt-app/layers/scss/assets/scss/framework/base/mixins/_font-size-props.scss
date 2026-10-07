@@ -1,0 +1,37 @@
+@mixin heading-text-transform($heading-name, $text-transform) {
+ --text-transform: var(--#{$heading-name}-text-transform, #{$text-transform});
+}
+
+@mixin heading-letter-spacing($heading-name, $letter-spacing) {
+ --letter-spacing: var(--#{$heading-name}-letter-spacing, #{$letter-spacing});
+}
+
+@mixin heading-font-family($heading-name, $font-family) {
+ --font-family: var(--#{$heading-name}-font-family, #{$font-family});
+}
+
+@mixin heading-line-height($heading-name, $line-height) {
+ --line-height: var(--#{$heading-name}-line-height, #{$line-height});
+}
+
+@mixin output-heading-rules($map, $heading-name, $heading-size, $use-heading-size: true) {
+  @if (map-has-key($map, "size")) {
+    $size: map.get($map, "size");
+    @if $use-heading-size {
+        @include heading-size($size, $heading-sizes);
+    }
+  }
+
+    $text-transform: if(map-has-key($map, "text-transform"), if(map.get($map, "text-transform") != '', map.get($map, "text-transform"), none), none);
+    $letter-spacing: if(map-has-key($map, "letter-spacing"), if(map.get($map, "letter-spacing") != '', map.get($map, "letter-spacing"), normal), normal);
+    // $line-height: if(map-has-key($map, "line-height"), if(map.get($map, "line-height") != '', map.get($map, "line-height"), normal), normal);
+    // $color: if(map-has-key($map, "color"), if(map.get($map, "color") != '', map.get($map, "color"), inherit), inherit);
+    $font-family: if(map-has-key($map, "font-family"), if(map.get($map, "font-family") != '', map.get($map, "font-family"), var(--font-family-heading)), var(--font-family-heading));
+    
+    // --text-transform: var(--#{$heading-name}-text-transform, #{$text-transform});
+    @include heading-text-transform($heading-name, $text-transform);
+    @include heading-letter-spacing($heading-name, $letter-spacing);
+    // @include heading-line-height($heading-name, $line-height);
+    // --color-heading: var(--#{$heading-name}-color, #{$color});
+    @include heading-font-family($heading-name, $font-family);
+}

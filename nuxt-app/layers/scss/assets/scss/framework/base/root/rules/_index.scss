@@ -1,0 +1,32 @@
+html {
+  container-type: scroll-state;
+  scrollbar-gutter: stable;
+}
+
+:is(html, body) {
+  min-height: 100%;
+}
+
+body {
+  @include html-body-styles();
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--root-fg);
+  background-color: var(--root-bg);
+  line-height: var(--line-height-base, calc(var(--line-height-relative, 1.4em) + (var(--line-height-fixed, 0.375) * 1rem)));
+}
+
+:where(a):not(.btn) {
+  @include anchor-not-button-styles();
+  color: inherit;
+}
+
+:where(p) {
+  @include paragraph-styles();
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+}

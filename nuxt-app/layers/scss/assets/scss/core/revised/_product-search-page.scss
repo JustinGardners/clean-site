@@ -1,0 +1,149 @@
+@use "small-style/scss/base/mixins/rules/components/layout" as *;
+@use "small-style/scss/base/variables/_breakpoints" as *;
+@use "small-style/scss/base/mixins/rules/components/flow" as *;
+@use "../../framework/base/mixins/buttons" as *;
+
+.container-md:has(> #searchResultsWrap) {
+    --search-results-gap-md-n-up: var(--space-xl);
+    all: unset;
+    display: block;
+    @include wrapper();
+    margin-inline: auto;
+    // @include layout-grid(true);
+}
+
+#searchResultsWrap {
+    --aside-width: 250px;
+    --gap: calc(var(--layout-gap) * 2);
+    column-gap: var(--gap);
+    > * {
+        all:unset;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+}
+
+#leftNav {
+    flex-basis: var(--aside-width);
+}
+
+#searchResults {
+    flex-basis: max(550px, calc(100% - (var(--aside-width) + var(--gap))));  
+    container: search-results / inline-size;
+
+}
+
+.searchControlsBar {
+    grid-column:1/-1;
+    margin-top: var(--search-results-padding-block-start, var(--space-md));
+    &:first-of-type {
+        @media (--md-n-below) {
+            @supports (top: anchor(--header bottom)) {
+                align-self: flex-start;
+                top: anchor(--header bottom);
+                position-anchor: --header;
+                position: fixed;
+                z-index: 11;
+                background: var(--root-bg);
+                width:100%;
+                left:0;
+                margin-top:0;
+            }
+        }
+    }
+}
+
+.searchResultItems {
+    --layout-column-min: 10ch;
+    --column-count: 2;
+    @include layout-grid(true);
+    @include layout-grid-column-count();
+    row-rule: var(--core-search-result-row-border-width, 1px) solid var(--core-search-result-row-border-color, var(--field-border-color));
+    @media (--sm-n-above) {
+        --column-count: 3;
+    }
+    @media (--md-n-above) {
+        --column-count: 4;
+        --layout-gap: var(--search-results-gap-md-n-up);
+    }
+    .card-picture {
+        img {
+            max-height:20vh;
+        }
+    }
+}
+
+@container search-results (550px < inline-size < 800px) {
+    .searchResultItems {
+        --column-count: 3;
+    }
+}
+
+.pagination {
+    display: flex;
+    list-style-type: none;
+}
+
+#refineBy > * + * {
+    @include flow();
+}
+
+.itemsPerPageForm {
+    > form {
+        display: flex;
+        flex-wrap:wrap;
+    }
+    .filterClicker {
+        @include button-rules();
+        @include button-outline-props();
+        --base-btn-theme: var(--base-primary);
+    }
+    @media (--md-n-above) {
+        .filterClicker {
+            display: none;
+        }
+    }
+}
+
+:is(.changeItemsPerPage) {
+    flex: 1 1 calc(50% - (var(--space-sm) * 4));
+    background: var(--tw-color-grey-11);
+    padding-block: var(--space-sm);
+    padding-inline: var(--text-frame-x);
+    gap: var(--space-sm);
+    display: flex;
+    label {
+        display:flex;
+        align-items: center;
+    }
+}
+
+.itemsPerPage {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.foundProducts {
+    flex: 1 1 100%;
+}
+
+.searchResultItems > .searchControlsBar:first-of-type {
+    .pageNavigation {
+        display: none;
+    }
+}
+
+.facetDetailList {
+    list-style-type: none;
+}
+
+.refineItem > h5 + .facetDetailList {
+    margin-top: var(--space-2xs);
+}
+
+.foundProducts {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-xs);
+    font-size: calc(var(--base-xs-font-size) * 1rem);    
+}

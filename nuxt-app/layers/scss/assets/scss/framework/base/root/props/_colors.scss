@@ -1,0 +1,62 @@
+@each $color in $generate-lightness-range-from {
+  $lightness: map-deep-get($lch-colors, $color, "l");
+  $lightness-range-map: generate-lightness-step($lightness,
+      $generate-lightness-range-count,
+      0.95,
+      0.1);
+
+  :root {
+    @for $i from 1 through length($lightness-range-map) {
+      // moved this to tailwind - will need to combine tailwind and SCSS utimately - create a new function to get these values
+      // --#{$base-prefix}#{$color}-#{$i - 1}: oklch(var(--#{$base-prefix}#{$color}-l-#{$i - 1}, var(--#{$base-prefix}#{$color}-l)) var(--#{$base-prefix}#{$color}-c-#{$i - 1}, var(--#{$base-prefix}#{$color}-c)) var(--#{$base-prefix}#{$color}-h-#{$i - 1}, var(--#{$base-prefix}#{$color}-h)));
+      --#{$base-prefix}#{$color}-l-#{$i - 1}: var(--#{$site-prefix}#{$color}-l-#{$i - 1});
+    }
+  }
+}
+
+:root {
+  @each $color in $generate-lightness-range-from {
+    $lightness: map-deep-get($lch-colors, $color, "l");
+    $chroma: map-deep-get($lch-colors, $color, "c");
+    $hue: map-deep-get($lch-colors, $color, "h");
+
+    @for $i from 1 through $generate-lightness-range-count {
+      --#{$base-prefix}#{$color}-contrast-#{$i - 1}: oklch(from var(--color,
+          var(--#{$base-prefix}#{$color}-#{$i - 1},
+            var(--tw-color-#{$color}-#{$i - 1}))) clamp(var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-lightest-text,
+            var(--contrast-lightest-text, 0)),
+          (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
+          var(--#{$base-prefix}#{$color}-contrast-#{$i - 1}-darkest-text,
+            var(--contrast-darkest-text, 1))) 0 h);
+    }
+  }
+}
+
+
+:root {
+  $root-fg: if($muted-root-fg, get-contrast-muted(var(--root-bg)), get-contrast(var(--root-bg)));
+  --root-fg: var(--#{$site-prefix}site-root-fg, #{$root-fg});
+  --root-bg: var(--#{$site-prefix}root-bg, color-mix(var(--#{$tw-prefix}color-grey-11, #fff 65%), #fff));  
+  --#{$base-prefix}grey-c: var(--#{$site-prefix}grey-c, 0.01);
+
+  @each $key, $value in $theme-colors {
+    @if map-has-key($lch-colors, $key) {
+      $lch: map.get($lch-colors, $key);
+      $l: map.get($lch, l);
+      $c: map.get($lch, c);
+      $h: map.get($lch, h);
+      --#{$base-prefix}#{$key}-l: var(--#{$site-prefix}#{$key}-l, #{$l});
+      --#{$base-prefix}#{$key}-c: var(--#{$site-prefix}#{$key}-c, #{$c});
+      --#{$base-prefix}#{$key}-h: var(--#{$site-prefix}#{$key}-h, #{$h});
+      --#{$base-prefix}#{$key}: oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h));
+      --#{$base-prefix}#{$key}-contrast: oklch(from var(--color, var(--#{$base-prefix}#{$key})) clamp(var(--#{$base-prefix}#{$key}-contrast-lightest-text,
+            var(--contrast-lightest-text, 0)),
+          (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
+          var(--#{$base-prefix}#{$key}-contrast-darkest-text,
+            var(--contrast-darkest-text, 1))) 0 h);
+    }
+  }
+
+  --#{$base-prefix}primary-fallback: #{$primary};
+  --#{$base-prefix}secondary-fallback: #{$secondary};
+}

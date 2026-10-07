@@ -1,0 +1,25 @@
+@each $size, $meta in $font-sizes {
+  $font-level: map.get($meta, "font-level");
+
+  @if $font-level != null {
+    @include register-prop($site-prefix + $size + "-font-ratio-min", "<number>", true, 1.2);
+    @include register-prop($site-prefix + $size + "-font-ratio-max", "<number>", true, 1.5);
+    @include register-prop($site-prefix + $size + "-font-width-min", "<number>", true, 375);
+    @include register-prop($site-prefix + $size + "-font-width-max", "<number>", true, 1440);
+    @include register-prop($site-prefix + $size + "-variable-unit", "<length>", true, 100vi);
+    @include register-prop(
+      $base-prefix + $size + "-fluid-type",
+      "<length>",
+      true,
+      site-font-size($size, px) + "px"
+    );
+  }
+}
+
+@each $key, $value in $type-sizes {
+  $result-px: site-font-size($key, px, false);
+  @include register-prop($site-prefix + $key + "-font-size-px",
+    "<number>",
+    true,
+    $result-px );
+}

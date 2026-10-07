@@ -32,9 +32,9 @@ const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {})
 
   <!-- <h1>Contributor: {{ contributor }}</h1>
     <p>Has productName: {{ productName }}</p> -->
-  <article v-if="data && data.length > 0" class="pd-product">
-      <Breadcrumbs v-if="data && data.length > 0" :items="data[0]?.product.breadcrumbs" />
+  <article v-if="data && data.length > 0" class="pd-product">      
     <div class="pd-product__wrapper">
+      <Breadcrumbs v-if="data && data.length > 0" :items="data[0]?.product.breadcrumbs" />
     <section class="pd-product__column pd-product__column--image flow">
       <MainImage :title="data[0]?.product.raw.title || ''"
         :image-src="data[0]?.product.raw.prodImages[0]?.large || ''" />
@@ -49,7 +49,7 @@ const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {})
           <div class="badge tw:px-2xs tw:py-3xs tw:inline-flex" data-surface="warning" v-for="label in badges" :key="label">{{ label }}</div>
         </div>
         
-        <Heading size="2xl" fluid color="primary">{{ data[0]?.product.raw.title }}</Heading>
+        <Heading size="display-sm" fluid color="primary">{{ data[0]?.product.raw.title }}</Heading>
         <p class="titleAuthorContributor">by <a href="#">{{
           data[0]?.product.raw.contributor }}</a></p>
         <div class="product__rating">

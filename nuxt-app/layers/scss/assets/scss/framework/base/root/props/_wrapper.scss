@@ -1,0 +1,3 @@
+:root {
+  @include output-props(pick-keys($_small-style-base-wrapper-variables, $wrapper-pick-keys)...);
+}

@@ -27,7 +27,7 @@
   top: 0;
   background: $surface-100;
   border-bottom: 1px solid $surface-94;
-
+  anchor-name: --header;
   @media (--md-n-below) {
     padding-bottom: 0.75rem;
     margin-bottom: 0.75rem;

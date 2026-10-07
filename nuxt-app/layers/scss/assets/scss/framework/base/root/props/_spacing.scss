@@ -1,0 +1,46 @@
+:root {
+  // TODO: Update small-style to change space-increment to a custom prop
+  @include output-props(exclude-keys($_small-style-base-spacing-variables, register-spacing)...);
+  --space-cq-base: var(--unit,
+      clamp(var(--unit-min, 0.25rem),
+        var(--unit-fluid-cq, 1cqi),
+        var(--unit-max, 1rem)));
+  --space-cq-3xs: calc(var(--space-cq-2xs) / 1.38);
+  --space-cq-2xs: calc(var(--space-cq-xs) / 1.38);
+  --space-cq-xs: calc(var(--space-cq-sm) / 1.38);
+  --space-cq-sm: var(--unit,
+      clamp(var(--unit-min, 0.25rem),
+        var(--unit-fluid-cq, 1cqi),
+        var(--unit-max, 1rem)));
+  --space-cq-md: calc(var(--space-cq-sm) * 1.38);
+  --space-cq-lg: calc(var(--space-cq-md) * 1.38);
+  --space-cq-xl: calc(var(--space-cq-lg) * 1.38);
+  --space-cq-2xl: calc(var(--space-cq-xl) * 1.38);
+  --space-cq-3xl: calc(var(--space-cq-2xl) * 1.38);
+  --space-cq-4xl: calc(var(--space-cq-3xl) * 1.38);
+  --space-cq-5xl: calc(var(--space-cq-4xl) * 1.38);
+  --space-cq-6xl: calc(var(--space-cq-5xl) * 1.38);
+
+  --space-section-gap: calc(var(--layout-gap) * 1.75);
+  --space-section-gap-lg: calc(var(--space-section-gap) * var(--space-increment));
+  --space-section-gap-xl: calc(var(--space-section-gap-lg) * var(--space-increment));
+  --space-section-gap-2xl: calc(var(--space-section-gap-xl) * var(--space-increment));
+  --space-section-gap-3xl: calc(var(--space-section-gap-2xl) * var(--space-increment));
+  --space-section-gap-4xl: calc(var(--space-section-gap-3xl) * var(--space-increment));
+
+  @supports (--css: calc(16 * pow(var(--space-increment), 1))) {
+    --space-cq-3xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -3));
+    --space-cq-2xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -2));
+    --space-cq-xs: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), -1));
+    --space-cq-sm: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 0));
+    --space-cq-md: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 1));
+    --space-cq-lg: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 2));
+    --space-cq-xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 3));
+    --space-cq-2xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 4));
+    --space-cq-3xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 5));
+    --space-cq-4xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 6));
+    --space-cq-5xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 7));
+    --space-cq-6xl: calc(var(--space-cq-base) * pow(var(--space-increment, 1.25), 8));
+  }
+
+}

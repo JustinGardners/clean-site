@@ -1,0 +1,11 @@
+:root {
+  @include output-props(pick-keys($_small-style-base-layout-variables, $layout-pick-keys)...);
+  --layout-column-min: #{map.get(
+ $_small-style-base-config-variables,
+  "layout-column-min"
+  )
+}
+
+;
+--layout-gap: #{map.get($_small-style-base-config-variables, "layout-gap")};
+}

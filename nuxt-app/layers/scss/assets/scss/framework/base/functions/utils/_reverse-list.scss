@@ -1,0 +1,9 @@
+@function reverseList($list, $separator:comma) {
+  $reversedList: null;
+  
+  @for $i from length($list) to 0 {
+    $reversedList: append($reversedList, nth($list, $i), $separator);
+  }
+  
+  @return $reversedList;
+}

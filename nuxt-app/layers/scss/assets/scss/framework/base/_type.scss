@@ -6,9 +6,31 @@
       }
     }
 
-    :is([class*="heading-"]) {
-      line-height: calc(calc(var(--line-height-relative) + var(--line-height-fixed))); // TEMP - incorporate properly
+    :is([class*="heading-"], [class*="display-"]) {
+      $heading-color: get-contrast(var(--root-bg));
+      color: var(--color, var(--#{$base-prefix}heading-color, #{$heading-color}));
+      line-height: calc(var(--line-height-relative) + (var(--line-height, var(--line-height-fixed)) * 1rem));
+      text-transform: var(--text-transform, none);
+      letter-spacing: var(--letter-spacing, normal);
     }    
+
+
+      @each $size, $value in $font-sizes {
+        $is-display-size: list.index(reverseList($type-sizes-display), $size);
+        $line-height: if(map-has-key($value, "line-height"), if(map.get($value, "line-height") != '', map.get($value, "line-height"), calc(var(--line-height-relative) + var(--line-height-fixed))), calc(var(--line-height-relative) + var(--line-height-fixed)));
+        // @debug $size $line-height;
+        @if($is-display-size) {
+          $display-size-level: $is-display-size - 1;
+          :is(.display-#{$display-size-level}, .heading-#{$size}) {        
+            @include heading-line-height(#{$site-prefix}#{$size}, $line-height);
+          }
+        } @else {
+          .heading-#{$size} {                
+            @include heading-line-height(#{$site-prefix}#{$size}, $line-height);
+          }
+        }
+      }
+
 
     @each $heading, $value in $headings {
       $size: map.get($value, "size");
@@ -16,7 +38,10 @@
       :is(#{$heading}:not([class*="heading-"]), .heading-#{$size}, .#{$heading}:not([class*="heading-"])) {        
         &.fluid {
             font-size: var(--#{$base-prefix}#{$size}-fluid-type);
-        }        
+        }   
+        
+        @include output-heading-rules($value, #{$base-prefix}#{$size}, $font-sizes, false);
+
         // CHECK THIS WORKS BELOW
         @supports not (width: calc(10px * pow(5, 2))) {
           @media (min-width: $rfs-breakpoint) {
