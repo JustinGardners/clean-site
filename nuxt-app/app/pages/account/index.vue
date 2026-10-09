@@ -17,7 +17,7 @@ definePageMeta({
         <div class="myAccountContents">
             <div class="myAccountHeader">
                 <h2>Login or Register</h2>
-                {{ loginForm }}
+                <!-- {{ loginForm }} -->
             </div>
             <div class="myAccountMain">
 

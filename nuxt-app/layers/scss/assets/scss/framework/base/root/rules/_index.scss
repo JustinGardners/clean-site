@@ -23,6 +23,7 @@ body {
 
 :where(p) {
   @include paragraph-styles();
+  line-height: calc(var(--line-height-relative) + var(--line-height-fixed));
 }
 
 @media (prefers-reduced-motion: no-preference) {

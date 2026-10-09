@@ -27,6 +27,15 @@
       }
     }
 
+    .card-body__content__ctas {
+        @container (inline-size < 230px) {
+        .btn {
+          --bs-btn-padding-x: max(10cqi, 1rem);
+          width:100%;
+        }
+      }
+    }
+
     //move into small-style
     .card-body__content__ctas--hide {
       .btn:only-of-type {

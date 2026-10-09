@@ -1,0 +1,209 @@
+$use-new-header: false;
+
+@if $use-new-header == false {
+
+    #headerWrap {
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 0;   
+        // background: var(--core-header-bg, var(--root-bg));
+        z-index:10;
+    }
+
+    #header {
+        --logo-track: max-content;
+        --search-track: minmax(0, 1fr);
+        --menu-track: 4.4em;
+        --account-track: 4.4em;
+        --wishlist-track: 4.4em;
+        --basket-track: max-content;        
+        --logo-mask: var(--logo-sm-screen, var(--logo-letterform, url("/assets/sprite/svg/storefront-icon.svg")));
+        --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));      
+        --logo-height: var(--logo-height-sm-screen, 2rem);
+        background: var(--core-header-bg, var(--root-bg));
+        padding-block-start: var(--core-header-padding-block-start, var(--space-md));
+        padding-block-end: var(--core-header-padding-block-end, var(--space-md));
+        border-bottom: 1px solid var(--core-nav-border-color, var(--field-border-color));
+        z-index: 13;     
+        .row {
+            display:grid;
+            // grid-template-columns: [logo] var(--logo-track) [search] var(--search-track) [menu] var(--menu-track) [account] var(--account-track) [wishlist] var(--wishlist-track) [basket] var(--basket-track);
+            grid-template-columns: [logo] var(--logo-track) [search] var(--search-track) [account] var(--account-track) [wishlist] var(--wishlist-track) [basket] var(--basket-track);
+        }
+    }
+
+    .header__logo {
+        mask: var(--logo-mask) center / 100% 100% no-repeat;
+        background: var(--base-primary);        
+        block-size: var(--logo-height);
+        aspect-ratio: var(--logo-aspect);
+        display: inline-flex;
+        h1 {
+            @include visually-hidden;
+        }
+    }
+
+    #storeLogo {
+        grid-area: logo;
+        inline-size: max-content;
+        display: grid;
+        place-content: center;
+    }
+
+    #miniBasket {
+        grid-area: basket;
+        border-radius: var(--radius);
+        background: var(--tw-color-grey-11);        
+        display: grid;
+        place-content: center;
+        padding-inline: var(--text-frame-x);
+        padding-block: var(--text-frame-y); 
+        margin-inline-start: var(--space-md);       
+        .basketText {
+            display: none;
+        }
+    }
+
+    #navSupport {
+        grid-area: account;
+        display: grid;
+        justify-content: center;
+        .smallText {
+            @include visually-hidden;
+        }
+    }
+
+    #wishlistLink {
+        grid-area: wishlist;
+        display: grid;
+    }
+
+    :is(#navSupport, #wishlistLink) {
+        position: relative;
+        a:after {
+            content: "";
+            width: 4.5em;
+            border-radius: 50%;
+            display: block;
+            aspect-ratio: 1;
+            background: var(--tw-color-grey-11);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity:0;
+        }
+        @media (--mouse) {
+            a:focus:after {
+                opacity:1;
+            }
+        }
+    }
+
+    #searchBar {
+        grid-area: search;
+        > form {
+            width: calc(min(100%, var(--core-search-max-width, 765px)) - var(--space-xl));
+            margin-inline: auto;
+        }
+    }
+
+    #searchBox {
+        $input-color: get-contrast(var(--input-bg));
+        --input-bg: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.0025) c h);    
+        --input-color: #{$input-color};   
+        display: grid;
+        grid-template-columns: [input] 1fr [product-type] auto [submit] auto;     
+        :is(label[for="keyword"], label[for="productType"]) {
+            @include visually-hidden;
+        }   
+        #keyword {
+            grid-area: input;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;                 
+        }
+        .productType {
+            // grid-area: product-type;
+            display: contents;
+        }
+        #productType {
+            // border-top-left-radius: 0;
+            // border-bottom-left-radius: 0;
+            border-radius: 0;
+            grid-area: product-type;
+            border:0;
+        }
+        input[type="submit"] {
+            grid-area: submit;
+            border-top-right-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+        }
+    }
+
+    #searchClicker {
+        display: none;
+    }
+
+    .navExtraButtons {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        display: none;
+    }
+
+    #navButton {
+        grid-area: menu;
+        @media (--md-n-above) {
+            display: none;
+        }
+    }
+
+    .navMyAccount {
+        span {
+            display: none;
+        }
+    }
+
+    #dropdownMenuLink {
+        --icon-mask: url('data:image/svg+xml,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8992 25.001C9.68643 25.0243 7.493 24.5875 5.45805 23.7181C3.42309 22.8488 1.59106 21.5659 0.0781957 19.951C-0.0368043 19.827 -0.00982598 19.744 0.062174 19.622C1.34804 17.5969 3.2964 16.0804 5.57517 15.331C8.01978 14.4199 10.6325 14.0485 13.2342 14.242C15.7516 14.3532 18.2093 15.0448 20.4152 16.263C21.8679 17.0473 23.0858 18.2038 23.9442 19.614C23.9654 19.641 23.981 19.672 23.9902 19.7051C23.9995 19.7381 24.0021 19.7727 23.9979 19.8068C23.9937 19.8409 23.9828 19.8739 23.9659 19.9038C23.949 19.9336 23.9263 19.9599 23.8992 19.981C21.371 22.6926 17.9593 24.4146 14.2762 24.838C13.9512 24.884 13.6232 24.915 13.2952 24.938C12.8582 24.966 12.4192 24.978 11.8992 25.001Z" fill="white"/><path d="M12.0162 12.826C10.7477 12.827 9.50735 12.4518 8.45213 11.7478C7.3969 11.0438 6.57414 10.0427 6.08793 8.87107C5.60172 7.69946 5.4739 6.40997 5.72062 5.16569C5.96734 3.92142 6.5775 2.77826 7.47398 1.88081C8.37045 0.983355 9.51296 0.371914 10.757 0.123835C12.001 -0.124243 13.2906 0.00218594 14.4627 0.487117C15.6349 0.972048 16.6369 1.7937 17.342 2.84816C18.0471 3.90261 18.4237 5.14251 18.4241 6.41101C18.4231 8.11083 17.7479 9.74083 16.5465 10.9434C15.3452 12.1461 13.716 12.8231 12.0162 12.826Z" fill="white"/></svg>');
+    }
+
+    #wishlistLink {
+        --icon-mask: url('data:image/svg+xml,<svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.1494 1.94496C21.5629 1.32835 20.8667 0.839213 20.1003 0.50549C19.334 0.171768 18.5126 0 17.6831 0C16.8535 0 16.0321 0.171768 15.2658 0.50549C14.4994 0.839213 13.8032 1.32835 13.2167 1.94496L11.9997 3.22404L10.7826 1.94496C9.59811 0.700036 7.99152 0.000645287 6.31633 0.0006453C4.64114 0.000645313 3.03455 0.700036 1.85001 1.94496C0.665469 3.18988 1.24812e-08 4.87836 0 6.63895C-1.24812e-08 8.39954 0.665469 10.088 1.85001 11.3329L3.06705 12.612L11.9997 22L20.9323 12.612L22.1494 11.3329C22.7361 10.7166 23.2015 9.98485 23.519 9.17944C23.8366 8.37403 24 7.51076 24 6.63895C24 5.76714 23.8366 4.90387 23.519 4.09846C23.2015 3.29305 22.7361 2.56128 22.1494 1.94496Z" fill="%2300149C"/></svg>');
+    }
+
+    #uxSmallBasketQuantity {
+        .text {
+            display: none;
+        }
+    }
+
+    #header :is(#wishlistLink>a,#navSupport #dropdownMenuLink,#navButton .navbarToggle) {
+        font-size: var(--base-xs-fluid-type);
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        row-gap: var(--space-3xs);
+        &:before {
+            content: "";
+            display: block;
+            width: 1.75em;
+            height: 1.75em;
+            background: var(--brand);
+            mask: var(--icon-mask) no-repeat 50% 50%;
+            mask-size: contain;
+            margin-inline: auto;
+        }
+    }
+
+    @media (--md-n-above) {
+        #header {
+            --logo-mask: var(--logo-lg-screen, var(--logo-wordmark, url("/assets/sprite/svg/storefront-logo.svg")));
+            --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));  
+            --logo-height: var(--logo-height-lg-screen, 2.75rem);
+        }        
+    }
+
+}

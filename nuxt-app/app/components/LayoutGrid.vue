@@ -52,7 +52,7 @@ const noOfColumns = computed(() => {
                     return `tw:@xl:column-count-5`
                     break;
                 case 6:
-                    return `tw:column-count-3 tw:@2xl:column-count-6`
+                    return `tw:column-count-2 tw:@2xl:column-count-3 tw:@4xl:column-count-6`
                     break;
                 case 7:
                     return `tw:column-count-3 tw:@2xl:column-count-7`

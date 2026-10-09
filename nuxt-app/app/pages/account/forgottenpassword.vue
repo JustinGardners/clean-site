@@ -14,27 +14,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div v-if="props.sidebar" class="leftNav">
-        <div class="navSection">
-            <div class="navSectionItem">
-                <div class="adminNav">
-                    <label for="accountInfo"><span>Menu</span></label>
-                    <input id="accountInfo" type="checkbox">
-                    <div class="adminNav__wrapper">
-                        <h5 data-alpine-devtools-right-click="">Account Help</h5>
-                        <ul>
-                            <li><a href="/help/faq">FAQs</a></li>
-                            <li><a href="/help/ebookshelp">eBooks Help</a></li>
-                            <li><a href="/help/customised-books-faqs">Customised Books Help</a></li>
-                            <li><a href="/help/contactus">Contact Us</a></li>
-                            <li><a href="/help/delivery">Delivery Information</a></li>
-                            <li><a href="/help/returns">Returns</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <PageAccountHelpAsideMenu v-if="props.sidebar" />
     <div class="myAccountWrap">
         <div class="myAccountContents">
             <div class="myAccountHeader">

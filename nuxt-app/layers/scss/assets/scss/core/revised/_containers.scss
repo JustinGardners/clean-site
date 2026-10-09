@@ -1,0 +1,21 @@
+@use "small-style/scss/base/mixins/rules/components/layout" as *;
+
+@layer revised.pages {
+    @layer base {
+        :is(#footer, #header) {       
+            .container-md {
+                all: unset;
+                @include wrapper-grid;
+                > * {
+                    grid-column: 2/2;
+                }
+            }
+        }
+        :is(#nav) {
+            @include wrapper-grid;
+            > * {
+                grid-column: 2/2;
+            }
+        }
+    }
+}

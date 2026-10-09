@@ -1,11 +1,18 @@
 /* ===== START: Section Manifests ===== */
 @import "sections/site-foundation";
+@import "./revised/header";
+@import "./revised/nav";
 @import "./revised/product-detail-page";
 @import "./revised/product-search-page";
 @import "./revised/product-search-page-refine";
+@import "./revised/account-and-help-layout";
+@import "./revised/account";
 @import "./revised/login";
 @import "./revised/forms";
+@import "./revised/info-and-account-side-menu";
 @import "./revised/forgotten-password";
+@import "./revised/containers";
+@import "./revised/footer";
 // @import "sections/site-navigation-discovery";
 // @import "sections/site-commerce";
 // @import "sections/site-account-content";

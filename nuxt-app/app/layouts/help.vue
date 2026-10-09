@@ -5,6 +5,8 @@ const props = defineProps<{
 
 const route = useRoute()
 
+const pageID = computed(() => route.path.split('/').pop())
+
 </script>
 
 <template>
@@ -12,14 +14,12 @@ const route = useRoute()
         <div id="wrap">
             <PageHeader />
             <main id="main-section">
-                <template v-if="route.path.endsWith('forgottenpassword')">
-                    <div class="myAccount tw:contents" id="forgottenPassword">
+                <div :id="pageID" class="tw:contents">
+                    <div class="adminHelpPages">
+                        <PageAccountHelpAsideMenu v-if="sidebar" />
                         <slot />
                     </div>
-                </template>
-                <template v-else>                    
-                    <slot />
-                </template>
+                </div>
             </main>
             <PageFooter />
         </div>

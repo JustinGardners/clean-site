@@ -1,0 +1,9 @@
+@layer revised.pages {
+    @layer base {
+        #footer {
+            .row {
+                padding-inline: 0;
+            }
+        }
+    }
+}

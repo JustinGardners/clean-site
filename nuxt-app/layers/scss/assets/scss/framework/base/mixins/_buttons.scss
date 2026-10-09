@@ -50,7 +50,7 @@
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
   // @include font-size(var(--#{$prefix}btn-font-size));
-  font-size: var(--#{$prefix}btn-font-size, calc(var(--base-sm-font-size-px) / var(--font-size-root-px,16) * var(--unit,1rem)));
+  font-size: var(--#{$prefix}btn-font-size, calc(var(--base-default-font-size-px) / var(--font-size-root-px,16) * var(--unit,1rem)));
   font-weight: var(--#{$prefix}btn-font-weight);
   line-height: var(--#{$prefix}btn-line-height);
   color: var(--#{$prefix}btn-color);

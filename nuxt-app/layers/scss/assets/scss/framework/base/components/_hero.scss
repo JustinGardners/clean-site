@@ -2,6 +2,7 @@
     //// hook up selectors to variables
     @layer base {
         :where(.hero) {
+            --card-radius: 0;
             min-height: var(--#{$base-prefix}hero-min-height, min(100dvh, 450px));
         }
         :where(.hero__picture) {

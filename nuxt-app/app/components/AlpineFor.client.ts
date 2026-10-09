@@ -18,7 +18,11 @@ export default defineComponent({
       type: String,
       default: 'item'
     },
-    itemKey: String
+    itemKey: String,
+    wrapperElement: {
+      type: String,
+      default: 'div'
+    }
   },
   setup(props, { slots }) {
     const attrs = useAttrs()
@@ -38,9 +42,10 @@ export default defineComponent({
       Alpine.initTree(el)
     }
 
-    return () => h('div', {
+    return () => h(props.wrapperElement, {
       ...attrs,
       'x-data': JSON.stringify(props.data),
+      'style': `--${props.items}-length: ${Object.keys(props.data[props.items] || {}).length};`,
       onVnodeMounted: initialize
     }, [
       h('div', { hidden: true }, slots.item?.())

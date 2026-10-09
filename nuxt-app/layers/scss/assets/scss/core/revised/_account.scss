@@ -1,0 +1,33 @@
+@use "small-style/scss/base/mixins/rules/components/flow" as *;
+
+@layer revised.pages {
+    @layer base {
+
+        :is(.myAccountHeader)>*+* {
+            @include flow();
+        }
+
+        .myAccountContents:has(#restPasswordDetails) {
+            max-width: 75ch;
+        }
+
+        .myAccountHeader {
+            // margin-top: var(--space-sm);
+
+            h4 {
+                font-size: calc(var(--base-display-xxs-font-size) * var(--unit, var(--font-size-base, 1rem)));
+            }
+        }
+
+
+
+        :is(label[for="accountInfo"], #accountInfo) {
+            @media (--md-n-above) {
+                display: none;
+            }
+        }        
+
+    }
+
+
+}

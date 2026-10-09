@@ -1,0 +1,201 @@
+@layer revised.pages {
+    @layer base {
+
+        .adminNav__wrapper {
+            h5 {
+                display: none;
+                font-size: calc(var(--base-lg-font-size) * var(--unit, var(--font-size-base, 1rem)));
+
+                @media (--md-n-above) {
+                    display: block;
+                }
+            }
+
+            ul {
+                list-style-type: none;
+                margin-top: var(--space-xs);
+            }
+
+            li {
+                a {
+                    padding-block: var(--space-2xs);
+                    display: block;
+                }
+            }
+        }
+
+        :is(.competition, .myAccount, .helpPages, .adminHelpPages) {
+            .adminNav {
+                display: flex;
+                flex-direction: column;
+                background: var(--aside-bg, var(--root-bg));
+                padding-inline: 1rem;
+
+                // border-top: 1px solid $subtle-border;
+                label[for="accountInfo"] {
+                    font-size: calc(var(--base-default-font-size) * var(--unit, var(--font-size-base, 1rem)));
+                    order: 99;
+                    z-index: 2;
+                    padding: 1.2rem 0;
+                    margin-top: 0;
+                    background: var(--aside-label-bg, var(--aside-bg, var(--root-bg)));
+                    position: sticky;
+                    bottom: 0;
+
+                    &:before {
+                        content: "";
+                        display: block;
+                        height: 1px;
+                        top: 0;
+                        position: absolute;
+                        width: 100vw;
+                        margin-inline: calc(-50vw + 50%);
+                    }
+
+                    span {
+                        display: inline-flex;
+                        flex-direction: row-reverse;
+                        justify-content: space-between;
+                        width: 100%;
+
+                        &:before {
+                            content: "";
+                            display: block;
+                            width: 0.675em;
+                            aspect-ratio: 1 / 1;
+                            align-self: center;
+                            transform: rotate(45deg);
+                            background: transparent;
+                            border-left: 1px solid currentColor;
+                            border-top: 1px solid currentColor;
+                            transition: transform 230ms ease-in;
+                        }
+                    }
+
+                    &:has(+ input:checked) {
+                        span:before {
+                            transform: rotate(225deg);
+                        }
+                    }
+
+                    +input[type="checkbox"] {
+                        order: 100;
+                        @include visually-hidden();
+
+                        &:checked+.adminNav__wrapper {
+                            display: block;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .adminNav__wrapper {
+            display: none;
+            opacity: 0;
+
+            >h5:first-child {
+                margin-top: 1rem;
+            }
+        }
+
+        :is(.competition, .myAccount, .helpPages, .adminHelpPages) {
+            .adminNav {
+                border-top: 0;
+
+                label[for="accountInfo"] {
+                    @include media-breakpoint-up(md) {
+                        display: none;
+
+                        +input[type="checkbox"] {
+                            display: none;
+
+                            +.adminNav__wrapper {
+                                display: block;
+                                height: auto;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                @include media-breakpoint-up(md) {
+                    padding-inline: 0;
+                }
+            }
+        }
+
+        @supports (transition-behavior: allow-discrete) and (height: calc-size(fit-content, size / 100)) {
+            :is(.competition, .myAccount, .helpPages, .adminHelpPages) {
+                .adminNav {
+                    label[for="accountInfo"] {
+                        +input[type="checkbox"] {
+                            &:checked+.adminNav__wrapper {
+                                height: calc-size(fit-content, size / 1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .adminNav__wrapper {
+                height: calc-size(fit-content, size / 100);
+                transition:
+                    opacity 0.3s allow-discrete,
+                    height 0.7s allow-discrete,
+                    display 0.7s allow-discrete;
+            }
+
+            @starting-style {
+                .adminNav__wrapper {
+                    opacity: 0 !important;
+                    height: calc-size(fit-content, size / 100) !important;
+                }
+            }
+        }
+
+        @media (--md-n-below) {
+            :is(.myAccount, .helpPages, .adminHelpPages) .leftNav {
+                --aside-width: 100%;
+                position: sticky;
+                bottom: 0;
+                z-index: 1;
+                border-top: 1px solid #bcc8de;
+            }
+        }
+
+
+    }
+
+    @layer modifiers {
+
+        @container scroll-state(stuck: none) {
+            @media (--md-n-below) { 
+                .adminNav__wrapper {
+                    h5 {
+                        display: block;
+                    }
+                    display: block;
+                    opacity: 1;
+                    height: calc-size(fit-content, size / 1);
+                    transition: none;
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    padding-inline: 1rem;
+                }
+
+                .adminNav {
+                    min-height: calc(var(--items-length) * 1.5rem); // temp - finalise this code
+                }
+    
+                label[for="accountInfo"] {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+        }
+
+    }
+}

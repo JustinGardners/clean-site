@@ -7,7 +7,7 @@
 @use "small-style/scss/base/variables/props/spacing" as spacing;
 @use "small-style/scss/base/variables/props/layout" as layout;
 @use "small-style/scss/base/variables/props/wrapper" as wrapper with (
-  $root-max-wrapper-width: 1310
+  $root-max-wrapper-width: 1295
 );
 @use "small-style/scss/base/mixins" as mixins;
 @forward "small-style/scss/base/variables/components/collapse";

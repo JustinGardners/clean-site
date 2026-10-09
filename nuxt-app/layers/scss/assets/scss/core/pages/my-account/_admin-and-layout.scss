@@ -64,9 +64,9 @@
 .adminNav__wrapper {
   display: none;
   opacity: 0;
-  > h5:first-child {
-    margin-top: 1rem;
-  }
+  // > h5:first-child {
+  //   margin-top: 1rem;
+  // }
 }
 
 :is(.competition, .myAccount, .helpPages, .adminHelpPages) {

@@ -51,6 +51,9 @@
       }      
       &.btn-sm {
         --bs-btn-font-size: calc(var(--base-xs-font-size) * var(--unit, 1rem));
+        --bs-btn-padding-y: 0.75em;
+        --bs-btn-padding-x: calc(var(--bs-btn-padding-y) * var(--btn-sm-text-frame-ratio, var(--text-frame-ratio)));        
+        --btn-sm-text-frame-ratio: calc(var(--text-frame-ratio) * 0.75);
       }
       &.btn-lg {
         --bs-btn-font-size: calc(var(--base-lg-font-size) * var(--unit, 1rem));

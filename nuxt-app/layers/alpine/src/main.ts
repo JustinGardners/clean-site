@@ -2,6 +2,8 @@ import Alpine from 'alpinejs'
 import { autoMountGlides } from './glide'
 
 import './components/counter'
+import './components/accountNav'
+
 
 // suggested in the Alpine docs: make Alpine available on window for devtools/console access
 window.Alpine = Alpine

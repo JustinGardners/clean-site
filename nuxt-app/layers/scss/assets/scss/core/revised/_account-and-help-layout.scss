@@ -1,0 +1,38 @@
+@use "small-style/scss/base/mixins/rules/components/flow" as *;
+@use "small-style/scss/base/mixins/rules/components/layout" as *;
+
+@layer revised.pages {
+    @layer base {
+
+        main#main-section:has(.myAccountMain, .adminHelpPages) {
+            @include wrapper;
+            @include flex-layout-grid;
+        }
+        .myAccountMain {
+            @include flex-layout-grid;
+        }        
+
+        :is(#main-section:has(.leftNav + .myAccountWrap), .adminHelpPages) {
+            display: flex;
+            padding-top: var(--space-xl);
+            --aside-width: clamp(200px, 20vw, 350px);
+            --gap: calc(var(--layout-gap) * 2);
+            column-gap: var(--gap);
+
+            .leftNav {
+                container-type: scroll-state;
+                flex-basis: var(--aside-width);
+            }
+            @media (--md-n-below) {
+                flex-direction: column-reverse;
+            }
+        }
+    }
+
+    @layer modifiers {
+        :is(.myAccountWrap, .adminHelpPagesWrap) {
+            flex-basis: max(338px, calc(100% - (var(--aside-width) + var(--gap))));
+        }
+    }
+
+}
