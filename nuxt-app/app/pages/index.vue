@@ -93,6 +93,10 @@ const chunkArray = (array: any[], size: number) => {
       col: {
         backdropDirection: 'to-left',
         backdropAnchorToPicture: true
+      },
+      row: {
+        backdropDirection: 'to-top',
+        backdropAnchorToPicture: true
       }
     },
     title: {

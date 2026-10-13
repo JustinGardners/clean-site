@@ -114,6 +114,7 @@ $use-new-header: false;
         $input-color: get-contrast(var(--input-bg));
         --input-bg: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.0025) c h);    
         --input-color: #{$input-color};   
+        --input-fs: calc(var(--#{$base-prefix}xs-font-size) * var(--unit, 1rem));
         display: grid;
         grid-template-columns: [input] 1fr [product-type] auto [submit] auto;     
         :is(label[for="keyword"], label[for="productType"]) {

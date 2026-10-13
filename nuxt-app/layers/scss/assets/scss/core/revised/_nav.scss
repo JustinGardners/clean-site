@@ -12,6 +12,8 @@
         &.primary {
             li {
                 > a {
+                    // font-size: var(--core-nav-link-font-size, calc((15 / var(--font-size-root-px, 16)) * 1rem));
+                    font-size: var(--core-nav-link-font-size, calc((var(--base-xs-font-size-px) + 1) / var(--font-size-root-px, 16) * 1rem));
                     display: inline-flex;
                     padding-block: var(--text-frame-y);
                     padding-inline: clamp(var(--space-sm), 2vw, min(var(--text-frame-x), var(--text-frame-x-nav-item-link, 3rem)));
