@@ -58,7 +58,7 @@ const noOfColumns = computed(() => {
                     return `tw:column-count-3 tw:@2xl:column-count-7`
                     break;
                 case 8:
-                    return `tw:column-count-2 tw:@2xl:column-count-4 tw:@4xl:column-count-8`
+                    return `tw:column-count-2 tw:@md:column-count-3 tw:@2xl:column-count-4 tw:@4xl:column-count-6 tw:@5xl:column-count-8`
                     break;
                 case 9:
                     return `tw:@3xl:column-count-9`
@@ -80,38 +80,6 @@ const noOfColumns = computed(() => {
         return `layout-grid--column-count ${noOfCols}`
     }
     return null
-})
-
-const minWidth = computed(() => {
-    if(minColumnWidth) {
-        const minWidth = (() => {
-            switch (minColumnWidth) {
-                case '5':
-                    return 'tw:layout-column-min-5'
-                case '10':
-                    return 'tw:layout-column-min-10'
-                case '15':
-                    return 'tw:layout-column-min-15'
-                case '20':
-                    return 'tw:layout-column-min-20'
-                case '25':
-                    return 'tw:layout-column-min-25'
-                default:
-                    return ''
-            }
-        })()
-        return minWidth
-    }
-})
-
-const minWidthUnit = computed(() => {
-    return minColumnWidthUnit !== 'ch' ? `1${minColumnWidthUnit}` : null
-})
-
-const minColumnWidthClass = computed(() => {
-    if(minColumnWidth) {
-        return `tw:[--layout-column-min:${minColumnWidth}${minColumnWidthUnit}]`
-    }
 })
 
 const columnGapClass = computed(() => {
@@ -145,7 +113,7 @@ const columnGapClass = computed(() => {
 </script>
 
 <template>
-<div :style="`--layout-column-unit: ${minWidthUnit ?? '1ch'}`" :class="cn([layoutClass, minWidth, columnGapClass, minColumnWidthClass, noOfColumns, autoRepeatClass], classes)">
+<div :style="{ '--layout-column-min': minColumnWidth != null ? `${minColumnWidth}${minColumnWidthUnit}` : undefined }" :class="cn([layoutClass, columnGapClass, noOfColumns, autoRepeatClass], classes)">
     <slot />
 </div>
 </template>

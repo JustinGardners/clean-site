@@ -31,8 +31,11 @@
         @container (inline-size < 230px) {
         .btn {
           --bs-btn-padding-x: max(10cqi, 1rem);
-          width:100%;
+          width:100%;          
         }
+      }
+      @container (inline-size < 150px) {
+        @include button-small();
       }
     }
 

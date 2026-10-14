@@ -385,7 +385,7 @@ const chunkArray = (array: any[], size: number) => {
       Popular Right Now
     </Heading>
 
-    <LayoutGrid type="grid" minColumnWidth="5" :columns="2">
+    <LayoutGrid type="grid" minColumnWidth="40" :columns="2">
       <template v-for="(product, i) in populateProductArray(2)" :key="i">
         <CardsImageWithInfo link="/" :title="product.title || ''" :picture="{
           src: product.prodImages[0]?.medium

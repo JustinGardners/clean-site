@@ -1,4 +1,5 @@
 <template>
+    <div id="backgroundClicker"></div>
     <div id="outerWrap">
         <div id="wrap">
             <PageHeader />

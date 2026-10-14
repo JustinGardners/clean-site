@@ -1,4 +1,17 @@
+<script setup lang="ts">
+
+const mobileMenuOpen = ref(false);
+
+useHead({
+  bodyAttrs: {
+    class: computed(() => mobileMenuOpen.value ? 'mobileMenuOpen' : '')
+  }
+});
+
+</script>
+
 <template>
+
   <header id="headerWrap">
     <div id="header">
       <div class="container-md">
@@ -77,6 +90,7 @@
               class="navbarToggle"
               aria-controls="navMain"
               aria-label="Toggle navigation"
+              @click="mobileMenuOpen = !mobileMenuOpen"
               ><span class="togglerText">Menu</span></a
             >
           </div>

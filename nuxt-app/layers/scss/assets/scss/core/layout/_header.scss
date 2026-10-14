@@ -313,7 +313,7 @@
 
 #navButton {
   grid-column: menu;
-
+  display: grid;
   @media (--md-n-above) {
     display: none !important;
   }

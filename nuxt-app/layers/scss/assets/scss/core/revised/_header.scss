@@ -12,29 +12,76 @@ $use-new-header: false;
     }
 
     #header {
-        --logo-track: max-content;
+        --logo-mask-width: var(--logo-mask-width-sm-screen, 1.5rem);
+        --logo-mask-height: var(--logo-mask-height-sm-screen, 1.5rem);
+        --logo-track: 3em;
         --search-track: minmax(0, 1fr);
-        --menu-track: 4.4em;
-        --account-track: 4.4em;
-        --wishlist-track: 4.4em;
-        --basket-track: max-content;        
+        --menu-track: 4em;
+        --account-track: 4em;
+        --wishlist-track: 4em;
+        --basket-track: 1fr;        
         --logo-mask: var(--logo-sm-screen, var(--logo-letterform, url("/assets/sprite/svg/storefront-icon.svg")));
         --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));      
-        --logo-height: var(--logo-height-sm-screen, 2rem);
+        --logo-height: var(--logo-height-sm-screen, 3rem);
+        --header-template-columns: var(--header-template-columns-sm-screen, var(--logo-track) var(--menu-track) var(--account-track) var(--wishlist-track) var(--basket-track));
+        --header-template-areas: var(--header-template-areas-sm-screen, 
+            "logo menu account wishlist basket"
+            "search search search search search");
         background: var(--core-header-bg, var(--root-bg));
-        padding-block-start: var(--core-header-padding-block-start, var(--space-md));
-        padding-block-end: var(--core-header-padding-block-end, var(--space-md));
+        padding-block-start: var(--core-header-padding-block-start, clamp(var(--space-sm), 5vi, var(--space-md)));
+        padding-block-end: var(--core-header-padding-block-end, clamp(var(--space-sm), 5vi, var(--space-md)));
         border-bottom: 1px solid var(--core-nav-border-color, var(--field-border-color));
         z-index: 13;     
+        anchor-name: --header;
         .row {
             display:grid;
-            // grid-template-columns: [logo] var(--logo-track) [search] var(--search-track) [menu] var(--menu-track) [account] var(--account-track) [wishlist] var(--wishlist-track) [basket] var(--basket-track);
-            grid-template-columns: [logo] var(--logo-track) [search] var(--search-track) [account] var(--account-track) [wishlist] var(--wishlist-track) [basket] var(--basket-track);
+            grid-template-columns: var(--header-template-columns);
+            grid-template-areas: var(--header-template-areas);
+            column-gap: var(--space-xs);
+            row-gap: var(--space-md);            
         }
     }
 
+    @media (--md-n-above) {
+        #header {
+            --logo-mask-width: var(--logo-mask-width-lg-screen, 100%);
+            --logo-mask-height: var(--logo-mask-height-lg-screen, 100%);
+            --logo-track: max-content;
+            --search-track: minmax(0, 1fr);
+            --menu-track: 4em;
+            --account-track: 4em;
+            --wishlist-track: 4em;
+            --basket-track: max-content;                
+            --logo-mask: var(--logo-lg-screen, var(--logo-wordmark, url("/assets/sprite/svg/storefront-logo.svg")));
+            --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));  
+            --logo-height: var(--logo-height-lg-screen, 2.75rem);
+            --header-template-columns: var(--header-template-columns-md-n-above, var(--logo-track) var(--search-track) var(--account-track) var(--wishlist-track) var(--basket-track)); 
+            --header-template-areas: var(--header-template-areas-md-n-above, 
+                "logo search account wishlist basket");
+        }        
+    }   
+    
+    @container not style(--nav-no-labels) {
+
+        #header {
+            --menu-track: 3em;
+            --account-track: 3em;
+            --wishlist-track: 3em;            
+        }
+
+        #header :is(#wishlistLink>a,#navSupport #dropdownMenuLink,#navButton .navbarToggle) {
+            text-indent: -999em;
+            &:before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }    
+
     .header__logo {
-        mask: var(--logo-mask) center / 100% 100% no-repeat;
+        mask: var(--logo-mask) center / var(--logo-mask-width) var(--logo-mask-height) no-repeat;
         background: var(--base-primary);        
         block-size: var(--logo-height);
         aspect-ratio: var(--logo-aspect);
@@ -59,7 +106,7 @@ $use-new-header: false;
         place-content: center;
         padding-inline: var(--text-frame-x);
         padding-block: var(--text-frame-y); 
-        margin-inline-start: var(--space-md);       
+        // margin-inline-start: var(--space-md);       
         .basketText {
             display: none;
         }
@@ -72,6 +119,9 @@ $use-new-header: false;
         .smallText {
             @include visually-hidden;
         }
+        a {
+            width: var(--account-track);
+        }
     }
 
     #wishlistLink {
@@ -79,7 +129,7 @@ $use-new-header: false;
         display: grid;
     }
 
-    :is(#navSupport, #wishlistLink) {
+    :is(#navSupport, #wishlistLink, #navButton) {
         position: relative;
         a:after {
             content: "";
@@ -105,8 +155,13 @@ $use-new-header: false;
     #searchBar {
         grid-area: search;
         > form {
-            width: calc(min(100%, var(--core-search-max-width, 765px)) - var(--space-xl));
+            width: var(--core-search-max-width, min(765px, 100%));
             margin-inline: auto;
+        }
+        @media (--md-n-above) {
+            > form {
+                width: calc(min(100%, var(--core-search-max-width, 765px)) - var(--space-lg));
+            }
         }
     }
 
@@ -155,6 +210,7 @@ $use-new-header: false;
 
     #navButton {
         grid-area: menu;
+        display: grid;
         @media (--md-n-above) {
             display: none;
         }
@@ -199,12 +255,6 @@ $use-new-header: false;
         }
     }
 
-    @media (--md-n-above) {
-        #header {
-            --logo-mask: var(--logo-lg-screen, var(--logo-wordmark, url("/assets/sprite/svg/storefront-logo.svg")));
-            --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));  
-            --logo-height: var(--logo-height-lg-screen, 2.75rem);
-        }        
-    }
+
 
 }
