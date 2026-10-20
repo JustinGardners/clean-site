@@ -1,14 +1,14 @@
 $use-new-header: false;
 
-@if $use-new-header == false {
+@if $use-new-header ==false {
 
     #headerWrap {
         display: flex;
         flex-direction: column;
         position: sticky;
-        top: 0;   
+        top: 0;
         // background: var(--core-header-bg, var(--root-bg));
-        z-index:10;
+        z-index: 10;
     }
 
     #header {
@@ -19,26 +19,27 @@ $use-new-header: false;
         --menu-track: 4em;
         --account-track: 4em;
         --wishlist-track: 4em;
-        --basket-track: 1fr;        
+        --basket-track: 1fr;
         --logo-mask: var(--logo-sm-screen, var(--logo-letterform, url("/assets/sprite/svg/storefront-icon.svg")));
-        --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));      
+        --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));
         --logo-height: var(--logo-height-sm-screen, 3rem);
         --header-template-columns: var(--header-template-columns-sm-screen, var(--logo-track) var(--menu-track) var(--account-track) var(--wishlist-track) var(--basket-track));
-        --header-template-areas: var(--header-template-areas-sm-screen, 
-            "logo menu account wishlist basket"
-            "search search search search search");
+        --header-template-areas: var(--header-template-areas-sm-screen,
+                "logo menu account wishlist basket"
+                "search search search search search");
         background: var(--core-header-bg, var(--root-bg));
         padding-block-start: var(--core-header-padding-block-start, clamp(var(--space-sm), 5vi, var(--space-md)));
         padding-block-end: var(--core-header-padding-block-end, clamp(var(--space-sm), 5vi, var(--space-md)));
         border-bottom: 1px solid var(--core-nav-border-color, var(--field-border-color));
-        z-index: 13;     
+        z-index: 13;
         anchor-name: --header;
+
         .row {
-            display:grid;
+            display: grid;
             grid-template-columns: var(--header-template-columns);
             grid-template-areas: var(--header-template-areas);
             column-gap: var(--space-xs);
-            row-gap: var(--space-md);            
+            row-gap: var(--space-md);
         }
     }
 
@@ -51,26 +52,27 @@ $use-new-header: false;
             --menu-track: 4em;
             --account-track: 4em;
             --wishlist-track: 4em;
-            --basket-track: max-content;                
+            --basket-track: max-content;
             --logo-mask: var(--logo-lg-screen, var(--logo-wordmark, url("/assets/sprite/svg/storefront-logo.svg")));
-            --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));  
+            --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));
             --logo-height: var(--logo-height-lg-screen, 2.75rem);
-            --header-template-columns: var(--header-template-columns-md-n-above, var(--logo-track) var(--search-track) var(--account-track) var(--wishlist-track) var(--basket-track)); 
-            --header-template-areas: var(--header-template-areas-md-n-above, 
-                "logo search account wishlist basket");
-        }        
-    }   
-    
+            --header-template-columns: var(--header-template-columns-md-n-above, var(--logo-track) var(--search-track) var(--account-track) var(--wishlist-track) var(--basket-track));
+            --header-template-areas: var(--header-template-areas-md-n-above,
+                    "logo search account wishlist basket");
+        }
+    }
+
     @container not style(--nav-no-labels) {
 
         #header {
             --menu-track: 3em;
             --account-track: 3em;
-            --wishlist-track: 3em;            
+            --wishlist-track: 3em;
         }
 
-        #header :is(#wishlistLink>a,#navSupport #dropdownMenuLink,#navButton .navbarToggle) {
+        #header :is(#wishlistLink>a, #navSupport #dropdownMenuLink, #navButton .navbarToggle) {
             text-indent: -999em;
+
             &:before {
                 position: absolute;
                 top: 50%;
@@ -78,14 +80,15 @@ $use-new-header: false;
                 transform: translate(-50%, -50%);
             }
         }
-    }    
+    }
 
     .header__logo {
         mask: var(--logo-mask) center / var(--logo-mask-width) var(--logo-mask-height) no-repeat;
-        background: var(--base-primary);        
+        background: var(--base-primary);
         block-size: var(--logo-height);
         aspect-ratio: var(--logo-aspect);
         display: inline-flex;
+
         h1 {
             @include visually-hidden;
         }
@@ -101,26 +104,68 @@ $use-new-header: false;
     #miniBasket {
         grid-area: basket;
         border-radius: var(--radius);
-        background: var(--tw-color-grey-11);        
+        color: var(--base-primary);
+        background: var(--tw-color-grey-10);
         display: grid;
         place-content: center;
-        padding-inline: var(--text-frame-x);
-        padding-block: var(--text-frame-y); 
+        font-size: var(--base-xs-fluid-type);
+
         // margin-inline-start: var(--space-md);       
         .basketText {
             display: none;
         }
+
+        .imageHolder {
+            $icon: icon('shopping-bag');
+            --icon: #{$icon};
+            mask: var(--icon) center / contain no-repeat;
+            background: var(--base-primary);
+            width: 1.75em;
+            aspect-ratio: 1;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            column-gap: var(--space-2xs);
+            padding-inline: calc(var(--text-frame-x) * 0.875) var(--text-frame-x);
+            padding-block: var(--text-frame-y);
+            border: var(--bs-btn-border-width, 1px) solid var(--bs-btn-border-color);
+        }
+    }
+
+    #uxSmallBasketQuantity {
+        font-weight: 600;
+        font-size: calc(var(--base-xxs-font-size) * 1rem);
+        background: var(--base-danger);
+        color: var(--base-danger-contrast);
+        aspect-ratio: 1;
+        width: 1.5em;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        height: 1.5em;
+        margin: -1.2em 0 0 -1.2em;
+        z-index: 1;
+    }
+
+    #uxSmallBasketTotal {
+        font-weight: 600;
     }
 
     #navSupport {
         grid-area: account;
         display: grid;
         justify-content: center;
+
         .smallText {
             @include visually-hidden;
         }
-        a {
+
+        a.dropdownToggle {
             width: var(--account-track);
+            aspect-ratio: 1/1;
         }
     }
 
@@ -131,6 +176,7 @@ $use-new-header: false;
 
     :is(#navSupport, #wishlistLink, #navButton) {
         position: relative;
+
         a:after {
             content: "";
             width: 4.5em;
@@ -143,23 +189,26 @@ $use-new-header: false;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: -1;
-            opacity:0;
+            opacity: 0;
         }
+
         @media (--mouse) {
             a:focus:after {
-                opacity:1;
+                opacity: 1;
             }
         }
     }
 
     #searchBar {
         grid-area: search;
-        > form {
+
+        >form {
             width: var(--core-search-max-width, min(765px, 100%));
             margin-inline: auto;
         }
+
         @media (--md-n-above) {
-            > form {
+            >form {
                 width: calc(min(100%, var(--core-search-max-width, 765px)) - var(--space-lg));
             }
         }
@@ -167,34 +216,55 @@ $use-new-header: false;
 
     #searchBox {
         $input-color: get-contrast(var(--input-bg));
-        --input-bg: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.0025) c h);    
-        --input-color: #{$input-color};   
+        --input-bg: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.0025) c h);
+        --input-color: #{$input-color};
         --input-fs: calc(var(--#{$base-prefix}xs-font-size) * var(--unit, 1rem));
         display: grid;
-        grid-template-columns: [input] 1fr [product-type] auto [submit] auto;     
+        grid-template-columns: [input] 1fr [product-type] auto [submit] auto;
+        font-size: var(--base-xs-fluid-type);
         :is(label[for="keyword"], label[for="productType"]) {
             @include visually-hidden;
-        }   
+        }
+
         #keyword {
             grid-area: input;
             border-top-right-radius: 0;
-            border-bottom-right-radius: 0;                 
+            border-bottom-right-radius: 0;
         }
+
         .productType {
             // grid-area: product-type;
             display: contents;
         }
+
         #productType {
             // border-top-left-radius: 0;
             // border-bottom-left-radius: 0;
             border-radius: 0;
             grid-area: product-type;
-            border:0;
+            border: 0;
         }
+
         input[type="submit"] {
+            --input-text-radius: 0 var(--radius) var(--radius) 0;
             grid-area: submit;
-            border-top-right-radius: var(--radius);
-            border-bottom-right-radius: var(--radius);
+            text-indent: -999em;
+            border: 0;
+            // --input-bg: var(--base-primary);
+        }
+
+        &:after {
+            $icon: icon('search');
+            --input-icon: #{$icon};
+            content: '';
+            display: block;
+            width: 1.75em;
+            height: 1.75em;
+            mask: var(--input-icon) no-repeat center / 1.75em;
+            background-color: var(--base-primary);
+            grid-area: submit;
+            align-self: center;
+            margin-inline: auto;            
         }
     }
 
@@ -211,6 +281,7 @@ $use-new-header: false;
     #navButton {
         grid-area: menu;
         display: grid;
+
         @media (--md-n-above) {
             display: none;
         }
@@ -236,13 +307,14 @@ $use-new-header: false;
         }
     }
 
-    #header :is(#wishlistLink>a,#navSupport #dropdownMenuLink,#navButton .navbarToggle) {
+    #header :is(#wishlistLink>a, #navSupport #dropdownMenuLink, #navButton .navbarToggle) {
         font-size: var(--base-xs-fluid-type);
         display: inline-flex;
         justify-content: center;
         flex-direction: column;
         text-align: center;
         row-gap: var(--space-3xs);
+
         &:before {
             content: "";
             display: block;

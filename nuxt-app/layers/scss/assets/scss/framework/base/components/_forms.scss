@@ -28,4 +28,13 @@
     color: var(--brand);
     }
 
+    :where(input,textarea,select) {
+        --input-outline-color: var(--field-border-color);
+    }
+
+    // this should be defined in small-styles - do an update there
+    input[type="submit"] {
+        @include input-text-rules();
+    }
+
 }

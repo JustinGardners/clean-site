@@ -1,7 +1,16 @@
 /* ===== START: Section Manifests ===== */
+
+:is(.container-xl, .container-lg, .container-md, .container-sm, .container) {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @import "sections/site-foundation";
 @import "./revised/header";
 @import "./revised/nav";
+@import "./revised/mini-nav";
 @import "./revised/product-detail-page";
 @import "./revised/product-search-page";
 @import "./revised/product-search-page-refine";
@@ -13,6 +22,7 @@
 @import "./revised/forgotten-password";
 @import "./revised/containers";
 @import "./revised/footer";
+@import "./revised/basket";
 // @import "sections/site-navigation-discovery";
 // @import "sections/site-commerce";
 // @import "sections/site-account-content";

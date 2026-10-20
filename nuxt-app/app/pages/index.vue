@@ -104,7 +104,7 @@ const chunkArray = (array: any[], size: number) => {
     }
   }" />
 
-  <Block paddingY="xl">
+  <Block paddingY="xl" :classes="'tw:[--wrapper-padding-min:var(--space-2xl)]'">
     <LayoutGrid minColumnWidth="10" type="grid" :columns="6" class="tw:[--card-top-row:100cqi]">
       <CardsCircleImageWithInfo data-fluid-type-relative :link="'/'" title="Crime &amp; Thriller" :bordered="true"
         :picture="{
@@ -202,7 +202,7 @@ const chunkArray = (array: any[], size: number) => {
     </LayoutGrid>
   </Block>
 
-  <Block class="flow tw:flow--lg">
+  <!-- <Block class="flow tw:flow--lg">
     <Heading size="xl" color="primary">
       Popular Right Now
     </Heading>
@@ -242,7 +242,52 @@ const chunkArray = (array: any[], size: number) => {
         </CardsImageWithInfo>
       </template>
     </LayoutGrid>
-  </Block>
+  </Block> -->
+
+  <Block class="flow tw:flow--lg">
+    <Heading size="xl" color="primary">
+      Popular Right Now
+    </Heading>
+
+    <LayoutGrid minColumnWidth="15" columnCount="6" type="grid" class="tw:gap-y-[calc(var(--layout-grid-gap)*2)]">
+      <template v-for="(product, i) in popularRightNowProducts" :key="i">
+        <CardsImageWithInfo :link="product.prodUrl" :title="product.title" :picture="{
+          src: product.prodImages[0]?.medium,
+        }" :price="{
+          rrp: {
+            value: product.price.toString()
+          }
+        }" :ctas="{
+          label: 'Add',
+          href: '/',
+          size: 'sm',
+          type: 'outline', // fix
+          classes: {
+            base: 'tw:px-3 tw:py-1 btn-sm tw:w-fit',
+          },
+        }" :classes="{
+          card: 'tw:grid-rows-subgrid tw:[--card-picture-aspect:2/3] tw:row-span-4 tw:flow--1',
+          caption: 'tw:min-h-[2lh] tw:mt-cq-md',
+          pictureImage: 'tw:object-contain tw:object-bottom tw:drop-shadow-lg',
+          body: 'tw:py-0 tw:px-xs tw:gap-y-1',
+          content: 'tw:contents',
+          contentSlot: 'tw:basis-1/2 tw:flow--0',
+          price: 'heading-lg fluid tw:text-primary',
+          title: 'tw:line-clamp-2',
+          ctas: 'tw:flow--0 tw:basis-1/2 tw:flex tw:justify-end'
+        }" :config="{
+              mergeConfig: true,
+              showAllSlots: false,
+              ctaCover: false,
+              title: {
+                size: 'sm',
+                color: 'primary'
+              }
+            }">
+        </CardsImageWithInfo>
+      </template>
+    </LayoutGrid>
+  </Block>  
 
   <Block class="flow tw:flow--lg" paddingY="2xl">
     <Heading size="xl" color="primary">

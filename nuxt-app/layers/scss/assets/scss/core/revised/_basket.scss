@@ -1,0 +1,65 @@
+@use "small-style/scss/base/mixins/rules/components/layout" as *;
+
+#basket {
+    container-type: inline-size;
+    > h2 {
+        font-size: calc(var(--base-display-sm-font-size) * var(--unit, var(--font-size-base, 1rem)));
+        padding-block: var(--space-lg);        
+    }
+}
+
+#mainBasket {
+    --layout-column-min: 9ch;
+    --column-count: 8;
+    --layout-grid-gap: var(--space-xl);
+    @include layout-grid();
+    @include layout-grid-column-count();
+    .validation-summary-valid {
+        grid-column: 1 / -1;
+    }
+}
+
+#updateBasketForm {
+    display: contents;    
+}
+
+:is(#basketTable, #basketHeader, #basketBody, #basketBody > .row) {
+    display: grid;
+    grid-template-columns: subgrid;        
+    grid-auto-rows: min-content;
+    gap: var(--layout-gap);
+}
+
+#basketTable {
+    grid-column: span 6;
+}
+
+:is(#basketHeader, #basketBody, #basketBody > .row) {
+    grid-column: 1/-1;
+}
+
+#basketSummaryArea {
+    grid-column: span 2;
+}
+
+#basketHeader {
+    .itemCover {
+        display:none;
+    }
+}
+
+#basketBody {
+    --field-border-width: 4px; /// temp
+    > .row {
+        border: var(--field-border-width, 1px) solid var(--field-border-color);
+        padding: var(--space-md);
+        border-radius: var(--radius);        
+    }
+    .itemCover {
+        grid-row: span 4;
+    }
+    
+    .itemInfo {
+        grid-column: 2/-1;
+    }
+}

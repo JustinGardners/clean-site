@@ -55,3 +55,9 @@ export type ImageWithInfoProps = Pick<CardProps, 'tagline' | 'subtitle' | 'confi
     classes?: ImageWithInfoPropsClasses;
     ctaCover?: boolean;
 }
+
+export type BasketItem = {
+  productId: number;
+  quantity: number;
+  price: number;
+};

@@ -36,7 +36,7 @@
 :root {
   $root-fg: if($muted-root-fg, get-contrast-muted(var(--root-bg)), get-contrast(var(--root-bg)));
   --root-fg: var(--#{$site-prefix}site-root-fg, #{$root-fg});
-  --root-bg: var(--#{$site-prefix}root-bg, color-mix(var(--#{$tw-prefix}color-grey-11, #fff 65%), #fff));  
+  --root-bg: var(--#{$site-prefix}root-bg, color-mix(var(--#{$tw-prefix}color-grey-10, 70%), light-dark(#fff, #000)));  
   --#{$base-prefix}grey-c: var(--#{$site-prefix}grey-c, 0.01);
 
   @each $key, $value in $theme-colors {
@@ -54,6 +54,9 @@
           (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
           var(--#{$base-prefix}#{$key}-contrast-darkest-text,
             var(--contrast-darkest-text, 1))) 0 h);
+        @if $key == dark or $key == light {
+          --#{$site-prefix}#{$key}-h: var(--#{$site-prefix}primary-h, map-deep-get($lch-colors, primary, "h"));
+        }
     }
   }
 

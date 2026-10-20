@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MainImage from "~/components/pdp/MainImage.vue";
+import type { BasketItem } from '~/types';
 
 const route = useRoute();
 const contributor = route.params.contributor;
@@ -23,6 +24,12 @@ const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {})
   if (key === "promotionBadge" && value) acc.push("Limited Edition"); // amend this
   return acc;
 }, []))
+
+const basket = useState<BasketItem[]>('basket');
+
+const addToBasket = (productId: number, quantity: number) => {
+  basket.value.push({ productId, quantity, price: data.value?.[0]?.product.raw.price || 0 });
+};
 
 </script>
 
@@ -65,7 +72,7 @@ const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {})
         <p>{{ data[0]?.product.raw.productTypeDescription }}</p>
         <p class="product__sitePrice">£{{ data[0]?.product.raw.price }}</p>
 
-        <Button size="lg" modifier="wide" class="infoWrap__add-btn">Add to basket</Button>
+        <Button size="lg" modifier="wide" class="infoWrap__add-btn" @click="addToBasket(data[0]?.product.raw.id, 1)">Add to basket</Button>
       </div>
       <div class="additionalMetaSections flow">
       <div class="additionalInfoWrap flow">
