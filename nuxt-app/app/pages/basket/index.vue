@@ -1,10 +1,60 @@
 <script setup lang="ts">
+import type { BasketItem } from '~/types';
 
-const productsInBasket = useState('basket');
+const productsInBasket = useState<BasketItem[]>('basket', () => []);
+const quantityInputs = reactive<Record<string, number>>({});
+
+const { data: testProducts } = await useAsyncData(
+  'test-products',
+  () => $fetch('/api/test-products')
+);
+
+const basketProductIds = computed(
+  () => new Set(productsInBasket.value.map(item => String(item.productId)))
+);
+
+const basketProducts = computed(() =>
+  (testProducts.value ?? []).filter(product =>
+    basketProductIds.value.has(String(product.product.raw.productId))
+  )
+);
+
+const getQuantity = (productId: string) => {
+  const item = productsInBasket.value.find(item => String(item.productId) === String(productId));
+  return item?.quantity ?? 0;
+};
+
+const removeFromBasket = (productId: string) => {
+  const index = productsInBasket.value.findIndex(item => String(item.productId) === String(productId));
+  if (index !== -1) {
+    productsInBasket.value.splice(index, 1);
+  }
+};
+
+const updateQuantity = (productId: string) => {
+  const requestedQuantity = quantityInputs[productId] ?? getQuantity(productId);
+  const quantity = requestedQuantity > 0 ? requestedQuantity : 1;
+    console.log(`Updating quantity for productId: ${productId} to ${quantity}`);
+  const item = productsInBasket.value.find(item => String(item.productId) === String(productId));
+  if (item) {
+    item.quantity = quantity;
+  }
+};
+
+const setQuantityInput = (productId: string, event: Event) => {
+  const input = event.target;
+  if (input instanceof HTMLInputElement) {
+    quantityInputs[productId] = Number(input.value);
+  }
+};
 
 </script>
 
 <template>
+    <!-- <details>
+        <summary>Basket Details</summary>
+        <pre>{{ basketProducts }}</pre>        
+    </details> -->
     <div class="container-md">
 
         <div id="basket">
@@ -37,93 +87,54 @@ const productsInBasket = useState('basket');
                         </div>
 
                         <div id="basketBody">
-                            <!-- <template>
-                                <div v-for="product in productsInBasket" :key="product.id" class="row item item-{{ product.code }}">
-                                    <div class="itemCover">
-                                        <a :href="`/product/${product.code}`"><img
-                                            :alt="product.name"
-                                            :data-src="product.image"
-                                            :id="`img-${product.id}`"
-                                            :src="product.image">
-                                        </a>
-                                    </div>
-                                    <div class="itemInfo">{{ product.name }}</div>
-                                    <div class="itemFormat">{{ product.format }}</div>
-                                    <div class="itemStatus">{{ product.availability }}</div>
-                                    <div class="itemPrice">{{ product.price }}</div>
-                                    <div class="itemQuantity">{{ product.quantity }}</div>
-                                    <div class="itemSubtotal">{{ product.subtotal }}</div>
-                                </div>
-                            </template> -->
-                            <div class="row item item-9781529921267 ">
-                                <input id="BasketDetails_1__BasketDetailId" name="BasketDetails[1].BasketDetailId"
-                                    type="hidden" value="7169119">
-                                <input id="BasketDetails_1__ProductCode" name="BasketDetails[1].ProductCode"
-                                    type="hidden" value="9781529921267">
-                                <input id="BasketDetails_1__ProductIsLimitedStock"
-                                    name="BasketDetails[1].ProductIsLimitedStock" type="hidden" value="False">
-                                <input id="BasketDetails_1__ProductStockUnits" name="BasketDetails[1].ProductStockUnits"
-                                    type="hidden" value="301">
-
+                            <div
+                                v-for="product in basketProducts"
+                                :key="product.product.raw.productId"
+                                class="row"
+                            >
                                 <div class="itemCover">
-                                    <a class="jacket-Book"
-                                        href="/product/harriet-rix/the-genius-of-trees--how-trees-mastered-the-elements-and-shaped-the-world/31517696"><img
-                                            alt="The Genius of Trees : How trees mastered the elements and shaped the world - Book"
-                                            data-src="//tmg.dmmserver.com/media/356/97815299/9781529921267.jpg"
-                                            id="img-31517696"
-                                            src="//tmg.dmmserver.com/media/140/97815299/9781529921267.jpg"
-                                            title="The Genius of Trees : How trees mastered the elements and shaped the world - Book"></a>
+                                    <a :href="`/Product/${hyphenateParam(product.product.raw.contributor)}/${hyphenateParam(product.product.raw.title)}`">
+                                        <img
+                                            v-if="product.product.raw.prodImages?.[0]?.small || product.product.raw.imageLocation"
+                                            :src="product.product.raw.prodImages?.[0]?.small || product.product.raw.imageLocation"
+                                            :alt="product.product.raw.title"
+                                            :data-src="product.product.raw.prodImages?.[0]?.small || product.product.raw.imageLocation"
+                                            :id="`img-${product.product.raw.productId}`"
+                                        >
+                                    </a>
                                 </div>
                                 <div class="itemInfo">
-                                    <h3><a
-                                            href="/product/harriet-rix/the-genius-of-trees--how-trees-mastered-the-elements-and-shaped-the-world/31517696">The
-                                            Genius of Trees : How trees mastered the elements and shaped the world</a>
-                                    </h3>
-
-                                    <div></div>
-
+                                    <a :href="`/Product/${hyphenateParam(product.product.raw.contributor)}/${hyphenateParam(product.product.raw.title)}`">
+                                        <h3>
+                                            {{ product.product.raw.title }}
+                                        </h3>
+                                    </a>
                                 </div>
-
-
                                 <div class="itemFormat">
-                                    <p class="productFormat">
-                                        Book - Paperback / softback
-                                    </p>
-
-
+                                    {{ product.product.raw.format }}
                                 </div>
-
-
                                 <div class="itemStatus">
-                                    <div class="stock">
-                                        <a class="availabilityLink inStock" href="javascript:void(0)" data-info="">
-                                            In Stock<span> - usually despatched within 24 hours</span>
-                                        </a>
-                                    </div>
+                                    {{ product.product.raw.availability.includes("instock") ? "In Stock - usually despatched within 24 hours" : "Not in Stock" }}
+                                    <!-- {{ product.product.raw.availability.map(status => status).join(', ') }} -->
                                 </div>
-
                                 <div class="itemPrice">
-                                    <div class="productPrice">
-                                        £12.99
-                                    </div>
+                                    £{{ product.product.raw.price }}                            
                                 </div>
-
                                 <div class="itemQuantity">
                                     <div class="quantityTotal">
-                                        <input class="basket-quantity-type" id="BasketDetails_1__Quantity" max="99"
-                                            min="1" name="BasketDetails[1].Quantity" type="number" value="1"><br>
-                                        <input type="button" value="Update" class="btn basket-check">
+                                        <input class="basket-quantity-type" :id="`BasketDetails_1__Quantity_${product.product.raw.productId}`" max="99"
+                                            min="1" :name="`BasketDetails[1].Quantity`" type="number" :value="quantityInputs[String(product.product.raw.productId)] ?? getQuantity(String(product.product.raw.productId))" @input="setQuantityInput(String(product.product.raw.productId), $event)"><br>
+                                        <input type="button" value="Update" @click.prevent="updateQuantity(String(product.product.raw.productId))" class="btn basket-check">
                                         <p class="removeItem"><a
-                                                href="/basket/removeitem?basketDetailId=7169119"><span>Remove
+                                                href="#" @click.prevent="removeFromBasket(String(product.product.raw.productId))"><span>Remove
                                                     Item</span></a></p>
 
                     
                                     </div>
-                                </div>
-
-                                <div class="itemSubtotal">
-                                    <div class="linePrice">£12.99</div>
-                                </div>
+                                </div>    
+                               <div class="itemSubtotal">
+                                    <div class="linePrice">£{{product.product.raw.price * getQuantity(String(product.product.raw.productId))}}</div>
+                                </div>                                                            
                             </div>
                         </div>
                     </div>

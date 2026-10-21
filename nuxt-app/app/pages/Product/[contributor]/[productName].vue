@@ -28,6 +28,11 @@ const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {})
 const basket = useState<BasketItem[]>('basket');
 
 const addToBasket = (productId: number, quantity: number) => {
+  console.log(`Adding product with ID of (${productId}) with quantity ${quantity} to basket`);
+  if (basket.value.some(item => item.productId === productId)) {
+    basket.value = basket.value.map(item => item.productId === productId ? { ...item, quantity: item.quantity + quantity } : item);
+    return;
+  };
   basket.value.push({ productId, quantity, price: data.value?.[0]?.product.raw.price || 0 });
 };
 
@@ -72,7 +77,7 @@ const addToBasket = (productId: number, quantity: number) => {
         <p>{{ data[0]?.product.raw.productTypeDescription }}</p>
         <p class="product__sitePrice">£{{ data[0]?.product.raw.price }}</p>
 
-        <Button size="lg" modifier="wide" class="infoWrap__add-btn" @click="addToBasket(data[0]?.product.raw.id, 1)">Add to basket</Button>
+        <Button size="lg" modifier="wide" class="infoWrap__add-btn" @click="addToBasket(data[0]?.product.raw.productId || 0, 1)">Add to basket</Button>
       </div>
       <div class="additionalMetaSections flow">
       <div class="additionalInfoWrap flow">

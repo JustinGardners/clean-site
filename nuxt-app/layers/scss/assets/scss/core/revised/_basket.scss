@@ -1,65 +1,177 @@
+@use "open-props-scss" as *;
 @use "small-style/scss/base/mixins/rules/components/layout" as *;
 
-#basket {
+@mixin basket-layout {
+    --layout-column-min: 5ch;
+    --column-count: 8;
+    @include layout-grid();
+    @include layout-grid-column-count();
+    --layout-grid-gap: var(--space-xl);
+}
+
+
+.container-md:has(> #basket) {
+    all: unset;
+}
+
+#basket {    
+    @include wrapper();
     container-type: inline-size;
-    > h2 {
+    container-name: basket;
+
+    >h2 {
         font-size: calc(var(--base-display-sm-font-size) * var(--unit, var(--font-size-base, 1rem)));
-        padding-block: var(--space-lg);        
+        padding-block: var(--space-lg);
     }
 }
 
 #mainBasket {
-    --layout-column-min: 9ch;
-    --column-count: 8;
-    --layout-grid-gap: var(--space-xl);
-    @include layout-grid();
-    @include layout-grid-column-count();
+    --max-cover-width: 55px; // create a global var for small cover
+    --cover-width: min(calc(100% - var(--layout-gap)), var(--max-cover-width));
+    @include basket-layout();
+    row-gap: 0;
+
     .validation-summary-valid {
         grid-column: 1 / -1;
+    }
+
+    @container (inline-size < 120ch) {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
     }
 }
 
 #updateBasketForm {
-    display: contents;    
+    display: contents;
 }
 
-:is(#basketTable, #basketHeader, #basketBody, #basketBody > .row) {
+:where(#basketTable, #basketHeader, #basketBody, #basketBody > .row) {
     display: grid;
-    grid-template-columns: subgrid;        
+    grid-template-columns: subgrid;
     grid-auto-rows: min-content;
     gap: var(--layout-gap);
 }
 
-#basketTable {
-    grid-column: span 6;
+@container basket (inline-size < 55ch) {
+    #basketBody>.row {
+        display: flex;
+    }
 }
+
+@container basket (inline-size < 120ch) {
+    :is(#basketHeader) {
+        display:none;
+    }
+}
+
+@container basket (55ch < inline-size < 120ch) {
+    #basketBody>.row {
+        @include basket-layout();
+        grid-template-columns: calc(var(--cover-width) + var(--space-md)) var(--layout-grid-template-columns);
+    }
+}
+
+@container basket (inline-size > 120ch) {
+    #mainBasket {
+        --max-cover-width: 90px;
+    }
+    #basketTable {
+        grid-column: span 6;
+    }
+
+    #basketSummaryArea {
+        grid-column: span 2;
+    }
+}
+
+
 
 :is(#basketHeader, #basketBody, #basketBody > .row) {
     grid-column: 1/-1;
 }
 
-#basketSummaryArea {
-    grid-column: span 2;
-}
+
 
 #basketHeader {
     .itemCover {
-        display:none;
+        display: none;
+    }
+
+    .itemInfo {
+        grid-column: span 4;
+    }
+
+    :is(.itemFormat, .itemStatus, .itemPrice) {
+        @include visually-hidden();
     }
 }
 
 #basketBody {
     --field-border-width: 4px; /// temp
-    > .row {
+
+    >.row {
         border: var(--field-border-width, 1px) solid var(--field-border-color);
         padding: var(--space-md);
-        border-radius: var(--radius);        
+        border-radius: var(--radius);
+        gap: var(--space-3xs);
+        font-size: calc(var(--base-xs-font-size) * var(--unit, 1rem));
     }
+
     .itemCover {
-        grid-row: span 4;
+        grid-column: 1 / 1;
+        grid-row: 1 / 6;
+
+        a {
+            display: block;
+            width: 100%;
+        }
+
+        img {
+            width: var(--cover-width);
+            box-shadow: shadow(3);
+        }
     }
-    
+
     .itemInfo {
-        grid-column: 2/-1;
+        grid-column: 2/5;
+        grid-row: 1 / 1;
+
+        h3 {
+            font-size: var(--base-sm-fluid-type);
+        }
+    }
+
+    .itemFormat {
+        grid-column: 2 / 5;
+        grid-row: 2 / 2;
+    }
+
+    .itemStatus {
+        grid-row: 3/3;
+        grid-column: 2 / 5;
+    }
+
+    .itemPrice {
+        grid-row: 4 / 4;
+        grid-column: 2 / 5;
+    }
+
+    .itemQuantity {
+        grid-row: 1 / 5;
+    }
+
+    .itemSubtotal {
+        grid-row: 1 / 5;
+        grid-column: 6 / 6;
+        font-size: var(--base-lg-fluid-type);
+        font-weight: var(--font-weight-bold, 600); // add this as a global variable for bold text
+        color: var(--base-primary);
+    }
+
+    .btn.basket-check {
+        all:unset;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

@@ -1,6 +1,7 @@
 @layer revised.pages {
     @layer base {
         #footer {
+            display:none;
             .row {
                 padding-inline: 0;
             }
