@@ -1,0 +1,117 @@
+#basketSubTotals {
+    display: grid;
+    gap: var(--space-xs);
+    .summaryHeader {
+        grid-row:1/1;
+        grid-column: 1 / -1;
+        font-weight: var(--font-weight-bold, 600);
+        margin-bottom: var(--space-xs);
+        &:before {
+            content: 'Order Summary';
+            display: block;
+        }
+    }
+    #deliveryCosts {
+        grid-row: 2 / 2;
+        grid-column: 1 / -1;        
+        .preview {
+            display: none;
+        }
+        h6 {
+            font-size: calc(var(--base-xxs-font-size) * var(--unit,var(--font-size-base,1rem)));
+            padding-block-start: var(--space-sm);
+            padding-inline: calc(var(--space-xs) + (var(--radius) / 4));            
+        }
+    }
+    .total {
+        grid-column: 1 / -1;
+        grid-row: 3 / 3;        
+        font-size: calc(var(--base-default-font-size) * 1rem);
+        font-weight: var(--font-weight-bold, 600);
+        color: var(--base-primary);
+        padding-block: var(--space-xs);
+        padding-inline: calc(var(--space-xs) + (var(--radius) / 4));
+    }
+    .customisableBookWarning {
+        grid-row: 7 / 7;
+        grid-column: 1 / -1;
+    }
+    p {
+        font-size: calc(var(--base-xxs-font-size) * 1rem);
+    }
+    :where(#deliveryCosts h6, .total) {
+        display: flex;
+        justify-content: space-between;
+    }
+    #basketCoupons {
+        grid-row: 6 / 6;
+        grid-column: 1 / -1;
+    }
+    .basketOptions {
+        grid-row: 4/4;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: stretch;
+        gap: var(--space-xs);        
+        grid-column: 1 / -1;
+        display: contents;        
+        a {
+            width:100%;
+            display: flex;
+            justify-content: center;
+            &.btn {
+                font-size: calc(var(--base-xl-font-size) * 1rem);
+            }
+            &:not(.btn) {
+                padding-block: var(--text-frame-y);              
+                font-size: var(--bs-btn-font-size,calc(var(--base-default-font-size-px) / var(--font-size-root-px,16) * var(--unit,1rem)));  
+            }
+        }
+        .continueShopping {
+            grid-row: 5 / 5;
+            grid-column: 1 / -1;            
+        }
+        .checkout {
+            grid-row: 4 / 4;
+            grid-column: 1 / -1;
+            margin-bottom: var(--space-2xs);
+            width: calc(100% - (var(--space-2xs) * 2));
+            margin-inline: auto;            
+        }
+    }
+    .couponCode {
+        gap: calc(var(--layout-gap) / 2);
+        grid-auto-flow: row;
+        display: grid;
+        position: relative;
+        grid-template-columns: 1fr min-content;        
+        label {
+            grid-column: 1 / -1;
+            font-size: calc(var(--base-xs-font-size) * var(--unit,var(--font-size-base,1rem)));
+        }
+        input {
+            font-size: calc(var(--base-xxs-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem));
+        }
+    }
+}
+
+#basketSubTotals {
+    &:before {
+        content: '';
+        display: block;
+        grid-row:2/5;
+        grid-column: 1 / -1;
+        background: var(--tw-color-grey-10);        
+        border-radius: var(--radius);
+    }
+}
+
+@container basket (inline-size < 120ch) {
+    #basketSummaryArea {
+        position: sticky;
+        bottom: -34px; // magic number - urgh
+        align-self: flex-start;
+        background: var(--root-bg);
+        border-top: 1px solid var(--field-border-color);
+    }
+}

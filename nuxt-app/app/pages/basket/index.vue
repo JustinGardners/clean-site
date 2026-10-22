@@ -215,7 +215,7 @@ const setQuantityInput = (productId: string, event: Event) => {
                         <div class="basketOptions">
                             <span class="continueShopping"><a href="/">Continue Shopping</a></span>
                             <span class="checkout"><a class="btn btn-primary"
-                                    href="https://books.telegraph.co.uk/account/logoncheckout"
+                                    href="/checkout"
                                     id="basket-continue-button">Checkout Now</a></span>
                         </div>
 

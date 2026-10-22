@@ -48,7 +48,15 @@
       --#{$base-prefix}#{$key}-l: var(--#{$site-prefix}#{$key}-l, #{$l});
       --#{$base-prefix}#{$key}-c: var(--#{$site-prefix}#{$key}-c, #{$c});
       --#{$base-prefix}#{$key}-h: var(--#{$site-prefix}#{$key}-h, #{$h});
-      --#{$base-prefix}#{$key}: oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h));
+      @if $key == dark or $key == light {
+        @if $key == dark {
+          --#{$base-prefix}#{$key}: light-dark(oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h)), oklch(var(--#{$base-prefix}light-l) var(--#{$base-prefix}light-c) var(--#{$base-prefix}light-h)));
+        } @else if $key == light {
+          --#{$base-prefix}#{$key}: light-dark(oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h)), oklch(var(--#{$base-prefix}dark-l) var(--#{$base-prefix}dark-c) var(--#{$base-prefix}dark-h)));
+        }
+      } @else {
+        --#{$base-prefix}#{$key}: oklch(var(--#{$base-prefix}#{$key}-l) var(--#{$base-prefix}#{$key}-c) var(--#{$base-prefix}#{$key}-h));
+      }
       --#{$base-prefix}#{$key}-contrast: oklch(from var(--color, var(--#{$base-prefix}#{$key})) clamp(var(--#{$base-prefix}#{$key}-contrast-lightest-text,
             var(--contrast-lightest-text, 0)),
           (l / var(--contrast-threshold, 0.623) - 1) * -infinity,
