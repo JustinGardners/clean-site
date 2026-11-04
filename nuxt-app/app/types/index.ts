@@ -75,3 +75,17 @@ export type DeliverySection = {
     phone: string;
     isGift: boolean;
 };
+
+export type CheckoutStep = 'delivery' | 'deliveryMethod' | 'payment';
+
+export type Checkout = {
+    delivery: DeliverySection;
+    deliveryMethod?: {
+        method: string;
+    };
+    payment?: {
+        cardNumber: string;
+        expiryDate: string;
+        cvv: string;
+    };
+}

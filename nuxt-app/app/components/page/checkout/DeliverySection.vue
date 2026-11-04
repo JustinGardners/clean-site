@@ -1,30 +1,43 @@
 <script setup lang="ts">
 import type { DeliverySection } from '~/types'
+import type { CheckoutStep } from '~/pages/checkout/index.vue';
+
 const delivery = defineModel<DeliverySection>({ required: true })
 
 // Replace the object so field edits emit update:modelValue to the parent.
-function field<K extends keyof DeliverySection>(key: K) {
+function field<T extends object, K extends keyof T>(model: { value: T }, key: K) {
     return computed({
-        get: () => delivery.value[key],
-        set: (value: DeliverySection[K]) => {
-            delivery.value = { ...delivery.value, [key]: value }
+        get: () => model.value[key],
+        set: (value: T[K]) => {
+            model.value = { ...model.value, [key]: value }
         },
     })
 }
 
 const model = reactive({
-    title: field('title'),
-    firstName: field('firstName'),
-    lastName: field('lastName'),
-    phone: field('phone'),
-    address: field('address'),
-    addressTwo: field('addressTwo'),
-    townCity: field('townCity'),
-    county: field('county'),
-    postcode: field('postcode'),
-    country: field('country'),
-    isGift: field('isGift'),
+    title: field(delivery, 'title'),
+    firstName: field(delivery, 'firstName'),
+    lastName: field(delivery, 'lastName'),
+    phone: field(delivery, 'phone'),
+    address: field(delivery, 'address'),
+    addressTwo: field(delivery, 'addressTwo'),
+    townCity: field(delivery, 'townCity'),
+    county: field(delivery, 'county'),
+    postcode: field(delivery, 'postcode'),
+    country: field(delivery, 'country'),
+    isGift: field(delivery, 'isGift'),
 })
+
+
+
+const emit = defineEmits<{
+    (e: 'updateStep', value: CheckoutStep): void
+}>();
+
+const updateStep = (step: CheckoutStep) => {
+    emit('updateStep', step)
+}
+
 </script>
 <template>
 
@@ -384,7 +397,7 @@ const model = reactive({
                             href="javascript:window.history.back();">Back</a>
 
 
-                        <input id="btnSubmitAddress" class="btn btn-primary button btnContinue btnNavigate"
+                        <input id="btnSubmitAddress" @click="updateStep('deliveryMethod')" class="btn btn-primary button btnContinue btnNavigate"
                             type="submit" value="Continue to Delivery Method" data-theme="b">
                     </div>
 

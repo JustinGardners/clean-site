@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DeliverySection } from '~/types'
+import type { DeliverySection, Checkout, CheckoutStep } from '~/types'
 
 // onMounted(() => {
 //    const requiredFields = document.querySelectorAll("input[data-val-required]");
@@ -15,12 +15,8 @@ import type { DeliverySection } from '~/types'
 //    });
 // });
 
-type CheckoutStep = 'delivery' | 'deliveryMethod' | 'payment';
 
-type Checkout = {
-    delivery: DeliverySection;
-}
-
+/// USE NEW USECHECKOUT COMPOSABLE HERE
 const checkout = ref<Checkout>({
       delivery: {
          title: 'Mr',
@@ -37,7 +33,7 @@ const checkout = ref<Checkout>({
       },
 });
 
-const activeStep = ref<CheckoutStep>('payment');
+const activeStep = ref<CheckoutStep>('delivery');
 
 const scopeClass = computed(() => {
     switch (activeStep.value) {
@@ -89,8 +85,8 @@ const scopeClass = computed(() => {
                 </div>
 
                 <!-- {{ checkout.delivery }} -->
-                <PageCheckoutDeliverySection v-model="checkout.delivery" v-if="activeStep === 'delivery'" />
-                <PageCheckoutDeliveryMethodSection v-if="activeStep === 'payment'" />
+                <PageCheckoutDeliverySection @update-step="(step) => activeStep = step" v-model="checkout.delivery" @update:step="(step) => activeStep.value = step" v-if="activeStep === 'delivery'" />
+                <PageCheckoutDeliveryMethodSection v-if="activeStep === 'deliveryMethod'" />
                 <PageCheckoutPaymentSection v-if="activeStep === 'payment'" />
                 
             </div>
