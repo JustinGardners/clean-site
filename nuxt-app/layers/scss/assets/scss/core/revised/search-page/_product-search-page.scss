@@ -1,7 +1,7 @@
 @use "small-style/scss/base/mixins/rules/components/layout" as *;
 @use "small-style/scss/base/variables/_breakpoints" as *;
 @use "small-style/scss/base/mixins/rules/components/flow" as *;
-@use "../../framework/base/mixins/buttons" as *;
+@use "../../../framework/base/mixins/buttons" as *;
 
 .container-md:has(> #searchResultsWrap) {
     --search-results-gap-md-n-up: var(--space-xl);

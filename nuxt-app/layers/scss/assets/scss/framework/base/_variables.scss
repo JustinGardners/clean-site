@@ -222,6 +222,7 @@ $tertiary: color.to-space(
 );
 
 $theme-colors: map.set($theme-colors, "tertiary", $tertiary);
+$theme-colors: map.set($theme-colors, "grey", var(--#{$tw-prefix}color-grey-10));
 
 $colors: (
   white: $white,
@@ -372,6 +373,16 @@ $site-bs-utilities: ()!default;
 //       }
 //   }
 // }
+
+$font-weight-thin: 100 !default;
+$font-weight-extralight: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-extrabold: 800 !default;
+$font-weight-black: 900 !default;
 
 // Bootstrap vars
 ////////////////////////////////////////////////////////////////////////////

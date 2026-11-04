@@ -49,24 +49,35 @@
 //////
 
 
-
+:where(#basket, .checkout) {
+    container-type: inline-size;
+    container-name: basket;
+}
 
 #basket {    
     @include wrapper();
-    container-type: inline-size;
-    container-name: basket;
-
     >h2 {
-        font-size: calc(var(--base-display-sm-font-size) * var(--unit, var(--font-size-base, 1rem)));
+        font-size: font-size("display-sm");
         padding-block: var(--space-lg);
     }
 }
 
-#mainBasket {
+:where(#mainBasket, .checkout, #headerWrap:has(#checkoutHeader) .row) {
     --max-cover-width: 55px; // create a global var for small cover
     --cover-width: min(calc(100% - var(--layout-gap)), var(--max-cover-width));
     @include basket-layout();
     row-gap: 0;
+}
+
+:where(#headerWrap:has(#checkoutHeader) .row) {
+    --layout-grid-auto-repeat: auto-fill;
+}
+
+#mainBasket {
+    // --max-cover-width: 55px; // create a global var for small cover
+    // --cover-width: min(calc(100% - var(--layout-gap)), var(--max-cover-width));
+    // @include basket-layout();
+    // row-gap: 0;
 
     .validation-summary-valid {
         grid-column: 1 / -1;
@@ -115,22 +126,23 @@
     #basketTable {
         grid-column: span 6;
     }
-
+    .checkoutWrap {
+        grid-column: span 5;
+    }    
     #basketSummaryArea {
         grid-column: span 2;
     }
+    #checkoutSidebar {
+        grid-column: span 3;
+    }    
 }
-
-
 
 :is(#basketHeader, #basketBody, #basketBody > .row) {
     grid-column: 1/-1;
 }
 
-
-
 #basketHeader {
-    font-weight: var(--font-weight-bold, 600);
+    font-weight: font-weight('bold');    
     .itemCover {
         display: none;
     }
@@ -152,7 +164,7 @@
         padding: var(--space-xs);
         border-radius: var(--radius);
         gap: var(--space-3xs);
-        font-size: calc(var(--base-xs-font-size) * var(--unit, 1rem));
+        font-size: font-size('xs');
         position: relative;
         background: color-mix(in oklab, var(--root-bg), light-dark(#fff, #000) 50%);
     }
@@ -177,7 +189,7 @@
         grid-column: 2/5;
         grid-row: 1 / 1;
         h3 {
-            font-size: var(--base-sm-fluid-type);
+            font-size: font-size('sm', true);
         }
     }
 
@@ -205,9 +217,10 @@
     .itemSubtotal {
         grid-row: 1 / 6 ;
         grid-column: 6 / 6;
-        font-size: var(--base-default-fluid-type);
-        font-weight: var(--font-weight-bold, 600); // add this as a global variable for bold text
-        color: var(--base-primary);
+        // font-size: var(--base-default-fluid-type);
+        font-size: font-size('default', true);
+        font-weight: font-weight('bold');
+        color: theme-color("primary");
         display: grid;
         place-content: flex-start;
     }
@@ -249,7 +262,8 @@
             display: block;
             width: 3.75rem;
             height: 3.75rem;
-            background: var(--base-dark);
+            // background: var(--base-dark);
+            background: theme-color("dark");
             $icon: icon('cross');
             --icon: #{$icon};
             mask: var(--icon) no-repeat calc(100% - 1rem) 1rem /1rem;            

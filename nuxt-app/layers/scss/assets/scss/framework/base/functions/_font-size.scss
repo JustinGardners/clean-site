@@ -1,0 +1,13 @@
+@use "sass:list";
+
+@function font-size($size, $fluid: false) {
+    @if list.index($type-sizes, $size) {
+        @if $fluid {
+            @return var(--base-#{$size}-fluid-type);
+        } @else {
+            @return calc(var(--base-#{$size}-font-size) * var(--unit, 1rem));
+        }
+    } @else {
+        @error "Unknown font size `#{$size}`.";
+    } 
+}

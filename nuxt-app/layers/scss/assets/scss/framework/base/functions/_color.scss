@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "sass:meta";
+@use "sass:string";
+
+@function _parse-integer($value) {
+    $text: "#{$value}";
+    $number: 0;
+    $length: string.length($text);
+
+    @if $length == 0 {
+        @return null;
+    }
+
+    @for $index from 1 through $length {
+        $digit: string.index("0123456789", string.slice($text, $index, $index));
+        @if $digit == null {
+            @return null;
+        }
+        $number: $number * 10 + $digit - 1;
+    }
+
+    @return $number;
+}
+
+@function get-theme-colors() {
+    @return $theme-colors;
+}
+
+@function theme-color($name, $as-contrast: false, $tw-prefix: $tw-prefix) {
+    $color-parts: str-explode($name, '-');
+    $color-name: nth($color-parts, 1);
+
+    @if not map.has-key($theme-colors, $color-name) {
+        @warn "Color `#{$name}` not found in theme colors.";        
+    } @else {
+        @if length($color-parts) > 1 {
+            // @debug "Color parts: #{$color-parts}";
+            $shade: _parse-integer(nth($color-parts, 2));
+            @if meta.type-of($shade) == "number" {
+                // @debug "Color shade is a number: #{$shade}";
+                @return if($as-contrast, var(--#{$tw-prefix}color-#{$color-name}-#{$shade}-contrast), var(--#{$tw-prefix}color-#{$color-name}-#{$shade}));
+            } @else {
+                @warn "Color shade `#{nth($color-parts, 2)}` must be a non-negative integer.";
+            }
+        } @else {
+            // @debug "Color has only one part: #{nth($color-parts, 1)}";
+            // @return var(--#{$base-prefix}-#{$color-name});
+        }
+    }
+    @return if($as-contrast, var(--#{$base-prefix}#{$color-name}-contrast), var(--#{$base-prefix}#{$color-name}));;
+    // @return var(--#{$tw-prefix}color-#{$name});
+}
+
+@function theme-color-contrast($name, $tw-prefix: $tw-prefix) {
+    @return theme-color($name, true, $tw-prefix);
+}

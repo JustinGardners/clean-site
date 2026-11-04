@@ -1,3 +1,14 @@
+@import "small-style/scss/base/mixins/utils/breakpoints";
+@import "small-style/scss/base/mixins/utils/deep-map-get";
+@import "small-style/scss/base/mixins/utils/deep-map-set";
+@import "small-style/scss/base/mixins/utils/exclude-keys";
+@import "small-style/scss/base/mixins/utils/pick-keys";
+@import "small-style/scss/base/mixins/utils/pow";
+@import "small-style/scss/base/mixins/utils/range-map";
+@import "small-style/scss/base/mixins/utils/register-custom-prop";
+@import "small-style/scss/base/mixins/utils/str-explode";
+@import "small-style/scss/base/mixins/utils/to-fixed";
+
 @import "./functions/strip-unit";
 @import "./functions/color-conversion";
 @import "./functions/base-font-size";
@@ -7,3 +18,6 @@
 @import "./functions/get-static-fluid-type";
 @import "./functions/utils/reverse-list";
 @import "./functions/icons/akar/_icons";
+@import "./functions/font-weight";
+@import "./functions/font-size";
+@import "./functions/color";

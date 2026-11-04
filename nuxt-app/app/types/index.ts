@@ -61,3 +61,17 @@ export type BasketItem = {
   quantity: number;
   price: number;
 };
+
+export type DeliverySection = {
+    title: string;
+    firstName: string;
+    lastName: string;
+    address: string;
+    addressTwo?: string;
+    townCity: string;
+    county: string;
+    postcode: string;
+    country: string;
+    phone: string;
+    isGift: boolean;
+};

@@ -1,0 +1,7 @@
+@mixin text-frame-x($value: calc(var(--text-frame-y) * var(--text-frame-ratio))) {
+    --text-frame-x: #{$value};
+}
+
+@mixin text-frame-y($value: 0.725em) {
+    --text-frame-y: #{$value};
+}

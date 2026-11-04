@@ -30,11 +30,20 @@
 
     :where(input,textarea,select) {
         --input-outline-color: var(--field-border-color);
+        //// temp - sort out propetly later
+        &::placeholder {
+            color: var(--field-placeholder-color, var(--tw-color-grey-7));
+        }
     }
 
     // this should be defined in small-styles - do an update there
     input[type="submit"] {
         @include input-text-rules();
+    }
+
+    :where(label) {
+        font-size: var(--field-label-font-size, font-size('xs'));
+        color: var(--field-label-color, var(--color, theme-color("primary")));
     }
 
 }

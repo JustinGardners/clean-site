@@ -1,0 +1,88 @@
+@use "../../../framework/base/mixins/buttons" as *;
+
+@layer revised.pages.base {
+    .form-group {
+        --field-gap-y: min(max(calc(var(--layout-gap) / 3), 3px), 0.75rem);
+        // this should extend from small-style ideally
+        display: grid;
+        grid-auto-flow: row;
+        gap: var(--field-gap-y);
+        position: relative;
+        label {
+            // font-size: calc(var(--base-sm-font-size) * var(--unit, var(--font-size-base, 1rem)));
+            // color: var(--label-color, var(--color, var(--base-primary)));
+        }
+    }
+
+    // .form-group+.form-group {
+    //     margin-top: var(--space-xs);
+    // }
+
+    :where(button[type="submit"], input[type="button"]) {
+        @include button-rules();
+    }
+
+    :where(.custom-checkbox) {
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        column-gap: var(--space-2xs);
+    }
+
+    @container style(--label-stacked:true) {
+        :is(#deliveryFields,.addressFields) {
+            row-gap: min(calc(var(--layout-gap) * 2), var(--space-xl));
+        }
+        .form-group {
+            align-content: flex-end;
+            > * {
+                grid-column: 1/-1;
+                grid-row: 1/-1;
+            }
+            > label {
+                align-self: start;
+                transform: translateY(calc(-100% - var(--field-gap-y)));
+                margin-inline-start: var(--text-frame-x);
+                z-index: 1;
+                transition: transform 0.3s ease, color 0.3s ease, font-size 0.3s ease;  
+                $font-size: font-size('xxs');
+                --field-label-font-size: #{$font-size};                                 
+            }
+            label.required + input {
+                &::placeholder {
+                    color: transparent;
+                }
+            }
+            label.required:has(+ input:placeholder-shown:not(:focus)) {                
+                color: theme-color("grey");
+                transform: translateY(0);
+                align-self: center;       
+                $font-size: font-size('xs');
+                --field-label-font-size: #{$font-size};                               
+            }          
+        }
+        @container style(--label-in-form:true) {
+            :is(#deliveryFields,.addressFields) {
+                row-gap: min(calc(var(--layout-gap) * 1), var(--space-xl));
+                @include text-frame-y(0.725rem);
+                @include text-frame-x(); 
+            }
+            .form-group {
+                > label {
+                    align-self: center;
+                    &:has(+ select) {
+                        transform: none;
+                    }
+                }
+                :is(input) {
+                    padding-block-start: calc(var(--input-text-frame-y,var(--text-frame-y)) + font-size('xxs'));
+                }
+                :is(select) {
+                    $label-font-size: font-size('xxs');                    
+                    --input-text-frame-y: calc(var(--text-frame-y) + (#{$label-font-size} / 2));
+                    grid-row: 2/2;
+                }
+            }
+        }
+    }
+
+}

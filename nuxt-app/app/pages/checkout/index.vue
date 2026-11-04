@@ -1,3 +1,58 @@
+<script setup lang="ts">
+import type { DeliverySection } from '~/types'
+
+// onMounted(() => {
+//    const requiredFields = document.querySelectorAll("input[data-val-required]");
+//    requiredFields.forEach(field => {
+//     //    field.addEventListener("input", () => {
+//     //        if (field.validity.valid) {
+//     //            field.style.outlineColor = "var(--input-outline-color)";
+//     //        } else {
+//     //            field.style.outlineColor = "var(--input-outline-color)";
+//     //        }
+//     //    });
+//     field.setAttribute("required", "required");
+//    });
+// });
+
+type CheckoutStep = 'delivery' | 'deliveryMethod' | 'payment';
+
+type Checkout = {
+    delivery: DeliverySection;
+}
+
+const checkout = ref<Checkout>({
+      delivery: {
+         title: 'Mr',
+         firstName: '',
+         lastName: '',
+         address: '',
+         addressTwo: '',
+         townCity: '',
+         county: '',
+         postcode: '',
+         country: '',
+         phone: '',
+         isGift: false,
+      },
+});
+
+const activeStep = ref<CheckoutStep>('payment');
+
+const scopeClass = computed(() => {
+    switch (activeStep.value) {
+        case 'delivery':
+        case 'deliveryMethod':
+            return 'delivery';
+        case 'payment':
+            return 'payment';
+        default:
+            return '';
+    }
+});
+
+</script>
+
 <template>
     <!-- Basket merge modal -->
     <!-- <div id="basketMerge" class="basketMerge">
@@ -23,4 +78,28 @@
         </div>
     </div>
 </div> -->
+    <div class="container-md">
+    <div :class="'checkout ' + scopeClass" style="--label-stacked:true; --label-in-form:true;">
+        <div class="checkoutWrap">
+            <!-- checkout -->
+            <div id="checkout">
+
+                <!-- error messages -->
+                <div class="errorMessages">
+                </div>
+
+                <!-- {{ checkout.delivery }} -->
+                <PageCheckoutDeliverySection v-model="checkout.delivery" v-if="activeStep === 'delivery'" />
+                <PageCheckoutDeliveryMethodSection v-if="activeStep === 'payment'" />
+                <PageCheckoutPaymentSection v-if="activeStep === 'payment'" />
+                
+            </div>
+            <!-- @checkout-->
+        </div>
+        <!-- basket -->
+
+        <PageCheckoutSidebar />
+        <!-- @basket -->
+    </div>    
+    </div>
 </template>

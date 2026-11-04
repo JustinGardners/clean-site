@@ -1,5 +1,16 @@
 $use-new-header: false;
 
+//move this to :root for global header logo variables
+:root {
+    --logo-mask: var(--logo-sm-screen, var(--logo-letterform, url("/assets/sprite/svg/storefront-icon.svg")));
+    --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));
+    --logo-height: var(--logo-height-sm-screen, 3rem);    
+    @media (--md-n-above) {
+        --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));
+        --logo-height: var(--logo-height-lg-screen, 2.75rem);
+    }
+}
+
 @if $use-new-header ==false {
 
     #headerWrap {
@@ -20,9 +31,9 @@ $use-new-header: false;
         --account-track: 4em;
         --wishlist-track: 4em;
         --basket-track: 1fr;
-        --logo-mask: var(--logo-sm-screen, var(--logo-letterform, url("/assets/sprite/svg/storefront-icon.svg")));
-        --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));
-        --logo-height: var(--logo-height-sm-screen, 3rem);
+        // --logo-mask: var(--logo-sm-screen, var(--logo-letterform, url("/assets/sprite/svg/storefront-icon.svg")));
+        // --logo-aspect: var(--logo-aspect-sm-screen, var(--logo-aspect-letterform, 13/14));
+        // --logo-height: var(--logo-height-sm-screen, 3rem);
         --header-template-columns: var(--header-template-columns-sm-screen, var(--logo-track) var(--menu-track) var(--account-track) var(--wishlist-track) var(--basket-track));
         --header-template-areas: var(--header-template-areas-sm-screen,
                 "logo menu account wishlist basket"
@@ -54,8 +65,7 @@ $use-new-header: false;
             --wishlist-track: 4em;
             --basket-track: max-content;
             --logo-mask: var(--logo-lg-screen, var(--logo-wordmark, url("/assets/sprite/svg/storefront-logo.svg")));
-            --logo-aspect: var(--logo-aspect-lg-screen, var(--logo-aspect-wordmark, 74/23));
-            --logo-height: var(--logo-height-lg-screen, 2.75rem);
+
             --header-template-columns: var(--header-template-columns-md-n-above, var(--logo-track) var(--search-track) var(--account-track) var(--wishlist-track) var(--basket-track));
             --header-template-areas: var(--header-template-areas-md-n-above,
                     "logo search account wishlist basket");

@@ -1,0 +1,566 @@
+@use "small-style/scss/base/mixins/rules/components/flow" as flow;
+@use "small-style/scss/base/mixins/rules/components/card" as card;
+@use "small-style/scss/base/mixins/rules/components/layout" as layout;
+
+#headerWrap:has(#checkoutHeader) {
+    color: theme-color-contrast("primary-6");
+    background: theme-color("primary-6");
+    border-bottom: 1px solid theme-color("grey-10");
+
+    .container-md {
+        all: unset;
+        @include layout.wrapper();
+        display: flex;
+        .row {
+            width:100%;
+            min-height: 60px;
+            place-content: center;            
+        }
+    }
+
+}
+
+#storeLogoHeader {
+    flex: 0 1 max-content;
+    grid-row: 1/1;
+
+    svg {
+        max-width: 100%;
+        max-height: 100%;
+        height: var(--logo-height);
+        aspect-ratio: var(--logo-aspect);        
+    }
+}
+
+.checkout-header__secure {
+    grid-row:1/1;
+    grid-column: 8 / 9;
+    font-size: calc(font-size('xxs') / 1.2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);    
+    text-align: right;
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        $icon: icon('shield'); 
+        --icon: #{$icon};
+        mask: var(--icon) no-repeat center center;
+        background: currentColor;
+    }
+}
+
+.checkoutBreadcrumb {
+    grid-column: 3 / 6;
+    grid-row: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+    ul {
+        list-style-type: none;
+        counter-reset: step;
+        display: flex;
+        gap: var(--space-2xl);        
+    }
+    li {
+        counter-increment: step;
+        font-size: font-size('xxs', true);
+        font-weight: font-weight('bold');
+        span {
+            position: relative;
+        }
+        span:before {            
+            content: counter(step);
+            position: absolute;
+            font-size: 3em;
+            top: 50%;
+            left: 0;
+            transform: translate(-60%, -50%);
+            font-weight: font-weight('extrabold');
+            opacity: 1;            
+            color: theme-color("primary-7");
+            z-index: -1;
+            font-style: italic;
+            opacity: 0.75;
+        }
+    }
+    div {
+        display:none;
+    }
+}
+
+.checkoutSection > * + * {
+    @include flow.flow();
+}
+
+:where(#basketSummary) {
+    position: sticky;
+    top: 200px;
+    .totals {
+        font-size: font-size('xl');
+        font-weight: font-weight('bold');
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.checkoutWrap {
+    padding-inline-end: calc(var(--layout-gap) * 2);    
+    padding-block: var(--space-lg);
+}
+
+.checkoutBasket {
+    padding-block: var(--space-lg);
+    > .basketEdit {
+        display: none;
+    }
+}
+
+.basketItem {
+    @include card.default-rules();
+    @include card.column-rules();
+    @include card.two-column-layout();
+    --card-radius: 0;
+    --qty: min-content;
+    --card-left-col: var(--core-small-cover-image-width);
+    --card-columns: var(--card-left-col) var(--card-right-col, minmax(0, 1fr)) var(--qty);
+    --card-border-width: 0;
+    font-size: font-size('xs');
+
+    + .basketItem {
+        border-top: 1px solid var(--field-border-color);
+    }
+
+    .itemThumb {
+        grid-row: span 3;
+        padding-block: var(--card-body-padding-block);
+        img {
+            max-width: 100%;
+        }
+    }
+
+    >*:not(.itemThumb) {
+        padding-inline: var(--card-body-padding-inline);
+        padding-block: var(--card-body-padding-block);
+        display: block;
+
+        >*+* {
+            @include flow.flow();
+        }
+    }
+    > *:empty {
+        display: none;
+    }
+
+    .itemTitleDesc {
+        // font-size: var(--base-sm-fluid-type);
+        color: theme-color("primary");
+        font-weight: font-weight('bold');        
+    }
+
+    .itemTitleFormat {
+        display: block;
+    }
+
+    .itemTitleQty {
+        grid-column: 3/3;
+    }
+}
+
+#checkoutSidebar {
+    display: flex;
+    background: theme-color("grey-11");
+    padding-inline-start: calc(var(--layout-gap) * 2);
+
+    &:after {
+        content: "";
+        display: block;
+        display: block;
+        width: var(--wrapper-inline);
+        position: fixed;
+        left: 100%;
+        background: theme-color("grey-11");
+        height: 100%;
+        transform: translateX(-100%);
+        top: 0;
+    }
+}
+
+#checkout {
+    > * + * {
+        @include flow.flow();
+    }
+}
+
+.container-md:has(> .checkout) {
+    all: unset;
+    @include layout.wrapper-grid();
+    height: 100%;
+    .checkout {
+        grid-column: 2 / 2;
+    }
+}
+
+.miniBasketFooter {
+    .subTotals {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);        
+        > * {
+            display: flex;
+            justify-content: space-between;
+            > * {
+                display: contents;
+            }
+        }
+        .delivery {
+            justify-content: flex-start;
+            .deliveryPrice {
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+.miniBasketHeader {
+    .totals {
+        display: none;
+    }
+}
+
+.miniBasketFooter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--layout-gap);    
+    margin-top: var(--layout-gap);
+}
+
+.checkout-main-section label:has(+ input[placeholder]) {
+    // @include visually-hidden();
+}
+
+.inputFields {
+    @include layout.layout-grid();
+    @include layout.layout-grid-column-count();
+    --column-count: 6;
+}
+
+:where(.field-validation-valid) {
+    &:empty {
+        display: none;
+    }
+}
+
+:is(#selectDeliveryAddress, .clearAllContainer, .searchByContainer) {
+    grid-column: 1 / -1;
+}
+
+:is(#addNewDeliveryAddress, .newDeliveryAddressWrapper, .manualAddress) {
+    display: contents;
+}
+
+:is(#deliveryFields, .addressFields) {
+    grid-column: 1 / -1;
+    display: grid!important;
+    grid-template-columns: subgrid;    
+}
+
+#deliveryFields {
+    > .form-group:first-of-type {
+        grid-auto-flow: row;
+        align-items: center;
+        // grid-template-columns: min-content;        
+        grid-column:1 /-1;
+    }
+    .form-group.phone {
+        order:99;
+    }
+}
+
+label[for="DeliveryAddress_UserTitlePrefixTypeId"] {
+    width: min-content;
+    display: grid;
+    align-items: center;
+    + select {
+        width: min-content;
+    }    
+}
+
+.navigationButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+:is(.form-group.firstName, .form-group.lastName, .addressLine1Wrap, .addressLine2Wrap, .countryWrap) {
+    grid-column: span 3;
+}
+
+// :is(.addressLine1Wrap, .addressLine2Wrap) {
+//     grid-column: 1/-1;
+// }
+
+:is(.townWrap, .countyWrap, .postcodeWrap) {
+    grid-column: span 2;
+}
+
+.form-group.phone {
+    grid-column: 1 / -1;
+}
+
+.checkoutSection#checkoutSummary {
+    // padding: var(--text-frame-x);
+    // background: var(--tw-color-grey-9);
+    border-radius: var(--radius);    
+    border: var(--field-border-width,4px) solid var(--field-border-color);
+    background: color-mix(in oklab, var(--tw-color-grey-10), light-dark(#fff, #000) 60%);
+}
+
+:is(.deliveryAddress, .deliveryMethod) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;        
+    h6 {
+        flex-basis: 100%;
+        // background: var(--field-border-color);
+        padding-inline: var(--text-frame-x);
+        padding-block: var(--text-frame-y);
+        box-shadow: 0 1px 0px 0 var(--field-border-color);
+    }
+    .displayBlock {
+        padding-inline: var(--text-frame-x);
+        padding-block: var(--flow-space) calc(var(--flow-space) * 1.5);
+        line-height: calc(var(--line-height-fixed) + var(--line-height-relative));
+    }    
+}
+
+li.deliveryAddress {
+    h6 {
+        border-radius: calc(var(--radius) - var(--field-border-width,4px)) calc(var(--radius) - var(--field-border-width,4px)) 0 0;
+        
+    }
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;    
+    .deliveryAddress {
+        max-width:40ch;
+        text-wrap: pretty;
+    }
+    .editButton {
+        margin-right: var(--text-frame-x);
+        padding-block: var(--flow-space);
+    }
+
+}
+
+li.deliveryMethod { 
+}
+
+:is(.deliveryMethodContainer, .paymentTypeContainer) {
+    border-radius: var(--radius);    
+    border: var(--field-border-width,4px) solid var(--field-border-color);
+    background: color-mix(in oklab, var(--root-bg), light-dark(#fff, #000) 50%);  
+    // padding-inline: var(--text-frame-x);
+    // padding-block: var(--text-frame-y);      
+}
+
+#deliveryOptions {
+    --flow-space: var(--space-2xs);
+}
+
+.deliveryOptionsLabel {
+    --flow-space: 0;
+    font-size: font-size(xs);
+}
+
+.deliveryMethodContainer {
+    --flow-space: var(--space-md);
+}
+
+:is(.deliveryOption, #paymentTypeContainerWrapper .custom-control) {
+    $highlight-color-checked: theme-color("grey-9");
+    $highlight-color: var(--field-border-color);
+    --highlight-size: 3em;
+    --highlight-color: #{$highlight-color};
+    --highlight-color-checked: #{$highlight-color-checked};
+    $font-size: font-size(default);
+    --field-label-font-size: #{$font-size};        
+    display: grid;
+    grid-template: 1fr / calc(1em + var(--space-sm)) 1fr;
+    column-gap: var(--layout-gap);
+    align-items: center;
+    padding-inline: var(--space-sm);
+    background-image: linear-gradient(to right, var(--highlight-color) var(--highlight-size), theme-color("grey-11") var(--highlight-size));
+    &.custom-control {
+        label {
+            padding: var(--space-lg) var(--space-sm);
+        }
+        --input-accent-color: var(--base-primary);
+       &:has(input:checked) {
+            $highlight-color: theme-color("grey-9");
+            --highlight-color: #{$highlight-color};
+       }
+       &:first-of-type {
+        border-radius: calc(var(--radius) - var(--field-border-width,4px)) calc(var(--radius) - var(--field-border-width,4px)) 0 0;
+       }
+       &:last-of-type {
+        border-radius: 0 0 calc(var(--radius) - var(--field-border-width,4px)) calc(var(--radius) - var(--field-border-width,4px));
+       }       
+    }
+    // span {
+    //     font-size: font-size(xs);
+    // }
+    + :is(.deliveryOption, #paymentTypeContainerWrapper .custom-control) {
+        border-top: 1px solid var(--field-border-color);
+    }
+    .description {
+        display: block;
+        font-size: font-size(xs);
+        color: theme-color("grey-11", true);
+    }
+}
+
+#paymentTypeContainerWrapper .custom-control {
+    grid-template-columns: calc(1em + var(--space-sm)) 1fr auto;
+}
+
+:where(form#DeliveryMethod, #deliveryOptionsWrapper) {
+    --flow-space: var(--space-lg);
+    > * + * {
+        margin-top: var(--flow-space);
+    }       
+}
+
+.form-group {
+    .subTitle {
+        grid-row: 2/2;
+        font-size: font-size(xs);
+    }
+}
+
+.form-group {
+    .deliverySafePlaceDesc {
+        grid-row: 3/3;
+    }
+}
+
+:where(#deliveryDetails) {
+    --flow-space: var(--space-2xs);
+    // font-size: font-size(xs);
+    // *:not(input, select) {
+    //     font-size: font-size(xs);
+    // }
+    > * + * {
+        margin-top: var(--flow-space);
+    }    
+    .contactNumber {
+        > * + * {
+            margin-top: var(--flow-space);
+        }
+    }
+}
+
+.deliverySafePlace {
+    transform: none;
+}
+
+.deliveryUpdateText {
+    font-size: font-size(xs);
+    max-width: 55ch;
+    text-wrap: pretty;
+}
+
+:is(.contactNumber .form-group, .safePlace) {
+    --flow-space: var(--space-md);
+}
+
+.safePlace {
+    > .deliverySafePlaceDesc {
+        display: none;
+    }
+}
+
+.deliverySafePlaceDesc {
+    font-size: font-size(xs);
+}
+
+/// PAYMENT
+/// Apply voucher
+#applyVoucher {
+    .form-group {
+        @include layout.layout-grid();
+        @include layout.layout-grid-column-count();    
+        --column-count: 5;    
+        > * {
+            grid-area: unset;
+        }
+        label {
+            grid-column: 1 / -1;
+            transform: none;
+        }
+        input {
+            padding-top: var(--input-text-frame-y,var(--text-frame-y));
+        }
+    }
+}
+
+.paymentMethodIcon {
+    --mastercard: url("/mastercard.svg");
+    --visa: url("/visa.svg");
+    --amex: url("/americanexpress.svg");
+    --apple: url("/apple-pay.svg");
+    --google: url("/google-pay.svg");
+    --payment-method-icons: var(--mastercard), var(--visa), var(--amex);
+    --payment-method-width: 7.5rem;
+    --payment-method-height: 25px;
+    --payment-method-size: 2rem;
+    background-image: var(--payment-method-icons);
+    background-position: 0, calc(var(--payment-method-width) / 3), calc(var(--payment-method-width) * 2 / 3);
+    --payment-method-position: 0, calc(var(--payment-method-width) / 3), calc(var(--payment-method-width) * 2 / 3);
+    background-repeat: no-repeat;
+    width: var(--payment-method-width);
+    height: var(--payment-method-height);
+    background-size: var(--payment-method-size);
+    background-position: var(--payment-method-position);
+    &.apple {
+        --payment-method-icons: var(--apple);
+        --payment-method-size: contain;
+        --payment-method-height: 40px;
+        --payment-method-width: 4rem;        
+        --payment-method-position: center;
+    }
+    &.google {
+        --payment-method-icons: var(--google);
+        --payment-method-size: contain;
+        --payment-method-height: 40px;
+        --payment-method-width: 4rem;        
+        --payment-method-position: center;
+    }
+}
+
+:is(#BillingAddress, #applyVoucher) {
+    > * + * {
+        @include flow.flow();
+    }
+}
+
+:is(.labelName, .manualAddress1, .addressErrors, .requiredFields, #rememberAddress, .countryGroup) {
+    grid-column: 1 / -1;
+}
+
+:is(.manualTown, .manualCounty, .manualPostcode) {
+    grid-column: span 2;
+}
+
+.voucherButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--layout-gap);    
+    .button {
+        @include button-small();
+    }
+}

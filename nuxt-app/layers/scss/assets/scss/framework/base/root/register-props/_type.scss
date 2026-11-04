@@ -1,14 +1,13 @@
 @each $size, $meta in $font-sizes {
   $font-level: map.get($meta, "font-level");
 
-  @if $font-level != null {
+  @if $font-level !=null {
     @include register-prop($site-prefix + $size + "-font-ratio-min", "<number>", true, 1.2);
     @include register-prop($site-prefix + $size + "-font-ratio-max", "<number>", true, 1.5);
     @include register-prop($site-prefix + $size + "-font-width-min", "<number>", true, 375);
     @include register-prop($site-prefix + $size + "-font-width-max", "<number>", true, 1440);
     @include register-prop($site-prefix + $size + "-variable-unit", "<length>", true, 100vi);
-    @include register-prop(
-      $base-prefix + $size + "-fluid-type",
+    @include register-prop($base-prefix + $size + "-fluid-type",
       "<length>",
       true,
       site-font-size($size, px) + "px"
@@ -22,4 +21,20 @@
     "<number>",
     true,
     $result-px );
+}
+
+@each $key, $value in ('thin': $font-weight-thin,
+  'extralight': $font-weight-extralight,
+  'light': $font-weight-light,
+  'normal': $font-weight-normal,
+  'medium': $font-weight-medium,
+  'semibold': $font-weight-semibold,
+  'bold': $font-weight-bold,
+  'extrabold': $font-weight-extrabold,
+  'black': $font-weight-black,
+) {
+  @include register-prop($base-prefix + "font-weight-" + $key,
+    "<number>",
+    true,
+    $value );
 }
