@@ -1,5 +1,6 @@
 import * as sass from 'sass'
-import { transform } from 'lightningcss'
+import browserslist from 'browserslist'
+import { transform, browserslistToTargets } from 'lightningcss'
 import { writeFileSync, mkdirSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
@@ -7,6 +8,15 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const inputFile = resolve(__dirname, 'assets/scss/main.scss')
 const outputFile = resolve(__dirname, 'assets/css/main.css')
+
+const targets = browserslistToTargets(
+  browserslist([
+    'last 2 Chrome versions',
+    'last 2 Edge versions',
+    'last 2 Firefox versions',
+    'last 2 Safari versions',
+  ])
+)
 
 try {
   // Step 1: Compile SCSS to CSS
@@ -52,12 +62,7 @@ try {
       colors: true,
       customMedia: true
     },
-    targets: {
-      chrome: 90,
-      edge: 90,
-      firefox: 88,
-      safari: 14,
-    }
+    targets
   })
   console.log('✅ CSS optimized with Lightning CSS')
 

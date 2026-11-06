@@ -42,7 +42,7 @@
                     display: block;
                     padding-block: var(--text-frame-y);
                     padding-inline: clamp(var(--space-sm), 2vw, min(var(--text-frame-x), var(--text-frame-x-nav-item-link, 3rem)));
-                    color: var(--core-nav-link-color, var(--base-link-color, var(--base-primary)));
+                    color: var(--core-nav-link-color, var(--base-link-color, var(--brand-fg)));
                     @media (hover: hover) and (--md-n-above) {
                         &:hover {
                             color: var(--core-nav-link-hover-color, var(--base-link-hover-color, var(--tw-color-primary-3)));                            

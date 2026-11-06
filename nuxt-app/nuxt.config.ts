@@ -42,5 +42,8 @@ export default defineNuxtConfig({
   ],   
   svgSprite: {
     input: '~/assets/sprite/svg'
-  }
+  },
+  experimental: {
+    viewTransition: true, // or 'always'
+  }  
 })

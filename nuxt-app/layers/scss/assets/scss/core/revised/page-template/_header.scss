@@ -94,7 +94,8 @@ $use-new-header: false;
 
     .header__logo {
         mask: var(--logo-mask) center / var(--logo-mask-width) var(--logo-mask-height) no-repeat;
-        background: var(--base-primary);
+        // background: var(--base-primary);
+        background: var(--logo-color, var(--brand-fg));
         block-size: var(--logo-height);
         aspect-ratio: var(--logo-aspect);
         display: inline-flex;
@@ -114,8 +115,8 @@ $use-new-header: false;
     #miniBasket {
         grid-area: basket;
         border-radius: var(--radius);
-        color: var(--base-primary);
-        background: var(--tw-color-grey-10);
+        color: var(--brand-fg);
+        background: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.025) c h);
         display: grid;
         place-content: center;
         font-size: var(--base-xs-fluid-type);
@@ -129,7 +130,7 @@ $use-new-header: false;
             $icon: icon('shopping-bag');
             --icon: #{$icon};
             mask: var(--icon) center / contain no-repeat;
-            background: var(--base-primary);
+            background: var(--brand-fg);
             width: 1.75em;
             aspect-ratio: 1;
         }
@@ -226,7 +227,7 @@ $use-new-header: false;
 
     #searchBox {
         $input-color: get-contrast(var(--input-bg));
-        --input-bg: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.0025) c h);
+        --input-bg: oklch(from var(--root-bg, var(--tw-color-grey-11)) calc(l - 0.025) c h);
         --input-color: #{$input-color};
         --input-fs: calc(var(--#{$base-prefix}xs-font-size) * var(--unit, 1rem));
         display: grid;
@@ -271,7 +272,7 @@ $use-new-header: false;
             width: 1.75em;
             height: 1.75em;
             mask: var(--input-icon) no-repeat center / 1.75em;
-            background-color: var(--base-primary);
+            background-color: var(--brand-fg);
             grid-area: submit;
             align-self: center;
             margin-inline: auto;            
@@ -334,7 +335,7 @@ $use-new-header: false;
             display: block;
             width: 1.75em;
             height: 1.75em;
-            background: var(--base-primary);
+            background: var(--brand-fg);
             mask: var(--icon-mask) no-repeat 50% 50%;
             mask-size: contain;
             margin-inline: auto;

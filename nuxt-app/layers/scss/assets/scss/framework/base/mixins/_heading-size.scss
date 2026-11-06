@@ -1,28 +1,69 @@
-  @mixin heading-size($size) {
-    @if (check-if-heading-size($size)) {
-      $font-size: map.get(map.get($headings, $size), "size");
-      @if (check-if-type-size($font-size)) {
-        $default-font-max-size: site-font-size($font-size, px);
+@mixin heading-text-transform($heading-name, $text-transform) {
+ --text-transform: var(--#{$heading-name}-text-transform, #{$text-transform});
+}
+
+@mixin heading-letter-spacing($heading-name, $letter-spacing) {
+ --letter-spacing: var(--#{$heading-name}-letter-spacing, #{$letter-spacing});
+}
+
+@mixin heading-font-family($heading-name, $font-family) {
+ --font-family: var(--#{$heading-name}-font-family, #{$font-family});
+}
+
+@mixin heading-line-height($heading-name, $line-height) {
+ --line-height: var(--#{$heading-name}-line-height, #{$line-height});
+}
+
+@mixin output-heading-rules() {
+  $heading-color: get-contrast(var(--root-bg));
+  color: var(--color, var(--#{$site-prefix}heading-color, var(--#{$base-prefix}heading-color, #{$heading-color})));
+  line-height: calc(var(--line-height-relative) + (var(--line-height, var(--line-height-fixed)) * 1rem));
+  text-transform: var(--text-transform, none);
+  letter-spacing: var(--letter-spacing, normal);  
+}
+
+@mixin heading-size($size, $is-fluid: false, $include-fluid-vars: true) {
+  @if (check-if-heading-size($size)) {
+    $font-size: map.get(map.get($headings, $size), "size");
+    @if (check-if-type-size($font-size)) {
+      $default-font-max-size: site-font-size($font-size, px);
+      @if $is-fluid {
+        // Scoped locally
+        // $fluid-font-size: fluid-type-font-size($size);
+        // font-size: #{$fluid-font-size};
+        
+        // Scoped to root
+        font-size: var(--#{$base-prefix}#{$font-size}-fluid-type);
+      } @else {
         font-size: calc(
-          var(--#{$base-prefix}#{$font-size}-font-size, site-font-size($font-size)) *
+          var(
+              --#{$base-prefix}#{$font-size}-font-size,
+              site-font-size($font-size)
+            ) *
             var(--unit, var(--font-size-base, #{$font-size-base}))
         );
+      }
+      @if $include-fluid-vars {
         --font-size-max: var(
           --#{$site-prefix}#{$font-size}-font-size-max,
           #{$default-font-max-size}
         );
       }
-      $min-size: map.get(map.get($headings, $size), "min-size");
-      @if (check-if-type-size($min-size)) {
-        $default-font-min-size: site-font-size($min-size, px);
+    }
+    $min-size: map.get(map.get($headings, $size), "min-size");
+    @if (check-if-type-size($min-size)) {
+      $default-font-min-size: site-font-size($min-size, px);
+      @if $include-fluid-vars {
         --font-size-min: var(
           --#{$site-prefix}#{$font-size}-font-size-min,
           #{$default-font-min-size}
         );
       }
+    }
+    @if $include-fluid-vars {
       --font-ratio-min: var(
         --#{$base-prefix}#{$font-size}-font-ratio-min,
-        var(--#{$base-prefix}font-ratio-min, #{$fluid-font-ratio-min})        
+        var(--#{$base-prefix}font-ratio-min, #{$fluid-font-ratio-min})
       );
       --font-ratio-max: var(
         --#{$base-prefix}#{$font-size}-font-ratio-max,
@@ -30,12 +71,75 @@
       );
       --font-width-min: var(
         --#{$base-prefix}#{$font-size}-font-width-min,
-        var(--#{$base-prefix}font-width-min,
-        #{$fluid-font-width-min})
+        var(--#{$base-prefix}font-width-min, #{$fluid-font-width-min})
       );
       --font-width-max: var(
         --#{$base-prefix}#{$font-size}-font-width-max,
-        var(--#{$base-prefix}font-width-max, var(--root-max-wrapper-width, #{$fluid-font-width-max}))
+        var(
+          --#{$base-prefix}font-width-max,
+          var(--root-max-wrapper-width, #{$fluid-font-width-max})
+        )
       );
     }
   }
+}
+
+@mixin output-heading-props-inc-optional-size($map, $heading-name, $heading-size, $include-heading-size: true, $include-fluid-vars: false) {
+  @if (map-has-key($map, "size")) {
+    $size: map.get($map, "size");
+    @if $include-heading-size {
+        @include heading-size($size, $heading-sizes, $include-fluid-vars);
+    }
+  }
+
+    $text-transform: if(map-has-key($map, "text-transform"), if(map.get($map, "text-transform") != '', map.get($map, "text-transform"), none), none);
+    $letter-spacing: if(map-has-key($map, "letter-spacing"), if(map.get($map, "letter-spacing") != '', map.get($map, "letter-spacing"), normal), normal);
+    // $line-height: if(map-has-key($map, "line-height"), if(map.get($map, "line-height") != '', map.get($map, "line-height"), normal), normal);
+    // $color: if(map-has-key($map, "color"), if(map.get($map, "color") != '', map.get($map, "color"), inherit), inherit);
+    $font-family: if(map-has-key($map, "font-family"), if(map.get($map, "font-family") != '', map.get($map, "font-family"), var(--font-family-heading)), var(--font-family-heading));
+    
+    // --text-transform: var(--#{$heading-name}-text-transform, #{$text-transform});
+    @include heading-text-transform($heading-name, $text-transform);
+    @include heading-letter-spacing($heading-name, $letter-spacing);
+    // @include heading-line-height($heading-name, $line-height);
+    // --color-heading: var(--#{$heading-name}-color, #{$color});
+    @include heading-font-family($heading-name, $font-family);
+}
+
+@mixin h1($is-fluid: false, $include-fluid-vars: false) {
+  /// need to finish $include-fluid-vars for local fluid varaitions
+  // $map: map.get($headings, "h1");
+  // $size: map-deep-get($headings, "h1", "size");  
+  @include heading-size('h1', $is-fluid, false);
+  @include output-heading-rules();  
+}
+
+@mixin h2($is-fluid: false, $include-fluid-vars: false) {
+  /// need to finish $include-fluid-vars for local fluid varaitions
+  @include heading-size('h2', $is-fluid, false);
+  @include output-heading-rules();  
+}
+
+@mixin h3($is-fluid: false, $include-fluid-vars: false) {
+  /// need to finish $include-fluid-vars for local fluid varaitions
+  @include heading-size('h3', $is-fluid, false);
+  @include output-heading-rules();  
+}
+
+@mixin h4($is-fluid: false, $include-fluid-vars: false) {
+  /// need to finish $include-fluid-vars for local fluid varaitions
+  @include heading-size('h4', $is-fluid, false);
+  @include output-heading-rules();  
+}
+
+@mixin h5($is-fluid: false, $include-fluid-vars: false) {
+  /// need to finish $include-fluid-vars for local fluid varaitions
+  @include heading-size('h5', $is-fluid, false);
+  @include output-heading-rules();  
+}
+
+@mixin h6($is-fluid: false, $include-fluid-vars: false) {
+  /// need to finish $include-fluid-vars for local fluid varaitions
+  @include heading-size('h6', $is-fluid, false);
+  @include output-heading-rules();  
+}

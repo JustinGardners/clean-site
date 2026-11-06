@@ -244,7 +244,7 @@ $font-size-base-px: math.div($font-size-root-px, $font-size-body-px);
 
 $muted-root-fg: true!default;
 
-
+$heading-color: var(--brand-fg);
 
 // Shared var by small-style & bootstrap
 $font-size-base: calc((var(--font-size-body-px) / var(--font-size-root-px, 16)) * 1rem);

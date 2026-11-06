@@ -171,7 +171,7 @@
 
 #checkoutSidebar {
     display: flex;
-    background: theme-color("grey-11");
+    background: theme-color("grey-10");
     padding-inline-start: calc(var(--layout-gap) * 2);
 
     &:after {
@@ -181,7 +181,7 @@
         width: var(--wrapper-inline);
         position: fixed;
         left: 100%;
-        background: theme-color("grey-11");
+        background: theme-color("grey-10");
         height: 100%;
         transform: translateX(-100%);
         top: 0;
@@ -310,12 +310,16 @@ label[for="DeliveryAddress_UserTitlePrefixTypeId"] {
     grid-column: 1 / -1;
 }
 
+.test {
+    @include h1(true);
+}
+
 .checkoutSection#checkoutSummary {
     // padding: var(--text-frame-x);
     // background: var(--tw-color-grey-9);
     border-radius: var(--radius);    
     border: var(--field-border-width,4px) solid var(--field-border-color);
-    background: color-mix(in oklab, var(--tw-color-grey-10), light-dark(#fff, #000) 60%);
+    background: var(--checkout-summary-bg, var(--root-bg-primary-tint));
 }
 
 :is(.deliveryAddress, .deliveryMethod) {

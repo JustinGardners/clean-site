@@ -1,0 +1,3 @@
+@use "../../framework/base/mixins/view-transitions" as vt;
+
+@include vt.slide-page-transition;

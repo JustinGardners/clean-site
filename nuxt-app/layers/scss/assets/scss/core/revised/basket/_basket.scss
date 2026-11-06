@@ -52,6 +52,7 @@
 :where(#basket, .checkout) {
     container-type: inline-size;
     container-name: basket;
+    --root-bg-primary-tint: color-mix(in oklab, var(--root-bg), var(--base-primary) 3%);
 }
 
 #basket {    
@@ -166,7 +167,7 @@
         gap: var(--space-3xs);
         font-size: font-size('xs');
         position: relative;
-        background: color-mix(in oklab, var(--root-bg), light-dark(#fff, #000) 50%);
+        background: var(--basket-row-bg, var(--root-bg-primary-tint));
     }
 
     .itemCover {
