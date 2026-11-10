@@ -281,22 +281,26 @@ $headings: (
     "text-transform": none,
     "letter-spacing": 0,
     "line-height": 1.2,
+    "font-family": var(--font-family-base),
   ),
   "h4": (
     "size": "default",
     "min-size": "sm",
     "text-transform": none,
     "letter-spacing": 0,
+    "font-family": var(--font-family-base),
   ),
   "h5": (
     "size": "sm",
     "min-size": "xs",
     "text-transform": none,
+    "font-family": var(--font-family-base),
   ),
   "h6": (
     "size": "xs",
     "min-size": "xxs",
     "text-transform": uppercase,
+    "font-family": var(--font-family-base),
   ),
 );
 

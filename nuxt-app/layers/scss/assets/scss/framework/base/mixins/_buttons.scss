@@ -5,52 +5,126 @@
 }
 
 @mixin button-color-props() {
-  --#{$prefix}btn-color: var(--#{$base-prefix}btn-theme-text,
-    oklch(from var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)) clamp(var(--#{$base-prefix}btn-lightest-text, 0),
-        (l / var(--#{$base-prefix}btn-text-threshold, 0.623) - 1) * -infinity,
-        var(--#{$base-prefix}btn-darkest-text, 1)) 0 h));
-  --#{$prefix}btn-bg: var(--#{$base-prefix}btn-bg, var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)));
-  --#{$prefix}btn-border-color: var(--#{$base-prefix}btn-border-color, color-mix(in lab,
-      var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
-      var(--#{$base-prefix}btn-border-tint, #000) var(--#{$base-prefix}btn-border-shade-amount, 0%)));
+  --#{$prefix}btn-color: var(
+    --#{$base-prefix}btn-theme-text,
+    oklch(
+      from var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary))
+        clamp(
+          var(--#{$base-prefix}btn-lightest-text, 0),
+          (l / var(--#{$base-prefix}btn-text-threshold, 0.623) - 1) * -infinity,
+          var(--#{$base-prefix}btn-darkest-text, 1)
+        )
+        0 h
+    )
+  );
+  --#{$prefix}btn-bg: var(
+    --#{$base-prefix}btn-bg,
+    var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary))
+  );
 
-  --#{$prefix}btn-hover-color: var(--#{$base-prefix}btn-theme-hover-text,
-    var(--#{$prefix}btn-color));
-  --#{$prefix}btn-hover-bg: var(--#{$base-prefix}btn-hover-bg, color-mix(in lab,
+  --#{$prefix}btn-border-color: var(
+    --#{$base-prefix}btn-border-color,
+    color-mix(
+      in lab,
       var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
-      var(--#{$base-prefix}btn-hover-tint, #000) var(--#{$base-prefix}btn-hover-shade-amount, 10%)));
-  --#{$prefix}btn-hover-border-color: var(--#{$base-prefix}btn-hover-border-color, color-mix(in lab,
-      var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
-      var(--#{$base-prefix}btn-hover-border-tint, #000) var(--#{$base-prefix}btn-hover-border-shade-amount, 12%)));
+      var(--#{$base-prefix}btn-border-tint, oklch(from var(--color, var(--root-fg, #000)) l c h))
+      calc(var(--#{$base-prefix}btn-border-depth, 1) * 5%)
+    )
+  );
 
-  --#{$prefix}btn-active-color: var(--#{$base-prefix}btn-active-color, var(--#{$base-prefix}btn-theme-active-text,
-      var(--#{$base-prefix}btn-color)));
-  --#{$prefix}btn-active-bg: var(--#{$base-prefix}btn-active-bg, color-mix(in lab,
+  // var(--base-btn-border-color,color-mix(in lab, var(--base-btn-theme,var(--base-primary)), var(--base-btn-border-tint, oklch(from var(--color, #000) l c h) calc(var(--base-btn-border-depth,2) * 5%))))
+  // color-mix(in oklab, var(--button-color), calc(var(--button-border-depth, 1)*5%) var(--button-border-color-mix,var(--color-dark,#000)))
+
+  --#{$prefix}btn-hover-color: var(
+    --#{$base-prefix}btn-theme-hover-text,
+    var(--#{$prefix}btn-color)
+  );
+
+  --#{$prefix}btn-hover-bg: var(
+    --#{$base-prefix}btn-hover-bg,
+    color-mix(
+      in lab,
       var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
-      var(--#{$base-prefix}btn-active-tint, #000) var(--#{$base-prefix}btn-active-shade-amount, 12%)));
-  --#{$prefix}btn-active-border-color: var(--#{$base-prefix}btn-active-border-color, color-mix(in lab,
-      var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary))),
-    var(--#{$base-prefix}btn-active-border-tint, #000) var(--#{$base-prefix}btn-active-border-shade-amount, 14%)); // double check last var
+      var(--#{$base-prefix}btn-hover-tint, #000)
+        var(--#{$base-prefix}btn-hover-shade-amount, 10%)
+    )
+  );
+
+  --#{$prefix}btn-hover-border-color: var(
+    --#{$base-prefix}btn-hover-border-color,
+    color-mix(
+      in lab,
+      var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+      var(--#{$base-prefix}btn-hover-border-tint, #000)
+        var(--#{$base-prefix}btn-hover-border-shade-amount, 12%)
+    )
+  );
+
+  --#{$prefix}btn-active-color: var(
+    --#{$base-prefix}btn-active-color,
+    var(--#{$base-prefix}btn-theme-active-text, var(--#{$base-prefix}btn-color))
+  );
+
+  --#{$prefix}btn-active-bg: var(
+    --#{$base-prefix}btn-active-bg,
+    color-mix(
+      in lab,
+      var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
+      var(--#{$base-prefix}btn-active-tint, #000)
+        var(--#{$base-prefix}btn-active-shade-amount, 12%)
+    )
+  );
+
+  --#{$prefix}btn-active-border-color: var(
+    --#{$base-prefix}btn-active-border-color,
+    color-mix(
+      in lab,
+      var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary))
+    ),
+    var(--#{$base-prefix}btn-active-border-tint, #000)
+      var(--#{$base-prefix}btn-active-border-shade-amount, 14%)
+  ); // double check last var
   --#{$prefix}btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --#{$prefix}btn-disabled-color: var(--#{$base-prefix}btn-theme-disabled-text,
-    var(--#{$base-prefix}btn-color));
-  --#{$prefix}btn-disabled-bg: var(--#{$base-prefix}btn-disabled-bg, color-mix(in lab,
+  --#{$prefix}btn-disabled-color: var(
+    --#{$base-prefix}btn-theme-disabled-text,
+    var(--#{$base-prefix}btn-color)
+  );
+
+  --#{$prefix}btn-disabled-bg: var(
+    --#{$base-prefix}btn-disabled-bg,
+    color-mix(
+      in lab,
       var(--#{$base-prefix}btn-theme, var(--#{$base-prefix}primary)),
-      var(--#{$base-prefix}btn-disabled-tint, #fff) var(--#{$base-prefix}btn-disabled-tint-amount, 0%)));
-  --#{$prefix}btn-disabled-border-color: var(--#{$base-prefix}btn-disabled-border-color, color-mix(in lab,
+      var(--#{$base-prefix}btn-disabled-tint, #fff)
+        var(--#{$base-prefix}btn-disabled-tint-amount, 0%)
+    )
+  );
+
+  --#{$prefix}btn-disabled-border-color: var(
+    --#{$base-prefix}btn-disabled-border-color,
+    color-mix(
+      in lab,
       var(--#{$prefix}btn-theme, var(--#{$base-prefix}primary)),
-      var(--#{$base-prefix}btn-disabled-border-tint, #fff) var(--#{$base-prefix}btn-disabled-border-tint-amount, 0%)));
+      var(--#{$base-prefix}btn-disabled-border-tint, #fff)
+        var(--#{$base-prefix}btn-disabled-border-tint-amount, 0%)
+    )
+  );
 }
 
 @mixin button-default-rules() {
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
   // @include font-size(var(--#{$prefix}btn-font-size));
-  font-size: var(--#{$prefix}btn-font-size, calc(var(--base-default-font-size-px) / var(--font-size-root-px,16) * var(--unit,1rem)));
+  font-size: var(
+    --#{$prefix}btn-font-size,
+    calc(
+      var(--base-default-font-size-px) / var(--font-size-root-px, 16) *
+        var(--unit, 1rem)
+    )
+  );
   font-weight: var(--#{$prefix}btn-font-weight);
   line-height: var(--#{$prefix}btn-line-height);
   color: var(--#{$prefix}btn-color);
@@ -60,7 +134,8 @@
   vertical-align: middle;
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
-  border: var(--#{$prefix}btn-border-width, 1px) solid var(--#{$prefix}btn-border-color);
+  border: var(--#{$prefix}btn-border-width, 2px) solid
+    var(--#{$prefix}btn-border-color);
   @include border-radius(var(--#{$prefix}btn-border-radius, var(--radius)));
   @include gradient-bg(var(--#{$prefix}btn-bg));
   @include box-shadow(var(--#{$prefix}btn-box-shadow));
@@ -85,18 +160,24 @@
 
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: var(--#{$prefix}btn-box-shadow),
-      var(--#{$prefix}btn-focus-box-shadow);
-    }
-
-    @else {
+      box-shadow:
+        var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
+    } @else {
       box-shadow: var(--#{$prefix}btn-focus-box-shadow);
     }
   }
 }
 
 @mixin button-inverted-props() {
-  --#{$base-prefix}btn-bg: oklch(from var(--#{$base-prefix}btn-theme, var(--base-primary)) clamp(var(--#{$base-prefix}btn-lightest-text, 0), (l / var(--base-btn-text-threshold, .623) - 1) * -infinity, var(--base-btn-darkest-text, 1)) 0.050 h);
+  --#{$base-prefix}btn-bg: oklch(
+    from var(--#{$base-prefix}btn-theme, var(--base-primary))
+      clamp(
+        var(--#{$base-prefix}btn-lightest-text, 0),
+        (l / var(--base-btn-text-threshold, 0.623) - 1) * -infinity,
+        var(--base-btn-darkest-text, 1)
+      )
+      0.05 h
+  );
   --#{$base-prefix}btn-border-color: var(--#{$base-prefix}btn-bg);
   --#{$base-prefix}btn-theme-text: var(--#{$base-prefix}btn-theme);
   --#{$base-prefix}btn-theme-hover-text: var(--#{$base-prefix}btn-bg);
@@ -106,11 +187,26 @@
   --#{$base-prefix}btn-theme-text: var(--#{$base-prefix}btn-theme);
   --#{$base-prefix}btn-bg: transparent;
   --#{$base-prefix}btn-border-color: currentColor;
-  --#{$base-prefix}btn-theme-hover-text: var(--#{$base-prefix}btn-theme-outline-hover-text, oklch(from var(--#{$base-prefix}btn-theme, var(--base-primary)) clamp(var(--#{$base-prefix}btn-lightest-text, 0), (l / var(--base-btn-text-threshold, .623) - 1) * -infinity, var(--base-btn-darkest-text, 1)) 0 h));
+  --#{$base-prefix}btn-theme-hover-text: var(
+    --#{$base-prefix}btn-theme-outline-hover-text,
+    oklch(
+      from var(--#{$base-prefix}btn-theme, var(--base-primary))
+        clamp(
+          var(--#{$base-prefix}btn-lightest-text, 0),
+          (l / var(--base-btn-text-threshold, 0.623) - 1) * -infinity,
+          var(--base-btn-darkest-text, 1)
+        )
+        0 h
+    )
+  );
 }
 
 @mixin button-variation-wide() {
-  --#{$base-prefix}btn-padding-x-wide: clamp(var(--text-frame-x), min(10vw, 80cqw), calc(var(--text-frame-x) * 3));
+  --#{$base-prefix}btn-padding-x-wide: clamp(
+    var(--text-frame-x),
+    min(10vw, 80cqw),
+    calc(var(--text-frame-x) * 3)
+  );
   --#{$prefix}btn-padding-x: var(--#{$base-prefix}btn-padding-x-wide);
 }
 
@@ -145,15 +241,19 @@
 @mixin button-small() {
   --bs-btn-font-size: calc(var(--base-xs-font-size) * var(--unit, 1rem));
   --bs-btn-padding-y: 0.75em;
-  --bs-btn-padding-x: calc(var(--bs-btn-padding-y) * var(--btn-sm-text-frame-ratio, var(--text-frame-ratio)));        
-  --btn-sm-text-frame-ratio: calc(var(--text-frame-ratio) * 0.75);  
+  --bs-btn-padding-x: calc(
+    var(--bs-btn-padding-y) *
+      var(--btn-sm-text-frame-ratio, var(--text-frame-ratio))
+  );
+  --btn-sm-text-frame-ratio: calc(var(--text-frame-ratio) * 0.75);
 }
 
 @mixin button-rules() {
   @include button-default-props();
   @include button-default-rules();
 
-  @supports (color: oklch(50% 0 0deg)) and (background-color: color-mix(in lab, #fff, #000 50%)) {
+  @supports (color: oklch(50% 0 0deg)) and
+    (background-color: color-mix(in lab, #fff, #000 50%)) {
     @include button-color-props();
     @include button-hover-rules();
     @include button-focus-rules();

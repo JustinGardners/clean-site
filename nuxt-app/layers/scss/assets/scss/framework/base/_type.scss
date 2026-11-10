@@ -15,10 +15,12 @@
         $is-display-size: list.index(reverseList($type-sizes-display), $size);
         $line-height: if(map-has-key($value, "line-height"), if(map.get($value, "line-height") != '', map.get($value, "line-height"), calc(var(--line-height-relative) + var(--line-height-fixed))), calc(var(--line-height-relative) + var(--line-height-fixed)));
         // @debug $size $line-height;
+        $font-family: if(map-has-key($value, "font-family"), map.get($value, "font-family"), var(--font-family-heading));
         @if($is-display-size) {
           $display-size-level: $is-display-size - 1;
           :is(.display-#{$display-size-level}, .heading-#{$size}) {        
             @include heading-line-height(#{$site-prefix}#{$size}, $line-height);
+            @include heading-font-family(#{$site-prefix}#{$size}, $font-family);
           }
         } @else {
           .heading-#{$size} {                

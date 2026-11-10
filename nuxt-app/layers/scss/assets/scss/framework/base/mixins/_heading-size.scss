@@ -20,6 +20,7 @@
   line-height: calc(var(--line-height-relative) + (var(--line-height, var(--line-height-fixed)) * 1rem));
   text-transform: var(--text-transform, none);
   letter-spacing: var(--letter-spacing, normal);  
+  font-family: var(--font-family, inherit);
 }
 
 @mixin heading-size($size, $is-fluid: false, $include-fluid-vars: true) {
@@ -31,7 +32,7 @@
         // Scoped locally
         // $fluid-font-size: fluid-type-font-size($size);
         // font-size: #{$fluid-font-size};
-        
+
         // Scoped to root
         font-size: var(--#{$base-prefix}#{$font-size}-fluid-type);
       } @else {

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+
+const { checkout, updateStep } = useCheckout()
+
+</script>
+
 <template>
     <!-- order summary -->
     <div class="checkoutSection" id="checkoutSummary">
@@ -42,7 +48,8 @@
     <!-- @order summary -->
     <!-- delivery details -->
     <div class="checkout-main-section" id="deliveryDetails">
-        <form action="/checkout/delivery" id="DeliveryMethod" method="post" novalidate="novalidate"><input
+        <form action="/checkout/delivery" id="DeliveryMethod" method="post" novalidate @submit.prevent="updateStep('payment')">
+        <input
                 name="__RequestVerificationToken" type="hidden"
                 value="JRqU7Hvzw-SBnO9KnTIgQoPUvsNjcSNt5IDTy1f__gVXe1-AswjuIc7gD3L1BeVG0yS8leit5wZ0kYVoNpItaWFzf8MJWa2LVVEdXdkEiKBJ-S0_0"><input
                 id="TD" name="TD" type="hidden"
@@ -211,7 +218,7 @@
                 <!-- back button -->
 
                 <a class="ui-btn button btnNavigate deliveryMethodNavBack"
-                    href="javascript:window.history.back();">Back</a>
+                    href="javascript:window.history.back();" @click.prevent="updateStep('delivery')">Back</a>
                 <!-- @back button -->
                 <!-- form submit button -->
                 <input id="btnSubmitDelivery"

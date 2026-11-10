@@ -3,6 +3,8 @@
 const applyVoucher = ref(false);
 const useDeliveryAsBilling = ref(false);
 
+const { checkout, updateStep } = useCheckout()
+
 </script>
 
 <template>
@@ -395,7 +397,7 @@ const useDeliveryAsBilling = ref(false);
 
                 <!-- back button -->
 
-                <a class="btn button btnNavigate paymentNavBack" href="javascript:window.history.back();">Back</a>
+                <a class="btn button btnNavigate paymentNavBack" href="javascript:window.history.back();" @click.prevent="updateStep('deliveryMethod')">Back</a>
 
                 <!-- @back button -->
                 <!-- form submit button -->

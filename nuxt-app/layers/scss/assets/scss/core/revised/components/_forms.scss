@@ -18,14 +18,76 @@
     //     margin-top: var(--space-xs);
     // }
 
-    :where(button[type="submit"], input[type="button"]) {
+    :where(button[type="submit"], input[type="submit"], input[type="button"]) {
         @include button-rules();
+        /// map button styles to input props from the form mixins
+        --input-color: var(--bs-btn-color);
+        --input-bg: var(--bs-btn-bg);
+        --input-text-frame-x: var(--bs-btn-padding-x);
+        --input-text-frame-y: var(--bs-btn-padding-y);
+        --input-font-size: var(--bs-btn-font-size, calc(var(--base-default-font-size-px) / var(--font-size-root-px, 16) * var(--unit, 1rem)));
+        --input-text-radius: var(--bs-btn-border-radius, var(--radius));
+        outline: none;
     }
 
-    :where(.custom-checkbox) {
+    :where(.custom-checkbox, .custom-radio) {
         display: grid;
         grid-template-columns: min-content 1fr;
         column-gap: var(--space-2xs);
+        label {
+            --field-label-font-size: font-size(default);
+        }
+        .description {
+            grid-column: 2 / -1;
+        }
+    }
+
+    :where(.radioOptions) {
+        display: grid;
+        grid-auto-flow: row;
+        gap: var(--layout-grid-gap);        
+    }
+
+    :where(input[type="radio"], .radio) {
+        background-color: var(--root-bg);
+        appearance: none;
+        display: grid;
+        place-content: center;        
+        --input-fs: calc(var(--base-xl-font-size) * var(--input-size-unit, 1rem));
+        --input-box-frame-x: 0;
+        --input-box-frame-y: 0;
+        --_outline-color: var(--field-border-color);
+        outline: 1px solid var(--_outline-color);
+        --radio-marker-color: transparent;
+        --radio-checked-marker-color: var(--input-accent-color, var(--color, var(--base-primary)));
+        --radio-marker-scale: 0.8;
+        --radio-checked-marker-scale: 1;
+        --radio-marker-outer-shadow: 0 0 1px 1px oklch(from var(--radio-marker-color, var(--input-accent-color)) calc(l - 0.080) c h);
+        --radio-marker-inset-light-shadow: 0px 1px 0px 0px oklch(from var(--base-light) l c h / 0.6) inset;
+        --radio-marker-inset-dark-shadow: var(--radio-marker-outer-shadow) inset;        
+        --radio-marker-transition: scale 0.2s ease-in-out;
+        &:before {
+            content: var(--tw-content, '');
+            // background-size: auto, calc(var(--noise) * 100%);
+            // background-image: none, var(--fx-noise);
+            background-color: var(--radio-marker-color);
+            border-radius: 100%;
+            width: calc(var(--input-fs) * var(--radio-marker-size, 0.675));
+            height: calc(var(--input-fs) * var(--radio-marker-size, 0.675));
+            box-shadow: var(--radio-marker-box-shadow, var(--radio-marker-inset-light-shadow), var(--radio-marker-inset-dark-shadow), var(--radio-marker-outer-shadow));
+            transition: var(--radio-marker-transition);
+
+
+            // 0px 1px 0px 0px oklch(from var(--base-light) l c h / 0.6) inset, 0 0 1px 1px oklch(from var(--radio-marker-color,var(--input-accent-color)) calc(l - .08) c h) inset, 0 0 1px 1px oklch(from var(--radio-marker-color,var(--input-accent-color)) calc(l - .08) c h) 
+
+            display: block;        
+            scale: var(--radio-marker-scale, 0.8);    
+            transition: var(--radio-marker-transition);
+        }
+        &:checked {
+            --radio-marker-color: var(--radio-checked-marker-color);
+            --radio-marker-scale: var(--radio-checked-marker-scale);
+        }
     }
 
     @container style(--label-stacked:true) {
@@ -86,3 +148,30 @@
     }
 
 }
+
+
+// CHECKBOX BEFORE STYLING
+// content: var(--tw-content);
+//     opacity: 0;
+//     clip-path: polygon(20% 100%, 20% 80%, 50% 80%, 50% 80%, 70% 80%, 70% 100%);
+//     width: 100%;
+//     height: 100%;
+//     box-shadow: 0px 3px 0 0px oklch(100% 0 0 / calc(var(--depth) * .1)) inset;
+//     background-color: currentColor;
+//     font-size: 1rem;
+//     line-height: .75;
+//     transition: clip-path .3s .1s, opacity .1s .1s, rotate .3s .1s, translate .3s .1s;
+//     display: block;
+//     rotate: 45deg;
+
+
+
+//// RADIO BEFORE
+    // content: var(--tw-content);
+    // background-size: auto, calc(var(--noise) * 100%);
+    // background-image: none, var(--fx-noise);
+    // border-radius: 2147483647px;
+    // width: 100%;
+    // height: 100%;
+    // display: block;
+

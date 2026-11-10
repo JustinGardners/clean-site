@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "small-style/scss/base/variables/props/font" as font;
+
 @each $size, $meta in $font-sizes {
   $font-level: map.get($meta, "font-level");
 
@@ -37,4 +40,14 @@
     "<number>",
     true,
     $value );
+}
+
+@each $key, $value in font.$register-font-stacks {
+  $font-value: map-get($value, 'initial-value');
+  $font-value-quoted: "\"" + $font-value + "\"";
+  // @debug $key;
+  @include register-prop($key,
+    "<string>",
+    true,
+    $font-value-quoted );
 }

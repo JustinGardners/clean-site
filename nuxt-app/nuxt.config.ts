@@ -35,7 +35,14 @@ export default defineNuxtConfig({
           ]
         }
       }
-    }
+    },
+    optimizeDeps: {
+      include: [
+        'alpinejs',
+        'bootstrap',
+        '@glidejs/glide',
+      ]
+    }    
   },
   modules: [
     '@nuxtjs/svg-sprite',

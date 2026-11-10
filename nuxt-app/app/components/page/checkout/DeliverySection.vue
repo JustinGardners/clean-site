@@ -1,53 +1,16 @@
 <script setup lang="ts">
-import type { DeliverySection } from '~/types'
-import type { CheckoutStep } from '~/pages/checkout/index.vue';
 
-const delivery = defineModel<DeliverySection>({ required: true })
-
-// Replace the object so field edits emit update:modelValue to the parent.
-function field<T extends object, K extends keyof T>(model: { value: T }, key: K) {
-    return computed({
-        get: () => model.value[key],
-        set: (value: T[K]) => {
-            model.value = { ...model.value, [key]: value }
-        },
-    })
-}
-
-const model = reactive({
-    title: field(delivery, 'title'),
-    firstName: field(delivery, 'firstName'),
-    lastName: field(delivery, 'lastName'),
-    phone: field(delivery, 'phone'),
-    address: field(delivery, 'address'),
-    addressTwo: field(delivery, 'addressTwo'),
-    townCity: field(delivery, 'townCity'),
-    county: field(delivery, 'county'),
-    postcode: field(delivery, 'postcode'),
-    country: field(delivery, 'country'),
-    isGift: field(delivery, 'isGift'),
-})
-
-
-
-const emit = defineEmits<{
-    (e: 'updateStep', value: CheckoutStep): void
-}>();
-
-const updateStep = (step: CheckoutStep) => {
-    emit('updateStep', step)
-}
+const { checkout, updateStep } = useCheckout()
 
 </script>
 <template>
-
     <div class="checkout-main-section" id="deliverySection">
         <!-- in-store delivery -->
         <!-- @in-store delivery -->
         <!-- home delivery -->
         <div id="homeDelivery" class="checkoutShow" style="display: block;">
 
-            <form action="/checkout" id="DeliveryAddress" method="post" novalidate="novalidate"><input
+            <form action="/checkout" id="DeliveryAddress" method="post" novalidate @submit.prevent="updateStep('deliveryMethod')"><input
                     name="__RequestVerificationToken" type="hidden"
                     value="64PaydlFOE4Xu2ZkLjJh_V1HfbAHxzV9m4iFh9x54hwiHnS0qM89pqW0uPVEgyXOnsTNcl_ZUwiLpRua6MBc_FUgQfZ440Yxp31n8VJnNPagR8Ml0"><input
                     id="TD" name="TD" type="hidden"
@@ -101,7 +64,7 @@ const updateStep = (step: CheckoutStep) => {
                                             data-val-number="The field Title must be a number."
                                             data-val-required="Title required"
                                             id="DeliveryAddress_UserTitlePrefixTypeId"
-                                            name="DeliveryAddress.UserTitlePrefixTypeId" v-model="model.title">
+                                            name="DeliveryAddress.UserTitlePrefixTypeId" v-model="checkout.delivery.title">
                                             <option value=""></option>
                                             <option value="Mr">Mr</option>
                                             <option value="Mrs">Mrs</option>
@@ -123,9 +86,10 @@ const updateStep = (step: CheckoutStep) => {
                                             Name</label>
                                         <input autocomplete="off" class="form-control" data-val="true"
                                             data-val-length="Must be under 35 characters" data-val-length-max="35"
+                                            v-model="checkout.delivery.firstName"
                                             data-val-required="First Name required" id="DeliveryAddress_FirstName"
                                             name="DeliveryAddress.FirstName" placeholder="First Name" type="text"
-                                            maxlength="35" v-model="model.firstName">
+                                            maxlength="35">
                                         <span class="field-validation-valid validateFirstName"
                                             data-valmsg-for="DeliveryAddress.FirstName"
                                             data-valmsg-replace="true"></span>
@@ -138,7 +102,7 @@ const updateStep = (step: CheckoutStep) => {
                                             data-val-length="Must be under 35 characters" data-val-length-max="35"
                                             data-val-required="Last Name required" id="DeliveryAddress_LastName"
                                             name="DeliveryAddress.LastName" placeholder="Last Name" type="text"
-                                            maxlength="35" v-model="model.lastName">
+                                            maxlength="35" v-model="checkout.delivery.lastName">
                                         <span class="field-validation-valid validateLastName"
                                             data-valmsg-for="DeliveryAddress.LastName"
                                             data-valmsg-replace="true"></span>
@@ -149,7 +113,7 @@ const updateStep = (step: CheckoutStep) => {
                                             data-val-length="Must be under 25 characters" data-val-length-max="25"
                                             data-val-regex="Use Numbers only " data-val-regex-pattern="^[0-9 +]+$"
                                             id="DeliveryAddress_Phone" name="DeliveryAddress.Phone"
-                                            placeholder="Telephone Number" v-model="model.phone" type="text"
+                                            placeholder="Telephone Number" v-model="checkout.delivery.phone" type="text"
                                             maxlength="25">
                                         <span class="field-validation-valid" data-valmsg-for="DeliveryAddress.Phone"
                                             data-valmsg-replace="true"></span>
@@ -199,7 +163,7 @@ const updateStep = (step: CheckoutStep) => {
                                                     data-val-length-max="35" data-val-required="Address required"
                                                     id="DeliveryAddress_AddressLine1"
                                                     name="DeliveryAddress.AddressLine1" placeholder="Address"
-                                                    type="text" v-model="model.address" maxlength="35">
+                                                    type="text" v-model="checkout.delivery.address" maxlength="35">
                                                 <span class="field-validation-valid validateAddressLine1"
                                                     data-valmsg-for="DeliveryAddress.AddressLine1"
                                                     data-valmsg-replace="true"></span>
@@ -212,7 +176,7 @@ const updateStep = (step: CheckoutStep) => {
                                                     data-val-length="Must be under 35 characters"
                                                     data-val-length-max="35" id="DeliveryAddress_AddressLine2"
                                                     name="DeliveryAddress.AddressLine2" placeholder="Line 2" type="text"
-                                                    v-model="model.addressTwo" maxlength="35">
+                                                    v-model="checkout.delivery.addressTwo" maxlength="35">
                                                 <span class="field-validation-valid validateAddressLine2"
                                                     data-valmsg-for="DeliveryAddress.AddressLine2"
                                                     data-valmsg-replace="true"></span>
@@ -226,7 +190,7 @@ const updateStep = (step: CheckoutStep) => {
                                                     data-val-regex-pattern="^[^\d]+$"
                                                     data-val-required="Town / City required" id="DeliveryAddress_Town"
                                                     name="DeliveryAddress.Town" placeholder="Town" type="text"
-                                                    v-model="model.townCity" maxlength="35">
+                                                    v-model="checkout.delivery.townCity" maxlength="35">
                                                 <span class="field-validation-valid validateTown"
                                                     data-valmsg-for="DeliveryAddress.Town"
                                                     data-valmsg-replace="true"></span>
@@ -241,7 +205,7 @@ const updateStep = (step: CheckoutStep) => {
                                                     data-val-required="County/State Required"
                                                     id="DeliveryAddress_County" name="DeliveryAddress.County"
                                                     placeholder="County/province/state" type="text"
-                                                    v-model="model.county" maxlength="35">
+                                                    v-model="checkout.delivery.county" maxlength="35">
                                                 <span class="field-validation-valid validateCounty"
                                                     data-valmsg-for="DeliveryAddress.County"
                                                     data-valmsg-replace="true"></span>
@@ -252,7 +216,7 @@ const updateStep = (step: CheckoutStep) => {
                                                 <input class="form-control postcode deliveryPostcode" data-val="true"
                                                     data-val-required="Postcode required" id="DeliveryAddress_PostCode"
                                                     name="DeliveryAddress.PostCode" placeholder="Postcode" type="text"
-                                                    v-model="model.postcode">
+                                                    v-model="checkout.delivery.postcode">
                                                 <span class="field-validation-valid validatePostcode"
                                                     data-valmsg-for="DeliveryAddress.PostCode"
                                                     data-valmsg-replace="true"></span>
@@ -269,7 +233,7 @@ const updateStep = (step: CheckoutStep) => {
                                                     data-val-regex-pattern="^[^\d]+$" disabled="disabled"
                                                     id="DeliveryAddress_Country" name="DeliveryAddress.Country"
                                                     placeholder="Country" style="background-image:none;" type="text"
-                                                    v-model="model.country" maxlength="35">
+                                                    v-model="checkout.delivery.country" maxlength="35">
                                                 <span class="field-validation-valid validateCountry"
                                                     data-valmsg-for="DeliveryAddress.Country"
                                                     data-valmsg-replace="true"></span>
@@ -337,7 +301,7 @@ const updateStep = (step: CheckoutStep) => {
                             <div class="custom-control custom-checkbox">
                                 <input class="custom-control-input" data-val="true"
                                     data-val-required="Is the order a gift? required" id="giftingCheckbox" name="IsGift"
-                                    type="checkbox" v-model="model.isGift"><input name="IsGift" type="hidden"
+                                    type="checkbox" v-model="checkout.delivery.isGift"><input name="IsGift" type="hidden"
                                     value="false">
                                 <label for="giftingCheckbox" class="clickBox giftingOption custom-control-label">This
                                     order is a
@@ -397,7 +361,7 @@ const updateStep = (step: CheckoutStep) => {
                             href="javascript:window.history.back();">Back</a>
 
 
-                        <input id="btnSubmitAddress" @click="updateStep('deliveryMethod')" class="btn btn-primary button btnContinue btnNavigate"
+                        <input id="btnSubmitAddress" class="btn btn-primary button btnContinue btnNavigate"
                             type="submit" value="Continue to Delivery Method" data-theme="b">
                     </div>
 

@@ -3,8 +3,13 @@
 @use "small-style/scss/base/mixins/rules/components/layout" as layout;
 
 #headerWrap:has(#checkoutHeader) {
-    color: theme-color-contrast("primary-6");
-    background: theme-color("primary-6");
+    $checkout-header-bg: theme-color("primary-6");
+    --checkout-header-bg: #{$checkout-header-bg};
+    color: oklch(from var(--color, var(--checkout-header-bg)) 
+    clamp(var(--checkout-header-bg-lightest-text, var(--contrast-lightest-text, 0)), (l / var(--contrast-threshold, .623) - 1) * -infinity, var(--checkout-header-bg-darkest-text, var(--contrast-darkest-text, 1))) 
+    0 
+    h);
+    background: var(--checkout-header-bg);
     border-bottom: 1px solid theme-color("grey-10");
 
     .container-md {
@@ -18,6 +23,13 @@
         }
     }
 
+}
+
+.checkoutSection {
+    --flow-space: var(--space-lg);
+    > * {
+        --flow-space: var(--space-md);
+    }
 }
 
 #storeLogoHeader {
@@ -53,6 +65,10 @@
 }
 
 .checkoutBreadcrumb {
+    $step-counter-color: theme-color("primary-7");
+    $step-counter-color-active: theme-color("primary-9");
+    --step-counter-color: #{$step-counter-color};
+    --step-counter-color-active: #{$step-counter-color-active};
     grid-column: 3 / 6;
     grid-row: 1/1;
     display: flex;
@@ -68,10 +84,14 @@
         counter-increment: step;
         font-size: font-size('xxs', true);
         font-weight: font-weight('bold');
+        text-shadow: -1px -1px 3px var(--checkout-header-bg);
+        &.current {
+            --step-counter-color: var(--step-counter-color-active);
+        }
         span {
             position: relative;
         }
-        span:before {            
+        span:before {                        
             content: counter(step);
             position: absolute;
             font-size: 3em;
@@ -80,7 +100,7 @@
             transform: translate(-60%, -50%);
             font-weight: font-weight('extrabold');
             opacity: 1;            
-            color: theme-color("primary-7");
+            color: var(--step-counter-color);
             z-index: -1;
             font-style: italic;
             opacity: 0.75;
@@ -289,6 +309,7 @@ label[for="DeliveryAddress_UserTitlePrefixTypeId"] {
 }
 
 .navigationButtons {
+    --flow-space: var(--space-xl);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -368,6 +389,7 @@ li.deliveryMethod {
     border-radius: var(--radius);    
     border: var(--field-border-width,4px) solid var(--field-border-color);
     background: color-mix(in oklab, var(--root-bg), light-dark(#fff, #000) 50%);  
+    row-gap: 0;
     // padding-inline: var(--text-frame-x);
     // padding-block: var(--text-frame-y);      
 }
@@ -403,7 +425,7 @@ li.deliveryMethod {
         label {
             padding: var(--space-lg) var(--space-sm);
         }
-        --input-accent-color: var(--base-primary);
+        // --input-accent-color: var(--base-primary);
        &:has(input:checked) {
             $highlight-color: theme-color("grey-9");
             --highlight-color: #{$highlight-color};

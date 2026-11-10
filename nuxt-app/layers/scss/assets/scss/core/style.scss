@@ -1,10 +1,12 @@
 /* ===== START: Section Manifests ===== */
 
-:is(.container-xl, .container-lg, .container-md, .container-sm, .container) {
-    padding-right: calc(var(--bs-gutter-x) * .5);
-    padding-left: calc(var(--bs-gutter-x) * .5);
-    margin-left: auto;
-    margin-right: auto;
+@layer legacy {
+    :is(.container-xl, .container-lg, .container-md, .container-sm, .container) {
+        padding-right: calc(var(--bs-gutter-x) * .5);
+        padding-left: calc(var(--bs-gutter-x) * .5);
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @import "root";
