@@ -18,7 +18,7 @@
     //     margin-top: var(--space-xs);
     // }
 
-    :where(button[type="submit"], input[type="submit"], input[type="button"]) {
+    :where(#main-section button[type="submit"], #main-section input[type="submit"], #main-section input[type="button"]) {
         @include button-rules();
         /// map button styles to input props from the form mixins
         --input-color: var(--bs-btn-color);
@@ -39,6 +39,7 @@
         }
         .description {
             grid-column: 2 / -1;
+            font-size: font-size(xs);
         }
     }
 
@@ -49,6 +50,7 @@
     }
 
     :where(input[type="radio"], .radio) {
+        --input-accent-color: var(--color, var(--base-primary));
         background-color: var(--root-bg);
         appearance: none;
         display: grid;
@@ -56,25 +58,25 @@
         --input-fs: calc(var(--base-xl-font-size) * var(--input-size-unit, 1rem));
         --input-box-frame-x: 0;
         --input-box-frame-y: 0;
-        --_outline-color: var(--field-border-color);
+        --_outline-color: var(--input-accent-color);
         outline: 1px solid var(--_outline-color);
         --radio-marker-color: transparent;
-        --radio-checked-marker-color: var(--input-accent-color, var(--color, var(--base-primary)));
+        --radio-checked-marker-color: var(--input-accent-color);
         --radio-marker-scale: 0.8;
         --radio-checked-marker-scale: 1;
-        --radio-marker-outer-shadow: 0 0 1px 1px oklch(from var(--radio-marker-color, var(--input-accent-color)) calc(l - 0.080) c h);
-        --radio-marker-inset-light-shadow: 0px 1px 0px 0px oklch(from var(--base-light) l c h / 0.6) inset;
-        --radio-marker-inset-dark-shadow: var(--radio-marker-outer-shadow) inset;        
+        --radio-marker-outer-shadow: 0 0 0 1px oklch(from var(--radio-marker-color, var(--input-accent-color)) calc(l - 0.080) c h);
+        --radio-marker-inset-light-shadow: 0px 1px 0px 0px oklch(from var(--base-light) l c h / 0.6);
+        --radio-marker-inset-dark-shadow: var(--radio-marker-outer-shadow);        
+        // light-dark(var(--radio-marker-inset-light-shadow), var(--radio-marker-inset-dark-shadow)), light-dark(var(--radio-marker-inset-dark-shadow), var(--radio-marker-inset-light-shadow)), var(--radio-marker-outer-shadow)
+        --radio-marker-box-shadow: none;
         --radio-marker-transition: scale 0.2s ease-in-out;
         &:before {
             content: var(--tw-content, '');
-            // background-size: auto, calc(var(--noise) * 100%);
-            // background-image: none, var(--fx-noise);
             background-color: var(--radio-marker-color);
             border-radius: 100%;
             width: calc(var(--input-fs) * var(--radio-marker-size, 0.675));
             height: calc(var(--input-fs) * var(--radio-marker-size, 0.675));
-            box-shadow: var(--radio-marker-box-shadow, var(--radio-marker-inset-light-shadow), var(--radio-marker-inset-dark-shadow), var(--radio-marker-outer-shadow));
+            box-shadow: var(--radio-marker-box-shadow);
             transition: var(--radio-marker-transition);
 
 
@@ -87,6 +89,11 @@
         &:checked {
             --radio-marker-color: var(--radio-checked-marker-color);
             --radio-marker-scale: var(--radio-checked-marker-scale);
+            --radio-marker-box-shadow: var(--radio-marker-inset-light-shadow) inset, var(--radio-marker-inset-dark-shadow) inset, var(--radio-marker-outer-shadow);
+            @media (--OSdark) {
+                // --radio-marker-light-shadow: 0px 3px 0px 0px oklch(from var(--base-light) l c h / 1);
+                --radio-marker-box-shadow: var(--radio-marker-outer-shadow), var(--radio-marker-inset-light-shadow);
+            }            
         }
     }
 

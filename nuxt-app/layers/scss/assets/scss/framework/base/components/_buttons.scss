@@ -55,6 +55,9 @@
       &.btn-lg {
         --bs-btn-font-size: calc(var(--base-lg-font-size) * var(--unit, 1rem));
       }      
+      &.btn-link {
+        @include button-link();
+      }
     }
   }
 }

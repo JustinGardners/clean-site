@@ -43,7 +43,7 @@
 
     :where(label) {
         font-size: var(--field-label-font-size, font-size('xs'));
-        color: var(--field-label-color, var(--color, theme-color("primary")));
+        color: var(--field-label-color, var(--color, theme-color("dark")));
     }
 
 }

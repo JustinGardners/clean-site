@@ -26,9 +26,19 @@
 }
 
 .checkoutSection {
-    --flow-space: var(--space-lg);
+    --flow-space: var(--space-xl);
     > * {
         --flow-space: var(--space-md);
+    }
+}
+
+:is(.billingUseDeliveryOption, .billingEnterNewOption) {
+    padding-inline: var(--space-sm);
+}
+
+.editButton {
+    .btn {
+        @include button-link();
     }
 }
 
@@ -117,7 +127,8 @@
 
 :where(#basketSummary) {
     position: sticky;
-    top: 200px;
+    top: 61px;
+    align-self: flex-start;
     .totals {
         font-size: font-size('xl');
         font-weight: font-weight('bold');
@@ -462,9 +473,17 @@ li.deliveryMethod {
 }
 
 .form-group {
+    &:has(.subTitle) {
+        :is(label, input, select) {
+            grid-row: 2/2;
+            grid-column: 1/3;
+        }
+    }
     .subTitle {
-        grid-row: 2/2;
+        grid-row: 1/1;
+        grid-column: 2/2;
         font-size: font-size(xs);
+        text-align: right;
     }
 }
 
@@ -472,6 +491,10 @@ li.deliveryMethod {
     .deliverySafePlaceDesc {
         grid-row: 3/3;
     }
+}
+
+#billingFields {
+    --flow-space: var(--space-xl);
 }
 
 :where(#deliveryDetails) {

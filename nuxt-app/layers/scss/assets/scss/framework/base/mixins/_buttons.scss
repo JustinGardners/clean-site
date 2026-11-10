@@ -259,3 +259,16 @@
     @include button-focus-rules();
   }
 }
+
+@mixin button-link($underline: true) {
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-color: var(--bs-btn-bg);
+  background: transparent;
+  &:hover {
+    background: transparent;
+    @if $underline {
+      text-decoration: underline;
+    }
+  }
+}
