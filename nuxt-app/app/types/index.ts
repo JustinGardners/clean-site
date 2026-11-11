@@ -89,3 +89,5 @@ export type Checkout = {
         cvv: string;
     };
 }
+
+export type PdpLayoutVariation = 'new' | 'classic' | 'editorial';

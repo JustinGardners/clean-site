@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MainImage from "~/components/pdp/MainImage.vue";
-import type { BasketItem } from '~/types';
+import type { BasketItem, PdpLayoutVariation } from '~/types';
 
 const route = useRoute();
 const contributor = route.params.contributor;
@@ -15,7 +15,10 @@ const { data, error } = await useFetch("/api/test-products", {
 });
 
 definePageMeta({
-  layout: "pdp-alt",
+  layout: "pdp",
+  layoutProps: {
+    layout: "editorial" as PdpLayoutVariation,
+  },
 });
 
 const badges = computed(() => Object.entries(data.value?.[0]?.product.raw ?? {}).reduce<string[]>((acc, [key, value]) => {
